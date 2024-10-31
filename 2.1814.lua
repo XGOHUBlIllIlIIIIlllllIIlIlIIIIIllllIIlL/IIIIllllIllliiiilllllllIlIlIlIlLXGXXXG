@@ -548,7 +548,7 @@ local Section = ActionadventureTab:Section({Title = "x-Blox Fruits",    Content 
 Section:Button({Title ="自动杀人",["Content"] = "",  Callback = function()	loadstring(game:HttpGet("https://pastebin.com/raw/w8tuTtgu"))()		end})
 Section:Button({Title ="无密钥",["Content"] = "",  Callback = function()getgenv().Team = "Pirates"loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/3b2169cf53bc6104dabe8e19562e5cc2.lua"))()end})
 Section:Button({Title ="Lunar X Hudb",["Content"] = "",  Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/NguyenLam2504/anhyeuem/main/bloxshitfarm.lua"))() end})
-Section:Button({Title ="Project-Spectrum9.0",["Content"] = "",  Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/xZPUHigh/Project-Spectrum/main/SpectrumX.lua"))() end)
+Section:Button({Title ="Project-Spectrum9.0",["Content"] = "",  Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/xZPUHigh/Project-Spectrum/main/SpectrumX.lua"))() end})
 Section:Button({Title ="汉化版",["Content"] = "",  Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/Xiao-Yun-UWU/main/%E6%B5%B7%E8%B4%BC%E7%8E%8Bbf.lua", true))()end})
 Section:Button({Title ="Min_XT_V2",["Content"] = "",  Callback = function()	loadstring(game:HttpGet("https://raw.githubusercontent.com/Basicallyy/Basicallyy/main/Min_XT_V2_.lua"))()	end})
 Section:Button({Title ="Project-Spectrum 9.0",["Content"] = "",  Callback = function()	loadstring(game:HttpGet("https://raw.githubusercontent.com/xZPUHigh/Project-Spectrum/main/SpectrumX.lua"))()		end})
