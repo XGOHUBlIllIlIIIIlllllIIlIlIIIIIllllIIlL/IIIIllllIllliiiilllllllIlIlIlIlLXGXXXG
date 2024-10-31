@@ -666,7 +666,7 @@ Section:Button({Title = "索尔的RNG",  ["Content"] = "1",  Callback = function
 Section:Button({Title = "索尔的RNG",  ["Content"] = "2",  Callback = function()   loadstring(game:HttpGet("https://raw.githubusercontent.com/LOLking123456/upd/main/rng"))()  	end})
 local Section = ScriptTab:Section({Title = "x-脚本",    Content = "其他脚本-xgo"})
 Section:Button({Title ="xgo主页",["Content"] = "1",  Callback = function()	loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/xgo%20%E6%96%B0%E7%89%88%E6%9C%AC.lua"))() end})
-Section:Button({Title ="xgo主页",["Content"] = "2",  Callback = function()loadstring(game:HttpGet'https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/xgo')'xgo'.lua end})
+Section:Button({Title ="xgo主页",["Content"] = "2",  Callback = function()loadstring(game:HttpGet'https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/xgo')'xgo' end})
 Section:Button({Title ="小go主页",["Content"] = "3",  Callback = function()    loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/14362llll364XXGOLLLk22222/refs/heads/main/goto"))()  end})
 Section:Button({Title ="小gov1",["Content"] = "",  Callback = function()    loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/143628IIIIlllllliilililIIlll.YXZX.LUA/refs/heads/main/V1"))()    end})
 Section:Button({Title ="小goV2",["Content"] = "",  Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/143628IIIIlllllliilililIIlll.YXZX.LUA/refs/heads/main/V2.lua"))()end})
