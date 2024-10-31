@@ -182,82 +182,26 @@ local Converted = {
 	["_UIPadding8"] = Instance.new("UIPadding");
 	["_UIStroke6"] = Instance.new("UIStroke");
 	["_LocalScript3"] = Instance.new("LocalScript");
-	["_Init"] = Instance.new("LocalScript");
-	["_FUNCTIONS"] = Instance.new("ModuleScript");
-	["_Notifications"] = Instance.new("Frame");
-	["_UIListLayout"] = Instance.new("UIListLayout");
-	["_UIPadding"] = Instance.new("UIPadding");
-	["_Placeholder"] = Instance.new("Frame");
-	["_UICorner"] = Instance.new("UICorner");
-	["_TextLabel"] = Instance.new("TextLabel");
-	["_SetCustomButtonEmote"] = Instance.new("Frame");
-	["_UICorner1"] = Instance.new("UICorner");
-	["_UIStroke"] = Instance.new("UIStroke");
-	["_UIGradient"] = Instance.new("UIGradient");
-	["_UIGradient1"] = Instance.new("UIGradient");
-	["_UIScale"] = Instance.new("UIScale");
-	["_TextLabel1"] = Instance.new("TextLabel");
-	["_TextBox"] = Instance.new("TextBox");
-	["_UICorner2"] = Instance.new("UICorner");
-	["_UIPadding1"] = Instance.new("UIPadding");
-	["_TextLabel2"] = Instance.new("TextLabel");
-	["_Add"] = Instance.new("TextButton");
-	["_UICorner3"] = Instance.new("UICorner");
-	["_UIPadding2"] = Instance.new("UIPadding");
-	["_UIStroke1"] = Instance.new("UIStroke");
-	["_LocalScript"] = Instance.new("LocalScript");
-	["_Cancel"] = Instance.new("TextButton");
-	["_UICorner4"] = Instance.new("UICorner");
-	["_UIPadding3"] = Instance.new("UIPadding");
-	["_UIStroke2"] = Instance.new("UIStroke");
-	["_LocalScript1"] = Instance.new("LocalScript");
+
+        ["_SetCustomButtonEmote"] = Instance.new("Frame");
 	["_DraggableObject"] = Instance.new("ModuleScript");
-	["_Menu"] = Instance.new("Frame");
-	["_UICorner5"] = Instance.new("UICorner");
-	["_UIScale1"] = Instance.new("UIScale");
-	["_UIStroke3"] = Instance.new("UIStroke");
-	["_UIGradient2"] = Instance.new("UIGradient");
 	["_Animator"] = Instance.new("LocalScript");
-	["_HubCredits"] = Instance.new("TextLabel");
-	["_HubDesc"] = Instance.new("TextLabel");
-	["_HubName"] = Instance.new("TextLabel");
 	["_CanvasGroup"] = Instance.new("CanvasGroup");
-	["_UICorner6"] = Instance.new("UICorner");
 	["_ImageLabel"] = Instance.new("ImageLabel");
 	["_Opener"] = Instance.new("TextButton");
 	["_Area"] = Instance.new("Frame");
 	["_Area1"] = Instance.new("ScrollingFrame");
 	["_UIGridLayout"] = Instance.new("UIGridLayout");
 	["_Sample"] = Instance.new("ImageButton");
-	["_UICorner7"] = Instance.new("UICorner");
-	["_UIStroke4"] = Instance.new("UIStroke");
-	["_UIPadding4"] = Instance.new("UIPadding");
 	["_ImageLabel1"] = Instance.new("ImageLabel");
-	["_TextLabel3"] = Instance.new("TextLabel");
-	["_UIPadding5"] = Instance.new("UIPadding");
-	["_TextLabel4"] = Instance.new("TextLabel");
-	["_TextBox1"] = Instance.new("TextBox");
-	["_UICorner8"] = Instance.new("UICorner");
-	["_UIPadding6"] = Instance.new("UIPadding");
 	["_Search"] = Instance.new("LocalScript");
 	["_Switch"] = Instance.new("TextButton");
-	["_UICorner9"] = Instance.new("UICorner");
-	["_UIPadding7"] = Instance.new("UIPadding");
-	["_UIStroke5"] = Instance.new("UIStroke");
-	["_UIGradient3"] = Instance.new("UIGradient");
 	["_Switch1"] = Instance.new("LocalScript");
-	["_UIGradient4"] = Instance.new("UIGradient");
 	["_CloseArea"] = Instance.new("TextButton");
 	["_Frame"] = Instance.new("Frame");
-	["_UICorner10"] = Instance.new("UICorner");
-	["_TextLabel5"] = Instance.new("TextLabel");
-	["_UICorner11"] = Instance.new("UICorner");
-	["_CloseOpen"] = Instance.new("LocalScript");
-	["_Close"] = Instance.new("BindableEvent");
 	["_ClickAndHold"] = Instance.new("ModuleScript");
 	["_Spring"] = Instance.new("ModuleScript");
 	["_EmoteList"] = Instance.new("LocalScript");
-	["_FloatingButtons"] = Instance.new("Frame");
 }
 -- Properties:
 
@@ -830,52 +774,6 @@ Converted["_UIStroke6"].Parent = Converted["_Cancel"]
 
 --更新部分
 
-Converted["_Notifications"].AnchorPoint = Vector2.new(1, 0.5)
-Converted["_Notifications"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Notifications"].BackgroundTransparency = 1
-Converted["_Notifications"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Notifications"].BorderSizePixel = 0
-Converted["_Notifications"].Position = UDim2.new(0.99000001, 0, 0.5, 0)
-Converted["_Notifications"].Size = UDim2.new(0, 242, 1, 0)
-Converted["_Notifications"].Name = "Notifications"
-Converted["_Notifications"].Parent = Converted["_AFEM"]
-
-Converted["_UIListLayout"].Padding = UDim.new(0, 10)
-Converted["_UIListLayout"].HorizontalAlignment = Enum.HorizontalAlignment.Center
-Converted["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
-Converted["_UIListLayout"].VerticalAlignment = Enum.VerticalAlignment.Bottom
-Converted["_UIListLayout"].Parent = Converted["_Notifications"]
-
-Converted["_UIPadding"].PaddingBottom = UDim.new(0, 10)
-Converted["_UIPadding"].PaddingLeft = UDim.new(0, 10)
-Converted["_UIPadding"].Parent = Converted["_Notifications"]
-
-Converted["_Placeholder"].AnchorPoint = Vector2.new(0.5, 0)
-Converted["_Placeholder"].BackgroundColor3 = Color3.fromRGB(31.000001952052116, 31.000001952052116, 31.000001952052116)
-Converted["_Placeholder"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Placeholder"].BorderSizePixel = 0
-Converted["_Placeholder"].Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
-Converted["_Placeholder"].Visible = false
-Converted["_Placeholder"].Name = "Placeholder"
-Converted["_Placeholder"].Parent = Converted["_Notifications"]
-
-Converted["_UICorner"].Parent = Converted["_Placeholder"]
-
-Converted["_TextLabel"].Font = Enum.Font.Gotham
-Converted["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel"].TextScaled = true
-Converted["_TextLabel"].TextSize = 14
-Converted["_TextLabel"].TextWrapped = true
-Converted["_TextLabel"].TextXAlignment = Enum.TextXAlignment.Left
-Converted["_TextLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel"].BackgroundTransparency = 1
-Converted["_TextLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel"].BorderSizePixel = 0
-Converted["_TextLabel"].Position = UDim2.new(0.5, 0, 0.5, 0)
-Converted["_TextLabel"].Size = UDim2.new(0.899999976, 0, 0.800000012, 0)
-Converted["_TextLabel"].Parent = Converted["_Placeholder"]
-
 Converted["_SetCustomButtonEmote"].AnchorPoint = Vector2.new(0.5, 0.5)
 Converted["_SetCustomButtonEmote"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_SetCustomButtonEmote"].BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -887,217 +785,6 @@ Converted["_SetCustomButtonEmote"].ZIndex = 3
 Converted["_SetCustomButtonEmote"].Name = "SetCustomButtonEmote"
 Converted["_SetCustomButtonEmote"].Parent = Converted["_AFEM"]
 
-Converted["_UICorner1"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_UIStroke"].Color = Color3.fromRGB(255, 255, 255)
-Converted["_UIStroke"].Thickness = 2
-Converted["_UIStroke"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_UIGradient"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
-	ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(50.69031357765198, 50.69031357765198, 50.69031357765198)),
-	ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(50.13314567506313, 50.13314567506313, 50.13314567506313)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(48.000000938773155, 48.000000938773155, 48.000000938773155))
-}
-Converted["_UIGradient"].Rotation = 62
-Converted["_UIGradient"].Parent = Converted["_UIStroke"]
-
-Converted["_UIGradient1"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
-}
-Converted["_UIGradient1"].Rotation = 68
-Converted["_UIGradient1"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_UIScale"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_TextLabel1"].Font = Enum.Font.Gotham
-Converted["_TextLabel1"].Text = "Add a module"
-Converted["_TextLabel1"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel1"].TextScaled = true
-Converted["_TextLabel1"].TextSize = 14
-Converted["_TextLabel1"].TextWrapped = true
-Converted["_TextLabel1"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel1"].BackgroundTransparency = 1
-Converted["_TextLabel1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel1"].BorderSizePixel = 0
-Converted["_TextLabel1"].Position = UDim2.new(0.352256238, 0, 0.133915231, 0)
-Converted["_TextLabel1"].Size = UDim2.new(0.619047642, 0, 0.125920027, 0)
-Converted["_TextLabel1"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_TextBox"].ClearTextOnFocus = false
-Converted["_TextBox"].Font = Enum.Font.Gotham
-Converted["_TextBox"].PlaceholderText = "Custom module link"
-Converted["_TextBox"].Text = ""
-Converted["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextBox"].TextScaled = true
-Converted["_TextBox"].TextSize = 14
-Converted["_TextBox"].TextWrapped = true
-Converted["_TextBox"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextBox"].BackgroundColor3 = Color3.fromRGB(22.000000588595867, 22.000000588595867, 22.000000588595867)
-Converted["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextBox"].BorderSizePixel = 0
-Converted["_TextBox"].Position = UDim2.new(0.499648541, 0, 0.500059664, 0)
-Converted["_TextBox"].Size = UDim2.new(0.804988742, 0, 0.544776142, 0)
-Converted["_TextBox"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_UICorner2"].Parent = Converted["_TextBox"]
-
-Converted["_UIPadding1"].PaddingBottom = UDim.new(0, 10)
-Converted["_UIPadding1"].PaddingLeft = UDim.new(0, 10)
-Converted["_UIPadding1"].PaddingRight = UDim.new(0, 10)
-Converted["_UIPadding1"].PaddingTop = UDim.new(0, 10)
-Converted["_UIPadding1"].Parent = Converted["_TextBox"]
-
-Converted["_TextLabel2"].Font = Enum.Font.Gotham
-Converted["_TextLabel2"].Text = "Only add modules you trust!"
-Converted["_TextLabel2"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel2"].TextScaled = true
-Converted["_TextLabel2"].TextSize = 14
-Converted["_TextLabel2"].TextWrapped = true
-Converted["_TextLabel2"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextLabel2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel2"].BackgroundTransparency = 1
-Converted["_TextLabel2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel2"].BorderSizePixel = 0
-Converted["_TextLabel2"].Position = UDim2.new(0.499648541, 0, 0.833542168, 0)
-Converted["_TextLabel2"].Size = UDim2.new(0.619047642, 0, 0.0550245307, 0)
-Converted["_TextLabel2"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_Add"].Font = Enum.Font.Gotham
-Converted["_Add"].Text = "Add"
-Converted["_Add"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Add"].TextScaled = true
-Converted["_Add"].TextSize = 14
-Converted["_Add"].TextWrapped = true
-Converted["_Add"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_Add"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
-Converted["_Add"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Add"].BorderSizePixel = 0
-Converted["_Add"].Position = UDim2.new(0.108492024, 0, 0.927298486, 0)
-Converted["_Add"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
-Converted["_Add"].Name = "Add"
-Converted["_Add"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_UICorner3"].Parent = Converted["_Add"]
-
-Converted["_UIPadding2"].PaddingBottom = UDim.new(0, 5)
-Converted["_UIPadding2"].PaddingLeft = UDim.new(0, 5)
-Converted["_UIPadding2"].PaddingRight = UDim.new(0, 5)
-Converted["_UIPadding2"].PaddingTop = UDim.new(0, 5)
-Converted["_UIPadding2"].Parent = Converted["_Add"]
-
-Converted["_UIStroke1"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke1"].Color = Color3.fromRGB(255, 255, 255)
-Converted["_UIStroke1"].Parent = Converted["_Add"]
-
-Converted["_Cancel"].Font = Enum.Font.Gotham
-Converted["_Cancel"].Text = "Cancel"
-Converted["_Cancel"].TextColor3 = Color3.fromRGB(255, 0, 0)
-Converted["_Cancel"].TextScaled = true
-Converted["_Cancel"].TextSize = 14
-Converted["_Cancel"].TextWrapped = true
-Converted["_Cancel"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_Cancel"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
-Converted["_Cancel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Cancel"].BorderSizePixel = 0
-Converted["_Cancel"].Position = UDim2.new(0.899875283, 0, 0.931029797, 0)
-Converted["_Cancel"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
-Converted["_Cancel"].Name = "Cancel"
-Converted["_Cancel"].Parent = Converted["_SetCustomButtonEmote"]
-
-Converted["_UICorner4"].Parent = Converted["_Cancel"]
-
-Converted["_UIPadding3"].PaddingBottom = UDim.new(0, 5)
-Converted["_UIPadding3"].PaddingLeft = UDim.new(0, 5)
-Converted["_UIPadding3"].PaddingRight = UDim.new(0, 5)
-Converted["_UIPadding3"].PaddingTop = UDim.new(0, 5)
-Converted["_UIPadding3"].Parent = Converted["_Cancel"]
-
-Converted["_UIStroke2"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke2"].Color = Color3.fromRGB(255, 0, 0)
-Converted["_UIStroke2"].Parent = Converted["_Cancel"]
-
-Converted["_Menu"].AnchorPoint = Vector2.new(1, 1)
-Converted["_Menu"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Menu"].BorderSizePixel = 0
-Converted["_Menu"].Position = UDim2.new(0.986000001, 0, 0.967999995, 0)
-Converted["_Menu"].Size = UDim2.new(0, 309, 0, 188)
-Converted["_Menu"].Name = "Menu"
-Converted["_Menu"].Parent = Converted["_AFEM"]
-
-Converted["_UICorner5"].Parent = Converted["_Menu"]
-
-Converted["_UIScale1"].Parent = Converted["_Menu"]
-
-Converted["_UIStroke3"].Color = Color3.fromRGB(255, 255, 255)
-Converted["_UIStroke3"].Thickness = 2
-Converted["_UIStroke3"].Parent = Converted["_Menu"]
-
-Converted["_UIGradient2"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
-	ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(50.69031357765198, 50.69031357765198, 50.69031357765198)),
-	ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(50.13314567506313, 50.13314567506313, 50.13314567506313)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(48.000000938773155, 48.000000938773155, 48.000000938773155))
-}
-Converted["_UIGradient2"].Rotation = 180
-Converted["_UIGradient2"].Parent = Converted["_UIStroke3"]
-
-Converted["_HubCredits"].Font = Enum.Font.GothamBold
-Converted["_HubCredits"].Text = "made and open sourced by imperial"
-Converted["_HubCredits"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_HubCredits"].TextScaled = true
-Converted["_HubCredits"].TextSize = 14
-Converted["_HubCredits"].TextTransparency = 0.699999988079071
-Converted["_HubCredits"].TextWrapped = true
-Converted["_HubCredits"].TextXAlignment = Enum.TextXAlignment.Right
-Converted["_HubCredits"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_HubCredits"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_HubCredits"].BackgroundTransparency = 1
-Converted["_HubCredits"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_HubCredits"].BorderSizePixel = 0
-Converted["_HubCredits"].Position = UDim2.new(0.785926819, 0, 0.160157606, 0)
-Converted["_HubCredits"].Size = UDim2.new(0.316320807, 0, 0.0585099049, 0)
-Converted["_HubCredits"].Name = "HubCredits"
-Converted["_HubCredits"].Parent = Converted["_Menu"]
-
-Converted["_HubDesc"].Font = Enum.Font.GothamBold
-Converted["_HubDesc"].Text = "a free emotes menu"
-Converted["_HubDesc"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_HubDesc"].TextSize = 14
-Converted["_HubDesc"].TextWrapped = true
-Converted["_HubDesc"].TextXAlignment = Enum.TextXAlignment.Right
-Converted["_HubDesc"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_HubDesc"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_HubDesc"].BackgroundTransparency = 1
-Converted["_HubDesc"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_HubDesc"].BorderSizePixel = 0
-Converted["_HubDesc"].Position = UDim2.new(0.708829343, 0, 0.116141364, 0)
-Converted["_HubDesc"].Size = UDim2.new(0.470515788, 0, 0.082417585, 0)
-Converted["_HubDesc"].Name = "HubDesc"
-Converted["_HubDesc"].Parent = Converted["_Menu"]
-
-Converted["_HubName"].Font = Enum.Font.GothamBold
-Converted["_HubName"].Text = "AFEM"
-Converted["_HubName"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_HubName"].TextScaled = true
-Converted["_HubName"].TextSize = 14
-Converted["_HubName"].TextWrapped = true
-Converted["_HubName"].TextXAlignment = Enum.TextXAlignment.Left
-Converted["_HubName"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_HubName"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_HubName"].BackgroundTransparency = 1
-Converted["_HubName"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_HubName"].BorderSizePixel = 0
-Converted["_HubName"].Position = UDim2.new(0.186153606, 0, 0.112410031, 0)
-Converted["_HubName"].Size = UDim2.new(0.259631485, 0, 0.0824175924, 0)
-Converted["_HubName"].Name = "HubName"
-Converted["_HubName"].Parent = Converted["_Menu"]
-
 Converted["_CanvasGroup"].GroupTransparency = 1
 Converted["_CanvasGroup"].AnchorPoint = Vector2.new(0.5, 0.5)
 Converted["_CanvasGroup"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1108,30 +795,6 @@ Converted["_CanvasGroup"].Size = UDim2.new(1, 0, 1, 0)
 Converted["_CanvasGroup"].Visible = false
 Converted["_CanvasGroup"].ZIndex = 999999998
 Converted["_CanvasGroup"].Parent = Converted["_Menu"]
-
-Converted["_UICorner6"].Parent = Converted["_CanvasGroup"]
-
-Converted["_ImageLabel"].Image = "rbxassetid://6567073136"
-Converted["_ImageLabel"].ImageColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ImageLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_ImageLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_ImageLabel"].BorderSizePixel = 0
-Converted["_ImageLabel"].Position = UDim2.new(0.5, 0, 0.5, 0)
-Converted["_ImageLabel"].Size = UDim2.new(0, 20, 0, 20)
-Converted["_ImageLabel"].Parent = Converted["_CanvasGroup"]
-
-Converted["_Opener"].Font = Enum.Font.SourceSans
-Converted["_Opener"].Text = ""
-Converted["_Opener"].TextColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Opener"].TextSize = 14
-Converted["_Opener"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_Opener"].BackgroundTransparency = 1
-Converted["_Opener"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Opener"].BorderSizePixel = 0
-Converted["_Opener"].Size = UDim2.new(1, 0, 1, 0)
-Converted["_Opener"].Name = "Opener"
-Converted["_Opener"].Parent = Converted["_CanvasGroup"]
 
 Converted["_Area"].AnchorPoint = Vector2.new(0.5, 0.5)
 Converted["_Area"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1171,14 +834,6 @@ Converted["_Sample"].Visible = false
 Converted["_Sample"].Name = "Sample"
 Converted["_Sample"].Parent = Converted["_Area1"]
 
-Converted["_UICorner7"].Parent = Converted["_Sample"]
-
-Converted["_UIStroke4"].Color = Color3.fromRGB(255, 255, 255)
-Converted["_UIStroke4"].Parent = Converted["_Sample"]
-
-Converted["_UIPadding4"].PaddingBottom = UDim.new(0, 5)
-Converted["_UIPadding4"].Parent = Converted["_Sample"]
-
 Converted["_ImageLabel1"].Image = "rbxthumb://type=Asset&id=14353423348&w=420&h=420"
 Converted["_ImageLabel1"].AnchorPoint = Vector2.new(0.5, 0.5)
 Converted["_ImageLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1188,66 +843,6 @@ Converted["_ImageLabel1"].BorderSizePixel = 0
 Converted["_ImageLabel1"].Position = UDim2.new(0.5, 0, 0.400000006, 0)
 Converted["_ImageLabel1"].Size = UDim2.new(0.75, 0, 0.75, 0)
 Converted["_ImageLabel1"].Parent = Converted["_Sample"]
-
-Converted["_TextLabel3"].Font = Enum.Font.Gotham
-Converted["_TextLabel3"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel3"].TextScaled = true
-Converted["_TextLabel3"].TextSize = 14
-Converted["_TextLabel3"].TextWrapped = true
-Converted["_TextLabel3"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextLabel3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel3"].BackgroundTransparency = 1
-Converted["_TextLabel3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel3"].BorderSizePixel = 0
-Converted["_TextLabel3"].Position = UDim2.new(0.5, 0, 0.874418736, 0)
-Converted["_TextLabel3"].Size = UDim2.new(1, 0, 0.251162499, 0)
-Converted["_TextLabel3"].Parent = Converted["_Sample"]
-
-Converted["_UIPadding5"].PaddingBottom = UDim.new(0, 5)
-Converted["_UIPadding5"].PaddingLeft = UDim.new(0, 5)
-Converted["_UIPadding5"].PaddingRight = UDim.new(0, 5)
-Converted["_UIPadding5"].PaddingTop = UDim.new(0, 5)
-Converted["_UIPadding5"].Parent = Converted["_Area1"]
-
-Converted["_TextLabel4"].Font = Enum.Font.Gotham
-Converted["_TextLabel4"].Text = "Loading..."
-Converted["_TextLabel4"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel4"].TextScaled = true
-Converted["_TextLabel4"].TextSize = 14
-Converted["_TextLabel4"].TextWrapped = true
-Converted["_TextLabel4"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextLabel4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel4"].BackgroundTransparency = 1
-Converted["_TextLabel4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel4"].BorderSizePixel = 0
-Converted["_TextLabel4"].Position = UDim2.new(0.5, 0, 0.5, 0)
-Converted["_TextLabel4"].Size = UDim2.new(0, 200, 0, 50)
-Converted["_TextLabel4"].Parent = Converted["_Area"]
-
-Converted["_TextBox1"].Font = Enum.Font.Gotham
-Converted["_TextBox1"].PlaceholderText = "Search..."
-Converted["_TextBox1"].Text = ""
-Converted["_TextBox1"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextBox1"].TextScaled = true
-Converted["_TextBox1"].TextSize = 14
-Converted["_TextBox1"].TextWrapped = true
-Converted["_TextBox1"].TextXAlignment = Enum.TextXAlignment.Right
-Converted["_TextBox1"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextBox1"].BackgroundColor3 = Color3.fromRGB(31.000001952052116, 31.000001952052116, 31.000001952052116)
-Converted["_TextBox1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextBox1"].BorderSizePixel = 0
-Converted["_TextBox1"].Position = UDim2.new(0.727198064, 0, 0.092922166, 0)
-Converted["_TextBox1"].Size = UDim2.new(0, 132, 0, 22)
-Converted["_TextBox1"].Parent = Converted["_Area"]
-
-Converted["_UICorner8"].CornerRadius = UDim.new(1, 0)
-Converted["_UICorner8"].Parent = Converted["_TextBox1"]
-
-Converted["_UIPadding6"].PaddingBottom = UDim.new(0, 5)
-Converted["_UIPadding6"].PaddingLeft = UDim.new(0, 5)
-Converted["_UIPadding6"].PaddingRight = UDim.new(0, 5)
-Converted["_UIPadding6"].PaddingTop = UDim.new(0, 5)
-Converted["_UIPadding6"].Parent = Converted["_TextBox1"]
 
 Converted["_Switch"].Font = Enum.Font.Gotham
 Converted["_Switch"].Text = "Emotes"
@@ -1262,38 +857,6 @@ Converted["_Switch"].Position = UDim2.new(0.0550160818, 0, 0.0135692572, 0)
 Converted["_Switch"].Size = UDim2.new(0, 89, 0, 22)
 Converted["_Switch"].Name = "Switch"
 Converted["_Switch"].Parent = Converted["_Area"]
-
-Converted["_UICorner9"].CornerRadius = UDim.new(0, 16)
-Converted["_UICorner9"].Parent = Converted["_Switch"]
-
-Converted["_UIPadding7"].PaddingBottom = UDim.new(0, 3)
-Converted["_UIPadding7"].PaddingLeft = UDim.new(0, 7)
-Converted["_UIPadding7"].PaddingRight = UDim.new(0, 7)
-Converted["_UIPadding7"].PaddingTop = UDim.new(0, 3)
-Converted["_UIPadding7"].Parent = Converted["_Switch"]
-
-Converted["_UIStroke5"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Converted["_UIStroke5"].Color = Color3.fromRGB(255, 255, 255)
-Converted["_UIStroke5"].Thickness = 1.600000023841858
-Converted["_UIStroke5"].Parent = Converted["_Switch"]
-
-Converted["_UIGradient3"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
-}
-Converted["_UIGradient3"].Rotation = -90
-Converted["_UIGradient3"].Transparency = NumberSequence.new{
-	NumberSequenceKeypoint.new(0, 0),
-	NumberSequenceKeypoint.new(1, 1)
-}
-Converted["_UIGradient3"].Parent = Converted["_UIStroke5"]
-
-Converted["_UIGradient4"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
-}
-Converted["_UIGradient4"].Rotation = 68
-Converted["_UIGradient4"].Parent = Converted["_Menu"]
 
 Converted["_CloseArea"].Text = ""
 Converted["_CloseArea"].AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1314,38 +877,6 @@ Converted["_Frame"].BorderSizePixel = 0
 Converted["_Frame"].Position = UDim2.new(0.5, 0, 0.699999988, 0)
 Converted["_Frame"].Size = UDim2.new(0.699999988, 0, 0.100000001, 0)
 Converted["_Frame"].Parent = Converted["_CloseArea"]
-
-Converted["_UICorner10"].CornerRadius = UDim.new(0, 9999)
-Converted["_UICorner10"].Parent = Converted["_Frame"]
-
-Converted["_TextLabel5"].Font = Enum.Font.Gotham
-Converted["_TextLabel5"].Text = "Tap here to minimize."
-Converted["_TextLabel5"].TextColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_TextLabel5"].TextSize = 15
-Converted["_TextLabel5"].TextWrapped = true
-Converted["_TextLabel5"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_TextLabel5"].BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel5"].BackgroundTransparency = 0.4000000059604645
-Converted["_TextLabel5"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_TextLabel5"].BorderSizePixel = 0
-Converted["_TextLabel5"].Position = UDim2.new(0.5, 0, 0.600000024, 0)
-Converted["_TextLabel5"].Size = UDim2.new(2, 0, 0.841000021, 0)
-Converted["_TextLabel5"].Parent = Converted["_CloseArea"]
-
-Converted["_UICorner11"].Parent = Converted["_TextLabel5"]
-
-Converted["_Close"].Name = "Close"
-Converted["_Close"].Parent = Converted["_Menu"]
-
-Converted["_FloatingButtons"].AnchorPoint = Vector2.new(0.5, 0.5)
-Converted["_FloatingButtons"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Converted["_FloatingButtons"].BackgroundTransparency = 1
-Converted["_FloatingButtons"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_FloatingButtons"].BorderSizePixel = 0
-Converted["_FloatingButtons"].Position = UDim2.new(0.5, 0, 0.5, 0)
-Converted["_FloatingButtons"].Size = UDim2.new(1, 0, 1, 0)
-Converted["_FloatingButtons"].Name = "FloatingButtons"
-Converted["_FloatingButtons"].Parent = Converted["_AFEM"]
 
 -- Fake Module Scripts:
 
