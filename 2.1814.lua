@@ -1,19 +1,3 @@
-game:GetService("StarterGui"):SetCore("SendNotification", { 
-	Title = "欢迎宝宝回家";
-	Text = "来让我亲一下";
-	Icon = "rbxthumb://type=Asset&id=18923878915&w=150&h=150"})
-	Duration = 5;
-local CoreGui = game:GetService("StarterGui") 
-CoreGui:SetCore("SendNotification", {    Title = "………️",    Text = "………",    Duration = 6, })
-CoreGui:SetCore("SendNotification", {    Title = "加载数据️",    Text = "🐾…🐾…🐾…",    Duration = 6, })
-CoreGui:SetCore("SendNotification", {    Title = "嗯，好像卡住了",    Text = "🐾🐾…🐾…",    Duration = 7, })
-CoreGui:SetCore("SendNotification", {    Title = "主人等待一下马上好",    Text = "🐾🐾🐾……",    Duration = 8, })
-game:GetService("StarterGui"):SetCore("SendNotification", { 
-	Title = "🇨🇳🇨🇳🇨🇳🇨🇳🇨🇳";
-	Text = "🇨🇳🇨🇳🇨🇳🇨🇳🇨🇳";
-	Icon = "rbxthumb://type=Asset&id=18923878915&w=150&h=150"})
-	local myButton = script.Parent local sound = game.ServerStorage:FindFirstChild("1841647093")  myButton.MouseButton1Click:Connect(function() if sound then sound:Play() end end)
-Duration = 5;
 local xxxgoui = loadstring(game:HttpGet("https://github.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/xxxxgo/blob/main/xgohubUI?raw=true"))()
 local Notify = xxxgoui:Notify({	Title = "xgo Hub",	["Description"] = "- goto_O R's 2.1581版",	["Color"] = Color3.fromRGB(255, 0, 255),	Content = "欢迎宝宝回家 xgo Hub",	["Time"] = 1,	["Delay"] = 10})
 local sitinkgui = xxxgoui:Start({    ["Name"] = "xgo Hub",    ["Description"] = "- goto_O R's 2.1581版",    ["Info Color"] = Color3.fromRGB(1, 1, 1),    ["Logo Info"] = "rbxassetid://18923878915",    ["Logo Player"] = "rbxassetid://18923878915",    ["Name Info"] = "xgo Hub 欢迎宝宝回家",    ["Name Player"] = "xgo",    ["Info Description"] = "作者:xxxxgo 群聊:259461151",    ["Tab Width"] = 135,    ["Color"] = Color3.fromRGB(255, 0, 255),    ["CloseCallBack"] = function() end})
