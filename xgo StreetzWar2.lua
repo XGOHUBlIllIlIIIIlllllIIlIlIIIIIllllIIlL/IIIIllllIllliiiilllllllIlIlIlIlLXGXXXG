@@ -369,23 +369,23 @@ local accountCreatedDate = os.date("%Y-%m-%d", os.time() - (accountAge * 86400))
 
 -- Tambahkan paragraph untuk info di tab Info
 Tabs.Info:AddParagraph({
-    Title = "Executor",
-    Content = "Current Executor: " .. executor
+    Title = "遗嘱执行人",
+    Content = "当前的执行程序: " .. executor
 })
 
 Tabs.Info:AddParagraph({
-    Title = "Account Age",
-    Content = "Account Age (days): " .. accountAge
+    Title = "帐户年龄",
+    Content = "帐户年龄（天）: " .. accountAge
 })
 
 Tabs.Info:AddParagraph({
-    Title = "Premium Status",
-    Content = "Is Premium: " .. tostring(isPremium)
+    Title = "保费状态",
+    Content = "是保费: " .. tostring(isPremium)
 })
 
 Tabs.Info:AddParagraph({
-    Title = "Account Created",
-    Content = "Account Created: " .. accountCreatedDate
+    Title = "帐户创建",
+    Content = "帐户创建: " .. accountCreatedDate
 })
 
 Tabs.Info:AddParagraph({
@@ -440,7 +440,7 @@ local function createPlayerDropdown()
 
     -- Create a new dropdown
     Dropdown = Tabs.Extra:AddDropdown("Dropdown", {
-        Title = "Select Target Player",
+        Title = "选择目标播放器",
         Values = playerNames,
         Multi = false,
         Default = playerNames[1] or "",
@@ -450,12 +450,12 @@ local function createPlayerDropdown()
     Dropdown:OnChanged(function(Value)
         targetPlayer = Players:FindFirstChild(Value)
         if targetPlayer then
-            Fluent:Notify({Title = "Target Selected", Content = "Target player set to: " .. Value, Duration = 3})
+            Fluent:Notify({Title = "选定的目标", Content = "目标球员设置为: " .. Value, Duration = 3})
             if cameraFollowEnabled then
                 Camera.CameraSubject = targetPlayer.Character and targetPlayer.Character:FindFirstChild("Humanoid")
             end
         else
-            Fluent:Notify({Title = "Error", Content = "Player not found.", Duration = 3})
+            Fluent:Notify({Title = "错误", Content = "找不到玩家.", Duration = 3})
         end
     end)
 
@@ -475,16 +475,16 @@ createPlayerDropdown()
 
 -- Button to refresh player dropdown
 Tabs.Extra:AddButton({
-    Title = "Refresh Player List",
+    Title = "刷新玩家列表",
     Callback = function()
         updatePlayerDropdown()
-        Fluent:Notify({Title = "Player List Updated", Content = "The player list has been refreshed.", Duration = 3})
+        Fluent:Notify({Title = "更新播放器列表", Content = "播放器列表已被刷新.", Duration = 3})
     end
 })
 
 -- Input for Attack Power
 Tabs.Extra:AddInput("Input", {
-    Title = "Set Attack Power",
+    Title = "设置攻击力",
     Default = tostring(attackPower),
     Placeholder = "Enter attack power",
     Numeric = true, -- Only allows numbers
@@ -493,33 +493,33 @@ Tabs.Extra:AddInput("Input", {
         local newValue = tonumber(Value)
         if newValue then
             attackPower = newValue
-            Fluent:Notify({Title = "Attack Power Set", Content = "Attack Power set to: " .. attackPower, Duration = 3})
+            Fluent:Notify({Title = "攻击力集", Content = "攻击力设置为: " .. attackPower, Duration = 3})
         else
-            Fluent:Notify({Title = "Error", Content = "Invalid value for Attack Power.", Duration = 3})
+            Fluent:Notify({Title = "错误", Content = "攻击数的无效值.", Duration = 3})
         end
     end
 })
 
 -- Toggle for Camera Follow
 local Toggle = Tabs.Extra:AddToggle("MyToggle", {
-    Title = "Camera to see to kill",
+    Title = "相机看杀了",
     Default = false,
     Callback = function(state)
         cameraFollowEnabled = state
         if cameraFollowEnabled and targetPlayer then
             Camera.CameraSubject = targetPlayer.Character and targetPlayer.Character:FindFirstChild("Humanoid")
-            Fluent:Notify({Title = "Camera Follow", Content = "Camera is now following " .. targetPlayer.Name, Duration = 3})
+            Fluent:Notify({Title = "相机跟随", Content = "相机现在关注 " .. targetPlayer.Name, Duration = 3})
         else
             Camera.CameraSubject = Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-            Fluent:Notify({Title = "Camera Follow", Content = "Camera follow disabled.", Duration = 3})
+            Fluent:Notify({Title = "相机跟随", Content = "相机按照已禁用.", Duration = 3})
         end
     end
 })
 
 -- Fire Attack Button
 Tabs.Extra:AddButton({
-    Title = "Klill",
-    Description = "You must use fist first",
+    Title = "杀死",
+    Description = "你必须先使用拳头",
     Callback = function()
         if targetPlayer then
             local character = targetPlayer.Character
@@ -531,18 +531,18 @@ Tabs.Extra:AddButton({
                     local Event = Players.LocalPlayer.Character:FindFirstChild("Fist"):FindFirstChild("Script"):FindFirstChild("E")
                     if Event then
                         Event:FireServer(A_1, A_2, A_3)
-                        Fluent:Notify({Title = "Kill", Content = "You Kill at " .. targetPlayer.Name, Duration = 3})
+                        Fluent:Notify({Title = "杀死", Content = "你杀了 " .. targetPlayer.Name, Duration = 3})
                     else
-                        Fluent:Notify({Title = "Error", Content = "Attack event not found.", Duration = 3})
+                        Fluent:Notify({Title = "错误", Content = "找不到攻击事件.", Duration = 3})
                     end
                 else
-                    Fluent:Notify({Title = "Error", Content = "Player's hand not found.", Duration = 3})
+                    Fluent:Notify({Title = "错误", Content = "玩家的手找不到.", Duration = 3})
                 end
             else
-                Fluent:Notify({Title = "Error", Content = "Target player is not available or has respawned.", Duration = 3})
+                Fluent:Notify({Title = "错误", Content = "目标玩家不可用或重生.", Duration = 3})
             end
         else
-            Fluent:Notify({Title = "Error", Content = "No target selected.", Duration = 3})
+            Fluent:Notify({Title = "错误", Content = "没有选择目标.", Duration = 3})
         end
     end
 })
@@ -585,7 +585,7 @@ local function findAmmoValues()
 end
 
 Tabs.Gun:AddToggle("MyToggle", {
-    Title = "Enable Ammo Modification",
+    Title = "启用弹药修改",
     Default = false,
     Callback = function(value)
         autoChangeAmmoEnabled = value
@@ -596,7 +596,7 @@ Tabs.Gun:AddToggle("MyToggle", {
 })
 
 Tabs.Gun:AddButton({
-    Title = "Set CurrentAmmo to 50",
+    Title = "将当前弹药设置为50",
     Callback = function()
         currentAmmoValue = 50
         if autoChangeAmmoEnabled then
@@ -698,8 +698,8 @@ Players.PlayerRemoving:Connect(function(player)
 end)
 
 local HitboxSizeSlider = Tabs.Main:AddSlider("HitboxSize", {
-    Title = "Hitbox Size",
-    Description = "Adjust the hitbox size of players",
+    Title = "范围大小",
+    Description = "调整玩家的范围大小",
     Default = 10,
     Min = 10,
     Max = 50,
@@ -714,7 +714,7 @@ local HitboxSizeSlider = Tabs.Main:AddSlider("HitboxSize", {
 })
 
 local AppearanceToggle = Tabs.Main:AddToggle("BlueColorToggle", {
-    Title = "Disable/Enable Hitbox",
+    Title = "禁用/启用范围",
     Default = false,
     Callback = function(enabled)
         for _, player in pairs(Players:GetPlayers()) do
@@ -743,7 +743,7 @@ RunService.Heartbeat:Connect(function()
 end)
 
 local toggleHitboxSizeKeybind = Tabs.Main:AddKeybind("ToggleHitboxSizeKeybind", {
-    Title = "Toggle Hitbox Size between 10 and 11",
+    Title = "在10到11之间切换范围大小",
     Mode = "Toggle",
     Default = "T",
     Callback = function(Value)
@@ -753,24 +753,24 @@ local toggleHitboxSizeKeybind = Tabs.Main:AddKeybind("ToggleHitboxSizeKeybind", 
                 HitboxSizeSlider:SetValue(11)
                 HitboxSizeSlider.Callback(11)
                 print("Hitbox Size set to 11")
-                Fluent:Notify({Title = "Hitbox Size Changed", Content = "Hitbox size has been set to 11.", Duration = 3})
+                Fluent:Notify({Title = "范围大小已更改", Content = "范围大小已设置为11.", Duration = 3})
             else
                 HitboxSizeSlider:SetValue(10)  -- Set nilai slider ke 10
                 HitboxSizeSlider.Callback(10)  -- Panggil callback slider dengan nilai baru
                 print("Hitbox Size set to 10")
-                Fluent:Notify({Title = "Hitbox Size Changed", Content = "Hitbox size has been set to 10.", Duration = 3})
+                Fluent:Notify({Title = "范围大小已更改", Content = "范围大小已设置为10.", Duration = 3})
             end
         end
     end,
 
     ChangedCallback = function(New)
-        print("Keybind changed!", New)
+        print("键控改变了!", New)
     end
 })
 
 
 Tabs.Main:AddButton({
-    Title = "GrabTool",
+    Title = "抓住工具",
     Callback = function()
         local playerhead = game.Players.LocalPlayer.Character.Head
         local tools = game:GetService("Workspace"):GetDescendants()
@@ -831,17 +831,17 @@ end
 
 -- Keybind to toggle noclip
 local Keybind = Tabs.Main:AddKeybind("Keybind", {
-    Title = "Toggle Noclip",
+    Title = "穿墙",
     Mode = "Toggle",
     Default = "Q",
 
     Callback = function(Value)
         if Value then
             enableNoclip()
-            Fluent:Notify({Title = "Noclip Enabled", Content = "You can now move through objects.", Duration = 3})
+            Fluent:Notify({Title = "穿墙已启用", Content = "你可以尽情的行走.", Duration = 3})
         else
             disableNoclip()
-            Fluent:Notify({Title = "Noclip Disabled", Content = "Collisions are back to normal.", Duration = 3})
+            Fluent:Notify({Title = "穿墙禁用", Content = "你现在没办法,穿过墙体.", Duration = 3})
         end
     end,
 
@@ -850,7 +850,7 @@ local Keybind = Tabs.Main:AddKeybind("Keybind", {
 })
 
 Tabs.Main:AddButton({
-    Title = "Bypass JumpCooldown",
+    Title = "旁路跳跃",
     Callback = function()
         local player = game:GetService("Players").LocalPlayer
         local playerGui = player:FindFirstChild("PlayerGui")
@@ -864,7 +864,7 @@ Tabs.Main:AddButton({
 })
 
 Tabs.Main:AddButton({
-    Title = "Dead no lost money",
+    Title = "死了没有丢钱",
     Callback = function()
         local player = game:GetService("Players").LocalPlayer
         local lostmoney = player:FindFirstChild("PlayerScripts")
@@ -884,7 +884,7 @@ local function equipFistTool()
 
     -- Ensure LocalPlayer, Backpack, and Character exist
     if not localPlayer or not localPlayer:FindFirstChild("Backpack") or not localPlayer.Character then
-        warn("LocalPlayer, Backpack, or Character not found.")
+        warn("未找到本地播放器,背包或字符.")
         return
     end
 
@@ -905,7 +905,7 @@ end
 
 -- Toggle for farming
 Tabs.Farm:AddToggle("MyToggle", {
-    Title = "Farm Little Paki (OP)",
+    Title = "农场小帕卡（OP）",
     Default = false,
     Callback = function(value)
         autoRollEnabled = value
@@ -1003,7 +1003,7 @@ if ownedCars then
 else
 end
 local Dropdown = Tabs.Cars:AddDropdown("Dropdown", {
-    Title = "List Car",
+    Title = "列表汽车",
     Values = carOptions,
     Multi = false,
     Default = 1,
@@ -1014,7 +1014,7 @@ Dropdown:OnChanged(function(Value)
 end)
 
 Tabs.Cars:AddButton({
-    Title = "Spawn Car",
+    Title = "产卵汽车",
     Callback = function()
         if selectedCar then
             game.ReplicatedStorage.CarRE:InvokeServer("spawn", selectedCar)
@@ -1024,7 +1024,7 @@ Tabs.Cars:AddButton({
 })
 
 Tabs.Cars:AddButton({
-    Title = "Bring Cars",
+    Title = "带汽车",
     Callback = function()
         local player = game.Players.LocalPlayer
         local character = player.Character or player.CharacterAdded:Wait()
