@@ -352,8 +352,9 @@ local Tabs = {
     Extra = Window:AddTab({ Title = "额外", Icon = "18923878915" }),
     Gun = Window:AddTab({ Title = "枪设置", Icon = "18923878915" }),
     Cars = Window:AddTab({ Title = "车辆", Icon = "18923878915" }),
-	Farm = Window:AddTab({ Title = "农场", Icon = "18923878915" }),
+	Farm = Window:AddTab({ Title = "自动", Icon = "18923878915" }),
     Info = Window:AddTab({ Title = "信息", Icon = "18923878915" }) 
+    Settings = Window:AddTab({ Title = "设置", Icon = "18923878915" })
 }
 
 -- Identifikasi executor yang sedang digunakan
@@ -905,7 +906,7 @@ end
 
 -- Toggle for farming
 Tabs.Farm:AddToggle("MyToggle", {
-    Title = "农场小帕卡（OP）",
+    Title = "自动打扫商店（OP）",
     Default = false,
     Callback = function(value)
         autoRollEnabled = value
