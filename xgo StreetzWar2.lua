@@ -96,7 +96,7 @@ end
 -- GUI Creation Functions
 local function createScreenGui()
     local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "XenonHUBKey"
+    screenGui.Name = "xxxxgo"
     screenGui.ResetOnSpawn = false
     screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     screenGui.DisplayOrder = 999
@@ -141,7 +141,7 @@ local function createTitle(parent)
     title.Position = UDim2.new(0, 0, 0.05, 0)
     title.BackgroundTransparency = 1
     title.Font = Enum.Font.GothamBold
-    title.Text = "XenonHUB"
+    title.Text = "xgo hub"
     title.TextColor3 = CONFIG.COLORS.TEXT
     title.TextSize = 24
     title.Parent = parent
@@ -155,7 +155,7 @@ local function createTextBox(parent)
     textBox.BackgroundColor3 = CONFIG.COLORS.TEXTBOX
     textBox.BorderSizePixel = 0
     textBox.Font = Enum.Font.Gotham
-    textBox.PlaceholderText = "Enter Key Here"
+    textBox.PlaceholderText = "在这里输入键"
     textBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
     textBox.Text = ""
     textBox.TextColor3 = CONFIG.COLORS.TEXT
@@ -338,8 +338,8 @@ end)
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Streetz war 2 " .. Fluent.Version,
-    SubTitle = "by XenonHUB",
+    Title = "Streetz war 2 xgo " .. Fluent.Version,
+    SubTitle = "by xxxxxgo",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 360),
     Acrylic = true, 
@@ -348,12 +348,12 @@ local Window = Fluent:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "dot" }),
-    Extra = Window:AddTab({ Title = "Extra", Icon = "dot" }),
-    Gun = Window:AddTab({ Title = "Gun-settings", Icon = "dot" }),
-    Cars = Window:AddTab({ Title = "Cars", Icon = "dot" }),
-	Farm = Window:AddTab({ Title = "Farm", Icon = "dot" }),
-    Info = Window:AddTab({ Title = "Info", Icon = "info" }) 
+    Main = Window:AddTab({ Title = "主要", Icon = "18923878915" }),
+    Extra = Window:AddTab({ Title = "额外", Icon = "18923878915" }),
+    Gun = Window:AddTab({ Title = "枪设置", Icon = "18923878915" }),
+    Cars = Window:AddTab({ Title = "车辆", Icon = "18923878915" }),
+	Farm = Window:AddTab({ Title = "农场", Icon = "18923878915" }),
+    Info = Window:AddTab({ Title = "信息", Icon = "18923878915" }) 
 }
 
 -- Identifikasi executor yang sedang digunakan
@@ -369,7 +369,7 @@ local accountCreatedDate = os.date("%Y-%m-%d", os.time() - (accountAge * 86400))
 
 -- Tambahkan paragraph untuk info di tab Info
 Tabs.Info:AddParagraph({
-    Title = "遗嘱执行人",
+    Title = "玩家",
     Content = "当前的执行程序: " .. executor
 })
 
@@ -389,14 +389,14 @@ Tabs.Info:AddParagraph({
 })
 
 Tabs.Info:AddParagraph({
-    Title = "Discord",
-    Content = "https://discord.com/invite/cF8YeDPt2G"
+    Title = "群聊",
+    Content = "259461151"
 })
 
 Tabs.Info:AddButton({
-    Title = "Copy Link Discord",
+    Title = "复制群聊",
     Callback = function()
-        setclipboard("https://discord.com/invite/cF8YeDPt2G")
+        setclipboard("259461151")
     end
 })
 -- Get Players
@@ -440,7 +440,7 @@ local function createPlayerDropdown()
 
     -- Create a new dropdown
     Dropdown = Tabs.Extra:AddDropdown("Dropdown", {
-        Title = "选择目标播放器",
+        Title = "选择目标玩家",
         Values = playerNames,
         Multi = false,
         Default = playerNames[1] or "",
@@ -450,7 +450,7 @@ local function createPlayerDropdown()
     Dropdown:OnChanged(function(Value)
         targetPlayer = Players:FindFirstChild(Value)
         if targetPlayer then
-            Fluent:Notify({Title = "选定的目标", Content = "目标球员设置为: " .. Value, Duration = 3})
+            Fluent:Notify({Title = "选定的目标", Content = "目标玩家设置为: " .. Value, Duration = 3})
             if cameraFollowEnabled then
                 Camera.CameraSubject = targetPlayer.Character and targetPlayer.Character:FindFirstChild("Humanoid")
             end
@@ -478,7 +478,7 @@ Tabs.Extra:AddButton({
     Title = "刷新玩家列表",
     Callback = function()
         updatePlayerDropdown()
-        Fluent:Notify({Title = "更新播放器列表", Content = "播放器列表已被刷新.", Duration = 3})
+        Fluent:Notify({Title = "刷新玩家列表", Content = "玩家列表已被刷新.", Duration = 3})
     end
 })
 
@@ -502,7 +502,7 @@ Tabs.Extra:AddInput("Input", {
 
 -- Toggle for Camera Follow
 local Toggle = Tabs.Extra:AddToggle("MyToggle", {
-    Title = "相机看杀了",
+    Title = "观战玩家",
     Default = false,
     Callback = function(state)
         cameraFollowEnabled = state
@@ -864,7 +864,7 @@ Tabs.Main:AddButton({
 })
 
 Tabs.Main:AddButton({
-    Title = "死了没有丢钱",
+    Title = "死后钱不丢",
     Callback = function()
         local player = game:GetService("Players").LocalPlayer
         local lostmoney = player:FindFirstChild("PlayerScripts")
@@ -884,7 +884,7 @@ local function equipFistTool()
 
     -- Ensure LocalPlayer, Backpack, and Character exist
     if not localPlayer or not localPlayer:FindFirstChild("Backpack") or not localPlayer.Character then
-        warn("未找到本地播放器,背包或字符.")
+        warn("未找到本地列表,背包或字符.")
         return
     end
 
@@ -1014,7 +1014,7 @@ Dropdown:OnChanged(function(Value)
 end)
 
 Tabs.Cars:AddButton({
-    Title = "产卵汽车",
+    Title = "生产汽车",
     Callback = function()
         if selectedCar then
             game.ReplicatedStorage.CarRE:InvokeServer("spawn", selectedCar)
