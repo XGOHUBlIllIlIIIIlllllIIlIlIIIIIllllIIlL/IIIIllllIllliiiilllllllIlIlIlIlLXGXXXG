@@ -41,6 +41,349 @@ warn("[反AFK]  - 加载成功")
 
 --<>----<>----<>----< Main Script >----<>----<>----<>--
 print("[XGO HUB | Fisch]: 加载...")
+-- XenonHUB Secure Loader
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local TweenService = game:GetService("TweenService")
+local RbxAnalytics = game:GetService("RbxAnalyticsService")
+local MarketplaceService = game:GetService("MarketplaceService")
+local Lighting = game:GetService("Lighting")
+local bodyvel_Name = "FlingVelocity"
+local userinputs = game:GetService("UserInputService")
+local w = game:GetService("Workspace")
+local r = game:GetService("RunService")
+local d = game:GetService("Debris")
+local strength = Value
+
+-- Secure encoding/decoding functions
+local function decode(str)
+    local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+    str=string.gsub(str,'[^'..b..'=]','')
+    return (str:gsub('.',function(x)
+        if x=='=' then return '' end
+        local r,f='',(b:find(x)-1)
+        for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and '1' or '0') end
+        return r
+    end):gsub('%d%d%d?%d?%d?%d?%d?%d?',function(x)
+        if #x~=8 then return '' end
+        local c=0
+        for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end
+        return string.char(c)
+    end))
+end
+
+local function xorCipher(str, key)
+    local result = ""
+    for i = 1, #str do
+        local byte = string.byte(str, i)
+        local keyByte = string.byte(key, ((i-1) % #key) + 1)
+        result = result .. string.char(bit32.bxor(byte, keyByte))
+    end
+    return result
+end
+
+local function encrypt(str)
+    local key = RbxAnalytics:GetClientId()
+    return xorCipher(str, key)
+end
+
+local function decrypt(str)
+    local key = RbxAnalytics:GetClientId()
+    return xorCipher(str, key)
+end
+
+-- Secure configuration
+local secureConfig = {
+    ["api_base"] = encrypt("aHR0cHM6Ly94ZW5vbmh1Yi54eXo="),
+    ["api_endpoint"] = encrypt("L2FwaS92YWxpZGF0ZS1rZXk="),
+    ["bot_token"] = encrypt("Njc4NDIzNTUyNTpBQUh1NFZ0bVAtRmhhZ081cGJhVkpfVmVRbjI5bHZvaUh2Zw=="),
+    ["chat_id"] = encrypt("MTcyMjA5MTk5MA==")
+}
+
+local function getSecureValue(key)
+    return decode(decrypt(secureConfig[key]))
+end
+
+-- Constants
+local CONFIG = {
+    COLORS = {
+        BACKGROUND = Color3.fromRGB(25, 25, 35),
+        CONTAINER = Color3.fromRGB(30, 30, 40),
+        TEXTBOX = Color3.fromRGB(45, 45, 55),
+        LOADING_BG = Color3.fromRGB(40, 40, 50),
+        LOADING_BAR = Color3.fromRGB(0, 170, 255),
+        GET_KEY_BUTTON = Color3.fromRGB(0, 120, 215),
+        SUBMIT_BUTTON = Color3.fromRGB(0, 170, 0),
+        TEXT = Color3.fromRGB(255, 255, 255),
+        ERROR = Color3.fromRGB(255, 0, 0),
+        SUCCESS = Color3.fromRGB(0, 255, 0)
+    },
+    KEY_FILE_PATH = "XenonHUB_Key.txt"
+}
+
+-- Secure HTTP request function
+local function secureRequest(url, method, body)
+    local success, response = pcall(function()
+        return http_request({
+            Url = url,
+            Method = method or "GET",
+            Headers = {
+                ["Content-Type"] = "application/json",
+                ["X-Security-Token"] = RbxAnalytics:GetClientId()
+            },
+            Body = body and HttpService:JSONEncode(body) or nil
+        })
+    end)
+    
+    if not success then
+        return nil, "Connection error"
+    end
+    
+    return response
+end
+
+-- GUI Creation Functions
+local function createScreenGui()
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "xxxxgo"
+    screenGui.ResetOnSpawn = false
+    screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    screenGui.DisplayOrder = 999
+    screenGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
+    return screenGui
+end
+
+local function createMainFrame(parent)
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Name = "MainFrame"
+    mainFrame.Size = UDim2.new(0, 400, 0, 300)
+    mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
+    mainFrame.BackgroundColor3 = CONFIG.COLORS.BACKGROUND
+    mainFrame.BorderSizePixel = 0
+    mainFrame.Active = true
+    mainFrame.Draggable = true
+    mainFrame.Parent = parent
+    return mainFrame
+end
+
+local function createBlurEffect()
+    local blurEffect = Instance.new("BlurEffect")
+    blurEffect.Size = 10
+    blurEffect.Parent = Lighting
+    return blurEffect
+end
+
+local function createContainer(parent)
+    local container = Instance.new("Frame")
+    container.Name = "Container"
+    container.Size = UDim2.new(0.9, 0, 0.9, 0)
+    container.Position = UDim2.new(0.05, 0, 0.05, 0)
+    container.BackgroundColor3 = CONFIG.COLORS.CONTAINER
+    container.BorderSizePixel = 0
+    container.Parent = parent
+    return container
+end
+
+local function createTitle(parent)
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, 0, 0, 40)
+    title.Position = UDim2.new(0, 0, 0.05, 0)
+    title.BackgroundTransparency = 1
+    title.Font = Enum.Font.GothamBold
+    title.Text = "xgo hub"
+    title.TextColor3 = CONFIG.COLORS.TEXT
+    title.TextSize = 24
+    title.Parent = parent
+    return title
+end
+
+local function createTextBox(parent)
+    local textBox = Instance.new("TextBox")
+    textBox.Size = UDim2.new(0.8, 0, 0, 40)
+    textBox.Position = UDim2.new(0.1, 0, 0.3, 0)
+    textBox.BackgroundColor3 = CONFIG.COLORS.TEXTBOX
+    textBox.BorderSizePixel = 0
+    textBox.Font = Enum.Font.Gotham
+    textBox.PlaceholderText = "在这里输入键"
+    textBox.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
+    textBox.Text = ""
+    textBox.TextColor3 = CONFIG.COLORS.TEXT
+    textBox.TextSize = 14
+    textBox.ClearTextOnFocus = false
+    textBox.Parent = parent
+    return textBox
+end
+
+local function createLoadingElements(parent)
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.8, 0, 0, 6)
+    frame.Position = UDim2.new(0.1, 0, 0.5, 0)
+    frame.BackgroundColor3 = CONFIG.COLORS.LOADING_BG
+    frame.BorderSizePixel = 0
+    frame.Visible = false
+    frame.Parent = parent
+
+    local bar = Instance.new("Frame")
+    bar.Size = UDim2.new(0, 0, 1, 0)
+    bar.BackgroundColor3 = CONFIG.COLORS.LOADING_BAR
+    bar.BorderSizePixel = 0
+    bar.Parent = frame
+
+    local text = Instance.new("TextLabel")
+    text.Size = UDim2.new(1, 0, 0, 20)
+    text.Position = UDim2.new(0, 0, 0.6, 0)
+    text.BackgroundTransparency = 1
+    text.Font = Enum.Font.Gotham
+    text.Text = ""
+    text.TextColor3 = CONFIG.COLORS.TEXT
+    text.TextSize = 14
+    text.Parent = parent
+
+    return frame, bar, text
+end
+
+local function createButton(parent, text, position, color)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0.35, 0, 0, 40)
+    button.Position = position
+    button.BackgroundColor3 = color
+    button.BorderSizePixel = 0
+    button.Font = Enum.Font.GothamBold
+    button.Text = text
+    button.TextColor3 = CONFIG.COLORS.TEXT
+    button.TextSize = 14
+    button.Parent = parent
+    return button
+end
+
+local function createStatusLabel(parent)
+    local status = Instance.new("TextLabel")
+    status.Size = UDim2.new(1, 0, 0, 20)
+    status.Position = UDim2.new(0, 0, 0.85, 0)
+    status.BackgroundTransparency = 1
+    status.Font = Enum.Font.Gotham
+    status.Text = ""
+    status.TextColor3 = CONFIG.COLORS.TEXT
+    status.TextSize = 14
+    status.Parent = parent
+    return status
+end
+
+local function addCorner(instance, radius)
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, radius or 8)
+    corner.Parent = instance
+end
+
+local function addHoverEffect(button)
+    local originalColor = button.BackgroundColor3
+    local lighterColor = Color3.new(
+        math.min(originalColor.R + 0.1, 1),
+        math.min(originalColor.G + 0.1, 1),
+        math.min(originalColor.B + 0.1, 1)
+    )
+    
+    button.MouseEnter:Connect(function()
+        TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = lighterColor}):Play()
+    end)
+    
+    button.MouseLeave:Connect(function()
+        TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = originalColor}):Play()
+    end)
+end
+
+-- UI State Management
+local function showLoading(loadingFrame, loadingBar, loadingText, text, callback)
+    loadingFrame.Visible = true
+    loadingText.Text = text
+    loadingBar.Size = UDim2.new(0, 0, 1, 0)
+    
+    local loadingTween = TweenService:Create(loadingBar, 
+        TweenInfo.new(1, Enum.EasingStyle.Linear), 
+        {Size = UDim2.new(1, 0, 1, 0)}
+    )
+    
+    loadingTween.Completed:Connect(function()
+        if callback then
+            callback()
+        end
+    end)
+    
+    loadingTween:Play()
+    return loadingTween
+end
+
+local function hideLoading(loadingFrame, loadingText)
+    loadingFrame.Visible = false
+    loadingText.Text = ""
+end
+
+local function showStatus(statusLabel, message, color)
+    statusLabel.Text = message
+    statusLabel.TextColor3 = color or CONFIG.COLORS.TEXT
+    task.delay(3, function()
+        if statusLabel then
+            statusLabel.Text = ""
+        end
+    end)
+end
+
+local function showNotification(screenGui, message, duration)
+    local notification = Instance.new("TextLabel")
+    notification.Size = UDim2.new(0, 300, 0, 50)
+    notification.Position = UDim2.new(0.5, -150, 0.7, 0)
+    notification.BackgroundColor3 = CONFIG.COLORS.BACKGROUND
+    notification.TextColor3 = CONFIG.COLORS.TEXT
+    notification.BackgroundTransparency = 0.3
+    notification.TextScaled = true
+    notification.Font = Enum.Font.SourceSans
+    notification.Text = message
+    notification.Parent = screenGui
+    notification.ZIndex = 10
+
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 10)
+    corner.Parent = notification
+
+    task.delay(duration or 3, function()
+        notification:Destroy()
+    end)
+end
+----------------MAIN ---------------------------------------------------------------
+
+
+-- Tunggu hingga game dimuat
+repeat task.wait(0.25) until game:IsLoaded();
+
+-- Atur gambar dan toggle key untuk Fluent UI
+getgenv().Image = "rbxassetid://101547663996049"; -- Masukkan asset id di sini
+getgenv().ToggleUI = "LeftControl" -- Tombol untuk menyalakan/mematikan UI Fluent
+
+-- Fungsi untuk memuat UI di pojok kiri
+task.spawn(function()
+    if not getgenv().LoadedMobileUI == true then 
+        getgenv().LoadedMobileUI = true
+        local OpenUI = Instance.new("ScreenGui");
+        local ImageButton = Instance.new("ImageButton");
+        local UICorner = Instance.new("UICorner");
+        OpenUI.Name = "OpenUI";
+        OpenUI.Parent = game:GetService("CoreGui");
+        OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+        ImageButton.Parent = OpenUI;
+        ImageButton.BackgroundColor3 = Color3.fromRGB(105, 105, 105);
+        ImageButton.BackgroundTransparency = 1;
+        ImageButton.Position = UDim2.new(0.1, 0, 0.1, 0); -- Mengubah posisi ke kiri
+        ImageButton.Size = UDim2.new(0, 100, 0, 100);
+        ImageButton.Image = getgenv().Image;
+        ImageButton.Draggable = true;
+        UICorner.CornerRadius = UDim.new(0, 200);
+        UICorner.Parent = ImageButton;
+        ImageButton.MouseButton1Click:Connect(function()
+            game:GetService("VirtualInputManager"):SendKeyEvent(true, getgenv().ToggleUI, false, game);
+        end)
+    end
+end)
+
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
