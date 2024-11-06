@@ -620,76 +620,76 @@ do
     local section = Tabs.Home:AddSection("Change Log:")
     Tabs.Home:AddParagraph({
         Title = "资讯",
-        Content = "[🟩] - Added\n[🟧] - Changed\n[🟥] - Removed\n[⭐] - Premium Feature"
+        Content = "[🟩] - 添加\n [🟧]  - 更改\n [🟥]  - 删除\n [⭐]  - 高级功能"
     })
 
     Tabs.Home:AddParagraph({
-        Title = "v1.6 - Fixes!",
-        Content = "[⭐] - Zone Casting Fix\n[⭐] - Auto Shake No Delay fix speed\n[🟩] - Teleport to Midas Rod\n[🟧] - Better sell buttons\n[🟧] - Auto Shake Dropdown\n[🟧] - Auto Cast & Reel & Shake in one toggle now"
+        Title = "v1.6 - 修复程序!",
+        Content = " - 区域铸造修复\n [⭐]  - 自动摇动无延迟修复速度\n [🟩]  - 传送到Midas Rod \n [🟧]  - 更好的卖出按钮\n [🟧]  - 自动摇动下拉\n [🟧]  - 自动铸造和卷轴立即切换"
     })
     Tabs.Home:AddParagraph({
-        Title = "v1.5 - Meow!",
-        Content = "[⭐] - Zone Casting\n[🟩] - Player Move Speed\n[🟩] - Player Jump Power\n[🟩] - Fly\n[🟩] - Roblox Radio\n[🟩] - Auto Appraiser\n[🟧] - Better Freeze\n[🟧] - Auto Shake (mouse)\n[🟧] - Auto Cast & Reel (one button)"
+        Title = "v1.5 - 喵!",
+        Content = "[⭐] - 区域铸造\n [🟩]  - 播放器移动速度\n [🟩]  - 播放器跳跃功率\n [🟩]  -  fly \n [🟩]  -  roblox无线电\n [🟩]  - 自动评估师\n [🟧]  - 更好的冻结\n [🟧]  - 自动摇（鼠标）\n [🟧]  - 自动铸造和卷轴（一个按钮）"
     })
     Tabs.Home:AddParagraph({
         Title = "v1.4 - Buttons!",
-        Content = "[🟩] - 4 buttons in teleport\n[🟩] - Button to enable fps cap"
+        Content = "[🟩]  -  Teleport \n [🟩]的4个按钮 - 按钮启用FPS帽"
     })
     Tabs.Home:AddParagraph({
         Title = "v1.3 - FpS",
         Content = "[🟩] - Fps Cap"
     })
     Tabs.Home:AddParagraph({
-        Title = "v1.2 - Fishing",
-        Content = "[⭐] - No Shake Delay all\n[🟩] - AntiAFK added\n[🟩] - Auto Bait\n[🟩] - Remove all flags (fps)\n[🟩] - Fish Area teleport\n[🟩] - Auto Cast more safest\n[🟧] - Better Freeze\n[🟧] - Shake Delay minimum 0.2\n[🟧] - Auto Shake v1 and v2 better"
+        Title = "v1.2 - 钓鱼",
+        Content = "[⭐] - 没有摇晃延迟all \n [🟩]  -  antiafk添加\n [🟩]  - 自动诱饵\n [🟩]  - 删除所有标志（fps）\n [🟩]  - 鱼区传送\n [🟩]  - 自动铸造更多Safest \n [🟧]  - 更好的冻结\n [🟧]  - 摇动延迟最小0.2 \n [🟧]  - 更好的自动摇动v1和v2"
     })
     Tabs.Home:AddParagraph({
-        Title = "v1.1 - Fixes",
-        Content = "[🟧] Phantom Clicks - fixed\n[🟧] Better Freeze\n[⭐] - No Shake Delay (Mouse Clicks)"
+        Title = "v1.1 - 修复程序",
+        Content = "[🟧] 手柄点击 - 固定\n [🟧]更好的冻结\n [⭐]  - 没有摇动延迟（鼠标点击）"
     })
     Tabs.Home:AddParagraph({
-        Title = "v1 - Meow",
-        Content = "[🟧] Auto Shake Speed 0.3-1\n[🟧] Webhook Loger fixed\n[🟩] Black Screen\n[🟩] White Screen\n[🟩] FpS Booster\n[⭐] No Shake Delay (Premium)"
+        Title = "v1 - 喵",
+        Content = "[🟧]自动摇动速度0.3-1 \n [🟧] Webhook Loger固定\n [🟩]黑屏\n [🟩]白色屏幕\n [🟩] fps booster \n [⭐]没有摇晃延迟（premium）"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.9 - Fixes",
-        Content = "[🟩] ChangeLog information\n[🟧] Auto Freeze fix\n[🟥] Auto Cast Chance (because bugs ~solara)\n[🟩] Auto Cast - Random Chance from 90 to 99"
+        Title = "v0.9 - 修复程序",
+        Content = "变更信息\n [🟧]自动冻结修复\n [🟥]自动投射的机会（因为错误〜solara）\n [🟩]自动投射 - 从90到99的随机机会"
     })
     Tabs.Home:AddParagraph({
         Title = "v0.8 - Webhook & Fishing",
-        Content = "[🟩] Webhook fixed bugs\n[🟧] Fixed Auto Freeze\n[🟩] Auto Cast chance\n[🟩] Auto sell fish"
+        Content = "[🟩] 修复了错误\n[🟧] 固定自动冻结\n[🟩] 自动投射机会\n[🟩] 自动卖鱼"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.7 - Webhook",
-        Content = "[🟩] Webhook URL\n[🟩] Webhook Delay messages\n[🟩] Webhook On/Off"
+        Title = "v0.7 - 图形",
+        Content = "[🟩] 图形 URL\n[🟩]延迟消息 \n[🟩] 图形开/关"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.6 - Items",
-        Content = "[🟧] Teleport Items - +2 rods"
+        Title = "v0.6 - 项目",
+        Content = "[🟧] 传送物品 -  +2杆"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.5 - Fixes",
-        Content = "[🟧] Bigger UI\n[🟩] Auto Shake V2\n[🟧] Auto Shake more information\n[🟩] Teleports Place - New Location\n[🟩] Teleport NPCs - Updated\n[🟩] Ui Toggle (Mobile)"
+        Title = "v0.5 - 修复程序",
+        Content = "[🟧]更大的  UI\n[🟩] 自动摇动 V2\n[🟧]自动摇动更多信息 \n[🟩]传送地点 - 新位置 \n[🟩] 传送NPCS  - 更新\n[🟩]UI切换（移动）"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.4 - Fixes",
-        Content = "[🟩] Freeze Character\n[🟩] Auto Cast Fix Bugs (v0.3)"
+        Title = "v0.4 - 修复程序",
+        Content = "[🟩] 冻结性格\n[🟩]自动投射修复错误  (v0.3)"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.3 - Teleports",
-        Content = "[🟧] Fixed NPCs teleport\n[🟧] Fixed Item Grabber (🎃)\n[🟩] Teleport Fish Radar\n[🟩] Teleport Basic Diving Gear"
+        Title = "v0.3 - 传送点",
+        Content = "[🟧] 固定NPCS传送\n[🟧] 固定物品抓取物(🎃)\n[🟩] 传送鱼雷达\n[🟩] 传送基本潜水装备"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.2 - Bug Fixes",
-        Content = "[🟧] Auto Shake\n[🟩] Auto Shake Delay\n[🟧] Auto Reel\n[🟧] Auto Cast\n[🟩] Teleport Place\n[🟩] Teleport NPCs\n[🟩] Teleport Items\n[🟩] Item Graber (🎃)\n[🟩] Noclip\n[🟩] Infinity Oxygen"
+        Title = "v0.2 -bug修复 ",
+        Content = "[🟧] 自动摇晃\n[🟩] 自动抖动延迟\n[🟧] 自动卷轴\n[🟧] 自动演员\n[🟩] 传送地点\n[🟩] 传送NPC\n[🟩] 传送物品\n[🟩] 物品graber (🎃)\n[🟩] 穿墙\n[🟩] 无限氧气"
     })
     Tabs.Home:AddParagraph({
-        Title = "v0.1 - Release",
-        Content = "[🟩] Auto Fish\n[🟩] Auto Sell All"
+        Title = "v0.1",
+        Content = "[🟩]自动鱼\n [🟩]自动销售l"
     })
 
     local section = Tabs.Premium:AddSection("Fishing⭐")
-    local AutoShakeT3 = Tabs.Premium:AddToggle("MyAutoShake3", {Title = "No Shake Delay | Best", Default = false })
+    local AutoShakeT3 = Tabs.Premium:AddToggle("MyAutoShake3", {Title = "没有摇晃延迟| 最好", Default = false })
     AutoShakeT3:OnChanged(function(Value)
         if ProtectPremium == true then
             autoShake3 = AutoShakeT3.Value
@@ -708,10 +708,10 @@ do
     end)
     Tabs.Premium:AddParagraph({
         Title = "区域助手",
-        Content = "First 3 - Event zones\nFischFright24 - Fright Pool"
+        Content = "第一个 - 事件区\nFisch惊吓24  - 惊吓游泳池"
     })
     
-    local ToggleZoneCast1214 = Tabs.Premium:AddToggle("ToggleZoneCast1214", {Title = "Enable cast selected zone", Default = false })
+    local ToggleZoneCast1214 = Tabs.Premium:AddToggle("ToggleZoneCast1214", {Title = "启用演奏选定区域", Default = false })
     ToggleZoneCast1214:OnChanged(function(Value)
         AutoZoneCast = Value
         if ProtectPremium == true then
@@ -728,7 +728,7 @@ do
     local DropdownShake = Tabs.Main:AddDropdown("DropdownShake", {
         Title = "选择自动摇晃模式:",
         Description = "鼠标 - 确保隐藏UI并拨出聊天，以便自动摇动工作!",
-        Values = {"Mouse", "Phantom"},
+        Values = {"鼠标", "手柄"},
         Multi = false,
         Default = 1,
     })
@@ -760,9 +760,9 @@ do
         if AutoCast then
             Pidoras()
         end
-        if ShakeMode == "Mouse" then
+        if ShakeMode == "鼠标" then
             autoShake = Value
-        elseif ShakeMode == "Phantom" then
+        elseif ShakeMode == "手柄" then
             autoShake2 = Value
         end
         AutoFish = Value
@@ -780,8 +780,8 @@ do
     end)
     
     local AutoFreezeT = Tabs.Main:AddToggle("MyFreeze", {
-        Title = "Freeze Position",
-        Description = "Freezes player position and rotation",
+        Title = "冻结位置",
+        Description = "冻结播放器位置和旋转",
         Default = false
     })
     AutoFreezeT:OnChanged(function()
@@ -963,8 +963,8 @@ do
                 HumanoidRootPart.CFrame = oldpos
             else
                 Fluent:Notify({
-                    Title = "WARNING",
-                    Content = string.format('There is no "%s" in workspace', Value),
+                    Title = "警告",
+                    Content = string.format('没有 "%s" 在工作区', Value),
                     Duration = 8
                 })                
             end
@@ -978,7 +978,7 @@ do
         Noclip = ToggleNoclip.Value
     end)
 
-    local ToggleAntiDrown = Tabs.Misc:AddToggle("ToggleAntiDrown", {Title = "Infinity Oxygen", Default = false })
+    local ToggleAntiDrown = Tabs.Misc:AddToggle("ToggleAntiDrown", {Title = "无限氧气", Default = false })
     ToggleAntiDrown:OnChanged(function()
         AntiDrown = ToggleAntiDrown.Value
         if AntiDrown == true then
@@ -1046,7 +1046,7 @@ do
     whiteFrame.Parent = WhiteGui
     WhiteGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
-    local BlackGui5 = Tabs.Misc:AddToggle("BlackGui5", {Title = "Black Screen", Default = false })
+    local BlackGui5 = Tabs.Misc:AddToggle("BlackGui5", {Title = "黑屏", Default = false })
     BlackGui5:OnChanged(function()
         local Black123 = BlackGui5.Value
         if Black123 then
@@ -1056,7 +1056,7 @@ do
         end
     end)
 
-    local WhiteGui5 = Tabs.Misc:AddToggle("WhiteGui5", {Title = "White Screen", Default = false })
+    local WhiteGui5 = Tabs.Misc:AddToggle("WhiteGui5", {Title = "白色屏幕", Default = false })
     WhiteGui5:OnChanged(function()
         local White123 = WhiteGui5.Value
         if White123 then
@@ -1084,15 +1084,15 @@ do
                 Content = "Pro",
                 Buttons = {
                     {
-                        Title = "Confirm",
+                        Title = "确认",
                         Callback = function()
                             loadstring(game:HttpGet('https://raw.githubusercontent.com/ago106/ScriptsRoblox/refs/heads/main/FpS'))()
                         end
                     },
                     {
-                        Title = "Cancel",
+                        Title = "取消",
                         Callback = function()
-                            print("取消了对话框.")
+                            print("取消了.")
                         end
                     }
                 }
@@ -1110,7 +1110,7 @@ do
 
     local section = Tabs.Fun:AddSection("Player")
 
-    local ToggleWalkspeed = Tabs.Fun:AddToggle("Walk Speed", {Title = "Walk Speed", Default = false })
+    local ToggleWalkspeed = Tabs.Fun:AddToggle("Walk Speed", {Title = "步行速度", Default = false })
     local defaultWalkSpeed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
     
     local Input = Tabs.Fun:AddInput("Speed", {
@@ -1145,7 +1145,7 @@ do
         end
     end)
     
-    local ToggleJumpPower = Tabs.Fun:AddToggle("Jump Power", {Title = "Jump Power", Default = false })
+    local ToggleJumpPower = Tabs.Fun:AddToggle("Jump Power", {Title = "跳跃力量", Default = false })
     local defaultJumpPower = game.Players.LocalPlayer.Character.Humanoid.JumpPower
     
     local InputJump = Tabs.Fun:AddInput("Power", {
@@ -1182,7 +1182,7 @@ do
 
     local section = Tabs.Webhook:AddSection("Webhook Stats Messages")
     local InputWebhook = Tabs.Webhook:AddInput("InputWebhook", {
-        Title = "Web挂钩URL",
+        Title = "图形URL",
         Default = "",
         Placeholder = "URL",
         Numeric = false,
@@ -1206,10 +1206,10 @@ do
         end
     })
     SliderWebhook:OnChanged(function(Value)
-        print("Delay changed:", Value)
+        print("延迟改变:", Value)
     end)
 
-    local ToggleWebhook = Tabs.Webhook:AddToggle("ToggleWebhook", {Title = "Webhook On/Off", Default = false })
+    local ToggleWebhook = Tabs.Webhook:AddToggle("ToggleWebhook", {Title = "图形开/关", Default = false })
     ToggleWebhook:OnChanged(function()
         WebhookLog = ToggleWebhook.Value
         WebhookManager()
@@ -1238,7 +1238,7 @@ Fluent:Notify({
     Duration = 8
 })
 Fluent:Notify({
-    Title = "反 Afk - ON",
+    Title = "反 Afk - 开始",
     Content = "meow",
     Duration = 30
 })
