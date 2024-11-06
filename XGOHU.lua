@@ -266,6 +266,431 @@ xgo:Button({Title  ="娱乐特效",     Content ="局内改特效",   	Callback 
 xgo:Button({Title  = "漂浮控制器",   Content ="教程（手机需要键盘）:1. J-飞起来    2. K-回到手中",   	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/jJEXYrbF"))()end}) 
 xgo:Button({Title  = "道具控制器",   Content ="教程（手机需要键盘）:1. Q - 靠近   2. E - 离远   3. Y - 投掷   4. J - 超级投掷   5. U - 使物体自转   6. P - 使物体悬浮在空中   7. X - 走得更远一点   8. L - 使方块变直并锁定在前部",  Callback = function()   loadstring(game:HttpGet("https://pastebin.com/raw/qCXsAu9Z"))()   end}) 
 xgo:Button({Title  ="GOBBY助手",     Content ="",    	Callback = function()   loadstring(game:HttpGet("https://pastebin.com/raw/Nx7sbCMX"))()end})
+local xgo = PlayerTab:Section({Title = "X-ฅ玩家ฅ",Content = "ฅ玩家通用区域ฅ"})
+xgo:TextInput({["Title"]="时间",["Content"] = "更改时间（24小时制）",["Place Holder Text"] = "1~24输入",  ["Clear Text On Focus"] = false,["Callback"] = function(Time)game.Lighting.ClockTime = Time end})
+xgo:Button({Title="冻结自己 可以将自己暂停",Content ="随时冻结使自己无法移动",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/creepstu/fuzzy-octo-giggle/main/Source"))()end})
+xgo:Button({Title="失重（可以被人当球踢）",Content ="",Callback=function()loadstring(game:HttpGet("https://pastebin.com/raw/axjdwbQy"))()end})
+xgo:Button({Title="显示ping",["Content"] = "显示频率",Callback=function()loadstring(game:HttpGet("https://pastebin.com/raw/7eWsZKAE"))()end})
+xgo:Button({Title="重新加入游戏", ["Content"] = "",Callback = function()game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,game:GetService("Players").LocalPlayer)end})
+xgo:Button({Title="保存游戏",["Content"] = "",Callback = function()saveinstance()end})
+xgo:Button({Title="离开游戏",["Content"] = "",Callback = function()game:Shutdown()end})
+xgo:Button({Title="进入人少的服务器",["Content"] = "",Callback = function()local Http = game:GetService("HttpService")local TPS = game:GetService("TeleportService")local Api = "https://games.roblox.com/v1/games/" local _place = game.PlaceId local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100" function ListServers(cursor)  local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))  return Http:JSONDecode(Raw) end local Server, Next; repeat  local Servers = ListServers(Next)  Server = Servers.data[1]  Next = Servers.nextPageCursor until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)end})
+xgo:Button({Title="最高帧率", ["Content"] = "启动最高帧率",Callback = function()setfpscap(999)end})
+xgo:TextInput({["Title"]="广角",["Content"] = "调整视角",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,["Callback"] = function(Value)game.Workspace.CurrentCamera.FieldOfView = Value end})
+xgo:TextInput({["Title"]="超广角（Fov）两者各有不同",["Content"] ="",["Place Holder Text"] = "数值",["Clear Text On Focus"] = false,["Callback"] = function(Value)workspace.CurrentCamera.FieldOfView = Value end})
+xgo:TextInput({Title="血量",["Content"] ="可能是假血",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Players.LocalPlayer.Character.Humanoid.Health = Value	end})
+xgo:TextInput({Title="跳跃高度设置",["Content"] ="",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value end})
+xgo:TextInput({Title="移动速度设置",["Content"] ="",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value end})
+xgo:TextInput({Title="重力设置",["Content"] ="",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Workspace.Gravity = Value end})
+xgo:Button({Title="速度跳跃工具",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/JMvdFSQX"))()end})
+xgo:Button({Title="人物坐下",["Content"] = "",Callback = function()local player = game.Players.LocalPlayer local character = player.Character or player.CharacterAdded:Wait()local humanoid = character:WaitForChild("Humanoid")if humanoid and character then humanoid.Sit = true else warn("没有找到人形或人物.")end end})
+xgo:Button({Title="人物坐下",["Content"] = "单独开关",Callback = function()  loadstring(game:HttpGet("https://pastebin.com/raw/7RHML3DK"))()end})
+xgo:Toggle({Title="夜视",Content = "夜晚的时候可以让你看得很清楚",Default = false,Callback = function(Value)if Value then game.Lighting.Ambient = Color3.new(1, 1, 1)else game.Lighting.Ambient = Color3.new(0, 0, 0)end	end})
+xgo:Button({Title="立即死亡",Content ="遇到bug了吧",  Callback= function()game.Players.LocalPlayer.Character.Humanoid.Health=0 end})  
+local xgo = BlackholeTab:Section({Title = "x-ฅ黑洞ฅ",Content = "ฅ使周围物体吸附或循环ฅ"})
+xgo:Button({Title="键盘可单独按键",Content ="键盘可单独寻找按键",Callback = function()loadstring(game:HttpGet("https://gist.githubusercontent.com/RedZenXYZ/4d80bfd70ee27000660e4bfa7509c667/raw/da903c570249ab3c0c1a74f3467260972c3d87e6/KeyBoard%2520From%2520Ohio%2520Fr%2520Fr"))()end}) 
+xgo:Button({Title="黑洞[PC]",Content ="教程:吸附:E 删除:Q",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/BLACKHOLE_SCRIPT_FOR_PC_ONLY.txt"))()end})
+xgo:Button({Title="黑洞小go汉化",Content ="黑洞", Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/114514.IIjjjjiiiallloiia.xxxxg/refs/heads/main/%E9%BB%91%E6%B4%9E2"))()end})
+xgo:Button({Title="黑洞汉化",Content ="黑洞",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/jQd1HedN"))()end})    
+xgo:Button({Title="黑洞汉化2",Content ="黑洞",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/uZbcH9Ve"))()end})    
+xgo:Button({Title="黑洞0.4",Content ="黑洞",Callback = function()loadstring(game:HttpGet('https://gist.githubusercontent.com/AxolotlBmgo/8888080921c2b426a32dd9ff587baff1/raw/d45e03afed3c1716f36523bbf6dd741d3d2aad00/gistfile1.txt'))()end})
+xgo:Button({Title="黑洞1.5",Content ="黑洞",Callback = function()loadstring(game:HttpGet('https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/%E9%BB%91%E6%B4%9E'))()end})
+xgo:Button({Title="循环V2",Content ="万磁使周围的物体旋转", Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/BOOSBS/666/refs/heads/main/656"))()end})
+xgo:Button({Title="循环v3",Content ="万磁使周围的物体旋转", Callback = function()loadstring(game:HttpGet("https://pastefy.app/vaXK1Kgy/raw"))()end})     
+xgo:Button({Title="黑洞E键控制",Content ="黑洞按E",Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/BbYdbeDY"))()end})
+xgo:Button({Title="低配版不会太卡E键控制",Content ="配置",Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/Sx6PY4gV"))()end})
+xgo:Button({Title="卡哇伊黑洞（可以锁人的哦）",Content ="可以进行锁定玩家", Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/114514.IIjjjjiiiallloiia.xxxxg/refs/heads/main/%E9%BB%91%E6%B4%9E",true))()end})
+xgo:Button({Title="控制fe黑洞（配置低别用）",Content ="可使周围物体旋转占位适配手机",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/F'e"))()end})
+local xgo = TalkTab:Section({ ["Title"] = "x-ฅ聊天中枢ฅ",    ["Content"] = "ฅ聊天工具ฅ"})
+loadstring(game:HttpGet('https://pastebin.com/raw/E0P5BSyz'))() -- 反聊天记录器（xgo制作）
+function chat(msg)if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(msg)else game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")end end local method = nil
+xgo:Dropdown({["Title"] = "聊天程序",["Multi"] = false,["Options"] = {"ěx́ǎḿṕĺě", "éxạmṕĺe", "ẹ̲х̲ạ̲ṃ̲р̲ḷ̲ẹ̲", "e>x>a>m>p>l>e", "￵example"},["Default"] = {"xxxxgo"},["Place Holder Text"] = "选择一种聊天程序",["Callback"] = function(val)method = val end})
+function bypasstext(text, method)if method == 1 then local function addAccents(word)local accents = {
+                a = "ǎ",
+                b = "ḃ",
+                c = "ć",
+                d = "d́",
+                e = "ě",
+                f = "ḟ",
+                g = "ġ",
+                h = "ḣ",
+                i = "í",
+                j = "j́",
+                k = "ḱ",
+                l = "ĺ",
+                m = "ḿ",
+                n = "n̋",
+                o = "ō",
+                p = "ṕ",
+                q = "q́",
+                r = "ŕ",
+                s = "ś",
+                t = "t̋",
+                u = "ū",
+                v = "v̇",
+                w = "ẃ",
+                x = "x́",
+                y = "ý",
+                z = "ź",
+                A = "Ǎ",
+                B = "Ḃ",
+                C = "Ć",
+                D = "D́",
+                E = "Ě",
+                F = "Ḟ",
+                G = "Ġ",
+                H = "Ḣ",
+                I = "Í",
+                J = "J́",
+                K = "Ḱ",
+                L = "Ĺ",
+                M = "Ḿ",
+                N = "N̋",
+                O = "Ō",
+                P = "Ṕ",
+                Q = "Q́",
+                R = "Ŕ",
+                S = "Ś",
+                T = "T̋",
+                U = "Ū",
+                V = "V̇",
+                W = "Ẃ",
+                X = "X́",
+                Y = "Ý",
+                Z = "Ź"
+               }local bypassedWord = "" for i = 1, #word do local letter = word:sub(i, i)if accents[letter] then bypassedWord = bypassedWord .. accents[letter]else bypassedWord = bypassedWord .. letter end end return bypassedWord end local function bypassString(input)local words = {}for word in string.gmatch(input, "%S+") do table.insert(words, addAccents(word))end return table.concat(words, " ")end return bypassString(text)elseif method == 2 then local function addAccents2(word)local accents2 = {
+                a = "ạ",
+                b = "ḃ",
+                c = "c",
+                d = "d́",
+                e = "e",
+                f = "ḟ",
+                g = "ġ",
+                h = "ḣ",
+                i = "i",
+                j = "j́",
+                k = "ḳ",
+                l = "ĺ",
+                m = "m",
+                n = "n̋",
+                o = "o",
+                p = "ṕ",
+                q = "q́",
+                r = "ŕ",
+                s = "ṣ",
+                t = "t",
+                u = "ụ",
+                v = "v̇",
+                w = "ẃ",
+                x = "x́",
+                y = "y",
+                z = "z",
+                A = "Ạ",
+                B = "Ḃ",
+                C = "C",
+                D = "D́",
+                E = "E",
+                F = "Ḟ",
+                G = "Ġ",
+                H = "Ḣ",
+                I = "I",
+                J = "J́",
+                K = "Ḱ",
+                L = "Ĺ",
+                M = "M",
+                N = "N",
+                O = "O",
+                P = "Ṕ",
+                Q = "Q́",
+                R = "Ŕ",
+                S = "Ṣ",
+                T = "T",
+                U = "Ụ",
+                V = "V̇",
+                W = "Ẃ",
+                X = "X́",
+                Y = "Y",
+                Z = "Z"
+               }local bypassedWord = "" for i = 1, #word do local letter = word:sub(i, i)if accents2[letter] then bypassedWord = bypassedWord .. accents2[letter]else bypassedWord = bypassedWord .. letter end end return bypassedWord end local function bypassString(input)local words = {}for word in string.gmatch(input, "%S+") do table.insert(words, addAccents2(word))end return table.concat(words, " ")end return bypassString(text)elseif method == 3 then local function addAccents3(word)local accents3 = {
+                a = "ạ̲",
+                b = "ḅ̲",
+                c = "с̲",
+                d = "ḍ̲",
+                e = "ẹ̲",
+                f = "f̲",
+                g = "ɡ̲",
+                h = "ḥ̲",
+                i = "ị̲",
+                j = "ј̲",
+                k = "ḳ̲",
+                l = "ḷ̲",
+                m = "ṃ̲",
+                n = "ṇ̲",
+                o = "ọ̲",
+                p = "р̲",
+                q = "q̲",
+                r = "ṛ̲",
+                s = "ṣ̲",
+                t = "ṭ̲",
+                u = "ụ̲",
+                v = "ṿ̲",
+                w = "ẉ̲",
+                x = "х̲",
+                y = "ỵ̲",
+                z = "ẓ̲",
+                A = "Ạ̲",
+                B = "Ḅ̲",
+                C = "С̲",
+                D = "Ḍ̲",
+                E = "Ẹ̲",
+                F = "F̲",
+                G = "Ɡ̲",
+                H = "Ḥ̲",
+                I = "Ị̲",
+                J = "Ј̲",
+                K = "Ḳ̲",
+                L = "Ḷ̲",
+                M = "Ṃ̲",
+                N = "Ṇ̲",
+                O = "Ọ̲",
+                P = "Р̲",
+                Q = "Q̲",
+                R = "Ṛ̲",
+                S = "Ṣ̲",
+                T = "Ṭ̲",
+                U = "Ụ̲",
+                V = "Ṿ̲",
+                W = "Ẉ̲",
+                X = "Х̲",
+                Y = "Ỵ̲",
+                Z = "Ẓ̲"
+               }local bypassedWord = "" for i = 1, #word do local letter = word:sub(i, i)if accents3[letter] then bypassedWord = bypassedWord .. accents3[letter]else bypassedWord = bypassedWord .. letter end end return bypassedWord end local function bypassString(input)local words = {}for word in string.gmatch(input, "%S+") do table.insert(words, addAccents3(word))end return table.concat(words, " ")end return bypassString(text)elseif method == 4 then local function modifyText(input)local modifiedText = "" for i = 1, #input do modifiedText = modifiedText .. string.sub(input, i, i) .. ">"end return modifiedText end return modifyText(text)elseif method == 5 then local function addAccents5(word)local accents5 = {
+                a = "a",
+                b = "b￵￵",
+                c = "c￵￵",
+                d = "d",
+                e = "￵￵e",
+                f = "￵￵󠀕f￵￵",
+                g = "g",
+                h = "h￵￵",
+                i = "￵￵i",
+                j = "￵￵j￵￵",
+                k = "k",
+                l = "l￵￵",
+                m = "m",
+                n = "n",
+                o = "o￵￵",
+                p = "p",
+                q = "q￵￵",
+                r = "￵￵r￵￵",
+                s = "￵￵s",
+                t = "￵￵t￵￵",
+                u = "u",
+                v = "v",
+                w = "w",
+                x = "x",
+                y = "y",
+                z = "￵￵z￵￵󠀕",
+                A = "A￵￵󠀕",
+                B = "B",
+                C = "C",
+                D = "￵￵D",
+                E = "￵￵E￵￵󠀕",
+                F = "F￵￵",
+                G = "￵￵G",
+                H = "H",
+                I = "￵￵I",
+                J = "￵￵J",
+                K = "K",
+                L = "￵￵L",
+                M = "M￵￵",
+                N = "N￵￵",
+                O = "O",
+                P = "P￵￵",
+                Q = "Q",
+                R = "￵￵R",
+                S = "S",
+                T = "T",
+                U = "￵￵U",
+                V = "V",
+                W = "W￵￵",
+                X = "￵￵X",
+                Y = "￵￵Y",
+                Z = "Z￵￵󠀕"
+            }local bypassedWord = "" for i = 1, #word do local letter = word:sub(i, i)if accents5[letter] then bypassedWord = bypassedWord .. accents5[letter]else bypassedWord = bypassedWord .. letter end end return bypassedWord end local function bypassString(input)local words = {}for word in string.gmatch(input, "%S+") do table.insert(words, addAccents5(word))end return table.concat(words, "")end return bypassString(text)end  end
+xgo:TextInput({["Title"]="聊天",["Content"] = "",["Place Holder Text"] = "话语",["Clear Text On Focus"] = false,["Callback"] = function(val)if val ~= "" then if method == "ěx́ǎḿṕĺě" then chat(bypasstext(val, 1))elseif method == "éxạmṕĺe" then chat(bypasstext(val, 2))elseif method == "ẹ̲х̲ạ̲ṃ̲р̲ḷ̲ẹ̲" then chat(bypasstext(val, 3))elseif method == "e>x>a>m>p>l>e" then chat(bypasstext(val, 4))elseif method == "￵example" then chat(bypasstext(val, 5))else OrionLib:MakeNotification({Name = "ฅxgoฅ",Content = "ฅ你还没有输入字体ฅ",Image = "rbxassetid://18923878915",Time = 9})end else OrionLib:MakeNotification({Name = "ฅxgoฅ",Content = "ฅ你还没有输入字体ฅ",Image = "rbxassetid://18923878915",Time = 9})end end})
+local function showNotificationIfEmpty()if spamMessage == "" then local Notify = xxxgoui:Notify({	Title = "xgo Hub",	["Description"] = "- goto_O R's 2.1581版",	["Color"] = Color3.fromRGB(255, 0, 255),Content = "你好像还没有说话吧",["Time"] = 9,["Delay"] = 10})end end
+local function checkAndSendSpam()if spaming and spamMessage ~= "" then repeat wait(spamInterval)chat(spamMessage) until not spaming end end
+local function toggleSpamming(val)if val then showNotificationIfEmpty() checkAndSendSpam() else spaming = false end end
+xgo:TextInput({["Title"] = "填写你想说的话",["Content"] = "点击下面自动发送即可开始",["Place Holder Text"] = "话语",["Clear Text On Focus"] = true,["Callback"] = function(val)spamMessage = val toggleSpamming(spaming) end})
+xgo:Slider({["Title"] = "时间间隔",["Content"] = "",["Min"] = 0,["Max"] = 100,["Increment"] = 1,["Default"] = 1,["ValueName"] = "seconds",["Callback"] = function(val)spamInterval = val toggleSpamming(spaming)end})
+xgo:Toggle({["Title"] = "自动发送",["Content"] = "选好了再发",["Default"] = false,["Callback"] = function(val)spaming = val toggleSpamming(spaming)end})
+xgo:Button({Title="修复过滤器",Content ="",Callback = function() chat("abcdefg()!")end})
+xgo:Button({Title="聊天记录",Content ="",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/bnQY7zVJ"))()end})
+xgo:Button({Title="查玩家ip地址 聊天发送",Content ="只能吓唬人 因为是随机数字",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/BingusWR/FakeRobloxIPGrabber/refs/heads/main/FERobloxIpGrabberScrip"))()end})
+xgo:Button({Title="传送到玩家面前循环（嘲讽）",Content ="",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/Orbit%20GUI"))()end})
+xgo:Button({Title="聊天绘画图",Content="在聊天上绘画",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/143628lllkaiiiiiwggv.panmn.lua/refs/heads/main/xz"))()end})
+xgo:TextInput({["Title"]="聊天发送循环",["Content"] ="xgo提醒:别说一些容易被举报的话",["Place Holder Text"] = "输入你想说的话",  ["Clear Text On Focus"] = false,["Callback"] = function(V)local TeleportService = game:GetService("TeleportService")local Players = game:GetService("Players")local ReplicatedStorage = game:GetService("ReplicatedStorage")local function spamChat()local message = V while true do game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")wait(2)end end local function flingAll()while true do loadstring(game:HttpGet(" https://raw scripts . net/raw/Universal-Script-FLING-ALL-Script-17590 "))()wait(3)TeleportService:Teleport(game.PlaceId, Players.LocalPlayer)end    end loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/222"))()spawn(spamChat)spawn(flingAll)end})
+xgo:Button({Title= "Al聊天机器人",Content ="聊天工具",Callback = function()loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Synergy-Networks/products/main/BetterBypasser/loader.lua"))()end})
+xgo:Button({Title="骂人无违规",Content="不知道有没有效果",Callback = function()loadstring(game:GetObjects("rbxassetid://1262435912")[1].Source)()end})
+xgo:Button({Title="xgo随机骂人输出",Content ="需要匹配键盘,按G发送",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/85463.lllllIIIIIlIlIIll.ldzs/refs/heads/main/%E8%81%8A%E5%A4%A9%E4%B8%AD%E6%9E%A2"))()end})
+local xgo = SelfishTab:Section({Title = "x-ฅ自瞄ฅ",Content = "ฅ自瞄准星ฅ"})
+xgo:Button({Title="辅助瞄准",["Content"]="",Callback = function()loadstring(game:HttpGet('https://raw.githubusercontent.com/yzeedw/Mortalv2-main/main/universal%20silent%20aim%20by%20Mortalexploits'))()      end})
+xgo:Button({Title="普通中心点",["Content"] = "",Callback = function()local d = Drawing.new("Circle")d.Color, d.Radius, d.Filled, d.Visible = Color3.new(0, 0, 8), 3, true, false game:GetService("RunService").RenderStepped:Connect(function()d.Position = workspace.CurrentCamera.ViewportSize / 2 d.Visible = true end)end})
+xgo:Button({Title="战神十字架（小）",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/q2qZbbbx"))()     end})
+xgo:Button({Title="战神十字架（中）",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/1HT0VwKz"))()  end})
+xgo:Button({Title="战神十字架（超级）",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/Q2Evf9mH"))()  end})
+xgo:Button({Title="可调节十字准心",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/kn0a/Crosshair-M/main/Source.lua"))()     end})
+xgo:Button({Title="辅助瞄准v2",["Content"] = "",Callback = function()loadstring(game:HttpGet('https://raw.githubusercontent.com/yzeedw/Mortalv2-main/refs/heads/main/universal%20silent%20aim%20by%20Mortalexploits'))()       end})        
+xgo:Toggle({["Title"]="锁头",["Content"]="加入队伍检测",["Default"] = false,["Callback"] = function(Value) 		
+_G.AimbotEnabled = Value
+local Camera = workspace.CurrentCamera
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+local Holding = false
+_G.TeamCheck = true
+_G.AimPart = "Head"
+_G.Sensitivity = 0
+_G.CircleSides = 64
+_G.CircleColor = Color3.fromRGB(255, 255, 255)
+_G.CircleTransparency = 0.7
+_G.CircleRadius = 80
+_G.CircleFilled = false
+_G.CircleVisible = false
+_G.CircleThickness = 0
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Filled = _G.CircleFilled
+FOVCircle.Color = _G.CircleColor
+FOVCircle.Visible = _G.CircleVisible
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Transparency = _G.CircleTransparency
+FOVCircle.NumSides = _G.CircleSides
+FOVCircle.Thickness = _G.CircleThickness
+local function GetClosestPlayer()
+local MaximumDistance = _G.CircleRadius
+local Target = nil
+for _, v in next, Players:GetPlayers() do
+if v.Name ~= LocalPlayer.Name then
+if _G.TeamCheck == true then
+if v.Team ~= LocalPlayer.Team then
+if v.Character ~= nil then
+if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+if VectorDistance < MaximumDistance then
+Target = v	end end end end end else
+if v.Character ~= nil then
+if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+if VectorDistance < MaximumDistance then
+Target = v end end end end end end end return Target end
+UserInputService.InputBegan:Connect(function(Input)
+if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+Holding = true end end)
+UserInputService.InputEnded:Connect(function(Input)
+if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+Holding = false end end)
+RunService.RenderStepped:Connect(function()
+FOVCircle.Position = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Filled = _G.CircleFilled
+FOVCircle.Color = _G.CircleColor
+FOVCircle.Visible = _G.CircleVisible
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Transparency = _G.CircleTransparency
+FOVCircle.NumSides = _G.CircleSides
+FOVCircle.Thickness = _G.CircleThickness
+if Holding == true and _G.AimbotEnabled == true then
+TweenService:Create(Camera, TweenInfo.new(_G.Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, GetClosestPlayer().Character[_G.AimPart].Position)}):Play()end end)end})
+xgo:Button({Title="情云同款自瞄",["Content"] = "可以调整大小 绘制距离 fl目前有bug",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/uZbHYa7F"))()end})
+xgo:Button({Title="小go宙斯二改汉化自瞄", ["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/0K2bLjJ5"))()end})
+xgo:Button({Title="自瞄按钮版",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/4XhEFwtt"))()end})
+xgo:Button({Title="自瞄",["Content"] = "1",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/uFelikxs/Azure-Hub/main/AimBot.lua"))()end})
+xgo:Button({Title="自瞄",["Content"] = "2",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/gXsy4tYU"))()end})
+xgo:Button({Title="自瞄ui",["Content"] = "3",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/114514.IIjjjjiiiallloiia.xxxxg/refs/heads/main/zm"))()end})
+xgo:Button({Title="自瞄ui2.0",["Content"] = "4",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/111111/refs/heads/main/%E8%BE%85%E5%8A%A9%E7%9E%84%E5%87%86"))()end}) 
+local xgo = SelfishTab:Section({Title = "x-ฅESPฅ",Content = "ฅ透视 框架 血条ฅ"})
+xgo:Button({Title="框架 血条 射线 准心",["Content"] = "依旧fl有 Bug 不过我已经改得非常好了",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/xgomn/143628llllffaaaYXZS.123/refs/heads/main/%E9%80%8F%E8%A7%86%E3%80%82%E6%A1%86%E6%9E%B6"))()ExunysDeveloperESP()end})
+xgo:Button({Title="血条 射线",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/u1Mr5UkF"))()end})
+xgo:Button({Title="人物框架",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/bJhnZ1bw"))()end})
+xgo:Button({Title="人物射线",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/iygw9nNf"))()end}) 
+xgo:Button({Title="框架0.1",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/42Vqnapv"))()end})
+xgo:Button({Title="框架彩色",["Content"] = "",Callback = function()local Players = game:GetService("Players")local RunService = game:GetService("RunService")local Camera = workspace.CurrentCamera local LocalPlayer = Players.LocalPlayer local function CreateESP(player)local Box = Drawing.new("Square")Box.Visible, Box.Thickness, Box.Filled = false, 4, false local hue = 0 RunService.RenderStepped:Connect(function()if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then local HumanoidRootPart = player.Character.HumanoidRootPart local pos, onScreen = Camera:WorldToViewportPoint(HumanoidRootPart.Position)if onScreen then Box.Size, Box.Position = Vector2.new(2000 / pos.Z, 2500 / pos.Z), Vector2.new(pos.X - Box.Size.X / 2, pos.Y - Box.Size.Y / 2)Box.Visible = true if not player.Team or not LocalPlayer.Team then Box.Color = Color3.fromHSV(hue, 1, 1)hue = (hue + 0.01) % 1 else Box.Color = player.Team == LocalPlayer.Team and Color3.new(0, 0, 1) or Color3.new(1, 0, 0)end else Box.Visible = falsem endm else Box.Visible = false end end)end local function ApplyPlayerESP() for _, player in pairs(Players:GetPlayers()) do if player ~= LocalPlayer then CreateESP(player)end end Players.PlayerAdded:Connect(function(player)player.CharacterAdded:Connect(function()CreateESP(player)end)end)end while true do ApplyPlayerESP()wait(5)end end})
+xgo:Button({Title="xgo制作最强Esp",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/q2KSm6yd"))()end})
+xgo:Button({Title="ESP白色",["Content"] = "",Callback = function()loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()end})
+xgo:Button({Title="ESP 外网 电脑可用",["Content"] = "",Callback = function()loadstring(game:HttpGet('https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua'))()end})
+xgo:Button({Title="ESP 猫头鹰中心 ",["Content"] = "逐渐适配手机",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))()end})
+xgo:Button({Title="CheatX GUI", ["Content"] = "",Callback = function() local UILibrary = loadstring(game:HttpGet("https://pastebin.com/raw/V1ca2q9s"))() local MainUI = UILibrary.Load("CheatX - 3008") local Home = MainUI.AddPage("Home") local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))() ESP:Toggle(true) ESP.Players = false ESP.Tracers = false ESP.Boxes = false ESP.Names = false local function notify(message) game.StarterGui:SetCore("SendNotification", { Title = "CheatX"; Text = message; Icon = ""; Duration = 5; }) end local function teleportToItem(itemName) local donesearch = false for i,v in pairs(game:GetService("Workspace").GameObjects.Physical.Items:GetDescendants()) do if v.Name == "Root" and v.Parent.Name == itemName then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame donesearch = true break end end if donesearch == false then notify("Item position not defined") end end ESP:AddObjectListener(game:GetService("Workspace").GameObjects.Physical.Items, { Type = "Model", Color = Color3.fromRGB(0, 119, 255), IsEnabled = "itemESP" }) ESP:AddObjectListener(game:GetService("Workspace").GameObjects.Physical.Employees, { Type = "Model", CustomName = "Employee", Color = Color3.fromRGB(255, 0, 4), IsEnabled = "employeeToggle" }) Home.AddButton("Unlock Third Person", function() game.Players.LocalPlayer.CameraMaxZoomDistance = 50 game.Players.LocalPlayer.CameraMode = Enum.CameraMode.Classic end) Home.AddToggle("ESP", false, function(Value) ESP.Boxes = Value end) Home.AddToggle("ESP Tracers", false, function(Value) ESP.Tracers = Value end) Home.AddToggle("ESP Nametags", false, function(Value) ESP.Names = Value end) Home.AddToggle("Show Players", false, function(Value) ESP.Players = Value end) Home.AddToggle("Show Employees", false, function(Value) ESP.employeeToggle = Value end) Home.AddToggle("Show Items", false, function(Value) ESP.itemESP = Value end) local Teleports = MainUI.AddPage("Teleports") Teleports.AddButton("Teleport to Hotdog", function() teleportToItem("Hotdog") end) Teleports.AddButton("Teleport to Pizza", function() teleportToItem("Pizza") end) Teleports.AddButton("Teleport to Burger", function() teleportToItem("Burger") end) Teleports.AddButton("Teleport to Medkit", function() teleportToItem("Medkit") end) 	end })
+xgo:Slider({["Title"]="Esp最大距离",["Content"] = "距离",["Min"] = 1,["Max"] = 100000,["Increment"] = 1,["Default"] = 100000,Color = Color3.fromRGB(255,255,255),["Callback"] = function(Value)getgenv().mptespdistance = Value end})
+xgo:Slider({["Title"]="Esp厚度",["Content"] = "厚度",["Min"] = 1,["Max"] = 30,["Increment"] = 1,    ["Default"] = 2,Color = Color3.fromRGB(255,255,255),["Callback"] = function(Value)getgenv().mptespthickness = Value end})
+xgo:Button({Title="xgo3d人物射线",["Content"] = "", Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/xgo3d%E4%BA%BA%E7%89%A9%E5%B0%84%E7%BA%BF.lua"))()end}) 
+xgo:Button({Title="外网框架",["Content"] = "",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/yzeedw/Mortalv2-main/refs/heads/main/UNIVERSAL%20AIMBOT%20V2"))()end}) 
+local xgo = SelfishTab:Section({Title = "x-ฅ范围ฅ",Content = "ฅ范围设置ฅ"})
+xgo:Button({Title="范围",["Content"] = "范围20",Callback = function()
+_G.HeadSize = 20
+_G.Disabled = true
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)end end end end)end})
+xgo:Button({Title = "中级范围",["Content"] = "范围100",Callback = function()
+_G.HeadSize = 100
+_G.Disabled = true
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)end end end end)end})
+xgo:Button({Title = "高级范围",["Content"] = "范围500",Callback = function()
+_G.HeadSize = 500
+_G.Disabled = true
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)end end end end)end})
+xgo:TextInput({["Title"]= "范围修改",["Place Holder Text"] = "数值",["Clear Text On Focus"] = false,	Callback = function(value)print(value)
+_G.HeadSize = value
+_G.Disabled = true
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)end end end end)end})
+xgo:TextInput({["Title"]= "彩色范围修改",	["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,	Callback = function(v) 	  local Players = game:GetService("Players")  local RunService = game:GetService("RunService")   local LocalPlayer = Players.LocalPlayer     local newSize = v     local function ChangeHitboxSize(size)    for _, player in pairs(Players:GetPlayers()) do        if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then            local HumanoidRootPart = player.Character.HumanoidRootPart           local newHitboxSize = Vector3.new(size, size, size)            HumanoidRootPart.Size = newHitboxSize            HumanoidRootPart.Transparency = 0.5            HumanoidRootPart.CanCollide = false            local hue = 0            RunService.RenderStepped:Connect(function()                hue = (hue + 0.01) % 1                HumanoidRootPart.Color = Color3.fromHSV(hue, 1, 1)            end)        end    end   end  while true do  ChangeHitboxSize(newSize)    wait(5)   end  end})
 local xgo = PropsTab:Section({    Title = "x-ฅ道具ฅ1",    Content = "ฅ武器类ฅ"})
 xgo:Button({Title = "万能剪刀",	["Content"] = "可以剪掉一切",  Callback = function()     local Userinputservice = game:GetService("UserInputService")   if not Userinputservice.TouchEnabled then    local shears = game:GetObjects("rbxassetid://12685082209")[1]    shears.Parent = game.Players.LocalPlayer.Backpack    local newCFrame = CFrame.new(0, 0, 0, 0.5, 0.707106829, 0.499999911, -0.5, 0.707106769, -0.49999997, 0.707106769, -2.10734239e-08, -0.707106769)    shears.Grip = newCFrame    local tool = shears    local useAnimation = tool.Animations.use    local function onButton1Down()        local mouse = game.Players.LocalPlayer:GetMouse()        local target = mouse.Target        if target then            if target:IsA("Model") then                    target:Destroy()            else               local parentModel = target:FindFirstAncestorWhichIsA("Model")               if parentModel then                        parentModel:Destroy()                end            end        else            return        end       local humanoid = tool.Parent:FindFirstChildOfClass("Humanoid")        if humanoid then            local animator = humanoid:FindFirstChildOfClass("Animator")            if animator then               if not Sound then                    Sound = Instance.new("Sound")                    Sound.PlaybackSpeed = 1.25                    local sound = Instance.new("Sound")sound.SoundId = "rbxassetid://9118823101"                    Sound.Parent = tool                end                animator:LoadAnimation(useAnimation):Play()                Sound:Play()                wait(0.5)                Sound:Play()           end        end    end    tool.Activated:Connect(onButton1Down)else    local shears = game:GetObjects("rbxassetid://12685082209")[1]    shears.Parent = game.Players.LocalPlayer.Backpack    local newCFrame = CFrame.new(0, 0, 0, 0.5, 0.707106829, 0.499999911, -0.5, 0.707106769, -0.49999997, 0.707106769, -2.10734239e-08, -0.707106769)    shears.Grip = newCFrame    local tool = shears    local useAnimation = tool.Animations.use    local function onTouchStart()        local mouse = game.Players.LocalPlayer:GetMouse()        local target = mouse.Target        if target then            if target:IsA("Model") then                print(target.Name)                    target:Destroy()            else               local parentModel = target:FindFirstAncestorWhichIsA("Model")                if parentModel then                    print(parentModel.Name)                        parentModel:Destroy()               end            end        else            return        end        local humanoid = tool.Parent:FindFirstChildOfClass("Humanoid")        if humanoid then            local animator = humanoid:FindFirstChildOfClass("Animator")            if animator then                if not Sound then                    Sound = Instance.new("Sound")                    Sound.PlaybackSpeed = 1.25                    local sound = Instance.new("Sound")sound.SoundId = "rbxassetid://9118823101"                    Sound.Parent = tool                end                animator:LoadAnimation(useAnimation):Play()                Sound:Play()               wait(0.5)                Sound:Play()            end        end    end    tool.Activated:Connect(onTouchStart) end  	end    })
 xgo:Button({Title = "普通剑",	["Content"] = "",  Callback = function()     local item = game:GetObjects("rbxassetid://8517347614")[1]    item.Parent = game.Players.LocalPlayer.Backpack  	end    })
