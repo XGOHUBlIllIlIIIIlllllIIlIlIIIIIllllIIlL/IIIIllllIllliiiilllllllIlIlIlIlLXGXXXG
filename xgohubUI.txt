@@ -104,9 +104,16 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local VirtualUser = game:GetService("VirtualUser")
+
+LocalPlayer.Idled:connect(function()
+    VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    wait(1)
+    VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+end)
+
 task.spawn(function()
    pcall(function()
-       loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/114514.IIjjjjiiiallloiia.xxxxg/refs/heads/main/xgo%20%E9%9A%90%E8%97%8F%E7%95%8C%E9%9D%A2.lua"))()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/xxxxgo/refs/heads/main/xgo%20%E9%9A%90%E8%97%8F%E7%95%8C%E9%9D%A2.lua"))()
    end)
 end)
 
@@ -607,6 +614,8 @@ function SpeedHubLib:Start(GuiConfig)
     local DropShadow = Instance.new("ImageLabel");
     local MinimizeButton = Instance.new("ImageButton")
     local UICornerMinimize = Instance.new("UICorner")
+    local soundId = "rbxassetid://1234567890"
+    local sound = Instance.new("Sound")
 
     SpeedGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     SpeedGui.Name = "xgoGui"
@@ -731,7 +740,7 @@ function SpeedHubLib:Start(GuiConfig)
     MinimizeButton.Size = UDim2.fromOffset(35, 35)
     MinimizeButton.Position = UDim2.fromScale(0.10, 0.30)
     MinimizeButton.BackgroundTransparency = 1
-    MinimizeButton.Image = "rbxassetid://18923878915"  --按钮头像
+    MinimizeButton.Image = "rbxassetid://87025530384800"  --按钮头像
     MinimizeButton.BackgroundColor3 = GuiConfig["Color"]
     MinimizeButton.AutoButtonColor = false
     MinimizeButton.Draggable = true
@@ -743,7 +752,17 @@ function SpeedHubLib:Start(GuiConfig)
     UICornerMinimize.Parent = MinimizeButton  
     
     MinimizeButton.MouseButton1Click:Connect(SpeedHubLib.ToggleUI)
-
+    sound.SoundId = soundId
+    sound.Volume = 1 
+    game.SoundService:InsertSound(sound)
+    MinimizeButton.Activated:Connect(function()
+    sound:Play()
+    SpeedHubLib:CloseUI()
+    GuiConfig.CloseCallBack()
+end)
+    MinimizeButton.Destroy:Connect(function()
+    game.SoundService:RemoveSound(sound)
+end)
     --// Tab
     local LayersTab = Instance.new("Frame");
     local ScrollTab = Instance.new("ScrollingFrame");
