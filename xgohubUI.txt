@@ -614,9 +614,10 @@ function SpeedHubLib:Start(GuiConfig)
     local DropShadow = Instance.new("ImageLabel");
     local MinimizeButton = Instance.new("ImageButton")
     local UICornerMinimize = Instance.new("UICorner")
-    local soundId = "rbxassetid://3398620867"
-    local sound = Instance.new("Sound")
-
+    local clickSound = Sound.new("rbxassetid://3398620867")
+    
+    clickSound:LoadAsync()
+    
     SpeedGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     SpeedGui.Name = "xgoGui"
     SpeedGui.Parent = CoreGui
@@ -736,16 +737,19 @@ function SpeedHubLib:Start(GuiConfig)
         SpeedHubLib:CloseUI()
         GuiConfig.CloseCallBack()
     end)
-    
+
     MinimizeButton.Size = UDim2.fromOffset(35, 35)
     MinimizeButton.Position = UDim2.fromScale(0.10, 0.30)
     MinimizeButton.BackgroundTransparency = 1
-    MinimizeButton.Image = "rbxassetid://87025530384800"  --按钮头像
+    MinimizeButton.Image = "rbxassetid://87025530384800" -- 按钮头像
     MinimizeButton.BackgroundColor3 = GuiConfig["Color"]
     MinimizeButton.AutoButtonColor = false
     MinimizeButton.Draggable = true
     MinimizeButton.Active = true
     MinimizeButton.Selectable = true
+    MinimizeButton.MouseButton1Click:Connect(function()
+    clickSound:Play()
+end)
     MinimizeButton.Parent = SpeedGui
 
     UICornerMinimize.CornerRadius = UDim.new(0, 5)
