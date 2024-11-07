@@ -614,7 +614,7 @@ function SpeedHubLib:Start(GuiConfig)
     local DropShadow = Instance.new("ImageLabel");
     local MinimizeButton = Instance.new("ImageButton")
     local UICornerMinimize = Instance.new("UICorner")
-    local soundId = "rbxassetid://1234567890"
+    local soundId = "rbxassetid://3398620867"
     local sound = Instance.new("Sound")
 
     SpeedGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
