@@ -815,7 +815,203 @@ xgo:Button({Title = "琦玉",     ["Content"] = "",  Callback = function()    lo
 xgo:Button({Title = "FE变玩家",     ["Content"] = "",  Callback = function()    loadstring(game:HttpGet("https://pastebin.com/raw/XR4sGcgJ"))()  end    })
 xgo:Button({Title = "FE猫娘R63",     ["Content"] = "",  Callback = function()    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tescalus/Pendulum-Hubs-Source/main/Pendulum%20Hub%20V5.lua"))()   end    })
 xgo:Button({Title = "变身**去操人",     ["Content"] = "",  Callback = function()    loadstring(game:HttpGet('https://raw.githubusercontent.com/LemonSquizerr/Universal-FE/refs/heads/main/Leaker%20v2'))()   end    })
-
+local xgo = LeisureTab:Section({Title = "x-ฅ力量传奇ฅ",    Content = "ฅ力量传奇ฅ"})
+xgo:Button({Title ="传送到游戏",["Content"] = "点击传送",  Callback = function() local Players = game:GetService("Players")local TeleportService = game:GetService("TeleportService")local placeId = 3623096087    local player = Players.LocalPlayer     local function teleportPlayer()    TeleportService:Teleport(placeId, player)end     teleportPlayer()end})
+xgo:Button({Title = "小go力量传奇",    ["Content"] = "",  Callback = function()    loadstring(game:HttpGet("https://raw.githubusercontent.com/lIlIlIlIlI24568/114514.IIjjjjiiiallloiia.xxxxg/main/%E5%8A%9B%E9%87%8F%E4%BC%A0%E5%A5%87"))()    end})
+xgo:Button({Title = "剑客:需加群组",	["Content"] = "",  Callback = function()     jianke_V4 = "作者_初夏"jianke__V4 = "作者QQ1412152634"jianke___V4 = "剑客QQ群347724155" loadstring(game:HttpGet(('https://raw.githubusercontent.com/JianKeCX/JianKeV4/main/ChuXia')))()	end})
+xgo:Button({Title = "speeh-hub",    ["Content"] = "",  Callback = function()   loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua"))()    end})
+xgo:Button({Title = "力量传奇修改力量",    Callback = function()    loadstring(game:HttpGet('https://raw.githubusercontent.com/jynzl/main/main/Musclas%20Legenos.lua'))()    end})
+local xgo = LeisureTab:Section({Title = "x-ฅ忍者传奇ฅ",    Content = "ฅ忍者传奇ฅ"})
+xgo:Button({Title ="传送到游戏",["Content"] = "点击传送",  Callback = function() local Players = game:GetService("Players")local TeleportService = game:GetService("TeleportService")local placeId = 3956818381    local player = Players.LocalPlayer     local function teleportPlayer()    TeleportService:Teleport(placeId, player)end     teleportPlayer()end})
+autoswing = false
+function swinging()
+spawn(function()
+while autoswing == true do
+task.wait()
+game:GetService("Players").LocalPlayer.ninjaEvent:FireServer("swingKatana")
+if not autoswing then
+break end end end)end
+autosell = false
+function selling()
+spawn(function()
+while autosell == true do
+task.wait(.01)
+if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") then
+game.workspace.sellAreaCircles["sellAreaCircle7"].circleInner.CFrame =
+game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame wait(.1)
+game.workspace.sellAreaCircles["sellAreaCircle7"].circleInner.CFrame =
+game.Workspace.Part.CFrame
+if not autosell then
+break end end end)end
+autosellmax = false
+function maxsell()
+spawn(function()
+while autosellmax == true do
+task.wait()
+if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") then
+if game.Players.LocalPlayer.PlayerGui.gameGui.maxNinjitsuMenu.Visible == true then
+game.workspace.sellAreaCircles["sellAreaCircle7"].circleInner.CFrame =
+game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame
+task.wait()
+game.workspace.sellAreaCircles["sellAreaCircle7"].circleInner.CFrame =
+game.Workspace.Part.CFrame
+end end if not autosellmax then
+break end end end)end
+autobuyswords = false
+function buyswords()
+spawn(function()
+while autobuyswords == true do
+task.wait()
+if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") then
+local oh1 = "buyAllSwords"
+local oh2 = {
+"Ground",
+"Astral Island",
+"Space Island",
+"Tundra Island",
+"Eternal Island",
+"Sandstorm",
+"Thunderstorm",
+"Ancient Inferno Island",
+"Midnight Shadow Island",
+"Mythical Souls Island",
+"Winter Wonder Island"
+}
+for i = 1, #oh2 do
+game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(oh1, oh2[i])
+end end if not autobuyswords then
+break end end end)end
+autobuybelts = false
+function buybelts()
+spawn(function()
+while autobuybelts == true do
+task.wait()
+if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") then
+local oh1 = "buyAllBelts"
+local oh2 = {
+"Ground",
+"Astral Island",
+"Space Island",
+"Tundra Island",
+"Eternal Island",
+"Sandstorm",
+"Thunderstorm",
+"Ancient Inferno Island",
+"Midnight Shadow Island",
+"Mythical Souls Island",
+"Winter Wonder Island"
+}
+for i = 1, #oh2 do
+game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(oh1, oh2[i])
+end end if not autobuybelts then
+break end end end)end
+autobuyranks = false
+function buyranks()
+spawn(function()
+while autobuyranks == true do
+task.wait()
+if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") then
+local oh1 = "buyRank"
+local oh2 = game:GetService("ReplicatedStorage").Ranks.Ground:GetChildren()
+for i = 1, #oh2 do
+game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(oh1, oh2[i].Name)
+end end if not autobuyranks then
+break end end end)end
+autobuyskill = false
+function buyskill()
+spawn(function()
+while autobuyskill == true do
+task.wait()
+if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") then
+local oh1 = "buyAllSkills"
+local oh2 = {
+"Ground",
+"Astral Island",
+"Space Island",
+"Tundra Island",
+"Eternal Island",
+"Sandstorm",
+"Thunderstorm",
+"Ancient Inferno Island",
+"Midnight Shadow Island",
+"Mythical Souls Island",
+"Winter Wonder Island"
+}
+for i = 1, #oh2 do
+game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(oh1, oh2[i])
+end end if not autobuyskill then
+break end end end)end
+autobuyshurikens = false
+function buyshurikens()
+spawn(function()
+while autobuyshurikens == true do
+ltask.wait()
+if game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart") then
+local oh1 = "buyAllShurikens"
+local oh2 = {
+"Ground",
+"Astral Island",
+"Space Island",
+"Tundra Island",
+"Eternal Island",
+"Sandstorm",
+"Thunderstorm",
+"Ancient Inferno Island",
+"Midnight Shadow Island",
+"Mythical Souls Island",
+"Winter Wonder Island"
+}
+for i = 1, #oh2 do
+game:GetService("Players").LocalPlayer.ninjaEvent:FireServer(oh1, oh2[i])
+end end if not autobuyshurikens then
+break end end end)end
+xgo:Toggle({["Title"]="自动挥舞",["Content"] = "",["Default"] = false,["Callback"] = function (x) autoswing = x  if autoswing then   swinging()end end})
+xgo:Toggle({["Title"]="自动售卖",["Content"] = "",["Default"] = false,["Callback"] = function (x) autosell = x  if autosell then  selling()end end})
+xgo:Toggle({["Title"]="存满了自动售卖",["Content"] = "",["Default"] = false,["Callback"] = function (x) autosellmax = x if autosellmax then     maxsell()end end})
+xgo:Toggle({["Title"]="自动购买剑",["Content"] = "",["Default"] = false,["Callback"] = function (x) autobuyswords = x  if autobuyswords then  buyswords()end end})
+xgo:Toggle({["Title"]="自动购买腰带",["Content"] = "",["Default"] = false,["Callback"] = function (x) autobuybelts = x  if autobuybelts then    buybelts()end end})
+xgo:Toggle({["Title"]="自动购买忍术",["Content"] = "",["Default"] = false,["Callback"] = function (x) autobuyskill = x   if autobuyskill then     buyskill()end end})
+xgo:Toggle({["Title"]="自动购买称号",["Content"] = "",["Default"] = false,["Callback"] = function (x) autobuyranks = x if autobuyranks then    buyranks()end end})
+xgo:Toggle({["Title"]="自动购买",["Content"] = "",["Default"] = false,["Callback"] = function (x) autobuyshurikens = x if autobuyshurikens then   buyshurikens()end end})
+xgo:Button({Title="解锁所有岛",["Content"] = "",["Callback"] = function () for _, v in next, game.workspace.islandUnlockParts:GetChildren() do if v then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.islandSignPart.CFrame wait(.5) end end   end})
+xgo:Button({Title="解锁全元素",["Content"] = "",["Callback"] = function ()loadstring(game:HttpGet("https://pastebin.com/raw/w6Wtxu42"))()end})
+xgo:Dropdown({["Title"] ="传送区域",["Multi"] = false,["Options"] = {"出生点", "附魔岛", "神秘岛", "太空岛", "动图岛", "永恒岛", "沙暴岛", "雷暴岛", "远古炼狱岛","午夜暗影岛", "神秘灵魂岛", "冬季奇迹岛", "黄金大师岛", "龙传奇岛", "赛博传奇岛","天岚超能岛","混沌传奇岛","灵魂融合岛","黑暗元素岛","内心和平岛","传送到炽烈漩涡岛","35倍金币区域","死亡宠物",""},    ["Default"] = {"无"},    ["Place Holder Text"] = "选择选项",    ["Callback"] = function(a)  if a == "出生点" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(25.665502548217773, 3.4228405952453613, 29.919952392578125) elseif a == "附魔岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(51.17238235473633, 766.1807861328125, -138.44842529296875) elseif a == "神秘岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(171.97178649902344, 4047.380859375, 42.0699577331543)  elseif a == "太空岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(148.83824157714844, 5657.18505859375, 73.5014877319336) elseif a == "冻土岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(139.28330993652344, 9285.18359375, 77.36406707763672)   elseif a == "永恒岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(149.34817504882812, 13680.037109375, 73.3861312866211)  elseif a == "沙暴岛"then  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(133.37144470214844, 17686.328125, 72.00334167480469)  elseif a == "雷暴岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(143.19349670410156, 24070.021484375, 78.05432891845703) elseif a == "远古炼狱岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(141.27163696289062, 28256.294921875, 69.3790283203125) elseif a == "午夜暗影岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(132.74267578125, 33206.98046875, 57.495574951171875) elseif a == "神秘灵魂岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(137.76148986816406, 39317.5703125, 61.06639862060547) elseif a == "冬季奇迹岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(137.2720184326172, 46010.5546875, 55.941951751708984) elseif a == "黄金大师岛"then  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(128.32339477539062, 52607.765625, 56.69411849975586) elseif a == "龙传奇岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(146.35226440429688, 59594.6796875, 77.53300476074219) elseif a == "赛博传奇岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(137.3321075439453, 66669.1640625, 72.21722412109375) elseif a == "天岚超能岛"then  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(135.48077392578125, 70271.15625, 57.02311325073242)  elseif a == "混沌传奇岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(148.58590698242188, 74442.8515625, 69.3177719116211) elseif a == "灵魂融合岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(136.9700927734375, 79746.984375, 58.54051971435547)    elseif a == "黑暗元素岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(141.697265625, 83198.984375, 72.73107147216797)    elseif a == "内心和平岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(135.3157501220703, 87051.0625, 66.78429412841797)    elseif a == "炽烈漩涡岛"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(135.08216857910156, 91246.0703125, 69.56692504882812)   elseif a == "35倍金币区域"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(86.2938232421875, 91245.765625, 120.54232788085938)   elseif a == "" then    local CoreGui = game:GetService("StarterGui")                            CoreGui:SetCore("SendNotification", {    Title = "xxxxgo",    Text = "选的空白是干什么？点错了吗？",    Duration = 2, })elseif a == "死亡宠物"then   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4593.21337890625, 130.87181091308594, 1430.2239990234375)  end   end})
+xgo:Button({Title ="剑客:需加群组",["Content"] = "",Callback = function() jianke_V4 = "作者_初夏" jianke__V4 = "作者QQ1412152634" jianke___V4 = "剑客QQ群347724155" loadstring(game:HttpGet(('https://raw.githubusercontent.com/JianKeCX/JianKeV4/main/ChuXia')))()end})
+local xgo = LeisureTab:Section({Title="x-ฅ极速传奇ฅ",Content = "ฅ极速传奇ฅ"})
+xgo:Button({Title ="传送到游戏",["Content"] = "点击传送",Callback = function() local Players = game:GetService("Players")local TeleportService = game:GetService("TeleportService")local placeId = 3101667897    local player = Players.LocalPlayer     local function teleportPlayer()    TeleportService:Teleport(placeId, player)end     teleportPlayer()end})
+xgo:TextInput({["Title"]="腰角高",["Content"] = "可在空中移动 设置高度",["Place Holder Text"] = "数值",["Clear Text On Focus"] = false, ["Callback"] = function(phh)	 game.Players.LocalPlayer.Character.Humanoid.HipHeight = phh	end})
+xgo:Button({Title="开启卡宠",["Content"] = "",["Callback"] = function ()loadstring(game:HttpGet("https://pastebin.com/raw/BYJUBDuz"))()end})
+xgo:Button({Title="反踢出",["Content"] = "小go推荐卡宠使用 降低被踢风险",["Callback"] = function () local vu = game:GetService("VirtualUser") game:GetService("Players").LocalPlayer.Idled:connect(function() vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)wait(1) vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)end)end})
+xgo:Button({Title="低分辨率图形",["Content"] = "",["Callback"] = function ()
+_G.Settings = {
+Players = {
+["Ignore Me"] = true, -- 忽略你的角色
+["Ignore Others"] = true -- 忽略其他角色
+},
+Meshes = {
+Destroy = false,
+LowDetail = true
+},
+Images = {
+Invisible = true,
+LowDetail = false,
+Destroy = false,
+},
+["No Particles"] = true, -- 禁用所有particleemitter，步道，吸烟，火灾和闪闪
+["No Camera Effects"] = true, -- 禁用所有邮递（相机/灯光效果）
+["No Explosions"] = true, -- 让爆炸是看不见的
+["No Clothes"] = true, -- 从游戏中移除衣服
+["Low Water Graphics"] = true, -- 去除水质
+["No Shadows"] = true, -- 删除阴影
+["Low Rendering"] = true, -- 较低的渲染
+["Low Quality Parts"] = true -- 质量较低
+}
+loadstring(game:HttpGet("https://pastebin.com/raw/EzbhQJMi"))()end})
+xgo:Button({Title ="xgo极速",["Content"] = "",["Callback"] = function ()  loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/goto/refs/heads/main/xgo%E6%9E%81%E9%80%9F%E4%BC%A0%E5%A5%87.lua"))()   end})
+xgo:Button({Title ="超级简洁ui",["Content"] = "",["Callback"] = function () loadstring(game:HttpGet("https://raw.githubusercontent.com/TtmScripter/GoodScript/main/LegendOfSpeed(Chinese)"))()    end})
+xgo:Button({Title ="菜单 xgo汉化",["Content"] = "",["Callback"] = function ()    loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/goto/d61185905dfb8e63ec7a51c1053ac0294fa553e2/%E6%9E%81%E9%80%9F%E4%BC%A0%E5%A5%87"))()    end})
+xgo:Button({Title ="有交易系统",["Content"] = "",["Callback"] = function ()  AL = "制作人员 123fa98（AL）"loadstring(game:HttpGet("https://raw.githubusercontent.com/renlua/Roblox/main/%E6%9E%81%E9%80%9F%E4%BC%A0%E5%A5%87.lua"))()   end})
+xgo:Button({Title ="剑客:需要加群组",["Content"] = "",["Callback"] = function ()       jianke_V4 = "作者_初夏"jianke__V4 = "作者QQ1412152634"jianke___V4 = "剑客QQ群347724155"loadstring(game:HttpGet(('https://raw.githubusercontent.com/JianKeCX/JianKeV4/main/ChuXia')))()	end})
 
 
 
