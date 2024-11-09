@@ -195,7 +195,7 @@ Converted["_YARHM"].Name = "xgo内部"
 Converted["_YARHM"].Parent = game:GetService("CoreGui")
 
 Converted["_Open"].Font = Enum.Font.Gotham
-Converted["_Open"].Text = "xgo 通用文件夹隐藏区里边没有什么;）"
+Converted["_Open"].Text = "XGOHUB"
 Converted["_Open"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Open"].TextSize = 14
 Converted["_Open"].AnchorPoint = Vector2.new(0.5, 0.5)
@@ -204,7 +204,7 @@ Converted["_Open"].BackgroundTransparency = 1
 Converted["_Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Open"].BorderSizePixel = 0
 Converted["_Open"].Position = UDim2.new(0.499372631, 0, 0.06341701, 0)
-Converted["_Open"].Size = UDim2.new(0, 493, 0, 50)
+Converted["_Open"].Size = UDim2.new(0, 246.5, 0, 25)
 Converted["_Open"].Name = "Open"
 Converted["_Open"].Parent = Converted["_YARHM"]
 
@@ -223,7 +223,7 @@ Converted["_Menu"].Parent = Converted["_YARHM"]
 Converted["_UICorner1"].Parent = Converted["_Menu"]
 
 Converted["_HubName"].Font = Enum.Font.GothamBold
-Converted["_HubName"].Text = "xgo内部"
+Converted["_HubName"].Text = "(ー`´ー)"
 Converted["_HubName"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_HubName"].TextScaled = true
 Converted["_HubName"].TextSize = 14
@@ -312,7 +312,7 @@ Converted["_UIGradient1"].Rotation = -44
 Converted["_UIGradient1"].Parent = Converted["_UIStroke"]
 
 Converted["_HubCredits"].Font = Enum.Font.GothamBold
-Converted["_HubCredits"].Text = "隐藏文件夹xxxxgo"
+Converted["_HubCredits"].Text = "˃ ˄ ˂̥̥ "
 Converted["_HubCredits"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_HubCredits"].TextScaled = true
 Converted["_HubCredits"].TextSize = 14
@@ -374,7 +374,7 @@ Converted["_TextLabel"].Size = UDim2.new(0, 200, 0, 50)
 Converted["_TextLabel"].Parent = Converted["_Area"]
 
 Converted["_TextLabel1"].Font = Enum.Font.GothamBold
-Converted["_TextLabel1"].Text = "YARHM"
+Converted["_TextLabel1"].Text = "XGOHUB"
 Converted["_TextLabel1"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextLabel1"].TextScaled = true
 Converted["_TextLabel1"].TextSize = 14
@@ -410,7 +410,7 @@ Converted["_UIGradient3"].Rotation = 68
 Converted["_UIGradient3"].Parent = Converted["_Menu"]
 
 Converted["_AddCustomModule"].Font = Enum.Font.Gotham
-Converted["_AddCustomModule"].Text = "Add custom module"
+Converted["_AddCustomModule"].Text = "添加自定义模块"
 Converted["_AddCustomModule"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_AddCustomModule"].TextScaled = true
 Converted["_AddCustomModule"].TextSize = 14
@@ -439,7 +439,7 @@ Converted["_UIStroke2"].Parent = Converted["_AddCustomModule"]
 Converted["_UIScale"].Parent = Converted["_Menu"]
 
 Converted["_ListButton"].Font = Enum.Font.Gotham
-Converted["_ListButton"].Text = "Placeholder"
+Converted["_ListButton"].Text = "占位符"
 Converted["_ListButton"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_ListButton"].TextSize = 14
 Converted["_ListButton"].TextWrapped = true
@@ -536,7 +536,7 @@ Converted["_UIPadding4"].PaddingTop = UDim.new(0, 5)
 Converted["_UIPadding4"].Parent = Converted["_TextButton"]
 
 Converted["_TextBox"].Font = Enum.Font.Gotham
-Converted["_TextBox"].PlaceholderText = "Placeholder"
+Converted["_TextBox"].PlaceholderText = "占位符"
 Converted["_TextBox"].Text = ""
 Converted["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextBox"].TextSize = 14
@@ -549,7 +549,7 @@ Converted["_TextBox"].Parent = Converted["_TextBoxPlaceholder"]
 Converted["_UICorner8"].Parent = Converted["_TextBox"]
 
 Converted["_FloatingButton"].Font = Enum.Font.Unknown
-Converted["_FloatingButton"].Text = "Shoot into murderer"
+Converted["_FloatingButton"].Text = "射成凶手"
 Converted["_FloatingButton"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_FloatingButton"].TextScaled = true
 Converted["_FloatingButton"].TextSize = 14
@@ -593,7 +593,7 @@ Converted["_DroppedGunBGUI"].Name = "DroppedGunBGUI"
 Converted["_DroppedGunBGUI"].Parent = Converted["_YARHM"]
 
 Converted["_TextLabel3"].Font = Enum.Font.SourceSansBold
-Converted["_TextLabel3"].Text = "Dropped Gun!"
+Converted["_TextLabel3"].Text = "扔枪！"
 Converted["_TextLabel3"].TextColor3 = Color3.fromRGB(255, 225.00001698732376, 0)
 Converted["_TextLabel3"].TextScaled = true
 Converted["_TextLabel3"].TextSize = 14
@@ -646,7 +646,7 @@ Converted["_UIGradient5"].Parent = Converted["_AddCustomModule1"]
 Converted["_UIScale1"].Parent = Converted["_AddCustomModule1"]
 
 Converted["_TextLabel4"].Font = Enum.Font.Gotham
-Converted["_TextLabel4"].Text = "Add a custom module"
+Converted["_TextLabel4"].Text = "添加自定义模块"
 Converted["_TextLabel4"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextLabel4"].TextScaled = true
 Converted["_TextLabel4"].TextSize = 14
@@ -662,7 +662,7 @@ Converted["_TextLabel4"].Parent = Converted["_AddCustomModule1"]
 
 Converted["_TextBox1"].ClearTextOnFocus = false
 Converted["_TextBox1"].Font = Enum.Font.Gotham
-Converted["_TextBox1"].PlaceholderText = "Custom module link"
+Converted["_TextBox1"].PlaceholderText = "自定义模块链接"
 Converted["_TextBox1"].Text = ""
 Converted["_TextBox1"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextBox1"].TextScaled = true
@@ -685,7 +685,7 @@ Converted["_UIPadding6"].PaddingTop = UDim.new(0, 10)
 Converted["_UIPadding6"].Parent = Converted["_TextBox1"]
 
 Converted["_TextLabel5"].Font = Enum.Font.Gotham
-Converted["_TextLabel5"].Text = "Only add custom modules you trust!"
+Converted["_TextLabel5"].Text = "只添加您信任的自定义模块!"
 Converted["_TextLabel5"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_TextLabel5"].TextScaled = true
 Converted["_TextLabel5"].TextSize = 14
@@ -700,7 +700,7 @@ Converted["_TextLabel5"].Size = UDim2.new(0.619047642, 0, 0.0550245307, 0)
 Converted["_TextLabel5"].Parent = Converted["_AddCustomModule1"]
 
 Converted["_Add"].Font = Enum.Font.Gotham
-Converted["_Add"].Text = "Add"
+Converted["_Add"].Text = "增加"
 Converted["_Add"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Add"].TextScaled = true
 Converted["_Add"].TextSize = 14
@@ -727,7 +727,7 @@ Converted["_UIStroke5"].Color = Color3.fromRGB(255, 255, 255)
 Converted["_UIStroke5"].Parent = Converted["_Add"]
 
 Converted["_Cancel"].Font = Enum.Font.Gotham
-Converted["_Cancel"].Text = "Cancel"
+Converted["_Cancel"].Text = "取消"
 Converted["_Cancel"].TextColor3 = Color3.fromRGB(255, 0, 0)
 Converted["_Cancel"].TextScaled = true
 Converted["_Cancel"].TextSize = 14
@@ -2051,7 +2051,7 @@ local function LOAOODV_fake_script() -- Fake Script: StarterGui.YARHM.Murder Mys
 			Coins_Magnet = function()
 				coinAutoCollect = not coinAutoCollect
 				if coinAutoCollect then
-					fu.notification("Coins magnet is currently buggy right now. Use at your own risk.")
+					fu.notification("硬币磁铁目前正在车辆上.以自己的风险使用.")
 				end
 			end,
 			Auto_Shoot_murderer = function()
@@ -2078,7 +2078,7 @@ local function LOAOODV_fake_script() -- Fake Script: StarterGui.YARHM.Murder Mys
 								if game.Players.LocalPlayer.Backpack:FindFirstChild("Gun") then
 									game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Gun"))
 								else
-									fu.notification("You don't have the gun..?")
+									fu.notification("你没有枪..?")
 									return
 								end
 							end
