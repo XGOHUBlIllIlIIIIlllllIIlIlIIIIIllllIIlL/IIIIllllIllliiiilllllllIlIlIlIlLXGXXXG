@@ -70,8 +70,8 @@ TextLabel.TextWrapped = true
 -- UI Gradient for TextLabel background
 local TextLabel_Gradient = Instance.new("UIGradient")
 TextLabel_Gradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(1, 1, 1)),  -- 
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(1, 1, 1))   -- 
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 192, 203)),  -- 
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(135, 206, 250))   -- 
 }
 TextLabel_Gradient.Rotation = 45  -- Diagonal gradient effect
 TextLabel_Gradient.Parent = TextLabel
