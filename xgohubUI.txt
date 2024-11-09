@@ -127,7 +127,7 @@ ClickGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ClickGui.Name = "xgoGui"
 ClickGui.Parent = CoreGui
 
-ClickFrame.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+ClickFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ClickFrame.BackgroundTransparency = 0.9990000128746033
 ClickFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 ClickFrame.BorderSizePixel = 0
@@ -142,7 +142,7 @@ function CircleClick(ClickFrame, X, Y)
 		Circle.Image = "rbxassetid://266543268"
 		Circle.ImageColor3 = Color3.fromRGB(1, 1, 1)
 		Circle.ImageTransparency = 0.8
-		Circle.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+		Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Circle.BackgroundTransparency = 1
 		Circle.ZIndex = 10
 		Circle.Name = "Circle"
@@ -256,7 +256,7 @@ function xgoHubLib:Notify(NotifyConfig)
             local NotifyLayout = Instance.new("Frame");
 
             NotifyLayout.AnchorPoint = Vector2.new(1, 1)
-            NotifyLayout.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+            NotifyLayout.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             NotifyLayout.BackgroundTransparency = 0.9990000128746033
             NotifyLayout.BorderColor3 = Color3.fromRGB(0, 0, 0)
             NotifyLayout.BorderSizePixel = 0
@@ -323,7 +323,7 @@ function xgoHubLib:Notify(NotifyConfig)
         DropShadowHolder.Parent = NotifyFrameReal
 
         DropShadow.Image = "rbxassetid://6015897843"
-        DropShadow.ImageColor3 = Color3.fromRGB(255, 192, 203)
+        DropShadow.ImageColor3 = Color3.fromRGB(255, 255, 255)
         DropShadow.ImageTransparency = 0.5
         DropShadow.ScaleType = Enum.ScaleType.Slice
         DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
@@ -338,7 +338,7 @@ function xgoHubLib:Notify(NotifyConfig)
 
         NotifyContent.Font = Enum.Font.GothamBold
         NotifyContent.Text = NotifyConfig.Content
-        NotifyContent.TextColor3 = Color3.fromRGB(255, 192, 203)
+        NotifyContent.TextColor3 = Color3.fromRGB(255, 255, 255)
         NotifyContent.TextSize = 13
         NotifyContent.TextXAlignment = Enum.TextXAlignment.Left
         NotifyContent.TextYAlignment = Enum.TextYAlignment.Top
@@ -375,12 +375,12 @@ function xgoHubLib:Notify(NotifyConfig)
 
         NotifyDescription.Font = Enum.Font.GothamBold
         NotifyDescription.Text = NotifyConfig.Description
-        NotifyDescription.TextColor3 = Color3.fromRGB(255, 192, 203)
+        NotifyDescription.TextColor3 = Color3.fromRGB(255, 255, 255)
         NotifyDescription.TextSize = 14
         NotifyDescription.TextXAlignment = Enum.TextXAlignment.Left
         NotifyDescription.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         NotifyDescription.BackgroundTransparency = 0.9990000128746033
-        NotifyDescription.BorderColor3 = Color3.fromRGB(255, 192, 203)
+        NotifyDescription.BorderColor3 = Color3.fromRGB(255, 255, 255)
         NotifyDescription.BorderSizePixel = 0
         NotifyDescription.Position = UDim2.new(0, 16 + NotifyTitle.TextBounds.X, 0, 10)
         NotifyDescription.Size = UDim2.new(0, 0, 0, 14)
@@ -561,10 +561,10 @@ function xgoHubLib:Start(GuiConfig)
 
     TopDescription.Font = Enum.Font.GothamBold
     TopDescription.Text = GuiConfig.Description
-    TopDescription.TextColor3 = Color3.fromRGB(255, 192, 203)
+    TopDescription.TextColor3 = Color3.fromRGB(255, 255, 255)
     TopDescription.TextSize = 14
     TopDescription.TextXAlignment = Enum.TextXAlignment.Left
-    TopDescription.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+    TopDescription.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     TopDescription.BackgroundTransparency = 0.9990000128746033
     TopDescription.BorderColor3 = Color3.fromRGB(0, 0, 0)
     TopDescription.BorderSizePixel = 0
@@ -606,7 +606,7 @@ function xgoHubLib:Start(GuiConfig)
     DropShadowHolder.Parent = Main
 
     DropShadow.Image = "rbxassetid://6015897843"
-    DropShadow.ImageColor3 = Color3.fromRGB(255, 192, 203)
+    DropShadow.ImageColor3 = Color3.fromRGB(255, 255, 255)
     DropShadow.ImageTransparency = 0.6000000238418579
     DropShadow.ScaleType = Enum.ScaleType.Slice
     DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
@@ -656,7 +656,7 @@ function xgoHubLib:Start(GuiConfig)
     local ScrollTab = Instance.new("ScrollingFrame");
     local UIListLayout = Instance.new("UIListLayout");
 
-    LayersTab.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+    LayersTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     LayersTab.BackgroundTransparency = 0.9990000128746033
     LayersTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
     LayersTab.BorderSizePixel = 0
@@ -693,7 +693,7 @@ function xgoHubLib:Start(GuiConfig)
     local UICorner7 = Instance.new("UICorner");
     local InfoButton = Instance.new("TextButton");
 
-    Info.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+    Info.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Info.BackgroundTransparency = 0.9990000128746033
     Info.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Info.BorderSizePixel = 0
@@ -733,7 +733,7 @@ function xgoHubLib:Start(GuiConfig)
 
     LogoPlayer.Image = GuiConfig["Logo Info"]
     LogoPlayer.AnchorPoint = Vector2.new(0.5, 0.5)
-    LogoPlayer.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+    LogoPlayer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     LogoPlayer.BackgroundTransparency = 0.9990000128746033
     LogoPlayer.BorderColor3 = Color3.fromRGB(0, 0, 0)
     LogoPlayer.BorderSizePixel = 0
@@ -773,7 +773,7 @@ function xgoHubLib:Start(GuiConfig)
     local UICorner33 = Instance.new("UICorner");
     local UIStroke5 = Instance.new("UIStroke");
 
-    AnotherFrame.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+    AnotherFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     AnotherFrame.BackgroundTransparency = 0.5
     AnotherFrame.BorderColor3 = Color3.fromRGB(1, 1, 1)
     AnotherFrame.BorderSizePixel = 0
@@ -790,7 +790,7 @@ function xgoHubLib:Start(GuiConfig)
     AnotherButton.Text = ""
     AnotherButton.TextColor3 = Color3.fromRGB(0, 0, 0)
     AnotherButton.TextSize = 14
-    AnotherButton.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
+    AnotherButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     AnotherButton.BackgroundTransparency = 0.9990000128746033
     AnotherButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     AnotherButton.BorderSizePixel = 0
