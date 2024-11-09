@@ -204,7 +204,7 @@ Converted["_Open"].BackgroundTransparency = 1
 Converted["_Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Open"].BorderSizePixel = 0
 Converted["_Open"].Position = UDim2.new(0.499372631, 0, 0.06341701, 0)
-Converted["_Open"].Size = UDim2.new(0, 5, 0, 2)
+Converted["_Open"].Size = UDim2.new(0, 25, 0, 20)
 Converted["_Open"].Name = "Open"
 Converted["_Open"].Parent = Converted["_YARHM"]
 
