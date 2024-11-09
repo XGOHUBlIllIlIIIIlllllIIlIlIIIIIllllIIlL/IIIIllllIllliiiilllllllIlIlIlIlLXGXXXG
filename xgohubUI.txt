@@ -512,7 +512,7 @@ function xgoHubLib:Start(GuiConfig)
     local CloseImage = Instance.new("ImageLabel");
     local DropShadowHolder = Instance.new("Frame");
     local DropShadow = Instance.new("ImageLabel");
-    local MinimizeButton = Instance.new("ImageButton")
+    local MinimizeButton = Instance.new("ImageButton")    
     local UICornerMinimize = Instance.new("UICorner")
 
     xgoGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -638,14 +638,35 @@ function xgoHubLib:Start(GuiConfig)
     MinimizeButton.Size = UDim2.fromOffset(35, 35)
     MinimizeButton.Position = UDim2.fromScale(0.10, 0.30)
     MinimizeButton.BackgroundTransparency = 1
-    MinimizeButton.Image = "rbxassetid://87025530384800"  --按钮头像
+    MinimizeButton.Image = "rbxassetid://87025530384800" -- 开启状态的图片资源 ID
     MinimizeButton.BackgroundColor3 = GuiConfig["Color"]
     MinimizeButton.AutoButtonColor = false
     MinimizeButton.Draggable = true
     MinimizeButton.Active = true
     MinimizeButton.Selectable = true
-    MinimizeButton.Parent = xgoGui
-
+    MinimizeButton.Parent = xgoGui    
+    
+    MaximizeButton.Size = UDim2.fromOffset(35, 35)
+    MaximizeButton.Position = UDim2.fromScale(0.10, 0.30)
+    MaximizeButton.BackgroundTransparency = 1
+    MaximizeButton.Image = "rbxassetid://87025530384801" -- 关闭状态的图片资源 ID
+    MinimizeButton.BackgroundColor3 = GuiConfig["Color"]
+    MaximizeButton.AutoButtonColor = false
+    MaximizeButton.Draggable = true
+    MaximizeButton.Active = true
+    MaximizeButton.Selectable = true
+    MaximizeButton.Parent = xgoGui
+-- 切换按钮的函数
+    function ToggleMinMax()
+        if MinimizeButton.Visible then
+              MinimizeButton.Visible = false
+              MaximizeButton.Visible = true
+        else
+              MinimizeButton.Visible = true
+              MaximizeButton.Visible = false
+        end
+   end
+    
     UICornerMinimize.CornerRadius = UDim.new(0, 5)
     UICornerMinimize.Parent = MinimizeButton  
     
@@ -733,7 +754,7 @@ function xgoHubLib:Start(GuiConfig)
 
     LogoPlayer.Image = GuiConfig["Logo Info"]
     LogoPlayer.AnchorPoint = Vector2.new(0.5, 0.5)
-    LogoPlayer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    LogoPlayer.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
     LogoPlayer.BackgroundTransparency = 0.9990000128746033
     LogoPlayer.BorderColor3 = Color3.fromRGB(0, 0, 0)
     LogoPlayer.BorderSizePixel = 0
