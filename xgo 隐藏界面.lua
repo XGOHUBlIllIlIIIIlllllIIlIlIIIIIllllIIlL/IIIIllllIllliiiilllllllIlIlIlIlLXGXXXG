@@ -195,7 +195,7 @@ Converted["_YARHM"].Name = "xgo内部"
 Converted["_YARHM"].Parent = game:GetService("CoreGui")
 
 Converted["_Open"].Font = Enum.Font.Gotham
-Converted["_Open"].Text = "<->"
+Converted["_Open"].Text = ""
 Converted["_Open"].TextColor3 = Color3.fromRGB(255, 255, 255)
 Converted["_Open"].TextSize = 14
 Converted["_Open"].AnchorPoint = Vector2.new(0.5, 0.5)
@@ -204,7 +204,7 @@ Converted["_Open"].BackgroundTransparency = 1
 Converted["_Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Open"].BorderSizePixel = 0
 Converted["_Open"].Position = UDim2.new(0.499372631, 0, 0.06341701, 0)
-Converted["_Open"].Size = UDim2.new(0, 200, 0, 20)
+Converted["_Open"].Size = UDim2.new(0, 5, 0, 2)
 Converted["_Open"].Name = "Open"
 Converted["_Open"].Parent = Converted["_YARHM"]
 
