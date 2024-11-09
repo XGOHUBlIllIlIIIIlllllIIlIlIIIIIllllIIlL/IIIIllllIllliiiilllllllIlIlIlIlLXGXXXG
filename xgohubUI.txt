@@ -140,7 +140,7 @@ function CircleClick(ClickFrame, X, Y)
 	spawn(function()
 		local Circle = Instance.new("ImageLabel")
 		Circle.Image = "rbxassetid://266543268"
-		Circle.ImageColor3 = Color3.fromRGB(135, 206, 250)
+		Circle.ImageColor3 = Color3.fromRGB(1, 1, 1)
 		Circle.ImageTransparency = 0.8
 		Circle.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
 		Circle.BackgroundTransparency = 1
@@ -201,7 +201,7 @@ end
 local function EnterMouse(frameenter)
     local old = frameenter.BackgroundColor3
     local oldfunc = {}
-    if old == Color3.fromRGB(135, 206, 250) then
+    if old == Color3.fromRGB(1, 1, 1) then
         local oldtrans = frameenter.BackgroundTransparency
         frameenter.MouseEnter:Connect(function()
             TweenService:Create(
@@ -241,7 +241,7 @@ function xgoHubLib:Notify(NotifyConfig)
     NotifyConfig.Title = NotifyConfig.Title or "xgo Hub"
     NotifyConfig.Description = NotifyConfig.Description or ""
     NotifyConfig.Content = NotifyConfig.Content or ""
-	NotifyConfig["Color"] = NotifyConfig["Color"] or Color3.fromRGB(135, 206, 250)
+	NotifyConfig["Color"] = NotifyConfig["Color"] or Color3.fromRGB(1, 1, 1)
 	NotifyConfig.Time = NotifyConfig.Time or 0.5
 	NotifyConfig.Delay = NotifyConfig.Delay or 5
 	local NotifyFunc = {}
@@ -304,7 +304,7 @@ function xgoHubLib:Notify(NotifyConfig)
         NotifyFrame.Name = "NotifyFrame"
         NotifyFrame.Parent = CoreGui.NotifyGui.NotifyLayout
 
-        NotifyFrameReal.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+        NotifyFrameReal.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         NotifyFrameReal.BorderColor3 = Color3.fromRGB(0, 0, 0)
         NotifyFrameReal.BorderSizePixel = 0
         NotifyFrameReal.Position = UDim2.new(0, 330, 0, 0)
@@ -342,7 +342,7 @@ function xgoHubLib:Notify(NotifyConfig)
         NotifyContent.TextSize = 13
         NotifyContent.TextXAlignment = Enum.TextXAlignment.Left
         NotifyContent.TextYAlignment = Enum.TextYAlignment.Top
-        NotifyContent.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+        NotifyContent.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         NotifyContent.BackgroundTransparency = 0.9990000128746033
         NotifyContent.BorderColor3 = Color3.fromRGB(0, 0, 0)
         NotifyContent.BorderSizePixel = 0
@@ -351,7 +351,7 @@ function xgoHubLib:Notify(NotifyConfig)
         NotifyContent.Name = "NotifyContent"
         NotifyContent.Parent = NotifyFrameReal
 
-        Top.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+        Top.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         Top.BackgroundTransparency = 0.9990000128746033
         Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Top.BorderSizePixel = 0
@@ -364,7 +364,7 @@ function xgoHubLib:Notify(NotifyConfig)
         NotifyTitle.TextColor3 = NotifyConfig.Color
         NotifyTitle.TextSize = 14
         NotifyTitle.TextXAlignment = Enum.TextXAlignment.Left
-        NotifyTitle.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+        NotifyTitle.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         NotifyTitle.BackgroundTransparency = 0.9990000128746033
         NotifyTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
         NotifyTitle.BorderSizePixel = 0
@@ -378,7 +378,7 @@ function xgoHubLib:Notify(NotifyConfig)
         NotifyDescription.TextColor3 = Color3.fromRGB(255, 192, 203)
         NotifyDescription.TextSize = 14
         NotifyDescription.TextXAlignment = Enum.TextXAlignment.Left
-        NotifyDescription.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+        NotifyDescription.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         NotifyDescription.BackgroundTransparency = 0.9990000128746033
         NotifyDescription.BorderColor3 = Color3.fromRGB(255, 192, 203)
         NotifyDescription.BorderSizePixel = 0
@@ -392,7 +392,7 @@ function xgoHubLib:Notify(NotifyConfig)
         NotifyClose.TextColor3 = Color3.fromRGB(0, 0, 0)
         NotifyClose.TextSize = 14
         NotifyClose.AnchorPoint = Vector2.new(1, 0)
-        NotifyClose.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+        NotifyClose.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         NotifyClose.BackgroundTransparency = 0.9990000128746033
         NotifyClose.BorderColor3 = Color3.fromRGB(0, 0, 0)
         NotifyClose.BorderSizePixel = 0
@@ -403,7 +403,7 @@ function xgoHubLib:Notify(NotifyConfig)
 
         NotifyCloseImage.Image = "rbxassetid://18328658828"
         NotifyCloseImage.AnchorPoint = Vector2.new(0.5, 0.5)
-        NotifyCloseImage.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+        NotifyCloseImage.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
         NotifyCloseImage.BackgroundTransparency = 0.9990000128746033
         NotifyCloseImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
         NotifyCloseImage.BorderSizePixel = 0
@@ -525,7 +525,7 @@ function xgoHubLib:Start(GuiConfig)
     end
     
     Main.AnchorPoint = Vector2.new(0, 0)
-    Main.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    Main.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     Main.BackgroundTransparency = 0
     Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Main.BorderSizePixel = 0
@@ -537,7 +537,7 @@ function xgoHubLib:Start(GuiConfig)
     UICorner.CornerRadius = UDim.new(0, 5)
     UICorner.Parent = Main
 
-    Top.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    Top.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     Top.BackgroundTransparency = 0.9990000128746033
     Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Top.BorderSizePixel = 0
@@ -550,7 +550,7 @@ function xgoHubLib:Start(GuiConfig)
     TopTitle.TextColor3 = GuiConfig.Color
     TopTitle.TextSize = 14
     TopTitle.TextXAlignment = Enum.TextXAlignment.Left
-    TopTitle.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    TopTitle.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     TopTitle.BackgroundTransparency = 0.9990000128746033
     TopTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
     TopTitle.BorderSizePixel = 0
@@ -578,7 +578,7 @@ function xgoHubLib:Start(GuiConfig)
     CloseButton.TextColor3 = Color3.fromRGB(0, 0, 0)
     CloseButton.TextSize = 14
     CloseButton.AnchorPoint = Vector2.new(1, 0)
-    CloseButton.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    CloseButton.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     CloseButton.BackgroundTransparency = 0.9990000128746033
     CloseButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     CloseButton.BorderSizePixel = 0
@@ -589,7 +589,7 @@ function xgoHubLib:Start(GuiConfig)
 
     CloseImage.Image = "rbxassetid://18328658828"
     CloseImage.AnchorPoint = Vector2.new(0.5, 0.5)
-    CloseImage.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    CloseImage.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     CloseImage.BackgroundTransparency = 0.9990000128746033
     CloseImage.BorderColor3 = Color3.fromRGB(0, 0, 0)
     CloseImage.BorderSizePixel = 0
@@ -669,7 +669,7 @@ function xgoHubLib:Start(GuiConfig)
     ScrollTab.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
     ScrollTab.ScrollBarThickness = 0
     ScrollTab.Active = true
-    ScrollTab.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    ScrollTab.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     ScrollTab.BackgroundTransparency = 0.9990000128746033
     ScrollTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
     ScrollTab.BorderSizePixel = 0
@@ -712,7 +712,7 @@ function xgoHubLib:Start(GuiConfig)
     NamePlayer.TextSize = 12
     NamePlayer.TextWrapped = true
     NamePlayer.TextXAlignment = Enum.TextXAlignment.Left
-    NamePlayer.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    NamePlayer.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     NamePlayer.BackgroundTransparency = 0.9990000128746033
     NamePlayer.BorderColor3 = Color3.fromRGB(0, 0, 0)
     NamePlayer.BorderSizePixel = 0
@@ -722,7 +722,7 @@ function xgoHubLib:Start(GuiConfig)
     NamePlayer.Parent = Info
 
     LogoFrame.AnchorPoint = Vector2.new(0, 0.5)
-    LogoFrame.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    LogoFrame.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     LogoFrame.BackgroundTransparency = 0.9990000128746033
     LogoFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
     LogoFrame.BorderSizePixel = 0
@@ -752,7 +752,7 @@ function xgoHubLib:Start(GuiConfig)
     InfoButton.Text = ""
     InfoButton.TextColor3 = Color3.fromRGB(0, 0, 0)
     InfoButton.TextSize = 14
-    InfoButton.BackgroundColor3 = Color3.fromRGB(135, 206, 250)
+    InfoButton.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
     InfoButton.BackgroundTransparency = 0.9990000128746033
     InfoButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
     InfoButton.BorderSizePixel = 0
@@ -775,7 +775,7 @@ function xgoHubLib:Start(GuiConfig)
 
     AnotherFrame.BackgroundColor3 = Color3.fromRGB(255, 192, 203)
     AnotherFrame.BackgroundTransparency = 0.5
-    AnotherFrame.BorderColor3 = Color3.fromRGB(135, 206, 250)
+    AnotherFrame.BorderColor3 = Color3.fromRGB(1, 1, 1)
     AnotherFrame.BorderSizePixel = 0
     AnotherFrame.Size = UDim2.new(1, 0, 1, 0)
     AnotherFrame.Visible = false
