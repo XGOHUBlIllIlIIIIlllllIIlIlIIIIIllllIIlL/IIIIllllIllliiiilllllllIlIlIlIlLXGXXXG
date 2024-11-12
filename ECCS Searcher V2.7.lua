@@ -649,7 +649,7 @@ BackFromDescButton.Size = UDim2.new(0, 70, 0, 20)
 BackFromDescButton.Position = UDim2.new(0, 2, 0, 2)
 BackFromDescButton.Font = Enum.Font.ArimoBold
 BackFromDescButton.AutoButtonColor = false
-BackFromDescButton.Text = "背部"
+BackFromDescButton.Text = "评价"
 BackFromDescButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 BackFromDescButton.TextSize = 15
  
@@ -961,9 +961,9 @@ DevDesc.TextXAlignment = Enum.TextXAlignment.Right
 DevDesc.TextYAlignment = Enum.TextYAlignment.Center
 
 if DevDesc.Text == "07 10" then
-DevDesc.Text = "🎂XGOHUB🎂               <font color=\"#9C9C9C\">\ngoto_O                    </font>"
+DevDesc.Text = "🎂XGOHUB [GTAFAW]🎂      <font color=\"#9C9C9C\">\ngoto_O                    </font>"
 else
-DevDesc.Text = "XGOHUB                  <font color=\"#9C9C9C\">\ngoto_O                    </font>"
+DevDesc.Text = "XGOHUB [GTAFAW]          <font color=\"#9C9C9C\">\ngoto_O                    </font>"
 end
 
 DevIcon.Name = "DevIcon"
@@ -1239,7 +1239,7 @@ AntiAfkButton.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 AntiAfkButton.Size = UDim2.new(0, 130, 0, 30)
 AntiAfkButton.AutoButtonColor = false
 AntiAfkButton.Font = Enum.Font.ArimoBold
-AntiAfkButton.Text = " 反 Afk"
+AntiAfkButton.Text = " 反Afk"
 AntiAfkButton.TextColor3 = Color3.fromRGB(255, 0, 0)
 AntiAfkButton.TextSize = 20
 AntiAfkButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -1514,7 +1514,7 @@ ExecuteTextBoxButton.MouseButton1Click:Connect(function()
 writefile("ECCS_Searcher_V2.7/Executor.ECCS", ExecutorTextBox.Text)
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = " 脚本执行!"
+Hint.Text = " 正在执行!"
 loadstring(ExecutorTextBox.Text)()
 end)
  
@@ -1522,7 +1522,7 @@ PasteScriptButton.MouseButton1Click:Connect(function()
 ExecutorTextBox.Text = getclipboard()
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = " 粘贴的脚本!"
+Hint.Text = " 粘贴完成!"
 end)
  
 OpenPaintButton.Name = "OpenPaintButton"
@@ -1959,7 +1959,7 @@ OpenInExecutorButton.Position = UDim2.new(0.265, 0, 0.7, 0)
 OpenInExecutorButton.Size = UDim2.new(0, 85, 0, 25)
 OpenInExecutorButton.AutoButtonColor = false
 OpenInExecutorButton.Font = Enum.Font.ArimoBold
-OpenInExecutorButton.Text = " 复制到执行器中"
+OpenInExecutorButton.Text = " 放入执行器"
 OpenInExecutorButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 OpenInExecutorButton.TextSize = 17
 OpenInExecutorButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -2024,7 +2024,7 @@ OpenInExecutorButton_2.Position = UDim2.new(0.265, 0, 0.7, 0)
 OpenInExecutorButton_2.Size = UDim2.new(0, 85, 0, 25)
 OpenInExecutorButton_2.AutoButtonColor = false
 OpenInExecutorButton_2.Font = Enum.Font.ArimoBold
-OpenInExecutorButton_2.Text = " 复制到执行器中"
+OpenInExecutorButton_2.Text = " 放入执行器"
 OpenInExecutorButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 OpenInExecutorButton_2.TextSize = 17
 OpenInExecutorButton_2.TextXAlignment = Enum.TextXAlignment.Left
@@ -2311,7 +2311,7 @@ BackButtonInfoBox.Size = UDim2.new(0, 70, 0, 20)
 BackButtonInfoBox.Position = UDim2.new(0, 2, 0, 2)
 BackButtonInfoBox.Font = Enum.Font.ArimoBold
 BackButtonInfoBox.AutoButtonColor = false
-BackButtonInfoBox.Text = "背部"
+BackButtonInfoBox.Text = "功能"
 BackButtonInfoBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 BackButtonInfoBox.TextSize = 15
  
@@ -3050,7 +3050,7 @@ CustomThemeName.AnchorPoint = Vector2.new(0.5, 0.5)
 CustomThemeName.Size = UDim2.new(0, 250, 0, 35)
 CustomThemeName.ClearTextOnFocus = false
 CustomThemeName.Font = Enum.Font.ArimoBold
-CustomThemeName.PlaceholderText = "主题名称"
+CustomThemeName.PlaceholderText = "主题名称.."
 CustomThemeName.Text = ""
 CustomThemeName.TextColor3 = Color3.fromRGB(255, 255, 255)
 CustomThemeName.TextScaled = true
@@ -3068,7 +3068,7 @@ CustomThemeName.PlaceholderText = ""
 end)
  
 CustomThemeName.FocusLost:connect(function()
-CustomThemeName.PlaceholderText = "主题名称"
+CustomThemeName.PlaceholderText = "主题名称.."
 end)
 
 SetCustomTheme.Name = "SetCustomTheme"
@@ -4689,7 +4689,7 @@ Hint.Text = " "..v.title.."\n 执行!"
             newScript.OpenInExecutorButton.MouseButton1Click:Connect(function()
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = " "..v.title.." 已复制到执行器中!"
+Hint.Text = " "..v.title.." 已放入到执行器中!"
    ExecutorTextBox.Text = ""..v.script
 HeadFrame:TweenPosition(UDim2.new(0.5, 0, 1.32, 0),"InOut","Sine",0.3)
 writefile("ECCS_Searcher_V2.7/Executor.ECCS", ExecutorTextBox.Text)
