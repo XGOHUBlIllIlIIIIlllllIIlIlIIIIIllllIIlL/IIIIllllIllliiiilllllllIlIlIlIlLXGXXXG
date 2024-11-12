@@ -1638,7 +1638,7 @@ function SpeedHubLib:Start(GuiConfig)
                 UICorner15.Parent = ClickFrame
 
                 ClickText.Font = Enum.Font.GothamBold
-                ClickText.Text = "∘☃ᩚ执行⁺⁵²⁰"
+                ClickText.Text = "⚚执行⁺⁵²⁰"
                 ClickText.TextColor3 = Color3.fromRGB(230.00000149011612, 230.00000149011612, 230.00000149011612)
                 ClickText.TextSize = 12
                 ClickText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
