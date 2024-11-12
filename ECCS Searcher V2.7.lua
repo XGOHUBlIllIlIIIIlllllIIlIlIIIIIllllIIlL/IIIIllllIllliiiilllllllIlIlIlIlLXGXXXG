@@ -961,9 +961,9 @@ DevDesc.TextXAlignment = Enum.TextXAlignment.Right
 DevDesc.TextYAlignment = Enum.TextYAlignment.Center
 
 if DevDesc.Text == "07 10" then
-DevDesc.Text = "🎂ERROR_CODE🎂               <font color=\"#9C9C9C\">\nH.Developer                    </font>"
+DevDesc.Text = "🎂XGOHUB🎂               <font color=\"#9C9C9C\">\ngoto_O                    </font>"
 else
-DevDesc.Text = "ERROR_CODE                  <font color=\"#9C9C9C\">\nH.Developer                    </font>"
+DevDesc.Text = "XGOHUB                  <font color=\"#9C9C9C\">\ngoto_O                    </font>"
 end
 
 DevIcon.Name = "DevIcon"
@@ -972,7 +972,7 @@ DevIcon.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 DevIcon.AnchorPoint = Vector2.new(0.5, 0.5)
 DevIcon.Position = UDim2.new(0.1, 0, 0.5, 0)
 DevIcon.Size = UDim2.new(0, 40, 0, 40)
-DevIcon.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=3323558881&width=999&height=999&format=png"
+DevIcon.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=5675129870&width=999&height=999&format=png"
 DevIcon.AutoButtonColor = false 
 
 DevIconUI.Parent = DevIcon
@@ -1161,7 +1161,7 @@ PushFlingButton.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 PushFlingButton.Size = UDim2.new(0, 130, 0, 30)
 PushFlingButton.AutoButtonColor = false
 PushFlingButton.Font = Enum.Font.ArimoBold
-PushFlingButton.Text = " P-Fling"
+PushFlingButton.Text = " 甩飞工具"
 PushFlingButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 PushFlingButton.TextSize = 20
 PushFlingButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -1265,7 +1265,7 @@ TouchFlingButton.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 TouchFlingButton.Size = UDim2.new(0, 130, 0, 30)
 TouchFlingButton.AutoButtonColor = false
 TouchFlingButton.Font = Enum.Font.ArimoBold
-TouchFlingButton.Text = " T-Fling"
+TouchFlingButton.Text = " 触摸甩飞"
 TouchFlingButton.TextColor3 = Color3.fromRGB(255, 0, 0)
 TouchFlingButton.TextSize = 20
 TouchFlingButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -1291,7 +1291,7 @@ AntiFlingButton.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 AntiFlingButton.Size = UDim2.new(0, 130, 0, 30)
 AntiFlingButton.AutoButtonColor = false
 AntiFlingButton.Font = Enum.Font.ArimoBold
-AntiFlingButton.Text = " 反 Fling"
+AntiFlingButton.Text = " 反甩飞"
 AntiFlingButton.TextColor3 = Color3.fromRGB(255, 0, 0)
 AntiFlingButton.TextSize = 20
 AntiFlingButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -1315,7 +1315,7 @@ ScriptsText.BackgroundTransparency = 1
 ScriptsText.Position = UDim2.new(0.5, 0, 0.95, 0)
 ScriptsText.Size = UDim2.new(0, 50, 0, 10)
 ScriptsText.Font = Enum.Font.ArimoBold
-ScriptsText.Text = "快速脚本"
+ScriptsText.Text = "通用脚本"
 ScriptsText.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScriptsText.TextSize = 15
 ScriptsText.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1374,7 +1374,7 @@ ExecutorTextBox.Font = Enum.Font.Code
 ExecutorTextBox.ClearTextOnFocus = false
 ExecutorTextBox.FontSize = Enum.FontSize.Size18
 ExecutorTextBox.Text = ""
-ExecutorTextBox.PlaceholderText = " print(\"ECCS•Searcher V2.7\")"
+ExecutorTextBox.PlaceholderText = " print(\"你好 世界[XGO]\")"
 ExecutorTextBox.TextColor3 = Color3.new(0, 255, 0)
 ExecutorTextBox.TextTransparency = 0
 ExecutorTextBox.MultiLine = true
@@ -1959,7 +1959,7 @@ OpenInExecutorButton.Position = UDim2.new(0.265, 0, 0.7, 0)
 OpenInExecutorButton.Size = UDim2.new(0, 85, 0, 25)
 OpenInExecutorButton.AutoButtonColor = false
 OpenInExecutorButton.Font = Enum.Font.ArimoBold
-OpenInExecutorButton.Text = " OIE"
+OpenInExecutorButton.Text = " 复制到执行器中"
 OpenInExecutorButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 OpenInExecutorButton.TextSize = 17
 OpenInExecutorButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -2024,7 +2024,7 @@ OpenInExecutorButton_2.Position = UDim2.new(0.265, 0, 0.7, 0)
 OpenInExecutorButton_2.Size = UDim2.new(0, 85, 0, 25)
 OpenInExecutorButton_2.AutoButtonColor = false
 OpenInExecutorButton_2.Font = Enum.Font.ArimoBold
-OpenInExecutorButton_2.Text = " OIE"
+OpenInExecutorButton_2.Text = " 复制到执行器中"
 OpenInExecutorButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 OpenInExecutorButton_2.TextSize = 17
 OpenInExecutorButton_2.TextXAlignment = Enum.TextXAlignment.Left
@@ -2157,7 +2157,7 @@ CopyScriptsButton.Position = UDim2.new(0.025, 0, 0.7, 0)
 CopyScriptsButton.Size = UDim2.new(0, 85, 0, 25)
 CopyScriptsButton.AutoButtonColor = false
 CopyScriptsButton.Font = Enum.Font.ArimoBold
-CopyScriptsButton.Text = " Raw"
+CopyScriptsButton.Text = " 复制"
 CopyScriptsButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 CopyScriptsButton.TextSize = 17
 CopyScriptsButton.TextXAlignment = Enum.TextXAlignment.Left
@@ -2182,7 +2182,7 @@ CopyScriptsButton_2.Position = UDim2.new(0.025, 0, 0.7, 0)
 CopyScriptsButton_2.Size = UDim2.new(0, 85, 0, 25)
 CopyScriptsButton_2.AutoButtonColor = false
 CopyScriptsButton_2.Font = Enum.Font.ArimoBold
-CopyScriptsButton_2.Text = " Raw"
+CopyScriptsButton_2.Text = " 复制"
 CopyScriptsButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
 CopyScriptsButton_2.TextSize = 17
 CopyScriptsButton_2.TextXAlignment = Enum.TextXAlignment.Left
@@ -2533,9 +2533,9 @@ CreateNewThemeImg.Image = "rbxassetid://109300103143672"
 AquaTheme.Parent = ThemeBackground
 AquaTheme.BackgroundTransparency = 1
 AquaTheme.AutoButtonColor = false
-AquaTheme.Text = "水"
+AquaTheme.Text = "青绿色"
 AquaTheme.Font = Enum.Font.ArimoBold
-AquaTheme.TextColor3 = Color3.fromRGB(255, 255, 255)
+AquaTheme.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 AquaTheme.TextSize = 10
 AquaTheme.TextXAlignment = Enum.TextXAlignment.Center
 AquaTheme.TextYAlignment = Enum.TextYAlignment.Bottom
@@ -2595,9 +2595,9 @@ end)
 RustTheme.Parent = ThemeBackground
 RustTheme.BackgroundTransparency = 1
 RustTheme.AutoButtonColor = false
-RustTheme.Text = "生锈"
+RustTheme.Text = "橙色"
 RustTheme.Font = Enum.Font.ArimoBold
-RustTheme.TextColor3 = Color3.fromRGB(255, 255, 255)
+RustTheme.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 RustTheme.TextSize = 10
 RustTheme.TextXAlignment = Enum.TextXAlignment.Center
 RustTheme.TextYAlignment = Enum.TextYAlignment.Bottom
@@ -2657,9 +2657,9 @@ end)
 DarkTheme.Parent = ThemeBackground
 DarkTheme.BackgroundTransparency = 1
 DarkTheme.AutoButtonColor = false
-DarkTheme.Text = "黑暗"
+DarkTheme.Text = "浅蓝色"
 DarkTheme.Font = Enum.Font.ArimoBold
-DarkTheme.TextColor3 = Color3.fromRGB(255, 255, 255)
+DarkTheme.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 DarkTheme.TextSize = 10
 DarkTheme.TextXAlignment = Enum.TextXAlignment.Center
 DarkTheme.TextYAlignment = Enum.TextYAlignment.Bottom
@@ -2719,9 +2719,9 @@ end)
 SerikaTheme.Parent = ThemeBackground
 SerikaTheme.BackgroundTransparency = 1
 SerikaTheme.AutoButtonColor = false
-SerikaTheme.Text = "Serika"
+SerikaTheme.Text = "黄色"
 SerikaTheme.Font = Enum.Font.ArimoBold
-SerikaTheme.TextColor3 = Color3.fromRGB(255, 255, 255)
+SerikaTheme.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 SerikaTheme.TextSize = 10
 SerikaTheme.TextXAlignment = Enum.TextXAlignment.Center
 SerikaTheme.TextYAlignment = Enum.TextYAlignment.Bottom
@@ -2832,9 +2832,9 @@ DeletePlugins.Size = UDim2.new(0, 110, 0, 30)
 DeletePlugins.Position = UDim2.new(0.24, 0, 1.8, 0)
 DeletePlugins.AnchorPoint = Vector2.new(0.5, 0.5)
 DeletePlugins.AutoButtonColor = false
-DeletePlugins.Text = " Del插件"
+DeletePlugins.Text = " 删除插件"
 DeletePlugins.Font = Enum.Font.ArimoBold
-DeletePlugins.TextColor3 = Color3.fromRGB(255, 255, 255)
+DeletePlugins.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 DeletePlugins.TextSize = 15
 DeletePlugins.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 DeletePlugins.TextXAlignment = Enum.TextXAlignment.Left
@@ -2856,9 +2856,9 @@ DeleteFavorites.Size = UDim2.new(0, 110, 0, 30)
 DeleteFavorites.Position = UDim2.new(0.762, 0, 1.8, 0)
 DeleteFavorites.AnchorPoint = Vector2.new(0.5, 0.5)
 DeleteFavorites.AutoButtonColor = false
-DeleteFavorites.Text = "  Del最爱"
+DeleteFavorites.Text = "  删除收藏夹"
 DeleteFavorites.Font = Enum.Font.ArimoBold
-DeleteFavorites.TextColor3 = Color3.fromRGB(255, 255, 255)
+DeleteFavorites.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 DeleteFavorites.TextSize = 15
 DeleteFavorites.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 DeleteFavorites.TextXAlignment = Enum.TextXAlignment.Left
@@ -2880,9 +2880,9 @@ DeleteHistory.Size = UDim2.new(0, 110, 0, 30)
 DeleteHistory.Position = UDim2.new(0.24, 0, 2.5, 0)
 DeleteHistory.AnchorPoint = Vector2.new(0.5, 0.5)
 DeleteHistory.AutoButtonColor = false
-DeleteHistory.Text = " Del历史"
+DeleteHistory.Text = " 清除历史"
 DeleteHistory.Font = Enum.Font.ArimoBold
-DeleteHistory.TextColor3 = Color3.fromRGB(255, 255, 255)
+DeleteHistory.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 DeleteHistory.TextSize = 15
 DeleteHistory.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 DeleteHistory.TextXAlignment = Enum.TextXAlignment.Left
@@ -2904,9 +2904,9 @@ DeleteThemes.Size = UDim2.new(0, 110, 0, 30)
 DeleteThemes.Position = UDim2.new(0.762, 0, 2.5, 0)
 DeleteThemes.AnchorPoint = Vector2.new(0.5, 0.5)
 DeleteThemes.AutoButtonColor = false
-DeleteThemes.Text = " Del主题"
+DeleteThemes.Text = " 恢复默认主题"
 DeleteThemes.Font = Enum.Font.ArimoBold
-DeleteThemes.TextColor3 = Color3.fromRGB(255, 255, 255)
+DeleteThemes.TextColor3 = Color3.fromRGB(255, 255, 255)--字体颜色
 DeleteThemes.TextSize = 15
 DeleteThemes.BackgroundColor3 = Color3.fromRGB(66, 170, 255)
 DeleteThemes.TextXAlignment = Enum.TextXAlignment.Left
@@ -3846,7 +3846,7 @@ DeletePlugins.MouseButton1Click:Connect(function()
 writefile("ECCS_Searcher_V2.7/Plugins/Plugin.ECCS", "")
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = " 要完成删除,您需要重新加入!"
+Hint.Text = " 插件已删除,重新进入游戏生效!"
 end)
 
 DeleteFavorites.MouseButton1Click:Connect(function()
@@ -3896,7 +3896,7 @@ Eraser.ImageColor3 = Color3.fromRGB(51, 153, 137)
 Pencil.ImageColor3 = Color3.fromRGB(51, 153, 137)
 HintWait.Size = UDim2.new(0, 0, 0, 60)
 HintWait:TweenSize(UDim2.new(0, 250, 0, 60),"Out","Linear",3)
-Hint.Text = "  主题已删除!"
+Hint.Text = "  主题已恢复!"
 end)
 
 CloseUIButton.TextColor3 = Color3.fromRGB(TextBoxThemeValue_1.Text, TextBoxThemeValue_2.Text, TextBoxThemeValue_3.Text)
