@@ -208,7 +208,7 @@ local types = {"Rarity","Class","Mold"}
 _G.Best = {}
 for i = 1, #types do
     local Section = xgo:Section({   Name = types[i]  })
-    local a = Section:xgo:Paragraph("最好的剑: "..types[i]," Rarity: \nClass: \nMold: ")
+    local a = Section:xgo:Section("最好的剑: "..types[i]," Rarity: \nClass: \nMold: ")
     Section:AddButton({
         Name = "最好 "..types[i].." 来自礼物",
         Callback = function()
