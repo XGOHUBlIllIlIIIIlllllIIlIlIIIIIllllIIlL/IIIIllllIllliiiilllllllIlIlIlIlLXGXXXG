@@ -1,0 +1,524 @@
+--lua语言编写/xgo全源码
+repeat wait() until game:IsLoaded()
+local resume = coroutine.resume           local create = coroutine.create
+getgenv().autoCollectEnabled = true
+getgenv().autoSellEnabled = true
+getgenv().autoBuyEnabled = true
+getgenv().infiniteJumpEnabled = true
+getgenv().clickTpEnabled = true
+getgenv().autoObbyEnabled = true
+local function destroyIfExists(obj)    if obj then        obj:Destroy()    end    end
+function teleportLocalPlayer(input)    local Player = game.Players.LocalPlayer    local Mouse = Player:GetMouse()    local UIS = game:GetService("UserInputService")    if clickTpEnabled and input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then       local Char = Player.Character       if Char then          Char:MoveTo(Mouse.Hit.p)       end    end end
+function walkSpeed(speed)    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed      end
+function teleportTo(player)        local localPlayer = game.Players.LocalPlayer    localPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame      wait()        end
+function infiniteJump()    task.spawn(function()        local character = game.Players.LocalPlayer.Character        local humanoid = character:FindFirstChild("Humanoid")        while true do            if not infiniteJumpEnabled then break end            if humanoid.Jump and humanoid.FloorMaterial == Enum.Material.Air then                humanoid.JumpPower = 50                humanoid:ChangeState("Jumping")            end            wait()        end    end)end
+function getTycoonIndex()    for tycoonIndex = 1, 8 do        if tostring(game:GetService("Workspace").Tycoons[tycoonIndex].TycoonInfo.Owner.Value) == game.Players.LocalPlayer.Name then            return tycoonIndex        end    end    end
+function autoCollect()    spawn(function()         local tycoonIndex = getTycoonIndex()        if not tycoonIndex then return end        while wait() do           if not autoCollectEnabled then break end            for i, item in pairs(game:GetService("Workspace").Tycoons[tycoonIndex].ItemDebris:GetChildren()) do                local args = {[1] = item}                game:GetService("ReplicatedStorage").RF.CollectItem:InvokeServer(unpack(args))            end        end    end)end
+function autoBuy()    spawn(function()        while wait(0.5) do            if not autoBuyEnabled then break end            local tycoonIndex = getTycoonIndex()            if not tycoonIndex then return end            local character = game.Players.LocalPlayer.Character            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")            local dropperButtons = game:GetService("Workspace").Tycoons[tycoonIndex].DropperButtons            local children = dropperButtons:GetChildren()            for i = #children, 1, -1 do                local dropperButton = children[i]                firetouchinterest(humanoidRootPart, dropperButton.Main, 0)                firetouchinterest(humanoidRootPart, dropperButton.Main, 1)            end            local speedUpgrades = game:GetService("Workspace").Tycoons[tycoonIndex].SpeedUpgrades            local children = speedUpgrades:GetChildren()            for i = #children, 1, -1 do                local dropperButton = children[i]                firetouchinterest(humanoidRootPart, dropperButton.Main, 0)                firetouchinterest(humanoidRootPart, dropperButton.Main, 1)           end        end    end)end
+function autoSell()    spawn(function()        game:GetService("ReplicatedStorage").RF.EssentialFunction:InvokeServer("SettingsChange", {"Sound Effects"})        local character = game.Players.LocalPlayer.Character       local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")        while wait(0.5) do           if not autoSellEnabled then break end            local tycoonIndex = getTycoonIndex()            for i,v in pairs(game:GetService("Workspace").Tycoons[tycoonIndex].SellPad:GetChildren()) do                firetouchinterest(humanoidRootPart,  v, 0)                firetouchinterest(humanoidRootPart,  v, 1)            end        end    end)end
+function autoObby()    spawn(function()       while wait(0.5) do            if not autoObbyEnabled then break end            local character = game.Players.LocalPlayer.Character            local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")            local obbyRewardButtons = game:GetService("Workspace").ObbyRewardButtons            for i, rewardButton in pairs(obbyRewardButtons:GetChildren()) do                firetouchinterest(humanoidRootPart, rewardButton, 0)                firetouchinterest(humanoidRootPart, rewardButton, 1)            end        end    end)end
+local sound = Instance.new("Sound")sound.SoundId = "rbxassetid://9042063815"  sound.Volume = 0.5  sound.Pitch = 1  sound.Parent = game.Workspace  sound:Play()
+if not LPH_OBFUSCATED then 
+    LPH_NO_VIRTUALIZE = function(...) return (...) end;
+    LPH_JIT_MAX = function(...) return (...) end;
+end
+function getStudLength(target)
+    if game.Players.LocalPlayer.Character and target then
+        distanceInStuds = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - target.Position).Magnitude
+    end
+    return distanceInStuds
+end
+local function tw(input, studspersecond, offset, bypass)
+       local distanceInStuds = 0
+       if game.Players.LocalPlayer.Character and input and not bypass then
+            pcall(function()
+                distanceInStuds = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - input.Position).Magnitude
+            end)        end  
+        if distanceInStuds > 1000 then return end
+local char = game:GetService("Players").LocalPlayer.Character;
+local input = input or error("input is nil")
+local studspersecond = studspersecond or 1000
+local offset = offset or CFrame.new(0,0,0)
+local vec3, cframe
+if typeof(input) == "table" then
+        vec3 = Vector3.new(unpack(input)); cframe = CFrame.new(unpack(input))
+    elseif typeof(input) ~= "Instance" then
+        return error("wrong format used")
+    end;
+    Time = (char.HumanoidRootPart.Position - (vec3 or input.Position)).magnitude/studspersecond
+    local twn = game.TweenService:Create(char.HumanoidRootPart, TweenInfo.new(Time,Enum.EasingStyle.Linear), {CFrame = (cframe or input.CFrame) * offset})
+    --pcall(function() repeat game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true until game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored == true end)
+    twn:Play()
+    twn.Completed:Wait()
+    --pcall(function() repeat game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false until game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored == false end)
+ end
+_G.SendNotification = LPH_NO_VIRTUALIZE(function(title,text)
+    OrionLib:MakeNotification({
+        Name = tostring(title),
+        Content = tostring(text),
+        Image = "rbxassetid://4483345998",
+        Time = 2 })    end)
+function getYourDungeon()
+    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+        if v:FindFirstChild("VV") and v:FindFirstChild("VV").Value == game.Players.LocalPlayer.Name then
+            return v
+        end    end     end
+if not game:GetService("Workspace"):FindFirstChild("a") then
+    local a = Instance.new("Part",game:GetService("Workspace"))
+    a.Size = Vector3.new(10,5,10)
+    a.CFrame = (CFrame.new(-10958.4316, 103.607559, -17797.5742) * CFrame.new(0,20,0)) * CFrame.new(0,-7,0)
+    a.Transparency = 0
+    a.Anchored = true
+    a.Name = "a"
+end
+function tpToDungeonEntrance()
+    if not getYourDungeon() then
+        if getStudLength(game:GetService("Workspace"):FindFirstChild("a")) > 100 and not getYourDungeon() and not _G.EnteringDungeon then
+            repeat
+                pcall(function()
+                    if _G.Settings.Tween and not firetouchinterest then
+                        tw(game:GetService("Workspace")[game.Players.LocalPlayer.Name.."'s Base"].DungeonTP.Focus, 20,CFrame.new(0,20,0))
+                        task.wait(1)
+                    elseif not firetouchinterest then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")[game.Players.LocalPlayer.Name.."'s Base"].DungeonTP.Focus.CFrame * CFrame.new(0,13,0)
+                    end
+                    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace")[game.Players.LocalPlayer.Name.."'s Base"].DungeonTP.Focus, 0)
+                    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace")[game.Players.LocalPlayer.Name.."'s Base"].DungeonTP.Focus, 1)
+                end)
+                task.wait(1)
+            until game:GetService("Workspace").Maps:FindFirstChild("Magma Hills") and game:GetService("Workspace").Maps["Magma Hills"].FortressDoor:FindFirstChild("Brick") and getStudLength(game:GetService("Workspace"):FindFirstChild("a")) < 100
+        end
+        task.wait(1)
+        if getStudLength(game:GetService("Workspace"):FindFirstChild("a")) < 100 and not getYourDungeon() and not _G.EnteringDungeon then
+            pcall(function()
+                if _G.Settings.Tween then
+                    tw({-10958.4316, 103.607559, -17797.5742},10,CFrame.new(0,20,0))
+ else               game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-10958.4316, 103.607559, -17797.5742) * CFrame.new(0,20,0)
+                end             end)        end    end     end
+if not isfolder("XGO") then
+    makefolder("XGO")
+end
+if not isfolder("XGO/"..game.Players.LocalPlayer.Name) then
+    makefolder("XGO/"..game.Players.LocalPlayer.Name)
+end 
+function updateTotalGem()
+    pcall(function()
+        local j
+        local HS = game:GetService("HttpService")
+        if writefile then
+            d = HS:JSONEncode(game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("MainGui"):WaitForChild("TopHolder"):WaitForChild("Gems"):WaitForChild("Price").Text:gsub(",",""))
+            writefile("XGO/"..game.Players.LocalPlayer.Name.."/TotalGems.json",d)
+        end    end)    end
+function updateTotalArtifacts()
+    local artifacts = {}
+    pcall(function()
+        for i,v in ipairs(game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.MainGui.ArtifactMenu.Holder:GetChildren()) do
+            if v:FindFirstChild("Amount") then  
+                table.insert(artifacts,v.Amount.Text:split("x")[2])
+            end        end            end)
+    pcall(function()
+        local j
+        local HS = game:GetService("HttpService")
+        if writefile then
+            d = HS:JSONEncode(artifacts)
+            writefile("XGO/"..game.Players.LocalPlayer.Name.."/TotalArtifacts.json",d)
+        end    end)     end
+local updJS = LPH_NO_VIRTUALIZE(function()
+    local j
+    local HS = game:GetService("HttpService")
+    if writefile then
+        d = HS:JSONEncode(_G.Settings)
+        writefile("XGO/"..game.Players.LocalPlayer.Name.."/Settings.json",d)
+    end       end)
+_G.Settings = {
+    MobSwordNickname = "",
+    BossSwordNickname = "",
+    ChestSwordNickname = "",
+    Delay = 0,
+    WebhookLink = "",
+    AutoDungeon = false,
+    JoinDelay = 0,
+    Tween = false,
+    TweenSpeed = 80}
+if readfile and isfile and isfile("XGO/"..game.Players.LocalPlayer.Name.."/Settings.json") then
+    local HS = game:GetService("HttpService")
+    _G.Settings = HS:JSONDecode(readfile("XGO/"..game.Players.LocalPlayer.Name.."/Settings.json"))
+end
+local xxxgoui = loadstring(game:HttpGet("https://github.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/xxxxgo/blob/main/xgohubUI?raw=true"))()
+local Notify = xxxgoui:Notify({Title="ҲƓƠӇƲƁ- goto_O R's 2.1581版\nฅ欢迎宝宝回家ฅ ҲƓƠӇƲƁ",["Description"] = "",["Color"] = Color3.fromRGB(255, 0, 255),Content = "",["Time"] = 5,["Delay"] = 10})
+local xgui = xxxgoui:Start({["Name"]="【メ】【G】【Ö】【ℍ】【ⓤ】【ß】",["Description"] = "- goto_O R's 2.1581版",["Info Color"] = Color3.fromRGB(1, 1, 1),["Logo Info"] = "rbxassetid://120611289434746",["Logo Player"] = "rbxassetid://128885038925647", ["Name Info"] = "ҲƓƠӇƲƁ 欢迎宝宝回家",["Name Player"] = "ҲƓƠ",["Info Description"] = "作者:xxxxgo 群聊:259461151",["Tab Width"] = 135,["Color"] = Color3.fromRGB(255, 0, 255),["CloseCallBack"] = function()end})
+local MainTab = xgui:MakeTab("x-ฅ信息ฅ")local MusicTab = xgui:MakeTab("x-ฅ音乐天堂ฅ")local AdministratorTab = xgui:MakeTab("x-ฅ管理员ฅ")local PicturequalityTab = xgui:MakeTab("x-ฅ图像画质ฅ")local UniversalTab = xgui:MakeTab("x-ฅ通用\n玩家ฅ")local PropsTab = xgui:MakeTab("x-ฅ道具FEฅ")local BlackholeTab = xgui:MakeTab("x-ฅ黑洞ฅ")local TalkTab = xgui:MakeTab("x-ฅ聊天中枢ฅ")local SelfishTab = xgui:MakeTab("x-ฅ自瞄透视ฅ")local LeisureTab = xgui:MakeTab("x-游戏类型-ฅ休闲模拟器ฅ")local SimulationbusinessTab = xgui:MakeTab("x-游戏-ฅ模拟经营ฅ")local ActionadventureTab = xgui:MakeTab("x-游戏类型-ฅ动作冒险ฅ")local ShotTab = xgui:MakeTab("x-游戏类型-ฅ竞技ฅ")local HorrorTab = xgui:MakeTab("x-游戏类型-ฅ恐怖ฅ")local AudioTab = xgui:MakeTab("x-游戏类型-ฅ音游ฅ")local AsymmetriccompetitiveTab = xgui:MakeTab("x-游戏类型-ฅ非对称竞技ฅ")local TowerDefenseTab = xgui:MakeTab("x-游戏类型-ฅ塔防ฅ")local DrivingTab = xgui:MakeTab("x-游戏类型-ฅ载具驾驶ฅ")local ParkourTab = xgui:MakeTab("x-游戏类型-ฅ跑酷obbyฅ")local RNGTab = xgui:MakeTab("x-游戏类型-ฅ创意玩法ฅ[RNG]")local XTab = xgui:MakeTab("x-[游戏]")local ScriptTab = xgui:MakeTab("x-ฅ其他脚本ฅ")
+local xgo = MainTab:Section({Title="x-ฅ玩家信息ฅ",Content = "ฅ窃取你的所有信息ฅ"})
+local xgo = LeisureTab:Section({Title="x-ฅ剑工厂Xฅ",Content = "ฅ剑工厂Xฅ"})
+xgo:Button({Title="传送到游戏",["Content"] = "点击传送",  Callback = function() local Players = game:GetService("Players")local TeleportService = game:GetService("TeleportService")local placeId = 9103460924    local player = Players.LocalPlayer     local function teleportPlayer()    TeleportService:Teleport(placeId, player)end     teleportPlayer()end})
+xgo:Seperator("主要[剑]")
+xgo:Toggle({["Title"]="自动地牢",	Default = _G.Settings.AutoDungeon,	Callback = function(newValue)		_G.Settings.AutoDungeon = newValue       updJS()	end})
+xgo:Toggle({["Title"]="Tween而不是传送",	Default = _G.Settings.Tween,	Callback = function(newValue)		_G.Settings.Tween = newValue       updJS()	end})
+xgo:Slider({["Title"]="速度",["Content"]="",["Min"] = 1,["Max"] = 150,["Increment"] = 1,["Default"] =_G.Settings.TweenSpeed,["ValueName"] = "",["Callback"] = function(newValue) _G.Settings.TweenSpeed = newValue  updJS()	end})
+local swordTypes = {"Mob","Boss","Chest"}
+for i = 1,#swordTypes do
+    Section:AddTextbox({
+        Name = swordTypes[i].." 剑昵称",
+        Default = _G.Settings[swordTypes[i].."剑昵称"],
+        TextDisappear = false,
+        Callback = function(newValue)
+            _G.Settings[swordTypes[i].."剑昵称"] = newValue
+            updJS()end})end
+xgo:Slider({["Title"]="在加入地牢之后等待的时间-对于坏pcs",["Content"]="",["Min"] = 0,["Max"] = 20,["Increment"] = 1,["Default"] =  _G.Settings.JoinDelay,["ValueName"] = "",["Callback"] = function(newValue) _G.Settings.JoinDelay = newValue  updJS()end})
+xgo:Slider({["Title"]="是时候运行更长的时间-反排行榜",["Content"]="",["Min"] = 0,["Max"] = 20,["Increment"] = 1,["Default"] =  _G.Settings.JoinDelay,["ValueName"] = "",["Callback"] = function(newValue) _G.Settings.Delay = newValue updJS()end})
+task.spawn(function()    task.wait(3)    pcall(function() updateTotalGem() end)    pcall(function() updateTotalArtifacts() end)end)
+xgo:TextInput({["Title"]="Webhook链接",["Content"] = "",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,   ["Callback"] = function(newValue)	end})_G.Settings.WebHookLink = newValue  updJS()end})
+xgo:Seperator("礼品搜索者")
+function getHighestRQCM(Type,types)
+    local add = {
+        ["Rarity"] = "Rarities",
+        ["Quality"] = "Qualities",
+        ["Class"] = "Classes",
+        ["Mold"] = "Molds"
+    }
+    local daddy = {}
+    function getswordworth(value,thing)
+        for i,v in ipairs(require(game:GetService("ReplicatedStorage").SharedLibrary[add[value]]).List) do
+            if v.Name == thing then
+                return i
+            end       end    end
+    function getNameofworth(value,thing)
+        for i,v in ipairs(require(game:GetService("ReplicatedStorage").SharedLibrary[add[value]]).List) do
+            if i == thing then
+                return v.Name
+            end       end  end
+    _G.Best[Type] = -1
+    local ap = ""
+    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GiftsMenu.ScrollingFrame:GetChildren()) do
+        if v.Name == "Template" and v:FindFirstChild("Note") and v:FindFirstChild("Buy"):FindFirstChild("TextLabel").Text == "Claim!" then
+           pcall(function()
+                ap = (v.Note.Text:split(Type..": ")[2]:split(" |")[1])
+                if not ap:match(":") then
+                    local worth = getswordworth(Type,ap)
+                    if _G.Best[Type] < worth then
+                        _G.Best[Type] = worth
+                    end               end          end)       end    end
+    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GiftsMenu.ScrollingFrame:GetChildren()) do
+        if v.Name == "Template" and v:FindFirstChild("Note") then
+            local dadap = (v.Note.Text:split(Type..": ")[2]:split(" |")[1])
+            if getswordworth(Type,dadap) == _G.Best[Type] then
+                return v.Note.Text
+            end      end    end    end
+local types = {"Rarity","Class","Mold"}
+_G.Best = {}
+for i = 1, #types do
+    local Section = xgo:Section({   Name = types[i]  })
+    local a = Section:xgo:Paragraph("最好的剑: "..types[i]," Rarity: \nClass: \nMold: ")
+    Section:AddButton({
+        Name = "最好 "..types[i].." 来自礼物",
+        Callback = function()
+            pcall(function()
+                _G.Best[types[i]] = getHighestRQCM(types[i],types)
+                a:Set(_G.Best[types[i]])
+            end)        end       })
+    function getswordworth(value,thing)
+        local add = {
+            ["Rarity"] = "Rarities",
+            ["Quality"] = "Qualities",
+            ["Class"] = "Classes",
+            ["Mold"] = "Molds"
+        }
+        for i,v in ipairs(require(game:GetService("ReplicatedStorage").SharedLibrary[add[value]]).List) do
+            warn(v.Name,thing)
+            if v.Name == thing then
+                return i
+            end       end   end
+xgo:Button({Title="索赔最好 "..types[i].." 来自礼物",["Content"] = "",  Callback = function()  
+            pcall(function()   
+                for a,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.GiftsMenu.ScrollingFrame:GetChildren()) do
+                    if v.Name == "Template" and v:FindFirstChild("Note") and v:FindFirstChild("Buy"):FindFirstChild("TextLabel").Text == "Claim!" then
+                        pcall(function()
+                            if getswordworth(types[i],(v.Note.Text:split(types[i]..": ")[2]:split(" |")[1])) == getswordworth(types[i],(_G.Best[types[i]]:split(types[i]..": ")[2]:split(" |")[1])) then
+                                local button = v:FindFirstChild("Buy"):FindFirstChild("TextButton")
+                                local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+                                for i,v in pairs(events) do
+                                    pcall(function()
+                                        for i,v in pairs(getconnections(button[v])) do
+                                            v:Fire()
+                                        end                                   end)                               end                            end                        end)                   end               end            end)        end        })     end
+function _G.GetSword(Nickname)
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+        if v.Config.Nickname.Value == Nickname then
+            return v
+        end     end    end
+function _G.StartDungeon()
+    if not _G.Doing then
+        pcall(function()
+            if not game:GetService("Workspace").Maps["Magma Hills"].FortressDoor:FindFirstChild("Brick") and getStudLength(game:GetService("Workspace"):FindFirstChild("a")) > 100 then
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(_G.GetSword(_G.Settings.MobSwordNickname))
+                end)
+                pcall(function()
+                    if not firetouchinterest then
+                        if _G.Settings.Tween then
+                            tw({-10958.4316, 103.607559, -17797.5742},_G.Settings.TweenSpeed,CFrame.new(0,20,0))
+ else                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-10958.4316, 103.607559, -17797.5742, 0.0791591406, 5.58598927e-08, -0.996861994, 1.24404139e-07, 1, 6.59144561e-08, 0.996861994, -1.29231481e-07, 0.0791591406) * CFrame.new(0,20,0)
+                        end
+ else                 tpToDungeonEntrance()
+                    end              end)            end        end)
+        function brickCheck()
+            pcall(function()
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(_G.GetSword(_G.Settings.MobSwordNickname))
+            end)
+            if getStudLength(game:GetService("Workspace"):FindFirstChild("a")) > 100 and getStudLength(game:GetService("Workspace"):FindFirstChild("a")) < 250 then
+                for i = 1,1 do
+                    pcall(function()
+                        if not firetouchinterest then
+                            if _G.Settings.Tween then
+                                tw({-10958.4316, 103.607559, -17797.5742},_G.Settings.TweenSpeed,CFrame.new(0,20,0))
+  else                          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-10958.4316, 103.607559, -17797.5742, 0.0791591406, 5.58598927e-08, -0.996861994, 1.24404139e-07, 1, 6.59144561e-08, 0.996861994, -1.29231481e-07, 0.0791591406) * CFrame.new(0,20,0)
+                            end
+          else             tpToDungeonEntrance()
+                        end
+                    end)
+                    task.wait(.1)
+                end
+ else          tpToDungeonEntrance()    
+            end
+            return game:GetService("Workspace").Maps["Magma Hills"].FortressDoor.Brick.BillboardGui.Counter.Visible
+        end
+        repeat wait(3) until not brickCheck() 
+        _G.EnteringDungeon = true
+        repeat 
+            task.wait(.1)
+            if game:GetService("Workspace").Maps["Magma Hills"].FortressDoor.Brick.BillboardGui.Counter.Visible == false then
+                pcall(function()
+                    if _G.Settings.Tween then
+                        tw(game:GetService("Workspace").Maps["Magma Hills"].DungeonMatchmaking.MatchmakingPad,20,CFrame.new(0,2,0))
+else                   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Maps["Magma Hills"].DungeonMatchmaking.MatchmakingPad.CFrame * CFrame.new(0,2,0)
+                    end                                    end)
+ else           if getStudLength(game:GetService("Workspace"):FindFirstChild("a")) < 300 and getStudLength(game:GetService("Workspace").Maps["Magma Hills"].DungeonMatchmaking.MatchmakingPad) < 20 then
+                    tw({-10958.4316, 103.607559, -17797.5742},10,CFrame.new(0,20,0),true)
+                end
+                break
+            end
+        until _G.EnteringDungeon == false
+        if _G.EnteringDungeon == false then
+            pcall(function() repeat wait(1) until getStudLength(game:GetService("Workspace").Maps["Magma Hills"].DungeonMatchmaking.MatchmakingPad) > 20  end)
+            _G.DoDungeon()
+        end    end    end
+game:GetService("Workspace").ChildAdded:Connect(function(child)
+    if child.Name == "MagmaDungeon" and _G.EnteringDungeon then
+        _G.EnteringDungeon = false
+        local Ow = Instance.new("StringValue",child)
+        Ow.Name = "VV"
+        Ow.Value = game.Players.LocalPlayer.Name
+    end      end)
+function _G.DoDungeon()
+    if not _G.Doing then
+        _G.Doing = true
+else   return
+    end
+    pcall(function() repeat wait(1) until getStudLength(game:GetService("Workspace").Maps["Magma Hills"].DungeonMatchmaking.MatchmakingPad) > 20  end)
+    repeat wait(1) warn("waiting for dung") until getYourDungeon()
+    if _G.Settings.Tween then
+        task.wait(5)
+else    task.wait(_G.Settings.JoinDelay)
+    end
+    _G.AutoSwing = true
+    function killAllMobs()
+        game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(_G.GetSword(_G.Settings.MobSwordNickname))
+        for i,v in pairs(game:GetService("Workspace").Mobs:GetChildren()) do
+            if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v:FindFirstChild("Humanoid").Health > 0 and v.Name ~= "Noob" then
+                if v.Name == "The Abomination" then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(_G.GetSword(_G.Settings.BossSwordNickname))
+                    if _G.Settings.Delay ~= 0 then
+                        for i = 1,10 do
+                            pcall(function()
+                                if _G.Settings.Tween then
+                                    tw(getYourDungeon().Start.Entrance.PlayerWalkTo,_G.Settings.TweenSpeed,CFrame.new(0,5,0))
+         else                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = getYourDungeon().Start.Entrance.PlayerWalkTo.CFrame * CFrame.new(0,5,0)
+                            end                           end)
+                            task.wait(0.1)
+                        end
+                        task.wait(_G.Settings.Delay)
+                    end                end
+                local b = nil
+                b = v
+                if b.Name ~= "The Abomination" then
+                    local closestMob = nil
+                    local closestDist = math.huge
+                    for i,v in pairs(game:GetService("Workspace").Mobs:GetChildren()) do
+                        if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v:FindFirstChild("Humanoid").Health > 0 and v.Name ~= "Noob" then
+                            local a = getStudLength(v:FindFirstChild("HumanoidRootPart"))
+                            if a < closestDist then
+                                closestMob = v
+                                closestDist = a
+                            end                      end                 end
+                    b = closestMob
+                end
+                    pcall(function()
+                        repeat 
+                            pcall(function()
+                                if _G.Settings.Tween then
+                                    tw(b:FindFirstChild("HumanoidRootPart"),_G.Settings.TweenSpeed,CFrame.new(0,0,5))
+         else                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = b:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0,0,5)
+                                end
+                                task.wait(.05)
+                                task.wait(.1)
+                            end)
+                        until b:FindFirstChild("DeathComplete") or b:FindFirstChild("Humanoid").Health <= 0
+                    end)            end        end    end
+    function killBoss()
+        function goThroughEveryting()
+            for i,v in ipairs(getYourDungeon():GetDescendants()) do
+                if v.Name == "Start" or v.Name == "End" and v:IsA("Part") then
+                    pcall(function()
+                        if _G.Settings.Tween then
+                            tw(v,_G.Settings.TweenSpeed,CFrame.new(0,2,0))
+ else                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,2,0)
+                        end
+                        task.wait(0.1)
+                    end)               end            end        end
+        repeat pcall(function() goThroughEveryting() killAllMobs() end) until getYourDungeon():WaitForChild("EndModule"):FindFirstChild("Start")
+        killAllMobs()
+        repeat 
+            killAllMobs()
+            pcall(function()
+                task.wait(1)
+                if _G.Settings.Tween then
+                    tw(getYourDungeon().EndModule.Start,_G.Settings.TweenSpeed,CFrame.new(0,0,math.random(10,20)) * CFrame.new(0,10,0))
+ else               game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = (getYourDungeon().EndModule.Start.CFrame * CFrame.new(0,0,math.random(10,20))) * CFrame.new(0,10,0)
+                end           end)
+        until game:GetService("Workspace").Mobs:FindFirstChild("The Abomination")
+        killAllMobs()
+    end
+    function getAllChests()
+        for i,v in pairs(getYourDungeon():GetChildren()) do
+            task.wait(.1)
+            if v:FindFirstChild("Chests") then
+                for i,v in ipairs(v.Chests:GetChildren()) do
+                    if not v:FindFirstChild("Lock") then
+                        local attempt = 0
+                        task.wait(.3)
+                        local b = nil
+                        b = v
+                        pcall(function()
+                            local closestChest = nil
+                            local closestDist = math.huge
+                            for i,v in pairs(getYourDungeon():GetChildren()) do
+                                if v:FindFirstChild("Chests") then
+                                    for i,v in ipairs(v.Chests:GetChildren()) do
+                                        if not v:FindFirstChild("Lock") then
+                                            local a = getStudLength(v["Chest_Base"].Frame.Frame)
+                                            if a < closestDist then
+                                                closestChest = v
+                                               closestDist = a
+                                            end                                    end                                  end                               end                           end                    end)
+                            repeat
+                                attempt += 1
+                                pcall(function()
+                                    killAllMobs()
+                                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(_G.GetSword(_G.Settings.ChestSwordNickname))
+                                    task.wait(.1)
+                                    if _G.Settings.Tween then
+                                        tw(b.Chest_Lid.Frame.Lock,_G.Settings.TweenSpeed,CFrame.new(1,0,0))
+         else                           game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = b.Chest_Lid.Frame.Lock.CFrame * CFrame.new(1,0,0)
+                                    end                            end)
+                            task.wait(.4)
+                        until b:FindFirstChild("Lock") or attempt >= 5
+                    end              end            end        end   end
+    for i = 1,4 do
+        killAllMobs()
+    end
+    killBoss()
+    getAllChests()
+    _G.AutoSwing = false
+    game:GetService("ReplicatedStorage").Framework.RemoteEvent:FireServer(0,"UIServer","Teleport",{})
+    repeat wait() until not getYourDungeon()
+    _G.Doing = false
+end
+_G.WebHook = LPH_JIT_MAX(function(oldGems,newGems,oldLegArt,newLegArt,oldImpArt,newImpArt)
+	pcall(function()
+		local url = tostring(_G.Settings.WebHookLink)
+		if url == "" then return end
+        function comma_value(amount)
+            local formatted = amount
+            while true do  
+              formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
+              if (k==0) then
+                break
+              end          end
+            return formatted
+        end
+        local totalGem = "Error!"
+        local totalLegArt = "Error!"
+        local totalImpArt = "Error!"
+        local a = listfiles("XGO")
+        for i,v in pairs(a) do
+            local player = v:split("\\")[2]
+            local playerGem = 0
+            local playerArtifacts = {"0","0","0","0","0"}
+            local HS = game:GetService("HttpService")
+            if readfile and isfile and isfile("XGO/"..player.."/TotalGems.json") then
+                playerGem = HS:JSONDecode(readfile("XGO/"..player.."/TotalGems.json"))
+            end
+            local HS = game:GetService("HttpService")
+            if readfile and isfile and isfile("XGO/"..player.."/TotalArtifacts.json") then
+                playerArtifacts = HS:JSONDecode(readfile("XGO/"..player.."/TotalArtifacts.json"))
+            end
+            if totalGem == "Error!" then
+                totalGem = playerGem
+else            totalGem += playerGem
+            end
+            if totalLegArt == "Error!" then
+                totalLegArt = tonumber(playerArtifacts[4])
+ else           totalLegArt += tonumber(playerArtifacts[4])
+            end
+            if totalImpArt == "Error!" then
+                totalImpArt = tonumber(playerArtifacts[5])
+  else          totalImpArt += tonumber(playerArtifacts[5])
+            end        end
+        local profitGem = newGems - oldGems
+        local profitLegArt = newLegArt - oldLegArt
+        local profitImpArt = newImpArt - oldImpArt
+        local data = {
+            ["username"]= " abc ",
+            ["avatar_url"]= "https://cdn.discordapp.com/attachments/912431345765081148/1023696332638134403/unknown-removebg-preview.png",
+            ["content"]= "",
+            ["embeds"]= {
+              {
+                ["color"]= 0,
+                ["description"]= "~ ** Hello Baby Girl - ||"..game.Players.LocalPlayer.Name.."||**\n\n~ ** Here Are Your Stats ;) - ||"..game.Players.LocalPlayer.Name.."||**\n\n- Gem Gain: ** "..comma_value(profitGem).."+**\n- Legendary Artifact Gain: ** "..comma_value(profitLegArt).."+**\n- Impossible Artifact Gain: **"..comma_value(profitImpArt).."+ **\n\n- Total Leg Artifacts On All Accounts: ** "..comma_value(totalLegArt).."**\n- Total Imp Artifacts On All Accounts: ** "..comma_value(totalImpArt).." **\n- Total Gems On All Accounts: ** "..comma_value(totalGem).." **\n\n\n~ **Have Sex With Me Later OwO~ - ||"..game.Players.LocalPlayer.Name.."||**\n\n",
+                ["timestamp"]= "",
+                ["author"]= {
+                  ["name"]= "我很性感，嫁给我!",
+                  ["url"]= "",
+                  ["icon_url"]= "https://cdn.discordapp.com/attachments/912431345765081148/1023696455715786863/unknown.png"
+                },
+                ["image"]= {},
+                ["thumbnail"]= {},
+                ["footer"] ={},
+                ["fields"] = {}
+              }
+            },
+            ["components"] = {}
+          }
+		local bigTiddieGothGirl = game:GetService("HttpService"):JSONEncode(data)
+		local headers = {["content-type"] = "application/json"}		request = http_request or request or HttpPost or syn.request or http.request
+		local pornhub = {Url = url, Body = bigTiddieGothGirl, Method = "POST", Headers = headers}		warn("发送Webhook通知...")		request(pornhub)	end)     end)
+task.spawn(function()    while task.wait() do      task.wait(3)
+             if _G.Settings.AutoDungeon then
+             if _G.Settings.MobSwordNickname ~= "" and _G.Settings.BossSwordNickname ~= "" and _G.Settings.ChestSwordNickname ~= "" then
+                _G.StartDungeon()
+ else           _G.SendNotification("错误","其中一个昵称是空的")  
+end       end    end    end)
+task.spawn(function()    if tostring(_G.Settings.WebHookLink) ~= "" then        while task.wait(1) do            repeat wait(1) until _G.Doing
+            local oldGems = game:GetService("Players").LocalPlayer.PlayerGui.MainGui.TopHolder.Gems.Price.Text:gsub(",","")
+            local oldLegArt = game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.MainGui.ArtifactMenu.Holder.Legendary.Amount.Text:split("x")[2]
+            local oldImpArt = game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.MainGui.ArtifactMenu.Holder.Impossible.Amount.Text:split("x")[2]            repeat wait(1) until not _G.Doing
+            local newGems = game:GetService("Players").LocalPlayer.PlayerGui.MainGui.TopHolder.Gems.Price.Text:gsub(",","")
+            local newLegArt = game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.MainGui.ArtifactMenu.Holder.Legendary.Amount.Text:split("x")[2]
+            local newImpArt = game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.MainGui.ArtifactMenu.Holder.Impossible.Amount.Text:split("x")[2]            pcall(function() updateTotalGem() end)            pcall(function() updateTotalArtifacts() end)            pcall(function() _G.WebHook(tonumber(oldGems),tonumber(newGems),tonumber(oldLegArt),tonumber(newLegArt),tonumber(oldImpArt),tonumber(newImpArt)) end)        end    end     end)
+task.spawn(function()    local vu = game:GetService("VirtualUser")    game:GetService("Players").LocalPlayer.Idled:connect(function()        vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)        wait(1)        vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)    end)    end)
+task.spawn(function()    while task.wait() do        if _G.AutoSwing then            pcall(function()                task.wait(.1)                game:GetService("Players").LocalPlayer.Character.Sword.SwordScriptNew.Attack:FireServer("Attack",false)            end)        end    end     end)
