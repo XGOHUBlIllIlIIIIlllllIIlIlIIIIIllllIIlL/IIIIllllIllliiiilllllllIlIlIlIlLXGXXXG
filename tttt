@@ -1,4 +1,4 @@
---lua语言编写/xgo全源码
+--lua语言编写/xgo全源码uuuuy
 repeat wait() until game:IsLoaded()
 local resume = coroutine.resume           
 local create = coroutine.create
