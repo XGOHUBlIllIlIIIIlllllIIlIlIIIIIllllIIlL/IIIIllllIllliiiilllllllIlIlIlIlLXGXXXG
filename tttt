@@ -23,8 +23,45 @@ local xxxgoui = loadstring(game:HttpGet("https://github.com/XGOHUBlIllIlIIIIllll
 local Notify = xxxgoui:Notify({Title="ҲƓƠӇƲƁ- goto_O R's 2.1581版\nฅ欢迎宝宝回家ฅ ҲƓƠӇƲƁ",["Description"] = "",["Color"] = Color3.fromRGB(255, 0, 255),Content = "",["Time"] = 5,["Delay"] = 10})
 local xgui = xxxgoui:Start({["Name"]="【メ】【G】【Ö】【ℍ】【ⓤ】【ß】",["Description"] = "- goto_O R's 2.1581版",["Info Color"] = Color3.fromRGB(1, 1, 1),["Logo Info"] = "rbxassetid://120611289434746",["Logo Player"] = "rbxassetid://128885038925647", ["Name Info"] = "ҲƓƠӇƲƁ 欢迎宝宝回家",["Name Player"] = "ҲƓƠ",["Info Description"] = "作者:xxxxgo 群聊:259461151",["Tab Width"] = 135,["Color"] = Color3.fromRGB(255, 0, 255),["CloseCallBack"] = function()end})
 local MainTab = xgui:MakeTab("x-ฅ信息ฅ")local MusicTab = xgui:MakeTab("x-ฅ音乐天堂ฅ")local AdministratorTab = xgui:MakeTab("x-ฅ管理员ฅ")local PicturequalityTab = xgui:MakeTab("x-ฅ图像画质ฅ")local UniversalTab = xgui:MakeTab("x-ฅ通用/玩家/传送ฅ")local PropsTab = xgui:MakeTab("x-ฅ道具FEฅ")local BlackholeTab = xgui:MakeTab("x-ฅ黑洞ฅ")local TalkTab = xgui:MakeTab("x-ฅ聊天中枢ฅ")local SelfishTab = xgui:MakeTab("x-ฅ自瞄透视ฅ")local LeisureTab = xgui:MakeTab("x-游戏类型-ฅ休闲模拟器ฅ")local SimulationbusinessTab = xgui:MakeTab("x-游戏-ฅ模拟经营ฅ")local ActionadventureTab = xgui:MakeTab("x-游戏类型-ฅ动作冒险ฅ")local ShotTab = xgui:MakeTab("x-游戏类型-ฅ竞技ฅ")local HorrorTab = xgui:MakeTab("x-游戏类型-ฅ恐怖ฅ")local AudioTab = xgui:MakeTab("x-游戏类型-ฅ音游ฅ")local AsymmetriccompetitiveTab = xgui:MakeTab("x-游戏类型-ฅ非对称竞技ฅ")local TowerDefenseTab = xgui:MakeTab("x-游戏类型-ฅ塔防ฅ")local DrivingTab = xgui:MakeTab("x-游戏类型-ฅ载具驾驶ฅ")local ParkourTab = xgui:MakeTab("x-游戏类型-ฅ跑酷obbyฅ")local RNGTab = xgui:MakeTab("x-游戏类型-ฅ创意玩法ฅ[RNG]")local XTab = xgui:MakeTab("x-[游戏]")local ScriptTab = xgui:MakeTab("x-ฅ其他脚本ฅ")
-
 local xgo = UniversalTab:Section({Title = "x-ฅ玩家ฅ",Content = "ฅ玩家通用区域ฅ"})
+-- 假设Settings和Cache是全局变量，需要提前定义
+Settings = Settings or {}
+Cache = Cache or {}
+-- 初始化Settings和Cache
+Settings["Player"] = Settings["Player"] or {}
+Settings["Player"]["CFrameSpeed"] = false -- 初始状态为关闭
+Settings["Player"]["Speed"] = 16 -- 假设的默认速度值
+Cache["Loops"] = Cache["Loops"] or {}
+-- 定义CFrame Speed功能
+local function CFrameSpeed()
+    if Cache["Loops"]["CFrameSpeed"] ~= nil then
+      Cache["Loops"]["CFrameSpeed"]:Disconnect()
+      Cache["Loops"]["CFrameSpeed"] = nil
+    end
+    if Settings["Player"]["CFrameSpeed"] then
+        Cache["Loops"]["CFrameSpeed"] = game:GetService("RunService").Heartbeat:Connect(function()
+            if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            local Character = game.Players.LocalPlayer.Character
+            local Humanoid = Character:FindFirstChild("Humanoid")
+            if not Humanoid then return end
+            local MoveDirection = Humanoid.MoveDirection
+            local Speed = tonumber(Settings["Player"]["Speed"]) or 1 -- 确保Speed是数值类型
+            Character.HumanoidRootPart.CFrame = Character.HumanoidRootPart.CFrame + MoveDirection * Speed
+            end end) end end
+-- 使用xgo的TextInput函数创建速度数值输入框
+xgo:TextInput({Title = "设置速度[电脑]", ["Content"] = "初始速度值设置的很高", ["Place Holder Text"] = "速度值", ["Clear Text On Focus"] = false, Callback = function(xgo)
+-- 确保输入的值是数字
+ if tonumber(xgo) then Settings["Player"]["Speed"] = tonumber(Value)
+-- 如果速度开关是开启状态，更新速度
+ if Settings["Player"]["CFrameSpeed"] then CFrameSpeed() end end end})
+-- 使用xgo的Toggle函数创建速度开关
+xgo:Toggle({["Title"] = "速度开/关\n请在上面设置速度值",["Content"] = "",["Default"] = false,["Callback"] = function(xgo)Settings["Player"]["CFrameSpeed"] = xgo CFrameSpeed()end})
+xgo:TextInput({Title="移动速度设置",["Content"] ="",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value end})
+xgo:TextInput({Title="跳跃高度设置",["Content"] ="",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value end})
+xgo:TextInput({Title="重力设置",["Content"] ="",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Workspace.Gravity = Value end})
+xgo:TextInput({Title="血量",["Content"] ="可能是假血",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,Callback = function(Value)game.Players.LocalPlayer.Character.Humanoid.Health = Value	end})
+xgo:TextInput({["Title"]="广角",["Content"] = "调整视角",["Place Holder Text"] = "数值",  ["Clear Text On Focus"] = false,["Callback"] = function(Value)game.Workspace.CurrentCamera.FieldOfView = Value end})
+xgo:TextInput({["Title"]="超广角[Fov]两者各有不同",["Content"] ="",["Place Holder Text"] = "数值",["Clear Text On Focus"] = false,["Callback"] = function(Value)workspace.CurrentCamera.FieldOfView = Value end})
 local hidingPlaceName = "空中平台" -- 隐藏地点的名称
 local baseplateHeight = 200000 -- 天空中基座的高度
 local baseplateSize = Vector3.new(1500, 1, 1500) -- 基座的扩展大小
