@@ -1,36 +1,15 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Chat Bypasser", HidePremium = false, IntroText = "Chat Bypasser", SaveConfig = false})
-
-loadstring(game:HttpGet('https://raw.githubusercontent.com/vqmpjayZ/More-Scripts/main/Anti-Chat-Logger'))() -- anti chat logger (not by me)
-
-function chat(msg)
-
-    if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then
-        game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(msg)
-    else
-        game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
-    end
-
-end
-
-local chatTab = Window:MakeTab({
-	Name = "Chat Stuff",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-chatTab:AddLabel("                                      CHAT BYPASS")
-
+--lua语言编写/xgo全源码
+local sound = Instance.new("Sound")sound.SoundId = "rbxassetid://9042063815"  sound.Volume = 0.5  sound.Pitch = 1  sound.Parent = game.Workspace  sound:Play()
+local xxxgoui = loadstring(game:HttpGet("https://github.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/xxxxgo/blob/main/xgohubUI?raw=true"))()
+local Notify = xxxgoui:Notify({Title="ҲƓƠӇƲƁ- goto_O R's 2.1581版\nฅ欢迎宝宝回家ฅ ҲƓƠӇƲƁ",["Description"] = "",["Color"] = Color3.fromRGB(255, 0, 255),Content = "",["Time"] = 5,["Delay"] = 10})
+local xgui = xxxgoui:Start({["Name"]="【メ】【G】【Ö】【ℍ】【ⓤ】【ß】",["Description"] = "- goto_O R's 2.1581版",["Info Color"] = Color3.fromRGB(1, 1, 1),["Logo Info"] = "rbxassetid://120611289434746",["Logo Player"] = "rbxassetid://128885038925647", ["Name Info"] = "ҲƓƠӇƲƁ 欢迎宝宝回家",["Name Player"] = "ҲƓƠ",["Info Description"] = "作者:xxxxgo 群聊:259461151",["Tab Width"] = 135,["Color"] = Color3.fromRGB(255, 0, 255),["CloseCallBack"] = function()end})
+local MainTab = xgui:MakeTab("x-ฅ信息ฅ")local MusicTab = xgui:MakeTab("x-ฅ音乐天堂ฅ")local AdministratorTab = xgui:MakeTab("x-ฅ管理员ฅ")local PicturequalityTab = xgui:MakeTab("x-ฅ图像画质ฅ")local UniversalTab = xgui:MakeTab("x-ฅ通用-玩家ฅ")local PropsTab = xgui:MakeTab("x-ฅ道具FEฅ")local BlackholeTab = xgui:MakeTab("x-ฅ黑洞ฅ")local TalkTab = xgui:MakeTab("x-ฅ聊天中枢ฅ")local SelfishTab = xgui:MakeTab("x-ฅ自瞄透视ฅ")local LeisureTab = xgui:MakeTab("x-游戏类型-ฅ休闲模拟器ฅ")local SimulationbusinessTab = xgui:MakeTab("x-游戏-ฅ模拟经营ฅ")local ActionadventureTab = xgui:MakeTab("x-游戏类型-ฅ动作冒险ฅ")local ShotTab = xgui:MakeTab("x-游戏类型-ฅ竞技ฅ")local HorrorTab = xgui:MakeTab("x-游戏类型-ฅ恐怖ฅ")local AudioTab = xgui:MakeTab("x-游戏类型-ฅ音游ฅ")local AsymmetriccompetitiveTab = xgui:MakeTab("x-游戏类型-ฅ非对称竞技ฅ")local TowerDefenseTab = xgui:MakeTab("x-游戏类型-ฅ塔防ฅ")local DrivingTab = xgui:MakeTab("x-游戏类型-ฅ载具驾驶ฅ")local ParkourTab = xgui:MakeTab("x-游戏类型-ฅ跑酷obbyฅ")local RNGTab = xgui:MakeTab("x-游戏类型-ฅ创意玩法ฅ[RNG]")local XTab = xgui:MakeTab("x-[游戏]")local ScriptTab = xgui:MakeTab("x-ฅ其他脚本ฅ")
+local xgo = MainTab:Section({Title="x-ฅ玩家信息ฅ",Content = "ฅ窃取你的所有信息ฅ"})
+local xgo = TalkTab:Section({["Title"] = "x-ฅ聊天中枢ฅ", ["Content"] = "ฅ聊天工具ฅ"})
+loadstring(game:HttpGet('https://pastebin.com/raw/E0P5BSyz'))() -- 反聊天记录器（xgo制作）
+function chat(msg)if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatService then game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(msg)else game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")end end 
 local method = nil
-
-chatTab:AddDropdown({
-	Name = "Method",
-	Options = {"ěx́ǎḿṕĺě", "éxạmṕĺe", "ẹ̲х̲ạ̲ṃ̲р̲ḷ̲ẹ̲", "e>x>a>m>p>l>e", "￵example", "3></-\\/\\/\\p|_3"},
-	Callback = function(val)
-        method = val
-	end
-})
-
+xgo:Dropdown({["Title"] = "聊天程序",["Multi"] = false,["Options"] = {"ěx́ǎḿṕĺě", "éxạmṕĺe", "ẹ̲х̲ạ̲ṃ̲р̲ḷ̲ẹ̲", "e>x>a>m>p>l>e", "￵example", "3></-\\/\\/\\p|_3"},["Default"] = {"xxxxgo"},["Place Holder Text"] = "选择一种聊天程序",["Callback"] = function(val)method = val end})
 function bypasstext(text, method)
     if method == 1 then
         local function addAccents(word)
@@ -414,11 +393,7 @@ function bypasstext(text, method)
         return bypassString(text)
     end
 end
-
-chatTab:AddTextbox({
-	Name = "Chat",
-	TextDisappear = true,
-	Callback = function(val)
+xgo:TextInput({["Title"]="聊天",["Content"] = "",["Place Holder Text"] = "话语",["Clear Text On Focus"] = true,["Callback"] = function(val)
         if val ~= "" then
             if method == "ěx́ǎḿṕĺě" then
                 chat(bypasstext(val, 1))
@@ -433,49 +408,28 @@ chatTab:AddTextbox({
             elseif method == "3></-\\/\\/\\p|_3" then
                 chat(bypasstext(val, 6))
             else
-                OrionLib:MakeNotification({
-                    Name = "Ops.",
-                    Content = "Looks like you didn't select a method!",
-                    Image = "rbxassetid://4483345998",
-                    Time = 5
-                })
+                game:GetService("StarterGui"):SetCore("SendNotification", {Title = "操作错误";   Text = "看起来您没有选择任何方法！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
+             end
+            else
+                game:GetService("StarterGui"):SetCore("SendNotification", {Title = "操作错误";   Text = "看起来您没有输入任何文本！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
+             end 
             end
-        else
-            OrionLib:MakeNotification({
-                Name = "Ops.",
-                Content = "Looks like you didn't enter any text!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-        end
-    end
-})
-
-local autobypass = false
-local textBox = game:GetService("CoreGui").ExperienceChat.appLayout.chatInputBar.Background.Container.TextContainer.TextBoxContainer.TextBox
-
-chatTab:AddToggle({
-    Name = "Auto Bypass",
-    Default = false,
-    Callback = function(val)
+local function showNotificationIfEmpty()if spamMessage == "" then local Notify = xxxgoui:Notify({Title = "xgo Hub",	["Description"] = "- goto_O R's 2.1581版",["Color"] = Color3.fromRGB(255, 0, 255),Content = "你好像还没有说话吧",["Time"] = 9,["Delay"] = 10})end end
+local function checkAndSendSpam()if spaming and spamMessage ~= "" then repeat wait(spamInterval)chat(spamMessage) until not spaming end end
+local function toggleSpamming(val)if val then showNotificationIfEmpty() checkAndSendSpam() else spaming = false end end
+xgo:TextInput({["Title"]="填写你想说的话",["Content"] = "点击下面自动发送即可开始",["Place Holder Text"] = "话语",["Clear Text On Focus"] = true,["Callback"] = function(val)spamMessage = val toggleSpamming(spaming)end})
+xgo:Slider({["Title"]="时间间隔",["Content"]="",["Min"] = 0,["Max"] = 100,["Increment"] = 1,["Default"] = 1,["ValueName"] = "seconds",["Callback"] = function(val)spamInterval = val toggleSpamming(spaming)end})
+xgo:Toggle({["Title"]="自动发送",["Content"]="选好了再发",["Default"] = false,["Callback"] = function(val)spaming = val toggleSpamming(spaming)end})
+xgo:Button({Title="修复过滤器",Content ="",Callback = function() chat("abcdefg()!")end})
+xgo:Toggle({
+    ["Title"]="自动绕过",
+    ["Content"]="",["Default"] = false,["Callback"] = function(val)
         autobypass = val
-
         if val == true then
-            OrionLib:MakeNotification({
-                Name = "Auto Bypass",
-                Content = "Auto bypass has been enabled!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
+        game:GetService("StarterGui"):SetCore("SendNotification", {Title = "自动绕过";   Text = "自动绕过已启用！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
         else
-            OrionLib:MakeNotification({
-                Name = "Auto Bypass",
-                Content = "Auto bypass has been disabled!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
+        game:GetService("StarterGui"):SetCore("SendNotification", {Title = "自动绕过";   Text = "自动绕过已禁用！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()            
         end
-
         textBox.FocusLost:Connect(function(enter)
             if enter and autobypass then
                 if textBox.Text ~= "" then
@@ -498,31 +452,20 @@ chatTab:AddToggle({
                         chat(bypasstext(textBox.Text, 6))
                         textBox.Text = ""
                     else
-                        OrionLib:MakeNotification({
-                            Name = "Ops.",
-                            Content = "Looks like you didn't select a method!",
-                            Image = "rbxassetid://4483345998",
-                            Time = 5
-                        })
+                        game:GetService("StarterGui"):SetCore("SendNotification", {Title = "错误";   Text = "看起来您没有选择一个方法！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
                     end
                 end
             end
         end)
     end
 })
-
-chatTab:AddLabel("                                         CHAT LOG")
-
 local logging = false
 local webhook = ""
-
 function sendToWebhook(msg, username)
-
     local data = {
         content = msg,
         username = username
     }
-
     local requestData = {
         Url = webhook,
         Method = "POST",
@@ -531,136 +474,89 @@ function sendToWebhook(msg, username)
         },
         Body = game:GetService("HttpService"):JSONEncode(data)
     }
-
     request(requestData)
-
 end
-
-chatTab:AddTextbox({
-    Name = "Webhook",
-    TextDisappear = false,
-    Callback = function(val)
+xgo:TextInput({
+     ["Title"]="Webhook",
+     ["Content"] = "",
+     ["Place Holder Text"] = "",
+     ["Clear Text On Focus"] = true,
+     ["Callback"] = function(val)
         webhook = val
     end
 })
-
-chatTab:AddToggle({
-    Name = "Log",
-    Default = false,
-    Callback = function(val)
+xgo:Toggle({
+    ["Title"]="日志记录",
+    ["Content"]="",
+    ["Default"] = false,
+    ["Callback"] = function(val)
         if webhook == "" then
-            OrionLib:MakeNotification({
-                Name = "Ops.",
-                Content = "Looks like you didn't enter any webhook url!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
+            game:GetService("StarterGui"):SetCore("SendNotification", {Title = "错误";   Text = "看起来您没有输入任何webhook URL！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
             return
         else
-            logging = val
-
+            logging = val  -- 更新日志记录的状态
             if val == true then
-                OrionLib:MakeNotification({
-                    Name = "Started logging",
-                    Content = "Started logging messages at the given webhook!",
-                    Image = "rbxassetid://4483345998",
-                    Time = 5
-                })
+                game:GetService("StarterGui"):SetCore("SendNotification", {Title = "开始日志记录";   Text = "已开始在指定的webhook记录消息！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
             else
-                OrionLib:MakeNotification({
-                    Name = "Stopped logging",
-                    Content = "Stopped logging messages at the given webhook!",
-                    Image = "rbxassetid://4483345998",
-                    Time = 5
-                })
+                game:GetService("StarterGui"):SetCore("SendNotification", {Title = "停止日志记录";   Text = "已停止在指定的webhook记录消息！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
             end
         end
     end
 })
 
-chatTab:AddLabel("                                        CHAT SPAM")
-
 local spamMessage = ""
 local spamInterval = 1
 local spaming = false
-
-chatTab:AddTextbox({
-    Name = "Message",
-    TextDisappear = false,
-    Callback = function(val)
-        spamMessage = val
+xgo:TextInput({
+    ["Title"]="消息内容",
+    ["Content"] = "",
+    ["Place Holder Text"] = "",
+    ["Clear Text On Focus"] = false,
+    ["Callback"] = function(val)
+        spamMessage = val  -- 更新垃圾信息内容
     end
 })
-
-chatTab:AddSlider({
-    Name = "Interval",
-    Min = spamInterval,
-    Max = 100,
-    Default = spamInterval,
-    Increasmemt = 1,
-    ValueName = "seconds",
-    Callback = function(val)
-        spamInterval = val
+xgo:TextInput({
+    ["Title"]="发送间隔",
+    ["Content"] = "",
+    ["Place Holder Text"] = "1~100",
+    ["Clear Text On Focus"] = false,
+    ["Callback"] = function(val)
+        spamInterval = val  -- 更新垃圾信息发送间隔
     end
 })
-
-chatTab:AddToggle({
-    Name = "Spam",
-    Default = false,
-    Callback = function(val)
+xgo:Toggle({
+    ["Title"]="垃圾信息",
+    ["Content"]="",
+    ["Default"] = false,
+    ["Callback"] = function(val)
         if spamMessage == "" then
-            OrionLib:MakeNotification({
-                Name = "Ops.",
-                Content = "Looks like you didn't enter any text!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
+            game:GetService("StarterGui"):SetCore("SendNotification", {Title = "错误";   Text = "看起来您没有输入任何文本！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
         else
-            spaming = val
+            spaming = val  -- 更新垃圾信息发送的状态
 
             if spaming then
-                repeat wait(spamInterval)
+                repeat wait(spamInterval)  -- 如果开关被打开，则每隔spamInterval秒发送一次垃圾信息
                     chat(spamMessage)
                 until spaming == false
             end
         end
     end
 })
-
-chatTab:AddLabel("                                            OTHER")
-
-chatTab:AddButton({
-    Name = "Tall Message",
+xgo:Button({
+    Title="长消息",
+    Content ="",
     Callback = function()
         chat("".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. " ".. "\u{000D}" .. "")
     end
 })
-
-chatTab:AddButton({
-    Name = "Fix Filter",
-    Callback = function()
-        chat("abcdefg()!")
-    end
-})
-
-local botTab = Window:MakeTab({
-    Name = "Chatbot",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-local serversTab = Window:MakeTab({
-    Name = "Servers",
-    Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
 function getServers()
-    local request = request({
+    local request = request({  -- 发起网络请求获取服务器列表
         Url = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Desc&limit=100",
         Method = "GET",
     })
-
+    -- 这里应该处理请求的结果，例如解析服务器数据并显示在serversTab中
+end
     if request.StatusCode == 200 then
         local serverData = game:GetService("HttpService"):JSONDecode(request.Body)
         local serverList = {}
@@ -672,7 +568,6 @@ function getServers()
                 maxPlayers = server.maxPlayers or 0,
                 ping = server.ping or "N/A",
             }
-
             table.insert(serverList, serverInfo)
         end
 
@@ -683,54 +578,32 @@ function getServers()
 end
 
 function refreshServers()
-
-    local servers = getServers()
-    if servers then
-        for _, server in pairs(servers) do
-            serversTab:AddButton({
-                Name = "Players: " .. server.players .. "/" .. server.maxPlayers .. "\nPing: " .. server.ping,
-                Callback = function()
-                    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.serverId, game.Players.LocalPlayer)
-                end
-            })
-        end
+    local servers = getServers() -- 获取服务器列表
+if servers then
+    for _, server in pairs(servers) do
+        serversTab:AddButton({ -- 为每个服务器添加一个按钮
+            Name = "玩家数: " .. server.players .. "/" .. server.maxPlayers .. "\n延迟: " .. server.ping,
+            Callback = function() -- 点击按钮时执行的函数
+                game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, server.serverId, game.Players.LocalPlayer) -- 传送到服务器
+            end
+        })
     end
-
-    serversTab:AddButton({
-        Name = "Refresh",
-        Callback = function()
-            refreshServers()
-        end
-    })
 end
-
-serversTab:AddButton({
-    Name = "Load Servers",
+xgo:Button({
+    Title="刷新",
+    Content ="",
     Callback = function()
-        refreshServers()
+        refreshServers() -- 调用刷新服务器列表的函数
     end
-})
-
-local othersTab = Window:MakeTab({
-    Name = "Others",
-    Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-othersTab:AddButton({
-    Name = "Rejoin",
+end)
+end
+xgo:Button({
+    Title="加载服务器",
+    Content ="",
     Callback = function()
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+        refreshServers() -- 调用刷新服务器列表的函数
     end
-})
-
-othersTab:AddButton({
-    Name = "Destroy UI",
-    Callback = function()
-        OrionLib:Destroy()
-    end
-})
-
+end)
 local apiKey = ""
 local isChatbotEnabled = false
 local responseDistance = 5
@@ -748,176 +621,162 @@ function isBlacklisted(name)
 
     return false
 end
-
 function askChatbot(msg, plrname)
-    local requestData = {
-        model = botModel,
-        temperature = botTemperature,
-        messages = {
-            {
-                role = "system",
-                content = "answer with short response(200 characters max) while following roblox chat filter. your personality: " .. personality
-            },
-            {
-                role = "user",
-                content = "My Name Is " .. plrname
-            },
-            {
-                role = "user",
-                content = msg
-            }
+    -- 构建请求数据
+local requestData = {
+    model = botModel,  -- 模型名称
+    temperature = botTemperature,  -- 响应的随机性温度
+    messages = {
+        {
+            role = "system",  -- 系统角色
+            content = "回答时请遵守Roblox聊天过滤器，并且回答不超过200个字符。你的性格是：" .. personality
+        },
+        {
+            role = "user",  -- 用户角色
+            content = "我的名字是 " .. plrname
+        },
+        {
+            role = "user",  -- 用户角色
+            content = msg  -- 用户的消息
         }
     }
-
-    local response = request({
-        Url = "https://api.groq.com/openai/v1/chat/completions",
-        Method = "POST",
-        Headers = {
-            ["Content-Type"] = "application/json",
-            ["Authorization"] = "Bearer " .. apiKey
-        },
-        Body = game:GetService("HttpService"):JSONEncode(requestData)
-    })
-
-    if #game:GetService("HttpService"):JSONDecode(response.Body).choices[1].message.content >= 200 then
-        print("Response has reached the character limit!")
-    else
-        return game:GetService("HttpService"):JSONDecode(response.Body).choices[1].message.content
-    end
+}
+-- 发送请求到API
+local response = request({
+    Url = "https://api.groq.com/openai/v1/chat/completions",
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json",
+        ["Authorization"] = "Bearer " .. apiKey  -- API密钥
+    },
+    Body = game:GetService("HttpService"):JSONEncode(requestData)  -- 请求体
+})
+-- 检查响应内容是否超过字符限制
+if #game:GetService("HttpService"):JSONDecode(response.Body).choices[1].message.content >= 200 then
+    print("响应内容已达到字符限制！")
+else
+    return game:GetService("HttpService"):JSONDecode(response.Body).choices[1].message.content
 end
-
+-- 在聊天机器人标签页中添加文本框，用于输入Groq API密钥
 botTab:AddTextbox({
-    Name = "Groq api key",
+    Name = "Groq API密钥",
     TextDisappear = false,
     Callback = function(val)
-        apiKey = val
+        apiKey = val  -- 回调函数，更新API密钥
     end
 })
-
-botTab:AddSlider({
-    Name = "Response Distance",
-    Min = 0,
-    Max = 100,
-    Default = 5,
-    Increasmemt = 1,
-    ValueName = "studs",
-    Callback = function(val)
-        responseDistance = val
+-- 添加滑块控件，用于设置响应距离
+xgo:TextInput({
+    ["Title"]="响应距离",
+    ["Content"] = "",
+    ["Place Holder Text"] = "1~100",
+    ["Clear Text On Focus"] = false,
+    ["Callback"] = function(val)
+        responseDistance = val  -- 回调函数，更新响应距离
     end
 })
-
-botTab:AddDropdown({
-	Name = "Model",
-	Default = botModel,
-	Options = {"gemma2-9b-it", "gemma-7b-it", "llama3-groq-70b-8192-tool-use-preview", "llama3-groq-8b-8192-tool-use-preview", "llama-3.1-70b-versatile", "llama-3.1-8b-instant", "llama-3.2-11b-vision-preview", "llama-3.2-90b-vision-preview", "llama3-70b-8192", "llama3-8b-8192"},
-	Callback = function(val)
-        botModel = val
-	end
-})
-
-botTab:AddDropdown({
-    Name = "Personality",
-    Default = personality,
-    Options = {"Default", "Aggressive", "Happy", "Criminal", "Indian Scammer", "Nerd", "Sarcastic", "Stupid"},
-    Callback = function(val)
-        personality = val
+-- 添加下拉菜单，用于选择模型
+xgo:Dropdown({
+    ["Title"] = "模型",
+    ["Multi"] = false,
+    ["Options"] = {"gemma2-9b-it", "gemma-7b-it", "llama3-groq-70b-8192-tool-use-preview", "llama3-groq-8b-8192-tool-use-preview", "llama-3.1-70b-versatile", "llama-3.1-8b-instant", "llama-3.2-11b-vision-preview", "llama-3.2-90b-vision-preview", "llama3-70b-8192", "llama3-8b-8192"},
+    ["Default"] = botModel,
+    ["Place Holder Text"] = "选择模型",
+    ["Callback"] = function(val)
+        botModel = val  -- 回调函数，更新模型
     end
 })
-
-botTab:AddTextbox({
-    Name = "Custom Personality",
-    TextDisappear = false,
-    Callback = function(val)
-        personality = val
+-- 添加下拉菜单，用于选择性
+xgo:Dropdown({
+    ["Title"] = "性格",
+    ["Multi"] = false,
+    ["Options"] = {"默认", "攻击性", "快乐", "犯罪", "印度骗子", "书呆子", "讽刺", "愚蠢"},
+    ["Default"] = personality,
+    ["Place Holder Text"] = "选择性格",
+    ["Callback"] = function(val)
+        personality = val  -- 回调函数，更新性格
     end
 })
-
-botTab:AddTextbox({
-    Name = "Prompt",
-    TextDisappear = true,
-    Callback = function(val)
+-- 添加文本框，用于自定义性格
+xgo:TextInput({
+    ["Title"]="自定义性格",
+    ["Content"] = "",
+    ["Place Holder Text"] = "",
+    ["Clear Text On Focus"] = false,
+    ["Callback"] = function(val)
+        personality = val  -- 回调函数，更新自定义性格
+    end
+})
+-- 添加文本框，用于输入聊天提示
+xgo:TextInput({
+    ["Title"]="提示",
+    ["Content"] = "",
+    ["Place Holder Text"] = "",
+    ["Clear Text On Focus"] = true,
+    ["Callback"] = function(val)
         OrionLib:MakeNotification({
-            Name = "Response From ChatBot",
+            Name = "聊天机器人的回复",
             Content = askChatbot(val, game.Players.LocalPlayer.Name),
             Image = "rbxassetid://4483345998",
             Time = 15
         })
     end
 })
-
-botTab:AddSlider({
-    Name = "Temperature",
-    Min = 0,
-    Max = 2,
-    Default = botTemperature,
-    Increment = 0.01,
-    Callback = function(val)
-        botTemperature = val
+-- 添加滑块控件，用于设置温度
+xgo:Slider({
+    ["Title"]="温度",
+    ["Content"]="",
+    ["Min"] = 1,
+    ["Max"] = 2,
+    ["Increment"] = 0.01,
+    ["Default"] = botTemperature,
+    ["ValueName"] = "",
+    ["Callback"] = function(val)
+        botTemperature = val  -- 回调函数，更新温度
     end
 })
-
-botTab:AddTextbox({
-    Name = "Blacklist",
-    TextDisappear = true,
-    Callback = function(val)
+-- 添加文本框，用于黑名单玩家
+xgo:TextInput({
+    ["Title"]="黑名单",
+    ["Content"] = "",
+    ["Place Holder Text"] = "",
+    ["Clear Text On Focus"] = true,
+    ["Callback"] = function(val)
         if game.Players:FindFirstChild(val) then
             table.insert(blacklist, val)
-
-            OrionLib:MakeNotification({
-                Name = "Blacklist",
-                Content = "Player has been blacklisted!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
+            game:GetService("StarterGui"):SetCore("SendNotification", {Title = "黑名单";   Text = "玩家已被加入黑名单！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
         end
     end
 })
-
-botTab:AddTextbox({
-    Name = "Whitelist",
-    TextDisappear = true,
-    Callback = function(val)
+-- 添加文本框，用于白名单玩家
+xgo:TextInput({
+    ["Title"]="白名单",
+    ["Content"] = "",
+    ["Place Holder Text"] = "",
+    ["Clear Text On Focus"] = true,
+    ["Callback"] = function(val)
         for i, name in pairs(blacklist) do
             if name == val then
                 table.remove(blacklist, i)
-
-                OrionLib:MakeNotification({
-                    Name = "Whitelist",
-                    Content = "Player has been whitelisted!",
-                    Image = "rbxassetid://4483345998",
-                    Time = 5
-                })
+                game:GetService("StarterGui"):SetCore("SendNotification", {Title = "白名单";   Text = "玩家已被加入白名单！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867 local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
             end
         end
     end
 })
-
-botTab:AddToggle({
-    Name = "Enabled",
-    Default = false,
-    Callback = function(val)
+-- 添加开关，用于启用或禁用聊天机器人
+xgo:Toggle({
+    ["Title"]="启用",
+    ["Content"]="",
+    ["Default"] = false,
+    ["Callback"] = function(val)
         isChatbotEnabled = val
-
         if val == true then
-            OrionLib:MakeNotification({
-                Name = "Ai ChatBot",
-                Content = "ChatBot has been enabled!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
+            game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Ai 聊天机器人";   Text = "聊天机器人已启用！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
         elseif val == false then
-            OrionLib:MakeNotification({
-                Name = "Ai ChatBot",
-                Content = "ChatBot has been disabled!",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
+            game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Ai 聊天机器人";   Text = "聊天机器人已禁用！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
         end
     end
 })
-
-OrionLib:Init()
-
 for _, player in pairs(game.Players:GetPlayers()) do
     player.Chatted:Connect(function(message)
         local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
@@ -943,3 +802,5 @@ game.Players.PlayerAdded:Connect(function(player)
         end
     end)
 end)
+xgo:Button({Title="聊天记录",Content ="",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/bnQY7zVJ"))()end})
+xgo:Button({Title="查玩家ip地址 聊天发送",Content ="只能吓唬人 因为是随机数字",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/BingusWR/FakeRobloxIPGrabber/refs/heads/main/FERobloxIpGrabberScrip"))()end})
