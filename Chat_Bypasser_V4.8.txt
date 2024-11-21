@@ -421,44 +421,6 @@ xgo:TextInput({["Title"]="填写你想说的话",["Content"] = "点击下面自�
 xgo:Slider({["Title"]="时间间隔",["Content"]="",["Min"] = 0,["Max"] = 100,["Increment"] = 1,["Default"] = 1,["ValueName"] = "seconds",["Callback"] = function(val)spamInterval = val toggleSpamming(spaming)end})
 xgo:Toggle({["Title"]="自动发送",["Content"]="选好了再发",["Default"] = false,["Callback"] = function(val)spaming = val toggleSpamming(spaming)end})
 xgo:Button({Title="修复过滤器",Content ="",Callback = function() chat("abcdefg()!")end})
-xgo:Toggle({
-    ["Title"]="自动绕过",
-    ["Content"]="",["Default"] = false,["Callback"] = function(val)
-        autobypass = val
-        if val == true then
-        game:GetService("StarterGui"):SetCore("SendNotification", {Title = "自动绕过";   Text = "自动绕过已启用！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
-        else
-        game:GetService("StarterGui"):SetCore("SendNotification", {Title = "自动绕过";   Text = "自动绕过已禁用！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()            
-        end
-        textBox.FocusLost:Connect(function(enter)
-            if enter and autobypass then
-                if textBox.Text ~= "" then
-                    if method == "ěx́ǎḿṕĺě" then
-                        chat(bypasstext(textBox.Text, 1))
-                        textBox.Text = ""
-                    elseif method == "éxạmṕĺe" then
-                        chat(bypasstext(textBox.Text, 2))
-                        textBox.Text = ""
-                    elseif method == "ẹ̲х̲ạ̲ṃ̲р̲ḷ̲ẹ̲" then
-                        chat(bypasstext(textBox.Text, 3))
-                        textBox.Text = ""
-                    elseif method == "e>x>a>m>p>l>e" then
-                        chat(bypasstext(textBox.Text, 4))
-                        textBox.Text = ""
-                    elseif method == "￵example" then
-                        chat(bypasstext(textBox.Text, 5))
-                        textBox.Text = ""
-                    elseif method == "3></-\\/\\/\\p|_3" then
-                        chat(bypasstext(textBox.Text, 6))
-                        textBox.Text = ""
-                    else
-                        game:GetService("StarterGui"):SetCore("SendNotification", {Title = "错误";   Text = "看起来您没有选择一个方法！";  Icon = "rbxthumb://type=Asset&id=120611289434746&w=150&h=150"}) Duration = 1.5; local audioId = 3398620867  local sound = Instance.new("Sound")  sound.SoundId = "rbxassetid://" .. audioId  sound.Volume = 3  sound.Pitch = 3   sound.Parent = game.Workspace  sound:Play()
-                    end
-                end
-            end
-        end)
-    end
-})
 local logging = false
 local webhook = ""
 function sendToWebhook(msg, username)
@@ -503,7 +465,6 @@ xgo:Toggle({
         end
     end
 })
-
 local spamMessage = ""
 local spamInterval = 1
 local spaming = false
@@ -518,8 +479,8 @@ xgo:TextInput({
 })
 xgo:TextInput({
     ["Title"]="发送间隔",
-    ["Content"] = "",
-    ["Place Holder Text"] = "1~100",
+    ["Content"] = "1~100",
+    ["Place Holder Text"] = "",
     ["Clear Text On Focus"] = false,
     ["Callback"] = function(val)
         spamInterval = val  -- 更新垃圾信息发送间隔
@@ -658,10 +619,12 @@ else
     return game:GetService("HttpService"):JSONDecode(response.Body).choices[1].message.content
 end
 -- 在聊天机器人标签页中添加文本框，用于输入Groq API密钥
-botTab:AddTextbox({
-    Name = "Groq API密钥",
-    TextDisappear = false,
-    Callback = function(val)
+xgo:TextInput({
+    ["Title"]="Groq API密钥",
+    ["Content"] = "",
+    ["Place Holder Text"] = "",
+    ["Clear Text On Focus"] = false,
+    ["Callback"] = function(val)
         apiKey = val  -- 回调函数，更新API密钥
     end
 })
@@ -803,4 +766,3 @@ game.Players.PlayerAdded:Connect(function(player)
     end)
 end)
 xgo:Button({Title="聊天记录",Content ="",Callback = function()loadstring(game:HttpGet("https://pastebin.com/raw/bnQY7zVJ"))()end})
-xgo:Button({Title="查玩家ip地址 聊天发送",Content ="只能吓唬人 因为是随机数字",Callback = function()loadstring(game:HttpGet("https://raw.githubusercontent.com/BingusWR/FakeRobloxIPGrabber/refs/heads/main/FERobloxIpGrabberScrip"))()end})
