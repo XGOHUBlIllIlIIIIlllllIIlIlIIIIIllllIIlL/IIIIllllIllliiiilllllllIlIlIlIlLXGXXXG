@@ -360,7 +360,6 @@ function FlurioreLib:MakeNotify(NotifyConfig)
 	end)
 	return NotifyFunction
 end
-local FlurioreLib = {}
 function FlurioreLib:MakeGui(GuiConfig)
     local GuiConfig = GuiConfig or {}
     GuiConfig.NameHub = GuiConfig.NameHub or "Hirimi Hub"
@@ -766,9 +765,6 @@ UserInputService.InputBegan:Connect(function(input)
         end
     end
 end)
-
-return GuiFunc
-end
 	DropShadowHolder.Size = UDim2.new(0, 115 + TextLabel.TextBounds.X + 1 + TextLabel1.TextBounds.X, 0, 350)
 	MakeDraggable(Top, DropShadowHolder)
 	--// Blur
