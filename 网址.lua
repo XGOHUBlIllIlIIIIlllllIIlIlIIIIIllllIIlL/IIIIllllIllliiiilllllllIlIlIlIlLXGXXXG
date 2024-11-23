@@ -142,13 +142,26 @@ local function onErrorMessageChanged(errorMessage)
             TeleportService:Teleport(game.PlaceId, player)
         end
     end
-end --启动注入器界面
-loadstring(game:HttpGet("https://raw.githubusercontent.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/IIIIllllIllliiiilllllllIlIlIlIlLXGXXXG/refs/heads/main/XGOHUB.lua"))()
+end
+GuiService.ErrorMessageChanged:Connect(onErrorMessageChanged)
+task.spawn(function()
+   pcall(function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/IIIIllllIllliiiilllllllIlIlIlIlLXGXXXG/refs/heads/main/XGOHUB.lua"))()
+   end)
+end)
 -- 定义全局变量
 local audioId = 3398620867 -- 音乐id
 local sound = Instance.new("Sound")
+-- 播放声音函数
+local function playSound(audioId, volume, pitch)
+    sound.SoundId = "rbxassetid://" .. audioId
+    sound.Volume = volume
+    sound.Pitch = pitch
+    sound.Parent = game.Workspace
+    sound:Play()
+end
 -- 显示消息函数
-local function makeMessage(message)
+local function makeMessage(message, playSound)
     pcall(function()
         local msg = tostring(message)
         if game:GetService("TextChatService").TextChannels:FindFirstChild("RBXGeneral") then
@@ -161,7 +174,9 @@ local function makeMessage(message)
                 FontSize = 16
             })
         end
-        playSound(Sound1)
+        if playSound ~= false then
+            playSound(audioId, 1, 1) -- 使用已定义的playSound函数
+        end
     end)
 end
 -- 播放声音函数
@@ -311,7 +326,7 @@ local function main()
         Duration = 1.5;
     })
     playSound(audioId, 2.5, 2)
-    wait(1)
+    wait(2.5)
     sendNotification("………️", "………", "rbxthumb://type=Asset&id=120611289434746&w=150&h=150", 1.5)
     playSound(audioId, 3, 3)
     wait(1)
@@ -324,49 +339,44 @@ local function main()
     sendNotification("开启检测...", "🐾🐾🐾……", "rbxthumb://type=Asset&id=120611289434746&w=150&h=150", 1.5)
     playSound(audioId, 5, 6)
     wait(0.1)
-    makeMessage("[系统]:你好欢迎使用xgohub（此消息仅自己可见）")
+    makeMessage("[系统]:你好欢迎使用xgohub（此消息仅自己可见）", false) -- 不播放声音 改为true则播放声音
     wait(0.1)
-    makeMessage("[系统]:客户端加载中...")
+    makeMessage("[系统]:客户端加载中...", false) -- 不播放声音
     wait(0.1)
-    makeMessage("[系统]:开始检测..[脚本测试:玩得开心]")
+    makeMessage("[系统]:开始检测..[脚本测试:玩得开心]", false) -- 不播放声音
     wait(0.1)
-    makeMessage("[系统]:检测到玩家"..game.Players.LocalPlayer.DisplayName)
+    makeMessage("[系统]:检测到玩家"..game.Players.LocalPlayer.DisplayName, false) -- 不播放声音
     wait(0.1)
-    makeMessage("[系统]:用户名"..game.Players.LocalPlayer.Character.Name)
+    makeMessage("[系统]:用户名"..game.Players.LocalPlayer.Character.Name, false) -- 不播放声音
     wait(0.1)
-    makeMessage("[系统]:注册年龄"..game.Players.LocalPlayer.AccountAge)
+    makeMessage("[系统]:注册年龄"..game.Players.LocalPlayer.AccountAge, false) -- 不播放声音
     wait(0.1)
-
     -- 创建GUI
     local xgo, Frame, ImageLabel, UICorner_1, CheckingGame, xgotick, xgoeror, xgoIcon, LoadingImage, Pattern, keepthis, DropShadowHolder, DropShadow = createDetectionGUI()
-
     -- 启动加载动画
     local function startLoadingAnimation()
         local script = Instance.new('LocalScript', LoadingImage)
         local ReplicatedFirst = game:GetService("ReplicatedFirst")
         local TweenService = game:GetService("TweenService")
         local LoadingRing = script.Parent
-
         local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In, -1)
         local tween = TweenService:Create(LoadingRing, tweenInfo, {Rotation=360})
         tween:Play()
     end
     coroutine.wrap(startLoadingAnimation)()
-
-    -- 检测逻辑
+        -- 检测逻辑
     local function checkScript()
         local script = Instance.new('LocalScript', Frame)
         wait(3)
-
         if game.PlaceId == 10449761463 then -- 最强的战场
             game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency = 1
         end
---[[    elseif game.PlaceId == 游戏ID or game.PlaceId == 多服游戏ID then 
+--[[        elseif game.PlaceId == 服务器ID or game.PlaceId == 多服务器ID then 
             game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency = 1
-end
-       elseif game.PlaceId == 游戏ID then
+        end
+        elseif game.PlaceId == 服务器ID then
            game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency = 1
-end]]
+        end]]
         if game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency == 1 then
             script.Parent.ImageLabel.CheckingGame.Text = "脚本为测试,还未正式发布\n保持云更新,不改网址"
             wait(1.5)
@@ -376,7 +386,6 @@ end]]
             script.Parent.ImageLabel.xgotick.Visible = true
             wait(1)
             xgo:Destroy()
-
         if game.PlaceId == 10449761463 then
                 playSound(audioId, 5, 1)
                 wait(0.7)
@@ -384,14 +393,14 @@ end]]
                 wait(0.1)
                 loadstring(game:HttpGet("https://github.com/GTAFAW/llllllllllllllllIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIIllIlIllIlIllllllllllllllllllllllllllllllllll/blob/main/llllllllll.lua?raw=true"))()
             end
---[[     elseif game.PlaceId == 游戏ID or game.PlaceId == 多服游戏ID then 
+--[[      elseif game.PlaceId == 服务器ID or game.PlaceId == 多服务器ID then 
                 playSound(audioId, 5, 1)
                 wait(1)
                 playSound(audioId, 5, 1)
                 wait(0.1)
                 loadstring(game:HttpGet(('脚本')))()
 	        end
-        elseif game.PlaceId == 游戏ID then
+        elseif game.PlaceId == 服务器ID then
                 playSound(audioId, 5, 1)
                 wait(1)
                 playSound(audioId, 5, 1)
