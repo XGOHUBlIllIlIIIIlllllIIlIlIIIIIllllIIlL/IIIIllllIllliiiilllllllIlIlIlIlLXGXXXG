@@ -10,11 +10,11 @@ if not LPH_OBFUSCATED then
 end
 
 if not writefile or not readfile or not isfile or not isfolder or not hookfunction or not hookmetamethod then 
-	game.Players.LocalPlayer:Kick("Unsupported Exploit! - Missing Functions writefile, readfile, isfile, isfolder, hookfunction, hookmetamethod")
+	game.Players.LocalPlayer:Kick("不支持的利用!- 缺少函数writefile，readfile，iSfile，iSfolder，hookfunction，hookporamethod")
 end
 
 if game.PlaceId ~= 2413927524 then 
-	game.Players.LocalPlayer:Kick("Invalid Game! Please join Rake Remastered")
+	game.Players.LocalPlayer:Kick("无法在其他服务器执行!请加入Rake服务器执行")
 end
 
 if _G.RakeEvolvedShutDownFunction and typeof(_G.RakeEvolvedShutDownFunction) == "function" then 
@@ -313,7 +313,7 @@ function setupScrapDetection()
 		end)
 	end
 
-	print("Scrap detection has been loaded!")
+	print("废铁检测已加载!")
 end
 
 function destroyScrapLabels()
@@ -416,7 +416,7 @@ function setupRakeDetection()
 		end
 	end)
 
-	print("Rake detection has been loaded!")
+	print("Rake检测已加载!")
 end
 
 function destroyRakeLabel()
@@ -461,7 +461,7 @@ function setupPlayerDetection()
 		indexAllPlayers()
 	end)
 
-	print("Player detection has been loaded!")
+	print("玩家检测已加载!")
 end
 
 function destroyPlayerLabels()
@@ -484,7 +484,7 @@ function indexFlareGun()
 			ESP(FlareGunInWorkspace, "Flare Gun", true)
 
 			if Toggles.flaregunNotification then
-				Library:CreateNotification("Flare Gun Spawned!", "You can now teleport to the flare gun!", 5)
+				Library:CreateNotification("信号枪已刷新!","你现在可以传送到信号枪附近!", 5)
 			end
 		end
 	end
@@ -501,7 +501,7 @@ function setupFlareGunDetection()
 		indexFlareGun()
 	end)
 
-	print("Flare Gun Detection has been loaded!")
+	print("信号枪检测已加载!")
 end
 
 function destroyFlareGunLabel()
@@ -548,7 +548,7 @@ function indexAllSupplyDrops()
 					ESP(box.HitBox, "Supply Crate", true)
 				end
 
-				Library:CreateNotification("Supply crate spawned!", "You can now view items in the supply crate", 5)
+				Library:CreateNotification("空投箱已降落!","你现在可以在空投箱中查看物品", 5)
 			end
 
 			if Toggles.bypassSupplyDropLock then
@@ -568,7 +568,7 @@ function setupSupplyDropDetection()
 					ESP(object.HitBox, "Supply Crate", true)
 				end
 
-				Library:CreateNotification("Supply crate spawned!", "You can now view items in the supply crate", 5)
+				Library:CreateNotification("空投箱已降落!","你现在可以在空投箱中查看物品", 5)
 
 				if Toggles.bypassSupplyDropLock then
 					bypassSupplyDropLock(object)
@@ -577,7 +577,7 @@ function setupSupplyDropDetection()
 		end
 	end)
 
-	print("Supply Drop Detection has been loaded!")
+	print("供应丢弃检测已加载!")
 end
 
 function destroySupplyDropLabels()
@@ -602,7 +602,7 @@ function hookInfiniteStamina()
 	end)()
 
 
-	Library:CreateNotification("Notice", "To disable infinite stamina, you need to disable this and then reset your character!", 5)
+	Library:CreateNotification("注意","禁用无限耐力，您需要禁用它，然后重置您的角色!", 5)
 end
 
 -- [[ NO FALL DAMAGE ]] --
@@ -783,7 +783,7 @@ function collectScraps()
 		isSrapFarmRunning = true 
 
 		if #getScraps() == 0 then
-			Library:CreateNotification("No Scraps Found!", "There are currently no spawned scraps!", 5)
+			Library:CreateNotification("没有找到废料！","目前没有生成的碎片!", 5)
 			isScrapFarmOnDebaunce = false
 			isSrapFarmRunning = false 
 			return
@@ -795,7 +795,7 @@ function collectScraps()
 			end
 
 			if detectionCounter >= 3 then 
-				Library:CreateNotification("Farming Stopped!", "We have stopped to prevent your death! You will have 1 minute cooldown!", 5)
+				Library:CreateNotification("XGOHUB","我已经停止了工作防止你的死亡! 你将有1分钟的冷却时间!", 5)
 				break
 			end
 
@@ -803,7 +803,7 @@ function collectScraps()
 			Player.Character.HumanoidRootPart.CFrame = scrap.CFrame
 			if not (scrap == nil) then
 				if detectionCounter >= 3 then 
-					Library:CreateNotification("Farming Stopped!", "We have stopped to prevent your death! You will have 1 minute cooldown!", 5)
+					Library:CreateNotification("XGOHUB","我已经停止了工作防止你的死亡! 你将有1分钟的冷却时间!", 5)
 					break
 				end
 
@@ -1555,7 +1555,7 @@ ClientTab:Toggle("能量等级", "Power_Level", loadData.powerLevel, function(ne
 end)
 
 local isSprintSetup = false
-ClientTab:Keybind("无体力消耗快跑", "Sprint_without_Stamina", Enum.KeyCode.Q, function()
+ClientTab:Textbox("无体力消耗快跑", "Sprint_without_Stamina", Enum.KeyCode.Q, function()
     Toggles.sprint = not Toggles.sprint
 
     if isSprintSetup == false then 
@@ -1659,7 +1659,7 @@ ToolsTab:Toggle("手电筒修改器", "Flashlight_Modifier", loadData.flashlight
 
     updateSettings()
 end)
-SettingsTab:Keybind("切换UI", "Toggle_UI", Enum.KeyCode.RightControl, function()
+SettingsTab:Textbox("切换UI", "Toggle_UI", Enum.KeyCode.RightControl, function()
     Library:ToggleUI()
 end)
 
