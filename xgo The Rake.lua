@@ -43,7 +43,7 @@ local TrapsFolder = game:GetService("Workspace"):WaitForChild("Debris"):WaitForC
 local CurrentLightingProperties = ReplicatedStorage:WaitForChild("CurrentLightingProperties")
 
 local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/GTAFAW/neilonmacedo153/refs/heads/main/xgoui.txt"))();    
-local win = ui:new("goto战斗战士")
+local win = ui:new("xgo The rake")
 
 local Labels = {
 	ScrapLabels = {},
@@ -1554,8 +1554,6 @@ ClientTab:Toggle("能量等级", "Power_Level", loadData.powerLevel, function(ne
     updateSettings()
 end)
 
-ClientTab:Button("禁用地图边界", function() destroyMapBorders end)
-
 local isSprintSetup = false
 ClientTab:Keybind("无体力消耗快跑", "Sprint_without_Stamina", Enum.KeyCode.Q, function()
     Toggles.sprint = not Toggles.sprint
@@ -1661,8 +1659,6 @@ ToolsTab:Toggle("手电筒修改器", "Flashlight_Modifier", loadData.flashlight
 
     updateSettings()
 end)
-TPTab:Button("收集碎片",  function() collectScraps end)
-TPTab:Button("收集信号枪",  function()collectFlareGun end)
 SettingsTab:Keybind("切换UI", "Toggle_UI", Enum.KeyCode.RightControl, function()
     Library:ToggleUI()
 end)
@@ -1686,3 +1682,6 @@ enableNoJumpDelay()
 
 Library:ViewTab("ESP")
 Library:CreateNotification("脚本已加载！", "感谢使用Rake Evolved V2", 5)
+SettingsTab:Button("禁用地图边界", "Disable_Map_Borders", destroyMapBorders)
+SettingsTab:Button("收集碎片", "Collect_Scraps", collectScraps)
+SettingsTab:Button("收集信号枪", "Collect_Flare_Gun", collectFlareGun)
