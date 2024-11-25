@@ -1255,19 +1255,6 @@ about:Label("你的注入器:"..identifyexecutor())
 about:Label("你的用户名:"..game.Players.LocalPlayer.Character.Name)
 local UITab2 = win:Tab("『ESP』",'16060333448')
 local ESPTab = UITab2:section("『xxxxxxxgo』",true)   
-local UITab3 = win:Tab("『视觉效果』",'16060333448')
-local VisualsTab = UITab3:section("『xxxxxxxgo』",true)   
-local UITab4 = win:Tab("『客户端』",'16060333448')
-local ClientTab = UITab4:section("『xxxxxxxgo』",true)
-local UITab5 = win:Tab("『补给箱』",'16060333448')
-local SupplyDropTab = UITab5:section("『xxxxxxxgo』",true)
-local UITab6 = win:Tab("『工具』",'16060333448')
-local ToolsTab = UITab6:section("『xxxxxxxgo』",true)   
-local UITab7 = win:Tab("『传送』",'16060333448')
-local TPTab = UITab7:section("『xxxxxxxgo』",true)   
-local UITab8 = win:Tab("『设置』",'16060333448')
-local SettingsTab = UITab8:section("『xxxxxxxgo』",true)
-
 local isRakeESPSetup = false
 ESPTab:Toggle("耙子ESP", "Rake_ESP", loadData.rakeESP, function(newValue)
     Toggles.rakeESP = newValue
@@ -1365,7 +1352,8 @@ ESPTab:Toggle("信号枪通知", "Flare_Gun_Notifications", loadData.flaregunNot
 
     updateSettings()
 end)
-
+local UITab3 = win:Tab("『视觉效果』",'16060333448')
+local VisualsTab = UITab3:section("『xxxxxxxgo』",true)   
 local isFullbrightSetup = false
 VisualsTab:Toggle("全亮", "Fullbright", loadData.fullbright, function(newValue)
     Toggles.fullbright = newValue
@@ -1474,7 +1462,8 @@ VisualsTab:Toggle("解锁第三人称视角", "Unlock_Third_Person", loadData.un
 
     updateSettings()
 end)
-
+local UITab4 = win:Tab("『客户端』",'16060333448')
+local ClientTab = UITab4:section("『xxxxxxxgo』",true)
 ClientTab:Toggle("无限体力", "Infinite_Stamina", loadData.infiniteStamina, function(newValue)
     Toggles.infiniteStamina = newValue    
 
@@ -1563,7 +1552,8 @@ ClientTab:Textbox("无体力消耗快跑", "Sprint_without_Stamina", Enum.KeyCod
         isSprintSetup = true
     end
 end)
-
+local UITab5 = win:Tab("『补给箱』",'16060333448')
+local SupplyDropTab = UITab5:section("『xxxxxxxgo』",true)
 SupplyDropTab:Toggle("绕过补给箱锁定", "Bypass_Supply_Drop_Lock", loadData.bypassSupplyDropLock, function(newValue)
     Toggles.bypassSupplyDropLock = newValue
 
@@ -1600,7 +1590,8 @@ SupplyDropTab:Button("查看补给箱物品", "View_Supply_Drop_Items", function
 
     updateSettings()
 end)
-
+local UITab6 = win:Tab("『工具』",'16060333448')
+local ToolsTab = UITab6:section("『xxxxxxxgo』",true)   
 ToolsTab:Toggle("眩晕棒修改器", "Stun_Stick_Modifier", loadData.stunstickModifier, function(newValue)
     Toggles.stunstickModifier = newValue
 
@@ -1659,6 +1650,11 @@ ToolsTab:Toggle("手电筒修改器", "Flashlight_Modifier", loadData.flashlight
 
     updateSettings()
 end)
+local UITab7 = win:Tab("『传送』",'16060333448')
+local TPTab = UITab7:section("『xxxxxxxgo』",true)
+
+local UITab8 = win:Tab("『设置』",'16060333448')
+local SettingsTab = UITab8:section("『xxxxxxxgo』",true)
 SettingsTab:Textbox("切换UI", "Toggle_UI", Enum.KeyCode.RightControl, function()
     Library:ToggleUI()
 end)
