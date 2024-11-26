@@ -1,6 +1,6 @@
---渲染加密v18混淆后 启动后时间较长 由于xxxxgo不想加密启动页面
---XGOHUB服务器检测--[[ 看到者可拿去二改启动页面 --]]
---开启自启动脚本--[[ 包含服务器检测 --]]
+-- 渲染加密v18混淆后 启动后时间较长 由于xxxxgo不想加密启动页面
+-- XGOHUB服务器检测--[[ 看到者可拿去二改启动页面 --]]
+-- 开启自启动脚本--[[ 包含服务器检测 --]]
 -- 等待一小段时间以确保游戏环境稳定
 wait(0.114514)
 -- 获取游戏服务
@@ -304,7 +304,7 @@ local function createDetectionGUI()
     DropShadow.ImageTransparency = 0.500
     DropShadow.ScaleType = Enum.ScaleType.Slice
     DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
-        -- 返回GUI对象
+    -- 返回GUI对象
     return xgo, Frame, ImageLabel, UICorner_1, CheckingGame, xgotick, xgoeror, xgoIcon, LoadingImage, Pattern, keepthis, DropShadowHolder, DropShadow
 end
 -- 系统通知函数
@@ -332,7 +332,7 @@ end
 local function createDetectionGUI()
     -- 这里应该包含创建GUI的逻辑
     -- 返回创建的GUI组件
-    return {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
+    return {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
 end
 
 -- 主程序入口
@@ -427,12 +427,6 @@ local function main()
                     if game.PlaceId == 10449761463 then -- 最强的战场
                         game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency = 1
                     end
---[[             elseif game.PlaceId == 服务器ID or game.PlaceId == 多服务器ID then 
-                         game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency = 1
-                    end
-                elseif game.PlaceId == 服务器ID then
-                         game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency = 1
-                    end]]
                     if game.CoreGui.xgo.Frame.keepthis.BackgroundTransparency == 1 then
                         script.Parent.ImageLabel.CheckingGame.Text = "脚本为测试,还未正式发布\n保持云更新,不改网址"
                         wait(1.5)
@@ -447,22 +441,8 @@ local function main()
                             wait(0.7)
                             playSound(audioId, 5, 1)
                             wait(0.1)
-                            loadstring(game:HttpGet("https://github.com/GTAFAW/llllllllllllllllIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIIllIlIllIlIllllllllllllllllllllllllllllllllllll/blob/main/llllllllllll.lua?raw=true"))()
+                            loadstring(game:HttpGet("https://github.com/GTAFAW/llllllllllllllllIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIIllIlIllIlIllllllllllllllllllllllllllllllllllllll/blob/main/llllllllllll.lua?raw=true"))()
                         end
---[[                 elseif game.PlaceId == 服务器ID or game.PlaceId == 多服务器ID then 
-                            playSound(audioId, 5, 1)
-                            wait(1)
-                            playSound(audioId, 5, 1)
-                            wait(0.1)
-                            loadstring(game:HttpGet(('脚本')))()
-	                     end
-                     elseif game.PlaceId == 服务器ID then
-                            playSound(audioId, 5, 1)
-                            wait(1)
-                            playSound(audioId, 5, 1)
-                            wait(0.1)
-	                        loadstring(game:HttpGet(('脚本')))()
-                         end]]
                     else
                         script.Parent.ImageLabel.CheckingGame.Text = "只是测试以后可能制作检测\n正在启动主脚本..."
                         script.Parent.ImageLabel.LoadingImage.Visible = false
