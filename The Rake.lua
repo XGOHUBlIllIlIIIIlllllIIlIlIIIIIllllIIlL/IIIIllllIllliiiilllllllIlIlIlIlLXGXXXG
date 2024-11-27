@@ -1425,18 +1425,22 @@ local FlareGunNotificationsToggle = ESPTab:Toggle({
 })
 
 local isFullbrightSetup = false
-VisualsTab:NewToggle("全亮", "Fullbright", loadData.fullbright, function(newValue)
-    Toggles.fullbright = newValue
+local FullbrightToggle = VisualsTab:Toggle({
+    Title = "全亮",
+    State = loadData.fullbright,
+    Callback = function(newValue)
+        Toggles.fullbright = newValue
 
-    if newValue == true then
-        if isFullbrightSetup == false then 
-            setupFullbrightLoop()
-            isFullbrightSetup = true
+        if newValue == true then
+            if isFullbrightSetup == false then 
+                setupFullbrightLoop()
+                isFullbrightSetup = true
+            end
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
 local isNoFogSetup = false
 local NoFogToggle = VisualsTab:Toggle({
