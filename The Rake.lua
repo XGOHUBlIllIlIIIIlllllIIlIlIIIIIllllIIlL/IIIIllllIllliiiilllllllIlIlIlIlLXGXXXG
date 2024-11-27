@@ -42,8 +42,32 @@ local ScrapFolder = FilterFolder:WaitForChild("ScrapSpawns")
 local TrapsFolder = game:GetService("Workspace"):WaitForChild("Debris"):WaitForChild("Traps")
 local CurrentLightingProperties = ReplicatedStorage:WaitForChild("CurrentLightingProperties")
 
-local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Stable/MainUI.lua"))()
-local Library = UI:Init()
+local WindUI = loadstring(game:HttpGet("https://tree-hub.vercel.app/api/UI/WindUI"))()
+local Window = WindUI:CreateWindow({
+    Title = "XGOHUB", -- UI标题
+    Icon = "door-open", -- 图标 URL 或 rbxassetid 或 lucide
+    Author = ".xgo", -- 作者 & 创建者
+    Folder = "xgohub", -- 用于保存数据的文件夹名称（和密钥）
+    Size = UDim2.fromOffset(580, 460), -- UI大小
+    KeySystem = { -- 创建密钥系统
+        Key = "", -- 密钥
+        Note = "", -- 注释
+        URL = "", -- 获取密钥的URL（例如：Discord）
+        SaveKey = true, -- 在上面指定的文件夹中保存密钥
+    }, 
+    Transparent = true,-- UI透明度
+    Theme = "Dark", -- UI主题
+    SideBarWidth = 200, -- UI侧边栏宽度（数字）
+    HasOutline = false, -- 是否添加窗口轮廓
+})
+
+Window:EditOpenButton({
+    Title = "XGOHUB", -- 标题
+    Color = ColorSequence.new(
+        Color3.fromHex("FF0F7B"), -- 颜色1
+        Color3.fromHex("F89B29") -- 颜色2
+    )
+})
 
 local Labels = {
 	ScrapLabels = {},
@@ -1249,112 +1273,156 @@ else
 end
 
 ------- [[ UI ]] -------
-
-local ESPTab = Library:NewTab("ESP", "ESP")
-local VisualsTab = Library:NewTab("视觉效果", "视觉效果")
-local ClientTab = Library:NewTab("客户端", "客户端")
-local SupplyDropTab = Library:NewTab("补给箱", "补给箱")
-local ToolsTab = Library:NewTab("工具", "工具")
-local TPTab = Library:NewTab("传送", "传送")
-local SettingsTab = Library:NewTab("设置", "设置")
+local ESPTab = Window:Tab({
+    Title = "ESP", -- 信息标签
+    Icon = "house", -- 图标
+})
+local VisualsTab = Window:Tab({
+    Title = "视觉效果", -- 信息标签
+    Icon = "house", -- 图标
+})
+local ClientTab = Window:Tab({
+    Title = "客户端", -- 信息标签
+    Icon = "house", -- 图标
+})
+local SupplyDropTab = Window:Tab({
+    Title = "补给箱", -- 信息标签
+    Icon = "house", -- 图标
+})
+local ToolsTab = Window:Tab({
+    Title = "工具", -- 信息标签
+    Icon = "house", -- 图标
+})
+local TPTab = Window:Tab({
+    Title = "传送", -- 信息标签
+    Icon = "house", -- 图标
+})
+local SettingsTab = Window:Tab({
+    Title = "设置", -- 信息标签
+    Icon = "house", -- 图标
+})
 
 local isRakeESPSetup = false
-ESPTab:NewToggle("耙子ESP", "Rake_ESP", loadData.rakeESP, function(newValue)
-    Toggles.rakeESP = newValue
+local RakeESPToggle = ESPTab:Toggle({
+    Title = "耙子ESP",
+    State = loadData.rakeESP,
+    Callback = function(newValue)
+        Toggles.rakeESP = newValue
 
-    if newValue == true then 
-        indexRake()
-        if isRakeESPSetup == false then
-            setupRakeDetection()
-            isRakeESPSetup = true 
+        if newValue == true then 
+            indexRake()
+            if isRakeESPSetup == false then
+                setupRakeDetection()
+                isRakeESPSetup = true 
+            end
+        else 
+            destroyRakeLabel()
         end
-    else 
-        destroyRakeLabel()
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
 local isScrapESPSetup = false
-ESPTab:NewToggle("碎片ESP", "Scrap_ESP", loadData.scrapESP, function(newValue)
-    Toggles.scrapESP = newValue
+local ScrapESPToggle = ESPTab:Toggle({
+    Title = "碎片ESP",
+    State = loadData.scrapESP,
+    Callback = function(newValue)
+        Toggles.scrapESP = newValue
 
-    if newValue == true then
-        indexAllScraps()
-        if isScrapESPSetup == false then 
-            setupScrapDetection()
-            isScrapESPSetup = true
+        if newValue == true then
+            indexAllScraps()
+            if isScrapESPSetup == false then 
+                setupScrapDetection()
+                isScrapESPSetup = true
+            end
+        else 
+            destroyScrapLabels()
         end
-    else 
-        destroyScrapLabels()
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-local isSupplyDropESPSetup = false 
-ESPTab:NewToggle("补给箱ESP", "Supply_Drop_ESP", loadData.supplydropESP, function(newValue)
-    Toggles.supplydropESP = newValue
+local isSupplyDropESPSetup = false
+local SupplyDropESPToggle = ESPTab:Toggle({
+    Title = "补给箱ESP",
+    State = loadData.supplydropESP,
+    Callback = function(newValue)
+        Toggles.supplydropESP = newValue
 
-    if newValue == true then 
-        indexAllSupplyDrops()
-        if isSupplyDropESPSetup == false then 
-            setupSupplyDropDetection()
-            isSupplyDropESPSetup = true
+        if newValue == true then 
+            indexAllSupplyDrops()
+            if isSupplyDropESPSetup == false then 
+                setupSupplyDropDetection()
+                isSupplyDropESPSetup = true
+            end
+        else 
+            destroySupplyDropLabels()
         end
-    else 
-        destroySupplyDropLabels()
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-local isPlayersESPSetup = false 
-ESPTab:NewToggle("玩家ESP", "Players_ESP", loadData.playerESP, function(newValue)
-    Toggles.playerESP = newValue
+local isPlayersESPSetup = false
+local PlayersESPToggle = ESPTab:Toggle({
+    Title = "玩家ESP",
+    State = loadData.playerESP,
+    Callback = function(newValue)
+        Toggles.playerESP = newValue
 
-    if newValue == true then 
-        indexAllPlayers()
-        if isPlayersESPSetup == false then 
-            setupPlayerDetection()
-            isPlayersESPSetup = true 
+        if newValue == true then 
+            indexAllPlayers()
+            if isPlayersESPSetup == false then 
+                setupPlayerDetection()
+                isPlayersESPSetup = true 
+            end
+        else 
+            destroyPlayerLabels()
         end
-    else 
-        destroyPlayerLabels()
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-local isFlareGunESPSetup = false 
-ESPTab:NewToggle("信号枪ESP", "Flare_Gun_ESP", loadData.flaregunESP, function(newValue)
-    Toggles.flaregunESP = newValue
+local isFlareGunESPSetup = false
+local FlareGunESPToggle = ESPTab:Toggle({
+    Title = "信号枪ESP",
+    State = loadData.flaregunESP,
+    Callback = function(newValue)
+        Toggles.flaregunESP = newValue
 
-    if newValue == true then 
-        indexFlareGun()
-        if isFlareGunESPSetup == false then 
-            setupFlareGunDetection()
-            isFlareGunESPSetup = true 
+        if newValue == true then 
+            indexFlareGun()
+            if isFlareGunESPSetup == false then 
+                setupFlareGunDetection()
+                isFlareGunESPSetup = true 
+            end
+        else 
+            destroyFlareGunLabel()
         end
-    else 
-        destroyFlareGunLabel()
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-ESPTab:NewToggle("信号枪通知", "Flare_Gun_Notifications", loadData.flaregunNotification, function(newValue)
-    Toggles.flaregunNotification = newValue
+local FlareGunNotificationsToggle = ESPTab:Toggle({
+    Title = "信号枪通知",
+    State = loadData.flaregunNotification,
+    Callback = function(newValue)
+        Toggles.flaregunNotification = newValue
 
-    if newValue == true then 
-        if isFlareGunESPSetup == false then 
-            setupFlareGunDetection()
-            isFlareGunESPSetup = true
+        if newValue == true then 
+            if isFlareGunESPSetup == false then 
+                setupFlareGunDetection()
+                isFlareGunESPSetup = true
+            end
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
 local isFullbrightSetup = false
 VisualsTab:NewToggle("全亮", "Fullbright", loadData.fullbright, function(newValue)
@@ -1371,46 +1439,58 @@ VisualsTab:NewToggle("全亮", "Fullbright", loadData.fullbright, function(newVa
 end)
 
 local isNoFogSetup = false
-VisualsTab:NewToggle("无雾", "No_Fog", loadData.nofog, function(newValue)
-    Toggles.nofog = newValue
+local NoFogToggle = VisualsTab:Toggle({
+    Title = "无雾",
+    State = loadData.nofog,
+    Callback = function(newValue)
+        Toggles.nofog = newValue
 
-    if newValue == true then
-        if isNoFogSetup == false then 
-            setupNoFogLoop()
-            isNoFogSetup = true
+        if newValue == true then
+            if isNoFogSetup == false then 
+                setupNoFogLoop()
+                isNoFogSetup = true
+            end
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-local isAlwaysDaySetup = false 
-VisualsTab:NewToggle("始终白天", "Always_Day", loadData.alwaysDay, function(newValue)
-    Toggles.alwaysDay = newValue
+local isAlwaysDaySetup = false
+local AlwaysDayToggle = VisualsTab:Toggle({
+    Title = "始终白天",
+    State = loadData.alwaysDay,
+    Callback = function(newValue)
+        Toggles.alwaysDay = newValue
 
-    if newValue == true then 
-        if isAlwaysDaySetup == false then
-            setupAlwaysDayLoop()
-            isAlwaysDaySetup = true
+        if newValue == true then 
+            if isAlwaysDaySetup == false then
+                setupAlwaysDayLoop()
+                isAlwaysDaySetup = true
+            end
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
 local isAlwaysNightSetup = false
-VisualsTab:NewToggle("始终夜晚", "Always_Night", loadData.alwaysNight, function(newValue)
-    Toggles.alwaysNight = newValue
+local AlwaysNightToggle = VisualsTab:Toggle({
+    Title = "始终夜晚",
+    State = loadData.alwaysNight,
+    Callback = function(newValue)
+        Toggles.alwaysNight = newValue
 
-    if newValue == true then
-        if isAlwaysNightSetup == false then 
-            setupAlwaysNightLoop()
-            isAlwaysNightSetup = true 
+        if newValue == true then
+            if isAlwaysNightSetup == false then 
+                setupAlwaysNightLoop()
+                isAlwaysNightSetup = true 
+            end
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
 VisualsTab:NewToggle("路径点", "Waypoints", loadData.waypoints, function(newValue)
     Toggles.waypoints = newValue
@@ -1425,239 +1505,318 @@ VisualsTab:NewToggle("路径点", "Waypoints", loadData.waypoints, function(newV
 end)
 
 local isRakeInfoSetup = false
-VisualsTab:NewToggle("显示耙子信息", "Show_Rake_Info", loadData.showRakeInfo, function(newValue)
-    Toggles.showRakeInfo = newValue
+local ShowRakeInfoToggle = VisualsTab:Toggle({
+    Title = "显示耙子信息",
+    State = loadData.showRakeInfo,
+    Callback = function(newValue)
+        Toggles.showRakeInfo = newValue
 
-    if newValue == true then 
-        local rake = workspace:FindFirstChild("Rake")
+        if newValue == true then 
+            local rake = workspace:FindFirstChild("Rake")
 
-        if rake then 
-            addToRakeInfo(rake)
-        end
+            if rake then 
+                addToRakeInfo(rake)
+            end
 
-        if isRakeESPSetup == false then 
-            setupRakeDetection()
-            isRakeESPSetup = true
-        end
+            if isRakeESPSetup == false then 
+                setupRakeDetection()
+                isRakeESPSetup = true
+            end
 
-        if isRakeInfoSetup == false then 
-            setupRakeInfoLoop()
-            isRakeInfoSetup = true
-        end
-    else 
-        destroyRakeInfo()
-    end
-
-    updateSettings()
-end)
-
-local isThirdPersonSetup = false
-VisualsTab:NewToggle("解锁第三人称视角", "Unlock_Third_Person", loadData.unlockThirdPerson, function(newValue)
-    Toggles.unlockThirdPerson = newValue
-
-    if newValue == true then 
-        if isThirdPersonSetup == false then 
-            setupThirdPersonLoop()
-            isThirdPersonSetup = true
-        end
-    end
-
-    updateSettings()
-end)
-
-ClientTab:NewToggle("无限体力", "Infinite_Stamina", loadData.infiniteStamina, function(newValue)
-    Toggles.infiniteStamina = newValue    
-
-    if newValue == true then 
-        hookInfiniteStamina()
-    end
-
-    updateSettings()
-end)
-
-ClientTab:NewToggle("无跌落伤害", "No_Fall_Damage", loadData.noFallDamage, function(newValue)
-    Toggles.noFallDamage = newValue
-
-    if newValue == true then 
-        hookNoFallDamage()
-    end
-
-    updateSettings()
-end)
-
-local isViewCamerasSetup = false
-ClientTab:NewToggle("查看摄像头", "View_Cameras", loadData.viewCameras, function(newValue)
-    Toggles.viewCameras = newValue
-
-    if newValue == true then 
-        Library:CreateNotification("提示！", "使用Q和E键在摄像头之间切换！", 5)
-
-        if isViewCamerasSetup == false then 
-            setupViewCameraLoop()
-            isViewCamerasSetup = true
-        end
-    end
-
-    updateSettings()
-end)
-
-local isTimerSetup = false
-ClientTab:NewToggle("计时器", "Timer", loadData.timer, function(newValue)
-    Toggles.timer = newValue
-
-    if newValue == true then 
-        if currentTimeUI == nil then 
-            createTheTimer()
-            currentTimeUI.Visible = true
-        end
-
-        if isTimerSetup == false then 
-            setupTimerLoop()
-            isTimerSetup = true
-        end
-    else 
-        currentTimeUI:Destroy()
-        currentTimeUI = nil
-    end
-
-    updateSettings()
-end)
-
-local isPowerLevelSetup = false
-ClientTab:NewToggle("能量等级", "Power_Level", loadData.powerLevel, function(newValue)
-    Toggles.powerLevel = newValue
-
-    if newValue == true then 
-        --if PowerLevelUI == nil then 
-        createPowerLevel()
-        PowerLevelUI.Visible = true
-        --end
-
-        if isPowerLevelSetup == false then 
-            setupPowerLevelLoop()
-            isPowerLevelSetup = true
-        end
-    else 
-        destroyPowerLevel()
-    end
-
-    updateSettings()
-end)
-
-ClientTab:NewButton("禁用地图边界", "Disable_Map_Borders", destroyMapBorders)
-
-local isSprintSetup = false
-ClientTab:NewKeybind("无体力消耗快跑", "Sprint_without_Stamina", Enum.KeyCode.Q, function()
-    Toggles.sprint = not Toggles.sprint
-
-    if isSprintSetup == false then 
-        setupWalkSpeedLoop()
-        isSprintSetup = true
-    end
-end)
-
-SupplyDropTab:NewToggle("绕过补给箱锁定", "Bypass_Supply_Drop_Lock", loadData.bypassSupplyDropLock, function(newValue)
-    Toggles.bypassSupplyDropLock = newValue
-
-    if newValue == true then 
-        indexAllSupplyDrops()
-    end
-
-    updateSettings()
-end)
-
-SupplyDropTab:NewButton("查看补给箱物品", "View_Supply_Drop_Items", function()
-    local SupplyCratesFolder = workspace.Debris.SupplyCrates
-
-    if SupplyCratesFolder:FindFirstChild("Box") then 
-        local selected
-
-        if #SupplyCratesFolder:GetChildren() >= 2 then 
-            for _,box in pairs(SupplyCratesFolder:GetChildren()) do 
-                if box:FindFirstChild("UnlockValue") then 
-                    if box.UnlockValue.Value <= 0 or not box.DB_Folder:FindFirstChild(Player.Name) then 
-                        selected = box 
-                        break
-                    end
-                end
+            if isRakeInfoSetup == false then 
+                setupRakeInfoLoop()
+                isRakeInfoSetup = true
             end
         else 
-            selected = SupplyCratesFolder["Box"]
+            destroyRakeInfo()
         end
 
-        viewSupplyDropItems(selected)
-    else 
-        Library:CreateNotification("没有补给箱！", "当前没有生成的补给箱！", 5)
-    end
+        updateSettings()
+    end,
+})
 
-    updateSettings()
-end)
+local isThirdPersonSetup = false
+local UnlockThirdPersonToggle = VisualsTab:Toggle({
+    Title = "解锁第三人称视角",
+    State = loadData.unlockThirdPerson,
+    Callback = function(newValue)
+        Toggles.unlockThirdPerson = newValue
 
-ToolsTab:NewToggle("眩晕棒修改器", "Stun_Stick_Modifier", loadData.stunstickModifier, function(newValue)
-    Toggles.stunstickModifier = newValue
-
-    if newValue == true then 
-        modifyCurrentStunStick()
-
-        if isBackpackSetup == false then 
-            setupBackpackAddedEvent()
-            isBackpackSetup = true
+        if newValue == true then 
+            if isThirdPersonSetup == false then 
+                setupThirdPersonLoop()
+                isThirdPersonSetup = true
+            end
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-ToolsTab:NewToggle("紫外线灯修改器", "UV_Lamp_Modifier", loadData.uvlampModifier, function(newValue)
-    Toggles.uvlampModifier = newValue
+local InfiniteStaminaToggle = ClientTab:Toggle({
+    Title = "无限体力",
+    State = loadData.infiniteStamina,
+    Callback = function(newValue)
+        Toggles.infiniteStamina = newValue    
 
-    if newValue == true then 
-        modifyCurrentUVLamp()
-
-        if isBackpackSetup == false then 
-            setupBackpackAddedEvent()
-            isBackpackSetup = true
+        if newValue == true then 
+            hookInfiniteStamina()
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-local isStunStickSetup = false
-ToolsTab:NewToggle("眩晕棒光环", "Stun_Stick_Aura", loadData.stunstickAura, function(newValue)
-    Toggles.stunstickAura = newValue
+local NoFallDamageToggle = ClientTab:Toggle({
+    Title = "无跌落伤害",
+    State = loadData.noFallDamage,
+    Callback = function(newValue)
+        Toggles.noFallDamage = newValue
 
-    if newValue == true then 
-        if isStunStickSetup == false then 
-            setupAuraLoop()
-            isStunStickSetup = true
+        if newValue == true then 
+            hookNoFallDamage()
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-ToolsTab:NewToggle("手电筒修改器", "Flashlight_Modifier", loadData.flashlightModifier, function(newValue)
-    Toggles.flashlightModifier = newValue
+local isViewCamerasSetup = false
+local ViewCamerasToggle = ClientTab:Toggle({
+    Title = "查看摄像头",
+    State = loadData.viewCameras,
+    Callback = function(newValue)
+        Toggles.viewCameras = newValue
 
-    if newValue == true then 
-        modifyCurrentFlashlight()
+        if newValue == true then 
+            Library:CreateNotification("提示！", "使用Q和E键在摄像头之间切换！", 5)
 
-        if isBackpackSetup == false then 
-            setupBackpackAddedEvent()
-            isBackpackSetup = true
+            if isViewCamerasSetup == false then 
+                setupViewCameraLoop()
+                isViewCamerasSetup = true
+            end
         end
-    end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
-TPTab:NewButton("收集碎片", "Collect_Scraps", collectScraps)
-TPTab:NewButton("收集信号枪", "Collect_Flare_Gun", collectFlareGun)
+local isTimerSetup = false
+local TimerToggle = ClientTab:Toggle({
+    Title = "计时器",
+    State = loadData.timer,
+    Callback = function(newValue)
+        Toggles.timer = newValue
 
-SettingsTab:NewKeybind("切换UI", "Toggle_UI", Enum.KeyCode.RightControl, function()
-    Library:ToggleUI()
-end)
+        if newValue == true then 
+            if currentTimeUI == nil then 
+                createTheTimer()
+                currentTimeUI.Visible = true
+            end
+
+            if isTimerSetup == false then 
+                setupTimerLoop()
+                isTimerSetup = true
+            end
+        else 
+            currentTimeUI:Destroy()
+            currentTimeUI = nil
+        end
+
+        updateSettings()
+    end,
+})
+
+local isPowerLevelSetup = false
+local PowerLevelToggle = ClientTab:Toggle({
+    Title = "能量等级",
+    State = loadData.powerLevel,
+    Callback = function(newValue)
+        Toggles.powerLevel = newValue
+
+        if newValue == true then 
+            createPowerLevel()
+            PowerLevelUI.Visible = true
+
+            if isPowerLevelSetup == false then 
+                setupPowerLevelLoop()
+                isPowerLevelSetup = true
+            end
+        else 
+            destroyPowerLevel()
+        end
+
+        updateSettings()
+    end,
+})
+
+-- 禁用地图边界按钮
+local DisableMapBordersButton = ClientTab:Button({
+    Title = "禁用地图边界",
+    Desc = "移除地图边界限制",
+    Callback = function()
+        destroyMapBorders()
+    end,
+})
+
+-- 无体力消耗快跑键绑定
+local SprintWithoutStaminaKeybind = ClientTab:Keybind({
+    Title = "无体力消耗快跑",
+    Desc = "允许无体力消耗快跑",
+    DefaultKey = Enum.KeyCode.Q,
+    Callback = function()
+        Toggles.sprint = not Toggles.sprint
+
+        if isSprintSetup == false then 
+            setupWalkSpeedLoop()
+            isSprintSetup = true
+        end
+    end,
+})
+
+local BypassSupplyDropLockToggle = SupplyDropTab:Toggle({
+    Title = "绕过补给箱锁定",
+    Desc = "允许访问所有补给箱内容",
+    State = loadData.bypassSupplyDropLock,
+    Callback = function(newValue)
+        Toggles.bypassSupplyDropLock = newValue
+
+        if newValue == true then 
+            indexAllSupplyDrops()
+        end
+
+        updateSettings()
+    end,
+})
+
+local Button = SupplyDropTab:Button({
+    Title = "查看补给箱物品",
+    Desc = "查看当前可用的补给箱物品",
+    Callback = function()
+        local SupplyCratesFolder = workspace.Debris.SupplyCrates
+
+        if SupplyCratesFolder:FindFirstChild("Box") then 
+            local selected
+
+            if #SupplyCratesFolder:GetChildren() >= 2 then 
+                for _,box in pairs(SupplyCratesFolder:GetChildren()) do 
+                    if box:FindFirstChild("UnlockValue") then 
+                        if box.UnlockValue.Value <= 0 or not box.DB_Folder:FindFirstChild(Player.Name) then 
+                            selected = box 
+                            break
+                        end
+                    end
+                end
+            else 
+                selected = SupplyCratesFolder["Box"]
+            end
+
+            viewSupplyDropItems(selected)
+        else 
+            Library:CreateNotification("没有补给箱！", "当前没有生成的补给箱！", 5)
+        end
+
+        updateSettings()
+    end,
+})
+
+local StunStickModifierToggle = ToolsTab:Toggle({
+    Title = "眩晕棒修改器",
+    State = loadData.stunstickModifier,
+    Callback = function(newValue)
+        Toggles.stunstickModifier = newValue
+
+        if newValue == true then 
+            modifyCurrentStunStick()
+
+            if isBackpackSetup == false then 
+                setupBackpackAddedEvent()
+                isBackpackSetup = true
+            end
+        end
+
+        updateSettings()
+    end,
+})
+
+local UVLampModifierToggle = ToolsTab:Toggle({
+    Title = "紫外线灯修改器",
+    State = loadData.uvlampModifier,
+    Callback = function(newValue)
+        Toggles.uvlampModifier = newValue
+
+        if newValue == true then 
+            modifyCurrentUVLamp()
+
+            if isBackpackSetup == false then 
+                setupBackpackAddedEvent()
+                isBackpackSetup = true
+            end
+        end
+
+        updateSettings()
+    end,
+})
+
+local StunStickAuraToggle = ToolsTab:Toggle({
+    Title = "眩晕棒光环",
+    State = loadData.stunstickAura,
+    Callback = function(newValue)
+        Toggles.stunstickAura = newValue
+
+        if newValue == true then 
+            if isStunStickSetup == false then 
+                setupAuraLoop()
+                isStunStickSetup = true
+            end
+        end
+
+        updateSettings()
+    end,
+})
+
+local FlashlightModifierToggle = ToolsTab:Toggle({
+    Title = "手电筒修改器",
+    State = loadData.flashlightModifier,
+    Callback = function(newValue)
+        Toggles.flashlightModifier = newValue
+
+        if newValue == true then 
+            modifyCurrentFlashlight()
+
+            if isBackpackSetup == false then 
+                setupBackpackAddedEvent()
+                isBackpackSetup = true
+            end
+        end
+
+        updateSettings()
+    end,
+})
+
+local CollectScrapsButton = TPTab:Button({
+    Title = "收集碎片",
+    Desc = "点击收集碎片",
+    Callback = function()
+        collectScraps()
+    end,
+})
+
+local CollectFlareGunButton = TPTab:Button({
+    Title = "收集信号枪",
+    Desc = "点击收集信号枪",
+    Callback = function()
+        collectFlareGun()
+    end,
+})
+
+local ToggleUIKeybind = SettingsTab:Keybind({
+    Title = "切换UI",
+    DefaultKey = Enum.KeyCode.RightControl,
+    Callback = function()
+        Window:ToggleUI()
+    end,
+})
 
 _G.RakeEvolvedShutDownFunction = function()
     destroyFlareGunLabel()
