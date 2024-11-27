@@ -1496,17 +1496,21 @@ local AlwaysNightToggle = VisualsTab:Toggle({
     end,
 })
 
-VisualsTab:NewToggle("路径点", "Waypoints", loadData.waypoints, function(newValue)
-    Toggles.waypoints = newValue
+local WaypointsToggle = VisualsTab:Toggle({
+    Title = "路径点",
+    State = loadData.waypoints,
+    Callback = function(newValue)
+        Toggles.waypoints = newValue
 
-    if newValue == true then 
-        createWaypoints()
-    else 
-        destroyWaypoints()
-    end
+        if newValue == true then 
+            createWaypoints()
+        else 
+            destroyWaypoints()
+        end
 
-    updateSettings()
-end)
+        updateSettings()
+    end,
+})
 
 local isRakeInfoSetup = false
 local ShowRakeInfoToggle = VisualsTab:Toggle({
