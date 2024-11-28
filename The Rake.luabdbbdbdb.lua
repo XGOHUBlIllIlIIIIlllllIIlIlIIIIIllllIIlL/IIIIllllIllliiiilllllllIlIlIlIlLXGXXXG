@@ -81,11 +81,11 @@ local Labels = {
 
 
 local MapPoints = {
-	["Safehouse"] = Vector3.new(-352.336, 16.1844, 63.7742),
-	["Powerstation"] = Vector3.new(-311.052, 21.2032, -209.896),
-	["Shop"] = Vector3.new(-24.9913, 16.3039, -252.213),
-	["ObservationTower"] = Vector3.new(33.1612, 16.209, -45.1087),
-	["Basecamp"] = Vector3.new(-75.4166, 16.7219, 214.085),
+	["安全屋"] = Vector3.new(-352.336, 16.1844, 63.7742),
+	["发电站"] = Vector3.new(-311.052, 21.2032, -209.896),
+	["商店"] = Vector3.new(-24.9913, 16.3039, -252.213),
+	["观察塔"] = Vector3.new(33.1612, 16.209, -45.1087),
+	["基地营地"] = Vector3.new(-75.4166, 16.7219, 214.085),
 }
 
 local Toggles = {
@@ -195,12 +195,12 @@ end
 -- [[ ESP ]] --
 
 local colorTable = {
-	["Scrap"] = Color3.fromRGB(255, 255, 255),
-	["Rake"] = Color3.fromRGB(255, 0, 0),
-	["Flare Gun"] = Color3.fromRGB(0, 170, 255),
-	["Supply Crate"] = Color3.fromRGB(85, 170, 0),
-	["Player"] = Color3.fromRGB(255, 128, 0),
-	["Waypoint"] = Color3.fromRGB(255, 247, 0)
+	["废料"] = Color3.fromRGB(255, 255, 255),
+	["耙子"] = Color3.fromRGB(255, 0, 0),
+	["信号枪"] = Color3.fromRGB(0, 170, 255),
+	["补给箱"] = Color3.fromRGB(85, 170, 0),
+	["玩家"] = Color3.fromRGB(255, 128, 0),
+	["路径点"] = Color3.fromRGB(255, 247, 0)
 }
 
 local MISCESP = {
@@ -648,7 +648,7 @@ function hookInfiniteStamina()
 })
 end
 
--- [[ NO FALL DAMAGE ]] --
+-- [[ 没有灾难损坏 ]] --
 
 function hookNoFallDamage()
 	local NoFallDamage; NoFallDamage = hookmetamethod(game, "__namecall", function(...)
@@ -665,7 +665,7 @@ function hookNoFallDamage()
 	end)
 end
 
--- [[ STUN STICK MODIFIER ]] --
+-- [[ 眩晕棒修饰 ]] --
 
 function modifyCurrentStunStick()
 	local theTool = Player.Backpack:FindFirstChild("StunStick") or Player.Character:FindFirstChild("StunStick")
@@ -702,7 +702,7 @@ function modifyCurrentStunStick()
 	modifiedTag.Parent = theTool
 end
 
--- [[ UV LAMP MODIFIER ]] --
+-- [[ 紫外线灯改性剂 ]] --
 
 function modifyCurrentUVLamp()
 	local theTool = Player.Backpack:FindFirstChild("UV_Lamp") or Player.Character:FindFirstChild("UV_Lamp")
@@ -728,7 +728,7 @@ function modifyCurrentUVLamp()
 	modifiedTag.Parent = theTool
 end
 
--- [[ FLASHLIGHT MODIFIER ]] --
+-- [[ 手电筒修饰符 ]] --
 
 function modifyCurrentFlashlight()
 	local theTool = Player.Backpack:FindFirstChild("Flashlight") or Player.Character:FindFirstChild("Flashlight")
@@ -749,7 +749,7 @@ function modifyCurrentFlashlight()
 	modifiedTag.Parent = theTool
 end
 
--- [[ BACKPACK ADDED EVENT ]] --
+-- [[ 背包添加了事件 ]] --
 
 local isBackpackSetup = false
 
@@ -787,35 +787,7 @@ function setupBackpackAddedEvent()
 	print("Backpack Added Event has been loaded!")
 end
 
--- [[ TIMER ]] --
-
-local currentTimeUI = nil 
-
-function createTheTimer()
-	currentTimeUI = Library:CreateTimerUI()
-end
-
-function timerLoop()
-	currentTimeUI.Visible = true
-
-	local s = Timer.Value
-	local formated = string.format("%02i:%02i", s/60%60, s%60)
-	currentTimeUI.Text = formated
-end
-
-function disableTimer()
-	currentTimeUI.Visible = false
-end
-
-function setupTimerLoop()
-	Timer:GetPropertyChangedSignal("Value"):Connect(function()
-		if Toggles.timer then 
-			timerLoop()
-		end
-	end)
-end
-
--- [[ COLLECT SCRAPS ]] -- 
+-- [[ 收集废料 ]] -- 
 
 local isScrapFarmOnDebaunce = false
 local isSrapFarmRunning = false 
@@ -1072,33 +1044,8 @@ function setupViewCameraLoop()
 	end)
 end
 
--- [[ POWER LEVEL ]] --
 
-local PowerLevelUI = nil 
-
-function createPowerLevel()
-	PowerLevelUI = Library:CreatePowerLevelUI()
-end
-
-function updatePowerLevel()
-	PowerLevelUI.Visible = true 
-
-	PowerLevelUI.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
-end
-
-function destroyPowerLevel()
-	PowerLevelUI.Visible = false
-end
-
-function setupPowerLevelLoop()
-	RunService.RenderStepped:Connect(function()
-		if Toggles.powerLevel then 
-			updatePowerLevel()
-		end
-	end)
-end
-
--- [[ WALKSPEED CHEAT ]] --
+-- [[ 走速度作弊 ]] --
 
 function updateWalkSpeed()
 	if Toggles.sprint then 
@@ -1112,7 +1059,7 @@ function setupWalkSpeedLoop()
 	end)
 end
 
--- [[ STUN STICK AURA ]] --
+-- [[ 眩晕棒极光 ]] --
 
 local isStunStickAuraOnDebaunce = false
 
@@ -1147,7 +1094,7 @@ function setupAuraLoop()
 	end)
 end
 
--- [[ SAFEHOUSE DOOR ]] --
+-- [[ 安全的房子门 ]] --
 
 function modifySafehouseDoor()
 	for _,v in pairs(getconnections(game:GetService("Workspace").Map.SafeHouse.Door.Door.DoorGUIPart.ProximityPrompt.Triggered)) do 
@@ -1161,7 +1108,7 @@ function modifySafehouseDoor()
 	end)
 end
 
--- [[ ALWAYS DAY ]] --
+-- [[ 永远天 ]] --
 
 function updateVisualsToAlwaysDay()
 	for _,v in pairs(ReplicatedStorage.DayProperties:GetChildren()) do 
@@ -1180,7 +1127,7 @@ function setupAlwaysDayLoop()
 	end)
 end
 
--- [[ ALWAYS NIGHT ]] --
+-- [[ 永远夜晚 ]] --
 
 function updateVisualsToAlwaysNight()
 	for _,v in pairs(ReplicatedStorage.NightProperties:GetChildren()) do 
@@ -1199,7 +1146,7 @@ function setupAlwaysNightLoop()
 	end)
 end
 
--- [[ NO FOG ]] --
+-- [[ 没有雾 ]] --
 
 function handleNoFogLoop()
 	if Toggles.nofog then 
@@ -1212,7 +1159,7 @@ function setupNoFogLoop()
 	RunService.RenderStepped:Connect(handleNoFogLoop)
 end
 
--- [[ FULLBRIGHT ]] --
+-- [[ 全亮 ]] --
 
 function updateVisualsToFullbright()
 	game.Lighting.Brightness = 2
@@ -1236,7 +1183,7 @@ function setupFullbrightLoop()
 	RunService.RenderStepped:Connect(handleFullbrightLoop)
 end
 
--- [[ UNLOCK THIRD PERSON ]] --
+-- [[ 解锁第三人 ]] --
 
 function unlockThirdPersonLoop()
 	if Toggles.unlockThirdPerson then 
@@ -1270,7 +1217,7 @@ function destroyMapBorders()
 })
 end
 
--- [[ NO JUMP DELAY ]] --
+-- [[ 没有跳跃延迟 ]] --
 
 function enableNoJumpDelay()
 	UserInputService.JumpRequest:Connect(function()
@@ -1280,7 +1227,7 @@ function enableNoJumpDelay()
 	end)
 end
 
--- [[ HANDLE DEATH ]] --
+-- [[ 处理死亡 ]] --
 
 function handleDeath()
 	Player.CharacterAdded:Wait()
@@ -1310,7 +1257,7 @@ function setupDeathDetection()
 	end)
 end
 
-------- [[ TOGGLES SAVING/LOADING ]] -------
+------- [[ 切换保存/加载 ]] -------
 
 function updateSettings()
 	writefile("RakeEvolvedV2/settings.json", game.HttpService:JSONEncode(Toggles))
@@ -1675,53 +1622,121 @@ local ViewCamerasToggle = ClientTab:Toggle({
 
 ------
 local isTimerSetup = false
-ClientTab:Toggle({
-    Title = "计时器",
-    Key = "Timer",
-    DefaultValue = loadData.timer,
-    OnValueChanged = function(newValue)
-        Toggles.timer = newValue
+local currentTimeUI = nil
 
-        if newValue == true then 
-            if currentTimeUI == nil then 
-                createTheTimer()
-                currentTimeUI.Visible = true
-            end
+-- 创建计时器界面的函数
+function createTheTimer()
+    currentTimeUI = Library:CreateTimerUI()  -- 使用库函数创建计时器界面
+    currentTimeUI.Visible = true  -- 设置计时器界面为可见
+end
 
-            if isTimerSetup == false then 
-                setupTimerLoop()
-                isTimerSetup = true
-            end
-        else 
-            currentTimeUI:Destroy()
-            currentTimeUI = nil
+-- 计时器循环的函数
+function timerLoop()
+    local s = Timer.Value  -- 获取计时器的值
+    local formated = string.format("%02i:%02i", math.floor(s/60), s%60)  -- 格式化时间显示
+    currentTimeUI.Text = formated  -- 更新计时器界面的文本
+end
+
+-- 禁用计时器的函数
+function disableTimer()
+    currentTimeUI.Visible = false  -- 设置计时器界面为不可见
+end
+
+-- 设置计时器循环的函数
+function setupTimerLoop()
+    Timer:GetPropertyChangedSignal("Value"):Connect(function()
+        if Toggles.timer then 
+            timerLoop()  -- 如果计时器是开启的，执行计时器循环
         end
+    end)
+end
 
-        updateSettings()
-    end
-})
+-- 设置计时器
+function setupTimer()
+    Toggles.timer = ClientTab:Toggle({
+        Title = "计时器",  -- Toggle的标题
+        Key = "Timer",     -- Toggle的键名，用于保存和读取设置
+        DefaultValue = loadData.timer,  -- 默认值，从.loadData.timer获取
+        OnValueChanged = function(newValue)
+            Toggles.timer = newValue  -- 更新Toggles表中的timer值
 
+            if newValue == true then 
+                -- 如果用户开启了计时器
+                if currentTimeUI == nil then 
+                    -- 如果currentTimeUI不存在，则创建计时器界面
+                    createTheTimer()
+                end
+
+                if isTimerSetup == false then 
+                    -- 如果计时器尚未设置，则进行设置
+                    setupTimerLoop()
+                    isTimerSetup = true  -- 标记计时器已设置
+                end
+            else 
+                -- 如果用户关闭了计时器
+                if currentTimeUI then
+                    disableTimer()
+                    currentTimeUI:Destroy()  -- 销毁计时器界面
+                    currentTimeUI = nil  -- 将currentTimeUI设置为nil
+                end
+                isTimerSetup = false  -- 重置计时器设置标志
+            end
+
+            updateSettings()  -- 更新设置
+        end
+    })
+end
+
+-- 调用函数以设置计时器
+setupTimer()
+
+local PowerLevelUI = nil
 local isPowerLevelSetup = false
+
+function createPowerLevel()
+    PowerLevelUI = Library:CreatePowerLevelUI()
+end
+
+function updatePowerLevel()
+    PowerLevelUI.Visible = true
+    PowerLevelUI.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
+end
+
+function destroyPowerLevel()
+    PowerLevelUI.Visible = false
+end
+
+function setupPowerLevelLoop()
+    RunService.RenderStepped:Connect(function()
+        if Toggles.powerLevel then 
+            updatePowerLevel()
+        end
+    end)
+end
+
+function setupPowerLevel()
+    if Toggles.powerLevel then 
+        createPowerLevel()
+        PowerLevelUI.Visible = true
+
+        if isPowerLevelSetup == false then 
+            setupPowerLevelLoop()
+            isPowerLevelSetup = true
+        end
+    else 
+        destroyPowerLevel()
+    end
+
+    updateSettings()
+end
+
 ClientTab:Toggle({
     Title = "能量等级",
     Key = "Power_Level",
     DefaultValue = loadData.powerLevel,
     OnValueChanged = function(newValue)
         Toggles.powerLevel = newValue
-
-        if newValue == true then 
-            createPowerLevel()
-            PowerLevelUI.Visible = true
-
-            if isPowerLevelSetup == false then 
-                setupPowerLevelLoop()
-                isPowerLevelSetup = true
-            end
-        else 
-            destroyPowerLevel()
-        end
-
-        updateSettings()
+        setupPowerLevel()
     end
 })
 
