@@ -142,7 +142,7 @@ end
 -- [[ SUPPLY DROP FUNCTIONS ]] --
 
 function viewSupplyDropItems(box)
-	local MainViewer = WindUI:CreateSupplyDropUI()---1
+	local MainViewer = Library:CreateSupplyDropUI()---1
 
 	local ItemsFolder = box.Items_Folder
 
@@ -162,7 +162,7 @@ function bypassSupplyDropLock(box)
 
 	local connection; connection = box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = WindUI:CreateSupplyDropUI()----2
+			local MainViewer = Library:CreateSupplyDropUI()----2
 
 			local ItemsFolder = box.Items_Folder
 
@@ -203,13 +203,13 @@ local MISCESP = {
 }
 
 local function insertObjectToProperTable(object, Text, isThisPlayer, isThisWaypoint)
-	if Text == "Scrap" then 
+	if Text == "废料" then 
 		table.insert(Labels.ScrapLabels, object)
 	elseif Text == "Rake" then
 		table.insert(Labels.RakeLabels, object)
-	elseif Text == "Flare Gun" then
+	elseif Text == "信号枪" then
 		table.insert(Labels.FlareGunLabels, object)
-	elseif Text == "Supply Crate" then
+	elseif Text == "供应相" then
 		table.insert(Labels.SupplyDropLabels, object)
 	elseif isThisPlayer then
 		table.insert(Labels.PlayersLabels, object)
@@ -1620,7 +1620,7 @@ local loadData = {}
 
 -- 创建计时器界面的函数
 function createTheTimer()
-    local currentTimeUI = WindUI:CreateTimerUI()  ---3
+    local currentTimeUI = Library:CreateTimerUI()  ---3
     currentTimeUI.Visible = true  
 end
 
@@ -1628,13 +1628,13 @@ end
 function timerLoop()
     local s = Timer.Value  
     local formated = string.format("%02i:%02i", math.floor(s/60), s%60)  
-    local currentTimeUI = WindUI:CreateTimerUI()  ---4
+    local currentTimeUI = Library:CreateTimerUI()  ---4
     currentTimeUI.Text = formated  
 end
 
 -- 禁用计时器的函数
 function disableTimer()
-    local currentTimeUI = WindUI:CreateTimerUI()  ---5
+    local currentTimeUI = Library:CreateTimerUI()  ---5
     currentTimeUI.Visible = false  
 end
 
@@ -1654,7 +1654,7 @@ local currentTimeUI = nil
 
 -- 创建计时器界面的函数
 function createTheTimer()
-    currentTimeUI = WindUI:CreateTimerUI()  -- 使用库函数创建计时器界面
+    currentTimeUI = Library:CreateTimerUI()  -- 使用库函数创建计时器界面
     currentTimeUI.Visible = true  -- 设置计时器界面为可见
 end
 
@@ -1723,7 +1723,7 @@ local PowerLevelUI = nil
 local isPowerLevelSetup = false
 
 function createPowerLevel()
-    PowerLevelUI = WindUI:CreatePowerLevelUI()
+    PowerLevelUI = Library:CreatePowerLevelUI()
 end
 
 function updatePowerLevel()
@@ -1938,7 +1938,7 @@ local ToggleUIKeybind = SettingsTab:Keybind({
     Title = "切换UI",
     DefaultKey = Enum.KeyCode.RightControl,
     Callback = function()
-        Window:ToggleUI()
+        Library:ToggleUI()
     end,
 })
 
@@ -1959,7 +1959,7 @@ modifySafehouseDoor()
 setupDeathDetection()
 enableNoJumpDelay()
 
-WindUI:ViewTab("ESP")
+Library:ViewTab("ESP")
 WindUI:Notify({
             Title = "脚本已加载!",
             Content = "感谢使用XGOHUB",
