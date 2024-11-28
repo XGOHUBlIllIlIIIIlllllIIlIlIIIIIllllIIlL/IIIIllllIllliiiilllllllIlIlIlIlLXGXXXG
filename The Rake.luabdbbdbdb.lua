@@ -37,6 +37,7 @@ local TrapsFolder = game:GetService("Workspace"):WaitForChild("Debris"):WaitForC
 local CurrentLightingProperties = ReplicatedStorage:WaitForChild("CurrentLightingProperties")
 
 local WindUI = loadstring(game:HttpGet("https://tree-hub.vercel.app/api/UI/WindUI"))()
+local Library = UI:Init()
 local Window = WindUI:CreateWindow({
     Title = "XGOHUB | The Rake重置版", -- UI标题
     Icon = "rbxassetid://128885038925647", -- 图标 URL 或 rbxassetid 或 lucide
