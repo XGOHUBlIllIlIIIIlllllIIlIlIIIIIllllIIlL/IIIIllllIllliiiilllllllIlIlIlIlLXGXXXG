@@ -142,7 +142,7 @@ end
 -- [[ SUPPLY DROP FUNCTIONS ]] --
 
 function viewSupplyDropItems(box)
-	local MainViewer = Library:CreateSupplyDropUI()
+	local MainViewer = WindUI:CreateSupplyDropUI()---1
 
 	local ItemsFolder = box.Items_Folder
 
@@ -162,7 +162,7 @@ function bypassSupplyDropLock(box)
 
 	local connection; connection = box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = Library:CreateSupplyDropUI()
+			local MainViewer = WindUI:CreateSupplyDropUI()----2
 
 			local ItemsFolder = box.Items_Folder
 
@@ -1620,7 +1620,7 @@ local loadData = {}
 
 -- 创建计时器界面的函数
 function createTheTimer()
-    local currentTimeUI = Library:CreateTimerUI()  
+    local currentTimeUI = WindUI:CreateTimerUI()  ---3
     currentTimeUI.Visible = true  
 end
 
@@ -1628,13 +1628,13 @@ end
 function timerLoop()
     local s = Timer.Value  
     local formated = string.format("%02i:%02i", math.floor(s/60), s%60)  
-    local currentTimeUI = Library:CreateTimerUI()  
+    local currentTimeUI = WindUI:CreateTimerUI()  ---4
     currentTimeUI.Text = formated  
 end
 
 -- 禁用计时器的函数
 function disableTimer()
-    local currentTimeUI = Library:CreateTimerUI()  
+    local currentTimeUI = WindUI:CreateTimerUI()  ---5
     currentTimeUI.Visible = false  
 end
 
@@ -1648,70 +1648,91 @@ function setupTimerLoop()
 end
 
 -- 设置计时器
-Toggles.timer = ClientTab:Toggle({
-    Title = "计时器",
-    Key = "Timer",
-    DefaultValue = loadData.timer,
-    OnValueChanged = function(newValue)
-        Toggles.timer = newValue  
+------------不能使用↓
+local isTimerSetup = false
+local currentTimeUI = nil
 
-        if newValue == true then 
-            if not Library then
-                warn("Library not found")
-                return
-            end
+-- 创建计时器界面的函数
+function createTheTimer()
+    currentTimeUI = WindUI:CreateTimerUI()  -- 使用库函数创建计时器界面
+    currentTimeUI.Visible = true  -- 设置计时器界面为可见
+end
 
-            if not Library:CreateTimerUI then
-                warn("CreateTimerUI function not found in Library")
-                return
-            end
+-- 计时器循环的函数
+function timerLoop()
+    local s = Timer.Value  -- 获取计时器的值
+    local formated = string.format("%02i:%02i", math.floor(s/60), s%60)  -- 格式化时间显示
+    currentTimeUI.Text = formated  -- 更新计时器界面的文本
+end
 
-            if not Library:CreateTimerUI() then
-                warn("Failed to create Timer UI")
-                return
-            end
+-- 禁用计时器的函数
+function disableTimer()
+    currentTimeUI.Visible = false  -- 设置计时器界面为不可见
+end
 
-            if not isTimerSetup then 
-                setupTimerLoop()
-                isTimerSetup = true  
-            end
-        else 
-            if Library then
-                local currentTimeUI = Library:CreateTimerUI()  
+-- 设置计时器循环的函数
+function setupTimerLoop()
+    Timer:GetPropertyChangedSignal("Value"):Connect(function()
+        if Toggles.timer then 
+            timerLoop()  -- 如果计时器是开启的，执行计时器循环
+        end
+    end)
+end
+
+-- 设置计时器
+function setupTimer()
+    Toggles.timer = ClientTab:Toggle({
+        Title = "计时器",  -- Toggle的标题
+        Key = "Timer",     -- Toggle的键名，用于保存和读取设置
+        DefaultValue = loadData.timer,  -- 默认值，从.loadData.timer获取
+        OnValueChanged = function(newValue)
+            Toggles.timer = newValue  -- 更新Toggles表中的timer值
+
+            if newValue == true then 
+                -- 如果用户开启了计时器
+                if currentTimeUI == nil then 
+                    -- 如果currentTimeUI不存在，则创建计时器界面
+                    createTheTimer()
+                end
+
+                if isTimerSetup == false then 
+                    -- 如果计时器尚未设置，则进行设置
+                    setupTimerLoop()
+                    isTimerSetup = true  -- 标记计时器已设置
+                end
+            else 
+                -- 如果用户关闭了计时器
                 if currentTimeUI then
                     disableTimer()
-                    currentTimeUI:Destroy()  
-                    currentTimeUI = nil  
+                    currentTimeUI:Destroy()  -- 销毁计时器界面
+                    currentTimeUI = nil  -- 将currentTimeUI设置为nil
                 end
+                isTimerSetup = false  -- 重置计时器设置标志
             end
-            isTimerSetup = false  
-        end
 
-        updateSettings()  
-    end
-})
+            updateSettings()  -- 更新设置
+        end
+    })
+end
 
 -- 调用函数以设置计时器
 setupTimer()
-
+------------不能使用↑
+------------不能使用↓
 local PowerLevelUI = nil
 local isPowerLevelSetup = false
 
 function createPowerLevel()
-    PowerLevelUI = Library:CreatePowerLevelUI()
+    PowerLevelUI = WindUI:CreatePowerLevelUI()
 end
 
 function updatePowerLevel()
-    if PowerLevelUI then
-        PowerLevelUI.Visible = true
-        PowerLevelUI.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
-    end
+    PowerLevelUI.Visible = true
+    PowerLevelUI.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
 end
 
 function destroyPowerLevel()
-    if PowerLevelUI then
-        PowerLevelUI.Visible = false
-    end
+    PowerLevelUI.Visible = false
 end
 
 function setupPowerLevelLoop()
@@ -1725,9 +1746,9 @@ end
 function setupPowerLevel()
     if Toggles.powerLevel then 
         createPowerLevel()
-        updatePowerLevel()
+        PowerLevelUI.Visible = true
 
-        if not isPowerLevelSetup then 
+        if isPowerLevelSetup == false then 
             setupPowerLevelLoop()
             isPowerLevelSetup = true
         end
