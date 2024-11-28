@@ -195,27 +195,27 @@ end
 -- [[ ESP ]] --
 
 local colorTable = {
-	["废料"] = Color3.fromRGB(255, 255, 255),
-	["rake"] = Color3.fromRGB(255, 0, 0),
-	["信号枪"] = Color3.fromRGB(0, 170, 255),
-	["补给箱"] = Color3.fromRGB(85, 170, 0),
-	["玩家"] = Color3.fromRGB(255, 128, 0),
-	["航点"] = Color3.fromRGB(255, 247, 0)
+	["Scrap"] = Color3.fromRGB(255, 255, 255),
+	["Rake"] = Color3.fromRGB(255, 0, 0),
+	["Flare Gun"] = Color3.fromRGB(0, 170, 255),
+	["Supply Crate"] = Color3.fromRGB(85, 170, 0),
+	["Player"] = Color3.fromRGB(255, 128, 0),
+	["Waypoint"] = Color3.fromRGB(255, 247, 0)
 }
 
 local MISCESP = {
-	Player = "玩家",
-	Waypoint = "航点"
+	Player = "Player",
+	Waypoint = "Waypoint"
 }
 
 local function insertObjectToProperTable(object, Text, isThisPlayer, isThisWaypoint)
-	if Text == "废料" then 
+	if Text == "Scrap" then 
 		table.insert(Labels.ScrapLabels, object)
-	elseif Text == "rake" then
+	elseif Text == "Rake" then
 		table.insert(Labels.RakeLabels, object)
-	elseif Text == "信号枪" then
+	elseif Text == "Flare Gun" then
 		table.insert(Labels.FlareGunLabels, object)
-	elseif Text == "补给箱" then
+	elseif Text == "Supply Crate" then
 		table.insert(Labels.SupplyDropLabels, object)
 	elseif isThisPlayer then
 		table.insert(Labels.PlayersLabels, object)
@@ -1671,12 +1671,15 @@ local ViewCamerasToggle = ClientTab:Toggle({
         updateSettings()
     end,
 })
+-------
 
+------
 local isTimerSetup = false
-local TimerToggle = ClientTab:Toggle({
+ClientTab:Toggle({
     Title = "计时器",
-    State = loadData.timer,
-    Callback = function(newValue)
+    Key = "Timer",
+    DefaultValue = loadData.timer,
+    OnValueChanged = function(newValue)
         Toggles.timer = newValue
 
         if newValue == true then 
@@ -1695,14 +1698,15 @@ local TimerToggle = ClientTab:Toggle({
         end
 
         updateSettings()
-    end,
+    end
 })
 
 local isPowerLevelSetup = false
-local PowerLevelToggle = ClientTab:Toggle({
+ClientTab:Toggle({
     Title = "能量等级",
-    State = loadData.powerLevel,
-    Callback = function(newValue)
+    Key = "Power_Level",
+    DefaultValue = loadData.powerLevel,
+    OnValueChanged = function(newValue)
         Toggles.powerLevel = newValue
 
         if newValue == true then 
@@ -1718,7 +1722,7 @@ local PowerLevelToggle = ClientTab:Toggle({
         end
 
         updateSettings()
-    end,
+    end
 })
 
 -- 禁用地图边界按钮
