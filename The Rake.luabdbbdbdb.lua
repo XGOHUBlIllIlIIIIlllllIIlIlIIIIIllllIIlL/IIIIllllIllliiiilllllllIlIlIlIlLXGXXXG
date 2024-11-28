@@ -44,8 +44,8 @@ local CurrentLightingProperties = ReplicatedStorage:WaitForChild("CurrentLightin
 
 local WindUI = loadstring(game:HttpGet("https://tree-hub.vercel.app/api/UI/WindUI"))()
 local Window = WindUI:CreateWindow({
-    Title = "XGOHUB", -- UI标题
-    Icon = "door-open", -- 图标 URL 或 rbxassetid 或 lucide
+    Title = "XGOHUB | The Rake重置版", -- UI标题
+    Icon = "rbxassetid://128885038925647", -- 图标 URL 或 rbxassetid 或 lucide
     Author = ".xgo", -- 作者 & 创建者
     Folder = "xgohub", -- 用于保存数据的文件夹名称（和密钥）
     Size = UDim2.fromOffset(580, 460), -- UI大小
@@ -62,7 +62,7 @@ local Window = WindUI:CreateWindow({
 })
 
 Window:EditOpenButton({
-    Title = "XGOHUB", -- 标题
+    Title = "XGOHUB | The Rake重置版", -- 标题
     Color = ColorSequence.new(
         Color3.fromHex("FF0F7B"), -- 颜色1
         Color3.fromHex("F89B29") -- 颜色2
@@ -195,27 +195,27 @@ end
 -- [[ ESP ]] --
 
 local colorTable = {
-	["Scrap"] = Color3.fromRGB(255, 255, 255),
-	["Rake"] = Color3.fromRGB(255, 0, 0),
-	["Flare Gun"] = Color3.fromRGB(0, 170, 255),
-	["Supply Crate"] = Color3.fromRGB(85, 170, 0),
-	["Player"] = Color3.fromRGB(255, 128, 0),
-	["Waypoint"] = Color3.fromRGB(255, 247, 0)
+	["废料"] = Color3.fromRGB(255, 255, 255),
+	["rake"] = Color3.fromRGB(255, 0, 0),
+	["信号枪"] = Color3.fromRGB(0, 170, 255),
+	["补给箱"] = Color3.fromRGB(85, 170, 0),
+	["玩家"] = Color3.fromRGB(255, 128, 0),
+	["航点"] = Color3.fromRGB(255, 247, 0)
 }
 
 local MISCESP = {
-	Player = "Player",
-	Waypoint = "Waypoint"
+	Player = "玩家",
+	Waypoint = "航点"
 }
 
 local function insertObjectToProperTable(object, Text, isThisPlayer, isThisWaypoint)
-	if Text == "Scrap" then 
+	if Text == "废料" then 
 		table.insert(Labels.ScrapLabels, object)
-	elseif Text == "Rake" then
+	elseif Text == "rake" then
 		table.insert(Labels.RakeLabels, object)
-	elseif Text == "Flare Gun" then
+	elseif Text == "信号枪" then
 		table.insert(Labels.FlareGunLabels, object)
-	elseif Text == "Supply Crate" then
+	elseif Text == "补给箱" then
 		table.insert(Labels.SupplyDropLabels, object)
 	elseif isThisPlayer then
 		table.insert(Labels.PlayersLabels, object)
@@ -230,7 +230,7 @@ local function ESP(object, Text, markObject, misc)
 	if isThisLiveEntity == nil then isThisLiveEntity = false else isThisLiveEntity = true end
 
     	if object.Size == nil then 
-           warn("Invalid object was tried to ESP! Ignored.")
+           warn("尝试ESP的无效对象！已忽略.")
 	   return
         end
 
@@ -400,7 +400,7 @@ function addRakeLabel(Rake)
 			HPStatus.Position = UDim2.new(0.5, 0, 0.200000003, 0)
 			HPStatus.Size = UDim2.new(0.75757575, 0, 0.316455692, 0)
 			HPStatus.Font = Enum.Font.SourceSans
-			HPStatus.Text = "HP: 500"
+			HPStatus.Text = "生命值: 500"
 			HPStatus.TextColor3 = Color3.fromRGB(255, 255, 255)
 			HPStatus.TextScaled = true
 			HPStatus.TextSize = 14.000
@@ -417,7 +417,7 @@ function addRakeLabel(Rake)
 			Stunned.Position = UDim2.new(0.5, 0, 0.5, 0)
 			Stunned.Size = UDim2.new(0.75757575, 0, 0.316455692, 0)
 			Stunned.Font = Enum.Font.SourceSans
-			Stunned.Text = "Stunned: No"
+			Stunned.Text = "眩晕: No"
 			Stunned.TextColor3 = Color3.fromRGB(255, 255, 255)
 			Stunned.TextScaled = true
 			Stunned.TextSize = 14.000
@@ -511,7 +511,7 @@ function indexFlareGun()
 			WindUI:Notify({
     Title = "信号枪生成",
     Content = "你现在可以传送到信号枪的位置！",
-    Icon = "crosshairs",
+    Icon = "eye",
     Duration = 5,
 })
 			end
@@ -580,7 +580,7 @@ function indexAllSupplyDrops()
 				WindUI:Notify({
     Title = "补给箱出现",
     Content = "你现在可以查看补给箱里的物品",
-    Icon = "box-open",
+    Icon = "eye",
     Duration = 5,
 })
 				end
@@ -605,7 +605,7 @@ function setupSupplyDropDetection()
 				WindUI:Notify({
     Title = "补给箱生成！",
     Content = "现在可以查看补给箱中的物品",
-    Icon = "gift",
+    Icon = "eye",
     Duration = 5,
 })
 				
@@ -643,7 +643,7 @@ function hookInfiniteStamina()
    WindUI:Notify({
     Title = "提示",
     Content = "要禁用无限体力，你需要先禁用此功能，然后重置你的角色！",
-    Icon = "info",
+    Icon = "eye",
     Duration = 5,
 })
 end
@@ -829,7 +829,7 @@ function collectScraps()
 		WindUI:Notify({
     Title = "未发现废料",
     Content = "当前没有生成废料！",
-    Icon = "info-circle",
+    Icon = "eye",
     Duration = 5,
 })
 			isScrapFarmOnDebaunce = false
@@ -846,7 +846,7 @@ function collectScraps()
 			WindUI:Notify({
     Title = "停止采集",
     Content = "为防止您死亡，已停止采集！您将有1分钟的冷却时间！",
-    Icon = "times-circle",
+    Icon = "eye",
     Duration = 5,
 })
 				break
@@ -859,7 +859,7 @@ function collectScraps()
 					WindUI:Notify({
     Title = "采集已停止",
     Content = "为了防止你死亡，我们已经停止了！你将有1分钟的冷却时间！",
-    Icon = "exclamation-triangle",
+    Icon = "eye",
     Duration = 5,
 })
 		     	break
@@ -886,14 +886,14 @@ function collectScraps()
     WindUI:Notify({
         Title = "运行中",
         Content = "你正在收集废料",
-        Icon = "cog",
+        Icon = "eye",
         Duration = 5,
     })
      elseif isScrapFarmOnDebaunce == true then 
     WindUI:Notify({
         Title = "冷却中",
         Content = "你正处于冷却期！",
-        Icon = "alert",
+        Icon = "eye",
         Duration = 5,
     })
 	end
@@ -1723,7 +1723,7 @@ local PowerLevelToggle = ClientTab:Toggle({
 
 -- 禁用地图边界按钮
 local DisableMapBordersButton = ClientTab:Button({
-    Title = "禁用地图边界",
+    Title = "移除地图边界",
     Desc = "移除地图边界限制",
     Callback = function()
         destroyMapBorders()
