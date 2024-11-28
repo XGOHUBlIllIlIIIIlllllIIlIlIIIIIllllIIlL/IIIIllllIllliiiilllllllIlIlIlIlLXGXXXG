@@ -81,11 +81,11 @@ local Labels = {
 
 
 local MapPoints = {
-	["安全屋"] = Vector3.new(-352.336, 16.1844, 63.7742),
-	["发电站"] = Vector3.new(-311.052, 21.2032, -209.896),
-	["商店"] = Vector3.new(-24.9913, 16.3039, -252.213),
-	["观察塔"] = Vector3.new(33.1612, 16.209, -45.1087),
-	["基地营地"] = Vector3.new(-75.4166, 16.7219, 214.085),
+	["Safehouse"] = Vector3.new(-352.336, 16.1844, 63.7742),
+	["Powerstation"] = Vector3.new(-311.052, 21.2032, -209.896),
+	["Shop"] = Vector3.new(-24.9913, 16.3039, -252.213),
+	["ObservationTower"] = Vector3.new(33.1612, 16.209, -45.1087),
+	["Basecamp"] = Vector3.new(-75.4166, 16.7219, 214.085),
 }
 
 local Toggles = {
@@ -195,12 +195,12 @@ end
 -- [[ ESP ]] --
 
 local colorTable = {
-	["废料"] = Color3.fromRGB(255, 255, 255),
-	["耙子"] = Color3.fromRGB(255, 0, 0),
-	["信号枪"] = Color3.fromRGB(0, 170, 255),
-	["补给箱"] = Color3.fromRGB(85, 170, 0),
-	["玩家"] = Color3.fromRGB(255, 128, 0),
-	["路径点"] = Color3.fromRGB(255, 247, 0)
+	["Scrap"] = Color3.fromRGB(255, 255, 255),
+	["Rake"] = Color3.fromRGB(255, 0, 0),
+	["Flare Gun"] = Color3.fromRGB(0, 170, 255),
+	["Supply Crate"] = Color3.fromRGB(85, 170, 0),
+	["Player"] = Color3.fromRGB(255, 128, 0),
+	["Waypoint"] = Color3.fromRGB(255, 247, 0)
 }
 
 local MISCESP = {
@@ -1689,6 +1689,7 @@ end
 
 -- 调用函数以设置计时器
 setupTimer()
+Toggle:Lock()
 
 local PowerLevelUI = nil
 local isPowerLevelSetup = false
@@ -1739,6 +1740,7 @@ ClientTab:Toggle({
         setupPowerLevel()
     end
 })
+Toggle:Lock()
 
 -- 禁用地图边界按钮
 local DisableMapBordersButton = ClientTab:Button({
