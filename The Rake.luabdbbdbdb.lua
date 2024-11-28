@@ -37,7 +37,6 @@ local TrapsFolder = game:GetService("Workspace"):WaitForChild("Debris"):WaitForC
 local CurrentLightingProperties = ReplicatedStorage:WaitForChild("CurrentLightingProperties")
 
 local WindUI = loadstring(game:HttpGet("https://tree-hub.vercel.app/api/UI/WindUI"))()
-local Library = UI:Init()
 local Window = WindUI:CreateWindow({
     Title = "XGOHUB | The Rake重置版", -- UI标题
     Icon = "rbxassetid://128885038925647", -- 图标 URL 或 rbxassetid 或 lucide
@@ -143,7 +142,7 @@ end
 -- [[ SUPPLY DROP FUNCTIONS ]] --
 
 function viewSupplyDropItems(box)
-	local MainViewer = Library:CreateSupplyDropUI()---1
+	local MainViewer = Window:CreateSupplyDropUI()---1
 
 	local ItemsFolder = box.Items_Folder
 
@@ -163,7 +162,7 @@ function bypassSupplyDropLock(box)
 
 	local connection; connection = box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = Library:CreateSupplyDropUI()----2
+			local MainViewer = Window:CreateSupplyDropUI()----2
 
 			local ItemsFolder = box.Items_Folder
 
@@ -1206,7 +1205,7 @@ function destroyMapBorders()
 	end
         WindUI:Notify({
     Title = "通知",
-    Content = "地图周围的所有边界已被禁用.（服务器边界无法移除）",
+    Content = "地图周围的所有边界限制已开启.（服务器边界无法移除）",
     Icon = "eye",
     Duration = 5,
 })
@@ -1406,6 +1405,21 @@ local FlareGunESPToggle = ESPTab:Toggle({
         updateSettings()
     end,
 })
+local WaypointsToggle = ESPTab:Toggle({
+    Title = "路径点[房屋显示]",
+    State = loadData.waypoints,
+    Callback = function(newValue)
+        Toggles.waypoints = newValue
+
+        if newValue == true then 
+            createWaypoints()
+        else 
+            destroyWaypoints()
+        end
+
+        updateSettings()
+    end,
+})
 
 local FlareGunNotificationsToggle = ESPTab:Toggle({
     Title = "信号枪通知",
@@ -1490,22 +1504,6 @@ local AlwaysNightToggle = VisualsTab:Toggle({
                 setupAlwaysNightLoop()
                 isAlwaysNightSetup = true 
             end
-        end
-
-        updateSettings()
-    end,
-})
-
-local WaypointsToggle = VisualsTab:Toggle({
-    Title = "路径点[房屋显示]",
-    State = loadData.waypoints,
-    Callback = function(newValue)
-        Toggles.waypoints = newValue
-
-        if newValue == true then 
-            createWaypoints()
-        else 
-            destroyWaypoints()
         end
 
         updateSettings()
@@ -1621,7 +1619,7 @@ local loadData = {}
 
 -- 创建计时器界面的函数
 function createTheTimer()
-    local currentTimeUI = Library:CreateTimerUI()  ---3
+    local currentTimeUI = Window:CreateTimerUI()  ---3
     currentTimeUI.Visible = true  
 end
 
@@ -1629,13 +1627,13 @@ end
 function timerLoop()
     local s = Timer.Value  
     local formated = string.format("%02i:%02i", math.floor(s/60), s%60)  
-    local currentTimeUI = Library:CreateTimerUI()  ---4
+    local currentTimeUI = Window:CreateTimerUI()  ---4
     currentTimeUI.Text = formated  
 end
 
 -- 禁用计时器的函数
 function disableTimer()
-    local currentTimeUI = Library:CreateTimerUI()  ---5
+    local currentTimeUI = Window:CreateTimerUI()  ---5
     currentTimeUI.Visible = false  
 end
 
@@ -1655,7 +1653,7 @@ local currentTimeUI = nil
 
 -- 创建计时器界面的函数
 function createTheTimer()
-    currentTimeUI = Library:CreateTimerUI()  -- 使用库函数创建计时器界面
+    currentTimeUI = Window:CreateTimerUI()  -- 使用库函数创建计时器界面
     currentTimeUI.Visible = true  -- 设置计时器界面为可见
 end
 
@@ -1684,7 +1682,8 @@ end
 function setupTimer()
     Toggles.timer = ClientTab:Toggle({
         Title = "计时器",  -- Toggle的标题
-        Key = "Timer",     -- Toggle的键名，用于保存和读取设置
+        Key = "Timer",     -- Toggle的键名，用于保存和读取设
+        Locked = true,
         DefaultValue = loadData.timer,  -- 默认值，从.loadData.timer获取
         OnValueChanged = function(newValue)
             Toggles.timer = newValue  -- 更新Toggles表中的timer值
@@ -1724,7 +1723,7 @@ local PowerLevelUI = nil
 local isPowerLevelSetup = false
 
 function createPowerLevel()
-    PowerLevelUI = Library:CreatePowerLevelUI()
+    PowerLevelUI = Window:CreatePowerLevelUI()
 end
 
 function updatePowerLevel()
@@ -1763,6 +1762,7 @@ end
 ClientTab:Toggle({
     Title = "能量等级",
     Key = "Power_Level",
+    Locked = true,
     DefaultValue = loadData.powerLevel,
     OnValueChanged = function(newValue)
         Toggles.powerLevel = newValue
@@ -1770,6 +1770,8 @@ ClientTab:Toggle({
     end
 })
 ------------不能使用↑
+ClientTab:Toggle({["Title"]="自动互动",["Default"] = false,["Callback"] = function(state)if state then autoInteract = true while autoInteract do for _, descendant in pairs(workspace:GetDescendants()) do if descendant:IsA("ProximityPrompt") then fireproximityprompt(descendant)end end task.wait(0.25)end else autoInteract = false  end end})
+ClientTab:Toggle({["Title"]="穿墙",["Default"] = false,["Callback"] = function(state)local player = game.Players.LocalPlayer local character = player.Character or player.CharacterAdded:Wait() local steppedConnection if state then Noclip = true steppedConnection = game:GetService("RunService").Stepped:Connect(function() if Noclip then for _, child in pairs(game.Workspace:GetChildren()) do if child.Name == player.Name and child:IsA("Model") then for _, part in pairs(child:GetChildren()) do if part:IsA("BasePart") then part.CanCollide = false end end end end else steppedConnection:Disconnect()end end) else Noclip = false if character then for _, part in pairs(character:GetChildren()) do if part:IsA("BasePart") then part.CanCollide = true end end end end end})
 -- 禁用地图边界按钮
 local DisableMapBordersButton = ClientTab:Button({
     Title = "移除地图边界",
@@ -1939,10 +1941,16 @@ local ToggleUIKeybind = SettingsTab:Keybind({
     Title = "切换UI",
     DefaultKey = Enum.KeyCode.RightControl,
     Callback = function()
-        Library:ToggleUI()
+        Window:ToggleUI()
     end,
 })
-
+SettingsTab:Button({
+    Title = "通用[XGOHUB]",
+    Desc = "通用脚本",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/IIIIllllIllliiiilllllllIlIlIlIlLXGXXXG/refs/heads/main/2.1814.lua?raw=true"))()
+    end,
+})
 _G.RakeEvolvedShutDownFunction = function()
     destroyFlareGunLabel()
     destroyRakeInfo()
@@ -1960,7 +1968,7 @@ modifySafehouseDoor()
 setupDeathDetection()
 enableNoJumpDelay()
 
-Library:ViewTab("ESP")
+Window:ViewTab("ESP")
 WindUI:Notify({
             Title = "脚本已加载!",
             Content = "感谢使用XGOHUB",
