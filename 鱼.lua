@@ -63,9 +63,9 @@ local WaitForSomeone = RenderStepped.Wait
 -- // // // 功能列表 // // // --
 
 -- // // // 变量 // // // --
-local CastMode = "正当"
-local ShakeMode = "导航模式"
-local ReelMode = "明目张胆"
+local CastMode = "Legit"
+local ShakeMode = "Navigation"
+local ReelMode = "Blatant"
 local CollectMode = "Teleports"
 local teleportSpots = {}
 local FreezeChar = false
