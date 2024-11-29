@@ -1,6 +1,6 @@
 if getgenv().cuppink then warn("CupPibk Hub : 已执行！") return end
 getgenv().cuppink = true
-
+----
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
