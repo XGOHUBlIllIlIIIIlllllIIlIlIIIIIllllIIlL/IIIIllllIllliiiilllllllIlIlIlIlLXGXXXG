@@ -537,14 +537,13 @@ local CreateThemeTab = Window:Tab({
 local Options = WindUI.Options
 
 do
-    Tabs.Home:AddButton({
+    HomeTab:Button({
         Title = "复制 Q群",
         Description = "加入群聊获取更多脚本",
         Callback = function()
             setclipboard("259461151")
         end
     })
-
  -- // 独家标签页 // --
 ExclusivesTab:Section({ 
     Title = "Exclusives Features",
