@@ -1,6 +1,6 @@
 if getgenv().cuppink then warn("CupPibk Hub : 已执行！") return end
 getgenv().cuppink = true
-----
+
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
@@ -544,6 +544,7 @@ do
             setclipboard("259461151")
         end
     })
+
  -- // 独家标签页 // --
 ExclusivesTab:Section({ 
     Title = "Exclusives Features",
@@ -639,7 +640,10 @@ local DestroyShadowsButton = ExclusivesTab:Button({
 })
 
 -- // 主界面标签页 // --
-local sectionAutoFishing = MainTab:AddSection("自动钓鱼")
+MainTab:Section({ 
+    Title = "自动钓鱼",
+    TextXAlignment = "Center"
+})
 local autoCastToggle = MainTab:Toggle({
     Title = "自动抛竿",
     Default = false,
@@ -769,7 +773,11 @@ local autoReelModeDropdown = MainTab:Dropdown({
 })
 
 -- // 售卖标签页 // --
-local sectionSellItems = ItemsTab:AddSection("售卖物品")
+ItemsTab:Section({ 
+    Title = "售卖物品",
+    TextXAlignment = "Center"
+})
+
 local sellHandButton = ItemsTab:Button({
     Title = "售卖手持物品",
     Description = "",
