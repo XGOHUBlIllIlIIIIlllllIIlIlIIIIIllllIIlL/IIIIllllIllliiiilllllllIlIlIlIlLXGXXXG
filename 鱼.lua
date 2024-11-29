@@ -5,110 +5,62 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
-local WindUI = loadstring(game:HttpGet("https://tree-hub.vercel.app/api/UI/WindUI"))()
+local WindUI = loadstring(game:HttpGet("htts://tree-hub.vercel.app/api/UI/WindUI"))()
 local Window = WindUI:CreateWindow({
-    Title = "XGOHUB | Fisch", -- UI标题
-    Icon = "rbxassetid://128885038925647", -- 图标 URL 或 rbxassetid 或 lucide
-    Author = ".xgo", -- 作者 & 创建者
-    Folder = "xgohub", -- 用于保存数据的文件夹名称（和密钥）
-    Size = UDim2.fromOffset(580, 460), -- UI大小
-    KeySystem = { -- 创建密钥系统
-        Key = "", -- 密钥
-        Note = "", -- 注释
-        URL = "", -- 获取密钥的URL（例如：Discord）
-        SaveKey = true, -- 在上面指定的文件夹中保存密钥
+    Title = "XGOHUB | Fisch",
+    Icon = "rbxassetid://128885038925647",
+    Author = ".xgo",
+    Folder = "xgohub",
+    Size = UDim2.fromOffset(580, 460),
+    KeySystem = { 
+        Key = "",
+        Note = "",
+        URL = "",
+        SaveKey = true,
     }, 
-    Transparent = true,-- UI透明度
-    Theme = "Dark", -- UI主题
-    SideBarWidth = 200, -- UI侧边栏宽度（数字）
-    HasOutline = false, -- 是否添加窗口轮廓
+    Transparent = true,
+    Theme = "Dark",
+    SideBarWidth = 200,
+    HasOutline = false,
 })
 
 Window:EditOpenButton({
-    Title = "XGOHUB | Fisch", -- 标题
+    Title = "XGOHUB | Fisch",
     Color = ColorSequence.new(
-        Color3.fromHex("FF0F7B"), -- 颜色1
-        Color3.fromHex("F89B29") -- 颜色2
+        Color3.fromHex("FF0F7B"),
+        Color3.fromHex("F89B29")
     )
 })
 
 local Window = WindUI:CreateWindow({
-    Title = game:GetService("MarketplaceService"):GetProductInfo(16732694052).Name .." | CupPink - 高级",
+    Title = game:GetService("MarketplaceService"):GetProductInfo(16732694052).Name .." | XGOHUB - 高级",
     SubTitle = " (259461151)",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
-    Acrylic = false, -- 模糊效果可能会被检测到，设置为false将完全禁用模糊效果
+    Acrylic = false,
     Theme = "Rose",
-    MinimizeKey = Enum.KeyCode.LeftControl -- 当没有最小化键绑定时使用
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 -- // // // 服务 // // // --
-local VirtualInputManager = game:GetService("VirtualInputManager")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local VirtualUser = game:GetService("VirtualUser")
-local HttpService = game:GetService("HttpService")
-local GuiService = game:GetService("GuiService")
-local RunService = game:GetService("RunService")
-local Workspace = game:GetService("Workspace")
 local Players = game:GetService("Players")
-local CoreGui = game:GetService('StarterGui')
-local ContextActionService = game:GetService('ContextActionService')
-local UserInputService = game:GetService('UserInputService')
-
--- // // // 本地变量 // // // --
 local LocalPlayer = Players.LocalPlayer
 local LocalCharacter = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 local HumanoidRootPart = LocalCharacter:FindFirstChild("HumanoidRootPart")
-local UserPlayer = HumanoidRootPart:WaitForChild("user")
-local ActiveFolder = Workspace:FindFirstChild("active")
-local FishingZonesFolder = Workspace:FindFirstChild("zones"):WaitForChild("fishing")
-local TpSpotsFolder = Workspace:FindFirstChild("world"):WaitForChild("spawns"):WaitForChild("TpSpots")
-local NpcFolder = Workspace:FindFirstChild("world"):WaitForChild("npcs")
-local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
-local screenGui = Instance.new("ScreenGui", PlayerGui)
-local shadowCountLabel = Instance.new("TextLabel", screenGui)
-local RenderStepped = RunService.RenderStepped
-local WaitForSomeone = RenderStepped.Wait
 
 -- // // // 功能列表 // // // --
 
 -- // // // 变量 // // // --
-local CastMode = "Legit"
-local ShakeMode = "Navigation"
-local ReelMode = "Blatant"
-local CollectMode = "Teleports"
 local teleportSpots = {}
-local FreezeChar = false
-local DayOnlyLoop = nil
-local BypassGpsLoop = nil
-local Noclip = false
-local RunCount = false
+local TpSpotsFolder = Workspace:FindFirstChild("world"):WaitForChild("spawns"):WaitForChild("TpSpots")
 
 -- // // // 函数 // // // --
 function ShowNotification(String)
-    Fluent:Notify({
+    WindUI:Notify({
         Title = "XGOHUB",
         Content = String,
         Duration = 5
     })
-end
-
--- // 发送到 Discord // --
-local function GetPlayerStats()
-    local hud = LocalPlayer:FindFirstChild("PlayerGui") and LocalPlayer.PlayerGui:FindFirstChild("hud")
-    if hud and hud.safezone then
-        local coins = hud.safezone:FindFirstChild("coins") and hud.safezone.coins.Text or "N/A"
-        local jobId = game.JobId
-        local joinScript = string.format("game:GetService('TeleportService'):TeleportToPlaceInstance(%d, '%s', game:GetService('Players').LocalPlayer)", game.PlaceId, jobId)
-        return {
-            Username = LocalPlayer.Name,
-            DisplayName = LocalPlayer.DisplayName,
-            Coins = coins,
-            JobId = jobId,
-            JoinScript = joinScript
-        }
-    end
-    return nil
 end
 
 game.Players.LocalPlayer.Idled:Connect(function()
