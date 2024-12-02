@@ -196,74 +196,6 @@ if not _G['xgo Hub Table'].isWindows then
     end)
 end
 
-do -- Settings Initializer
-	local path = "xgo Hub/fisch"
-	if not isfolder(path) then makefolder(path) end
-	DefaultConfigName = path.."/OriConfibg.json"
-	ConfigName = path.."/"..Client.UserId.."Config.json"
-	Config = isfile(ConfigName) and readfile(ConfigName)
-	DefaultConfig = isfile(DefaultConfigName) and readfile(DefaultConfigName)
-	if DefaultConfig then
-		if type(DefaultConfig) == "string" and DefaultConfig:find"{" then
-			local Success,Result
-			Success,Result = pcall(function()
-				return game:GetService("HttpService"):JSONDecode(DefaultConfig)
-			end)
-			wait(0.1)
-			if Success then
-				DefaultConfig = Result
-			else
-				DefaultConfig = nil
-			end
-		end
-	end
-	if isfile(tostring(Client.UserId).."ALC.txt") then
-		if readfile(tostring(Client.UserId).."ALC.txt") == "true"  then
-			if Config then
-				if type(Config) == "string" and Config:find"{" then
-					local Success,Result
-					Success,Result = pcall(function()
-						return game:GetService("HttpService"):JSONDecode(Config)
-					end)
-					wait(0.1)
-					if Success then
-						Config = Result
-					else
-						Config = {}
-					end
-				else
-					Config = {}
-				end
-			else
-				Config = {}
-			end
-		else
-			Config = {}
-		end
-	else
-		writefile(tostring(Client.UserId).."ALC.txt", "true")
-		Config = {}
-	end
-	if getgenv().Config then
-		Config = getgenv().Config
-	end
-end
-
-do -- Config Function
-	save = function()
-		if not isfolder('xgo Hub') then
-			makefolder('xgo Hub')
-		end
-		writefile(ConfigName,game:GetService("HttpService"):JSONEncode(Config))
-	end
-	setDefaultConfig = function()
-		if not isfolder('xgo Hub') then
-			makefolder('xgo Hub')
-		end
-		writefile(DefaultConfigName,game:GetService("HttpService"):JSONEncode(Config))
-	end
-end
-
 do -- INFO FISH
 	local fish = game:GetService("ReplicatedStorage"):WaitForChild("resources"):WaitForChild("animations"):WaitForChild("fish")
 	FISHDATA = {
@@ -3181,9 +3113,9 @@ Dropdown = function(section, Name, default, list, multi, ...)
 end
 
 
-AllFuncs['自动钓鱼'] = function()
+AllFuncs['Farm Fish'] = function()
 	local RodName = ReplicatedStorage.playerstats[LocalPlayer.Name].Stats.rod.Value
-	while Config['自动钓鱼'] and task.wait() do
+	while Config['Farm Fish'] and task.wait() do
 		if Backpack:FindFirstChild(RodName) then
 			LocalPlayer.Character.Humanoid:EquipTool(Backpack:FindFirstChild(RodName))
 		end
@@ -3191,24 +3123,24 @@ AllFuncs['自动钓鱼'] = function()
 			local XyzClone = game:GetService("ReplicatedStorage").resources.items.items.GPS.GPS.gpsMain.xyz:Clone()
 			XyzClone.Parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("hud"):WaitForChild("safezone"):WaitForChild("backpack")
 			XyzClone.Name = "Lure"
-			XyzClone.Text = "<font color='#ff4949'>诱饵 </font>: 0%"
+			XyzClone.Text = "<font color='#ff4949'>Lure </font>: 0%"
 			repeat
 				pcall(function()
 					PlayerGui:FindFirstChild("shakeui").safezone:FindFirstChild("button").Size = UDim2.new(1001, 0, 1001, 0)
 					game:GetService("VirtualUser"):Button1Down(Vector2.new(1, 1))
 					game:GetService("VirtualUser"):Button1Up(Vector2.new(1, 1))
 				end)
-				XyzClone.Text = "<font color='#ff4949'>诱饵 </font>: "..tostring(ExportValue(tostring(LocalPlayer.Character:FindFirstChild(RodName).values.lure.Value), 2)).."%"
+				XyzClone.Text = "<font color='#ff4949'>Lure </font>: "..tostring(ExportValue(tostring(LocalPlayer.Character:FindFirstChild(RodName).values.lure.Value), 2)).."%"
 				RunService.Heartbeat:Wait()
-			until not LocalPlayer.Character:FindFirstChild(RodName) or LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value or not Config['自动钓鱼']
-			XyzClone.Text = "<font color='#ff4949'>钓鱼中!</font>"
+			until not LocalPlayer.Character:FindFirstChild(RodName) or LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value or not Config['Farm Fish']
+			XyzClone.Text = "<font color='#ff4949'>FISHING!</font>"
 			delay(1.5, function()
 				XyzClone:Destroy()
 			end)
 			repeat
 				ReplicatedStorage.events.reelfinished:FireServer(1000000000000000000000000, true)
-				task.wait(0.5)
-			until not LocalPlayer.Character:FindFirstChild(RodName) or not LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value or not Config['自动钓鱼']
+				task.wait(.5)
+			until not LocalPlayer.Character:FindFirstChild(RodName) or not LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value or not Config['Farm Fish']
 		else
 			LocalPlayer.Character:FindFirstChild(RodName).events.cast:FireServer(1000000000000000000000000)
 			task.wait(2)
@@ -3216,17 +3148,19 @@ AllFuncs['自动钓鱼'] = function()
 	end
 end
 
-AllFuncs['出售鱼类'] = function()
-	while Config['出售鱼类'] and task.wait(3) do
+
+AllFuncs['Sell Fish'] = function()
+	while Config['Sell Fish'] and task.wait(3) do
 		game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("selleverything"):InvokeServer()
 	end
 end
 
-AllFuncs['传送到站立位置'] = function()
-	while Config['传送到站立位置'] and task.wait() do
+
+AllFuncs['To Pos Stand'] = function()
+	while Config['To Pos Stand'] and task.wait() do
 		if not Config['SelectPositionStand'] then
-			Notify("请选择位置")
-			Config['传送到站立位置'] = false
+			Notify("Pls Select Position")
+			Config['To Pos Stand'] = false
 			return
 		end
 		pcall(function()
@@ -3235,34 +3169,34 @@ AllFuncs['传送到站立位置'] = function()
 	end
 end
 
-AllFuncs['切换移动速度'] = function()
-	while Config['切换移动速度'] and task.wait() do
+AllFuncs['Toggle Walk Speed'] = function()
+	while Config['Toggle Walk Speed'] and task.wait() do
 		pcall(function()
-			LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Config['设置移动速度']
+			LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Config['Set Walk Speed']
 		end)
 	end
-	if not Config['切换移动速度'] then
+	if not Config['Toggle Walk Speed'] then
 		pcall(function()
 			LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = 16
 		end)
 	end
 end
 
-AllFuncs['切换跳跃力量'] = function()
-	while Config['切换跳跃力量'] and task.wait() do
+AllFuncs['Toggle Jump Power'] = function()
+	while Config['Toggle Jump Power'] and task.wait() do
 		pcall(function()
-			LocalPlayer.Character:FindFirstChild("Humanoid").JumpPower = Config['设置跳跃力量']
+			LocalPlayer.Character:FindFirstChild("Humanoid").JumpPower = Config['Set Jump Power']
 		end)
 	end
-	if not Config['切换跳跃力量'] then
+	if not Config['Toggle Jump Power'] then
 		pcall(function()
 			LocalPlayer.Character:FindFirstChild("Humanoid").JumpPower = 50
 		end)
 	end
 end
 
-AllFuncs['切换穿墙模式'] = function()
-	while Config['切换穿墙模式'] and task.wait() do
+AllFuncs['Toggle Noclip'] = function()
+	while Config['Toggle Noclip'] and task.wait() do
 		local charParts = LocalPlayer.Character:GetDescendants()
 		for i,v in pairs(charParts) do
 			if v:IsA("BasePart") and LocalPlayer.Character then
@@ -3272,7 +3206,7 @@ AllFuncs['切换穿墙模式'] = function()
 			end
 		end
 	end
-	if not Config['切换穿墙模式'] then
+	if not Config['Toggle Noclip'] then
 		local charParts = LocalPlayer.Character:GetDescendants()
 		for i,v in pairs(charParts) do
 			if v:IsA("BasePart") and LocalPlayer.Character then
@@ -3316,7 +3250,7 @@ function ExportValue(arg1, arg2)
 	return tonumber(string.format("%."..(arg2 or 1)..'f', arg1))
 end
 
-AllFuncs.HopServer = function(FullServer) -- 跳转服务器（低负载）
+AllFuncs.HopServer = function(FullServer) -- Hop Server (Low)
 	local FullServer = FullServer or false
 
 	local Http = game:GetService("HttpService")
@@ -3356,7 +3290,7 @@ AllFuncs.HopServer = function(FullServer) -- 跳转服务器（低负载）
 				if #servers > 0 then
 					game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], game.Players.LocalPlayer)
 				else
-					return "无法找到一个服务器."
+					return "Couldn't find a server."
 				end
 			end
 		end
@@ -3365,120 +3299,117 @@ AllFuncs.HopServer = function(FullServer) -- 跳转服务器（低负载）
 end
 
 local LastDely = tick()
-AllFuncs['发送Webhook'] = function()
-	while Config['发送Webhook'] and task.wait() do
-		if tick() - LastDely >= tonumber(Config['延迟发送']) and (Config['当前等级'] or Config['当前金钱']) then
+AllFuncs['Sending Webhook'] = function()
+	while Config['Sending Webhook'] and task.wait() do
+		if tick() - LastDely >= tonumber(Config['Delay Sending']) and (Config['Current Level'] or Config['Current Money']) then
 			LastDely = tick()
 			local LevelDes = ""
 			local MoneyDes = ""
 			local AllFishInventory = ""
 			local BuySuccess = "**"
-			if Config['当前等级'] then
-				LevelDes = "\n当前等级 : "..comma_value(LocalPlayer.leaderstats.Level.Value)
+			if Config['Current Level'] then
+				LevelDes = "\nNow Level : "..comma_value(LocalPlayer.leaderstats.Level.Value)
 			end
-			if Config['当前金钱'] then
-				MoneyDes = "\n当前金钱 : "..tostring(LocalPlayer.PlayerGui.hud.safezone.coins.Text)
+			if Config['Current Money'] then
+				MoneyDes = "\nNow Money : "..tostring(LocalPlayer.PlayerGui.hud.safezone.coins.Text)
 			end
-			if Config['所有鱼类库存'] then
+			if Config['All Fish Inventory'] then
 				AllFishInventory = "```"
 				for i,v in pairs(GetFishInInventory()) do
 					AllFishInventory = AllFishInventory..i
-					if Config['发送千鱼'] then
+					if Config['Send Kilo Fish'] then
 						AllFishInventory = AllFishInventory.." : "..v[1]
 					end
-					if Config['发送价格鱼'] then
+					if Config['Send Price Fish'] then
 						AllFishInventory = AllFishInventory.." : "..v[2]
 					end
 					AllFishInventory = AllFishInventory.."\n"
 				end
 				AllFishInventory = AllFishInventory.."```"
 			end
-			local SendingSuccess = sendwebhook(Config['WebHook配置'], {
-				["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id"]..">"),
+			local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
+				["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id']..">"),
 				["embeds"] = {
 					{
 						["id"]= 661605297,
 						["title"]= "Fisch Notify",
-						["description"] = "** 玩家 : "..LocalPlayer.Name.."\n "..MoneyDes..""..LevelDes..""..AllFishInventory.."**",
+						["description"] = "** Player : "..LocalPlayer.Name.."\n "..MoneyDes..""..LevelDes..""..AllFishInventory.."**",
 						["color"]= 8646911,
 						["fields"]= {},
 						["thumbnail"]= {
 							["url"]= GetPlayerProfile()
 						},
 						["footer"]= {
-							["text"]  = "xgo Hub Notify",
+							["text"]  = "Normal Hub Notify",
 							["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
 						}
 					}
 				}
 			})
 			if SendingSuccess then
-				Notify("发送WebHook成功")
+				Notify("Sending WebHook Success")
 			else
-				Notify("发送WebHook失败！")
+				Notify("Failed Sending WebHook!")
 			end
 		end
 	end
 end
 
 workspace.active.ChildAdded:Connect(function(child)
-	if Config['安全漩涡生成'] and Config['WebHook配置'] ~= "" then
-		if child.Name == "安全漩涡" then
+	if Config['Safe Whirlpool Spawn'] and Config['WebHook Configs'] ~= "" then
+		if child.Name == "Safe Whirlpool" then
 			local Pos = {
 				child.Position.X,
 				child.Position.Y,
 				child.Position.Z,
 			}
 			local StringInput = string.format("%s, %s, %s", ExportValue(Pos[1]), ExportValue(Pos[2]), ExportValue(Pos[3]))
-			local SendingSuccess = sendwebhook(Config['WebHook配置'], {
-				["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id"]..">"),
+			local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
+				["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id']..">"),
 				["embeds"] = {
 					{
 						["id"]= 661605297,
 						["title"]= "Fisch Notify",
-						["description"] = "** 玩家 : "..LocalPlayer.Name.."\n 发现安全漩涡\n 位置 : "..StringInput.."**",
+						["description"] = "** Player : "..LocalPlayer.Name.."\n Found Safe Whirlpool\n Position : "..StringInput.."**",
 						["color"]= 8646911,
 						["fields"]= {},
 						["thumbnail"]= {
 							["url"]= GetPlayerProfile()
 						},
 						["footer"]= {
-							["text"]  = "xgo Hub Notify",
+							["text"]  = "Normal Hub Notify",
 							["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
 						}
 					}
 				}
 			})
 			if SendingSuccess then
-				Notify("发送WebHook成功")
+				Notify("Sending WebHook Success")
 			else
-				Notify("发送WebHook失败！")
+				Notify("Failed Sending WebHook!")
 			end
 		end
 	end
 end)
 
-Main = Tap.General:AddSection('常规') do
+Main = Tap.General:AddSection('General') do
     SelectPosition = Main:AddParagraph({        
-        Title = "位置 : 未提供"
+        Title = "Position : N/A"
     })
-    -- 开关：自动钓鱼
-    Toggle(Main, "自动钓鱼", "", "Farm Fish")
-    -- 开关：传送到选定位置
-    Toggle(Main, "传送到选定位置", "", "To Pos Stand")
-    -- 按钮：选择位置
+    Toggle(Main, "Auto Farm Fish", "", "Farm Fish")
+    Toggle(Main, "Teleport To Select Position", "", "To Pos Stand")
     Main:AddButton({
-        Title = "选择位置",
+        Title = "Select Position",
         Callback = function()
             Config['SelectPositionStand'] = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
-            SelectPosition:SetTitle("位置 : " .. tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.X)) .. " X " .. tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Y)) .. " Y " .. tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Z)) .. " Z")
+            SelectPosition:SetTitle("Position : " .. tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.X)) .. " X " .. tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Y)) .. " Y " .. tostring(math.floor(LocalPlayer.Character:FindFirstChild("HumanoidRootPart").Position.Z)) .. " Z")
         end
     })
 end
 
 IngredientList = {}
 for i,v in pairs(workspace.active:GetDescendants()) do
-	if v.ClassName == "TextLabel" and v.Text == "材料" then
+	if v.ClassName == "TextLabel" and v.Text == "Ingredient" then
 		local Path = nil
 		GetRealPart = function(V)
 			if V.ClassName == "Model" then
@@ -3507,10 +3438,10 @@ _hasItem = function(name)
 end
 
 Threads[#Threads+1] = task.spawn(function()
-	while wait(0.75) do
-		table.clear(IngredientList) -- 清空材料列表
+	while wait(.75) do
+		table.clear(IngredientList)
 		for i,v in pairs(workspace.active:GetDescendants()) do
-			if v.ClassName == "TextLabel" and v.Text == "材料" then
+			if v.ClassName == "TextLabel" and v.Text == "Ingredient" then
 				local Path = nil
 				GetRealPart = function(V)
 					if V.ClassName == "Model" then
@@ -3529,16 +3460,16 @@ Threads[#Threads+1] = task.spawn(function()
 				if Path:FindFirstChild("PickupPrompt") then
 					Path:FindFirstChild("PickupPrompt").HoldDuration = 0
 				end
-				table.insert(IngredientList, OldName) -- 将材料名称添加到列表
+				table.insert(IngredientList, OldName)
 			end
 		end
 	end
 end)
 
-AllFuncs['自动寻找船只活动'] = function()
-	while Config['自动寻找船只活动'] and task.wait(0.75) do
-		if (#IngredientList <= 0 and not _hasItem("巫师材料")) then
-			if Config['跳转未找到材料服务器'] then
+AllFuncs['Auto Find Boat Event'] = function()
+	while Config['Auto Find Boat Event'] and task.wait(.75) do
+		if (#IngredientList <= 0 and not _hasItem("Witches Ingredient")) then
+			if Config['Hop Not Found Ingredient'] then
 				AllFuncs.HopServer(true)
 			end
 			continue
@@ -3547,12 +3478,12 @@ AllFuncs['自动寻找船只活动'] = function()
 		if LocalPlayer.Character:FindFirstChild(RodName) and LocalPlayer.Character:FindFirstChild(RodName).values.bite.Value then
 			continue
 		end
-		if Config["农场鱼类"] then
-			Config["农场鱼类"] = false
+		if Config["Farm Fish"] then
+			Config["Farm Fish"] = false
 			continue
 		end
-		if Config['到站立位置'] then
-			Config['到站立位置'] = false
+		if Config['To Pos Stand'] then
+			Config['To Pos Stand'] = false
 			continue
 		end
 		for _, IngredientName in pairs(IngredientList) do
@@ -3571,69 +3502,64 @@ AllFuncs['自动寻找船只活动'] = function()
 				end
 			end
 		end
-		if _hasItem("巫师材料") then
+		if _hasItem("Witches Ingredient") then
 			repeat
 				task.wait()
 				LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = CFrame.new(404.7090148925781, 134.5, 317.6537780761719)
-				if Backpack:FindFirstChild("巫师材料") then
-					LocalPlayer.Character.Humanoid:EquipTool(Backpack:FindFirstChild("巫师材料"))
+				if Backpack:FindFirstChild("Witches Ingredient") then
+					LocalPlayer.Character.Humanoid:EquipTool(Backpack:FindFirstChild("Witches Ingredient"))
 				end
 				fireproximityprompt(workspace.world.map.halloween.witch.WitchesPot.AcidTop.Prompt, 1)				
-			until not _hasItem("巫师材料") or not Config["自动寻找船只活动"]
-			if Config['万圣节成功'] and Config['WebHook配置'] ~= "" then
-				local SendingSuccess = sendwebhook(Config['WebHook配置'], {
+			until not _hasItem("Witches Ingredient") or not Config["Auto Find Boat Event"]
+			if Config['Halloween Success'] and Config['WebHook Configs'] ~= "" then
+				local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
 					["content"] = ((Config['Ping Discord Id'] and Config['"Discord Id'] ~= "") and "<@"..Config['"Discord Id']..">"),
 					["embeds"] = {
 						{
 							["id"]= 661605297,
 							["title"]= "Fisch Notify",
-							["description"] = "** 玩家 : "..LocalPlayer.Name.."\n 交易巫师材料成功 **",
+							["description"] = "** Player : "..LocalPlayer.Name.."\n Trade Witches Ingredient Success **",
 							["color"]= 8646911,
 							["fields"]= {},
 							["thumbnail"]= {
 								["url"]= GetPlayerProfile()
 							},
 							["footer"]= {
-								["text"]  = "xgo Hub Notify",
+								["text"]  = "Normal Hub Notify",
 								["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
 							}
 						}
 					}
 				})
 				if SendingSuccess then
-					Notify("发送WebHook成功")
+					Notify("Sending WebHook Success")
 				else
-					Notify("发送WebHook失败！")
+					Notify("Failed Sending WebHook!")
 				end
 			end
 		end
-		if Config['返回钓鱼'] and not _hasItem("巫师材料") and #IngredientList <= 0 then
-			Config["农场鱼类"] = true
-			Config['到站立位置'] = true
-			task.spawn(AllFuncs['农场鱼类'])
-			task.spawn(AllFuncs['到站立位置'])
+		if Config['Back To Fishing'] and not _hasItem("Witches Ingredient") and #IngredientList <= 0 then
+			Config["Farm Fish"] = true
+			Config['To Pos Stand'] = true
+			task.spawn(AllFuncs['Farm Fish'])
+			task.spawn(AllFuncs['To Pos Stand'])
 		end
 	end
 end
-Event = Tap.Event:AddSection('事件') do
-	-- 下拉菜单：选择材料
-	IngredientDropdown = Dropdown(Event, "选择材料", "", IngredientList, false, "材料选择")
-	-- 开关：自动万圣节活动
-	Toggle(Event, "自动万圣节活动", "", "自动寻找船只活动")
-	-- 开关：返回自动钓鱼
-	Toggle(Event, "返回自动钓鱼", "", "返回钓鱼")
-	-- 开关：服务器跳转
-	Toggle(Event, "跳转服务器", "未找到材料时跳转服务器", "跳转未找到材料服务器")
-	-- 按钮：传送到材料位置
+Event = Tap.Event:AddSection('Event') do
+	IngredientDropdwon = Dropdown(Event, "Select Ingredient", "", IngredientList, false, "Ingredient Select")
+	Toggle(Event, "Auto Halloween Event ","", "Auto Find Boat Event")
+	Toggle(Event, "Back To Auto Fishing","", "Back To Fishing")
+	Toggle(Event, "Hop Server","Hop Server For Not Found Ingredient", "Hop Not Found Ingredient")
 	Event:AddButton({
-		Title = "传送到材料位置",
+		Title = "Teleport To Ingredient",
 		Callback = function()
-			if Config['材料选择'] == "" then
-				Notify("请选择材料")
+			if Config['Ingredient Select'] == "" then
+				Notify("Pls Select Ingredient ")
 				return
 			end
 			for i,v in pairs(workspace.active:GetChildren()) do
-				if v.Name == Config['材料选择'] then
+				if v.Name == Config['Ingredient Select'] then
 					if v:FindFirstChildOfClass("MeshPart") then
 						if v:FindFirstChildOfClass("MeshPart").Position.X > 200 then
 							continue
@@ -3642,40 +3568,35 @@ Event = Tap.Event:AddSection('事件') do
 					LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v:GetPivot()
 				end
 			end
-			Notify("未找到材料："..Config["材料选择"].." ")
+			Notify("Not Found `"..Config["Ingredient Select"].."` ")
 		end
 	})
 	
-	-- 按钮：刷新材料列表
 	Event:AddButton({
-		Title = "刷新材料",
+		Title = "Refresh Ingredient",
 		Callback = function()
-			IngredientDropdown:SetValues(IngredientList)
+			IngredientDropdwon:SetValues(IngredientList)
 		end
 	})
 end
 
-Seller = Tap.General:AddSection('卖家') do
-	-- 开关：自动出售鱼类
-	Toggle(Seller, "自动出售鱼类", "", "Sell Fish")
+Seller = Tap.General:AddSection('Seller') do
+	Toggle(Seller, "Auto Sell Fish","", "Sell Fish")
 
-	-- 按钮：出售所有鱼类
 	Seller:AddButton({
-		Title = "出售所有鱼类",
+		Title = "Sell All Fish",
 		Callback = function()
 			ReplicatedStorage:WaitForChild("events"):WaitForChild("selleverything"):InvokeServer()
 		end
 	})
-	-- 按钮：出售手中的鱼类
 	Seller:AddButton({
-		Title = "出售手中的鱼类",
+		Title = "Sell Fish ( In Hand )",
 		Callback = function()
 			workspace.world.npcs:FindFirstChild("Marc Merchant").merchant.sell:InvokeServer()
 		end
 	})
-	-- 按钮：显示/隐藏购买船只界面
 	Seller:AddButton({
-		Title = "显示/隐藏购买船只界面",
+		Title = "Show Ui Buy Boat",
 		Callback = function()
 			PlayerGui.hud.safezone.shipwright.Visible = not PlayerGui.hud.safezone.shipwright.Visible 
 		end
@@ -3687,77 +3608,71 @@ for i,v in pairs(FISHDATA) do
 	table.insert(FishList, i)
 end
 
-InfoFish = Tap.General:AddSection('鱼类信息') do
+InfoFish = Tap.General:AddSection('Info Fish') do
 	InfoPrice = InfoFish:AddParagraph({        
-		Title = "价格：未提供"
+		Title = "Pice : N/A"
 	})
 	InfoRarity = InfoFish:AddParagraph({        
-		Title = "稀有度：未提供"
+		Title = "Rarity : N/A"
 	})
 	InfoChance = InfoFish:AddParagraph({        
-		Title = "几率：未提供"
+		Title = "Chance : N/A"
 	})
 	InfoFavouriteBait = InfoFish:AddParagraph({        
-		Title = "最爱鱼饵：未提供"
+		Title = "FavouriteBait : N/A"
 	})
 	
-	-- 下拉菜单：选择鱼类
-	Dropdown(InfoFish, "选择鱼类", "", FishList, false, "选择鱼类信息")
-	-- 获取手中鱼类信息按钮
+	Dropdown(InfoFish, "Select Fish", "", FishList, false, "Select Fish Info")
 	InfoFish:AddButton({
-		Title = "获取手中鱼类信息",
+		Title = "Get Info Fish In Hand",
 		Callback = function()
 			for i,v in pairs(LocalPlayer.Character:GetChildren()) do
 				if table.find(FishList, v.Name) then
-					Config['选择鱼类信息'] = v.Name
-					InfoPrice:SetTitle("价格："..FISHDATA[Config['选择鱼类信息']].Price)
-					InfoRarity:SetTitle("稀有度："..FISHDATA[Config['选择鱼类信息']].Rarity)
-					InfoChance:SetTitle("几率："..FISHDATA[Config['选择鱼类信息']].Chance.." %")
-					InfoFavouriteBait:SetTitle("最爱鱼饵："..FISHDATA[Config['选择鱼类信息']].FavouriteBait)
+					Config['Select Fish Info'] = v.Name
+					InfoPrice:SetTitle("Price : "..FISHDATA[Config['Select Fish Info']].Price)
+					InfoRarity:SetTitle("Rarity : "..FISHDATA[Config['Select Fish Info']].Rarity)
+					InfoChance:SetTitle("Chance : "..FISHDATA[Config['Select Fish Info']].Chance.." %")
+					InfoFavouriteBait:SetTitle("FavouriteBait : "..FISHDATA[Config['Select Fish Info']].FavouriteBait)
 					return
 				end
 			end
-			Notify("请装备鱼类")
+			Notify("Pls Equip Fish")
 		end
 	})
-	-- 获取选中鱼类信息按钮
 	InfoFish:AddButton({
-		Title = "获取选中鱼类信息",
+		Title = "Get Info Fish",
 		Callback = function()
-			if Config['选择鱼类信息'] == "" then
-				Notify("请先选择鱼类")
+			if Config['Select Fish Info'] == "" then
+				Notify("Pls Select Fish")
 				return
 			end
-			InfoPrice:SetTitle("价格："..FISHDATA[Config['选择鱼类信息']].Price)
-			InfoRarity:SetTitle("稀有度："..FISHDATA[Config['选择鱼类信息']].Rarity)
-			InfoChance:SetTitle("几率："..FISHDATA[Config['选择鱼类信息']].Chance.." %")
-			InfoFavouriteBait:SetTitle("最爱鱼饵："..FISHDATA[Config['选择鱼类信息']].FavouriteBait)
+			InfoPrice:SetTitle("Price : "..FISHDATA[Config['Select Fish Info']].Price)
+			InfoRarity:SetTitle("Rarity : "..FISHDATA[Config['Select Fish Info']].Rarity)
+			InfoChance:SetTitle("Chance : "..FISHDATA[Config['Select Fish Info']].Chance.." %")
+			InfoFavouriteBait:SetTitle("FavouriteBait : "..FISHDATA[Config['Select Fish Info']].FavouriteBait)
 		end
 	})
 end
 
-Modify = Tap.Player:AddSection('玩家修改') do
-	-- 设置移动速度滑块
-	Slider(Modify, "移动速度", 10, 300, false, "设置移动速度")
-	-- 设置跳跃力量滑块
-	Slider(Modify, "跳跃力量", 25, 300, false, "设置跳跃力量")
-	-- 切换移动速度开关
-	Toggle(Modify, "移动速度", "", "切换移动速度")
-	-- 切换跳跃力量开关
-	Toggle(Modify, "跳跃力量", "", "切换跳跃力量")
+
+Modify = Tap.Player:AddSection('Player Modify') do
+	Slider(Modify, "Walk Speed", 10, 300, false, "Set Walk Speed")
+	Slider(Modify, "Jump Power", 25, 300, false, "Set Jump Power")
+	Toggle(Modify, "Walk Speed", "", "Toggle Walk Speed")
+	Toggle(Modify, "Jump Power", "", "Toggle Jump Power")
 end
 
-MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
-	-- 绕过雷达
-	Toggle(MiscPlayer, "绕过雷达", "", "Bypass Radar", function(Value)
+MiscPlayer = Tap.Player:AddSection('Misc Player') do
+	DayOnlyLoop = nil
+	BypassGpsLoop = nil
+	Toggle(MiscPlayer, "Bypass Radar", "", "Bypass Radar", function(Value)
 		for _, v in pairs(game:GetService("CollectionService"):GetTagged("radarTag")) do
 			if v:IsA("BillboardGui") or v:IsA("SurfaceGui") then
 				v.Enabled = Value
 			end
 		end
 	end)
-	-- 绕过GPS
-	Toggle(MiscPlayer, "绕过GPS", "", "Bypass Gps", function(Value)
+	Toggle(MiscPlayer, "Bypass Gps", "", "Bypass Gps", function(Value)
 		if Value then
 			local XyzClone = game:GetService("ReplicatedStorage").resources.items.items.GPS.GPS.gpsMain.xyz:Clone()
 			XyzClone.Parent = game.Players.LocalPlayer.PlayerGui:WaitForChild("hud"):WaitForChild("safezone"):WaitForChild("backpack")
@@ -3780,8 +3695,7 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
 			end
 		end
 	end)
-	-- 绕过全部出售(游戏通行证)
-	Toggle(MiscPlayer, "绕过全部出售 (游戏通行证)", "", "Bypass Sell all", function(Value)
+	Toggle(MiscPlayer, "Bypass Sell All ( Gane Pass )", "", "Bypass Sell all", function(Value)
 		if Value then
 			PlayerGui.hud.safezone.backpack.inventory.Sell.sellall.Disabled = true
 			PlayerGui.hud.safezone.backpack.inventory.Sell.MouseButton1Click:Connect(function()
@@ -3793,12 +3707,10 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
 			PlayerGui.hud.safezone.backpack.inventory.Sell.sellall.Disabled = false
 		end
 	end)
-	-- 无限氧气
-	Toggle(MiscPlayer, "无限氧气", "", "Infinite Oxygen", function(Value)
+	Toggle(MiscPlayer, "Infinite Oxygen", "", "Infinite Oxygen", function(Value)
 		LocalPlayer.Character.client.oxygen.Disabled = Value
 	end)
-	-- 天气晴朗
-	Toggle(MiscPlayer, "天气晴朗", "", "Weather Clear", function(Value)
+	Toggle(MiscPlayer, "Weather Clear", "", "Weather Clear", function(Value)
 		local OldWEA = ReplicatedStorage.world.weather.Value
 		if Value then
 			ReplicatedStorage.world.weather.Value = 'Clear' 
@@ -3806,18 +3718,15 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
 			ReplicatedStorage.world.weather.Value = OldWEA
 		end
 	end)
-	-- 开关穿墙
-	Toggle(MiscPlayer, "穿墙", "", "Toggle Noclip")
-	-- 开关水上行走
-	Toggle(MiscPlayer, "水上行走", "", "Toggle Walk On Water", function(Value)
+	Toggle(MiscPlayer, "Noclip", "", "Toggle Noclip")
+	Toggle(MiscPlayer, "Walk On Water", "", "Toggle Walk On Water", function(Value)
 		for i,v in pairs(workspace.zones.fishing:GetChildren()) do
 			if v.Name == "Ocean" then
 				v.CanCollide = Value
 			end
 		end
 	end)
-	-- 移除雾气
-	Toggle(MiscPlayer, "移除雾气", "", "Remove Fog", function(Value)
+	Toggle(MiscPlayer, "Remove Fog", "", "Remove Fog", function(Value)
 		if Value then
 			if game:GetService("Lighting"):FindFirstChild("Sky") then
 				game:GetService("Lighting"):FindFirstChild("Sky").Parent = game:GetService("Lighting").bloom
@@ -3828,8 +3737,7 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
 			end
 		end
 	end)
-	-- 仅白天
-	Toggle(MiscPlayer, "仅白天", "", "Day Only", function(Value)
+	Toggle(MiscPlayer, "Day Only", "", "Day Only", function(Value)
 		if Value then
 			DayOnlyLoop = RunService.Heartbeat:Connect(function()
 				game:GetService("Lighting").TimeOfDay = "12:00:00"
@@ -3841,8 +3749,7 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
 			end
 		end
 	end)
-	-- 仅夜晚
-	Toggle(MiscPlayer, "仅夜晚", "", "Night Only", function(Value)
+	Toggle(MiscPlayer, "Night Only", "", "Night Only", function(Value)
 		if Value then
 			DayOnlyLoop = RunService.Heartbeat:Connect(function()
 				game:GetService("Lighting").TimeOfDay = "22:00:00"
@@ -3854,33 +3761,29 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
 			end
 		end
 	end)	
-	-- 重新加入服务器按钮
 	MiscPlayer:AddButton({
-		Title = "重新加入服务器",
+		Title = "Rejoin Server",
 		Description = "",
 		Callback = function()
 			TeleportService:TeleportToPlaceInstance(game.placeId, game.jobId, game.Players.LocalPlayer);
 		end,
 	})
-	-- 跳转服务器按钮
 	MiscPlayer:AddButton({
-		Title = "跳转服务器",
+		Title = "Hop Server",
 		Description = "",
 		Callback = function()
 			AllFuncs.HopServer(true)
 		end
 	})
-	-- 低延迟跳转服务器按钮
 	MiscPlayer:AddButton({
-		Title = "低延迟跳转服务器",
+		Title = "Hop Server Low",
 		Description = "",
 		Callback = function()
 			AllFuncs.HopServer(false)
 		end
 	})
-	-- 一次性反卡顿按钮
 	MiscPlayer:AddButton({
-        Title = "一次性反卡顿",
+        Title = "Anti Lag ( Once )",
         Description = "",
         Callback = function()
             for _, v in pairs(game:GetDescendants()) do
@@ -3892,12 +3795,11 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
                     v:Destroy()
                 end
             end
-            Notify("反卡顿成功")
+            Notify("Anti Lag Success")
         end
     })
-	-- 销毁所有粒子按钮
     MiscPlayer:AddButton({
-        Title = "销毁所有粒子",
+        Title = "Destroy All Particle",
         Description = "",
         Callback = function()
             for _, v in pairs(game:GetDescendants()) do
@@ -3905,22 +3807,21 @@ MiscPlayer = Tap.Player:AddSection('其他玩家设置') do
                     v:Destroy()
                 end
             end
-            Notify("成功销毁粒子")
+            Notify("Success Destroy Particle")
         end
     })
 end
 
-Shoppy = Tap.Shop:AddSection('商店全部') do
-	-- 传送购买开关
-	Toggle(Shoppy, "传送购买", "", "Teleport To Buy")
+Shoppy = Tap.Shop:AddSection('Shop All') do
+	Toggle(Shoppy, "Teleport To Buy", "", "Teleport To Buy")
 	for i,v in pairs(workspace.world.interactables:GetDescendants()) do
 		if v.Name == "purchaserompt" or v.ClassName == "ProximityPrompt" then
 			v.HoldDuration = 0
 			Shoppy:AddButton({
-				Title = "购买 "..v.Parent.Name,
+				Title = "Buy "..v.Parent.Name,
 				Description = v.ActionText,
 				Callback = function()
-					if fireproximityprompt and not Config['传送购买'] then
+					if fireproximityprompt and not Config['Teleport To Buy'] then
 						local OldCFrame = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
 						LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Parent:GetPivot()
 						delay(.3, function()
@@ -3939,68 +3840,68 @@ Shoppy = Tap.Shop:AddSection('商店全部') do
 	end
 end
 Shoppy:AddButton({
-    Title = "购买附魔遗迹",
-    Description = "查看 [11,000C$]",
+    Title = "Buy Enchant Relic",
+    Description = "View [11,000C$]",
     Callback = function()
         local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
+local character = player.Character or player.CharacterAdded:Wait()
 
-        -- 存储玩家当前位置
-        local previousPosition = character.HumanoidRootPart.Position
+-- Store the player's current position
+local previousPosition = character.HumanoidRootPart.Position
 
-        -- 传送到指定坐标
-        local targetPosition = Vector3.new(-931.5254516601562, 223.78355407714844, -986.8485717773438)
-        character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+-- Teleport to the specified coordinates
+local targetPosition = Vector3.new(-931.5254516601562, 223.78355407714844, -986.8485717773438)
+character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
 
-        -- 触发服务器函数
-        local merlin = workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("power")
-        merlin:InvokeServer()
+-- Fire the server function
+local merlin = workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("power")
+merlin:InvokeServer()
 
-        -- 短暂等待后返回到之前的位置
-        wait(0)  -- 如有需要，可以调整等待时间
+-- Wait for a brief moment before returning to the previous position
+wait(0)  -- Adjust the wait time if needed
 
-        -- 返回到之前的位置
-        character:SetPrimaryPartCFrame(CFrame.new(previousPosition))
+-- Return to the previous position
+character:SetPrimaryPartCFrame(CFrame.new(previousPosition))
     end
 })
 
 WebHookConfigs = Tap.Configs:AddSection('WebHook') do
-    TextBox(WebHookConfigs, "WebHook","","discord.com/api/webhooks", false, "WebHook配置")
-    TextBox(WebHookConfigs, "Discord Id","","1010021431075155979", false, "Discord ID Ping")
-    Slider(WebHookConfigs, "延迟发送 (秒)", 10, 600, false, "延迟发送")
-    Toggle(WebHookConfigs, "发送WebHook","","发送Webhook")
-    Toggle(WebHookConfigs, "Ping Discord Id","","Ping Discord ID")
-    
-    WebHookConfigs:AddButton({
-        Title = "测试WebHook",
-        Description = "",
-        Callback = function()
-            local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
-                ["content"] = ((Config['Ping Discord Id'] and tostring(Config['"Discord Id"]) ~= "") and "<@"..tostring(Config['"Discord Id"])..">"),
-                ["embeds"] = {
-                    {
-                        ["id"]= 661605297,
-                        ["title"]= "Fisch Notify",
-                        ["description"] = "** 玩家 : "..LocalPlayer.Name.."\n 这是测试WebHook**",
-                        ["color"]= 8646911,
-                        ["fields"]= {},
-                        ["thumbnail"]= {
-                            ["url"]= GetPlayerProfile()
-                        },
-                        ["footer"]= {
-                            ["text"]  = "xgo Hub Notify",
-                            ["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
-                        }
-                    }
-                }
-            })
-            if SendingSuccess then
-                Notify("发送WebHook成功", 1)
-            else
-                Notify("发送WebHook失败！", 1)
-            end
-        end,
-    })
+	TextBox(WebHookConfigs, "WebHook","","discord.com/api/webhooks", false, "WebHook Configs")
+	TextBox(WebHookConfigs, "Discord Id","","1010021431075155979", false, "Discord Id Ping")
+	Slider(WebHookConfigs, "Delay Sending (Sec)", 10, 600, false, "Delay Sending")
+	Toggle(WebHookConfigs, "Sending WebHook","","Sending Webhook")
+	Toggle(WebHookConfigs, "Ping Discord Id","","Ping Discord Id")
+	
+	WebHookConfigs:AddButton({
+		Title = "Test WebHook",
+		Description = "",
+		Callback = function()
+			local SendingSuccess = sendwebhook(Config['WebHook Configs'], {
+				["content"] = ((Config['Ping Discord Id'] and tostring(Config['"Discord Id']) ~= "") and "<@"..tostring(Config['"Discord Id'])..">"),
+				["embeds"] = {
+					{
+						["id"]= 661605297,
+						["title"]= "Fisch Notify",
+						["description"] = "** Player : "..LocalPlayer.Name.."\n THIS TESTING WEBHOOK**",
+						["color"]= 8646911,
+						["fields"]= {},
+						["thumbnail"]= {
+							["url"]= GetPlayerProfile()
+						},
+						["footer"]= {
+							["text"]  = "Normal Hub Notify",
+							["icon_url"] = "https://cdn.discordapp.com/attachments/971367335405449246/1259442279672844308/Profile_1.png?ex=66fbc206&is=66fa7086&hm=0b8898eb98938e100ad3cede12d0a526d344cd3ba7d4f737f728ca188a1af027&"
+						}
+					}
+				}
+			})
+			if SendingSuccess then
+				Notify("Sending WebHook Success", 1)
+			else
+				Notify("Failed Sending WebHook!", 1)
+			end
+		end,
+	})
 end
 local TableZum = {}
 GetCount = function(NameFish)
@@ -4044,142 +3945,134 @@ function GetFishInInventory()
 end
 
 
-WebHookConfigsData = Tap.Configs:AddSection('数据发送') do
-	-- 开关：当前金钱
-	Toggle(WebHookConfigsData, "当前金钱","","当前金钱")
-	-- 开关：当前等级
-	Toggle(WebHookConfigsData, "当前等级","","当前等级")
-	-- 开关：所有鱼类库存
-	Toggle(WebHookConfigsData, "所有鱼类库存","","所有鱼类库存")
-	-- 开关：发送千鱼
-	Toggle(WebHookConfigsData, "发送千鱼","","发送千鱼")
-	-- 开关：发送价格鱼
-	Toggle(WebHookConfigsData, "发送价格鱼","","发送价格鱼")
-	-- 开关：安全漩涡生成
-	Toggle(WebHookConfigsData, "安全漩涡生成","","安全漩涡生成")
-	-- 开关：万圣节成功
-	Toggle(WebHookConfigsData, "万圣节成功","","万圣节成功")
+WebHookConfigsData = Tap.Configs:AddSection('Data Sending') do
+	Toggle(WebHookConfigsData, "Current Money","","Current Money")
+	Toggle(WebHookConfigsData, "Current Level","","Current Level")
+	Toggle(WebHookConfigsData, "All Fish Inventory","","All Fish Inventory")
+	Toggle(WebHookConfigsData, "Send Kilo Fish","","Send Kilo Fish")
+	Toggle(WebHookConfigsData, "Send Price Fish","","Send Price Fish")
+	Toggle(WebHookConfigsData, "Safe Whirlpool Spawn","","Safe Whirlpool Spawn")
+	Toggle(WebHookConfigsData, "Halloween Success","","Halloween Success")
 end
 
-Teleporting = Tap.Teleport:AddSection('传送') do
-	-- 传送按钮："太阳石岛"
+Teleporting = Tap.Teleport:AddSection('Teleport') do
+	-- Teleporting button for "Sunstone Island"
 Teleporting:AddButton({
-    Title = "太阳石岛",
+    Title = "Sunstone Island",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-913.630615234375, 137.29348754882812, -1129.8995361328125)
     end
 })
 
--- 传送按钮："罗斯特湾"
+-- Teleporting button for "Roslit Bay"
 Teleporting:AddButton({
-    Title = "罗斯特湾",
+    Title = "Roslit Bay",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1501.675537109375, 133, 416.2070007324219)
     end
 })
 
--- 传送按钮："随机岛屿"
+-- Teleporting button for "Random Islands"
 Teleporting:AddButton({
-    Title = "随机岛屿",
+    Title = "Random Islands",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(237.6944580078125, 139.34976196289062, 43.103424072265625)
     end
 })
 
--- 传送按钮："驼鹿林"
+-- Teleporting button for "Moosewood"
 Teleporting:AddButton({
-    Title = "驼鹿林",
+    Title = "Moosewood",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(433.7972106933594, 147.07003784179688, 261.80218505859375)
     end
 })
 
--- 传送按钮："执行总部"
+-- Teleporting button for "Executive Headquarters"
 Teleporting:AddButton({
-    Title = "执行总部",
+    Title = "Executive Headquarters",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-36.46199035644531, -246.55001831054688, 205.77120971679688)
     end
 })
 
--- 传送按钮："附魔室"
+-- Teleporting button for "Enchant Room"
 Teleporting:AddButton({
-    Title = "附魔室",
+    Title = "Enchant Room",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1310.048095703125, -805.292236328125, -162.34507751464844)
     end
 })
 
--- 传送按钮："主权雕像"
+-- Teleporting button for "Statue Of Sovereignty"
 Teleporting:AddButton({
-    Title = "主权雕像",
+    Title = "Statue Of Sovereignty",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(22.098665237426758, 159.01470947265625, -1039.8543701171875)
     end
 })
 
--- 传送按钮："蘑菇沼泽"
+-- Teleporting button for "Mushgrove Swamp"
 Teleporting:AddButton({
-    Title = "蘑菇沼泽",
+    Title = "Mushgrove Swamp",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2442.805908203125, 130.904052734375, -686.1648559570312)
     end
 })
 
--- 传送按钮："雪帽岛"
+-- Teleporting button for "Snowcap Island"
 Teleporting:AddButton({
-    Title = "雪帽岛",
+    Title = "Snowcap Island",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2589.534912109375, 134.9249267578125, 2333.099365234375)
     end
 })
 
--- 传送按钮："龟岛"
+-- Teleporting button for "Terrapin Island"
 Teleporting:AddButton({
-    Title = "龟岛",
+    Title = "Terrapin Island",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(152.3716278076172, 154.91015625, 2000.9171142578125)
     end
 })
 
--- 传送按钮："附魔遗迹"
+-- Teleporting button for "Terrapin Island"
 Teleporting:AddButton({
-    Title = "附魔遗迹",
+    Title = "Enchant Relic",
     Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1309.2784423828125, -802.427001953125, -83.36397552490234)
     end
 })
 
--- 传送按钮："最佳位置"
+-- Teleporting button for "Terrapin Island"
 Teleporting:AddButton({
-    Title = "最佳位置",
+    Title = "Best Spot",
     Callback = function()
-        local forceFieldPart = Instance.new("Part") -- 创建一个新的部分
-        forceFieldPart.Size = Vector3.new(10, 1, 10) -- 设置部分的大小（10x1x10）
-        forceFieldPart.Position = Vector3.new(1447.8507080078125, 131.49998474121094, -7649.64501953125) -- 调整位置（低2单位）
-        forceFieldPart.Anchored = true -- 确保部分不会掉落
-        forceFieldPart.BrickColor = BrickColor.new("White") -- 将部分的颜色设置为白色
-        forceFieldPart.Material = Enum.Material.SmoothPlastic -- 设置部分的材料
-        forceFieldPart.Parent = game.Workspace -- 将部分设置为工作空间的子对象
+    local forceFieldPart = Instance.new("Part") -- Create a new part
+forceFieldPart.Size = Vector3.new(10, 1, 10) -- Set the size of the part (10x1x10)
+forceFieldPart.Position = Vector3.new(1447.8507080078125, 131.49998474121094, -7649.64501953125) -- Adjusted position (2 units lower)
+forceFieldPart.Anchored = true -- Make sure the part does not fall
+forceFieldPart.BrickColor = BrickColor.new("White") -- Set the color of the part to white
+forceFieldPart.Material = Enum.Material.SmoothPlastic -- Set the material of the part
+forceFieldPart.Parent = game.Workspace -- Parent the part to the Workspace
 
-        -- 创建一个力场
-        local forceField = Instance.new("ForceField") -- 创建一个新的力场对象
-        forceField.Parent = forceFieldPart -- 将力场设置为部分的子对象
-        wait()
+-- Create a ForceField
+local forceField = Instance.new("ForceField") -- Create a new ForceField object
+forceField.Parent = forceFieldPart -- Parent the ForceField to the part
+wait()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1447.8507080078125, 133.49998474121094, -7649.64501953125)
     end
 })
 end
 
 
--- 发送Webhook消息的函数
 function sendwebhook(url, data)
 	local HttpService = game:GetService("HttpService")
 	local success, newdata = pcall(function()
 		return HttpService:JSONEncode(data)
 	end)
 	if not success then
-		print("将数据编码为JSON时出错：", newdata)
+		print("Error encoding data to JSON:", newdata)
 		return
 	end
 	local headers = {
@@ -4196,22 +4089,18 @@ function sendwebhook(url, data)
 	return success
 end
 
--- 上次活动时间
 local Old = os.time()
 	task.spawn(function(InitializeService)
-		warn("防挂机系统启动")
+		warn("ANTI AFK STARTING")
 		pcall(function()
-			-- 禁用所有空闲连接
 			for i,v in pairs(getconnections(Client.Idled)) do
 				v:Disable() 
 			end
-			-- 连接到空闲事件
 			Client.Idled:connect(function()
 				game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 				wait(1)
 				game:GetService("VirtualUser"):Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 			end)
-			-- 每5分钟模拟一次点击
 			while wait(300) do
 				game:GetService("VirtualUser"):Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 				wait(1)
@@ -4220,45 +4109,40 @@ local Old = os.time()
 		end)
 	end)
 do
-	-- 添加“杂项”设置部分
-	Settings_M = Tap.Settings:AddSection("杂项") do
+	Settings_M = Tap.Settings:AddSection("Misc") do
 		Timeing = Settings_M:AddParagraph({        
-			Title = "时间服务器"
+			Title = "Timeing Server"
 		})
-		-- 切换自动加载配置文件的设置
-		Toggle(Settings_M, "自动加载配置文件", "", "AutoLoadingConfigs", function(v)
+		Toggle(Settings_M, "Auto Loading Configs", "", "AutoLoadingConfigs", function(v)
 			writefile(tostring(LocalPlayer.UserId).."ALC.txt", tostring(v))
 		end)
-		-- 添加按钮，用于加入xgo Hub Discord
 		Settings_M:AddButton({
-			Title = "加入xgo Hub Discord",
-			Description = "点击加入",
+			Title = "Join Normal Hub Discord",
+			Description = "Click to join",
 			Callback = function()
 
 			end,
 		})
 	end
 
-	-- 心跳事件连接，用于更新服务器加入时间显示
-	RunService.Heartbeat:Connect(function() -- 所有RunService
+	RunService.Heartbeat:Connect(function() -- All RunService
 		local TimeSinceLastPlay = os.time() - Old
 		local hours = tostring(math.floor(TimeSinceLastPlay / 3600))
 		local minutes = tostring(math.floor((TimeSinceLastPlay % 3600) / 60))
 		local seconds = tostring(TimeSinceLastPlay % 60)
-		Timeing:SetTitle("服务器已加入 "..hours.." 小时 "..minutes.." 分钟 "..seconds.." 秒 ")
+		Timeing:SetTitle("Server Joined "..hours.." H "..minutes.." M "..seconds.." S ")
 	end)
 
-	-- 设置界面库和文件夹
+
 	InterfaceManager:SetLibrary(Fluent)
-	InterfaceManager:SetFolder("xgo Hub")
+	InterfaceManager:SetFolder("Normal Hub")
 	InterfaceManager:BuildInterfaceSection(Tap.Settings)
 	Window:SelectTab(1)
 	SaveManager:LoadAutoloadConfig()
 	Fluent:SetTheme("Normal Theme")
 	setfflag("TaskSchedulerTargetFps", "1000")
-	setfpscap(120)
+setfpscap(120)
 while true do
-    -- 根据DistributedGameTime设置帧率限制
     if (game:GetService("Workspace").DistributedGameTime % 1 * 60) > 30 then
         setfpscap(120)
     end
