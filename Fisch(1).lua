@@ -1,7 +1,7 @@
 local Fluent = loadstring(game:HttpGet("https://github.com/GTAFAW/UI/raw/main/Fluent.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://pastefy.app/TQOa9I6D/raw"))()
 local InterfaceManager = loadstring(game:HttpGet("https://pastefy.app/WA2TowCb/raw"))()
-
+---XGO
 local Window = Fluent:CreateWindow({
     Title = "XGOHUB ",
     SubTitle = "by xgo",
