@@ -1541,13 +1541,9 @@ local function characterAdded(character)
     return createBot(character);
 end
 
--- Interface:
-Library:SetWatermark("Linoria Community (OminousVibes)");
-Library:Notify("Loading UI...");
-
-local Window = Library:CreateWindow("Linoria | The Rake REMASTERED");
 do -- Legit
     local Tab = Window:AddTab("Legit");
+    
 
     do -- Character
         local Container = Tab:AddLeftGroupbox("Character");
