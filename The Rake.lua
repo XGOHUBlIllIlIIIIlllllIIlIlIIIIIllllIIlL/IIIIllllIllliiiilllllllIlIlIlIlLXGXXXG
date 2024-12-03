@@ -2,7 +2,7 @@ if not LPH_OBFUSCATED then
     LPH_JIT_MAX = function(...) return(...) end;
     LPH_NO_VIRTUALIZE = function(...) return(...) end;
 end
-
+----
 if not writefile or not readfile or not isfile or not isfolder or not hookfunction or not hookmetamethod then 
 	game.Players.LocalPlayer:Kick("Unsupported Exploit! - Missing Functions writefile, readfile, isfile, isfolder, hookfunction, hookmetamethod")
 end
@@ -233,7 +233,6 @@ if not _G['xgo Hub Table'].isWindows then
         end
     end)
 end
-local Window = UI:Init()
 
 local Labels = {
 	ScrapLabels = {},
