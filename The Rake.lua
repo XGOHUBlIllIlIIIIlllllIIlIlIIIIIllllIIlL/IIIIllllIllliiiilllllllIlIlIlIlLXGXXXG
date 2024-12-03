@@ -2,7 +2,7 @@ if not LPH_OBFUSCATED then
     LPH_JIT_MAX = function(...) return(...) end;
     LPH_NO_VIRTUALIZE = function(...) return(...) end;
 end
-----XGOHUB
+
 if not writefile or not readfile or not isfile or not isfolder or not hookfunction or not hookmetamethod then 
 	game.Players.LocalPlayer:Kick("Unsupported Exploit! - Missing Functions writefile, readfile, isfile, isfolder, hookfunction, hookmetamethod")
 end
@@ -1449,36 +1449,6 @@ local Tabs = {
     TP = Window:AddTab({ Title = "传送", Icon = "" }),
     Settings = Window:AddTab({ Title = "设置", Icon = "settings" })
 }
------------
-Tabs.Info:AddParagraph({
-        Title = "段落",
-        Content = "这是一个段落。\n第二行！"
-    })
-    
-        local Slider = Tabs.Main:AddSlider("Slider", {
-        Title = "滑块",
-        Description = "这是一个滑块",
-        Default = 2,
-        Min = 0,
-        Max = 5,
-        Rounding = 1,
-        Callback = function(Value)
-            print("滑块已更改：", Value)
-        end
-    })
-    local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
-        Title = "下拉菜单",
-        Values = {"一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四"},
-        Multi = false,
-        Default = 1,
-    })
-
-    Dropdown:SetValue("四")
-
-    Dropdown:OnChanged(function(Value)
-        print("下拉菜单更改：", Value)
-    end)
-----------    
 
 local ToggleRakeESP = Tabs.ESP:AddToggle("Rake_ESP", {Title = "耙子ESP", Default = loadData.rakeESP})
 ToggleRakeESP:OnChanged(function()
