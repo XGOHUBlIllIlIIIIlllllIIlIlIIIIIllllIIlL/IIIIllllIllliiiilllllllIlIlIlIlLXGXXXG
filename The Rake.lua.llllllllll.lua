@@ -1048,10 +1048,203 @@ local SimplePath; do
     SimplePath = Path;
 end
 
-local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Fluent = loadstring(game:HttpGet("https://github.com/GTAFAW/UI/raw/main/Fluent.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://pastefy.app/TQOa9I6D/raw"))()
+local InterfaceManager = loadstring(game:HttpGet("https://pastefy.app/WA2TowCb/raw"))()
 
+local Window = Fluent:CreateWindow({
+    Title = "XGOHUB ",
+    SubTitle = "by xgo",
+    TabWidth = 140,
+    Size = UDim2.fromOffset(480, 320),
+    Acrylic = true,
+    Theme = "Light",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+-- 定义全局配置变量
+Config = {}
+
+-- 将Config变量设置为全局变量
+_G.Config = Config
+AllFuncs = {}
+Threads = getgenv().Threads
+Players = game.Players
+LocalPlayer = game.Players.LocalPlayer
+Client = game.Players.LocalPlayer
+
+-- 获取游戏服务
+ReplicatedStorage = game:GetService('ReplicatedStorage')
+RunService = game:GetService("RunService")
+VirtualInputManager = game:GetService('VirtualInputManager')
+CollectionService = game:GetService("CollectionService")
+CoreGui = game:GetService("CoreGui")
+HttpService = game:GetService("HttpService")
+TeleportService = game:GetService("TeleportService")
+VirtualUser = game:GetService("VirtualUser")
+UserInputService = game:GetService("UserInputService")
+
+-- 获取玩家相关的服务和对象
+PlayerGui = LocalPlayer.PlayerGui
+Backpack = LocalPlayer.Backpack
+request = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+
+Char = Client.Character
+Character = Client.Character
+if not Threads then getgenv().Threads = {} end
+
+-- 等待直到LocalPlayer被设置
+repeat 
+    LocalPlayer = Players.LocalPlayer
+    wait()
+until LocalPlayer
+
+-- 定义通知函数
+function Notify(Des, Time, title)
+    Fluent:Notify({
+        Title= title or "xgo Hub Notify",
+        Content = Des,
+        Duration = Time or 3
+    })
+end
+
+-- 定义xgo Hub Table
+_G['xgo Hub Table'] = {
+    isWindows = UserInputService:GetPlatform() == Enum.Platform.Windows,
+    TypeOs = (table.find({Enum.Platform.Windows}, game:GetService('UserInputService'):GetPlatform()) ~= nil and 'Pc') or 'Mb',
+    SizeUi = (not isWindows and UDim2.fromOffset(600,300)) or UDim2.fromOffset(560,600),
+    AutoSize = true,
+    TweenUiSize = true,
+    SpeedTweenUi = 0.25,
+    StyleTweenUi = Enum.EasingStyle.Quad,
+    Mutiply = 1.80,
+    SizeX = 550,
+    SafePercent = 20,
+
+    AnimationUiToggle = true,
+}
+
+-- 设置SizeUi的值
+_G['xgo Hub Table'].SizeUi = (not _G['xgo Hub Table'].isWindows and UDim2.fromOffset(600,300)) or UDim2.fromOffset(560,600)
+if not _G['xgo Hub Table'].isWindows then
+    -- 如果CoreGui中存在UIBUTTON，则销毁
+    if game.CoreGui:FindFirstChild('UIBUTTON') then
+        game.CoreGui:FindFirstChild('UIBUTTON'):Destroy()
+    end
+
+    -- 获取服务
+    local TweenService = game:GetService("TweenService")
+    local UserInputService = game:GetService("UserInputService")
+    local UIBUTTON = Instance.new("ScreenGui")
+    local Frame = Instance.new("Frame")
+    local ImageButton = Instance.new("ImageButton")
+    local UICorner = Instance.new("UICorner")
+    local UICorner_2 = Instance.new("UICorner")
+    local sound = Instance.new("Sound")
+
+    -- 设置UIBUTTON的属性
+    UIBUTTON.Name = "UIBUTTON"
+    UIBUTTON.Parent = game.CoreGui
+    UIBUTTON.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+    Frame.Parent = UIBUTTON
+    Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+    Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Frame.BorderSizePixel = 0
+    Frame.Transparency = 1
+    Frame.Position = UDim2.new(0.157012194, 0, 0.164366379, 0)
+    Frame.Size = UDim2.new(0, 115, 0, 49)
+
+    ImageButton.Parent = Frame
+    ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ImageButton.BorderSizePixel = 0
+    ImageButton.Active = true
+    ImageButton.Draggable = true
+    ImageButton.Position = UDim2.new(0.218742043, 0, -0.155235752, 0)
+    ImageButton.Size = UDim2.new(0, 64, 0, 64)
+
+    -- 设置声音
+    sound.SoundId = "rbxassetid://3398620867"
+    sound.Parent = ImageButton
+
+    -- 设置ImageButton的初始图片为"open"
+    ImageButton.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
+    local isOpen = true -- 用于跟踪状态的变量
+
+    ImageButton.MouseButton1Click:Connect(function()
+        -- 动画ImageButton的大小
+        ImageButton:TweenSize(UDim2.new(0, 60, 0, 60), Enum.EasingDirection.In, Enum.EasingStyle.Elastic, 0.1)
+        delay(0.1, function()
+            ImageButton:TweenSize(UDim2.new(0, 64, 0, 64), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1)
+        end)
+
+        -- 根据状态切换图片
+        if isOpen then
+            ImageButton.Image = "rbxassetid://129414533025209" -- 替换为关闭图片的资产ID
+        else
+            ImageButton.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
+        end
+        isOpen = not isOpen -- 切换状态
+
+        -- 模拟按键操作
+        local VirtualInputManager = game:GetService("VirtualInputManager")
+        VirtualInputManager:SendKeyEvent(true,"RightControl",false,game)
+        VirtualInputManager:SendKeyEvent(false,"RightControl",false,game)
+        VirtualInputManager:SendKeyEvent(true,"LeftControl",false,game)
+        VirtualInputManager:SendKeyEvent(false,"LeftControl",false,game)
+        
+        -- 播放点击声音
+        sound:Play()
+    end)
+
+    UICorner.CornerRadius = UDim.new(0, 100)
+    UICorner.Parent = ImageButton
+
+    UICorner_2.CornerRadius = UDim.new(0, 10)
+    UICorner_2.Parent = Frame
+
+    -- 获取服务
+    local UIS = game:GetService('UserInputService')
+    local frame = Frame
+    local dragToggle = nil
+    local dragSpeed = 0.25
+    local dragStart = nil
+    local startPos = nil
+
+    -- 更新输入函数
+    local function updateInput(input)
+        local delta = input.Position - dragStart
+        local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+            startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+    end
+
+    -- 输入开始时的事件
+    frame.InputBegan:Connect(function(input)
+        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+            dragToggle = true
+            dragStart = input.Position
+            startPos = frame.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragToggle = false
+                end
+            end)
+        end
+    end)
+
+    -- 输入变化时的事件
+    UIS.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            if dragToggle then
+                Frame.Transparency = 1
+                updateInput(input)
+            else
+                Frame.Transparency = 1
+            end
+        end
+    end)
+end
 -- Constants:
 local LocalPlayer = Players.LocalPlayer;
 local Camera = Workspace.CurrentCamera;
