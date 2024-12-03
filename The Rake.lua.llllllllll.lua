@@ -1,6 +1,6 @@
 if RakeScriptLoaded then return end;
 getgenv().RakeScriptLoaded = true;
----
+
 -- Services:
 local Players = game:GetService("Players");
 local Workspace = game:GetService("Workspace");
@@ -1540,14 +1540,21 @@ local function characterAdded(character)
     Glow.Parent = humanoidRootPart;
     return createBot(character);
 end
-
-do -- Legit
-    local Tab = Window:AddTab("Legit");
-    
-
-    do -- Character
-        local Container = Tab:AddLeftGroupbox("Character");
-
+local Tabs = {
+    Container = Window:AddTab({ Title = "Character", Icon = "" }),
+    Dynamic = Window:AddTab({ Title = "Interactables", Icon = "" }),
+    Locations = Window:AddTab({ Title = "Locations", Icon = "" }),
+    Mgr = Window:AddTab({ Title = "管理员", Icon = "" }),
+    PQ = Window:AddTab({ Title = "图像画质", Icon = "" }),
+    Uni = Window:AddTab({ Title = "通用/玩家/传送", Icon = "" }),
+    Prop = Window:AddTab({ Title = "道具FE", Icon = "" }),
+    BH = Window:AddTab({ Title = "黑洞", Icon = "" }),
+    Chat = Window:AddTab({ Title = "聊天中枢", Icon = "" }),
+    Aim = Window:AddTab({ Title = "自瞄透视", Icon = "" }),
+    Main = Window:AddTab({ Title = "主界面", Icon = "" }),
+    Settings = Window:AddTab({ Title = "设置", Icon = "settings" })
+}
+do -- Character       
         Container:AddToggle("InfStamina", { Text = "No Stamina Drain", Default = false });
         Container:AddToggle("CharacterGlow", { Text = "Character Glow", Default = false });
         Container:AddSlider("GlowBrightness", { Text = "Glow Brightness", Min = 0, Max = 10, Default = 1, Rounding = 1, Suffix = "w" });
@@ -1555,7 +1562,6 @@ do -- Legit
     end
 
     do -- AFK
-        local Container = Tab:AddRightGroupbox("AFK (WORK IN PROGRESS)");
         Container:AddToggle("Bot", { Text = "AFK Bot", Default = false });
         Container:AddToggle("FarmScraps", { Text = "Farm Scraps", Default = false });
         Container:AddToggle("BotNotifications", { Text = "Status Notifications", Default = false });
@@ -1563,31 +1569,26 @@ do -- Legit
     end
 
     do -- Combat Assists
-        local Container = Tab:AddLeftGroupbox("Combat Assists");
-
         Container:AddToggle("Reach", { Text = "Stun Stick Reach (Broken)", Default = false });
     end
 end
 
-do -- Visuals
-    local Tab = Window:AddTab("Visuals");
-
-    do -- Humanoid ESP
-        local Container = Tab:AddLeftGroupbox("Humanoid ESP");
+do
+   do -- Humanoid ESP
+        
         Container:AddToggle("PlayerESP", { Text = "Players ESP", Default = true });
         Container:AddToggle("RakeESP", { Text = "Rakes ESP", Default = true });
         Container:AddToggle("Radar", { Text = "Radar", Default = true });
     end
 
     do -- World ESPs
-        local Container = Tab:AddRightTabbox("World ESPs");
+                
         
-        local Dynamic = Container:AddTab("Interactables");
         Dynamic:AddToggle("ScrapESP", { Text = "Scraps (Points)", Default = true });
         Dynamic:AddToggle("FlareESP", { Text = "Flares", Default = true });
         Dynamic:AddToggle("SupplyCrateESP", { Text = "Supply Crates", Default = true });
 
-        local Locations = Container:AddTab("Locations");
+        
         Locations:AddToggle("Cave", { Text = "Cave", Default = true });
         Locations:AddToggle("Shop", { Text = "Shop", Default = true });
         Locations:AddToggle("PowerStation", { Text = "Power Station", Default = true });
@@ -1598,10 +1599,10 @@ do -- Visuals
 end
 
 do -- Values
-    local Tab = Window:AddTab("Values");
+    
 
     do -- Drops
-        local Container = Tab:AddLeftGroupbox("Drop Notifications");
+        
 
         Container:AddToggle("FlareNotifications", { Text = "Flare", Default = true });
         Container:AddToggle("CrateNotifications", { Text = "Supply Crate", Default = true });
@@ -1609,8 +1610,7 @@ do -- Values
     end
 
     do -- Game
-        local Container = Tab:AddRightGroupbox("Game Notifications");
-
+        
         Container:AddToggle("PowerNotifications", { Text = "Power Level", Default = true })
             :AddKeyPicker("PowerNotifications", { Text = "Notify Power", Default = "G", NoUI = true });
         Container:AddToggle("TimerNotifications", { Text = "Timer", Default = true })
@@ -1619,7 +1619,6 @@ do -- Values
 end
 
 do -- Settings
-    local Tab = Window:AddTab("Settings");
 
     local function UpdateTheme()
         Library.BackgroundColor = Options.BackgroundColor.Value;
@@ -1745,7 +1744,6 @@ Options.TimerNotifications:OnClick(function()
     Library:Notify(string.format("Time Left: %s", secondsToMS(Timer.Value)));
 end)
 
-Library:Notify("Loaded UI!")
 
 -- Listeners:
 Workspace.ChildAdded:Connect(function(child)
