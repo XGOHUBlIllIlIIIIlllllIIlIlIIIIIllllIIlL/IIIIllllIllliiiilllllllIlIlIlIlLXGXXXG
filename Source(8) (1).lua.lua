@@ -360,6 +360,75 @@ function FlurioreLib:MakeNotify(NotifyConfig)
 	end)
 	return NotifyFunction
 end
+local function CreateToggleUIButton()
+    -- 创建一个ScreenGui作为按钮的容器
+    local buttonGui = Instance.new("ScreenGui")
+    buttonGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    buttonGui.Parent = game:GetService("CoreGui")
+
+    -- 创建按钮的框架
+    local buttonFrame = Instance.new("Frame")
+    buttonFrame.Size = UDim2.new(0, 100, 0, 50)
+    buttonFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    buttonFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    buttonFrame.BorderSizePixel = 1
+    buttonFrame.Position = UDim2.new(1, -110, 1, -60)  -- 初始位置在屏幕右下角
+    buttonFrame.Parent = buttonGui
+
+    -- 创建UICorner
+    local buttonCorner = Instance.new("UICorner")
+    buttonCorner.Parent = buttonFrame
+
+    -- 创建按钮上的图像
+    local buttonImage = Instance.new("ImageLabel")
+    buttonImage.Size = UDim2.new(1, 0, 1, 0)
+    buttonImage.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
+    buttonImage.Parent = buttonFrame
+
+    -- 使按钮可拖动
+    local function MakeDraggable(frame)
+        local dragging = false
+        local dragInput = nil
+        local dragStart = nil
+        local startpos = nil
+
+        frame.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = true
+                dragStart = input.Position
+                startpos = frame.Position
+            end
+        end)
+
+        frame.InputEnded:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                dragging = false
+            end
+        end)
+
+        game:GetService("UserInputService").InputChanged:Connect(function(input)
+            if input == dragInput and dragging then
+                local delta = input.Position - dragStart
+                frame.Position = UDim2.new(startpos.X.Scale, startpos.X.Offset + delta.X, startpos.Y.Scale, startpos.Y.Offset + delta.Y)
+                dragStart = input.Position
+            end
+        end)
+    end
+
+    MakeDraggable(buttonFrame)
+
+    -- 切换UI的显示和隐藏
+    local function ToggleGuiVisibility()
+        local hirimiGui = game:GetService("CoreGui"):FindFirstChild("HirimiGui")
+        if hirimiGui and hirimiGui:IsA("ScreenGui") then
+            hirimiGui.Enabled = not hirimiGui.Enabled
+            buttonImage.Image = hirimiGui.Enabled and "rbxassetid://129414533025209" or "rbxassetid://115707173566555"
+        end
+    end
+
+    -- 为按钮添加点击事件
+    buttonFrame.MouseButton1Click:Connect(ToggleGuiVisibility)
+end
 function FlurioreLib:MakeGui(GuiConfig)
     local GuiConfig = GuiConfig or {}
     GuiConfig.NameHub = GuiConfig.NameHub or "Hirimi Hub"
@@ -423,60 +492,6 @@ function FlurioreLib:MakeGui(GuiConfig)
 	DropShadow.ZIndex = 0
 	DropShadow.Name = "DropShadow"
 	DropShadow.Parent = DropShadowHolder
-    
--- 添加开关按钮（位于 UI 之外）
-    local ToggleButton = Instance.new("ImageButton")
-    ToggleButton.Name = "ToggleButton"
-    ToggleButton.Size = UDim2.new(0, 30, 0, 30)
-    ToggleButton.Position = UDim2.new(1, -30, 1, -30)  -- 初始位置在屏幕右下角
-    ToggleButton.BackgroundTransparency = 1
-    ToggleButton.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
-    ToggleButton.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")  -- 确保按钮位于 UI 之外
-
-    local function MakeDraggable(button, frame)
-        local dragging = false
-        local dragInput = nil
-        local dragStart = nil
-        local startpos = nil
-
-        button.InputBegan:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                dragging = true
-                dragStart = input.Position
-                startpos = frame.Position
-            end
-        end)
-
-        button.InputEnded:Connect(function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                dragging = false
-            end
-        end)
-
-        game:GetService("UserInputService").InputChanged:Connect(function(input)
-            if input == dragInput and dragging then
-                local delta = input.Position - dragStart
-                frame.Position = UDim2.new(startpos.X.Scale, startpos.X.Offset + delta.X, startpos.Y.Scale, startpos.Y.Offset + delta.Y)
-                dragStart = input.Position
-            end
-        end)
-    end
-
-    MakeDraggable(ToggleButton, ToggleButton)
-
-    local function ToggleGuiVisibility()
-        if HirimiGui.Visible then
-            HirimiGui.Visible = false
-            ToggleButton.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
-        else
-            HirimiGui.Visible = true
-            ToggleButton.Image = "rbxassetid://129414533025209" -- 关闭图片的资产ID
-        end
-    end
-
-    ToggleButton.MouseButton1Click:Connect(function()
-        ToggleGuiVisibility()
-    end)
     
 	Main.AnchorPoint = Vector2.new(0.5, 0.5)
 	Main.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
@@ -2269,3 +2284,4 @@ function FlurioreLib:MakeGui(GuiConfig)
 	return Tabs
 end
 return FlurioreLib
+CreateToggleUIButton()
