@@ -442,6 +442,8 @@ function FlurioreLib:MakeGui(GuiConfig)
     local HirimiGui = Instance.new("ScreenGui");
     local DropShadowHolder = Instance.new("Frame");
     local DropShadow = Instance.new("ImageLabel");
+    local MinimizeButton = Instance.new("ImageButton");
+    local UICornerMinimize = Instance.new("UICorner");
     local Main = Instance.new("Frame");
     local UICorner = Instance.new("UICorner");
     local UIStroke = Instance.new("UIStroke");
@@ -492,6 +494,38 @@ function FlurioreLib:MakeGui(GuiConfig)
 	DropShadow.ZIndex = 0
 	DropShadow.Name = "DropShadow"
 	DropShadow.Parent = DropShadowHolder
+	
+	MakeDraggable(Top, Main)
+
+    function FlurioreLib:ToggleUI()
+        Main.Visible = not Main.Visible
+    end
+
+    function FlurioreLib:CloseUI()
+        HirimiGui:Destroy()
+        MinimizeButton:Destroy()
+    end
+
+    CloseButton.Activated:Connect(function()
+        FlurioreLib:CloseUI()
+        GuiConfig.CloseCallBack()
+    end)
+    
+    MinimizeButton.Size = UDim2.fromOffset(40, 40)
+    MinimizeButton.Position = UDim2.fromScale(0.10, 0.30)
+    MinimizeButton.BackgroundTransparency = 1
+    MinimizeButton.Image = "rbxassetid://87025530384800"  --头像
+    MinimizeButton.BackgroundColor3 = GuiConfig["Color"]
+    MinimizeButton.AutoButtonColor = false
+    MinimizeButton.Draggable = true
+    MinimizeButton.Active = true
+    MinimizeButton.Selectable = true
+    MinimizeButton.Parent = HirimiGui
+
+    UICornerMinimize.CornerRadius = UDim.new(0, 5)
+    UICornerMinimize.Parent = MinimizeButton  
+    
+    MinimizeButton.MouseButton1Click:Connect(FlurioreLib.ToggleUI)
     
 	Main.AnchorPoint = Vector2.new(0.5, 0.5)
 	Main.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
