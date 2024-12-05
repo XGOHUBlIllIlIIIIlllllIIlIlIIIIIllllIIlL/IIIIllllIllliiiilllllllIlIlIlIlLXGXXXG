@@ -3,130 +3,6 @@ local TweenService = game:GetService("TweenService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local CoreGui = LocalPlayer.PlayerGui 
-
-local function MakeDraggable(topbarobject, object)
-    local Dragging = nil
-    local DragInput = nil
-    local DragStart = nil
-    local StartPosition = nil
-
-    local function UpdatePos(input)
-        local Delta = input.Position - DragStart
-        local pos = UDim2.new(StartPosition.X.Scale, StartPosition.X.Offset + Delta.X, StartPosition.Y.Scale, StartPosition.Y.Offset + Delta.Y)
-        local Tween = TweenService:Create(object, TweenInfo.new(0.2), {Position = pos})
-        Tween:Play()
-    end
-
-    topbarobject.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            Dragging = true
-            DragStart = input.Position
-            StartPosition = object.Position
-
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    Dragging = false
-                end
-            end)
-        end
-    end)
-
-    topbarobject.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            DragInput = input
-        end
-    end)
-
-    UserInputService.InputChanged:Connect(function(input)
-        if input == DragInput and Dragging then
-            UpdatePos(input)
-        end
-    end)
-end
-
-local function CircleClick(Button, X, Y)
-    spawn(function()
-        Button.ClipsDescendants = true
-        local Circle = Instance.new("ImageLabel")
-        Circle.Image = "rbxassetid://266543268"
-        Circle.ImageColor3 = Color3.fromRGB(80, 80, 80)
-        Circle.ImageTransparency = 0.8999999761581421
-        Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        Circle.BackgroundTransparency = 1
-        Circle.ZIndex = 10
-        Circle.Name = "Circle"
-        Circle.Parent = Button
-        
-        local NewX = X - Circle.AbsolutePosition.X
-        local NewY = Y - Circle.AbsolutePosition.Y
-        Circle.Position = UDim2.new(0, NewX, 0, NewY)
-        local Size = 0
-        if Button.AbsoluteSize.X > Button.AbsoluteSize.Y then
-            Size = Button.AbsoluteSize.X*1.5
-        elseif Button.AbsoluteSize.X < Button.AbsoluteSize.Y then
-            Size = Button.AbsoluteSize.Y*1.5
-        elseif Button.AbsoluteSize.X == Button.AbsoluteSize.Y then
-            Size = Button.AbsoluteSize.X*1.5
-        end
-
-        local Time = 0.5
-        Circle:TweenSizeAndPosition(UDim2.new(0, Size, 0, Size), UDim2.new(0.5, -Size/2, 0.5, -Size/2), "Out", "Quad", Time, false, nil)
-        for i=1,10 do
-            Circle.ImageTransparency = Circle.ImageTransparency + 0.01
-            wait(Time/10)
-        end
-        Circle:Destroy()
-    end)
-end
-
-local function CreateUIButton()
-    local UIBUTTON = Instance.new("ScreenGui")
-    local Frame = Instance.new("Frame")
-    local ImageButton = Instance.new("ImageButton")
-    local UICorner = Instance.new("UICorner")
-
-    UIBUTTON.Name = "UIBUTTON"
-    UIBUTTON.Parent = CoreGui
-    UIBUTTON.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-    Frame.Parent = UIBUTTON
-    Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-    Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Frame.BorderSizePixel = 0
-    Frame.Transparency = 1
-    Frame.Position = UDim2.new(0.157012194, 0, 0.164366379, 0)
-    Frame.Size = UDim2.new(0, 115, 0, 49)
-
-    ImageButton.Parent = Frame
-    ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    ImageButton.BorderSizePixel = 0
-    ImageButton.Active = true
-    ImageButton.Draggable = true
-    ImageButton.Position = UDim2.new(0.218742043, 0, -0.155235752, 0)
-    ImageButton.Size = UDim2.new(0, 64, 0, 64)
-    ImageButton.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
-
-    UICorner.CornerRadius = UDim.new(0, 100)
-    UICorner.Parent = ImageButton
-
-    MakeDraggable(ImageButton, Frame)
-
-    ImageButton.MouseButton1Click:Connect(function()
-        CircleClick(ImageButton, Mouse.X, Mouse.Y)
-        local isOpen = not ImageButton:IsA("ImageButton") or ImageButton.Image ~= "rbxassetid://129414533025209"
-        if isOpen then
-            ImageButton.Image = "rbxassetid://129414533025209" -- 替换为关闭图片的资产ID
-        else
-            ImageButton.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
-        end
-    end)
-end
-local UserInputService = game:GetService("UserInputService")
-local TweenService = game:GetService("TweenService")
-local LocalPlayer = game:GetService("Players").LocalPlayer
-local Mouse = LocalPlayer:GetMouse()
-local CoreGui = LocalPlayer.PlayerGui 
 local function MakeDraggable(topbarobject, object)
 	local function CustomPos(topbarobject, object)
 		local Dragging = nil
@@ -485,42 +361,42 @@ function FlurioreLib:MakeNotify(NotifyConfig)
 	return NotifyFunction
 end
 function FlurioreLib:MakeGui(GuiConfig)
-	local GuiConfig = GuiConfig or {}
-	GuiConfig.NameHub = GuiConfig.NameHub or "Hirimi Hub"
-	GuiConfig.Description = GuiConfig.Description or "Comeback | developing by Hirimi, Teru"
-	GuiConfig.Color = GuiConfig.Color or Color3.fromRGB(255, 0, 255)
-	GuiConfig["Logo Player"] = GuiConfig["Logo Player"] or "https://www.roblox.com/headshot-thumbnail/image?userId="..game:GetService("Players").LocalPlayer.UserId .."&width=420&height=420&format=png"
-	GuiConfig["Name Player"] = GuiConfig["Name Player"] or tostring(game:GetService("Players").LocalPlayer.Name)
-	GuiConfig["Tab Width"] = GuiConfig["Tab Width"] or 120
-	local GuiFunc = {}
+    local GuiConfig = GuiConfig or {}
+    GuiConfig.NameHub = GuiConfig.NameHub or "Hirimi Hub"
+    GuiConfig.Description = GuiConfig.Description or "Comeback | developing by Hirimi, Teru"
+    GuiConfig.Color = GuiConfig.Color or Color3.fromRGB(255, 0, 255)
+    GuiConfig["Logo Player"] = GuiConfig["Logo Player"] or "https://www.roblox.com/headshot-thumbnail/image?userId="..game:GetService("Players").LocalPlayer.UserId .."&width=420&height=420&format=png"
+    GuiConfig["Name Player"] = GuiConfig["Name Player"] or tostring(game:GetService("Players").LocalPlayer.Name)
+    GuiConfig["Tab Width"] = GuiConfig["Tab Width"] or 120
+    local GuiFunc = {}
 
-	local HirimiGui = Instance.new("ScreenGui");
-	local DropShadowHolder = Instance.new("Frame");
-	local DropShadow = Instance.new("ImageLabel");
-	local Main = Instance.new("Frame");
-	local UICorner = Instance.new("UICorner");
-	local UIStroke = Instance.new("UIStroke");
-	local Top = Instance.new("Frame");
-	local TextLabel = Instance.new("TextLabel");
-	local UICorner1 = Instance.new("UICorner");
-	local TextLabel1 = Instance.new("TextLabel");
-	local UIStroke1 = Instance.new("UIStroke");
-	local MaxRestore = Instance.new("TextButton");
-	local ImageLabel = Instance.new("ImageLabel");
-	local Close = Instance.new("TextButton");
-	local ImageLabel1 = Instance.new("ImageLabel");
-	local Min = Instance.new("TextButton");
-	local ImageLabel2 = Instance.new("ImageLabel");
-	local LayersTab = Instance.new("Frame");
-	local UICorner2 = Instance.new("UICorner");
-	local DecideFrame = Instance.new("Frame");
-	local UIStroke3 = Instance.new("UIStroke");
-	local Layers = Instance.new("Frame");
-	local UICorner6 = Instance.new("UICorner");
-	local NameTab = Instance.new("TextLabel");
-	local LayersReal = Instance.new("Frame");
-	local LayersFolder = Instance.new("Folder");
-	local LayersPageLayout = Instance.new("UIPageLayout");
+    local HirimiGui = Instance.new("ScreenGui");
+    local DropShadowHolder = Instance.new("Frame");
+    local DropShadow = Instance.new("ImageLabel");
+    local Main = Instance.new("Frame");
+    local UICorner = Instance.new("UICorner");
+    local UIStroke = Instance.new("UIStroke");
+    local Top = Instance.new("Frame");
+    local TextLabel = Instance.new("TextLabel");
+    local UICorner1 = Instance.new("UICorner");
+    local TextLabel1 = Instance.new("TextLabel");
+    local UIStroke1 = Instance.new("UIStroke");
+    local MaxRestore = Instance.new("TextButton");
+    local ImageLabel = Instance.new("ImageLabel");
+    local Close = Instance.new("TextButton");
+    local ImageLabel1 = Instance.new("ImageLabel");
+    local Min = Instance.new("TextButton");
+    local ImageLabel2 = Instance.new("ImageLabel");
+    local LayersTab = Instance.new("Frame");
+    local UICorner2 = Instance.new("UICorner");
+    local DecideFrame = Instance.new("Frame");
+    local UIStroke3 = Instance.new("UIStroke");
+    local Layers = Instance.new("Frame");
+    local UICorner6 = Instance.new("UICorner");
+    local NameTab = Instance.new("TextLabel");
+    local LayersReal = Instance.new("Frame");
+    local LayersFolder = Instance.new("Folder");
+    local LayersPageLayout = Instance.new("UIPageLayout");
 
 	HirimiGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	HirimiGui.Name = "HirimiGui"
@@ -533,7 +409,7 @@ function FlurioreLib:MakeGui(GuiConfig)
 	DropShadowHolder.Name = "DropShadowHolder"
 	DropShadowHolder.Parent = HirimiGui
 	
-  DropShadowHolder.Position = UDim2.new(0, (HirimiGui.AbsoluteSize.X // 2 - DropShadowHolder.Size.X.Offset // 2), 0, (HirimiGui.AbsoluteSize.Y // 2 - DropShadowHolder.Size.Y.Offset // 2))
+    DropShadowHolder.Position = UDim2.new(0, (HirimiGui.AbsoluteSize.X // 2 - DropShadowHolder.Size.X.Offset // 2), 0, (HirimiGui.AbsoluteSize.Y // 2 - DropShadowHolder.Size.Y.Offset // 2))
 	DropShadow.Image = "rbxassetid://6015897843"
 	DropShadow.ImageColor3 = Color3.fromRGB(15, 15, 15)
 	DropShadow.ImageTransparency = 0.5
@@ -547,7 +423,26 @@ function FlurioreLib:MakeGui(GuiConfig)
 	DropShadow.ZIndex = 0
 	DropShadow.Name = "DropShadow"
 	DropShadow.Parent = DropShadowHolder
+    
+        -- 添加开关按钮
+    local ToggleButton = Instance.new("ImageButton")
+    ToggleButton.Name = "ToggleButton"
+    ToggleButton.Size = UDim2.new(0, 30, 0, 30)
+    ToggleButton.Position = UDim2.new(1, -30, 1, -30)
+    ToggleButton.BackgroundTransparency = 1
+    ToggleButton.Image = "rbxassetid://115707173566555" -- 打开图片的资产ID
+    ToggleButton.Parent = Main
 
+    local function ToggleGui()
+        local isOpen = not Main.Visible
+        Main.Visible = isOpen
+        ToggleButton.Image = isOpen and "rbxassetid://129414533025209" or "rbxassetid://115707173566555"
+    end
+
+    ToggleButton.MouseButton1Click:Connect(function()
+        ToggleGui()
+    end)
+    
 	Main.AnchorPoint = Vector2.new(0.5, 0.5)
 	Main.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 	Main.BackgroundTransparency = 0.1
