@@ -632,7 +632,7 @@ LayersPageLayout.EasingStyle = Enum.EasingStyle.Quad
     Toggle.Parent = ToggleGui
     Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Toggle.BackgroundTransparency = 0.5
-    Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+    Toggle.Position = UDim2.fromScale(0.10, 0.30)
     Toggle.Size = UDim2.new(0, 50, 0, 50)
     Toggle.Font = Enum.Font.SourceSans
     Toggle.Text = ""
@@ -649,7 +649,7 @@ LayersPageLayout.EasingStyle = Enum.EasingStyle.Quad
     Image.Parent = Toggle
     Image.Size = UDim2.new(1, 0, 1, 0)
     Image.BackgroundTransparency = 1
-    Image.Image = "rbxassetid://117239677500065" 
+    Image.Image = "rbxassetid://87025530384800" 
 
     local Corner2 = Instance.new("UICorner")
     Corner2.CornerRadius = UDim.new(0.2, 0)
