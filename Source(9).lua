@@ -657,59 +657,8 @@ function FlurioreLib:MakeGui(GuiConfig)
     Toggle.MouseButton1Click:Connect(function()
         HirimiGui.Enabled = not HirimiGui.Enabled
     end)
-
--------------------------------------------------------------------------------[[
-
-
-
-
-
-
--------------------------------------------------------------------------------]]
--- 获取服务
-local UIS = game:GetService('UserInputService')
-local frame = ToggleGui
-local dragToggle = nil
-local dragSpeed = 0.25
-local dragStart = nil
-local startPos = nil
-
--- 更新输入函数
-local function updateInput(input)
-    local delta = input.Position - dragStart
-    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
-        startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-    game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
-end
-
--- 输入开始时的事件
-frame.InputBegan:Connect(function(input)
-    if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
-        dragToggle = true
-        dragStart = input.Position
-        startPos = frame.Position
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                dragToggle = false
-            end
-        end)
-    end
-end)
-
--- 输入变化时的事件
-UIS.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-        if dragToggle then
-            updateInput(input)
-        end
-    end
-end)
--------------------------------------------------------------------------------[[
-    
-    
-
--------------------------------------------------------------------------------]]
-	--// Layer Tabs
+  
+  	--// Layer Tabs
 	local ScrollTab = Instance.new("ScrollingFrame");
 	local UIListLayout = Instance.new("UIListLayout");
 
