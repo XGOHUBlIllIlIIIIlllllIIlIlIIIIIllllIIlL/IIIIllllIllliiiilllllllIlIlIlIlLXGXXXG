@@ -504,125 +504,124 @@ function FlurioreLib:MakeGui(GuiConfig)
     ImageLabel.Size = UDim2.new(1, -8, 1, -8)
     ImageLabel.Parent = MaxRestore
     
-Close.Font = Enum.Font.SourceSans
-Close.Text = ""
-Close.TextColor3 = Color3.fromRGB(0, 0, 0)
-Close.TextSize = 14
-Close.AnchorPoint = Vector2.new(1, 0.5)
-Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Close.BackgroundTransparency = 0.9990000128746033
-Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Close.BorderSizePixel = 0
-Close.Position = UDim2.new(1, -8, 0.5, 0)
-Close.Size = UDim2.new(0, 25, 0, 25)
-Close.Name = "Close"
-Close.Parent = Top
+    Close.Font = Enum.Font.SourceSans
+    Close.Text = ""
+    Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Close.TextSize = 14
+    Close.AnchorPoint = Vector2.new(1, 0.5)
+    Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Close.BackgroundTransparency = 0.9990000128746033
+    Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Close.BorderSizePixel = 0
+    Close.Position = UDim2.new(1, -8, 0.5, 0)
+    Close.Size = UDim2.new(0, 25, 0, 25)
+    Close.Name = "Close"
+    Close.Parent = Top
 
-ImageLabel1.Image = "rbxassetid://9886659671"
-ImageLabel1.AnchorPoint = Vector2.new(0.5, 0.5)
-ImageLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel1.BackgroundTransparency = 0.9990000128746033
-ImageLabel1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ImageLabel1.BorderSizePixel = 0
-ImageLabel1.Position = UDim2.new(0.49, 0, 0.5, 0)
-ImageLabel1.Size = UDim2.new(1, -8, 1, -8)
-ImageLabel1.Parent = Close
+    ImageLabel1.Image = "rbxassetid://9886659671"
+    ImageLabel1.AnchorPoint = Vector2.new(0.5, 0.5)
+    ImageLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ImageLabel1.BackgroundTransparency = 0.9990000128746033
+    ImageLabel1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ImageLabel1.BorderSizePixel = 0
+    ImageLabel1.Position = UDim2.new(0.49, 0, 0.5, 0)
+    ImageLabel1.Size = UDim2.new(1, -8, 1, -8)
+    ImageLabel1.Parent = Close
 
-Min.Font = Enum.Font.SourceSans
-Min.Text = ""
-Min.TextColor3 = Color3.fromRGB(0, 0, 0)
-Min.TextSize = 14
-Min.AnchorPoint = Vector2.new(1, 0.5)
-Min.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Min.BackgroundTransparency = 0.9990000128746033
-Min.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Min.BorderSizePixel = 0
-Min.Position = UDim2.new(1, -78, 0.5, 0)
-Min.Size = UDim2.new(0, 25, 0, 25)
-Min.Name = "Min"
-Min.Parent = Top
+    Min.Font = Enum.Font.SourceSans
+    Min.Text = ""
+    Min.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Min.TextSize = 14
+    Min.AnchorPoint = Vector2.new(1, 0.5)
+    Min.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Min.BackgroundTransparency = 0.9990000128746033
+    Min.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Min.BorderSizePixel = 0
+    Min.Position = UDim2.new(1, -78, 0.5, 0)
+    Min.Size = UDim2.new(0, 25, 0, 25)
+    Min.Name = "Min"
+    Min.Parent = Top
 
-ImageLabel2.Image = "rbxassetid://9886659276"
-ImageLabel2.AnchorPoint = Vector2.new(0.5, 0.5)
-ImageLabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel2.BackgroundTransparency = 0.9990000128746033
-ImageLabel2.ImageTransparency = 0.2
-ImageLabel2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ImageLabel2.BorderSizePixel = 0
-ImageLabel2.Position = UDim2.new(0.5, 0, 0.5, 0)
-ImageLabel2.Size = UDim2.new(1, -9, 1, -9)
-ImageLabel2.Parent = Min
+    ImageLabel2.Image = "rbxassetid://9886659276"
+    ImageLabel2.AnchorPoint = Vector2.new(0.5, 0.5)
+    ImageLabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ImageLabel2.BackgroundTransparency = 0.9990000128746033
+    ImageLabel2.ImageTransparency = 0.2
+    ImageLabel2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ImageLabel2.BorderSizePixel = 0
+    ImageLabel2.Position = UDim2.new(0.5, 0, 0.5, 0)
+    ImageLabel2.Size = UDim2.new(1, -9, 1, -9)
+    ImageLabel2.Parent = Min
 
-LayersTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LayersTab.BackgroundTransparency = 0.9990000128746033
-LayersTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-LayersTab.BorderSizePixel = 0
-LayersTab.Position = UDim2.new(0, 9, 0, 50)
-LayersTab.Size = UDim2.new(0, GuiConfig["Tab Width"], 1, -59)
-LayersTab.Name = "LayersTab"
-LayersTab.Parent = Main
+    LayersTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    LayersTab.BackgroundTransparency = 0.9990000128746033
+    LayersTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    LayersTab.BorderSizePixel = 0
+    LayersTab.Position = UDim2.new(0, 9, 0, 50)
+    LayersTab.Size = UDim2.new(0, GuiConfig["Tab Width"], 1, -59)
+    LayersTab.Name = "LayersTab"
+    LayersTab.Parent = Main
 
-UICorner2.CornerRadius = UDim.new(0, 2)
-UICorner2.Parent = LayersTab
+    UICorner2.CornerRadius = UDim.new(0, 2)
+    UICorner2.Parent = LayersTab
 
-DecideFrame.AnchorPoint = Vector2.new(0.5, 0)
-DecideFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DecideFrame.BackgroundTransparency = 0.85
-DecideFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-DecideFrame.BorderSizePixel = 0
-DecideFrame.Position = UDim2.new(0.5, 0, 0, 38)
-DecideFrame.Size = UDim2.new(1, 0, 0, 1)
-DecideFrame.Name = "DecideFrame"
-DecideFrame.Parent = Main
+    DecideFrame.AnchorPoint = Vector2.new(0.5, 0)
+    DecideFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DecideFrame.BackgroundTransparency = 0.85
+    DecideFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    DecideFrame.BorderSizePixel = 0
+    DecideFrame.Position = UDim2.new(0.5, 0, 0, 38)
+    DecideFrame.Size = UDim2.new(1, 0, 0, 1)
+    DecideFrame.Name = "DecideFrame"
+    DecideFrame.Parent = Main
 
-Layers.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Layers.BackgroundTransparency = 0.9990000128746033
-Layers.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Layers.BorderSizePixel = 0
-Layers.Position = UDim2.new(0, GuiConfig["Tab Width"] + 18, 0, 50)
-Layers.Size = UDim2.new(1, -(GuiConfig["Tab Width"] + 9 + 18), 1, -59)
-Layers.Name = "Layers"
-Layers.Parent = Main
+    Layers.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Layers.BackgroundTransparency = 0.9990000128746033
+    Layers.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Layers.BorderSizePixel = 0
+    Layers.Position = UDim2.new(0, GuiConfig["Tab Width"] + 18, 0, 50)
+    Layers.Size = UDim2.new(1, -(GuiConfig["Tab Width"] + 9 + 18), 1, -59)
+    Layers.Name = "Layers"
+    Layers.Parent = Main
 
-UICorner6.CornerRadius = UDim.new(0, 2)
-UICorner6.Parent = Layers
+    UICorner6.CornerRadius = UDim.new(0, 2)
+    UICorner6.Parent = Layers
 
-NameTab.Font = Enum.Font.GothamBold
-NameTab.Text = ""
-NameTab.TextColor3 = Color3.fromRGB(255, 255, 255)
-NameTab.TextSize = 24
-NameTab.TextWrapped = true
-NameTab.TextXAlignment = Enum.TextXAlignment.Left
-NameTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-NameTab.BackgroundTransparency = 0.9990000128746033
-NameTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
-NameTab.BorderSizePixel = 0
-NameTab.Size = UDim2.new(1, 0, 0, 30)
-NameTab.Name = "NameTab"
-NameTab.Parent = Layers
+    NameTab.Font = Enum.Font.GothamBold
+    NameTab.Text = ""
+    NameTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+    NameTab.TextSize = 24
+    NameTab.TextWrapped = true
+    NameTab.TextXAlignment = Enum.TextXAlignment.Left
+    NameTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    NameTab.BackgroundTransparency = 0.9990000128746033
+    NameTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    NameTab.BorderSizePixel = 0
+    NameTab.Size = UDim2.new(1, 0, 0, 30)
+    NameTab.Name = "NameTab"
+    NameTab.Parent = Layers
 
-LayersReal.AnchorPoint = Vector2.new(0, 1)
-LayersReal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LayersReal.BackgroundTransparency = 0.9990000128746033
-LayersReal.BorderColor3 = Color3.fromRGB(0, 0, 0)
-LayersReal.BorderSizePixel = 0
-LayersReal.ClipsDescendants = true
-LayersReal.Position = UDim2.new(0, 0, 1, 0)
-LayersReal.Size = UDim2.new(1, 0, 1, -33)
-LayersReal.Name = "LayersReal"
-LayersReal.Parent = Layers
+    LayersReal.AnchorPoint = Vector2.new(0, 1)
+    LayersReal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    LayersReal.BackgroundTransparency = 0.9990000128746033
+    LayersReal.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    LayersReal.BorderSizePixel = 0
+    LayersReal.ClipsDescendants = true
+    LayersReal.Position = UDim2.new(0, 0, 1, 0)
+    LayersReal.Size = UDim2.new(1, 0, 1, -33)
+    LayersReal.Name = "LayersReal"
+    LayersReal.Parent = Layers
 
-LayersFolder.Name = "LayersFolder"
-LayersFolder.Parent = LayersReal
+    LayersFolder.Name = "LayersFolder"
+    LayersFolder.Parent = LayersReal
 
-LayersPageLayout.SortOrder = Enum.SortOrder.LayoutOrder
-LayersPageLayout.Name = "LayersPageLayout"
-LayersPageLayout.Parent = LayersFolder
-LayersPageLayout.TweenTime = 0.5
-LayersPageLayout.EasingDirection = Enum.EasingDirection.InOut
-LayersPageLayout.EasingStyle = Enum.EasingStyle.Quad
+    LayersPageLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    LayersPageLayout.Name = "LayersPageLayout"
+    LayersPageLayout.Parent = LayersFolder
+    LayersPageLayout.TweenTime = 0.5
+    LayersPageLayout.EasingDirection = Enum.EasingDirection.InOut
+    LayersPageLayout.EasingStyle = Enum.EasingStyle.Quad
 
--- Toggle Button outside of HirimiGui
     local ToggleGui = Instance.new("ScreenGui");
     ToggleGui.Name = "ToggleGui"
     ToggleGui.Parent = CoreGui
@@ -633,7 +632,7 @@ LayersPageLayout.EasingStyle = Enum.EasingStyle.Quad
     Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Toggle.BackgroundTransparency = 0.5
     Toggle.Position = UDim2.fromScale(0.10, 0.30)
-    Toggle.Size = UDim2.new(0, 50, 0, 50)
+    Toggle.Size = UDim2.fromOffset(40, 40)
     Toggle.Font = Enum.Font.SourceSans
     Toggle.Text = ""
     Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
@@ -658,6 +657,58 @@ LayersPageLayout.EasingStyle = Enum.EasingStyle.Quad
     Toggle.MouseButton1Click:Connect(function()
         HirimiGui.Enabled = not HirimiGui.Enabled
     end)
+
+-------------------------------------------------------------------------------[[
+
+
+
+
+
+
+-------------------------------------------------------------------------------]]
+-- 获取服务
+local UIS = game:GetService('UserInputService')
+local frame = ToggleGui
+local dragToggle = nil
+local dragSpeed = 0.25
+local dragStart = nil
+local startPos = nil
+
+-- 更新输入函数
+local function updateInput(input)
+    local delta = input.Position - dragStart
+    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+        startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+end
+
+-- 输入开始时的事件
+frame.InputBegan:Connect(function(input)
+    if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+        dragToggle = true
+        dragStart = input.Position
+        startPos = frame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragToggle = false
+            end
+        end)
+    end
+end)
+
+-- 输入变化时的事件
+UIS.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        if dragToggle then
+            updateInput(input)
+        end
+    end
+end)
+-------------------------------------------------------------------------------[[
+    
+    
+
+-------------------------------------------------------------------------------]]
 	--// Layer Tabs
 	local ScrollTab = Instance.new("ScrollingFrame");
 	local UIListLayout = Instance.new("UIListLayout");
