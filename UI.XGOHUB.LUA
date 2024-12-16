@@ -1844,6 +1844,84 @@ function SpeedHubLib:Start(GuiConfig)
                 CountItem = CountItem + 1    
                 return ToggleFunc
             end
+            function Sections:Slider(SliderName, Min, Max, Default, Callback)
+    local SliderFrame = Instance.new("Frame")
+    local SliderBar = Instance.new("Frame")
+    local SliderButton = Instance.new("Frame")
+    local SliderValueLabel = Instance.new("TextLabel")
+    
+    -- SliderFrame
+    SliderFrame.Name = "SliderFrame"
+    SliderFrame.Size = UDim2.new(0, 300, 0, 50)
+    SliderFrame.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
+    SliderFrame.BorderSizePixel = 0
+    SliderFrame.Position = UDim2.new(0, 10, 0, 10 + (CountSection * 60))
+    SliderFrame.Parent = ScrollLayer
+
+    -- SliderBar
+    SliderBar.Name = "SliderBar"
+    SliderBar.Size = UDim2.new(1, 0, 0, 10)
+    SliderBar.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+    SliderBar.BorderSizePixel = 0
+    SliderBar.Position = UDim2.new(0, 0, 0, 20)
+    SliderBar.Parent = SliderFrame
+
+    -- SliderButton
+    SliderButton.Name = "SliderButton"
+    SliderButton.Size = UDim2.new(0.5, 0, 1, 0)
+    SliderButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+    SliderButton.BorderSizePixel = 0
+    SliderButton.Position = UDim2.new(0, 0, 0, 0)
+    SliderButton.Parent = SliderBar
+
+    -- SliderValueLabel
+    SliderValueLabel.Name = "SliderValueLabel"
+    SliderValueLabel.Size = UDim2.new(1, 0, 0, 20)
+    SliderValueLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SliderValueLabel.BackgroundTransparency = 1
+    SliderValueLabel.Position = UDim2.new(0, 0, 1, 30)
+    SliderValueLabel.Text = SliderName .. ": " .. Default
+    SliderValueLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    SliderValueLabel.TextSize = 14
+    SliderValueLabel.TextXAlignment = Enum.TextXAlignment.Left
+    SliderValueLabel.Parent = SliderFrame
+
+    -- SliderButton dragging
+    local dragging = false
+    local function updateValue()
+        local percent = SliderButton.Position.X.Scale
+        local value = math.floor((percent * (Max - Min)) + Min)
+        SliderValueLabel.Text = SliderName .. ": " .. value
+        Callback(value)
+    end
+
+    SliderButton.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true
+        end
+    end)
+
+    SliderButton.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = false
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then
+            local delta = input.Position.X - SliderFrame.AbsolutePosition.X
+            local percent = math.clamp(delta / (SliderFrame.AbsoluteSize.X - SliderButton.AbsoluteSize.X), 0, 1)
+            SliderButton.Position = UDim2.new(percent, 0, 0, 0)
+            updateValue()
+        end
+    end)
+
+    -- Set default value
+    updateValue()
+
+    CountSection = CountSection + 1
+    return SliderFrame
+end
             function Items:Slider(SliderConfig)
                 local SliderConfig = SliderConfig or {}
                 SliderConfig.Title = SliderConfig.Title or "Slider"
