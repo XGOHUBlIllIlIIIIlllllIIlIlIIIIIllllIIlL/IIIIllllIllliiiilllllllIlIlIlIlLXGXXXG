@@ -3395,7 +3395,7 @@ function Library:CreateWindow(setup)
 			end;
 		end)
 
-		function Root:AddBlock(Setup)
+		function Root:Block(Setup)
 			Setup = Setup or "Block";
 
 			local BlockLabel = Instance.new("Frame")
@@ -5316,10 +5316,10 @@ function Library:CreateWindow(setup)
 
 	CloseButton.MouseButton1Click:Connect(function()
 		WindowLibrary:Dialog({
-			Title = "Close this window?",
+			Title = "你想关掉ui界面吗?",
 			Buttons = {
 				{
-					Title = 'Yes',
+					Title = '是',
 					Callback = function()
 						Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{
 							Size = UDim2.fromScale(0,0),
@@ -5330,7 +5330,7 @@ function Library:CreateWindow(setup)
 						end)
 					end,
 				},{
-					Title = 'No',
+					Title = '否',
 				}
 			}
 		})
