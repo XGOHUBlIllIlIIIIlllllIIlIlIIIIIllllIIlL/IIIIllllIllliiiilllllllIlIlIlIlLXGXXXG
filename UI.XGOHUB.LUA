@@ -82,7 +82,7 @@ Library.Icons = {
 	["file-check"] = "rbxassetid://7733779668",
 	quote = "rbxassetid://7734045100",
 	["rotate-ccw"] = "rbxassetid://7734051861",
-	["XGO"] = "rbxassetid://7743869054",
+	library = "rbxassetid://7743869054",
 	["clock-1"] = "rbxassetid://8997383694",
 	["on-charge"] = "rbxassetid://7734021231",
 	["video-off"] = "rbxassetid://7743876466",
@@ -2061,7 +2061,7 @@ function Library:Tween(Frame :GuiObject , TweenInfo: TweenInfo , Properties : {}
 	Instance:Play();
 	return Instance
 end;
-
+-----------------------------------UI.UI设置-------------------------------------------------------------------------------------
 function Library:CreateWindow(setup)
 	setup = setup or {};
 
@@ -2080,6 +2080,8 @@ function Library:CreateWindow(setup)
 		setup.KeySystemInfo.OnLogin = setup.KeySystemInfo.OnLogin or function() wait( 0.1) return true end;
 
 	end
+	-- 设置背景图片
+    Library.BackgroundImage = "rbxassetid://96996396016819" -- 在这里设置你的背景图片Asset ID
 
 	local ScreenGui = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
@@ -2091,13 +2093,19 @@ function Library:CreateWindow(setup)
 	ScreenGui.IgnoreGuiInset = false
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 	Library.ProtectGui(ScreenGui);
-
+	
+    -- 在这里设置MainFrame的属性
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = ScreenGui
 	MainFrame.Active = true
-	MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+	MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 默认颜色，图片加载失败时显示
+    MainFrame.BackgroundImage = Library.BackgroundImage -- 设置背景图片
+    MainFrame.BackgroundTransparency = 1 -- 不透明
+    MainFrame.BackgroundTilePosition = UDim2.new(0, 0, 0, 0) -- 设置图片不重复
+    MainFrame.BackgroundTileSize = UDim2.new(1, 0, 1, 0) -- 设置图片铺满整个背景
+--[[ MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 	MainFrame.BackgroundColor3 = Library.Colors.Default
-	MainFrame.BackgroundTransparency = 0.250
+	MainFrame.BackgroundTransparency = 0.250 ]]
 	MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	MainFrame.BorderSizePixel = 0
 	MainFrame.ClipsDescendants = true
@@ -5316,7 +5324,7 @@ function Library:CreateWindow(setup)
 
 	CloseButton.MouseButton1Click:Connect(function()
 		WindowLibrary:Dialog({
-			Title = "你想关掉ui界面吗?",
+			Title = "你想关掉UI吗?",
 			Buttons = {
 				{
 					Title = '是',
