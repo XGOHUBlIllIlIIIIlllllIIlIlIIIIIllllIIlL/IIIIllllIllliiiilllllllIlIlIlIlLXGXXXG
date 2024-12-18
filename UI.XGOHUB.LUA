@@ -1,6 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
--- XGOHUB.UI --
+
 local Library = {
 	Version = '\88\71\79\72\85\66',
 	Loaded = true,
