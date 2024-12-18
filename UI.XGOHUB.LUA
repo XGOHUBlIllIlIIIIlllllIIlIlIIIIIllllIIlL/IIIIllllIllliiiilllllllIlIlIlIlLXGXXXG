@@ -2314,7 +2314,7 @@ function Library:CreateWindow(setup)
 		GTitle.Size = UDim2.new(0.899999976, 0, 0.449999988, 0)
 		GTitle.ZIndex = 6
 		GTitle.Font = Enum.Font.Gotham
-		GTitle.Text = "Get Key"
+		GTitle.Text = "链接"
 		GTitle.TextColor3 = Library.Colors.TextColor
 		GTitle.TextScaled = true
 		GTitle.TextSize = 14.000
@@ -2376,7 +2376,7 @@ function Library:CreateWindow(setup)
 		LTitle.Size = UDim2.new(0.899999976, 0, 0.449999988, 0)
 		LTitle.ZIndex = 6
 		LTitle.Font = Enum.Font.Gotham
-		LTitle.Text = "Login"
+		LTitle.Text = "确认"
 		LTitle.TextColor3 = Library.Colors.TextColor
 		LTitle.TextScaled = true
 		LTitle.TextSize = 14.000
@@ -2393,7 +2393,7 @@ function Library:CreateWindow(setup)
 		LButton.Size = UDim2.new(1, 0, 1, 0)
 		LButton.ZIndex = 15
 		LButton.Font = Enum.Font.SourceSans
-		LButton.Text = "Login"
+		LButton.Text = "确认"
 		LButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 		LButton.TextSize = 14.000
 		LButton.TextTransparency = 1.000
