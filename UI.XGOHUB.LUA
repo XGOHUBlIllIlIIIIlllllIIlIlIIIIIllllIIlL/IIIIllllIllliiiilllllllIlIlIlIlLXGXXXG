@@ -2240,7 +2240,7 @@ function Library:CreateWindow(setup)
 		TextBox.ZIndex = 5
 		TextBox.ClearTextOnFocus = false
 		TextBox.Font = Enum.Font.SourceSans
-		TextBox.PlaceholderText = "Enter"
+		TextBox.PlaceholderText = "请输入密钥"
 		TextBox.Text = ""
 		TextBox.TextColor3 = Library.Colors.TextColor
 		TextBox.TextSize = 13.000
@@ -5498,7 +5498,7 @@ function Library:CreateWindow(setup)
 	UIListLayout.Parent = NotificationBar
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 10)
-
+------------------------------------通知窗口-------------------------------------------------------------------------------------------------------------
 	function WindowLibrary:Notify(setup)
 		setup = setup or {};
 		setup.Title = setup.Title or "Norification";
@@ -5569,7 +5569,7 @@ function Library:CreateWindow(setup)
 		Notification.BackgroundTransparency = 1
 		Notification.BorderColor3 = Color3.fromRGB(27, 42, 53)
 		Notification.BorderSizePixel = 0
-		Notification.Size = UDim2.new(0, 200, 0, 1)
+		Notification.Size = UDim2.new(0, 300, 0, 200) -- 调整窗口的初始大小
 		Notification.ZIndex = 0
 
 		DropShadow.Name = "DropShadow"
