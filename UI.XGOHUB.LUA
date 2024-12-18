@@ -1509,7 +1509,7 @@ function Library.Theme:Custom(Hightlight,Default,Disable,TextColor)
 		Disable = Disable,
 		TextColor = TextColor,
 	}
-end'
+end
 
 function Library.Theme:HightGreen()
 	Library.Colors = {
@@ -1537,7 +1537,7 @@ function Library.Theme:Christmas()
 		TextColor = Color3.fromRGB(249, 249, 249),
 	}
 end
---[[
+
 function Library.Theme:Valentine()
     Library.Colors = {
         Hightlight = Color3.fromRGB(255, 0, 128), -- 粉红色
@@ -1879,7 +1879,6 @@ function Library.Theme:Elegant()
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
 end 
-]]
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
