@@ -1502,6 +1502,15 @@ function Library.Theme:Neverlose()
 	}
 end;
 
+function Library.Theme:Custom(Hightlight,Default,Disable,TextColor)
+	Library.Colors = {
+		Hightlight = Hightlight,
+		Default = Default,
+		Disable = Disable,
+		TextColor = TextColor,
+	}
+end'
+
 function Library.Theme:HightGreen()
 	Library.Colors = {
 		Hightlight = Color3.fromRGB(0, 255, 140),
@@ -1528,7 +1537,7 @@ function Library.Theme:Christmas()
 		TextColor = Color3.fromRGB(249, 249, 249),
 	}
 end
-
+--[[
 function Library.Theme:Valentine()
     Library.Colors = {
         Hightlight = Color3.fromRGB(255, 0, 128), -- 粉红色
@@ -1869,16 +1878,8 @@ function Library.Theme:Elegant()
         Disable = Color3.fromRGB(200, 160, 120), -- 优雅浅棕
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Custom(Hightlight,Default,Disable,TextColor)
-	Library.Colors = {
-		Hightlight = Hightlight,
-		Default = Default,
-		Disable = Disable,
-		TextColor = TextColor,
-	}
-end'
+end 
+]]
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
