@@ -2,7 +2,7 @@
 -- 这不是 hyprland --
 
 local Library = {
-	Version = 'XGOHUB',
+	Version = '\88\71\79\72\85\66',
 	Loaded = true,
 	QQ = '259461151',
 	env = getgenv or getfenv,
