@@ -5666,7 +5666,7 @@ function Library:CreateWindow(setup)
 
 	CloseButton.MouseButton1Click:Connect(function()
 		WindowLibrary:Dialog({
-			Title = "你想关掉UI吗?",
+			Title = "你想关掉UI吗?\n\45\61\61\61\61\60\88\71\79\72\85\66\62\61\61\61\61\45",
 			Buttons = {
 				{
 					Title = '是',
@@ -5816,7 +5816,8 @@ function Library:CreateWindow(setup)
 	Resize.BorderSizePixel = 0
 	Resize.Position = UDim2.new(1, 0, 1, 0)
 	Resize.Rotation = 0.010
-	Resize.Size = UDim2.new(0.075000003, 0, 0.075000003, 0)
+	Resize.Size = UDim2.new(0.15, 0, 0.15, 0)
+--	Resize.Size = UDim2.new(0.075000003, 0, 0.075000003, 0)
 	Resize.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Resize.ZIndex = 100
 	Resize.Font = Enum.Font.SourceSans
