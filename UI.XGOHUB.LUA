@@ -5666,10 +5666,10 @@ function Library:CreateWindow(setup)
 
 	CloseButton.MouseButton1Click:Connect(function()
 		WindowLibrary:Dialog({
-			Title = "\45\229\133\179\233\151\173\85\73\231\149\140\233\157\162\45\92\110\45\45\45\45\45\45\45\45\45\45\45\60\88\71\79\47\72\85\66\62\45\45\45\45\45\45\45\45\45\45\45\92\110\229\133\179\233\151\173\229\144\142\228\184\141\228\188\154\233\154\144\232\151\143\44\232\175\183\233\128\137\230\139\169",
+			Title = "-你要关闭脚本吗-关闭后不会隐藏,请选择",
 			Buttons = {
 				{
-					Title = '是',
+					Title = '执意关闭',
 					Callback = function()
 						Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{
 							Size = UDim2.fromScale(0,0),
@@ -5680,7 +5680,7 @@ function Library:CreateWindow(setup)
 						end)
 					end,
 				},{
-					Title = '否',
+					Title = '稍后再来',
 				}
 			}
 		})
