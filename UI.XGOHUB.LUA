@@ -1920,6 +1920,7 @@ local other = {"[^_%s%w=>~<%-%+%*]", ">", "~", "<", "%-", "%+", "=", "%*"}
 local tableContents = {};
 local lines = {};
 local LoadAcrylic = function()
+---------------------------------UI.渐变效果---------------------------------------------------------------------------------------------------------------------------------------
 	local GuiSystem = {};
 
 	local Twen = game:GetService('TweenService');
@@ -2065,7 +2066,7 @@ local LoadAcrylic = function()
 
 	return GuiSystem;
 end;
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Library.UIBlur = (_C and Source) or LoadAcrylic();
 Library.UserInputService = game:GetService('UserInputService');
 Library.PerformanceMode = false;
@@ -5804,7 +5805,7 @@ function Library:CreateWindow(setup)
 		end;
 	end);
 
-	local Resize = Instance.new("TextButton")
+--[[local Resize = Instance.new("TextButton")
 	local IsHold = false;
 
 	Resize.Name = "Resize"
@@ -5816,14 +5817,49 @@ function Library:CreateWindow(setup)
 	Resize.BorderSizePixel = 0
 	Resize.Position = UDim2.new(1, 0, 1, 0)
 	Resize.Rotation = 0.010
-	Resize.Size = UDim2.new(0.15, 0, 0.15, 0)
+	Resize.Size = UDim2.new(1, 0, 1, 0)
 --	Resize.Size = UDim2.new(0.075000003, 0, 0.075000003, 0)
 	Resize.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Resize.ZIndex = 100
 	Resize.Font = Enum.Font.SourceSans
 	Resize.Text = ""
 	Resize.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Resize.TextSize = 14.000
+	Resize.TextSize = 14.000  ]]
+local Resize = Instance.new("Frame")
+local IsHold = false;
+
+Resize.Name = "Resize"
+Resize.Parent = MainFrame
+Resize.AnchorPoint = Vector2.new(0.5, 0.5)
+Resize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Resize.BackgroundTransparency = 1.000
+Resize.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Resize.BorderSizePixel = 0
+Resize.Position = UDim2.new(0.5, 0, 0.45, 0) -- 设置在屏幕中心上方
+Resize.Rotation = 0.010
+Resize.Size = UDim2.new(0.2, 0, 0.05, 0) -- 设置为长方形
+Resize.SizeConstraint = Enum.SizeConstraint.RelativeXY
+Resize.ZIndex = 100
+Resize.ClipsDescendants = true -- 确保圆角效果只应用于这个框架
+
+-- 创建圆角效果
+local Corner = Instance.new("UICorner")
+Corner.CornerRadius = UDim.new(0, 10) -- 设置圆角大小为10像素
+Corner.Parent = Resize
+
+-- 如果需要在Resize上添加文本
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Parent = Resize
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
+TextLabel.Size = UDim2.new(1, -10, 1, -10)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
+TextLabel.Text = "Resize"
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.ClipsDescendants = true
 
 	local NotificationBar = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
@@ -5912,7 +5948,7 @@ function Library:CreateWindow(setup)
 		Notification.BackgroundTransparency = 1
 		Notification.BorderColor3 = Color3.fromRGB(27, 42, 53)
 		Notification.BorderSizePixel = 0
-		Notification.Size = UDim2.new(0, 300, 0, 200) -- 调整窗口的初始大小
+		Notification.Size = UDim2.new(0, 400, 0, 250) -- 调整窗口的初始大小
 		Notification.ZIndex = 0
 
 		DropShadow.Name = "DropShadow"
