@@ -2445,8 +2445,8 @@ function Library:CreateWindow(setup)
     MainFrame.BackgroundImage = Library.BackgroundImage -- 设置背景图片
     MainFrame.BackgroundTransparency = 1 -- 不透明
     MainFrame.BackgroundTilePosition = UDim2.new(0, 0, 0, 0) -- 设置图片不重复
-    MainFrame.BackgroundTileSize = UDim2.new(1, 0, 1, 0) ]] -- 设置图片铺满整个背景
-    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    MainFrame.BackgroundTileSize = UDim2.new(1, 0, 1, 0) -- 设置图片铺满整个背景
+--]] MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 	MainFrame.BackgroundColor3 = Library.Colors.Default
 	MainFrame.BackgroundTransparency = 0.250
 	MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -2995,13 +2995,14 @@ function Library:CreateWindow(setup)
 
 		local data = math.clamp((MainFrame.AbsoluteSize.X / 3.5) , 0, 235);
 
-		--[[Library:Tween(DataFrame,Library.TweenLibrary.UltrsFast,{
+--[[	 Library:Tween(DataFrame,Library.TweenLibrary.UltrsFast,{
 			Size = UDim2.new(0, data, 0, MainFrame.AbsoluteSize.Y - 33)
 		})
 
 		Library:Tween(TabFrames,Library.TweenLibrary.UltrsFast,{
 			Size = UDim2.new(0, (MainFrame.AbsoluteSize.X - (data + 10)), 0, MainFrame.AbsoluteSize.Y - 47)
-		})]]
+		})  
+--]]
 
 		DataFrame.Size = UDim2.new(0, data, 0, MainFrame.AbsoluteSize.Y - 33)
 		TabFrames.Size = UDim2.new(0, (MainFrame.AbsoluteSize.X - (data + 10)), 0, MainFrame.AbsoluteSize.Y - 47)
@@ -5805,7 +5806,7 @@ function Library:CreateWindow(setup)
 		end;
 	end);
 
---[[local Resize = Instance.new("TextButton")
+    local Resize = Instance.new("TextButton")
 	local IsHold = false;
 
 	Resize.Name = "Resize"
@@ -5824,42 +5825,7 @@ function Library:CreateWindow(setup)
 	Resize.Font = Enum.Font.SourceSans
 	Resize.Text = ""
 	Resize.TextColor3 = Color3.fromRGB(0, 0, 0)
-	Resize.TextSize = 14.000  ]]
-local Resize = Instance.new("Frame")
-local IsHold = false;
-
-Resize.Name = "Resize"
-Resize.Parent = MainFrame
-Resize.AnchorPoint = Vector2.new(0.5, 0.5)
-Resize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Resize.BackgroundTransparency = 1.000
-Resize.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Resize.BorderSizePixel = 0
-Resize.Position = UDim2.new(0.5, 0, 0.45, 0) -- 设置在屏幕中心上方
-Resize.Rotation = 0.010
-Resize.Size = UDim2.new(0.2, 0, 0.05, 0) -- 设置为长方形
-Resize.SizeConstraint = Enum.SizeConstraint.RelativeXY
-Resize.ZIndex = 100
-Resize.ClipsDescendants = true -- 确保圆角效果只应用于这个框架
-
--- 创建圆角效果
-local Corner = Instance.new("UICorner")
-Corner.CornerRadius = UDim.new(0, 10) -- 设置圆角大小为10像素
-Corner.Parent = Resize
-
--- 如果需要在Resize上添加文本
-local TextLabel = Instance.new("TextLabel")
-TextLabel.Parent = Resize
-TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-TextLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel.Size = UDim2.new(1, -10, 1, -10)
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextSize = 14.000
-TextLabel.Text = "Resize"
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.ClipsDescendants = true
+	Resize.TextSize = 14.000  
 
 	local NotificationBar = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
