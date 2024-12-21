@@ -1,12 +1,12 @@
 local XUI = {
-	["_YARHM"] = Instance.new("ScreenGui");
+	["_xgohub"] = Instance.new("ScreenGui");
 	["_Open"] = Instance.new("TextButton");
 	["_UICorner"] = Instance.new("UICorner");
 	["_InitOpen"] = Instance.new("LocalScript");
 	["_OnClick"] = Instance.new("LocalScript");
 	["_Menu"] = Instance.new("Frame");
 	["_UICorner1"] = Instance.new("UICorner");
-	["_HubName"] = Instance.new("TextLabel");
+	["_标题名称"] = Instance.new("TextLabel");
 	["_HubDesc"] = Instance.new("TextLabel");
 	["_List"] = Instance.new("Frame");
 	["_UICorner2"] = Instance.new("UICorner");
@@ -86,13 +86,13 @@ local XUI = {
 
 -- Properties:
 
-XUI["_YARHM"].DisplayOrder = 999999999
-XUI["_YARHM"].IgnoreGuiInset = true
-XUI["_YARHM"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
-XUI["_YARHM"].ResetOnSpawn = false
-XUI["_YARHM"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-XUI["_YARHM"].Name = "xgo内部"
-XUI["_YARHM"].Parent = game:GetService("CoreGui")
+XUI["_xgohub"].DisplayOrder = 999999999
+XUI["_xgohub"].IgnoreGuiInset = true
+XUI["_xgohub"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+XUI["_xgohub"].ResetOnSpawn = false
+XUI["_xgohub"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+XUI["_xgohub"].Name = "xgo内部1"
+XUI["_xgohub"].Parent = game:GetService("CoreGui")
 
 XUI["_Open"].Font = Enum.Font.Gotham
 XUI["_Open"].Text = ""
@@ -106,7 +106,7 @@ XUI["_Open"].BorderSizePixel = 0
 XUI["_Open"].Position = UDim2.new(0.499372631, 0, 0.06341701, 0)
 XUI["_Open"].Size = UDim2.new(0, 25, 0, 20)
 XUI["_Open"].Name = "Open"
-XUI["_Open"].Parent = XUI["_YARHM"]
+XUI["_Open"].Parent = XUI["_xgohub"]
 
 XUI["_UICorner"].Parent = XUI["_Open"]
 
@@ -118,26 +118,26 @@ XUI["_Menu"].ClipsDescendants = true
 XUI["_Menu"].Position = UDim2.new(0.499372661, 0, 0.0410327986, 0)
 XUI["_Menu"].Size = UDim2.new(0, 441, 0, 268)
 XUI["_Menu"].Name = "Menu"
-XUI["_Menu"].Parent = XUI["_YARHM"]
+XUI["_Menu"].Parent = XUI["_xgohub"]
 
 XUI["_UICorner1"].Parent = XUI["_Menu"]
 
-XUI["_HubName"].Font = Enum.Font.GothamBold
-XUI["_HubName"].Text = "(ー`´ー)"
-XUI["_HubName"].TextColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_HubName"].TextScaled = true
-XUI["_HubName"].TextSize = 14
-XUI["_HubName"].TextWrapped = true
-XUI["_HubName"].TextXAlignment = Enum.TextXAlignment.Left
-XUI["_HubName"].AnchorPoint = Vector2.new(0.5, 0.5)
-XUI["_HubName"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_HubName"].BackgroundTransparency = 1
-XUI["_HubName"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_HubName"].BorderSizePixel = 0
-XUI["_HubName"].Position = UDim2.new(0.186153606, 0, 0.112410031, 0)
-XUI["_HubName"].Size = UDim2.new(0.259631485, 0, 0.0824175924, 0)
-XUI["_HubName"].Name = "HubName"
-XUI["_HubName"].Parent = XUI["_Menu"]
+XUI["_标题名称"].Font = Enum.Font.GothamBold
+XUI["_标题名称"].Text = "XGOHUB"
+XUI["_标题名称"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_标题名称"].TextScaled = true
+XUI["_标题名称"].TextSize = 14
+XUI["_标题名称"].TextWrapped = true
+XUI["_标题名称"].TextXAlignment = Enum.TextXAlignment.Left
+XUI["_标题名称"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_标题名称"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_标题名称"].BackgroundTransparency = 1
+XUI["_标题名称"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_标题名称"].BorderSizePixel = 0
+XUI["_标题名称"].Position = UDim2.new(0.186153606, 0, 0.112410031, 0)
+XUI["_标题名称"].Size = UDim2.new(0.259631485, 0, 0.0824175924, 0)
+XUI["_标题名称"].Name = "HubName"
+XUI["_标题名称"].Parent = XUI["_Menu"]
 
 XUI["_HubDesc"].Font = Enum.Font.GothamBold
 XUI["_HubDesc"].Text = "猫有九条命唯有一颗心"
@@ -351,7 +351,7 @@ XUI["_ListButton"].Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
 XUI["_ListButton"].Size = UDim2.new(1, 0, 0, 50)
 XUI["_ListButton"].Visible = false
 XUI["_ListButton"].Name = "ListButton"
-XUI["_ListButton"].Parent = XUI["_YARHM"]
+XUI["_ListButton"].Parent = XUI["_xgohub"]
 
 XUI["_UICorner5"].Parent = XUI["_ListButton"]
 
@@ -363,7 +363,7 @@ XUI["_Notifications"].BorderSizePixel = 0
 XUI["_Notifications"].Position = UDim2.new(-0.00062737026, 0, 0.499319851, 0)
 XUI["_Notifications"].Size = UDim2.new(0, 242, 1, 0)
 XUI["_Notifications"].Name = "Notifications"
-XUI["_Notifications"].Parent = XUI["_YARHM"]
+XUI["_Notifications"].Parent = XUI["_xgohub"]
 
 XUI["_UIListLayout1"].Padding = UDim.new(0, 10)
 XUI["_UIListLayout1"].HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -408,7 +408,7 @@ XUI["_TextBoxPlaceholder"].BorderSizePixel = 0
 XUI["_TextBoxPlaceholder"].Size = UDim2.new(1, 0, 0, 50)
 XUI["_TextBoxPlaceholder"].Visible = false
 XUI["_TextBoxPlaceholder"].Name = "TextBoxPlaceholder"
-XUI["_TextBoxPlaceholder"].Parent = XUI["_YARHM"]
+XUI["_TextBoxPlaceholder"].Parent = XUI["_xgohub"]
 
 XUI["_UIListLayout2"].Padding = UDim.new(0, 5)
 XUI["_UIListLayout2"].FillDirection = Enum.FillDirection.Horizontal
@@ -462,7 +462,7 @@ XUI["_FloatingButton"].Position = UDim2.new(0, 50, 0, 50)
 XUI["_FloatingButton"].Size = UDim2.new(0, 200, 0, 50)
 XUI["_FloatingButton"].Visible = false
 XUI["_FloatingButton"].Name = "FloatingButton"
-XUI["_FloatingButton"].Parent = XUI["_YARHM"]
+XUI["_FloatingButton"].Parent = XUI["_xgohub"]
 
 XUI["_UIPadding5"].PaddingBottom = UDim.new(0, 5)
 XUI["_UIPadding5"].PaddingLeft = UDim.new(0, 5)
@@ -481,7 +481,7 @@ XUI["_FloatingButtons"].Position = UDim2.new(0.5, 0, 0.5, 0)
 XUI["_FloatingButtons"].Size = UDim2.new(1, 0, 1, 0)
 XUI["_FloatingButtons"].ZIndex = 0
 XUI["_FloatingButtons"].Name = "FloatingButtons"
-XUI["_FloatingButtons"].Parent = XUI["_YARHM"]
+XUI["_FloatingButtons"].Parent = XUI["_xgohub"]
 
 XUI["_DroppedGunBGUI"].Active = true
 XUI["_DroppedGunBGUI"].AlwaysOnTop = true
@@ -490,7 +490,7 @@ XUI["_DroppedGunBGUI"].Size = UDim2.new(0, 70, 0, 70)
 XUI["_DroppedGunBGUI"].Enabled = false
 XUI["_DroppedGunBGUI"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 XUI["_DroppedGunBGUI"].Name = "DroppedGunBGUI"
-XUI["_DroppedGunBGUI"].Parent = XUI["_YARHM"]
+XUI["_DroppedGunBGUI"].Parent = XUI["_xgohub"]
 
 XUI["_TextLabel3"].Font = Enum.Font.SourceSansBold
 XUI["_TextLabel3"].Text = "扔枪！"
@@ -517,7 +517,7 @@ XUI["_AddCustomModule1"].ClipsDescendants = true
 XUI["_AddCustomModule1"].Position = UDim2.new(0.5, 0, -0.5, 0)
 XUI["_AddCustomModule1"].Size = UDim2.new(0, 440, 0, 268)
 XUI["_AddCustomModule1"].Name = "AddCustomModule"
-XUI["_AddCustomModule1"].Parent = XUI["_YARHM"]
+XUI["_AddCustomModule1"].Parent = XUI["_xgohub"]
 
 XUI["_UICorner10"].Parent = XUI["_AddCustomModule1"]
 
@@ -660,7 +660,7 @@ local fake_module_scripts = {}
 do -- Fake Module: StarterGui.YARHM.FUNCTIONS
     local script = Instance.new("ModuleScript")
     script.Name = "FUNCTIONS"
-    script.Parent = XUI["_YARHM"]
+    script.Parent = XUI["_xgohub"]
     local function module_script()
 		local module = {}
 		
@@ -1167,7 +1167,7 @@ end
 local function GIGHQO_fake_script() -- Fake Script: StarterGui.YARHM.Init
     local script = Instance.new("LocalScript")
     script.Name = "Init"
-    script.Parent = XUI["_YARHM"]
+    script.Parent = XUI["_xgohub"]
     local req = require
     local require = function(obj)
         local fake = fake_module_scripts[obj]
@@ -1197,7 +1197,7 @@ end
 local function RMKEEKN_fake_script() 
     local script = Instance.new("LocalScript")
     script.Name = "Flee the Facility"
-    script.Parent = XUI["_YARHM"]
+    script.Parent = XUI["_xgohub"]
     local req = require
     local require = function(obj)
         local fake = fake_module_scripts[obj]
@@ -1507,7 +1507,7 @@ end
 local function CSGP_fake_script() -- Fake Script: StarterGui.YARHM.Universal
     local script = Instance.new("LocalScript")
     script.Name = "万能"
-    script.Parent = XUI["_YARHM"]
+    script.Parent = XUI["_xgohub"]
     local req = require
     local require = function(obj)
         local fake = fake_module_scripts[obj]
@@ -1585,7 +1585,7 @@ end
 local function LOAOODV_fake_script() -- Fake Script: StarterGui.YARHM.Murder Mystery 2
     local script = Instance.new("LocalScript")
     script.Name = "谋杀神秘2"
-    script.Parent = XUI["_YARHM"]
+    script.Parent = XUI["_xgohub"]
     local req = require
     local require = function(obj)
         local fake = fake_module_scripts[obj]
