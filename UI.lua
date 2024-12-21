@@ -7,7 +7,7 @@ local XUI = {
 	["_Menu"] = Instance.new("Frame");
 	["_UICorner1"] = Instance.new("UICorner");
 	["_标题名称"] = Instance.new("TextLabel");
-	["_HubDesc"] = Instance.new("TextLabel");
+	["_小标题"] = Instance.new("TextLabel");
 	["_List"] = Instance.new("Frame");
 	["_UICorner2"] = Instance.new("UICorner");
 	["_AutoSetup"] = Instance.new("LocalScript");
@@ -18,8 +18,8 @@ local XUI = {
 	["_UIGradient"] = Instance.new("UIGradient");
 	["_UIStroke"] = Instance.new("UIStroke");
 	["_UIGradient1"] = Instance.new("UIGradient");
-	["_HubCredits"] = Instance.new("TextLabel");
-	["_Close"] = Instance.new("TextButton");
+	["_水印"] = Instance.new("TextLabel");
+	["_关闭"] = Instance.new("TextButton");
 	["_UICorner3"] = Instance.new("UICorner");
 	["_LocalScript"] = Instance.new("LocalScript");
 	["_Area"] = Instance.new("ScrollingFrame");
@@ -28,7 +28,7 @@ local XUI = {
 	["_UIStroke1"] = Instance.new("UIStroke");
 	["_UIGradient2"] = Instance.new("UIGradient");
 	["_UIGradient3"] = Instance.new("UIGradient");
-	["_AddCustomModule"] = Instance.new("TextButton");
+	["_注入器"] = Instance.new("TextButton");
 	["_UICorner4"] = Instance.new("UICorner");
 	["_UIPadding2"] = Instance.new("UIPadding");
 	["_UIStroke2"] = Instance.new("UIStroke");
@@ -61,7 +61,7 @@ local XUI = {
 	["_TextLabel3"] = Instance.new("TextLabel");
 	["_UIStroke3"] = Instance.new("UIStroke");
 	["_Murder Mystery 2"] = Instance.new("LocalScript");
-	["_AddCustomModule1"] = Instance.new("Frame");
+	["_注入器1"] = Instance.new("Frame");
 	["_UICorner10"] = Instance.new("UICorner");
 	["_UIStroke4"] = Instance.new("UIStroke");
 	["_UIGradient4"] = Instance.new("UIGradient");
@@ -139,21 +139,21 @@ XUI["_标题名称"].Size = UDim2.new(0.259631485, 0, 0.0824175924, 0)
 XUI["_标题名称"].Name = "HubName"
 XUI["_标题名称"].Parent = XUI["_Menu"]
 
-XUI["_HubDesc"].Font = Enum.Font.GothamBold
-XUI["_HubDesc"].Text = "猫有九条命唯有一颗心"
-XUI["_HubDesc"].TextColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_HubDesc"].TextSize = 14
-XUI["_HubDesc"].TextWrapped = true
-XUI["_HubDesc"].TextXAlignment = Enum.TextXAlignment.Right
-XUI["_HubDesc"].AnchorPoint = Vector2.new(0.5, 0.5)
-XUI["_HubDesc"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_HubDesc"].BackgroundTransparency = 1
-XUI["_HubDesc"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_HubDesc"].BorderSizePixel = 0
-XUI["_HubDesc"].Position = UDim2.new(0.708829343, 0, 0.116141364, 0)
-XUI["_HubDesc"].Size = UDim2.new(0.470515788, 0, 0.082417585, 0)
-XUI["_HubDesc"].Name = "HubDesc"
-XUI["_HubDesc"].Parent = XUI["_Menu"]
+XUI["_小标题"].Font = Enum.Font.GothamBold
+XUI["_小标题"].Text = "猫有九条命唯有一颗心"
+XUI["_小标题"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_小标题"].TextSize = 14
+XUI["_小标题"].TextWrapped = true
+XUI["_小标题"].TextXAlignment = Enum.TextXAlignment.Right
+XUI["_小标题"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_小标题"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_小标题"].BackgroundTransparency = 1
+XUI["_小标题"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_小标题"].BorderSizePixel = 0
+XUI["_小标题"].Position = UDim2.new(0.708829343, 0, 0.116141364, 0)
+XUI["_小标题"].Size = UDim2.new(0.470515788, 0, 0.082417585, 0)
+XUI["_小标题"].Name = "HubDesc"
+XUI["_小标题"].Parent = XUI["_Menu"]
 
 XUI["_List"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_List"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -211,40 +211,40 @@ XUI["_UIGradient1"].Color = ColorSequence.new{
 XUI["_UIGradient1"].Rotation = -44
 XUI["_UIGradient1"].Parent = XUI["_UIStroke"]
 
-XUI["_HubCredits"].Font = Enum.Font.GothamBold
-XUI["_HubCredits"].Text = "˃ ˄ ˂̥̥ "
-XUI["_HubCredits"].TextColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_HubCredits"].TextScaled = true
-XUI["_HubCredits"].TextSize = 14
-XUI["_HubCredits"].TextTransparency = 0.699999988079071
-XUI["_HubCredits"].TextWrapped = true
-XUI["_HubCredits"].TextXAlignment = Enum.TextXAlignment.Right
-XUI["_HubCredits"].AnchorPoint = Vector2.new(0.5, 0.5)
-XUI["_HubCredits"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_HubCredits"].BackgroundTransparency = 1
-XUI["_HubCredits"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_HubCredits"].BorderSizePixel = 0
-XUI["_HubCredits"].Position = UDim2.new(0.785926819, 0, 0.160157606, 0)
-XUI["_HubCredits"].Size = UDim2.new(0.316320807, 0, 0.0585099049, 0)
-XUI["_HubCredits"].Name = "HubCredits"
-XUI["_HubCredits"].Parent = XUI["_Menu"]
+XUI["_水印"].Font = Enum.Font.GothamBold
+XUI["_水印"].Text = "˃ ˄ ˂̥̥ "
+XUI["_水印"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_水印"].TextScaled = true
+XUI["_水印"].TextSize = 14
+XUI["_水印"].TextTransparency = 0.699999988079071
+XUI["_水印"].TextWrapped = true
+XUI["_水印"].TextXAlignment = Enum.TextXAlignment.Right
+XUI["_水印"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_水印"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_水印"].BackgroundTransparency = 1
+XUI["_水印"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_水印"].BorderSizePixel = 0
+XUI["_水印"].Position = UDim2.new(0.785926819, 0, 0.160157606, 0)
+XUI["_水印"].Size = UDim2.new(0.316320807, 0, 0.0585099049, 0)
+XUI["_水印"].Name = "HubCredits"
+XUI["_水印"].Parent = XUI["_Menu"]
 
-XUI["_Close"].Font = Enum.Font.GothamBold
-XUI["_Close"].Text = "X"
-XUI["_Close"].TextColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_Close"].TextSize = 14
-XUI["_Close"].Modal = true
-XUI["_Close"].AnchorPoint = Vector2.new(0.5, 0.5)
-XUI["_Close"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_Close"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_Close"].BorderSizePixel = 0
-XUI["_Close"].Position = UDim2.new(0.947494328, 0, 0.914238751, 0)
-XUI["_Close"].Size = UDim2.new(0.0680272132, 0, 0.111940302, 0)
-XUI["_Close"].ZIndex = 999999999
-XUI["_Close"].Name = "Close"
-XUI["_Close"].Parent = XUI["_Menu"]
+XUI["_关闭"].Font = Enum.Font.GothamBold
+XUI["_关闭"].Text = "X"
+XUI["_关闭"].TextColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_关闭"].TextSize = 14
+XUI["_关闭"].Modal = true
+XUI["_关闭"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_关闭"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_关闭"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_关闭"].BorderSizePixel = 0
+XUI["_关闭"].Position = UDim2.new(0.947494328, 0, 0.914238751, 0)
+XUI["_关闭"].Size = UDim2.new(0.0680272132, 0, 0.111940302, 0)
+XUI["_关闭"].ZIndex = 999999999
+XUI["_关闭"].Name = "Close"
+XUI["_关闭"].Parent = XUI["_Menu"]
 
-XUI["_UICorner3"].Parent = XUI["_Close"]
+XUI["_UICorner3"].Parent = XUI["_关闭"]
 
 XUI["_Area"].AutomaticCanvasSize = Enum.AutomaticSize.Y
 XUI["_Area"].ScrollBarThickness = 0
@@ -309,32 +309,32 @@ XUI["_UIGradient3"].Color = ColorSequence.new{
 XUI["_UIGradient3"].Rotation = 68
 XUI["_UIGradient3"].Parent = XUI["_Menu"]
 
-XUI["_AddCustomModule"].Font = Enum.Font.Gotham
-XUI["_AddCustomModule"].Text = "添加自定义模块"
-XUI["_AddCustomModule"].TextColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_AddCustomModule"].TextScaled = true
-XUI["_AddCustomModule"].TextSize = 14
-XUI["_AddCustomModule"].TextWrapped = true
-XUI["_AddCustomModule"].AnchorPoint = Vector2.new(0.5, 0.5)
-XUI["_AddCustomModule"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
-XUI["_AddCustomModule"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_AddCustomModule"].BorderSizePixel = 0
-XUI["_AddCustomModule"].Position = UDim2.new(0.157244906, 0, 0.914238751, 0)
-XUI["_AddCustomModule"].Size = UDim2.new(0.260770977, 0, 0.111940302, 0)
-XUI["_AddCustomModule"].Name = "AddCustomModule"
-XUI["_AddCustomModule"].Parent = XUI["_Menu"]
+XUI["_注入器"].Font = Enum.Font.Gotham
+XUI["_注入器"].Text = "添加自定义模块"
+XUI["_注入器"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_注入器"].TextScaled = true
+XUI["_注入器"].TextSize = 14
+XUI["_注入器"].TextWrapped = true
+XUI["_注入器"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_注入器"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
+XUI["_注入器"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_注入器"].BorderSizePixel = 0
+XUI["_注入器"].Position = UDim2.new(0.157244906, 0, 0.914238751, 0)
+XUI["_注入器"].Size = UDim2.new(0.260770977, 0, 0.111940302, 0)
+XUI["_注入器"].Name = "AddCustomModule"
+XUI["_注入器"].Parent = XUI["_Menu"]
 
-XUI["_UICorner4"].Parent = XUI["_AddCustomModule"]
+XUI["_UICorner4"].Parent = XUI["_注入器"]
 
 XUI["_UIPadding2"].PaddingBottom = UDim.new(0, 5)
 XUI["_UIPadding2"].PaddingLeft = UDim.new(0, 5)
 XUI["_UIPadding2"].PaddingRight = UDim.new(0, 5)
 XUI["_UIPadding2"].PaddingTop = UDim.new(0, 5)
-XUI["_UIPadding2"].Parent = XUI["_AddCustomModule"]
+XUI["_UIPadding2"].Parent = XUI["_注入器"]
 
 XUI["_UIStroke2"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 XUI["_UIStroke2"].Color = Color3.fromRGB(255, 255, 255)
-XUI["_UIStroke2"].Parent = XUI["_AddCustomModule"]
+XUI["_UIStroke2"].Parent = XUI["_注入器"]
 
 XUI["_UIScale"].Parent = XUI["_Menu"]
 
@@ -509,21 +509,21 @@ XUI["_TextLabel3"].Parent = XUI["_DroppedGunBGUI"]
 
 XUI["_UIStroke3"].Parent = XUI["_TextLabel3"]
 
-XUI["_AddCustomModule1"].AnchorPoint = Vector2.new(0.5, 0.5)
-XUI["_AddCustomModule1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_AddCustomModule1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_AddCustomModule1"].BorderSizePixel = 0
-XUI["_AddCustomModule1"].ClipsDescendants = true
-XUI["_AddCustomModule1"].Position = UDim2.new(0.5, 0, -0.5, 0)
-XUI["_AddCustomModule1"].Size = UDim2.new(0, 440, 0, 268)
-XUI["_AddCustomModule1"].Name = "AddCustomModule"
-XUI["_AddCustomModule1"].Parent = XUI["_xgohub"]
+XUI["_注入器1"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_注入器1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_注入器1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_注入器1"].BorderSizePixel = 0
+XUI["_注入器1"].ClipsDescendants = true
+XUI["_注入器1"].Position = UDim2.new(0.5, 0, -0.5, 0)
+XUI["_注入器1"].Size = UDim2.new(0, 440, 0, 268)
+XUI["_注入器1"].Name = "AddCustomModule"
+XUI["_注入器1"].Parent = XUI["_xgohub"]
 
-XUI["_UICorner10"].Parent = XUI["_AddCustomModule1"]
+XUI["_UICorner10"].Parent = XUI["_注入器1"]
 
 XUI["_UIStroke4"].Color = Color3.fromRGB(255, 255, 255)
 XUI["_UIStroke4"].Thickness = 2
-XUI["_UIStroke4"].Parent = XUI["_AddCustomModule1"]
+XUI["_UIStroke4"].Parent = XUI["_注入器1"]
 
 XUI["_UIGradient4"].Color = ColorSequence.new{
 	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
@@ -541,9 +541,9 @@ XUI["_UIGradient5"].Color = ColorSequence.new{
 	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
 }
 XUI["_UIGradient5"].Rotation = 68
-XUI["_UIGradient5"].Parent = XUI["_AddCustomModule1"]
+XUI["_UIGradient5"].Parent = XUI["_注入器1"]
 
-XUI["_UIScale1"].Parent = XUI["_AddCustomModule1"]
+XUI["_UIScale1"].Parent = XUI["_注入器1"]
 
 XUI["_TextLabel4"].Font = Enum.Font.Gotham
 XUI["_TextLabel4"].Text = "添加自定义模块"
@@ -558,7 +558,7 @@ XUI["_TextLabel4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 XUI["_TextLabel4"].BorderSizePixel = 0
 XUI["_TextLabel4"].Position = UDim2.new(0.352256238, 0, 0.133915231, 0)
 XUI["_TextLabel4"].Size = UDim2.new(0.619047642, 0, 0.125920027, 0)
-XUI["_TextLabel4"].Parent = XUI["_AddCustomModule1"]
+XUI["_TextLabel4"].Parent = XUI["_注入器1"]
 
 XUI["_TextBox1"].ClearTextOnFocus = false
 XUI["_TextBox1"].Font = Enum.Font.Gotham
@@ -574,7 +574,7 @@ XUI["_TextBox1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 XUI["_TextBox1"].BorderSizePixel = 0
 XUI["_TextBox1"].Position = UDim2.new(0.499648541, 0, 0.500059664, 0)
 XUI["_TextBox1"].Size = UDim2.new(0.804988742, 0, 0.544776142, 0)
-XUI["_TextBox1"].Parent = XUI["_AddCustomModule1"]
+XUI["_TextBox1"].Parent = XUI["_注入器1"]
 
 XUI["_UICorner11"].Parent = XUI["_TextBox1"]
 
@@ -597,7 +597,7 @@ XUI["_TextLabel5"].BorderColor3 = Color3.fromRGB(0, 0, 0)
 XUI["_TextLabel5"].BorderSizePixel = 0
 XUI["_TextLabel5"].Position = UDim2.new(0.499648541, 0, 0.833542168, 0)
 XUI["_TextLabel5"].Size = UDim2.new(0.619047642, 0, 0.0550245307, 0)
-XUI["_TextLabel5"].Parent = XUI["_AddCustomModule1"]
+XUI["_TextLabel5"].Parent = XUI["_注入器1"]
 
 XUI["_Add"].Font = Enum.Font.Gotham
 XUI["_Add"].Text = "增加"
@@ -612,7 +612,7 @@ XUI["_Add"].BorderSizePixel = 0
 XUI["_Add"].Position = UDim2.new(0.108492024, 0, 0.927298486, 0)
 XUI["_Add"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
 XUI["_Add"].Name = "Add"
-XUI["_Add"].Parent = XUI["_AddCustomModule1"]
+XUI["_Add"].Parent = XUI["_注入器1"]
 
 XUI["_UICorner12"].Parent = XUI["_Add"]
 
@@ -639,7 +639,7 @@ XUI["_Cancel"].BorderSizePixel = 0
 XUI["_Cancel"].Position = UDim2.new(0.899875283, 0, 0.931029797, 0)
 XUI["_Cancel"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
 XUI["_Cancel"].Name = "Cancel"
-XUI["_Cancel"].Parent = XUI["_AddCustomModule1"]
+XUI["_Cancel"].Parent = XUI["_注入器1"]
 
 XUI["_UICorner13"].Parent = XUI["_Cancel"]
 
@@ -1122,7 +1122,7 @@ end
 local function TTVRS_fake_script() -- Fake Script: StarterGui.YARHM.Menu.Close.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
-    script.Parent = XUI["_Close"]
+    script.Parent = XUI["_关闭"]
     local req = require
     local require = function(obj)
         local fake = fake_module_scripts[obj]
@@ -1143,7 +1143,7 @@ end
 local function TZEK_fake_script() -- Fake Script: StarterGui.YARHM.Menu.AddCustomModule.LocalScript
     local script = Instance.new("LocalScript")
     script.Name = "LocalScript"
-    script.Parent = XUI["_AddCustomModule"]
+    script.Parent = XUI["_注入器"]
     local req = require
     local require = function(obj)
         local fake = fake_module_scripts[obj]
@@ -1523,27 +1523,24 @@ local function CSGP_fake_script() -- Fake Script: StarterGui.YARHM.Universal
 		script.Enabled = true
 	end
 	
-	module["Name"] = "Universal"
+	module["Name"] = "音乐区"
 	
 	local ts = game:GetService("TweenService")
 	
-	module[1] = {
-		Type = "Text",
-		Args = {"通用模块 - 适用于大多数游戏"}
-	}
-	
-	module[2] = {
-		Type = "Button",
-		Args = {"无限产量", function(Self)
-			loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-		end}
-	}
-	
-	module[3] = {
-		Type = "Text",
-		Args = {"---"}
-	}
-	
+	-- 假设 Sounds 表已经定义好，并且包含了音乐名称和ID
+    local Sounds = {
+    ["Pixel Terror & Aviella - Enigma 女版"] = "5410084645",
+    ["Grant - Color 女版"] = "7023828725",
+    -- ... 其他音乐 ...
+    ["彩虹瀑布"] = "1837879082"
+   }
+
+   -- 为每个音乐创建文本和按钮模块
+   for index, name in ipairs(Sounds) do
+       module[2 * index - 1] = {Type = "Text", Args = {"音乐 - " .. name}}
+       module[2 * index] = {Type = "Button", Args = {name, function() end}}
+    end
+    
 	module[4] = {
 		Type = "Button",
 		Args = {"将移动标题设置带底部", function(Self)
