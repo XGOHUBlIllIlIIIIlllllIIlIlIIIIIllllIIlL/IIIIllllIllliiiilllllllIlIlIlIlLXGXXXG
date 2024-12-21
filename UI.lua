@@ -1,1 +1,2137 @@
-do local a=Instance.new("UIStroke");local a=Instance.new("UICorner");local a=game.Players.LocalPlayer;local b=game:GetService("UserInputService");local c=game:GetService("TweenService");local function d(a,d) local e=nil;local f=nil;local g=nil;local h=nil;local function i(a) local a=a.Position-g ;local a=UDim2.new(h.X.Scale,h.X.Offset + a.X ,h.Y.Scale,h.Y.Offset + a.Y );local a=c:Create(d,TweenInfo.new(0.15),{Position=a});a:Play();end a.InputBegan:Connect(function(a) if ((a.UserInputType==Enum.UserInputType.MouseButton1) or (a.UserInputType==Enum.UserInputType.Touch)) then e=true;g=a.Position;h=d.Position;a.Changed:Connect(function() if (a.UserInputState==Enum.UserInputState.End) then e=false;end end);end end);a.InputChanged:Connect(function(a) if ((a.UserInputType==Enum.UserInputType.MouseMovement) or (a.UserInputType==Enum.UserInputType.Touch)) then f=a;end end);b.InputChanged:Connect(function(a) if ((a==f) and e) then i(a);end end);end local e=true;a.Idled:connect(function() while wait(3) do if e then game.VirtualUser:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame);wait(1);game.VirtualUser:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame);end end end);local a=Instance.new("ScreenGui");local e=Instance.new("ImageButton");_G.Primary=Color3.fromRGB(41,53,61);_G.Dark=Color3.fromRGB(41,53,61);a.Parent=game.CoreGui;a.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;e.Parent=a;e.Position=UDim2.new(0.120833337,0,0.0952890813,0);e.Size=UDim2.new(0,50,0,50);e.BackgroundColor3=_G.Primary;e.ImageColor3=Color3.fromRGB(255,255,255);e.ImageTransparency=0.1;e.Draggable=true;e.Active=true;e.Selectable=true;e.BackgroundTransparency=0.1;e.Image="rbxassetid://96996396016819";e.Visible=false;local a=Instance.new("UICorner");a.Name="MCNR";a.Parent=e;a.CornerRadius=UDim.new(0,5);e.MouseButton1Down:connect(function() e:TweenSize(UDim2.new(0,40,0,40),"Out","Quad",0.2,true);wait(0.1);e:TweenSize(UDim2.new(0,50,0,50),"Out","Quad",0.2,true);game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game);game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game);e.Visible=false;end);do if game:GetService("CoreGui"):FindFirstChild("PiHubUI") then game:GetService("CoreGui").PiHubUI:Destroy();game:GetService("CoreGui").ScreenGui:Destroy();end end repeat wait(1);until game:IsLoaded() local a={};a.Window=function(self,f,f,f) local g={};local g=false;local h=false;local i="";local f=f or Enum.KeyCode.RightControl ;local f=string.gsub(tostring(f),"Enum.KeyCode.","");local f=Instance.new("ScreenGui");f.Name="XGOHUBUI";f.Parent=game.CoreGui;f.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;local i=Instance.new("Frame");i.Name="Main";i.Parent=f;i.ClipsDescendants=true;i.AnchorPoint=Vector2.new(0.5,0.5);i.BackgroundColor3=Color3.fromRGB(41,53,61);i.BackgroundTransparency=0.1;i.Position=UDim2.new(0.5,0,0.5,0);i.Size=UDim2.new(0,0,0,0);i:TweenSize(UDim2.new(0,555,0,352),"Out","Quad",0.4,true);local f=Instance.new("UIStroke");local f=Instance.new("UICorner");f.Name="MCNR";f.Parent=i;local f=Instance.new("UICorner");f.Name="MCNR";f.Parent=BackgroundImage;local f=Instance.new("UICorner");f.Name="lol";f.Parent=Dark;local f=Instance.new("Frame");f.Name="Top";f.Parent=i;f.BackgroundColor3=Color3.fromRGB(126,165,191);f.Size=UDim2.new(0,556,0,30);f.BackgroundTransparency=1;local j=Instance.new("UICorner");j.Name="TCNR";j.Parent=f;j.CornerRadius=UDim.new(0,5);local j=Instance.new("TextLabel");j.Name="ttittles";j.Parent=f;j.BackgroundColor3=Color3.fromRGB(255,255,255);j.BackgroundTransparency=1;j.Position=UDim2.new(0,30,0.05,0);j.Size=UDim2.new(0,255,0.05,25);j.Font=Enum.Font.GothamBold;j.Text="XGOHUB -【メ】【G】【Ö】【ℍ】【ⓤ】【ß】ᵇʸ.ˣᵍᵒ";j.TextSize=15;j.TextColor3=Color3.fromRGB(255,255,255);j.TextXAlignment=Enum.TextXAlignment.Left;local j=Instance.new("ImageButton");j.Name="Minimize";j.Parent=i;j.BackgroundTransparency=1;j.ImageColor3=Color3.fromRGB(255,255,255);j.Position=UDim2.new(0,500,0,7);j.Size=UDim2.new(0,30,0,30);j.Image="rbxassetid://116869691128691";j.MouseButton1Click:Connect(function() game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game);game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game);e.Visible=true;end);local e=Instance.new("Frame");e.Name="Tab";e.Parent=i;e.BackgroundColor3=Color3.fromRGB();e.Position=UDim2.new(0,14,0,33);e.BackgroundTransparency=1;e.Size=UDim2.new(0,138,0,307);local j=Instance.new("UIStroke");local j=Instance.new("ScrollingFrame");j.Name="ScrollTab";j.Parent=e;j.Active=true;j.BackgroundColor3=Color3.fromRGB(0,10,250);j.Position=UDim2.new(0,0,0,0);j.BackgroundTransparency=1;j.Size=UDim2.new(0,138,0,307);j.ScrollBarThickness=0;local k=Instance.new("UICorner");k.Parent=e;k.CornerRadius=UDim.new(0,5);local e=Instance.new("UIListLayout");e.Name="PLL";e.Parent=j;e.SortOrder=Enum.SortOrder.LayoutOrder;e.Padding=UDim.new(0,2);local k=Instance.new("UIPadding");k.Name="PPD";k.Parent=j;local k=Instance.new("UIStroke");local k=Instance.new("Frame");k.Name="Page";k.Parent=i;k.BackgroundColor3=Color3.fromRGB(41,53,61);k.Position=UDim2.new(0,162,0,33);k.Size=UDim2.new(0,380,0,308);k.BackgroundTransparency=1;local l=Instance.new("UICorner");l.Parent=k;l.CornerRadius=UDim.new(0,3);local l=Instance.new("Frame");l.Name="MainPage";l.Parent=k;l.ClipsDescendants=true;l.BackgroundColor3=Color3.fromRGB(255,255,255);l.BackgroundTransparency=1;l.Size=UDim2.new(0,380,0,307);local k=Instance.new("Folder");k.Name="PageList";k.Parent=l;local m=Instance.new("UIPageLayout");m.Parent=k;m.SortOrder=Enum.SortOrder.LayoutOrder;m.EasingDirection=Enum.EasingDirection.InOut;m.EasingStyle=Enum.EasingStyle.Quad;m.FillDirection=Enum.FillDirection.Vertical;m.Padding=UDim.new(0,10);m.TweenTime=0.4;m.GamepadInputEnabled=false;m.ScrollWheelInputEnabled=false;m.TouchInputEnabled=false;d(f,i);b.InputBegan:Connect(function(a) if (a.KeyCode==Enum.KeyCode.RightControl) then if (g==false) then g=true;i:TweenSize(UDim2.new(0,0,0,0),"In","Quad",0.4,true);else g=false;i:TweenSize(UDim2.new(0,556,0,350),"Out","Quad",0.5,true);end end end);local d={};d.Tab=function(self,d,f) local g=Instance.new("UIStroke");local g=Instance.new("UICorner");local n=Instance.new("TextButton");local o=Instance.new("TextLabel");local o=Instance.new("UICorner");local p=Instance.new("TextLabel");n.Parent=j;n.Name=d   .. "Server" ;n.Text="";n.BackgroundColor3=Color3.fromRGB(41,53,61);n.BackgroundTransparency=1;n.Size=UDim2.new(0,136,0,30);n.Font=Enum.Font.GothamSemibold;n.TextColor3=Color3.fromRGB(255,255,255);n.TextSize=12;n.TextTransparency=0.9;p.Parent=n;p.BackgroundColor3=Color3.fromRGB(150,150,150);p.BackgroundTransparency=1;p.Position=UDim2.new(0,30,0,2);p.Size=UDim2.new(0,100,0,25);p.Font=Enum.Font.GothamSemibold;p.Text="| "   .. d ;p.TextColor3=Color3.fromRGB(255,255,255);p.TextSize=13;p.TextXAlignment=Enum.TextXAlignment.Left;local p=Instance.new("ImageLabel");p.Name="LogoIDK";p.Parent=n;p.BackgroundColor3=Color3.fromRGB(255,255,255);p.BackgroundTransparency=1;p.Position=UDim2.new(0,6,0,4.5);p.Size=UDim2.new(0,20,0,20);p.Image=f;o.CornerRadius=UDim.new(0,5);o.Parent=n;g.CornerRadius=UDim.new(0,5);g.Parent=n;local f=Instance.new("ScrollingFrame");f.Name=d   .. "_Page" ;f.Parent=k;f.Active=true;f.BackgroundColor3=Color3.fromRGB(0,10,250);f.Position=UDim2.new(0,0,0,0);f.BackgroundTransparency=1;f.Size=UDim2.new(0,400,0,307);f.ScrollBarThickness=0;local d=Instance.new("UICorner");d.Parent=l;d.CornerRadius=UDim.new(0,5);local d=Instance.new("UIPadding");local g=Instance.new("UIListLayout");d.Parent=f;g.Padding=UDim.new(0,3);g.Parent=f;g.SortOrder=Enum.SortOrder.LayoutOrder;local d={};function ActivateTab(a) if activeTab then activeTab.BackgroundTransparency=1;end activeTab=a;activeTab.BackgroundTransparency=0.8;local a=string.gsub(a.Name,"Server","")   .. "_Page" ;for b,b in pairs(k:GetChildren()) do if (b.Name==a) then m:JumpTo(b);end end end for a,a in pairs(j:GetChildren()) do if a:IsA("TextButton") then table.insert(d,a);a.MouseButton1Click:Connect(function() ActivateTab(a);end);end end if (h==false) then for a,a in ipairs(d) do c:Create(a,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=1}):Play();end ActivateTab(d[1]);h=true;end game:GetService("RunService").Stepped:Connect(function() pcall(function() f.CanvasSize=UDim2.new(0,0,0,g.AbsoluteContentSize.Y + 20 );j.CanvasSize=UDim2.new(0,0,0,e.AbsoluteContentSize.Y + 20 );end);end);a.Notification=function(self,a) local b=Instance.new("TextButton");local d=Instance.new("Frame");local e=Instance.new("TextButton");local f=Instance.new("UICorner");local g=Instance.new("TextLabel");local h=Instance.new("TextLabel");local j=Instance.new("TextLabel");local k=Instance.new("UICorner");local l=Instance.new("UIStroke");local m=Instance.new("Frame");b.Name="NotificationHold";b.Parent=i;b.BackgroundColor3=Color3.new(125,125,125);b.BackgroundTransparency=1;b.BorderSizePixel=0;b.Size=UDim2.new(0,589,0,378);b.AutoButtonColor=false;b.Font=Enum.Font.SourceSans;b.Text="";b.TextColor3=Color3.new(125,0,125);b.TextSize=13;c:Create(b,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=1}):Play();wait(0.4);d.Name="NotificationFrame";d.Parent=b;d.AnchorPoint=Vector2.new(0.5,0.5);d.BackgroundColor3=Color3.fromRGB(41,53,61);d.BorderColor3=Color3.new(125,0,125);d.BorderSizePixel=0;d.Transparency=0;d.ClipsDescendants=true;d.Position=UDim2.new(0,295,0,190);d.Size=UDim2.new(0,0,0,0);d:TweenSize(UDim2.new(0,400,0,250),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.6,true);k.Name="NotifCorner";k.Parent=d;k.CornerRadius=UDim.new(0,5);l.Name="NotifHolderUIStroke";l.Parent=d;l.ApplyStrokeMode=Enum.ApplyStrokeMode.Border;l.Color=Color3.new(125,0,125);l.LineJoinMode=Enum.LineJoinMode.Round;l.Thickness=2;l.Transparency=0;l.Enabled=true;l.Archivable=true;e.Name="OkayBtn";e.Parent=d;e.BackgroundColor3=Color3.fromRGB(190,190,190);e.BorderSizePixel=2;e.BorderColor3=Color3.new(125,0,125);e.Position=UDim2.new(0,125,0,190);e.Size=UDim2.new(0,150,0,30);e.AutoButtonColor=true;e.Font=Enum.Font.SourceSans;e.Text="";e.TextColor3=Color3.new(125,0,125);e.TextSize=13;f.CornerRadius=UDim.new(0,5);f.Name="OkayBtnCorner";f.Parent=e;g.Name="OkayBtnTitle";g.Parent=e;g.BackgroundColor3=Color3.new(125,0,125);g.BackgroundTransparency=1;g.Size=UDim2.new(0,150,0,30);g.Text="OK";g.Font=Enum.Font.GothamSemibold;g.TextColor3=Color3.fromRGB(41,53,61);g.TextSize=22;h.Name="NotificationTitle";h.Parent=d;h.BackgroundColor3=Color3.new(125,0,125);h.BackgroundTransparency=1;h.Position=UDim2.new(0,0,0,10);h.Size=UDim2.new(0,400,0,25);h.ZIndex=3;h.Font=Enum.Font.GothamSemibold;h.Text="Notification";h.TextColor3=Color3.fromRGB(240,10,10);h.TextSize=22;m.Name="Line";m.Parent=d;m.BackgroundColor3=Color3.new(125,0,125);m.BorderSizePixel=0;m.Position=UDim2.new(0,10,0,40);m.Size=UDim2.new(0,380,0,1);j.Name="NotificationDesc";j.Parent=d;j.BackgroundColor3=_G.SectionColor;j.BackgroundTransparency=1;j.Position=UDim2.new(0,10,0,80);j.Size=UDim2.new(0,380,0,200);j.Font=Enum.Font.GothamSemibold;j.Text=a;j.TextScaled=false;j.TextColor3=Color3.new(125,0,125);j.TextSize=16;j.TextWrapped=true;j.TextXAlignment=Enum.TextXAlignment.Center;j.TextYAlignment=Enum.TextYAlignment.Top;e.MouseEnter:Connect(function() c:Create(e,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3=Color3.fromRGB(34,34,34)}):Play();end);e.MouseLeave:Connect(function() c:Create(e,TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3=Color3.fromRGB(25,25,25)}):Play();end);e.MouseButton1Click:Connect(function() d:TweenSize(UDim2.new(0,0,0,0),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.6,true);wait(0.4);c:Create(b,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=1}):Play();wait(0.3);b:Destroy();end);end;local a={};a.Button=function(self,a,b) local d=Instance.new("Frame");local e=Instance.new("UICorner");local g=Instance.new("TextButton");local h=Instance.new("UICorner");local i=Instance.new("Frame");local j=Instance.new("UICorner");d.Name="Button";d.Parent=f;d.BackgroundColor3=Color3.new(0,0,0);d.BackgroundTransparency=1;d.Size=UDim2.new(0,358,0,33);e.CornerRadius=UDim.new(0,5);e.Parent=d;g.Name="TextBtn";g.Parent=d;g.BackgroundColor3=Color3.fromRGB(41,53,61);g.BackgroundTransparency=0.8;g.Position=UDim2.new(0,0,0,0);g.Size=UDim2.new(0,379,0,33);g.AutoButtonColor=false;g.Font=Enum.Font.GothamSemibold;g.Text=a;g.TextColor3=Color3.fromRGB(255,255,255);g.TextSize=15;h.CornerRadius=UDim.new(0,5);h.Parent=g;i.Name="Black";i.Parent=d;i.BackgroundColor3=Color3.fromRGB(0,0,0);i.BackgroundTransparency=1;i.BorderSizePixel=0;i.Position=UDim2.new(0,0,0,0);i.Size=UDim2.new(0,379,0,33);j.CornerRadius=UDim.new(0,5);j.Parent=i;g.MouseEnter:Connect(function() c:Create(i,TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=0.7}):Play();end);g.MouseLeave:Connect(function() c:Create(i,TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundTransparency=1}):Play();end);g.MouseButton1Click:Connect(function() g.TextSize=0;c:Create(g,TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextSize=15}):Play();b();end);end;a.Toggle=function(self,a,b,d) b=b or false ;local e=b;_G.Color=Color3.fromRGB(41,53,61);_G.TrueColor=Color3.fromRGB(189,52,235);local g=Instance.new("UICorner");local g=Instance.new("UIPadding");local g=Instance.new("UIStroke");local h=Instance.new("TextButton");local i=Instance.new("UICorner");local j=Instance.new("TextLabel");local k=Instance.new("TextButton");local l=Instance.new("UICorner");local m=Instance.new("Frame");local n=Instance.new("UICorner");local o=Instance.new("ImageLabel");h.Name="Button";h.Parent=f;h.BackgroundColor3=Color3.fromRGB(41,53,61);h.BackgroundTransparency=0.8;h.Size=UDim2.new(0,379,0,46);h.AutoButtonColor=false;h.Font=Enum.Font.SourceSans;h.Text="";h.TextColor3=Color3.fromRGB(0,0,0);h.TextSize=11;i.CornerRadius=UDim.new(0,5);i.Parent=h;o.Name="Icon";o.Parent=h;o.BackgroundColor3=Color3.fromRGB(255,255,255);o.BackgroundTransparency=1;o.Position=UDim2.new(0,5,0,8);o.Size=UDim2.new(0,30,0,30);o.Image="rbxassetid://92630758837243";j.Parent=h;j.BackgroundColor3=Color3.fromRGB(150,150,150);j.BackgroundTransparency=1;j.Position=UDim2.new(0,40,0,0);j.Size=UDim2.new(0,280,0,46);j.Font=Enum.Font.GothamSemibold;j.Text="|  "   .. a ;j.TextColor3=Color3.fromRGB(255,255,255);j.TextSize=15;j.TextXAlignment=Enum.TextXAlignment.Left;k.Name="ToggleImage";k.Parent=h;k.BackgroundColor3=Color3.fromRGB(0,0,0);k.BackgroundTransparency=0.1;k.Position=UDim2.new(0,320,0,13);k.Size=UDim2.new(0,45,0,20);k.Text="";l.CornerRadius=UDim.new(0,10);l.Parent=k;m.Name="Circle";m.Parent=k;m.BackgroundColor3=Color3.fromRGB(12,12,12);m.BackgroundTransparency=0.7;m.Position=UDim2.new(0,2,0,2);m.Size=UDim2.new(0,16,0,16);n.CornerRadius=UDim.new(0,10);n.Parent=m;k.MouseButton1Click:Connect(function() if (e==false) then e=true;g.Color=_G.TrueColor;m:TweenPosition(UDim2.new(0,27,0,2),"Out","Sine",0.2,true);c:Create(m,TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3=_G.TrueColor}):Play();else e=false;g.Color=_G.Color;m:TweenPosition(UDim2.new(0,2,0,2),"Out","Sine",0.2,true);c:Create(m,TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3=Color3.fromRGB(12,12,12)}):Play();end pcall(d,e);end);if (b==true) then e=true;g.Color=_G.TrueColor;m:TweenPosition(UDim2.new(0,27,0,2),"Out","Sine",0.4,true);c:Create(m,TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3=_G.TrueColor}):Play();pcall(d,e);end end;a.Dropdown=function(self,a,b,d) local e=false;local g=Instance.new("Frame");local h=Instance.new("UICorner");local i=Instance.new("UICorner");local j=Instance.new("UICorner");local k=Instance.new("TextLabel");local l=Instance.new("ScrollingFrame");local m=Instance.new("UIListLayout");local n=Instance.new("UIPadding");local o=Instance.new("TextButton");local o=Instance.new("TextButton");local p=Instance.new("ImageLabel");local q=Instance.new("UIStroke");g.Name="Dropdown";g.Parent=f;g.BackgroundColor3=Color3.fromRGB(255,182,192);g.BackgroundTransparency=0.8;g.ClipsDescendants=true;g.Size=UDim2.new(0,379,0,38);h.CornerRadius=UDim.new(0,3);h.Parent=g;local f=Instance.new("ImageLabel");f.Name="Icon";f.Parent=g;f.BackgroundColor3=Color3.fromRGB(255,255,255);f.BackgroundTransparency=1;f.Position=UDim2.new(0,5,0,3);f.Size=UDim2.new(0,30,0,30);f.Image="rbxassetid://109948306798374";k.Name="DropTitle";k.Parent=g;k.BackgroundColor3=Color3.fromRGB(255,182,192);k.BackgroundTransparency=1;k.Size=UDim2.new(0,379,0,38);k.Font=Enum.Font.GothamSemibold;k.Text="| "   .. a ;k.TextColor3=Color3.fromRGB(255,255,255);k.TextSize=15;k.TextXAlignment=Enum.TextXAlignment.Left;k.Position=UDim2.new(0,40,0,0);o.Name="SelectItems";o.Parent=g;o.BackgroundColor3=Color3.fromRGB(13,102,158);o.TextColor3=Color3.fromRGB(255,255,255);o.BackgroundTransparency=0.1;o.Position=UDim2.new(0,220,0,34);o.Size=UDim2.new(0,155,0,30);o.Font=Enum.Font.GothamMedium;o.TextSize=12;o.Text="Select";o.ClipsDescendants=true;o.TextXAlignment=Enum.TextXAlignment.Left;local f=Instance.new("UIPadding");f.Parent=o;f.PaddingLeft=UDim.new(0,15);f.PaddingRight=UDim.new(0,15);o.AnchorPoint=Vector2.new(0,3);i.Parent=o;i.CornerRadius=UDim.new(0,5);j.Parent=l;j.CornerRadius=UDim.new(0,5);l.Name="DropScroll";l.Parent=g;l.Active=true;l.BackgroundColor3=Color3.fromRGB(13,102,158);l.BackgroundTransparency=0.1;l.BorderSizePixel=0;l.Position=UDim2.new(0,2,0,40);l.Size=UDim2.new(0,375,0,100);l.ScrollBarThickness=3;m.Parent=l;m.SortOrder=Enum.SortOrder.LayoutOrder;m.Padding=UDim.new(0,5);n.Parent=l;n.PaddingLeft=UDim.new(0,5);n.PaddingTop=UDim.new(0,10);for a,a in next,b do local b=Instance.new("TextButton");b.Name="Item";b.Parent=l;b.BackgroundColor3=Color3.fromRGB(12,12,12);b.BackgroundTransparency=1;b.Size=UDim2.new(0,379,0,26);b.Font=Enum.Font.GothamSemibold;b.Text=tostring(a);b.TextColor3=Color3.fromRGB(255,255,255);b.TextSize=12;b.TextTransparency=0.5;b.TextXAlignment=Enum.TextXAlignment.Center;b.MouseEnter:Connect(function() c:Create(b,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency=0}):Play();end);b.MouseLeave:Connect(function() c:Create(b,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency=0.5}):Play();end);b.MouseButton1Click:Connect(function() e=false;g:TweenSize(UDim2.new(0,379,0,38),"Out","Quad",0.3,true);c:Create(p,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Rotation=180}):Play();d(b.Text);o.Text=b.Text;end);end l.CanvasSize=UDim2.new(0,0,0,m.AbsoluteContentSize.Y + 10 );o.MouseButton1Click:Connect(function() if (e==false) then e=true;g:TweenSize(UDim2.new(0,379,0,142),"Out","Quad",0.3,true);c:Create(p,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Rotation=0}):Play();else e=false;g:TweenSize(UDim2.new(0,379,0,38),"Out","Quad",0.3,true);c:Create(p,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Rotation=180}):Play();end end);local b={};b.Add=function(self,b) local f=Instance.new("TextButton");f.Name="Item";f.Parent=l;f.BackgroundColor3=Color3.fromRGB(255,255,255);f.BackgroundTransparency=1;f.Size=UDim2.new(0,379,0,26);f.Font=Enum.Font.GothamSemibold;f.Text=tostring(b);f.TextColor3=Color3.fromRGB(255,255,255);f.TextSize=13;f.TextTransparency=0.5;f.MouseEnter:Connect(function() c:Create(f,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency=0}):Play();end);f.MouseLeave:Connect(function() c:Create(f,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{TextTransparency=0.5}):Play();end);f.MouseButton1Click:Connect(function() e=false;g:TweenSize(UDim2.new(0,379,0,38),"Out","Quad",0.3,true);c:Create(p,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Rotation=180}):Play();d(f.Text);k.Text=a   .. " : "   .. f.Text ;end);end;b.Clear=function(self) k.Text=tostring(a)   .. " : " ;e=false;g:TweenSize(UDim2.new(0,379,0,38),"Out","Quad",0.3,true);c:Create(p,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Rotation=180}):Play();for a,a in next,l:GetChildren() do if a:IsA("TextButton") then a:Destroy();end end end;return b;end;a.Slider=function(self,a,c,d,e,g) local h={};local i=Instance.new("Frame");local j=Instance.new("Frame");local k=Instance.new("UIStroke");local k=Instance.new("UICorner");local l=Instance.new("ImageLabel");local m=Instance.new("TextLabel");local m=Instance.new("TextLabel");local n=Instance.new("Frame");local o=Instance.new("Frame");local p=Instance.new("Frame");local q=Instance.new("UICorner");local r=Instance.new("UICorner");local s=Instance.new("Frame");local t=Instance.new("TextBox");local u=Instance.new("UIStroke");local v=Instance.new("TextButton");local w=Instance.new("UICorner");local x=Instance.new("UICorner");i.Name=slidertitle or "SliderFrame" ;i.Parent=f;i.BackgroundColor3=Color3.fromRGB(240,240,240);i.BackgroundTransparency=1;i.BorderSizePixel=0;i.Size=UDim2.new(0,379,0,60);j.Name="SliderFrame_2";j.Parent=i;j.BackgroundColor3=Color3.fromRGB(32,33,36);j.BackgroundTransparency=0.8;j.BorderSizePixel=0;j.Position=UDim2.new(0,1,0,1);j.Size=UDim2.new(0,379,0,60);k.Parent=j;k.CornerRadius=UDim.new(0,3);l.Name="ImageLabel";l.Parent=j;l.BackgroundColor3=Color3.fromRGB(240,240,240);l.BackgroundTransparency=1;l.BorderSizePixel=0;l.Position=UDim2.new(0,7.5,0,7.5);l.Size=UDim2.new(0,30,0,30);l.Image="rbxassetid://86451637909512";m.Parent=j;m.BackgroundColor3=Color3.fromRGB(150,150,150);m.BackgroundTransparency=1;m.Position=UDim2.new(0,45,0,5);m.Size=UDim2.new(0,280,0,30);m.Font=Enum.Font.GothamSemibold;m.Text="|  "   .. a ;m.TextColor3=Color3.fromRGB(255,255,255);m.TextSize=15;m.TextXAlignment=Enum.TextXAlignment.Left;n.Name="SliderInput";n.Parent=j;n.BackgroundColor3=Color3.fromRGB(39,40,41);n.BackgroundTransparency=0;n.BorderSizePixel=0;n.Position=UDim2.new(0,8,0,42);n.Size=UDim2.new(0,364,0,6);r.CornerRadius=UDim.new(0,100000);r.Parent=n;o.Name="SliderButton";o.Parent=n;o.BackgroundColor3=Color3.fromRGB(39,40,41);o.BackgroundTransparency=1;o.BorderSizePixel=0;o.Position=UDim2.new(0,0,0, -7);o.Size=UDim2.new(0,300,0,25);p.Name="SliderCount";p.Parent=o;p.BackgroundColor3=Color3.fromRGB(50,10,20);p.BackgroundTransparency=0;p.BorderSizePixel=0;p.Position=UDim2.new(0,e,0,0);p.Size=UDim2.new(0,18,0,18);v.Name="Title_2";v.Parent=o;v.AnchorPoint=Vector2.new(0,0);v.BackgroundColor3=Color3.fromRGB(240,10,10);v.AutoButtonColor=false;v.BackgroundTransparency=1;v.Position=UDim2.new(0,e,0,0);v.Size=UDim2.new(0,18,0,18);v.Font=Enum.Font.GothamBold;v.Text=tostring((e and math.floor(((e/d) * (d-c)) + c )) or 0 );v.TextColor3=Color3.fromRGB(255,255,255);v.TextSize=8;v.TextXAlignment=Enum.TextXAlignment.Center;w.Parent=v;w.CornerRadius=UDim.new(0,100000);q.CornerRadius=UDim.new(0,100000);q.Parent=p;s.Name="BoxFrame";s.Parent=j;s.BackgroundColor3=Color3.fromRGB(240,10,10);s.BackgroundTransparency=1;s.Size=UDim2.new(0,50,0,15);s.Position=UDim2.new(0,319,0,8);t.Name="SliderBox";t.Parent=s;t.BackgroundColor3=Color3.fromRGB(39,40,41);t.BackgroundTransparency=0.1;t.BorderSizePixel=0;t.Position=UDim2.new(0,0,0,1.65);t.Size=UDim2.new(0,50,0,15);t.ClearTextOnFocus=false;t.Font=Enum.Font.Code;t.Text=tostring((e and math.floor(((e/d) * (d-c)) + c )) or 0 );t.TextColor3=Color3.fromRGB(200,200,200);t.TextSize=10;t.TextTransparency=0;t.TextXAlignment=Enum.TextXAlignment.Center;t.TextEditable=true;x.Parent=s;x.CornerRadius=UDim.new(0,2);local a;local e;local f;local i=o;local function i(a) local a=UDim2.new(math.clamp((a.Position.X-o.AbsolutePosition.X)/o.AbsoluteSize.X ,0,1),0,0,0);p:TweenPosition(a,Enum.EasingDirection.InOut,Enum.EasingStyle.Linear,0.08,true);v:TweenPosition(a,Enum.EasingDirection.InOut,Enum.EasingStyle.Linear,0.12,true);local b=math.floor((((a.X.Scale * d)/d) * (d-c)) + c );t.Text=tostring(b);v.Text=tostring(b);pcall(g,b,a);end o.InputBegan:Connect(function(b) if ((b.UserInputType==Enum.UserInputType.MouseButton1) or (b.UserInputType==Enum.UserInputType.Touch)) then a=true;f=b;e=b.Position.X;slidein=o.AbsolutePosition.X;game.TweenService:Create(p,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{BackgroundTransparency=0,Size=UDim2.new(0,14,0,14)}):Play();game.TweenService:Create(v,TweenInfo.new(0.12,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{AnchorPoint=Vector2.new(0.22,0.8),TextSize=13,BackgroundTransparency=0,Size=UDim2.new(0,25,0,25)}):Play();game.TweenService:Create(t,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{TextTransparency=0}):Play();game.TweenService:Create(n,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{BackgroundTransparency=0.5}):Play();game.TweenService:Create(u,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{Transparency=0}):Play();end b.Chb.Changed:Connect(function(b) if (b.UserInputType==Enum.UserInputState.End) then a=false;end end);end);o.InputEnded:Connect(function(b) if ((b.UserInputType==Enum.UserInputType.MouseMovement) or (b.UserInputType==Enum.UserInputType.Touch)) then a=false;f=b;game.TweenService:Create(p,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{BackgroundTransparency=0.3,Size=UDim2.new(0,18,0,18)}):Play();game.TweenService:Create(v,TweenInfo.new(0.12,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{AnchorPoint=Vector2.new(0,0),TextSize=8,BackgroundTransparency=1,Size=UDim2.new(0,18,0,18)}):Play();game.TweenService:Create(t,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{TextTransparency=0.5}):Play();game.TweenService:Create(n,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{BackgroundTransparency=0.7}):Play();game.TweenService:Create(u,TweenInfo.new(0.08,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),{Transparency=0.5}):Play();end end);b.InputChanged:Connect(function(b) if ((b==f) and a) then i(b);end end);function set(a) if (a=="Text") then if tonumber(t.Text) then if (tonumber(t.Text)<=d) then Value=t.Text;v.Text=t.Text;p:TweenPosition(UDim2.new(((tonumber(t.Text) or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new(((tonumber(t.Text) or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);end if (tonumber(t.Text)>d) then t.Text=d;v.Text=d;Value=d;p:TweenPosition(UDim2.new(((d or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new(((d or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);end if (tonumber(t.Text)>=c) then Value=t.Text;v.Text=t.Text;p:TweenPosition(UDim2.new(((tonumber(t.Text) or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new(((tonumber(t.Text) or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);end if (tonumber(t.Text)<c) then Value=c;v=c;p.Position=UDim2.new(((c or c) -c)/(d-c) ,0,0,0);v.Position=UDim2.new(((c or c) -c)/(d-c) ,0,0,0);pcall(function() g(Value);end);end else t.Text="" or Value ;v.Text=Value;end end end t.Focused:Connect(function() t.Changed:Connect(set);end);t.FocusLost:Connect(function(a) if  not a then if (t.Text=="") then t.Text=c;v.Text=c;Value=c;p:TweenPosition(UDim2.new((c-c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new((c-c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);end if (tonumber(t.Text)>tonumber(d)) then Value=d;t.Text=d;v.Text=d;p:TweenPosition(UDim2.new(((d or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new(((d or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);else Value=tonumber(t.Text);end if (tonumber(t.Text)<c) then t.Text=c;v.Text=c;Value=c;p:TweenPosition(UDim2.new((c-c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new((c-c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);else Value=tonumber(t.Text);end end if (tonumber(t.Text)>d) then t.Text=d;v.Text=d;Value=d;p:TweenPosition(UDim2.new(((d or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new(((d or c) -c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);else Value=tonumber(t.Text);end if (tonumber(t.Text)<c) then t.Text=c;v.Text=c;Value=c;p.Position=UDim2.new((c-c)/(d-c) ,0,0,0);v.Position=UDim2.new((c-c)/(d-c) ,0,0,0);pcall(function() g(Value);end);else Value=tonumber(t.Text);end if (t.Text=="") then t.Text=c;v.Text=c;Value=c;p:TweenPosition(UDim2.new((c-c)/(d-c) ,0,0,0),"InOut","Linear",0.08,true);v:TweenPosition(UDim2.new((c-c)/(d-c) ,0,0,0),"InOut","Linear",0.12,true);pcall(function() g(Value);end);end end);return h;end;a.Slider2=function(self,a,b,c,d,e) local g=Instance.new("Frame");local h=Instance.new("UICorner");local i=Instance.new("Frame");local j=Instance.new("UICorner");local k=Instance.new("ImageLabel");local l=Instance.new("UIStroke");local l=Instance.new("TextLabel");local m=Instance.new("Frame");local n=Instance.new("TextButton");local o=Instance.new("Frame");local p=Instance.new("Frame");local q=Instance.new("UICorner");local r=Instance.new("UICorner");local s=Instance.new("Frame");local t=Instance.new("UICorner");local u=Instance.new("Frame");local v=Instance.new("UICorner");local w=Instance.new("TextBox");local x=Instance.new("UICorner");local y=Instance.new("UIStroke");g.Name="Slider";g.Parent=f;g.BackgroundColor3=Color3.fromRGB(240,10,10);g.BackgroundTransparency=1;g.Size=UDim2.new(0,379,0,60);h.CornerRadius=UDim.new(0,5);h.Name="slidercorner";h.Parent=g;i.Name="sliderr";i.Parent=g;i.BackgroundColor3=Color3.fromRGB(255,30,50);i.BackgroundTransparency=0.8;i.Position=UDim2.new(0,1,0,1);i.Size=UDim2.new(0,379,0,60);j.CornerRadius=UDim.new(0,5);j.Name="sliderrcorner";j.Parent=i;k.Name="ImageLabel";k.Parent=i;k.BackgroundColor3=Color3.fromRGB(240,10,10);k.BackgroundTransparency=1;k.BorderSizePixel=0;k.Position=UDim2.new(0,7.5,0,7.5);k.Size=UDim2.new(0,30,0,30);k.Image="rbxassetid://86451637909512";l.Parent=i;l.BackgroundColor3=Color3.fromRGB(150,150,150);l.BackgroundTransparency=1;l.Position=UDim2.new(0,45,0,5);l.Size=UDim2.new(0,280,0,30);l.Font=Enum.Font.GothamSemibold;l.Text="|  "   .. a ;l.TextColor3=Color3.fromRGB(255,255,255);l.TextSize=15;l.TextXAlignment=Enum.TextXAlignment.Left;m.Name="HAHA";m.Parent=i;m.BackgroundColor3=Color3.fromRGB(255,255,255);m.BackgroundTransparency=1;m.Size=UDim2.new(0,359,0,29);n.Name="AHEHE";n.Parent=i;n.BackgroundColor3=Color3.fromRGB(255,255,255);n.BackgroundTransparency=1;n.Position=UDim2.new(0,10,0,42);n.Size=UDim2.new(0,359,0,5);n.Font=Enum.Font.SourceSans;n.Text="";n.TextColor3=Color3.fromRGB(0,0,0);n.TextSize=14;o.Name="bar";o.Parent=n;o.BackgroundColor3=Color3.fromRGB(255,10,10);o.Size=UDim2.new(0,359,0,5);o.BackgroundTransparency=0.8;p.Name="bar1";p.Parent=o;p.BackgroundColor3=Color3.fromRGB(90,10,20);p.BackgroundTransparency=0;p.Size=UDim2.new(d/c ,0,0,5);q.CornerRadius=UDim.new(0,5);q.Name="bar1corner";q.Parent=p;r.CornerRadius=UDim.new(0,5);r.Name="barcorner";r.Parent=o;s.Name="circlebar";s.Parent=p;s.BackgroundColor3=Color3.fromRGB(90,10,20);s.Position=UDim2.new(1, -2,0, -3);s.Size=UDim2.new(0,10,0,10);t.CornerRadius=UDim.new(0,100);t.Parent=s;u.Name="slidervalue";u.Parent=i;u.BackgroundColor3=Color3.fromRGB(90,10,20);u.BackgroundTransparency=0.1;u.Position=UDim2.new(0,319,0,10);u.Size=UDim2.new(0,50,0,15);v.CornerRadius=UDim.new(0,2);v.Name="valuecorner";v.Parent=u;w.Parent=u;w.BackgroundColor3=Color3.fromRGB(90,10,20);w.BackgroundTransparency=0.1;w.Position=UDim2.new(0,0,0,0);w.Size=UDim2.new(0,50,0,16);w.Font=Enum.Font.Code;w.TextColor3=Color3.fromRGB(255,255,255);w.TextSize=9;w.Text=d;w.TextTransparency=0.1;w.ClearTextOnFocus=false;w.TextXAlignment=Enum.TextXAlignment.Center;x.CornerRadius=UDim.new(0,3);x.Parent=w;local a=game.Players.LocalPlayer:GetMouse();local f=game:GetService("UserInputService");if (Value==nil) then Value=d;pcall(function() e(Value);end);end n.MouseButton1Down:Connect(function() Value=math.floor((((tonumber(c) -tonumber(b))/349) * p.AbsoluteSize.X) + tonumber(b) ) or 0 ;pcall(function() e(Value);end);p.Size=UDim2.new(0,math.clamp(a.X-p.AbsolutePosition.X ,0,349),0,5);s.Position=UDim2.new(0,math.clamp((a.X-p.AbsolutePosition.X) -2 ,0,349),0, -3);moveconnection=a.Move:Connect(function() w.Text=Value;Value=math.floor((((tonumber(c) -tonumber(b))/349) * p.AbsoluteSize.X) + tonumber(b) );pcall(function() e(Value);end);p.Size=UDim2.new(0,math.clamp(a.X-p.AbsolutePosition.X ,0,349),0,5);s.Position=UDim2.new(0,math.clamp((a.X-p.AbsolutePosition.X) -2 ,0,349),0, -3);end);releaseconnection=f.InputEnded:Connect(function(d) if (d.UserInputType==Enum.UserInputType.MouseButton1) then Value=math.floor((((tonumber(c) -tonumber(b))/349) * p.AbsoluteSize.X) + tonumber(b) );pcall(function() e(Value);end);p.Size=UDim2.new(0,math.clamp(a.X-p.AbsolutePosition.X ,0,349),0,5);s.Position=UDim2.new(0,math.clamp((a.X-p.AbsolutePosition.X) -2 ,0,349),0, -3);moveconnection:Disconnect();releaseconnection:Disconnect();end end);end);releaseconnection=f.InputEnded:Connect(function(a) if (a.UserInputType==Enum.UserInputType.MouseButton1) then Value=math.floor((((tonumber(c) -tonumber(b))/349) * p.AbsoluteSize.X) + tonumber(b) );w.Text=Value;end end);w.FocusLost:Connect(function() if (tonumber(w.Text)>c) then w.Text=c;end p.Size=UDim2.new((w.Text or 0)/c ,0,0,5);s.Position=UDim2.new(1, -2,0, -3);w.Text=tostring(w.Text and math.floor(((w.Text/c) * (c-b)) + b ) );pcall(e,w.Text);end);end;a.Textbox=function(self,a,b,c) local d=Instance.new("Frame");local e=Instance.new("UICorner");local g=Instance.new("Frame");local h=Instance.new("UICorner");local i=Instance.new("TextLabel");local j=Instance.new("TextButton");local k=Instance.new("TextBox");local l=Instance.new("UICorner");d.Name="Textbox";d.Parent=f;d.BackgroundColor3=Color3.new(32,33,36);d.BackgroundTransparency=0;d.Size=UDim2.new(0,379,0,31);e.CornerRadius=UDim.new(0,5);e.Name="TextboxCorner";e.Parent=d;g.Name="Textboxx";g.Parent=d;g.BackgroundColor3=Color3.fromRGB(41,53,61);g.Position=UDim2.new(0,1,0,1);g.Size=UDim2.new(0,385,0,29);h.CornerRadius=UDim.new(0,5);h.Name="TextboxxCorner";h.Parent=g;i.Name="TextboxLabel";i.Parent=d;i.BackgroundColor3=Color3.fromRGB(240,10,10);i.BackgroundTransparency=1;i.Position=UDim2.new(0,15,0,0);i.Text=a;i.Size=UDim2.new(0,145,0,31);i.Font=Enum.Font.GothamSemibold;i.TextColor3=Color3.fromRGB(255,255,255);i.TextSize=16;i.TextTransparency=0;i.TextXAlignment=Enum.TextXAlignment.Left;j.Name="txtbtn";j.Parent=d;j.BackgroundColor3=Color3.fromRGB(255,255,255);j.BackgroundTransparency=1;j.Position=UDim2.new(0,1,0,1);j.Size=UDim2.new(0,379,0,29);j.Font=Enum.Font.SourceSans;j.Text="";j.TextColor3=Color3.fromRGB(0,0,0);j.TextSize=14;k.Name="RealTextbox";k.Parent=d;k.BackgroundColor3=Color3.fromRGB(200,200,200);k.BackgroundTransparency=0;k.Position=UDim2.new(0,275,0,4);k.Size=UDim2.new(0,100,0,24);k.Font=Enum.Font.GothamSemibold;k.Text="";k.TextColor3=Color3.fromRGB(225,225,225);k.TextSize=11;k.TextTransparency=0;k.FocusLost:Connect(function() c(k.Text);if b then k.Text="";end end);l.CornerRadius=UDim.new(0,5);l.Parent=k;end;a.Label=function(self,a) local b=Instance.new("TextLabel");local c=Instance.new("UIPadding");local d={};b.Name="Label";b.Parent=f;b.BackgroundColor3=Color3.fromRGB(255,0,0);b.BackgroundTransparency=1;b.Size=UDim2.new(0,410,0,20);b.Font=Enum.Font.GothamSemibold;b.TextColor3=Color3.fromRGB(225,225,225);b.TextSize=16;b.Text=a;b.TextXAlignment=Enum.TextXAlignment.Left;c.PaddingLeft=UDim.new(0,15);c.Parent=b;c.Name="PaddingLabel";d.Set=function(self,a) b.Text=a;end;return d;end;a.Label1=function(self,a) local b=Instance.new("TextLabel");local c=Instance.new("UIPadding");local d={};b.Name="Label1";b.Parent=f;b.BackgroundColor3=Color3.fromRGB(255,255,255);b.BackgroundTransparency=1;b.Size=UDim2.new(0,410,0,20);b.Font=Enum.Font.GothamSemibold;b.TextColor3=Color3.fromRGB(255,255,255);b.TextSize=15;b.Text=a;b.TextXAlignment=Enum.TextXAlignment.Left;c.PaddingLeft=UDim.new(0,15);c.Parent=b;c.Name="PaddingLabel1";d.Refresh=function(self,a) b.Text=a;end;return d;end;a.Textbox=function(self,a,b,c) local d=Instance.new("Frame");local e=Instance.new("UICorner");local g=Instance.new("Frame");local h=Instance.new("UICorner");local i=Instance.new("TextLabel");local j=Instance.new("TextButton");local k=Instance.new("TextBox");local l=Instance.new("UICorner");d.Name="Textbox";d.Parent=f;d.BackgroundColor3=Color3.new(32,33,36);d.BackgroundTransparency=0;d.Size=UDim2.new(0,379,0,31);e.CornerRadius=UDim.new(0,5);e.Name="TextboxCorner";e.Parent=d;g.Name="Textboxx";g.Parent=d;g.BackgroundColor3=Color3.fromRGB(41,53,61);g.Position=UDim2.new(0,1,0,1);g.Size=UDim2.new(0,385,0,29);h.CornerRadius=UDim.new(0,3);h.Name="TextboxxCorner";h.Parent=g;i.Name="TextboxLabel";i.Parent=d;i.BackgroundColor3=Color3.fromRGB(240,10,10);i.BackgroundTransparency=1;i.Position=UDim2.new(0,15,0,0);i.Text=a;i.Size=UDim2.new(0,145,0,31);i.Font=Enum.Font.GothamSemibold;i.TextColor3=Color3.fromRGB(225,225,225);i.TextSize=16;i.TextTransparency=0;i.TextXAlignment=Enum.TextXAlignment.Left;j.Name="txtbtn";j.Parent=d;j.BackgroundColor3=Color3.fromRGB(240,10,10);j.BackgroundTransparency=1;j.Position=UDim2.new(0,1,0,1);j.Size=UDim2.new(0,379,0,29);j.Font=Enum.Font.SourceSans;j.Text="";j.TextColor3=Color3.fromRGB(0,0,0);j.TextSize=14;k.Name="RealTextbox";k.Parent=d;k.BackgroundColor3=Color3.fromRGB(0,0,0);k.BackgroundTransparency=0;k.Position=UDim2.new(0,275,0,4);k.Size=UDim2.new(0,100,0,24);k.Font=Enum.Font.GothamSemibold;k.Text="";k.TextColor3=Color3.fromRGB(225,225,225);k.TextSize=11;k.TextTransparency=0;k.FocusLost:Connect(function() c(k.Text);if b then k.Text="";end end);l.CornerRadius=UDim.new(0,3);l.Parent=k;end;a.Label=function(self,a) local b=Instance.new("TextLabel");local c=Instance.new("UIPadding");local d={};b.Name="Label";b.Parent=f;b.BackgroundColor3=Color3.fromRGB(255,255,255);b.BackgroundTransparency=1;b.Size=UDim2.new(0,410,0,30);b.Font=Enum.Font.GothamSemibold;b.TextColor3=Color3.fromRGB(225,225,225);b.TextSize=14;b.Text=a;b.TextXAlignment=Enum.TextXAlignment.Left;c.PaddingLeft=UDim.new(0,15);c.Parent=b;c.Name="PaddingLabel";d.Set=function(self,a) b.Text=a;end;return d;end;a.Label1=function(self,a) local b=Instance.new("TextLabel");local c=Instance.new("UIPadding");local d={};b.Name="Label1";b.Parent=f;b.BackgroundColor3=Color3.fromRGB(255,255,255);b.BackgroundTransparency=1;b.Size=UDim2.new(0,410,0,20);b.Font=Enum.Font.GothamSemibold;b.TextColor3=Color3.fromRGB(255,255,255);b.TextSize=15;b.Text=a;b.RichText=true;b.TextXAlignment=Enum.TextXAlignment.Left;c.PaddingLeft=UDim.new(0,15);c.Parent=b;c.Name="PaddingLabel1";d.Refresh=function(self,a) b.Text=a;end;return d;end;a.Dis=function(self,a,b) local c=Instance.new("TextLabel");local d=Instance.new("UIPadding");local e={};c.Name="Label1";c.Parent=f;c.BackgroundColor3=Color3.fromRGB(255,255,255);c.BackgroundTransparency=1;c.Size=UDim2.new(0,410,0,20);c.Font=Enum.Font.GothamSemibold;c.TextColor3=Color3.fromRGB(255,255,255);c.TextSize=15;c.Text=a;c.TextXAlignment=Enum.TextXAlignment.Left;Labeld.Name="Labeld";Labeld.Parent=f;Labeld.BackgroundColor3=Color3.fromRGB(255,255,255);Labeld.BackgroundTransparency=1;Labeld.Size=UDim2.new(0,410,0,20);Labeld.Font=Enum.Font.GothamSemibold;Labeld.TextColor3=Color3.fromRGB(240,10,10);Labeld.TextSize=15;Labeld.Text=b or "" ;Labeld.TextXAlignment=Enum.TextXAlignment.Left;d.PaddingLeft=UDim.new(0,15);d.Parent=c;d.Name="PaddingLabel1";e.Refresh=function(self,a) c.Text=a;end;return e;end;a.Seperator=function(self,a) local b=Instance.new("Frame");local c=Instance.new("Frame");local d=Instance.new("TextLabel");local e=Instance.new("Frame");local g=Instance.new("UIGradient");local h=Instance.new("UIGradient");b.Name="Seperator";b.Parent=f;b.BackgroundColor3=_G.Primary;b.BackgroundTransparency=1;b.Size=UDim2.new(0,379,0,30);c.Name="Sep1";c.Parent=b;c.BackgroundColor3=_G.Primary;c.BackgroundTransparency=0.1;c.BorderSizePixel=0;c.Position=UDim2.new(0,10,0,13);c.Size=UDim2.new(0,60,0,2);d.Name="Sep2";d.Parent=b;d.BackgroundColor3=Color3.fromRGB(255,255,255);d.BackgroundTransparency=1;d.Position=UDim2.new(0,0,0,0);d.Size=UDim2.new(0,379,0,30);d.Font=Enum.Font.GothamSemibold;d.Text=""   .. a   .. "" ;d.TextColor3=Color3.fromRGB(255,255,255);d.TextSize=14;e.Name="Sep3";e.Parent=b;e.BackgroundColor3=_G.Primary;e.BackgroundTransparency=0.1;e.BorderSizePixel=0;e.Position=UDim2.new(0,309,0,13);e.Size=UDim2.new(0,60,0,2);g.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,_G.Dark),ColorSequenceKeypoint.new(0.5,_G.Primary),ColorSequenceKeypoint.new(1,_G.Dark)});g.Parent=c;h.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,_G.Dark),ColorSequenceKeypoint.new(0.5,_G.Primary),ColorSequenceKeypoint.new(1,_G.Dark)});h.Parent=e;end;a.Line=function(self) local a=Instance.new("Frame");local b=Instance.new("Frame");local c=Instance.new("UIGradient");a.Name="Linee";a.Parent=f;a.BackgroundColor3=Color3.fromRGB(255,255,255);a.BackgroundTransparency=1;a.Position=UDim2.new(0,0,0.119999997,0);a.Size=UDim2.new(0,310,0,20);b.Name="Line";b.Parent=a;b.BackgroundColor3=Color3.new(125,125,125);b.BorderSizePixel=0;b.Position=UDim2.new(0,0,0,10);b.Size=UDim2.new(0,379,0,1);c.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,_G.Dark),ColorSequenceKeypoint.new(0.4,_G.Primary),ColorSequenceKeypoint.new(0.5,_G.Primary),ColorSequenceKeypoint.new(0.6,_G.Primary),ColorSequenceKeypoint.new(1,_G.Dark)});c.Parent=b;end;return a;end;return d;end;return a; end
+local XUI = {
+	["_YARHM"] = Instance.new("ScreenGui");
+	["_Open"] = Instance.new("TextButton");
+	["_UICorner"] = Instance.new("UICorner");
+	["_InitOpen"] = Instance.new("LocalScript");
+	["_OnClick"] = Instance.new("LocalScript");
+	["_Menu"] = Instance.new("Frame");
+	["_UICorner1"] = Instance.new("UICorner");
+	["_HubName"] = Instance.new("TextLabel");
+	["_HubDesc"] = Instance.new("TextLabel");
+	["_List"] = Instance.new("Frame");
+	["_UICorner2"] = Instance.new("UICorner");
+	["_AutoSetup"] = Instance.new("LocalScript");
+	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
+	["_UIListLayout"] = Instance.new("UIListLayout");
+	["_UIPadding"] = Instance.new("UIPadding");
+	["_UIPadding1"] = Instance.new("UIPadding");
+	["_UIGradient"] = Instance.new("UIGradient");
+	["_UIStroke"] = Instance.new("UIStroke");
+	["_UIGradient1"] = Instance.new("UIGradient");
+	["_HubCredits"] = Instance.new("TextLabel");
+	["_Close"] = Instance.new("TextButton");
+	["_UICorner3"] = Instance.new("UICorner");
+	["_LocalScript"] = Instance.new("LocalScript");
+	["_Area"] = Instance.new("ScrollingFrame");
+	["_TextLabel"] = Instance.new("TextLabel");
+	["_TextLabel1"] = Instance.new("TextLabel");
+	["_UIStroke1"] = Instance.new("UIStroke");
+	["_UIGradient2"] = Instance.new("UIGradient");
+	["_UIGradient3"] = Instance.new("UIGradient");
+	["_AddCustomModule"] = Instance.new("TextButton");
+	["_UICorner4"] = Instance.new("UICorner");
+	["_UIPadding2"] = Instance.new("UIPadding");
+	["_UIStroke2"] = Instance.new("UIStroke");
+	["_LocalScript1"] = Instance.new("LocalScript");
+	["_UIScale"] = Instance.new("UIScale");
+	["_Init"] = Instance.new("LocalScript");
+	["_ListButton"] = Instance.new("TextButton");
+	["_UICorner5"] = Instance.new("UICorner");
+	["_FUNCTIONS"] = Instance.new("ModuleScript");
+	["_Notifications"] = Instance.new("Frame");
+	["_UIListLayout1"] = Instance.new("UIListLayout");
+	["_UIPadding3"] = Instance.new("UIPadding");
+	["_Placeholder"] = Instance.new("Frame");
+	["_UICorner6"] = Instance.new("UICorner");
+	["_TextLabel2"] = Instance.new("TextLabel");
+	["_Flee the Facility"] = Instance.new("LocalScript");
+	["_Universal"] = Instance.new("LocalScript");
+	["_TextBoxPlaceholder"] = Instance.new("Frame");
+	["_UIListLayout2"] = Instance.new("UIListLayout");
+	["_TextButton"] = Instance.new("TextButton");
+	["_UICorner7"] = Instance.new("UICorner");
+	["_UIPadding4"] = Instance.new("UIPadding");
+	["_TextBox"] = Instance.new("TextBox");
+	["_UICorner8"] = Instance.new("UICorner");
+	["_FloatingButton"] = Instance.new("TextButton");
+	["_UIPadding5"] = Instance.new("UIPadding");
+	["_UICorner9"] = Instance.new("UICorner");
+	["_FloatingButtons"] = Instance.new("Frame");
+	["_DroppedGunBGUI"] = Instance.new("BillboardGui");
+	["_TextLabel3"] = Instance.new("TextLabel");
+	["_UIStroke3"] = Instance.new("UIStroke");
+	["_Murder Mystery 2"] = Instance.new("LocalScript");
+	["_AddCustomModule1"] = Instance.new("Frame");
+	["_UICorner10"] = Instance.new("UICorner");
+	["_UIStroke4"] = Instance.new("UIStroke");
+	["_UIGradient4"] = Instance.new("UIGradient");
+	["_UIGradient5"] = Instance.new("UIGradient");
+	["_UIScale1"] = Instance.new("UIScale");
+	["_TextLabel4"] = Instance.new("TextLabel");
+	["_TextBox1"] = Instance.new("TextBox");
+	["_UICorner11"] = Instance.new("UICorner");
+	["_UIPadding6"] = Instance.new("UIPadding");
+	["_TextLabel5"] = Instance.new("TextLabel");
+	["_Add"] = Instance.new("TextButton");
+	["_UICorner12"] = Instance.new("UICorner");
+	["_UIPadding7"] = Instance.new("UIPadding");
+	["_UIStroke5"] = Instance.new("UIStroke");
+	["_LocalScript2"] = Instance.new("LocalScript");
+	["_Cancel"] = Instance.new("TextButton");
+	["_UICorner13"] = Instance.new("UICorner");
+	["_UIPadding8"] = Instance.new("UIPadding");
+	["_UIStroke6"] = Instance.new("UIStroke");
+	["_LocalScript3"] = Instance.new("LocalScript");
+}
+
+-- Properties:
+
+XUI["_YARHM"].DisplayOrder = 999999999
+XUI["_YARHM"].IgnoreGuiInset = true
+XUI["_YARHM"].ScreenInsets = Enum.ScreenInsets.DeviceSafeInsets
+XUI["_YARHM"].ResetOnSpawn = false
+XUI["_YARHM"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+XUI["_YARHM"].Name = "xgo内部"
+XUI["_YARHM"].Parent = game:GetService("CoreGui")
+
+XUI["_Open"].Font = Enum.Font.Gotham
+XUI["_Open"].Text = ""
+XUI["_Open"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Open"].TextSize = 14
+XUI["_Open"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_Open"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Open"].BackgroundTransparency = 1
+XUI["_Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Open"].BorderSizePixel = 0
+XUI["_Open"].Position = UDim2.new(0.499372631, 0, 0.06341701, 0)
+XUI["_Open"].Size = UDim2.new(0, 25, 0, 20)
+XUI["_Open"].Name = "Open"
+XUI["_Open"].Parent = XUI["_YARHM"]
+
+XUI["_UICorner"].Parent = XUI["_Open"]
+
+XUI["_Menu"].AnchorPoint = Vector2.new(0.5, 0)
+XUI["_Menu"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Menu"].BorderSizePixel = 0
+XUI["_Menu"].ClipsDescendants = true
+XUI["_Menu"].Position = UDim2.new(0.499372661, 0, 0.0410327986, 0)
+XUI["_Menu"].Size = UDim2.new(0, 441, 0, 268)
+XUI["_Menu"].Name = "Menu"
+XUI["_Menu"].Parent = XUI["_YARHM"]
+
+XUI["_UICorner1"].Parent = XUI["_Menu"]
+
+XUI["_HubName"].Font = Enum.Font.GothamBold
+XUI["_HubName"].Text = "(ー`´ー)"
+XUI["_HubName"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_HubName"].TextScaled = true
+XUI["_HubName"].TextSize = 14
+XUI["_HubName"].TextWrapped = true
+XUI["_HubName"].TextXAlignment = Enum.TextXAlignment.Left
+XUI["_HubName"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_HubName"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_HubName"].BackgroundTransparency = 1
+XUI["_HubName"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_HubName"].BorderSizePixel = 0
+XUI["_HubName"].Position = UDim2.new(0.186153606, 0, 0.112410031, 0)
+XUI["_HubName"].Size = UDim2.new(0.259631485, 0, 0.0824175924, 0)
+XUI["_HubName"].Name = "HubName"
+XUI["_HubName"].Parent = XUI["_Menu"]
+
+XUI["_HubDesc"].Font = Enum.Font.GothamBold
+XUI["_HubDesc"].Text = "猫有九条命唯有一颗心"
+XUI["_HubDesc"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_HubDesc"].TextSize = 14
+XUI["_HubDesc"].TextWrapped = true
+XUI["_HubDesc"].TextXAlignment = Enum.TextXAlignment.Right
+XUI["_HubDesc"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_HubDesc"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_HubDesc"].BackgroundTransparency = 1
+XUI["_HubDesc"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_HubDesc"].BorderSizePixel = 0
+XUI["_HubDesc"].Position = UDim2.new(0.708829343, 0, 0.116141364, 0)
+XUI["_HubDesc"].Size = UDim2.new(0.470515788, 0, 0.082417585, 0)
+XUI["_HubDesc"].Name = "HubDesc"
+XUI["_HubDesc"].Parent = XUI["_Menu"]
+
+XUI["_List"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_List"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_List"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_List"].BorderSizePixel = 0
+XUI["_List"].Position = UDim2.new(0.15770267, 0, 0.607306004, 0)
+XUI["_List"].Size = UDim2.new(0.315405339, 0, 0.785387993, 0)
+XUI["_List"].Name = "List"
+XUI["_List"].Parent = XUI["_Menu"]
+
+XUI["_UICorner2"].Parent = XUI["_List"]
+
+XUI["_ScrollingFrame"].ScrollBarThickness = 2
+XUI["_ScrollingFrame"].VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
+XUI["_ScrollingFrame"].Active = true
+XUI["_ScrollingFrame"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_ScrollingFrame"].BackgroundTransparency = 1
+XUI["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_ScrollingFrame"].BorderSizePixel = 0
+XUI["_ScrollingFrame"].Position = UDim2.new(0.478333294, 0, 0.510989845, 0)
+XUI["_ScrollingFrame"].Size = UDim2.new(1, 0, 1, 0)
+XUI["_ScrollingFrame"].Parent = XUI["_List"]
+
+XUI["_UIListLayout"].Padding = UDim.new(0, 3)
+XUI["_UIListLayout"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+XUI["_UIListLayout"].SortOrder = Enum.SortOrder.LayoutOrder
+XUI["_UIListLayout"].Parent = XUI["_ScrollingFrame"]
+
+XUI["_UIPadding"].PaddingLeft = UDim.new(0, 4)
+XUI["_UIPadding"].Parent = XUI["_ScrollingFrame"]
+
+XUI["_UIPadding1"].PaddingBottom = UDim.new(0, 10)
+XUI["_UIPadding1"].PaddingLeft = UDim.new(0, 10)
+XUI["_UIPadding1"].PaddingRight = UDim.new(0, 10)
+XUI["_UIPadding1"].PaddingTop = UDim.new(0, 10)
+XUI["_UIPadding1"].Parent = XUI["_List"]
+
+XUI["_UIGradient"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
+}
+XUI["_UIGradient"].Rotation = -133
+XUI["_UIGradient"].Parent = XUI["_List"]
+
+XUI["_UIStroke"].Color = Color3.fromRGB(255, 255, 255)
+XUI["_UIStroke"].Thickness = 2
+XUI["_UIStroke"].Parent = XUI["_List"]
+
+XUI["_UIGradient1"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(111.00000098347664, 111.00000098347664, 111.00000098347664)),
+	ColorSequenceKeypoint.new(0.6401384472846985, Color3.fromRGB(114.23875719308853, 114.23875719308853, 114.23875719308853)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+}
+XUI["_UIGradient1"].Rotation = -44
+XUI["_UIGradient1"].Parent = XUI["_UIStroke"]
+
+XUI["_HubCredits"].Font = Enum.Font.GothamBold
+XUI["_HubCredits"].Text = "˃ ˄ ˂̥̥ "
+XUI["_HubCredits"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_HubCredits"].TextScaled = true
+XUI["_HubCredits"].TextSize = 14
+XUI["_HubCredits"].TextTransparency = 0.699999988079071
+XUI["_HubCredits"].TextWrapped = true
+XUI["_HubCredits"].TextXAlignment = Enum.TextXAlignment.Right
+XUI["_HubCredits"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_HubCredits"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_HubCredits"].BackgroundTransparency = 1
+XUI["_HubCredits"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_HubCredits"].BorderSizePixel = 0
+XUI["_HubCredits"].Position = UDim2.new(0.785926819, 0, 0.160157606, 0)
+XUI["_HubCredits"].Size = UDim2.new(0.316320807, 0, 0.0585099049, 0)
+XUI["_HubCredits"].Name = "HubCredits"
+XUI["_HubCredits"].Parent = XUI["_Menu"]
+
+XUI["_Close"].Font = Enum.Font.GothamBold
+XUI["_Close"].Text = "X"
+XUI["_Close"].TextColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Close"].TextSize = 14
+XUI["_Close"].Modal = true
+XUI["_Close"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_Close"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Close"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Close"].BorderSizePixel = 0
+XUI["_Close"].Position = UDim2.new(0.947494328, 0, 0.914238751, 0)
+XUI["_Close"].Size = UDim2.new(0.0680272132, 0, 0.111940302, 0)
+XUI["_Close"].ZIndex = 999999999
+XUI["_Close"].Name = "Close"
+XUI["_Close"].Parent = XUI["_Menu"]
+
+XUI["_UICorner3"].Parent = XUI["_Close"]
+
+XUI["_Area"].AutomaticCanvasSize = Enum.AutomaticSize.Y
+XUI["_Area"].ScrollBarThickness = 0
+XUI["_Area"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_Area"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Area"].BackgroundTransparency = 1
+XUI["_Area"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Area"].BorderSizePixel = 0
+XUI["_Area"].Position = UDim2.new(0.659600496, 0, 0.60637325, 0)
+XUI["_Area"].Selectable = false
+XUI["_Area"].Size = UDim2.new(0.643815279, 0, 0.783582091, 0)
+XUI["_Area"].SelectionGroup = false
+XUI["_Area"].Name = "Area"
+XUI["_Area"].Parent = XUI["_Menu"]
+
+XUI["_TextLabel"].Font = Enum.Font.GothamBold
+XUI["_TextLabel"].Text = "一个随机的集线器菜单"
+XUI["_TextLabel"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel"].TextSize = 14
+XUI["_TextLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel"].BackgroundTransparency = 1
+XUI["_TextLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel"].BorderSizePixel = 0
+XUI["_TextLabel"].Position = UDim2.new(0.4923051, 0, 0.46438089, 0)
+XUI["_TextLabel"].Size = UDim2.new(0, 200, 0, 50)
+XUI["_TextLabel"].Parent = XUI["_Area"]
+
+XUI["_TextLabel1"].Font = Enum.Font.GothamBold
+XUI["_TextLabel1"].Text = "XGOHUB"
+XUI["_TextLabel1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel1"].TextScaled = true
+XUI["_TextLabel1"].TextSize = 14
+XUI["_TextLabel1"].TextWrapped = true
+XUI["_TextLabel1"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_TextLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel1"].BackgroundTransparency = 1
+XUI["_TextLabel1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel1"].BorderSizePixel = 0
+XUI["_TextLabel1"].Position = UDim2.new(0.491272807, 0, 0.363785654, 0)
+XUI["_TextLabel1"].Size = UDim2.new(0, 135, 0, 33)
+XUI["_TextLabel1"].Parent = XUI["_Area"]
+
+XUI["_UIStroke1"].Color = Color3.fromRGB(255, 255, 255)
+XUI["_UIStroke1"].Thickness = 2
+XUI["_UIStroke1"].Parent = XUI["_Menu"]
+
+XUI["_UIGradient2"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
+	ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(50.69031357765198, 50.69031357765198, 50.69031357765198)),
+	ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(50.13314567506313, 50.13314567506313, 50.13314567506313)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(48.000000938773155, 48.000000938773155, 48.000000938773155))
+}
+XUI["_UIGradient2"].Rotation = 62
+XUI["_UIGradient2"].Parent = XUI["_UIStroke1"]
+
+XUI["_UIGradient3"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
+}
+XUI["_UIGradient3"].Rotation = 68
+XUI["_UIGradient3"].Parent = XUI["_Menu"]
+
+XUI["_AddCustomModule"].Font = Enum.Font.Gotham
+XUI["_AddCustomModule"].Text = "添加自定义模块"
+XUI["_AddCustomModule"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_AddCustomModule"].TextScaled = true
+XUI["_AddCustomModule"].TextSize = 14
+XUI["_AddCustomModule"].TextWrapped = true
+XUI["_AddCustomModule"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_AddCustomModule"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
+XUI["_AddCustomModule"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_AddCustomModule"].BorderSizePixel = 0
+XUI["_AddCustomModule"].Position = UDim2.new(0.157244906, 0, 0.914238751, 0)
+XUI["_AddCustomModule"].Size = UDim2.new(0.260770977, 0, 0.111940302, 0)
+XUI["_AddCustomModule"].Name = "AddCustomModule"
+XUI["_AddCustomModule"].Parent = XUI["_Menu"]
+
+XUI["_UICorner4"].Parent = XUI["_AddCustomModule"]
+
+XUI["_UIPadding2"].PaddingBottom = UDim.new(0, 5)
+XUI["_UIPadding2"].PaddingLeft = UDim.new(0, 5)
+XUI["_UIPadding2"].PaddingRight = UDim.new(0, 5)
+XUI["_UIPadding2"].PaddingTop = UDim.new(0, 5)
+XUI["_UIPadding2"].Parent = XUI["_AddCustomModule"]
+
+XUI["_UIStroke2"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+XUI["_UIStroke2"].Color = Color3.fromRGB(255, 255, 255)
+XUI["_UIStroke2"].Parent = XUI["_AddCustomModule"]
+
+XUI["_UIScale"].Parent = XUI["_Menu"]
+
+XUI["_ListButton"].Font = Enum.Font.Gotham
+XUI["_ListButton"].Text = "占位符"
+XUI["_ListButton"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_ListButton"].TextSize = 14
+XUI["_ListButton"].TextWrapped = true
+XUI["_ListButton"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_ListButton"].BackgroundColor3 = Color3.fromRGB(49.00000087916851, 49.00000087916851, 49.00000087916851)
+XUI["_ListButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_ListButton"].BorderSizePixel = 0
+XUI["_ListButton"].Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
+XUI["_ListButton"].Size = UDim2.new(1, 0, 0, 50)
+XUI["_ListButton"].Visible = false
+XUI["_ListButton"].Name = "ListButton"
+XUI["_ListButton"].Parent = XUI["_YARHM"]
+
+XUI["_UICorner5"].Parent = XUI["_ListButton"]
+
+XUI["_Notifications"].AnchorPoint = Vector2.new(0, 0.5)
+XUI["_Notifications"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Notifications"].BackgroundTransparency = 1
+XUI["_Notifications"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Notifications"].BorderSizePixel = 0
+XUI["_Notifications"].Position = UDim2.new(-0.00062737026, 0, 0.499319851, 0)
+XUI["_Notifications"].Size = UDim2.new(0, 242, 1, 0)
+XUI["_Notifications"].Name = "Notifications"
+XUI["_Notifications"].Parent = XUI["_YARHM"]
+
+XUI["_UIListLayout1"].Padding = UDim.new(0, 10)
+XUI["_UIListLayout1"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+XUI["_UIListLayout1"].SortOrder = Enum.SortOrder.LayoutOrder
+XUI["_UIListLayout1"].VerticalAlignment = Enum.VerticalAlignment.Bottom
+XUI["_UIListLayout1"].Parent = XUI["_Notifications"]
+
+XUI["_UIPadding3"].PaddingBottom = UDim.new(0, 10)
+XUI["_UIPadding3"].PaddingLeft = UDim.new(0, 10)
+XUI["_UIPadding3"].Parent = XUI["_Notifications"]
+
+XUI["_Placeholder"].AnchorPoint = Vector2.new(0.5, 0)
+XUI["_Placeholder"].BackgroundColor3 = Color3.fromRGB(31.000001952052116, 31.000001952052116, 31.000001952052116)
+XUI["_Placeholder"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Placeholder"].BorderSizePixel = 0
+XUI["_Placeholder"].Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
+XUI["_Placeholder"].Visible = false
+XUI["_Placeholder"].Name = "Placeholder"
+XUI["_Placeholder"].Parent = XUI["_Notifications"]
+
+XUI["_UICorner6"].Parent = XUI["_Placeholder"]
+
+XUI["_TextLabel2"].Font = Enum.Font.Gotham
+XUI["_TextLabel2"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel2"].TextScaled = true
+XUI["_TextLabel2"].TextSize = 14
+XUI["_TextLabel2"].TextWrapped = true
+XUI["_TextLabel2"].TextXAlignment = Enum.TextXAlignment.Left
+XUI["_TextLabel2"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_TextLabel2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel2"].BackgroundTransparency = 1
+XUI["_TextLabel2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel2"].BorderSizePixel = 0
+XUI["_TextLabel2"].Position = UDim2.new(0.5, 0, 0.5, 0)
+XUI["_TextLabel2"].Size = UDim2.new(0.899999976, 0, 0.800000012, 0)
+XUI["_TextLabel2"].Parent = XUI["_Placeholder"]
+
+XUI["_TextBoxPlaceholder"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextBoxPlaceholder"].BackgroundTransparency = 1
+XUI["_TextBoxPlaceholder"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextBoxPlaceholder"].BorderSizePixel = 0
+XUI["_TextBoxPlaceholder"].Size = UDim2.new(1, 0, 0, 50)
+XUI["_TextBoxPlaceholder"].Visible = false
+XUI["_TextBoxPlaceholder"].Name = "TextBoxPlaceholder"
+XUI["_TextBoxPlaceholder"].Parent = XUI["_YARHM"]
+
+XUI["_UIListLayout2"].Padding = UDim.new(0, 5)
+XUI["_UIListLayout2"].FillDirection = Enum.FillDirection.Horizontal
+XUI["_UIListLayout2"].HorizontalAlignment = Enum.HorizontalAlignment.Center
+XUI["_UIListLayout2"].Parent = XUI["_TextBoxPlaceholder"]
+
+XUI["_TextButton"].Font = Enum.Font.Gotham
+XUI["_TextButton"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextButton"].TextScaled = true
+XUI["_TextButton"].TextSize = 14
+XUI["_TextButton"].TextWrapped = true
+XUI["_TextButton"].BackgroundColor3 = Color3.fromRGB(22.000000588595867, 22.000000588595867, 22.000000588595867)
+XUI["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextButton"].BorderSizePixel = 0
+XUI["_TextButton"].Position = UDim2.new(0.292333364, 0, 1.67999995, 0)
+XUI["_TextButton"].Size = UDim2.new(0, 50, 0, 50)
+XUI["_TextButton"].Parent = XUI["_TextBoxPlaceholder"]
+
+XUI["_UICorner7"].Parent = XUI["_TextButton"]
+
+XUI["_UIPadding4"].PaddingBottom = UDim.new(0, 5)
+XUI["_UIPadding4"].PaddingLeft = UDim.new(0, 5)
+XUI["_UIPadding4"].PaddingRight = UDim.new(0, 5)
+XUI["_UIPadding4"].PaddingTop = UDim.new(0, 5)
+XUI["_UIPadding4"].Parent = XUI["_TextButton"]
+
+XUI["_TextBox"].Font = Enum.Font.Gotham
+XUI["_TextBox"].PlaceholderText = "占位符"
+XUI["_TextBox"].Text = ""
+XUI["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextBox"].TextSize = 14
+XUI["_TextBox"].BackgroundColor3 = Color3.fromRGB(22.000000588595867, 22.000000588595867, 22.000000588595867)
+XUI["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextBox"].BorderSizePixel = 0
+XUI["_TextBox"].Size = UDim2.new(0.800000012, 0, 0, 50)
+XUI["_TextBox"].Parent = XUI["_TextBoxPlaceholder"]
+
+XUI["_UICorner8"].Parent = XUI["_TextBox"]
+
+XUI["_FloatingButton"].Font = Enum.Font.Unknown
+XUI["_FloatingButton"].Text = "射成凶手"
+XUI["_FloatingButton"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_FloatingButton"].TextScaled = true
+XUI["_FloatingButton"].TextSize = 14
+XUI["_FloatingButton"].TextWrapped = true
+XUI["_FloatingButton"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_FloatingButton"].BackgroundColor3 = Color3.fromRGB(31.000001952052116, 31.000001952052116, 31.000001952052116)
+XUI["_FloatingButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_FloatingButton"].BorderSizePixel = 0
+XUI["_FloatingButton"].Position = UDim2.new(0, 50, 0, 50)
+XUI["_FloatingButton"].Size = UDim2.new(0, 200, 0, 50)
+XUI["_FloatingButton"].Visible = false
+XUI["_FloatingButton"].Name = "FloatingButton"
+XUI["_FloatingButton"].Parent = XUI["_YARHM"]
+
+XUI["_UIPadding5"].PaddingBottom = UDim.new(0, 5)
+XUI["_UIPadding5"].PaddingLeft = UDim.new(0, 5)
+XUI["_UIPadding5"].PaddingRight = UDim.new(0, 5)
+XUI["_UIPadding5"].PaddingTop = UDim.new(0, 5)
+XUI["_UIPadding5"].Parent = XUI["_FloatingButton"]
+
+XUI["_UICorner9"].Parent = XUI["_FloatingButton"]
+
+XUI["_FloatingButtons"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_FloatingButtons"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_FloatingButtons"].BackgroundTransparency = 1
+XUI["_FloatingButtons"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_FloatingButtons"].BorderSizePixel = 0
+XUI["_FloatingButtons"].Position = UDim2.new(0.5, 0, 0.5, 0)
+XUI["_FloatingButtons"].Size = UDim2.new(1, 0, 1, 0)
+XUI["_FloatingButtons"].ZIndex = 0
+XUI["_FloatingButtons"].Name = "FloatingButtons"
+XUI["_FloatingButtons"].Parent = XUI["_YARHM"]
+
+XUI["_DroppedGunBGUI"].Active = true
+XUI["_DroppedGunBGUI"].AlwaysOnTop = true
+XUI["_DroppedGunBGUI"].ClipsDescendants = true
+XUI["_DroppedGunBGUI"].Size = UDim2.new(0, 70, 0, 70)
+XUI["_DroppedGunBGUI"].Enabled = false
+XUI["_DroppedGunBGUI"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+XUI["_DroppedGunBGUI"].Name = "DroppedGunBGUI"
+XUI["_DroppedGunBGUI"].Parent = XUI["_YARHM"]
+
+XUI["_TextLabel3"].Font = Enum.Font.SourceSansBold
+XUI["_TextLabel3"].Text = "扔枪！"
+XUI["_TextLabel3"].TextColor3 = Color3.fromRGB(255, 225.00001698732376, 0)
+XUI["_TextLabel3"].TextScaled = true
+XUI["_TextLabel3"].TextSize = 14
+XUI["_TextLabel3"].TextWrapped = true
+XUI["_TextLabel3"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_TextLabel3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel3"].BackgroundTransparency = 1
+XUI["_TextLabel3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel3"].BorderSizePixel = 0
+XUI["_TextLabel3"].Position = UDim2.new(0.5, 0, 0.5, 0)
+XUI["_TextLabel3"].Size = UDim2.new(1, 0, 1, 0)
+XUI["_TextLabel3"].Parent = XUI["_DroppedGunBGUI"]
+
+XUI["_UIStroke3"].Parent = XUI["_TextLabel3"]
+
+XUI["_AddCustomModule1"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_AddCustomModule1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_AddCustomModule1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_AddCustomModule1"].BorderSizePixel = 0
+XUI["_AddCustomModule1"].ClipsDescendants = true
+XUI["_AddCustomModule1"].Position = UDim2.new(0.5, 0, -0.5, 0)
+XUI["_AddCustomModule1"].Size = UDim2.new(0, 440, 0, 268)
+XUI["_AddCustomModule1"].Name = "AddCustomModule"
+XUI["_AddCustomModule1"].Parent = XUI["_YARHM"]
+
+XUI["_UICorner10"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_UIStroke4"].Color = Color3.fromRGB(255, 255, 255)
+XUI["_UIStroke4"].Thickness = 2
+XUI["_UIStroke4"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_UIGradient4"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
+	ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(50.69031357765198, 50.69031357765198, 50.69031357765198)),
+	ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 255, 255)),
+	ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(50.13314567506313, 50.13314567506313, 50.13314567506313)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(48.000000938773155, 48.000000938773155, 48.000000938773155))
+}
+
+XUI["_UIGradient4"].Rotation = 62
+XUI["_UIGradient4"].Parent = XUI["_UIStroke4"]
+
+XUI["_UIGradient5"].Color = ColorSequence.new{
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
+}
+XUI["_UIGradient5"].Rotation = 68
+XUI["_UIGradient5"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_UIScale1"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_TextLabel4"].Font = Enum.Font.Gotham
+XUI["_TextLabel4"].Text = "添加自定义模块"
+XUI["_TextLabel4"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel4"].TextScaled = true
+XUI["_TextLabel4"].TextSize = 14
+XUI["_TextLabel4"].TextWrapped = true
+XUI["_TextLabel4"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_TextLabel4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel4"].BackgroundTransparency = 1
+XUI["_TextLabel4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel4"].BorderSizePixel = 0
+XUI["_TextLabel4"].Position = UDim2.new(0.352256238, 0, 0.133915231, 0)
+XUI["_TextLabel4"].Size = UDim2.new(0.619047642, 0, 0.125920027, 0)
+XUI["_TextLabel4"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_TextBox1"].ClearTextOnFocus = false
+XUI["_TextBox1"].Font = Enum.Font.Gotham
+XUI["_TextBox1"].PlaceholderText = "自定义模块链接"
+XUI["_TextBox1"].Text = ""
+XUI["_TextBox1"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextBox1"].TextScaled = true
+XUI["_TextBox1"].TextSize = 14
+XUI["_TextBox1"].TextWrapped = true
+XUI["_TextBox1"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_TextBox1"].BackgroundColor3 = Color3.fromRGB(22.000000588595867, 22.000000588595867, 22.000000588595867)
+XUI["_TextBox1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextBox1"].BorderSizePixel = 0
+XUI["_TextBox1"].Position = UDim2.new(0.499648541, 0, 0.500059664, 0)
+XUI["_TextBox1"].Size = UDim2.new(0.804988742, 0, 0.544776142, 0)
+XUI["_TextBox1"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_UICorner11"].Parent = XUI["_TextBox1"]
+
+XUI["_UIPadding6"].PaddingBottom = UDim.new(0, 10)
+XUI["_UIPadding6"].PaddingLeft = UDim.new(0, 10)
+XUI["_UIPadding6"].PaddingRight = UDim.new(0, 10)
+XUI["_UIPadding6"].PaddingTop = UDim.new(0, 10)
+XUI["_UIPadding6"].Parent = XUI["_TextBox1"]
+
+XUI["_TextLabel5"].Font = Enum.Font.Gotham
+XUI["_TextLabel5"].Text = "只添加您信任的自定义模块!"
+XUI["_TextLabel5"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel5"].TextScaled = true
+XUI["_TextLabel5"].TextSize = 14
+XUI["_TextLabel5"].TextWrapped = true
+XUI["_TextLabel5"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_TextLabel5"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_TextLabel5"].BackgroundTransparency = 1
+XUI["_TextLabel5"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel5"].BorderSizePixel = 0
+XUI["_TextLabel5"].Position = UDim2.new(0.499648541, 0, 0.833542168, 0)
+XUI["_TextLabel5"].Size = UDim2.new(0.619047642, 0, 0.0550245307, 0)
+XUI["_TextLabel5"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_Add"].Font = Enum.Font.Gotham
+XUI["_Add"].Text = "增加"
+XUI["_Add"].TextColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Add"].TextScaled = true
+XUI["_Add"].TextSize = 14
+XUI["_Add"].TextWrapped = true
+XUI["_Add"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_Add"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
+XUI["_Add"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Add"].BorderSizePixel = 0
+XUI["_Add"].Position = UDim2.new(0.108492024, 0, 0.927298486, 0)
+XUI["_Add"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
+XUI["_Add"].Name = "Add"
+XUI["_Add"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_UICorner12"].Parent = XUI["_Add"]
+
+XUI["_UIPadding7"].PaddingBottom = UDim.new(0, 5)
+XUI["_UIPadding7"].PaddingLeft = UDim.new(0, 5)
+XUI["_UIPadding7"].PaddingRight = UDim.new(0, 5)
+XUI["_UIPadding7"].PaddingTop = UDim.new(0, 5)
+XUI["_UIPadding7"].Parent = XUI["_Add"]
+
+XUI["_UIStroke5"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+XUI["_UIStroke5"].Color = Color3.fromRGB(255, 255, 255)
+XUI["_UIStroke5"].Parent = XUI["_Add"]
+
+XUI["_Cancel"].Font = Enum.Font.Gotham
+XUI["_Cancel"].Text = "取消"
+XUI["_Cancel"].TextColor3 = Color3.fromRGB(255, 0, 0)
+XUI["_Cancel"].TextScaled = true
+XUI["_Cancel"].TextSize = 14
+XUI["_Cancel"].TextWrapped = true
+XUI["_Cancel"].AnchorPoint = Vector2.new(0.5, 0.5)
+XUI["_Cancel"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
+XUI["_Cancel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Cancel"].BorderSizePixel = 0
+XUI["_Cancel"].Position = UDim2.new(0.899875283, 0, 0.931029797, 0)
+XUI["_Cancel"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
+XUI["_Cancel"].Name = "Cancel"
+XUI["_Cancel"].Parent = XUI["_AddCustomModule1"]
+
+XUI["_UICorner13"].Parent = XUI["_Cancel"]
+
+XUI["_UIPadding8"].PaddingBottom = UDim.new(0, 5)
+XUI["_UIPadding8"].PaddingLeft = UDim.new(0, 5)
+XUI["_UIPadding8"].PaddingRight = UDim.new(0, 5)
+XUI["_UIPadding8"].PaddingTop = UDim.new(0, 5)
+XUI["_UIPadding8"].Parent = XUI["_Cancel"]
+
+XUI["_UIStroke6"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+XUI["_UIStroke6"].Color = Color3.fromRGB(255, 0, 0)
+XUI["_UIStroke6"].Parent = XUI["_Cancel"]
+
+-- Fake Module Scripts:
+
+local fake_module_scripts = {}
+
+do -- Fake Module: StarterGui.YARHM.FUNCTIONS
+    local script = Instance.new("ModuleScript")
+    script.Name = "FUNCTIONS"
+    script.Parent = XUI["_YARHM"]
+    local function module_script()
+		local module = {}
+		
+		local ts = game:GetService("TweenService")
+		
+		local States = {}
+		AREA = script.Parent.Menu.Area
+		local function calculateWidth(n)
+			if n <= 3 then
+				return 30
+			else
+				local base = 30
+				local additional = math.floor((n - 3) / 3) * 30
+				return base + additional
+			end
+		end
+		
+		local selected = Instance.new("ObjectValue")
+		selected.Parent = script.Parent
+		selected.Name = "Selected"
+		
+		function loader(module)
+			local unloadtween = ts:Create(AREA, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+				Position = UDim2.fromScale(1.55, 0.606)
+			})
+		
+			unloadtween:Play()
+			unloadtween.Completed:Wait()
+		
+			AREA:ClearAllChildren()
+			local listlayout = Instance.new("UIListLayout")
+			listlayout.Parent = AREA
+			listlayout.Padding = UDim.new(0, 10)
+			listlayout.FillDirection = Enum.FillDirection.Vertical
+			listlayout.SortOrder = Enum.SortOrder.LayoutOrder
+			listlayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+			for _, item in ipairs(module) do
+				if item["Type"] == "Text" then
+		
+					local text = Instance.new("TextLabel")
+					text.Parent = AREA
+		
+					text.BackgroundTransparency = 1
+					text.Text = item["Args"][1]
+					text.TextScaled = true
+					text.TextColor3 = Color3.fromRGB(255,255,255)
+					text.Font = Enum.Font.GothamBold
+					text.Size = UDim2.new(1,0,0,20)
+					text.TextXAlignment = item["Args"][2] == "center" and Enum.TextXAlignment.Center or Enum.TextXAlignment.Left
+					text.RichText = true
+		
+		
+				elseif item["Type"] == "Button" then
+		
+					local button = Instance.new("TextButton")
+					button.Parent = AREA
+		
+					button.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+					button.Text = item["Args"][1]
+					button.TextScaled = true
+					button.TextColor3 = Color3.fromRGB(255,255,255)
+					button.Font = Enum.Font.GothamBold
+					button.Size = UDim2.new(1,0,0,25)
+		
+					local padding = Instance.new("UIPadding")
+					padding.Parent = button
+		
+					padding.PaddingTop = UDim.new(0, 5)
+					padding.PaddingBottom = UDim.new(0, 5)
+		
+		
+					Instance.new("UICorner", button)
+		
+					local hold = false
+		
+					button.MouseButton1Click:Connect(function()
+						item["Args"][2](button)
+					end)
+		
+					button.MouseButton1Down:Connect(function()
+						hold = true
+						task.spawn(function()
+							task.wait(0.5)
+							if not hold then return end
+							if not _G.YARHM.FloatingButtons:FindFirstChild(item["Args"][1]) then
+		
+		
+								local newFloatingButton = _G.YARHM.FloatingButton:Clone()
+								newFloatingButton.Parent = _G.YARHM.FloatingButtons
+								newFloatingButton.Name = item["Args"][1]
+								newFloatingButton.Text = item["Args"][1]
+								newFloatingButton.Visible = true
+		
+								newFloatingButton.MouseButton1Click:Connect(function()
+									item["Args"][2](newFloatingButton)
+								end)
+		
+								newFloatingButton.Size = UDim2.fromOffset(0, 0)
+								ts:Create(newFloatingButton, TweenInfo.new(1, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out), {
+									Size = UDim2.fromOffset(200, 50)
+								}):Play()
+		
+								local UserInputService = game:GetService("UserInputService")
+		
+								local gui = newFloatingButton
+		
+								local dragging
+								local dragInput
+								local dragStart
+								local startPos
+		
+								local function update(input)
+									local delta = input.Position - dragStart
+									ts:Create(gui, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+										Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+									}):Play()
+								end
+		
+								gui.InputBegan:Connect(function(input)
+									if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+										dragging = true
+										dragStart = input.Position
+										startPos = gui.Position
+		
+										input.Changed:Connect(function()
+											if input.UserInputState == Enum.UserInputState.End then
+												dragging = false
+											end
+										end)
+									end
+								end)
+		
+								gui.InputChanged:Connect(function(input)
+									if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+										dragInput = input
+									end
+								end)
+		
+								UserInputService.InputChanged:Connect(function(input)
+									if input == dragInput and dragging then
+										update(input)
+									end
+								end)
+		
+							else
+								_G.YARHM.FloatingButtons:FindFirstChild(item["Args"][1]):Destroy()
+							end
+						end)
+					end)
+		
+					button.MouseButton1Up:Connect(function()
+						hold = false
+					end)
+					button.MouseLeave:Connect(function()
+						hold = false
+					end)
+				elseif item["Type"] == "ButtonGrid" then
+		
+		
+		
+		
+					local frame = Instance.new("Frame")
+					frame.Parent = AREA
+					frame.Size = UDim2.new(1, 0, 0, calculateWidth(#item["Args"][2]))
+					frame.BackgroundTransparency = 1
+		
+		
+					local gridlayout = Instance.new("UIGridLayout")
+					gridlayout.Parent = frame
+					gridlayout.CellSize = UDim2.new((1 / item["Args"][1]) - 0.03, 0, 0, 30) -- remove 0.03 because if not it would wrap on its own lol
+		
+					--print("------")
+					--print(item["Args"][2])
+					--print(States)
+					for buttonname, args in item["Args"][2] do
+						local button = Instance.new("TextButton")
+						button.Parent = frame
+		
+						--print(args)
+						button.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+						if States[buttonname .. module.Name] then
+							button.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+						end
+						button.Text = string.gsub(buttonname, "_", " ")
+						button.TextScaled = true
+						button.TextColor3 = Color3.fromRGB(255,255,255)
+						button.Font = Enum.Font.GothamBold
+		
+						local padding = Instance.new("UIPadding")
+						padding.Parent = button
+		
+						padding.PaddingTop = UDim.new(0, 5)
+						padding.PaddingBottom = UDim.new(0, 5)
+		
+						Instance.new("UICorner", button)
+		
+						button.MouseButton1Click:Connect(function()
+							if item["Toggleable"] then
+								item["Args"][2][buttonname](button)
+								--print(States[buttonname .. module.Name])
+								if States[buttonname .. module.Name] then
+									ts:Create(button, TweenInfo.new(0.3), {
+										BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+									}):Play()
+									States[buttonname .. module.Name] = false
+								else
+									ts:Create(button, TweenInfo.new(0.3), {
+										BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+									}):Play()
+									States[buttonname .. module.Name] = true
+								end
+							else
+								item["Args"][2][buttonname](button)
+							end
+						end)
+					end
+		
+		
+				elseif item["Type"] == "Input" then
+					local cloneinput = _G.YARHM.TextBoxPlaceholder:Clone()
+					cloneinput.Parent = AREA
+					cloneinput.Visible = true
+		
+					cloneinput.TextBox.PlaceholderText = item["Args"][1]
+					cloneinput.TextButton.Text = item["Args"][2]
+		
+					cloneinput.TextButton.MouseButton1Click:Connect(function()
+						item["Args"][3](cloneinput.TextButton, cloneinput.TextBox.Text)
+					end)
+				end
+			end
+		
+			ts:Create(AREA, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				Position = UDim2.fromScale(0.66, 0.606)
+			}):Play()
+		end
+		
+		function module.notification(s)
+			task.spawn(function()
+				local notif = script.Parent.Notifications.Placeholder:Clone()
+				notif.Parent = script.Parent.Notifications
+				notif.Visible = true
+				notif.Name = "notification"
+				notif.TextLabel.Text = s
+				ts:Create(notif, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+					Size = UDim2.new(1,0,0,40)
+				}):Play()
+				task.wait(3)
+				local dismiss = ts:Create(notif, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+					Size = UDim2.new(0,0,0,0)
+				})
+				dismiss:Play()
+				dismiss.Completed:Wait()
+				notif:Destroy()
+			end)
+		end
+		
+		function module.refreshlist()
+			for _, v in ipairs(script.Parent.Menu.List.ScrollingFrame:GetChildren()) do
+				if v:IsA("TextButton") then
+					v:Destroy()
+				end
+			end
+			for modulei, module in ipairs(_G.Modules) do
+				local success, err = pcall(function()
+					local listbutton = _G.YARHM.ListButton:Clone()
+					listbutton.Parent = script.Parent.Menu.List.ScrollingFrame
+					listbutton.Name = module.Name
+					listbutton.Text = module.Name
+					listbutton.Visible = true
+		
+					listbutton.MouseButton1Click:Connect(function()
+		
+						if selected.Value then
+							ts:Create(selected.Value, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+								BackgroundColor3 = Color3.fromRGB(49, 49, 49),
+								TextColor3 = Color3.fromRGB(255,255,255)
+							}):Play()
+						end
+		
+						selected.Value = listbutton
+		
+						ts:Create(selected.Value, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+							BackgroundColor3 = Color3.fromRGB(255,255,255),
+							TextColor3 = Color3.fromRGB(0,0,0)
+						}):Play()
+		
+						loader(_G.Modules[modulei])
+					end)
+		
+		
+		
+					listbutton.MouseButton1Down:Connect(function()
+						ts:Create(listbutton, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+							Size = UDim2.new(1,-10,0, 40)
+						}):Play()
+					end)
+		
+					listbutton.MouseButton1Up:Connect(function()
+						ts:Create(listbutton, TweenInfo.new(1.2, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out), {
+							Size = UDim2.new(1,0,0,50),
+		
+						}):Play()
+					end)
+		
+					listbutton.MouseLeave:Connect(function()
+						ts:Create(listbutton, TweenInfo.new(0.7, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+							Size = UDim2.new(1,0,0,50),
+		
+						}):Play()
+					end)
+		
+				end)
+				if not success then
+					warn("[YARHM] Error while requiring " .. module.Name .. "!")
+					warn(err)
+				end
+			end
+		end
+		
+		return module
+		
+    end
+    fake_module_scripts[script] = module_script
+end
+
+-- Fake Local Scripts:
+
+local function GICVX_fake_script() -- Fake Script: StarterGui.YARHM.Open.InitOpen
+    local script = Instance.new("LocalScript")
+    script.Name = "InitOpen"
+    script.Parent = XUI["_Open"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local ts = game:GetService("TweenService")
+	
+	
+	local stroke = Instance.new("UIStroke")
+	stroke.Parent = script.Parent
+	stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	stroke.Color = Color3.fromRGB(255,255,255)
+	
+	
+	script.Parent.Position = UDim2.fromScale(0.5, -1)
+	ts:Create(script.Parent, TweenInfo.new(1.5, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out), {
+		Position = UDim2.fromScale(0.5, 0.063)
+	}):Play()
+	
+	
+	task.wait(5)
+	ts:Create(script.Parent, TweenInfo.new(5), {
+		TextTransparency = 1
+	}):Play()
+	ts:Create(stroke, TweenInfo.new(5), {
+		Transparency = 1
+	}):Play()
+end
+local function ZNDKBAA_fake_script() -- Fake Script: StarterGui.YARHM.Open.OnClick
+    local script = Instance.new("LocalScript")
+    script.Name = "OnClick"
+    script.Parent = XUI["_Open"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local ts = game:GetService("TweenService")
+	
+	
+	local clickCount = 0
+	local lastClickTime = tick()
+	script.Parent.MouseButton1Click:Connect(function()
+		local currentTime = tick()
+		
+		script.Parent.TextTransparency = 0.5
+		ts:Create(script.Parent, TweenInfo.new(1),
+			{TextTransparency = 1}
+		):Play()
+		
+		-- Check if the time since the last click is within a certain threshold
+		if currentTime - lastClickTime < 0.5 then
+			clickCount = clickCount + 1
+		else
+			
+			clickCount = 1
+		end
+	
+		lastClickTime = currentTime
+	
+		if clickCount == 3 then
+			-- Triple-click detected
+	
+			ts:Create(_G.YARHM.Menu, TweenInfo.new(0.7, Enum.EasingStyle.Back, Enum.EasingDirection.Out), 
+				{Position = UDim2.fromScale(0.499, 0.041), Size = UDim2.fromOffset(441, 268)}
+			):Play()
+		end
+	end)
+	
+end
+local function VNSWJ_fake_script() -- Fake Script: StarterGui.YARHM.Menu.List.AutoSetup
+    local script = Instance.new("LocalScript")
+    script.Name = "AutoSetup"
+    script.Parent = XUI["_List"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local ts = game:GetService("TweenService")
+	
+	
+	local States = {}
+	
+	local FloatingButtonConnectionsMouse = {}
+	local FloatingButtonConnectionsTouch = {}
+	
+	task.wait(1)
+	
+	AREA = script.Parent.Parent.Area
+	
+	local function calculateWidth(n)
+		if n <= 3 then
+			return 30
+		else
+			local base = 30
+			local additional = math.floor((n - 3) / 3) * 30
+			return base + additional
+		end
+	end
+	
+	local listlayout = Instance.new("UIListLayout")
+	listlayout.Parent = AREA
+	listlayout.Padding = UDim.new(0, 10)
+	listlayout.FillDirection = Enum.FillDirection.Vertical
+	listlayout.SortOrder = Enum.SortOrder.LayoutOrder
+	listlayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	
+	
+	
+	
+	task.wait(1) -- magic number to wait modules to load lmao
+	require(script.Parent.Parent.Parent.FUNCTIONS).refreshlist()
+end
+local function TTVRS_fake_script() -- Fake Script: StarterGui.YARHM.Menu.Close.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = XUI["_Close"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local ts = game:GetService("TweenService")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		ts:Create(_G.YARHM.Menu, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), 
+			{Position = UDim2.fromScale(0.499, 0), Size = UDim2.fromOffset(441, 0)}
+		):Play()
+	end)
+end
+local function TZEK_fake_script() -- Fake Script: StarterGui.YARHM.Menu.AddCustomModule.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = XUI["_AddCustomModule"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local ts = game:GetService("TweenService")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		ts:Create(script.Parent.Parent.UIScale, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Scale = 0.9
+		}):Play()
+		ts:Create(script.Parent.Parent.Parent.AddCustomModule, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Position = UDim2.fromScale(0.5, 0.5)
+		}):Play()
+	end)
+end
+local function GIGHQO_fake_script() -- Fake Script: StarterGui.YARHM.Init
+    local script = Instance.new("LocalScript")
+    script.Name = "Init"
+    script.Parent = XUI["_YARHM"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	_G.YARHM = script.Parent
+	
+	
+	
+	script.Parent.SafeAreaCompatibility = Enum.SafeAreaCompatibility.None
+	script.Parent.ScreenInsets = Enum.ScreenInsets.None
+	script.Parent.ResetOnSpawn = false
+	
+	
+	script.Parent.Menu.Position = UDim2.fromScale(0.5, 0)
+	script.Parent.Menu.Size = UDim2.fromOffset(441,0)
+	
+	_G.Modules = {}
+	
+	require(script.Parent.FUNCTIONS).notification("通用全部加载完毕，谢谢使用:)")
+	require(script.Parent.FUNCTIONS).notification("隐藏界面只有楼主:xxxxg 知道怎么进入,想知道怎么进入自己猜")
+end
+local function RMKEEKN_fake_script() 
+    local script = Instance.new("LocalScript")
+    script.Name = "Flee the Facility"
+    script.Parent = XUI["_YARHM"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local module = {}
+	module["gameId"] = 893973440 -- Restrict module to a certain game ID only. 0 allows all games.
+	if (module["gameId"] ~= game.GameId) and module["gameId"] ~= 0 then
+		script.Enabled = false
+	end
+	
+	module["Name"] = "Flee the Facility"
+	
+	local ts = game:GetService("TweenService")
+	
+	local FUNCTIONS = require(script.Parent.FUNCTIONS)
+	
+	
+	module.players = false
+	module.pcs = false
+	module.pods = false
+	module.exits = false
+	
+	module.antipcerror = false
+	module.flashlight = false
+	
+	local esps = {}
+	
+	local function getBeast()
+		local listplayers = game.Players:GetChildren()
+		for _, player in ipairs(listplayers) do
+			local character = player.Character
+			if character ~= nil and character:FindFirstChild("BeastPowers") then
+				return player
+			end
+		end
+	end
+	
+	local function reloadESP()
+	
+	
+		for _, i in ipairs(workspace:GetChildren()) do
+			if i.Name == "PlayerHighlight" and not module.players then
+				i:Destroy()
+			end
+	
+			if i.Name == "PCHighlight" and not module.pcs then
+				i:Destroy()
+			end
+	
+			if i.Name == "PodsHighlight" and not module.pods then
+				i:Destroy()
+			end
+	
+			if i.Name == "ExitsHighlight" and not module.exits then
+				i:Destroy()
+			end
+		end
+	
+		if module.players then
+	
+	
+	
+			local listplayers = game.Players:GetChildren()
+			for _, player in ipairs(listplayers) do
+				if player ~= game.Players.LocalPlayer and player.Character ~= nil then
+					local character = player.Character
+					if not character:FindFirstChild("PlayerHighlight") then
+						local a = Instance.new("Highlight", workspace)
+						esps["PlayerHighlight"] = a
+						a.Name = "PlayerHighlight"
+						a.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+						a.Adornee = character
+						task.spawn(function()
+							repeat
+								task.wait(0.1)
+								if player == getBeast() then
+									a.FillColor = Color3.fromRGB(255,0,0)
+								else
+									a.FillColor = Color3.fromRGB(0,255,0)
+								end
+							until character == nil or a == nil
+						end)
+					end
+				end
+			end
+	
+	
+		end
+	
+		if module.pcs then
+	
+	
+	
+	
+			for _, obj in ipairs(game.Workspace:GetDescendants()) do
+                        if obj.Name == "ComputerTable" and not obj:FindFirstChild("PCHighlight") then
+					local hili = Instance.new("Highlight", workspace)
+					esps["PCHighlight"] = hili
+					hili.Name = "PCHighlight"
+					hili.OutlineTransparency = 1
+					hili.Adornee = obj
+					hili.FillColor = obj:FindFirstChild("Screen").Color
+				end
+			end
+	
+	
+		end
+	
+		if module.pods then
+	
+	
+	
+			for _, obj in ipairs(game.Workspace:GetDescendants()) do
+				if obj.Name == "FreezePod" then
+					local hili = Instance.new("Highlight", workspace)
+					esps["PodsHighlight"] = hili
+					hili.Name = "PodsHighlight"
+					hili.OutlineTransparency = 1
+					hili.Adornee = obj
+					hili.FillColor = Color3.fromRGB(0, 200, 255)
+				end
+			end
+	
+		end
+	
+	
+		if module.exits then
+	
+	
+	
+			for _, obj in ipairs(game.Workspace:GetDescendants()) do
+				if obj.Name == "ExitDoor" and not obj:FindFirstChild("ExitsHighlight") then
+					local hili = Instance.new("Highlight", workspace)
+					esps["ExitsHighlight"] = hili
+					hili.Name = "ExitsHighlight"
+					hili.OutlineTransparency = 1
+					hili.Adornee = obj
+					hili.FillColor = Color3.fromRGB(255,255,0)
+				end
+			end
+	
+		end
+	end
+	
+	
+	
+	
+	module[1] = {
+		Type = "Text",
+		Args = {"ESPs"}
+	}
+	
+	module[2] = {
+		Type = "ButtonGrid",
+		Toggleable = true, -- Recolors buttons for you onclick, you still need to save the state yourself
+		Args = {3, { -- 3 is the number of columns
+			Players = function(Self)
+	
+				if module.players then
+					module.players = false
+					reloadESP()
+				else
+					module.players = true
+					reloadESP()
+				end
+	
+	
+			end,
+			PCs = function(Self)
+	
+				if module.pcs then
+					module.pcs = false
+					reloadESP()
+				else
+					module.pcs = true
+					reloadESP()
+				end
+	
+			end,
+			Pods = function(Self)
+	
+				if module.pods then
+					module.pods = false
+					reloadESP()
+				else
+					module.pods = true
+					reloadESP()
+				end
+				
+	
+			end,
+			Exits = function(Self)
+	
+				if module.exits then
+					module.exits = false
+					reloadESP()
+				else
+					module.exits = true
+					reloadESP()
+				end
+	
+			end,
+		}
+		} 
+	}
+	module[3] = { -- spacing, button grid doesnt correctly height himself for some reason
+		Type = "Text",
+		Args = {""}
+	}
+	
+	module[4] = {
+		Type = "Text",
+		Args = {"Tools"}
+	}
+	
+	
+	local root = game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+	
+	light = Instance.new("PointLight", root)
+	light.Brightness = 0
+	light.Range = 9999999999
+	
+	local wslock = false
+	local ws = 18
+	
+	local antifail = false
+	
+	
+	task.spawn(function() 
+		if game:GetService("RunService"):IsStudio() then return end -- :)
+		
+		local OldNameCall = nil
+	
+		OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
+			local Args = {...}
+			local NamecallMethod = getnamecallmethod()
+	
+			if NamecallMethod == "FireServer" and Args[1] == "SetPlayerMinigameResult" and antifail then
+				print("迷你游戏结果 - 拦截结果为true")
+				Args[2] = true
+			end
+	
+			return OldNameCall(Self, unpack(Args))
+		end)
+	
+	end)
+	
+	
+	module[5] = {
+		Type = "ButtonGrid",
+		Toggleable = true,
+		Args = {3, {
+			Anti_PC_Error = function()
+				if antifail then antifail = false else antifail = true end
+			end,
+			Flashlight = function()
+				if light.Brightness == 0 then
+					light.Brightness = 2.5
+				else
+					light.Brightness = 0
+				end
+			end,
+		}}
+	}
+	
+	task.spawn(function()
+		while task.wait(0.1) do
+			if wslock then
+				root.Parent:WaitForChild("Humanoid").Walkspeed = ws
+			end
+		end
+	end)
+	
+	module[6] = {
+		Type = "Input",
+		Args = {"步行速度", "Set & Lock", function(Self, text)
+			if not tonumber(text) then
+				FUNCTIONS.notification("输入不是有效的数字.")
+				return
+			end
+			
+			ws = tonumber(text)
+			wslock = true
+		end,}
+	}
+	
+	module[7] = {
+		Type = "Button",
+		Args = {"解锁所有人", function()
+			wslock = false
+		end,}
+	}	
+	
+	module[8] = {
+		Type = "Text",
+		Args = {"锁定意味着无论如何，您的速度将保持不变.这意味着当爬行或跳跃时，你不会慢慢."}
+	}
+	
+	
+	_G.Modules[2] = module
+end
+local function CSGP_fake_script() -- Fake Script: StarterGui.YARHM.Universal
+    local script = Instance.new("LocalScript")
+    script.Name = "万能"
+    script.Parent = XUI["_YARHM"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local module = {}
+	module["gameId"] = 0 -- Restrict module to a certain game ID only. 0 allows all games.
+	if (module["gameId"] ~= game.GameId) and module["gameId"] ~= 0 then
+		script.Enabled = true
+	end
+	
+	module["Name"] = "Universal"
+	
+	local ts = game:GetService("TweenService")
+	
+	module[1] = {
+		Type = "Text",
+		Args = {"通用模块 - 适用于大多数游戏"}
+	}
+	
+	module[2] = {
+		Type = "Button",
+		Args = {"无限产量", function(Self)
+			loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+		end}
+	}
+	
+	module[3] = {
+		Type = "Text",
+		Args = {"---"}
+	}
+	
+	module[4] = {
+		Type = "Button",
+		Args = {"将移动标题设置带底部", function(Self)
+			_G.YARHM.Open.UIStroke.Transparency = 0
+			_G.YARHM.Open.TextTransparency = 0
+			ts:Create(_G.YARHM.Open, TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+				Position = UDim2.fromScale(0.5, 0.903)
+			}):Play()
+			
+			ts:Create(_G.YARHM.Open.UIStroke, TweenInfo.new(1), {
+				Transparency = 1
+			}):Play()
+			ts:Create(_G.YARHM.Open, TweenInfo.new(1), {
+				TextTransparency = 1
+			}):Play()
+		end}
+	}
+	
+	module[5] = {
+		Type = "Button",
+		Args = {"将移动标题返回顶部", function(Self)
+			_G.YARHM.Open.UIStroke.Transparency = 0
+			_G.YARHM.Open.TextTransparency = 0
+			ts:Create(_G.YARHM.Open, TweenInfo.new(1, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+				Position = UDim2.fromScale(0.5, 0.063)
+			}):Play()
+	
+			ts:Create(_G.YARHM.Open.UIStroke, TweenInfo.new(1), {
+				Transparency = 1
+			}):Play()
+			ts:Create(_G.YARHM.Open, TweenInfo.new(1), {
+				TextTransparency = 1
+			}):Play()
+		end}
+	}
+	
+	_G.Modules[1] = module
+end
+local function LOAOODV_fake_script() -- Fake Script: StarterGui.YARHM.Murder Mystery 2
+    local script = Instance.new("LocalScript")
+    script.Name = "谋杀神秘2"
+    script.Parent = XUI["_YARHM"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local module = {}
+	module["gameId"] = 0 -- 66654135 -- Restrict module to a certain game ID only. 0 allows all games.
+	
+	local playerESP = false
+	local sheriffAimbot = false
+	local coinAutoCollect = false
+	local autoShooting = false
+	local shootOffset = 3.5
+	
+	local phs = game:GetService("PathfindingService")
+	
+	local fu = require(script.Parent.FUNCTIONS)
+	
+	local function findMurderer()
+		for _, i in ipairs(game.Players:GetPlayers()) do
+			if i.Backpack:FindFirstChild("Knife") then
+				return i
+			end
+		end
+	
+		for _, i in ipairs(game.Players:GetPlayers()) do
+			if i.Character:FindFirstChild("Knife") then
+				return i
+			end
+		end
+	
+		return nil
+	end
+	
+	local function findSheriff()
+		for _, i in ipairs(game.Players:GetPlayers()) do
+			if i.Backpack:FindFirstChild("Gun") then
+				return i
+			end
+		end
+	
+		for _, i in ipairs(game.Players:GetPlayers()) do
+			if i.Character:FindFirstChild("Gun") then
+				return i
+			end
+		end
+	
+		return nil
+	end
+	
+	
+	
+	
+	--task.spawn(function() 
+	--	if game:GetService("RunService"):IsStudio() then return end -- :)
+	
+	--	local OldNameCall = nil
+	
+	--	OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
+	--		local Args = {...}
+	--		local NamecallMethod = getnamecallmethod()
+	
+	--		if NamecallMethod == "InvokeServer" and Args[1] == 1 and sheriffAimbot then
+	--			if not findMurderer() then
+	--				print("No murderer to be shot!")
+	--			else
+	--				print("Shot - Intercepting shot to murderer")
+	--				Args[2] = findMurderer().Character:FindFirstChild("HumanoidRootPart").Position
+	--			end
+	--		end
+	
+	--		return OldNameCall(Self, unpack(Args))
+	--	end)
+	
+	--end)
+	
+	-- I honestly don't know what went wrong so if any of you experts know why this stuff aint working make a pull request :praying_hands_emoji:
+	
+	
+	module["Name"] = "谋杀神秘2"
+	
+	-- Player ESP
+	workspace.ChildAdded:Connect(function(ch)
+		if ch.Name == "Normal" and playerESP then
+			fu.notification("地图已加载，等待角色...")
+			repeat
+				task.wait(1)
+			until findMurderer()
+			local listplayers = game.Players:GetChildren()
+			for _, player in ipairs(listplayers) do
+				if  player.Character ~= nil then
+					local character = player.Character
+					if not character:FindFirstChild("PlayerESP") then
+						local a = Instance.new("Highlight", script.Parent)
+						a.Name = "PlayerESP"
+						a.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+						a.Adornee = character
+						a.FillColor = Color3.fromRGB(255, 255, 255)
+						task.spawn(function()
+							if player == findMurderer() then
+								a.FillColor = Color3.fromRGB(255,0,0)
+							elseif player == findSheriff() then
+																a.FillColor = Color3.fromRGB(0, 150, 255)
+							else
+								a.FillColor = Color3.fromRGB(0,255,0)
+							end
+							if a then
+								if not player then return end
+								a.Adornee = player.Character or player.CharactedAdded:Wait()
+							end
+						end)
+					end
+				end
+			end
+			fu.notification("玩家ESP重新加载.")
+		end
+	end)
+	
+	workspace.ChildRemoved:Connect(function(ch)
+		if ch.Name == "Normal" and playerESP then
+			fu.notification("游戏结束，删除ESP.")
+			for _, v in ipairs(script.Parent:GetChildren()) do if v.Name == "PlayerESP" then v:Destroy() end end
+		end
+	end)
+	
+	-- Dropped Gun ESP
+	workspace.ChildAdded:Connect(function(ch)
+		if script.Parent:FindFirstChild("GunESP") and ch.Name == "GunDrop" then
+			script.Parent:FindFirstChild("GunESP").Adornee = ch
+			script.Parent:FindFirstChild("GunESP").Enabled = true
+			local bguiclone = script.Parent.DroppedGunBGUI:Clone()
+			bguiclone.Parent = script.Parent
+			bguiclone.Adornee = workspace:FindFirstChild("GunDrop")
+			bguiclone.Enabled = true
+			bguiclone.Name = "DGBGUIClone"
+			fu.notification("枪已经掉落了！ 找到黄色的亮点.")
+		end
+	end)
+	
+	workspace.ChildRemoved:Connect(function(ch)
+		if script.Parent:FindFirstChild("GunESP") and ch.Name == "GunDrop" then
+			script.Parent:FindFirstChild("GunESP").Enabled = false
+			if script.Parent:FindFirstChild("DBGUIClone") then
+				script.Parent:FindFirstChild("DBGUIClone"):Destroy()
+			end
+			fu.notification("有人拿走了掉落的枪.")
+		end
+	end)
+	
+	
+	-- Coin autocollect
+	task.spawn(
+		function()
+			while task.wait(0.1) do
+				if not coinAutoCollect then continue end
+				
+				if workspace:FindFirstChild("Normal") then
+					if workspace:FindFirstChild("Normal"):FindFirstChild("CoinContainer") then
+						local coin = workspace.Normal.CoinContainer:FindFirstChild("Coin_Server")
+						if not coin then continue end
+						local coinPosition = coin.Position
+						local characterRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+						local rayDirection = coinPosition * 3
+	
+						local raycastParams = RaycastParams.new()
+						raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+						raycastParams.FilterDescendantsInstances = {game.Players.LocalPlayer.Character}
+						
+						local hit = workspace:Raycast(characterRootPart.Position, rayDirection, raycastParams)
+						
+						if not hit or hit.Instance == coin then -- Check if nothing collides or if it collides with the coin
+							game.Players.LocalPlayer.Character:MoveTo(Vector3.new(coin:GetPivot().X, coin:GetPivot().Y, coin:GetPivot().Z))
+						end
+					    end
+				end
+			end
+		end
+	)
+	task.spawn(function()
+		while task.wait(1) do
+			if findSheriff() == game.Players.LocalPlayer and autoShooting then
+				fu.notification("自动拍摄开始.")
+				repeat
+					task.wait(0.1)
+					local murderer = findMurderer()
+					if not murderer then fu.notification("No murderer.") continue end
+					local murdererPosition = murderer.Character.HumanoidRootPart.Position
+					local characterRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+					local rayDirection = murdererPosition - characterRootPart.Position
+	
+					local raycastParams = RaycastParams.new()
+					raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+					raycastParams.FilterDescendantsInstances = {game.Players.LocalPlayer.Character}
+	
+					local hit = workspace:Raycast(characterRootPart.Position, rayDirection, raycastParams)
+					if not hit or hit.Instance.Parent == murderer.Character then -- Check if nothing collides or if it collides with the murderer
+						fu.notification("Auto-shooting!")
+						if not game.Players.LocalPlayer.Character:FindFirstChild("Gun") then
+							local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+							if game.Players.LocalPlayer.Backpack:FindFirstChild("Gun") then
+								game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Gun"))
+							else
+								fu.notification("You don't have the gun..?")
+								return
+							end
+						end
+						local args = {
+							[1] = 1,
+							[2] = findMurderer().Character:FindFirstChild("HumanoidRootPart").Position + findMurderer().Character:FindFirstChild("Humanoid").MoveDirection * shootOffset,
+							[3] = "AH"
+						}
+	
+						game:GetService("Players").LocalPlayer.Character.Gun.KnifeServer.ShootGun:InvokeServer(unpack(args))
+					end
+				until findSheriff() ~= game.Players.LocalPlayer or not autoShooting
+			end
+		end
+	end)
+	
+	module[1] = {
+		Type = "Text",
+		Args = {"ESPs"}
+	}
+	
+	module[2] = {
+		Type = "ButtonGrid",
+		Toggleable = true,
+		Args = {2, {
+			Players = function()
+				if script.Parent:FindFirstChild("PlayerESP") then
+					playerESP = false
+					for _, i in ipairs(script.Parent:GetChildren()) do if i.Name=="PlayerESP" then i:Destroy() end end
+					for _, i in ipairs(script.Parent:GetChildren()) do if i.Name=="DGBGUIClone" then i:Destroy() end end	
+				else
+					playerESP = true
+					local listplayers = game.Players:GetChildren()
+					for _, player in ipairs(listplayers) do
+						if  player.Character ~= nil then
+							local character = player.Character
+							if not character:FindFirstChild("PlayerESP") then
+								local a = Instance.new("Highlight", script.Parent)
+								a.Name = "玩家ESP"
+								a.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+								a.Adornee = character
+								a.FillColor = Color3.fromRGB(255, 255, 255)
+								task.spawn(function()
+									if player == findMurderer() then
+										a.FillColor = Color3.fromRGB(255,0,0)
+									elseif player == findSheriff() then
+										a.FillColor = Color3.fromRGB(0, 150, 255)
+									else
+										a.FillColor = Color3.fromRGB(0,255,0)
+									end
+									if a then
+										if not player then return end
+										a.Adornee = player.Character or player.CharactedAdded:Wait()
+									end
+								end)
+							end
+						end
+					end
+				end
+			end,
+	
+			Dropped_Gun = function()
+				if script.Parent:FindFirstChild("GunESP") then
+					for _, i in ipairs(script.Parent:GetChildren()) do if i.Name=="GunESP" then i:Destroy() end end
+					for _, i in ipairs(script.Parent:GetChildren()) do if i.Name=="DGBGUIClone" then i:Destroy() end end
+				else
+					local gunesp = Instance.new("Highlight", script.Parent)
+					gunesp.OutlineTransparency = 1
+					gunesp.FillColor = Color3.fromRGB(255, 255, 0)
+					gunesp.Name = "GunESP"
+					gunesp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+					gunesp.Enabled = false
+					if workspace:FindFirstChild("GunDrop") then
+						gunesp.Adornee = workspace:FindFirstChild("GunDrop")
+						gunesp.Enabled = true
+						local bguiclone = script.Parent.DroppedGunBGUI:Clone()
+						bguiclone.Parent = script.Parent
+						bguiclone.Adornee = workspace:FindFirstChild("GunDrop")
+						bguiclone.Enabled = true
+						bguiclone.Name = "DGBGUIClone"
+						fu.notification("Gun has been dropped! Find a yellow highlight.")
+					end
+	
+				end
+			end,
+			
+			--Sheriff_Aimbot = function()
+			--	if sheriffAimbot then
+			--		sheriffAimbot = false
+			--	else
+			--		sheriffAimbot = true
+			--		fu.notification("This will correct your shot to shoot murderer directly.")
+			--	end
+			--end,
+		}}
+	}
+	
+	module[3] = {
+		Type = "Text",
+		Args = {"Tools"}
+	}
+	
+	module[4] = {
+		Type = "Button",
+		Args = {"射杀凶手", function(Self)
+			if findSheriff() ~= game.Players.LocalPlayer then fu.notification("You're not sheriff/hero.") return end
+			if not findMurderer() then
+				fu.notification("No murderer to shoot.")
+				return
+			end
+			
+			if not game.Players.LocalPlayer.Character:FindFirstChild("Gun") then
+				local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+				if game.Players.LocalPlayer.Backpack:FindFirstChild("Gun") then
+					game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Gun"))
+				else
+					fu.notification("You don't have the gun..?")
+					return
+				end
+			end
+			local args = {
+				[1] = 1,
+				[2] = findMurderer().Character:FindFirstChild("HumanoidRootPart").Position + findMurderer().Character:FindFirstChild("Humanoid").MoveDirection * shootOffset,
+				[3] = "AH"
+			}
+	
+			game:GetService("Players").LocalPlayer.Character.Gun.KnifeServer.ShootGun:InvokeServer(unpack(args))
+		end,}
+	}
+	
+	module[5] = {
+		Type = "Input",
+		Args = {"射击位置偏移", "Set", function(Self, text)
+			if not tonumber(text) then fu.notification("Not a valid number.") return end
+			
+			if tonumber(text) > 10 then
+				fu.notification("An offset with a multiplier of 10 might not at all shoot the murderer!")
+			end
+			if tonumber(text) < 0 then
+				fu.notification("An offset with a negative multiplier will make a shot BEHIND the murderer's walk direction.")
+			end
+			shootOffset = tonumber(text)
+			fu.notification("Offset has been set.")
+		end,}
+	}
+	
+	module[6] = {
+		Type = "Text",
+		Args = {"当凶手移动时，自动凶手的镜头就会错过. 射击抵消调整凶手的运动. 推荐是3."}
+	}
+	
+	module[7] = {
+		Type = "ButtonGrid",
+		Toggleable = true,
+		Args = {1, {
+			Coins_Magnet = function()
+				coinAutoCollect = not coinAutoCollect
+				if coinAutoCollect then
+					fu.notification("硬币磁铁目前正在车辆上.以自己的风险使用.")
+				end
+			end,
+			Auto_Shoot_murderer = function()
+				autoShooting = not autoShooting
+				if findSheriff() == game.Players.LocalPlayer and autoShooting then
+					fu.notification("Auto-shooting started.")
+					repeat
+						task.wait(0.1)
+						local murderer = findMurderer()
+						if not murderer then fu.notification("No murderer.") continue end
+						local murdererPosition = murderer.Character.HumanoidRootPart.Position
+						local characterRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+						local rayDirection = murdererPosition - characterRootPart.Position
+	
+						local raycastParams = RaycastParams.new()
+						raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+						raycastParams.FilterDescendantsInstances = {game.Players.LocalPlayer.Character}
+	
+						local hit = workspace:Raycast(characterRootPart.Position, rayDirection, raycastParams)
+						if not hit or hit.Instance.Parent == murderer.Character then -- Check if nothing collides or if it collides with the murderer
+							fu.notification("Auto-shooting!")
+							if not game.Players.LocalPlayer.Character:FindFirstChild("Gun") then
+								local hum = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+								if game.Players.LocalPlayer.Backpack:FindFirstChild("Gun") then
+									game.Players.LocalPlayer.Character:FindFirstChild("Humanoid"):EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Gun"))
+								else
+									fu.notification("你没有枪..?")
+									return
+								end
+							end
+							local args = {
+								[1] = 1,
+								[2] = findMurderer().Character:FindFirstChild("HumanoidRootPart").Position + findMurderer().Character:FindFirstChild("Humanoid").MoveDirection * shootOffset,
+								[3] = "AH"
+							}
+	
+							game:GetService("Players").LocalPlayer.Character.Gun.KnifeServer.ShootGun:InvokeServer(unpack(args))
+						end
+					until findSheriff() ~= game.Players.LocalPlayer or not autoShooting
+				end
+			end,
+		}}
+	}
+	
+	module[8] = {Type="Text", Args={""}}
+	
+	module[9] = {
+		Type = "Text",
+		Args = {"以下工具可以是 <font color='#FF0000'>检测,</font> 游戏和玩家都是明智的.以自己的风险使用.", "center"}
+	}
+	
+	module[10] = {
+		Type = "Button",
+		Args = {"快速移动到枪枪", function(Self)
+			if not workspace:FindFirstChild("GunDrop") then fu.notification("No dropped gun to be teleported to.") return end
+			fu.notification("试图枪支到枪..")
+			
+			local pathToGun = phs:CreatePath({
+				AgentRadius = 3,
+				AgentHeight = game.Players.LocalPlayer.Character:GetExtentsSize().Y,
+				AgentCanJump = true
+			})
+			local completed, err = pcall(function()
+				pathToGun:ComputeAsync(game.Players.LocalPlayer.Character.PrimaryPart.Position, Vector3.new(workspace:FindFirstChild("GunDrop"):GetPivot().X, workspace:FindFirstChild("GunDrop"):GetPivot().Y, workspace:FindFirstChild("GunDrop"):GetPivot().Z))
+			end)
+			
+			if completed and pathToGun.Status == Enum.PathStatus.Success then
+				fu.notification("Found a path. Moving.")
+				for _, waypoint in pathToGun:GetWaypoints() do
+					task.wait(0.1)
+					game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"), TweenInfo.new(0.1, Enum.EasingStyle.Linear), {
+						CFrame = CFrame.new(waypoint.Position + Vector3.new(0, 3, 0))	
+					}):Play()
+				end
+			else
+				fu.notification("找不到枪的适当路径.尝试更靠近枪.")
+			end
+		end,}
+	}
+	
+	_G.Modules[3] = module
+	
+end
+local function INPG_fake_script() -- Fake Script: StarterGui.YARHM.AddCustomModule.Add.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = XUI["_Add"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local ts = game:GetService("TweenService")
+	
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if script.Parent.Parent.TextBox.Text == "" then return end
+		ts:Create(script.Parent.Parent.Parent.Menu.UIScale, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Scale = 1
+		}):Play()
+		ts:Create(script.Parent.Parent, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Position = UDim2.fromScale(0.5, -0.5)
+		}):Play()
+		
+		
+		local lastmodule = _G.Modules[#_G.Modules]
+		require(script.Parent.Parent.Parent.FUNCTIONS).notification("Module is loading...")
+		local newmodule = loadstring(game:HttpGet(script.Parent.Parent.TextBox.Text))()
+		if newmodule["BG_TASK"] then
+			coroutine.wrap(newmodule["BG_TASK"])()
+		end
+		if _G.Modules[#_G.Modules] ~= lastmodule then
+			local newmodule = _G.Modules[#_G.Modules]
+			require(script.Parent.Parent.Parent.FUNCTIONS).notification("New module added: " .. newmodule["Name"])
+			require(script.Parent.Parent.Parent.FUNCTIONS).refreshlist()
+		else
+			require(script.Parent.Parent.Parent.FUNCTIONS).notification("Module failed to load after 5 seconds.")
+		end
+	end)
+end
+local function BOCLRJC_fake_script() -- Fake Script: StarterGui.YARHM.AddCustomModule.Cancel.LocalScript
+    local script = Instance.new("LocalScript")
+    script.Name = "LocalScript"
+    script.Parent = XUI["_Cancel"]
+    local req = require
+    local require = function(obj)
+        local fake = fake_module_scripts[obj]
+        if fake then
+            return fake()
+        end
+        return req(obj)
+    end
+
+	local ts = game:GetService("TweenService")
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		ts:Create(script.Parent.Parent.Parent.Menu.UIScale, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Scale = 1
+		}):Play()
+		ts:Create(script.Parent.Parent, TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			Position = UDim2.fromScale(0.5, -0.5)
+		}):Play()
+	end)
+end
+
+coroutine.wrap(GICVX_fake_script)()
+coroutine.wrap(ZNDKBAA_fake_script)()
+coroutine.wrap(VNSWJ_fake_script)()
+coroutine.wrap(TTVRS_fake_script)()
+coroutine.wrap(TZEK_fake_script)()
+coroutine.wrap(GIGHQO_fake_script)()
+coroutine.wrap(RMKEEKN_fake_script)()
+coroutine.wrap(CSGP_fake_script)()
+coroutine.wrap(LOAOODV_fake_script)()
+coroutine.wrap(INPG_fake_script)()
+coroutine.wrap(BOCLRJC_fake_script)()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
