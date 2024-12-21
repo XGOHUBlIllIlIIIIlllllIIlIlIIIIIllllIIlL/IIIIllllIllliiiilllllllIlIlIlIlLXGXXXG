@@ -1,87 +1,87 @@
 local XUI = {
-	["_xgohub"] = Instance.new("ScreenGui");
-	["_Open"] = Instance.new("TextButton");
-	["_UICorner"] = Instance.new("UICorner");
-	["_InitOpen"] = Instance.new("LocalScript");
-	["_OnClick"] = Instance.new("LocalScript");
-	["_Menu"] = Instance.new("Frame");
-	["_UICorner1"] = Instance.new("UICorner");
-	["_标题名称"] = Instance.new("TextLabel");
-	["_小标题"] = Instance.new("TextLabel");
-	["_List"] = Instance.new("Frame");
-	["_UICorner2"] = Instance.new("UICorner");
-	["_AutoSetup"] = Instance.new("LocalScript");
-	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
-	["_UIListLayout"] = Instance.new("UIListLayout");
-	["_UIPadding"] = Instance.new("UIPadding");
-	["_UIPadding1"] = Instance.new("UIPadding");
-	["_UIGradient"] = Instance.new("UIGradient");
-	["_UIStroke"] = Instance.new("UIStroke");
-	["_UIGradient1"] = Instance.new("UIGradient");
-	["_水印"] = Instance.new("TextLabel");
-	["_关闭"] = Instance.new("TextButton");
-	["_UICorner3"] = Instance.new("UICorner");
-	["_LocalScript"] = Instance.new("LocalScript");
-	["_Area"] = Instance.new("ScrollingFrame");
-	["_TextLabel"] = Instance.new("TextLabel");
-	["_TextLabel1"] = Instance.new("TextLabel");
-	["_UIStroke1"] = Instance.new("UIStroke");
-	["_UIGradient2"] = Instance.new("UIGradient");
-	["_UIGradient3"] = Instance.new("UIGradient");
-	["_注入器"] = Instance.new("TextButton");
-	["_UICorner4"] = Instance.new("UICorner");
-	["_UIPadding2"] = Instance.new("UIPadding");
-	["_UIStroke2"] = Instance.new("UIStroke");
-	["_LocalScript1"] = Instance.new("LocalScript");
-	["_UIScale"] = Instance.new("UIScale");
-	["_Init"] = Instance.new("LocalScript");
-	["_ListButton"] = Instance.new("TextButton");
-	["_UICorner5"] = Instance.new("UICorner");
-	["_FUNCTIONS"] = Instance.new("ModuleScript");
-	["_Notifications"] = Instance.new("Frame");
-	["_UIListLayout1"] = Instance.new("UIListLayout");
-	["_UIPadding3"] = Instance.new("UIPadding");
-	["_Placeholder"] = Instance.new("Frame");
-	["_UICorner6"] = Instance.new("UICorner");
-	["_TextLabel2"] = Instance.new("TextLabel");
-	["_Flee the Facility"] = Instance.new("LocalScript");
-	["_Universal"] = Instance.new("LocalScript");
-	["_TextBoxPlaceholder"] = Instance.new("Frame");
-	["_UIListLayout2"] = Instance.new("UIListLayout");
-	["_TextButton"] = Instance.new("TextButton");
-	["_UICorner7"] = Instance.new("UICorner");
-	["_UIPadding4"] = Instance.new("UIPadding");
-	["_TextBox"] = Instance.new("TextBox");
-	["_UICorner8"] = Instance.new("UICorner");
-	["_FloatingButton"] = Instance.new("TextButton");
-	["_UIPadding5"] = Instance.new("UIPadding");
-	["_UICorner9"] = Instance.new("UICorner");
-	["_FloatingButtons"] = Instance.new("Frame");
-	["_DroppedGunBGUI"] = Instance.new("BillboardGui");
-	["_TextLabel3"] = Instance.new("TextLabel");
-	["_UIStroke3"] = Instance.new("UIStroke");
-	["_Murder Mystery 2"] = Instance.new("LocalScript");
-	["_注入器1"] = Instance.new("Frame");
-	["_UICorner10"] = Instance.new("UICorner");
-	["_UIStroke4"] = Instance.new("UIStroke");
-	["_UIGradient4"] = Instance.new("UIGradient");
-	["_UIGradient5"] = Instance.new("UIGradient");
-	["_UIScale1"] = Instance.new("UIScale");
-	["_TextLabel4"] = Instance.new("TextLabel");
-	["_TextBox1"] = Instance.new("TextBox");
-	["_UICorner11"] = Instance.new("UICorner");
-	["_UIPadding6"] = Instance.new("UIPadding");
-	["_TextLabel5"] = Instance.new("TextLabel");
-	["_Add"] = Instance.new("TextButton");
-	["_UICorner12"] = Instance.new("UICorner");
-	["_UIPadding7"] = Instance.new("UIPadding");
-	["_UIStroke5"] = Instance.new("UIStroke");
-	["_LocalScript2"] = Instance.new("LocalScript");
-	["_Cancel"] = Instance.new("TextButton");
-	["_UICorner13"] = Instance.new("UICorner");
-	["_UIPadding8"] = Instance.new("UIPadding");
-	["_UIStroke6"] = Instance.new("UIStroke");
-	["_LocalScript3"] = Instance.new("LocalScript");
+    ["_xgohub"] = Instance.new("ScreenGui"); -- 根容器，用于在屏幕上显示GUI
+    ["_Open"] = Instance.new("TextButton"); -- 打开或激活UI的按钮
+    ["_UICorner"] = Instance.new("UICorner"); -- 用于给UI元素添加圆角效果
+    ["_InitOpen"] = Instance.new("LocalScript"); -- 初始化UI时执行的代码
+    ["_OnClick"] = Instance.new("LocalScript"); -- 按钮点击事件的代码
+    ["_Menu"] = Instance.new("Frame"); -- 菜单的主框架
+    ["_UICorner1"] = Instance.new("UICorner"); -- 给_Menu添加圆角效果
+    ["_标题名称"] = Instance.new("TextLabel"); -- 显示菜单的标题
+    ["_小标题"] = Instance.new("TextLabel"); -- 显示副标题或说明
+    ["_List"] = Instance.new("Frame"); -- 列表或菜单项的容器
+    ["_UICorner2"] = Instance.new("UICorner"); -- 给_List添加圆角效果
+    ["_AutoSetup"] = Instance.new("LocalScript"); -- 自动设置或初始化的代码
+    ["_ScrollingFrame"] = Instance.new("ScrollingFrame"); -- 可滚动的内容区域
+    ["_UIListLayout"] = Instance.new("UIListLayout"); -- 自动排列ScrollingFrame中的元素
+    ["_UIPadding"] = Instance.new("UIPadding"); -- 给UI元素添加内边距
+    ["_UIPadding1"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_UIGradient"] = Instance.new("UIGradient"); -- UI渐变效果
+    ["_UIStroke"] = Instance.new("UIStroke"); -- UI描边效果
+    ["_UIGradient1"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
+    ["_水印"] = Instance.new("TextLabel"); -- 水印标签
+    ["_关闭"] = Instance.new("TextButton"); -- 关闭UI的按钮
+    ["_UICorner3"] = Instance.new("UICorner"); -- 给关闭按钮添加圆角效果
+    ["_LocalScript"] = Instance.new("LocalScript"); -- 其他本地脚本
+    ["_Area"] = Instance.new("ScrollingFrame"); -- 另一个可滚动的内容区域
+    ["_TextLabel"] = Instance.new("TextLabel"); -- 文本标签
+    ["_TextLabel1"] = Instance.new("TextLabel"); -- 另一个文本标签
+    ["_UIStroke1"] = Instance.new("UIStroke"); -- 另一个UI描边效果
+    ["_UIGradient2"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
+    ["_UIGradient3"] = Instance.new("UIGradient"); -- 又一个UI渐变效果
+    ["_注入器"] = Instance.new("TextButton"); -- 注入器按钮
+    ["_UICorner4"] = Instance.new("UICorner"); -- 给注入器按钮添加圆角效果
+    ["_UIPadding2"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_UIStroke2"] = Instance.new("UIStroke"); -- 另一个UI描边效果
+    ["_LocalScript1"] = Instance.new("LocalScript"); -- 另一个本地脚本
+    ["_UIScale"] = Instance.new("UIScale"); -- UI缩放
+    ["_Init"] = Instance.new("LocalScript"); -- 初始化脚本
+    ["_ListButton"] = Instance.new("TextButton"); -- 列表按钮
+    ["_UICorner5"] = Instance.new("UICorner"); -- 给列表按钮添加圆角效果
+    ["_FUNCTIONS"] = Instance.new("ModuleScript"); -- 功能模块脚本
+    ["_Notifications"] = Instance.new("Frame"); -- 通知框架
+    ["_UIListLayout1"] = Instance.new("UIListLayout"); -- 另一个UI列表布局
+    ["_UIPadding3"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_Placeholder"] = Instance.new("Frame"); -- 占位符框架
+    ["_UICorner6"] = Instance.new("UICorner"); -- 给占位符框架添加圆角效果
+    ["_TextLabel2"] = Instance.new("TextLabel"); -- 另一个文本标签
+    ["_Flee the Facility"] = Instance.new("LocalScript"); -- "逃离设施"本地脚本
+    ["_Universal"] = Instance.new("LocalScript"); -- 通用本地脚本
+    ["_TextBoxPlaceholder"] = Instance.new("Frame"); -- 文本框占位符框架
+    ["_UIListLayout2"] = Instance.new("UIListLayout"); -- 另一个UI列表布局
+    ["_TextButton"] = Instance.new("TextButton"); -- 文本按钮
+    ["_UICorner7"] = Instance.new("UICorner"); -- 给文本按钮添加圆角效果
+    ["_UIPadding4"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_TextBox"] = Instance.new("TextBox"); -- 文本框
+    ["_UICorner8"] = Instance.new("UICorner"); -- 给文本框添加圆角效果
+    ["_FloatingButton"] = Instance.new("TextButton"); -- 悬浮按钮
+    ["_UIPadding5"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_UICorner9"] = Instance.new("UICorner"); -- 给悬浮按钮添加圆角效果
+    ["_FloatingButtons"] = Instance.new("Frame"); -- 悬浮按钮框架
+    ["_DroppedGunBGUI"] = Instance.new("BillboardGui"); -- 丢弃的枪BillboardGui
+    ["_TextLabel3"] = Instance.new("TextLabel"); -- 另一个文本标签
+    ["_UIStroke3"] = Instance.new("UIStroke"); -- 另一个UI描边效果
+    ["_Murder Mystery 2"] = Instance.new("LocalScript"); -- "谋杀之谜2"本地脚本
+    ["_注入器1"] = Instance.new("Frame"); -- 另一个注入器框架
+    ["_UICorner10"] = Instance.new("UICorner"); -- 给注入器框架添加圆角效果
+    ["_UIStroke4"] = Instance.new("UIStroke"); -- 另一个UI描边效果
+    ["_UIGradient4"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
+    ["_UIGradient5"] = Instance.new("UIGradient"); -- 又一个UI渐变效果
+    ["_UIScale1"] = Instance.new("UIScale"); -- 另一个UI缩放
+    ["_TextLabel4"] = Instance.new("TextLabel"); -- 另一个文本标签
+    ["_TextBox1"] = Instance.new("TextBox"); -- 另一个文本框
+    ["_UICorner11"] = Instance.new("UICorner"); -- 给文本框添加圆角效果
+    ["_UIPadding6"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_TextLabel5"] = Instance.new("TextLabel"); -- 另一个文本标签
+    ["_Add"] = Instance.new("TextButton"); -- 添加按钮
+    ["_UICorner12"] = Instance.new("UICorner"); -- 给添加按钮添加圆角效果
+    ["_UIPadding7"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_UIStroke5"] = Instance.new("UIStroke"); -- 另一个UI描边效果
+    ["_LocalScript2"] = Instance.new("LocalScript"); -- 另一个本地脚本
+    ["_Cancel"] = Instance.new("TextButton"); -- 取消按钮
+    ["_UICorner13"] = Instance.new("UICorner"); -- 给取消按钮添加圆角效果
+    ["_UIPadding8"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
+    ["_UIStroke6"] = Instance.new("UIStroke"); -- 另一个UI描边效果
+    ["_LocalScript3"] = Instance.new("LocalScript"); -- 又一个本地脚本
 }
 
 -- Properties:
@@ -1526,21 +1526,158 @@ local function CSGP_fake_script() -- Fake Script: StarterGui.YARHM.Universal
 	module["Name"] = "音乐区"
 	
 	local ts = game:GetService("TweenService")
-	
-	-- 假设 Sounds 表已经定义好，并且包含了音乐名称和ID
-    local Sounds = {
+
+-- 创建一个停止播放音乐的按钮
+table.insert(module, {
+    Type = "Button",
+    Args = {"停止播放音乐（所有皆为xgo 一人收集）", function(Self)
+        for i, v in pairs(workspace:GetDescendants()) do
+            if v:IsA("Sound") then
+                v:Destroy()
+            end
+        end
+    end}
+})
+
+-- 定义创建音乐按钮的函数
+local function createSoundButton(name, id)
+    table.insert(module, {
+        Type = "Button",
+        Args = {name, function(Self)
+            local sound = Instance.new("Sound")
+            sound.SoundId = "rbxassetid://" .. id
+            sound.Parent = game.Workspace
+            sound:Play()
+        end}
+    })
+end
+
+-- 音乐ID和名称的映射表
+local Sounds = {
     ["Pixel Terror & Aviella - Enigma 女版"] = "5410084645",
     ["Grant - Color 女版"] = "7023828725",
-    -- ... 其他音乐 ...
+    ["Til the Morning (a)女版"] = "1840041842",
+    ["I'm Gonna Get Up'RemixA 女版"] = "1847606454",
+    ["Elypsis - I MissYou 女版"] = "7023741506",
+    ["Direct & Park Avenue - I'll Go 挺好听的"] = "5410081298",
+    ["Rogue - Motion"] = "7028557220",
+    ["Fun Arcade"] = "1843599021",
+    ["Bad Computer"] = "5410082097",
+    ["Love Is"] = "7029092469",
+    ["Carissa"] = "5410085602",
+    ["Rockefeller Street"] = "16831104459",
+    ["desert star"] = "5410084938",
+    ["ily Pitched"] = "15957461869",
+    ["taco bot 3000"] = "9245552700",
+    ["raining tacos"] = "142376088",
+    ["dion shiawase"] = "5409360995",
+    ["cute music"] = "1836519309",
+    ["leaked audio"] = "9280071551",
+    ["sharknado"] = "9280550653",
+    ["walkonwater"] = "9248834984",
+    ["no really - rust"] = "272018606",
+    ["his cute voice"] = "528728818",
+    ["tobu - reflection"] = "11864859928",
+    ["moonlight"] = "1961241743",
+    ["velocity"] = "10104284161",
+    ["flute"] = "467913387",
+    ["Upbeat A"] = "9072359432",
+    ["Scared"] = "10104284779",
+    ["metropolis"] = "659727291",
+    ["eg"] = "8996464109",
+    ["miracle"] = "1619501952",
+    ["meow"] = "467932279",
+    ["pink"] = "4681135952",
+    ["staeam"] = "4960289400",
+    ["paeree"] = "468621896",
+    ["wayback"] = "467942273",
+    ["lane"] = "8998281117",
+    ["nautilus"] = "9072367803",
+    ["Martin Graff - Balance"] = "7024183256",
+    ["block"] = "467916328",
+    ["Colossal Assault"] = "2343544260",
+    ["Breach"] = "545296451",
+    ["1 Near Sound 2"] = "12306579170",
+    ["cyber heist"] = "9042159897",
+    ["Rome in Silver & Beach Season - Skin 和上一首一样，都挺好听的"] = "7028570258",
+    ["Direct & Essenger - Labyrinth 男版"] = "7023690024",
+    ["Solar Flares"] = "1836842889",
+    ["Night Vision"] = "1837849285",
+    ["When U Coming Back NoVocals"] = "1837871067",
+    ["住宅区"] = "1845554017",
+    ["These Words Remix"] = "1839721437",
+    ["FNAF 2 Song"] = "6913550990",
+    ["RecordScratch_1"] = "6917155909",
+    ["Play Theme 节奏"] = "1847661821",
+    ["jumpstyle 节奏感很强"] = "1839246711",
+    ["Autotuned Dancing Roac 电音"] = "4050095124",
+    ["SAKU -GTA (Nightcore)"] = "14366981664",
+    ["Chaos"] = "1843497734",
+    ["Stonebank- What Are YouWaiting For"] = "7028977687",
+    ["March Of The Aliens"] = "1836594449",
+    ["机器人舞蹈C "] = "1847853099",
+    ["Assault Complex"] = "1842940193",
+    ["Robotic Dance A"] = "1837853076",
+    ["Parry Gripp - Pancake Robot"] = "9245558138",
+    ["Destruction Imminent"] = "1837434037",
+    ["Urban"] = "1839037193",
+    ["Classic Chase"] = "1837560230",
+    ["Insurgent"] = "1842908121",
+    ["Demolition And Destruction A"] = "9042493127",
+    ["Hardstyle"] = "1839246774",
+    ["Snapped"] = "1842940253",
+    ["Ready 30 Second"] = "9041933055",
+    ["Noisestorm -Crab Rave"] = "5410086218",
+    ["Intense Motivation"] = "1839703786",
+    ["Complete The Mission"] = "1838627720",
+    ["Tokyo Machine-PLAY"] = "5410085763",
+    ["High Velocity"] = "1839898469",
+    ["When Somethingls Cone A"] = "1848213471",
+    ["F.O.O.L-Revenger"] = "5410080771",
+    ["All Guts No Glory"] = "1837843720",
+    ["Full Force -Underscore"] = "1842802012",
+    ["Horror Race"] = "1846863084",
+    ["Victory Is Ours"] = "1842802498",
+    ["Mindwinder (b)"] = "1838075732",
+    ["Tony Romera-Heat Wave"] = "5410083226",
+    ["Slippy - Flow"] = "7028913008",
+    ["War"] = "9042616023",
+    ["The Factory"] = "1847799916",
+    ["Rip the Guts Out"] = "1837814958",
+    ["Pixel Terror - Machina"] = "5410080475",
+    ["We Go Hard"] = "1842940420",
+    ["Fight Or Flight"] = "1842940300",
+    ["Alarm"] = "1845080313",
+    ["Parry Gripp - Last Train to Awesome Town"] = "9245554658",
+    ["Uproar"] = "1842934837",
+    ["The Will To Fight A"] = "1845793864",
+    ["Mindwinder (a)"] = "1838075377",
+    ["FWLR - Hot"] = "5410082534",
+    ["Noisestorm - Escape"] = "5410082879",
+    ["Skull Crusher"] = "1842558494",
+    ["Ready"] = "9041932892",
+    ["Heist"] = "1836782065",
+    ["城镇谈话"] = "1845756489",
+    ["快乐的歌"] = "1843404009",
+    ["一起战斗吗"] = "1843324336",
+    ["高保真冷柜A"] = "9043887091",
+    ["轻松的场景"] = "1848354536",
+    ["在监狱里生活"] = "1841647093",
+    ["不再"] = "1846458016",
+    ["Cute Story"] = "1839755231",
+    ["快乐一点的"] = "9039445224",
+    ["Swing it"] = "1843313385",
+    ["Police 打鼓伴奏"] = "1842981634",
+    ["睡眠歌曲 Baby Song"] = "1838998127",
+    ["义勇军进行曲"] = "1845918434",
     ["彩虹瀑布"] = "1837879082"
-   }
+}
 
-   -- 为每个音乐创建文本和按钮模块
-   for index, name in ipairs(Sounds) do
-       module[2 * index - 1] = {Type = "Text", Args = {"音乐 - " .. name}}
-       module[2 * index] = {Type = "Button", Args = {name, function() end}}
-    end
-    
+-- 为每个音效创建按钮
+for name, id in pairs(Sounds) do
+    createSoundButton(name, id)
+end
+
 	module[4] = {
 		Type = "Button",
 		Args = {"将移动标题设置带底部", function(Self)
