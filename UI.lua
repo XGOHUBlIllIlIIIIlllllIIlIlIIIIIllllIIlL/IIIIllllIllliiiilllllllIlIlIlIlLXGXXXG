@@ -82,6 +82,7 @@ local XUI = {
     ["_UIPadding8"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
     ["_UIStroke6"] = Instance.new("UIStroke"); -- 另一个UI描边效果
     ["_LocalScript3"] = Instance.new("LocalScript"); -- 又一个本地脚本
+    ["_BackgroundImage"] = Instance.new("ImageLabel");
 }
 
 -- Properties:
@@ -652,6 +653,18 @@ XUI["_UIPadding8"].Parent = XUI["_Cancel"]
 XUI["_UIStroke6"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 XUI["_UIStroke6"].Color = Color3.fromRGB(255, 0, 0)
 XUI["_UIStroke6"].Parent = XUI["_Cancel"]
+
+-- 设置ImageLabel的属性，使其作为背景
+XUI["_BackgroundImage"].Image = "rbxassetid://120611289434746" -- 替换成您的图片ID
+XUI["_BackgroundImage"].ImageColor3 = Color3.fromRGB(255, 255, 255) -- 根据需要调整颜色
+XUI["_BackgroundImage"].BackgroundTransparency = 1 -- 使背景透明
+XUI["_BackgroundImage"].BorderSizePixel = 0 -- 无边框
+XUI["_BackgroundImage"].Size = UDim2.new(1, 0, 1, 0) -- 填充整个ScreenGui
+XUI["_BackgroundImage"].Position = UDim2.new(0, 0, 0, 0) -- 根据需要调整位置
+XUI["_BackgroundImage"].Parent = XUI["_xgohub"] -- 设置父对象为_xgohub
+
+-- 将背景图片放置在所有其他UI元素的后面
+table.insert(XUI, "_BackgroundImage", 1) -- 这会将背景图片插入到XUI表的第一个位置
 
 -- Fake Module Scripts:
 
