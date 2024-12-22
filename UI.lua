@@ -199,14 +199,6 @@ XUI["_UIGradient"].Color = ColorSequence.new{
    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 200, 200)) -- 结束颜色为淡粉色
 }
 XUI["_UIGradient"].Rotation = -133 -- 保持原有的渐变方向
-
---[[
-XUI["_UIGradient"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
-}
-XUI["_UIGradient"].Rotation = -133
---]]
 XUI["_UIGradient"].Parent = XUI["_List"]
 
 XUI["_UIStroke"].Color = Color3.fromRGB(255, 255, 255)
@@ -220,15 +212,6 @@ XUI["_UIGradient1"].Color = ColorSequence.new{
    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 200, 200)) -- 结束颜色为淡粉色
 }
 XUI["_UIGradient1"].Rotation = -44 -- 保持原有的渐变方向
-
---[[
-XUI["_UIGradient1"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(111.00000098347664, 111.00000098347664, 111.00000098347664)),
-	ColorSequenceKeypoint.new(0.6401384472846985, Color3.fromRGB(114.23875719308853, 114.23875719308853, 114.23875719308853)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
-}
-XUI["_UIGradient1"].Rotation = -44
---]]
 XUI["_UIGradient1"].Parent = XUI["_UIStroke"]
 
 XUI["_水印"].Font = Enum.Font.GothamBold
@@ -313,6 +296,16 @@ XUI["_UIStroke1"].Thickness = 2
 XUI["_UIStroke1"].Parent = XUI["_Menu"]
 
 XUI["_UIGradient2"].Color = ColorSequence.new{
+   ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+   ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(255, 255, 255)),
+   ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 182, 193)),
+   ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(255, 182, 193)),
+   ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 182, 193))
+}
+XUI["_UIGradient2"].Rotation = 62
+
+--[[
+XUI["_UIGradient2"].Color = ColorSequence.new{
 	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
 	ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(50.69031357765198, 50.69031357765198, 50.69031357765198)),
 	ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 255, 255)),
@@ -320,13 +313,22 @@ XUI["_UIGradient2"].Color = ColorSequence.new{
 	ColorSequenceKeypoint.new(1, Color3.fromRGB(48.000000938773155, 48.000000938773155, 48.000000938773155))
 }
 XUI["_UIGradient2"].Rotation = 62
+]]
 XUI["_UIGradient2"].Parent = XUI["_UIStroke1"]
 
+XUI["_UIGradient3"].Color = ColorSequence.new{
+   ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+   ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 182, 193))
+}
+XUI["_UIGradient3"].Rotation = 68
+
+--[[
 XUI["_UIGradient3"].Color = ColorSequence.new{
 	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
 	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
 }
 XUI["_UIGradient3"].Rotation = 68
+--]]
 XUI["_UIGradient3"].Parent = XUI["_Menu"]
 
 XUI["_注入器"].Font = Enum.Font.Gotham
