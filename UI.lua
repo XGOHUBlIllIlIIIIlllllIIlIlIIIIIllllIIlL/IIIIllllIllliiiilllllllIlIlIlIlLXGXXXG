@@ -15,9 +15,9 @@ local XUI = {
     ["_UIListLayout"] = Instance.new("UIListLayout"); -- 自动排列ScrollingFrame中的元素
     ["_UIPadding"] = Instance.new("UIPadding"); -- 给UI元素添加内边距
     ["_UIPadding1"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
-    ["_UIGradient"] = Instance.new("UIGradient"); -- UI渐变效果
+    ["_颜色"] = Instance.new("UIGradient"); -- UI渐变效果
     ["_UIStroke"] = Instance.new("UIStroke"); -- UI描边效果
-    ["_UIGradient1"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
+    ["_颜色1"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
     ["_水印"] = Instance.new("TextLabel"); -- 水印标签
     ["_关闭"] = Instance.new("TextButton"); -- 关闭UI的按钮
     ["_UICorner3"] = Instance.new("UICorner"); -- 给关闭按钮添加圆角效果
@@ -26,8 +26,8 @@ local XUI = {
     ["_TextLabel"] = Instance.new("TextLabel"); -- 文本标签
     ["_TextLabel1"] = Instance.new("TextLabel"); -- 另一个文本标签
     ["_UIStroke1"] = Instance.new("UIStroke"); -- 另一个UI描边效果
-    ["_UIGradient2"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
-    ["_UIGradient3"] = Instance.new("UIGradient"); -- 又一个UI渐变效果
+    ["_颜色2"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
+    ["_颜色3"] = Instance.new("UIGradient"); -- 又一个UI渐变效果
     ["_注入器"] = Instance.new("TextButton"); -- 注入器按钮
     ["_UICorner4"] = Instance.new("UICorner"); -- 给注入器按钮添加圆角效果
     ["_UIPadding2"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
@@ -64,8 +64,8 @@ local XUI = {
     ["_注入器1"] = Instance.new("Frame"); -- 另一个注入器框架
     ["_UICorner10"] = Instance.new("UICorner"); -- 给注入器框架添加圆角效果
     ["_UIStroke4"] = Instance.new("UIStroke"); -- 另一个UI描边效果
-    ["_UIGradient4"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
-    ["_UIGradient5"] = Instance.new("UIGradient"); -- 又一个UI渐变效果
+    ["_颜色4"] = Instance.new("UIGradient"); -- 另一个UI渐变效果
+    ["_颜色5"] = Instance.new("UIGradient"); -- 又一个UI渐变效果
     ["_UIScale1"] = Instance.new("UIScale"); -- 另一个UI缩放
     ["_TextLabel4"] = Instance.new("TextLabel"); -- 另一个文本标签
     ["_TextBox1"] = Instance.new("TextBox"); -- 另一个文本框
@@ -101,7 +101,7 @@ XUI["_Open"].TextSize = 14
 XUI["_Open"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_Open"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_Open"].BackgroundTransparency = 1
-XUI["_Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Open"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_Open"].BorderSizePixel = 0
 XUI["_Open"].Position = UDim2.new(0.499372631, 0, 0.06341701, 0)
 XUI["_Open"].Size = UDim2.new(0, 25, 0, 20)
@@ -112,7 +112,7 @@ XUI["_UICorner"].Parent = XUI["_Open"]
 
 XUI["_Menu"].AnchorPoint = Vector2.new(0.5, 0)
 XUI["_Menu"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Menu"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_Menu"].BorderSizePixel = 0
 XUI["_Menu"].ClipsDescendants = true
 XUI["_Menu"].Position = UDim2.new(0.499372661, 0, 0.0410327986, 0)
@@ -132,7 +132,7 @@ XUI["_标题名称"].TextXAlignment = Enum.TextXAlignment.Left
 XUI["_标题名称"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_标题名称"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_标题名称"].BackgroundTransparency = 1
-XUI["_标题名称"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_标题名称"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_标题名称"].BorderSizePixel = 0
 XUI["_标题名称"].Position = UDim2.new(0.186153606, 0, 0.112410031, 0)
 XUI["_标题名称"].Size = UDim2.new(0.259631485, 0, 0.0824175924, 0)
@@ -148,7 +148,7 @@ XUI["_小标题"].TextXAlignment = Enum.TextXAlignment.Right
 XUI["_小标题"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_小标题"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_小标题"].BackgroundTransparency = 1
-XUI["_小标题"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_小标题"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_小标题"].BorderSizePixel = 0
 XUI["_小标题"].Position = UDim2.new(0.708829343, 0, 0.116141364, 0)
 XUI["_小标题"].Size = UDim2.new(0.470515788, 0, 0.082417585, 0)
@@ -157,7 +157,7 @@ XUI["_小标题"].Parent = XUI["_Menu"]
 
 XUI["_List"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_List"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_List"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_List"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_List"].BorderSizePixel = 0
 XUI["_List"].Position = UDim2.new(0.15770267, 0, 0.607306004, 0)
 XUI["_List"].Size = UDim2.new(0.315405339, 0, 0.785387993, 0)
@@ -172,7 +172,7 @@ XUI["_ScrollingFrame"].Active = true
 XUI["_ScrollingFrame"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_ScrollingFrame"].BackgroundTransparency = 1
-XUI["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_ScrollingFrame"].BorderSizePixel = 0
 XUI["_ScrollingFrame"].Position = UDim2.new(0.478333294, 0, 0.510989845, 0)
 XUI["_ScrollingFrame"].Size = UDim2.new(1, 0, 1, 0)
@@ -192,27 +192,27 @@ XUI["_UIPadding1"].PaddingRight = UDim.new(0, 10)
 XUI["_UIPadding1"].PaddingTop = UDim.new(0, 10)
 XUI["_UIPadding1"].Parent = XUI["_List"]
 
--- 修改 _UIGradient 的颜色序列
-XUI["_UIGradient"].Color = ColorSequence.new{
+-- 修改 _颜色 的颜色序列
+XUI["_颜色"].Color = ColorSequence.new{
    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- 开始颜色为纯白色
    ColorSequenceKeypoint.new(0.8, Color3.fromRGB(255, 255, 255)), -- 大部分颜色为纯白色
    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 200, 200)) -- 结束颜色为淡粉色
 }
-XUI["_UIGradient"].Rotation = -133 -- 保持原有的渐变方向
-XUI["_UIGradient"].Parent = XUI["_List"]
+XUI["_颜色"].Rotation = -133 -- 保持原有的渐变方向
+XUI["_颜色"].Parent = XUI["_List"]
 
 XUI["_UIStroke"].Color = Color3.fromRGB(255, 255, 255)
 XUI["_UIStroke"].Thickness = 2
 XUI["_UIStroke"].Parent = XUI["_List"]
 
--- 修改 _UIGradient1 的颜色序列（如果需要）
-XUI["_UIGradient1"].Color = ColorSequence.new{
+-- 修改 _颜色1 的颜色序列（如果需要）
+XUI["_颜色1"].Color = ColorSequence.new{
    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), -- 开始颜色为纯白色
    ColorSequenceKeypoint.new(0.8, Color3.fromRGB(255, 255, 255)), -- 大部分颜色为纯白色
    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 200, 200)) -- 结束颜色为淡粉色
 }
-XUI["_UIGradient1"].Rotation = -44 -- 保持原有的渐变方向
-XUI["_UIGradient1"].Parent = XUI["_UIStroke"]
+XUI["_颜色1"].Rotation = -44 -- 保持原有的渐变方向
+XUI["_颜色1"].Parent = XUI["_UIStroke"]
 
 XUI["_水印"].Font = Enum.Font.GothamBold
 XUI["_水印"].Text = "˃ ˄ ˂̥̥ "
@@ -225,7 +225,7 @@ XUI["_水印"].TextXAlignment = Enum.TextXAlignment.Right
 XUI["_水印"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_水印"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_水印"].BackgroundTransparency = 1
-XUI["_水印"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_水印"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_水印"].BorderSizePixel = 0
 XUI["_水印"].Position = UDim2.new(0.785926819, 0, 0.160157606, 0)
 XUI["_水印"].Size = UDim2.new(0.316320807, 0, 0.0585099049, 0)
@@ -234,12 +234,12 @@ XUI["_水印"].Parent = XUI["_Menu"]
 
 XUI["_关闭"].Font = Enum.Font.GothamBold
 XUI["_关闭"].Text = "X"
-XUI["_关闭"].TextColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_关闭"].TextColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_关闭"].TextSize = 14
 XUI["_关闭"].Modal = true
 XUI["_关闭"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_关闭"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_关闭"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_关闭"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_关闭"].BorderSizePixel = 0
 XUI["_关闭"].Position = UDim2.new(0.947494328, 0, 0.914238751, 0)
 XUI["_关闭"].Size = UDim2.new(0.0680272132, 0, 0.111940302, 0)
@@ -254,7 +254,7 @@ XUI["_Area"].ScrollBarThickness = 0
 XUI["_Area"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_Area"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_Area"].BackgroundTransparency = 1
-XUI["_Area"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Area"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_Area"].BorderSizePixel = 0
 XUI["_Area"].Position = UDim2.new(0.659600496, 0, 0.60637325, 0)
 XUI["_Area"].Selectable = false
@@ -270,7 +270,7 @@ XUI["_TextLabel"].TextSize = 14
 XUI["_TextLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextLabel"].BackgroundTransparency = 1
-XUI["_TextLabel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextLabel"].BorderSizePixel = 0
 XUI["_TextLabel"].Position = UDim2.new(0.4923051, 0, 0.46438089, 0)
 XUI["_TextLabel"].Size = UDim2.new(0, 200, 0, 50)
@@ -285,7 +285,7 @@ XUI["_TextLabel1"].TextWrapped = true
 XUI["_TextLabel1"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_TextLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextLabel1"].BackgroundTransparency = 1
-XUI["_TextLabel1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel1"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextLabel1"].BorderSizePixel = 0
 XUI["_TextLabel1"].Position = UDim2.new(0.491272807, 0, 0.363785654, 0)
 XUI["_TextLabel1"].Size = UDim2.new(0, 135, 0, 33)
@@ -295,41 +295,22 @@ XUI["_UIStroke1"].Color = Color3.fromRGB(255, 255, 255)
 XUI["_UIStroke1"].Thickness = 2
 XUI["_UIStroke1"].Parent = XUI["_Menu"]
 
-XUI["_UIGradient2"].Color = ColorSequence.new{
+XUI["_颜色2"].Color = ColorSequence.new{
    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
    ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(255, 255, 255)),
    ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 182, 193)),
    ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(255, 182, 193)),
    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 182, 193))
 }
-XUI["_UIGradient2"].Rotation = 62
+XUI["_颜色2"].Rotation = 62
+XUI["_颜色2"].Parent = XUI["_UIStroke1"]
 
---[[
-XUI["_UIGradient2"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
-	ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(50.69031357765198, 50.69031357765198, 50.69031357765198)),
-	ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(50.13314567506313, 50.13314567506313, 50.13314567506313)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(48.000000938773155, 48.000000938773155, 48.000000938773155))
-}
-XUI["_UIGradient2"].Rotation = 62
-]]
-XUI["_UIGradient2"].Parent = XUI["_UIStroke1"]
-
-XUI["_UIGradient3"].Color = ColorSequence.new{
+XUI["_颜色3"].Color = ColorSequence.new{
    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 182, 193))
 }
-XUI["_UIGradient3"].Rotation = 68
-
---[[
-XUI["_UIGradient3"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
-}
-XUI["_UIGradient3"].Rotation = 68
---]]
-XUI["_UIGradient3"].Parent = XUI["_Menu"]
+XUI["_颜色3"].Rotation = 68
+XUI["_颜色3"].Parent = XUI["_Menu"]
 
 XUI["_注入器"].Font = Enum.Font.Gotham
 XUI["_注入器"].Text = "添加自定义模块"
@@ -339,7 +320,7 @@ XUI["_注入器"].TextSize = 14
 XUI["_注入器"].TextWrapped = true
 XUI["_注入器"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_注入器"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
-XUI["_注入器"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_注入器"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_注入器"].BorderSizePixel = 0
 XUI["_注入器"].Position = UDim2.new(0.157244906, 0, 0.914238751, 0)
 XUI["_注入器"].Size = UDim2.new(0.260770977, 0, 0.111940302, 0)
@@ -367,7 +348,7 @@ XUI["_ListButton"].TextSize = 14
 XUI["_ListButton"].TextWrapped = true
 XUI["_ListButton"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_ListButton"].BackgroundColor3 = Color3.fromRGB(49.00000087916851, 49.00000087916851, 49.00000087916851)
-XUI["_ListButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_ListButton"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_ListButton"].BorderSizePixel = 0
 XUI["_ListButton"].Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
 XUI["_ListButton"].Size = UDim2.new(1, 0, 0, 50)
@@ -380,7 +361,7 @@ XUI["_UICorner5"].Parent = XUI["_ListButton"]
 XUI["_Notifications"].AnchorPoint = Vector2.new(0, 0.5)
 XUI["_Notifications"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_Notifications"].BackgroundTransparency = 1
-XUI["_Notifications"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Notifications"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_Notifications"].BorderSizePixel = 0
 XUI["_Notifications"].Position = UDim2.new(-0.00062737026, 0, 0.499319851, 0)
 XUI["_Notifications"].Size = UDim2.new(0, 242, 1, 0)
@@ -399,7 +380,7 @@ XUI["_UIPadding3"].Parent = XUI["_Notifications"]
 
 XUI["_Placeholder"].AnchorPoint = Vector2.new(0.5, 0)
 XUI["_Placeholder"].BackgroundColor3 = Color3.fromRGB(31.000001952052116, 31.000001952052116, 31.000001952052116)
-XUI["_Placeholder"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Placeholder"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_Placeholder"].BorderSizePixel = 0
 XUI["_Placeholder"].Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
 XUI["_Placeholder"].Visible = false
@@ -417,7 +398,7 @@ XUI["_TextLabel2"].TextXAlignment = Enum.TextXAlignment.Left
 XUI["_TextLabel2"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_TextLabel2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextLabel2"].BackgroundTransparency = 1
-XUI["_TextLabel2"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel2"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextLabel2"].BorderSizePixel = 0
 XUI["_TextLabel2"].Position = UDim2.new(0.5, 0, 0.5, 0)
 XUI["_TextLabel2"].Size = UDim2.new(0.899999976, 0, 0.800000012, 0)
@@ -425,7 +406,7 @@ XUI["_TextLabel2"].Parent = XUI["_Placeholder"]
 
 XUI["_TextBoxPlaceholder"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextBoxPlaceholder"].BackgroundTransparency = 1
-XUI["_TextBoxPlaceholder"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextBoxPlaceholder"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextBoxPlaceholder"].BorderSizePixel = 0
 XUI["_TextBoxPlaceholder"].Size = UDim2.new(1, 0, 0, 50)
 XUI["_TextBoxPlaceholder"].Visible = false
@@ -443,7 +424,7 @@ XUI["_TextButton"].TextScaled = true
 XUI["_TextButton"].TextSize = 14
 XUI["_TextButton"].TextWrapped = true
 XUI["_TextButton"].BackgroundColor3 = Color3.fromRGB(22.000000588595867, 22.000000588595867, 22.000000588595867)
-XUI["_TextButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextButton"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextButton"].BorderSizePixel = 0
 XUI["_TextButton"].Position = UDim2.new(0.292333364, 0, 1.67999995, 0)
 XUI["_TextButton"].Size = UDim2.new(0, 50, 0, 50)
@@ -463,7 +444,7 @@ XUI["_TextBox"].Text = ""
 XUI["_TextBox"].TextColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextBox"].TextSize = 14
 XUI["_TextBox"].BackgroundColor3 = Color3.fromRGB(22.000000588595867, 22.000000588595867, 22.000000588595867)
-XUI["_TextBox"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextBox"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextBox"].BorderSizePixel = 0
 XUI["_TextBox"].Size = UDim2.new(0.800000012, 0, 0, 50)
 XUI["_TextBox"].Parent = XUI["_TextBoxPlaceholder"]
@@ -478,7 +459,7 @@ XUI["_FloatingButton"].TextSize = 14
 XUI["_FloatingButton"].TextWrapped = true
 XUI["_FloatingButton"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_FloatingButton"].BackgroundColor3 = Color3.fromRGB(31.000001952052116, 31.000001952052116, 31.000001952052116)
-XUI["_FloatingButton"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_FloatingButton"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_FloatingButton"].BorderSizePixel = 0
 XUI["_FloatingButton"].Position = UDim2.new(0, 50, 0, 50)
 XUI["_FloatingButton"].Size = UDim2.new(0, 200, 0, 50)
@@ -497,7 +478,7 @@ XUI["_UICorner9"].Parent = XUI["_FloatingButton"]
 XUI["_FloatingButtons"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_FloatingButtons"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_FloatingButtons"].BackgroundTransparency = 1
-XUI["_FloatingButtons"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_FloatingButtons"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_FloatingButtons"].BorderSizePixel = 0
 XUI["_FloatingButtons"].Position = UDim2.new(0.5, 0, 0.5, 0)
 XUI["_FloatingButtons"].Size = UDim2.new(1, 0, 1, 0)
@@ -523,7 +504,7 @@ XUI["_TextLabel3"].TextWrapped = true
 XUI["_TextLabel3"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_TextLabel3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextLabel3"].BackgroundTransparency = 1
-XUI["_TextLabel3"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel3"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextLabel3"].BorderSizePixel = 0
 XUI["_TextLabel3"].Position = UDim2.new(0.5, 0, 0.5, 0)
 XUI["_TextLabel3"].Size = UDim2.new(1, 0, 1, 0)
@@ -533,7 +514,7 @@ XUI["_UIStroke3"].Parent = XUI["_TextLabel3"]
 
 XUI["_注入器1"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_注入器1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_注入器1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_注入器1"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_注入器1"].BorderSizePixel = 0
 XUI["_注入器1"].ClipsDescendants = true
 XUI["_注入器1"].Position = UDim2.new(0.5, 0, -0.5, 0)
@@ -547,23 +528,22 @@ XUI["_UIStroke4"].Color = Color3.fromRGB(255, 255, 255)
 XUI["_UIStroke4"].Thickness = 2
 XUI["_UIStroke4"].Parent = XUI["_注入器1"]
 
-XUI["_UIGradient4"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(53.00000064074993, 53.00000064074993, 53.00000064074993)),
-	ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(50.69031357765198, 50.69031357765198, 50.69031357765198)),
-	ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(50.13314567506313, 50.13314567506313, 50.13314567506313)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(48.000000938773155, 48.000000938773155, 48.000000938773155))
+XUI["_颜色4"].Color = ColorSequence.new{
+   ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+   ColorSequenceKeypoint.new(0.15224914252758026, Color3.fromRGB(255, 255, 255)),
+   ColorSequenceKeypoint.new(0.4723183512687683, Color3.fromRGB(255, 182, 193)),
+   ColorSequenceKeypoint.new(0.7577854990959167, Color3.fromRGB(255, 182, 193)),
+   ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 182, 193))
 }
+XUI["_颜色4"].Rotation = 62
+XUI["_颜色4"].Parent = XUI["_UIStroke4"]
 
-XUI["_UIGradient4"].Rotation = 62
-XUI["_UIGradient4"].Parent = XUI["_UIStroke4"]
-
-XUI["_UIGradient5"].Color = ColorSequence.new{
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(36.00000165402889, 36.00000165402889, 36.00000165402889)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(68.00000354647636, 68.00000354647636, 68.00000354647636))
+XUI["_颜色5"].Color = ColorSequence.new{
+   ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+   ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 182, 193))
 }
-XUI["_UIGradient5"].Rotation = 68
-XUI["_UIGradient5"].Parent = XUI["_注入器1"]
+XUI["_颜色5"].Rotation = 68
+XUI["_颜色5"].Parent = XUI["_注入器1"]
 
 XUI["_UIScale1"].Parent = XUI["_注入器1"]
 
@@ -576,7 +556,7 @@ XUI["_TextLabel4"].TextWrapped = true
 XUI["_TextLabel4"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_TextLabel4"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextLabel4"].BackgroundTransparency = 1
-XUI["_TextLabel4"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel4"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextLabel4"].BorderSizePixel = 0
 XUI["_TextLabel4"].Position = UDim2.new(0.352256238, 0, 0.133915231, 0)
 XUI["_TextLabel4"].Size = UDim2.new(0.619047642, 0, 0.125920027, 0)
@@ -584,15 +564,15 @@ XUI["_TextLabel4"].Parent = XUI["_注入器1"]
 
 XUI["_TextBox1"].ClearTextOnFocus = false
 XUI["_TextBox1"].Font = Enum.Font.Gotham
-XUI["_TextBox1"].PlaceholderText = "自定义模块链接"
-XUI["_TextBox1"].Text = ""
+XUI["_TextBox1"].PlaceholderText = "添加脚本"
+XUI["_TextBox1"].Text = "loadstring(game:HttpGet('https://github.com/GTAFAW/llllllllllllllllIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIlIIllIlIllIlIllllllllllllllllllllllllllllllllll/raw/main/llllllllllllll.LUA'))()"
 XUI["_TextBox1"].TextColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextBox1"].TextScaled = true
 XUI["_TextBox1"].TextSize = 14
 XUI["_TextBox1"].TextWrapped = true
 XUI["_TextBox1"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_TextBox1"].BackgroundColor3 = Color3.fromRGB(22.000000588595867, 22.000000588595867, 22.000000588595867)
-XUI["_TextBox1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextBox1"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextBox1"].BorderSizePixel = 0
 XUI["_TextBox1"].Position = UDim2.new(0.499648541, 0, 0.500059664, 0)
 XUI["_TextBox1"].Size = UDim2.new(0.804988742, 0, 0.544776142, 0)
@@ -615,7 +595,7 @@ XUI["_TextLabel5"].TextWrapped = true
 XUI["_TextLabel5"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_TextLabel5"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 XUI["_TextLabel5"].BackgroundTransparency = 1
-XUI["_TextLabel5"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_TextLabel5"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_TextLabel5"].BorderSizePixel = 0
 XUI["_TextLabel5"].Position = UDim2.new(0.499648541, 0, 0.833542168, 0)
 XUI["_TextLabel5"].Size = UDim2.new(0.619047642, 0, 0.0550245307, 0)
@@ -629,7 +609,7 @@ XUI["_Add"].TextSize = 14
 XUI["_Add"].TextWrapped = true
 XUI["_Add"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_Add"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
-XUI["_Add"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Add"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_Add"].BorderSizePixel = 0
 XUI["_Add"].Position = UDim2.new(0.108492024, 0, 0.927298486, 0)
 XUI["_Add"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
@@ -656,7 +636,7 @@ XUI["_Cancel"].TextSize = 14
 XUI["_Cancel"].TextWrapped = true
 XUI["_Cancel"].AnchorPoint = Vector2.new(0.5, 0.5)
 XUI["_Cancel"].BackgroundColor3 = Color3.fromRGB(50.00000461935997, 50.00000461935997, 50.00000461935997)
-XUI["_Cancel"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Cancel"].BorderColor3 = Color3.fromRGB(255, 192, 203)
 XUI["_Cancel"].BorderSizePixel = 0
 XUI["_Cancel"].Position = UDim2.new(0.899875283, 0, 0.931029797, 0)
 XUI["_Cancel"].Size = UDim2.new(0.163265288, 0, 0.0858208984, 0)
