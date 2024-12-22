@@ -82,7 +82,6 @@ local XUI = {
     ["_UIPadding8"] = Instance.new("UIPadding"); -- 另一个UIPadding实例
     ["_UIStroke6"] = Instance.new("UIStroke"); -- 另一个UI描边效果
     ["_LocalScript3"] = Instance.new("LocalScript"); -- 又一个本地脚本
-    ["_BackgroundImage"] = Instance.new("ImageLabel");
 }
 
 -- Properties:
@@ -111,15 +110,18 @@ XUI["_Open"].Parent = XUI["_xgohub"]
 
 XUI["_UICorner"].Parent = XUI["_Open"]
 
-XUI["_Menu"].AnchorPoint = Vector2.new(0.5, 0)
-XUI["_Menu"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-XUI["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-XUI["_Menu"].BorderSizePixel = 0
-XUI["_Menu"].ClipsDescendants = true
-XUI["_Menu"].Position = UDim2.new(0.499372661, 0, 0.0410327986, 0)
-XUI["_Menu"].Size = UDim2.new(0, 441, 0, 268)
-XUI["_Menu"].Name = "Menu"
-XUI["_Menu"].Parent = XUI["_xgohub"]
+    ["_Menu"].AnchorPoint = Vector2.new(0.5, 0)
+    ["_Menu"].BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 可以保持这个颜色，如果图片加载失败时会显示这个颜色
+    ["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ["_Menu"].BorderSizePixel = 0
+    ["_Menu"].ClipsDescendants = true
+    ["_Menu"].Position = UDim2.new(0.499372661, 0, 0.0410327986, 0)
+    ["_Menu"].Size = UDim2.new(0, 441, 0, 268)
+    ["_Menu"].Name = "Menu"
+    ["_Menu"].Parent = XUI["_xgohub"]
+    ["_Menu"].BackgroundImage = "rbxassetid://120611289434746" -- 替换成您的图片ID
+    ["_Menu"].BackgroundImageTransparency = 0 -- 图片透明度设置为0，完全不透明
+    ["_Menu"].BackgroundTransparency = 1 -- 使背景完全透明，只显示图片
 
 XUI["_UICorner1"].Parent = XUI["_Menu"]
 
@@ -653,18 +655,6 @@ XUI["_UIPadding8"].Parent = XUI["_Cancel"]
 XUI["_UIStroke6"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 XUI["_UIStroke6"].Color = Color3.fromRGB(255, 0, 0)
 XUI["_UIStroke6"].Parent = XUI["_Cancel"]
-
--- 设置ImageLabel的属性，使其作为背景
-XUI["_BackgroundImage"].Image = "rbxassetid://120611289434746" -- 替换成您的图片ID
-XUI["_BackgroundImage"].ImageColor3 = Color3.fromRGB(255, 255, 255) -- 根据需要调整颜色
-XUI["_BackgroundImage"].BackgroundTransparency = 1 -- 使背景透明
-XUI["_BackgroundImage"].BorderSizePixel = 0 -- 无边框
-XUI["_BackgroundImage"].Size = UDim2.new(1, 0, 1, 0) -- 填充整个ScreenGui
-XUI["_BackgroundImage"].Position = UDim2.new(0, 0, 0, 0) -- 根据需要调整位置
-XUI["_BackgroundImage"].Parent = XUI["_xgohub"] -- 设置父对象为_xgohub
-
--- 将背景图片放置在所有其他UI元素的后面
-table.insert(XUI, "_BackgroundImage", 1) -- 这会将背景图片插入到XUI表的第一个位置
 
 -- Fake Module Scripts:
 
