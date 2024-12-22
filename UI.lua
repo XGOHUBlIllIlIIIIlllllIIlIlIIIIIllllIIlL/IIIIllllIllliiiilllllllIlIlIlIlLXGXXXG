@@ -110,18 +110,15 @@ XUI["_Open"].Parent = XUI["_xgohub"]
 
 XUI["_UICorner"].Parent = XUI["_Open"]
 
-    ["_Menu"].AnchorPoint = Vector2.new(0.5, 0)
-    ["_Menu"].BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 可以保持这个颜色，如果图片加载失败时会显示这个颜色
-    ["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
-    ["_Menu"].BorderSizePixel = 0
-    ["_Menu"].ClipsDescendants = true
-    ["_Menu"].Position = UDim2.new(0.499372661, 0, 0.0410327986, 0)
-    ["_Menu"].Size = UDim2.new(0, 441, 0, 268)
-    ["_Menu"].Name = "Menu"
-    ["_Menu"].Parent = XUI["_xgohub"]
-    ["_Menu"].BackgroundImage = "rbxassetid://120611289434746" -- 替换成您的图片ID
-    ["_Menu"].BackgroundImageTransparency = 0 -- 图片透明度设置为0，完全不透明
-    ["_Menu"].BackgroundTransparency = 1 -- 使背景完全透明，只显示图片
+XUI["_Menu"].AnchorPoint = Vector2.new(0.5, 0)
+XUI["_Menu"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+XUI["_Menu"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+XUI["_Menu"].BorderSizePixel = 0
+XUI["_Menu"].ClipsDescendants = true
+XUI["_Menu"].Position = UDim2.new(0.499372661, 0, 0.0410327986, 0)
+XUI["_Menu"].Size = UDim2.new(0, 441, 0, 268)
+XUI["_Menu"].Name = "Menu"
+XUI["_Menu"].Parent = XUI["_xgohub"]
 
 XUI["_UICorner1"].Parent = XUI["_Menu"]
 
@@ -655,7 +652,6 @@ XUI["_UIPadding8"].Parent = XUI["_Cancel"]
 XUI["_UIStroke6"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 XUI["_UIStroke6"].Color = Color3.fromRGB(255, 0, 0)
 XUI["_UIStroke6"].Parent = XUI["_Cancel"]
-
 -- Fake Module Scripts:
 
 local fake_module_scripts = {}
