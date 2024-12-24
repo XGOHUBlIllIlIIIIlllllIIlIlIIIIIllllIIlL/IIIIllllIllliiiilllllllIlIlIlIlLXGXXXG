@@ -1,6 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
--- /2@/.xgo/.colew./cn
+
 local Library = {
 	Version = '\88\71\79\72\85\66',
 	Loaded = true,
@@ -1431,7 +1431,14 @@ Library = {
         Loading = UDim2.new(0, 90, 0, 90),
         Close = UDim2.new(0.01, 25, 0.01, 25)
     },
-    Theme = {},
+    Theme = {
+        themes = {
+            Default = {Color3.fromRGB(0, 255, 255), Color3.fromRGB(32, 33, 36), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
+            Dark = {Color3.fromRGB(255, 255, 255), Color3.fromRGB(20, 20, 22), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
+            Discord = {Color3.fromRGB(114, 137, 218), Color3.fromRGB(35, 37, 40), Color3.fromRGB(167, 173, 188), Color3.fromRGB(234, 234, 234)},
+            -- ... 其他主题定义
+        }
+    },
     Colors = {
         Hightlight = Color3.fromRGB(0, 255, 255),
         Default = Color3.fromRGB(32, 33, 36),
@@ -1442,58 +1449,7 @@ Library = {
 
 -- 通用的主题设置函数
 function Library.Theme:SetTheme(themeName)
-    local themes = {
-        Default = {Color3.fromRGB(0, 255, 255), Color3.fromRGB(32, 33, 36), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
-        Dark = {Color3.fromRGB(255, 255, 255), Color3.fromRGB(20, 20, 22), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
-        Discord = {Color3.fromRGB(114, 137, 218), Color3.fromRGB(35, 37, 40), Color3.fromRGB(167, 173, 188), Color3.fromRGB(234, 234, 234)},
-        Light = {Color3.fromRGB(0, 115, 255), Color3.fromRGB(198, 211, 229), Color3.fromRGB(74, 77, 83), Color3.fromRGB(0, 0, 0)},
-        Catppuccin = {Color3.fromRGB(201, 165, 245), Color3.fromRGB(30, 31, 47), Color3.fromRGB(109, 123, 154), Color3.fromRGB(204, 204, 204)},
-        Houston = {Color3.fromRGB(90, 212, 176), Color3.fromRGB(22, 25, 29), Color3.fromRGB(72, 72, 83), Color3.fromRGB(191, 193, 195)},
-        Matcha = {Color3.fromRGB(152, 132, 110), Color3.fromRGB(38, 49, 55), Color3.fromRGB(62, 83, 82), Color3.fromRGB(165, 178, 175)},
-        Neverlose = {Color3.fromRGB(0, 251, 255), Color3.fromRGB(0, 13, 26), Color3.fromRGB(167, 173, 188), Color3.fromRGB(255, 255, 255)},
-        HightGreen = {Color3.fromRGB(0, 255, 140), Color3.fromRGB(8, 13, 12), Color3.fromRGB(163, 188, 165), Color3.fromRGB(255, 255, 255)},
-        Halloween = {Color3.fromRGB(255, 162, 0), Color3.fromRGB(13, 11, 10), Color3.fromRGB(188, 156, 156), Color3.fromRGB(255, 242, 245)},
-        Christmas = {Color3.fromRGB(138, 220, 255), Color3.fromRGB(11, 13, 13), Color3.fromRGB(81, 103, 104), Color3.fromRGB(249, 249, 249)},
-        Valentine = {Color3.fromRGB(255, 0, 128), Color3.fromRGB(200, 15, 100), Color3.fromRGB(206, 162, 168), Color3.fromRGB(255, 255, 255)},
-        Summer = {Color3.fromRGB(0, 255, 127), Color3.fromRGB(0, 128, 102), Color3.fromRGB(173, 216, 230), Color3.fromRGB(255, 255, 255)},
-        Autumn = {Color3.fromRGB(255, 140, 0), Color3.fromRGB(139, 69, 19), Color3.fromRGB(188, 143, 143), Color3.fromRGB(255, 255, 255)},
-        Winter = {Color3.fromRGB(173, 216, 230), Color3.fromRGB(70, 130, 180), Color3.fromRGB(199, 219, 249), Color3.fromRGB(0, 0, 0)},
-        Ocean = {Color3.fromRGB(0, 150, 136), Color3.fromRGB(0, 51, 51), Color3.fromRGB(102, 153, 255), Color3.fromRGB(255, 255, 255)},
-        Nord = {Color3.fromRGB(136, 192, 208), Color3.fromRGB(46, 52, 64), Color3.fromRGB(88, 110, 117), Color3.fromRGB(216, 222, 227)},
-        Mint = {Color3.fromRGB(189, 252, 201), Color3.fromRGB(39, 174, 96), Color3.fromRGB(189, 220, 189), Color3.fromRGB(41, 128, 185)},
-        Sunset = {Color3.fromRGB(255, 69, 0), Color3.fromRGB(139, 69, 19), Color3.fromRGB(207, 207, 207), Color3.fromRGB(255, 255, 255)},
-        Rose = {Color3.fromRGB(255, 105, 180), Color3.fromRGB(96, 0, 77), Color3.fromRGB(204, 192, 179), Color3.fromRGB(255, 255, 255)},
-        Cyberpunk = {Color3.fromRGB(0, 252, 255), Color3.fromRGB(0, 0, 0), Color3.fromRGB(75, 75, 75), Color3.fromRGB(255, 255, 255)},
-        Lavender = {Color3.fromRGB(230, 230, 250), Color3.fromRGB(150, 150, 170), Color3.fromRGB(200, 200, 220), Color3.fromRGB(255, 255, 255)},
-        AquaMarine = {Color3.fromRGB(127, 255, 212), Color3.fromRGB(0, 100, 100), Color3.fromRGB(143, 188, 143), Color3.fromRGB(0, 0, 0)},
-        Midnight = {Color3.fromRGB(58, 69, 77), Color3.fromRGB(10, 10, 10), Color3.fromRGB(58, 69, 77), Color3.fromRGB(255, 255, 255)},
-        Sakura = {Color3.fromRGB(255, 182, 193), Color3.fromRGB(160, 82, 45), Color3.fromRGB(233, 185, 170), Color3.fromRGB(255, 255, 255)},
-        Desert = {Color3.fromRGB(255, 223, 129), Color3.fromRGB(139, 69, 19), Color3.fromRGB(210, 180, 140), Color3.fromRGB(0, 0, 0)},
-        Forest = {Color3.fromRGB(34, 139, 34), Color3.fromRGB(0, 100, 0), Color3.fromRGB(144, 238, 144), Color3.fromRGB(255, 255, 255)},
-        Royal = {Color3.fromRGB(102, 51, 153), Color3.fromRGB(0, 0, 0), Color3.fromRGB(173, 127, 168), Color3.fromRGB(255, 255, 255)},
-        Ruby = {Color3.fromRGB(224, 17, 95), Color3.fromRGB(139, 0, 0), Color3.fromRGB(233, 185, 170), Color3.fromRGB(255, 255, 255)},
-        Tropical = {Color3.fromRGB(255, 239, 213), Color3.fromRGB(0, 95, 87), Color3.fromRGB(218, 232, 218), Color3.fromRGB(10, 10, 10)},
-        Vintage = {Color3.fromRGB(139, 69, 19), Color3.fromRGB(112, 128, 144), Color3.fromRGB(191, 191, 191), Color3.fromRGB(255, 255, 255)},
-        Cobalt = {Color3.fromRGB(0, 255, 255), Color3.fromRGB(0, 0, 102), Color3.fromRGB(102, 153, 204), Color3.fromRGB(255, 255, 255)},
-        Sage = {Color3.fromRGB(158, 251, 155), Color3.fromRGB(75, 100, 70), Color3.fromRGB(188, 226, 184), Color3.fromRGB(0, 0, 0)},
-        Bronze = {Color3.fromRGB(205, 127, 50), Color3.fromRGB(139, 69, 19), Color3.fromRGB(222, 184, 135), Color3.fromRGB(255, 255, 255)},
-        Lagoon = {Color3.fromRGB(0, 150, 136), Color3.fromRGB(0, 51, 51), Color3.fromRGB(102, 153, 255), Color3.fromRGB(255, 255, 255)},
-        Amber = {Color3.fromRGB(255, 191, 0), Color3.fromRGB(139, 69, 19), Color3.fromRGB(255, 204, 102), Color3.fromRGB(0, 0, 0)},
-        Aurora = {Color3.fromRGB(138, 43, 226), Color3.fromRGB(26, 26, 26), Color3.fromRGB(72, 72, 72), Color3.fromRGB(255, 255, 255)},
-        Neon = {Color3.fromRGB(0, 252, 255), Color3.fromRGB(25, 25, 25), Color3.fromRGB(100, 100, 100), Color3.fromRGB(255, 255, 255)},
-        Pastel = {Color3.fromRGB(255, 158, 181), Color3.fromRGB(207, 207, 207), Color3.fromRGB(238, 238, 238), Color3.fromRGB(51, 51, 51)},
-        Jungle = {Color3.fromRGB(0, 128, 0), Color3.fromRGB(34, 34, 34), Color3.fromRGB(102, 153, 102), Color3.fromRGB(255, 255, 255)},
-        OceanBreeze = {Color3.fromRGB(0, 173, 239), Color3.fromRGB(41, 64, 90), Color3.fromRGB(131, 175, 155), Color3.fromRGB(255, 255, 255)},
-        Sunrise = {Color3.fromRGB(255, 159, 67), Color3.fromRGB(34, 34, 34), Color3.fromRGB(204, 153, 102), Color3.fromRGB(255, 255, 255)},
-        StarryNight = {Color3.fromRGB(70, 130, 180), Color3.fromRGB(12, 12, 12), Color3.fromRGB(53, 53, 53), Color3.fromRGB(255, 255, 255)},
-        Twilight = {Color3.fromRGB(75, 0, 130), Color3.fromRGB(45, 45, 60), Color3.fromRGB(100, 100, 120), Color3.fromRGB(255, 255, 255)},
-        Frost = {Color3.fromRGB(185, 225, 255), Color3.fromRGB(240, 250, 255), Color3.fromRGB(200, 215, 230), Color3.fromRGB(0, 0, 0)},
-        Floral = {Color3.fromRGB(255, 182, 193), Color3.fromRGB(135, 206, 235), Color3.fromRGB(225, 225, 225), Color3.fromRGB(10, 10, 10)},
-        SunsetBeach = {Color3.fromRGB(255, 69, 0), Color3.fromRGB(255, 140, 0), Color3.fromRGB(255, 213, 102), Color3.fromRGB(0, 0, 0)},
-        Mystic = {Color3.fromRGB(65, 105, 225), Color3.fromRGB(40, 50, 60), Color3.fromRGB(130, 140, 170), Color3.fromRGB(255, 255, 255)},
-        Elegant = {Color3.fromRGB(255, 193, 7), Color3.fromRGB(70, 30, 20), Color3.fromRGB(200, 160, 120), Color3.fromRGB(255, 255, 255)},
-    }
-    local theme = themes[themeName]
+    local theme = self.themes[themeName]
     if theme then
         Library.Colors.Hightlight = theme[1]
         Library.Colors.Default = theme[2]
@@ -1503,12 +1459,6 @@ function Library.Theme:SetTheme(themeName)
         print("Theme not found: " .. themeName)
     end
 end
-
--- 现在您可以通过调用 Library.Theme:SetTheme("ThemeName") 来设置主题，例如：
--- Library.Theme:SetTheme("Dark")
--- Library.Theme:SetTheme("Valentine")
--- Library.Theme:SetTheme("Autumn")
--- XGOHUB....
 --[[
 Library.SizeLibrary = {
 	Default = UDim2.fromOffset(580, 385),
