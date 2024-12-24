@@ -1423,43 +1423,6 @@ Library.TweenService = game:GetService('TweenService');
 Library.LocalPlayer = game:GetService('Players').LocalPlayer;
 Library.CoreGui = (game:FindFirstChild('CoreGui') and Library.Cloneref(game:GetService('CoreGui'))) or Library.LocalPlayer.PlayerGui;
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
-Library = {
-    SizeLibrary = {
-        Default = UDim2.fromOffset(580, 385),
-        Auth = UDim2.new(0.05, 250, 0.05, 125),
-        Max = UDim2.fromScale(1, 1),
-        Loading = UDim2.new(0, 90, 0, 90),
-        Close = UDim2.new(0.01, 25, 0.01, 25)
-    },
-    Theme = {
-        themes = {
-            Default = {Color3.fromRGB(0, 255, 255), Color3.fromRGB(32, 33, 36), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
-            Dark = {Color3.fromRGB(255, 255, 255), Color3.fromRGB(20, 20, 22), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
-            Discord = {Color3.fromRGB(114, 137, 218), Color3.fromRGB(35, 37, 40), Color3.fromRGB(167, 173, 188), Color3.fromRGB(234, 234, 234)},
-            -- ... 其他主题定义
-        }
-    },
-    Colors = {
-        Hightlight = Color3.fromRGB(0, 255, 255),
-        Default = Color3.fromRGB(32, 33, 36),
-        Disable = Color3.fromRGB(167, 173, 188),
-        TextColor = Color3.fromRGB(220, 224, 234),
-    }
-}
-
--- 通用的主题设置函数
-function Library.Theme:SetTheme(themeName)
-    local theme = self.themes[themeName]
-    if theme then
-        Library.Colors.Hightlight = theme[1]
-        Library.Colors.Default = theme[2]
-        Library.Colors.Disable = theme[3]
-        Library.Colors.TextColor = theme[4]
-    else
-        print("Theme not found: " .. themeName)
-    end
-end
---[[
 Library.SizeLibrary = {
 	Default = UDim2.fromOffset(580, 385),
 	Auth = UDim2.new(0.05, 250,0.05, 125),
@@ -1927,8 +1890,7 @@ function Library.Theme:Elegant()
         Disable = Color3.fromRGB(200, 160, 120), -- 优雅浅棕
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end 
---]]
+end
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
