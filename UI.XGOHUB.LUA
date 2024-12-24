@@ -1423,474 +1423,92 @@ Library.TweenService = game:GetService('TweenService');
 Library.LocalPlayer = game:GetService('Players').LocalPlayer;
 Library.CoreGui = (game:FindFirstChild('CoreGui') and Library.Cloneref(game:GetService('CoreGui'))) or Library.LocalPlayer.PlayerGui;
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
-Library.SizeLibrary = {
-	Default = UDim2.fromOffset(580, 385),
-	Auth = UDim2.new(0.05, 250,0.05, 125),
-	Max = UDim2.fromScale(1,1),
-	Loading = UDim2.new(0, 90,0, 90),
-	Close = UDim2.new(0.01, 25,0.01, 25)
-};
-
-Library.Theme = {}
-
-Library.Colors = {
-	Hightlight = Color3.fromRGB(0, 255, 255),
-	Default = Color3.fromRGB(32, 33, 36),
-	Disable = Color3.fromRGB(167, 173, 188),
-	TextColor = Color3.fromRGB(220, 224, 234),
-
+Library = {
+    SizeLibrary = {
+        Default = UDim2.fromOffset(580, 385),
+        Auth = UDim2.new(0.05, 250, 0.05, 125),
+        Max = UDim2.fromScale(1, 1),
+        Loading = UDim2.new(0, 90, 0, 90),
+        Close = UDim2.new(0.01, 25, 0.01, 25)
+    },
+    Theme = {},
+    Colors = {
+        Hightlight = Color3.fromRGB(0, 255, 255),
+        Default = Color3.fromRGB(32, 33, 36),
+        Disable = Color3.fromRGB(167, 173, 188),
+        TextColor = Color3.fromRGB(220, 224, 234),
+    }
 }
 
-function Library.Theme:Default()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 255, 255),
-		Default = Color3.fromRGB(32, 33, 36),
-		Disable = Color3.fromRGB(167, 173, 188),
-		TextColor = Color3.fromRGB(220, 224, 234),
-	}
-end;
-
-function Library.Theme:Dark()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(255, 255, 255),
-		Default = Color3.fromRGB(20, 20, 22),
-		Disable = Color3.fromRGB(167, 173, 188),
-		TextColor = Color3.fromRGB(220, 224, 234),
-	}
-end;
-
-function Library.Theme:Discord()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(114,137,218),
-		Default = Color3.fromRGB(35, 37, 40),
-		Disable = Color3.fromRGB(167, 173, 188),
-		TextColor = Color3.fromRGB(234, 234, 234),
-	}
-end;
-
-function Library.Theme:Light()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 115, 255),
-		Default = Color3.fromRGB(198, 211, 229),
-		Disable = Color3.fromRGB(74, 77, 83),
-		TextColor = Color3.fromRGB(0, 0, 0),
-	}
-end;
-
-function Library.Theme:Catppuccin()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(201,165,245),
-		Default = Color3.fromRGB(30,31,47),
-		Disable = Color3.fromRGB(109,123,154,255),
-		TextColor = Color3.fromRGB(204, 204, 204),
-	}
-end;
-
-function Library.Theme:Houston()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(90,212,176),
-		Default = Color3.fromRGB(22,25,29),
-		Disable = Color3.fromRGB(72,72,83),
-		TextColor = Color3.fromRGB(191,193,195),
-	}
-end;
-
-
-function Library.Theme:Matcha()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(152,132,110),
-		Default = Color3.fromRGB(38,49,55),
-		Disable = Color3.fromRGB(62,83,82),
-		TextColor = Color3.fromRGB(165,178,175),
-	}
-end;
-
-function Library.Theme:Neverlose()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 251, 255),
-		Default = Color3.fromRGB(0, 13, 26),
-		Disable = Color3.fromRGB(167, 173, 188),
-		TextColor = Color3.fromRGB(255, 255, 255),
-	}
-end;
-
-function Library.Theme:Custom(Hightlight,Default,Disable,TextColor)
-	Library.Colors = {
-		Hightlight = Hightlight,
-		Default = Default,
-		Disable = Disable,
-		TextColor = TextColor,
-	}
-end
-
-function Library.Theme:HightGreen()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 255, 140),
-		Default = Color3.fromRGB(8, 13, 12),
-		Disable = Color3.fromRGB(163, 188, 165),
-		TextColor = Color3.fromRGB(255, 255, 255),
-	}
-end
-
-function Library.Theme:Halloween()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(255, 162, 0),
-		Default = Color3.fromRGB(13, 11, 10),
-		Disable = Color3.fromRGB(188, 156, 156),
-		TextColor = Color3.fromRGB(255, 242, 245),
-	}
-end
-
-function Library.Theme:Christmas()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(138, 220, 255),
-		Default = Color3.fromRGB(11, 13, 13),
-		Disable = Color3.fromRGB(81, 103, 104),
-		TextColor = Color3.fromRGB(249, 249, 249),
-	}
-end
-
-function Library.Theme:Valentine()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 0, 128), -- 粉红色
-        Default = Color3.fromRGB(200, 15, 100), -- 深粉红色
-        Disable = Color3.fromRGB(206, 162, 168), -- 浅灰色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+-- 通用的主题设置函数
+function Library.Theme:SetTheme(themeName)
+    local themes = {
+        Default = {Color3.fromRGB(0, 255, 255), Color3.fromRGB(32, 33, 36), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
+        Dark = {Color3.fromRGB(255, 255, 255), Color3.fromRGB(20, 20, 22), Color3.fromRGB(167, 173, 188), Color3.fromRGB(220, 224, 234)},
+        Discord = {Color3.fromRGB(114, 137, 218), Color3.fromRGB(35, 37, 40), Color3.fromRGB(167, 173, 188), Color3.fromRGB(234, 234, 234)},
+        Light = {Color3.fromRGB(0, 115, 255), Color3.fromRGB(198, 211, 229), Color3.fromRGB(74, 77, 83), Color3.fromRGB(0, 0, 0)},
+        Catppuccin = {Color3.fromRGB(201, 165, 245), Color3.fromRGB(30, 31, 47), Color3.fromRGB(109, 123, 154), Color3.fromRGB(204, 204, 204)},
+        Houston = {Color3.fromRGB(90, 212, 176), Color3.fromRGB(22, 25, 29), Color3.fromRGB(72, 72, 83), Color3.fromRGB(191, 193, 195)},
+        Matcha = {Color3.fromRGB(152, 132, 110), Color3.fromRGB(38, 49, 55), Color3.fromRGB(62, 83, 82), Color3.fromRGB(165, 178, 175)},
+        Neverlose = {Color3.fromRGB(0, 251, 255), Color3.fromRGB(0, 13, 26), Color3.fromRGB(167, 173, 188), Color3.fromRGB(255, 255, 255)},
+        HightGreen = {Color3.fromRGB(0, 255, 140), Color3.fromRGB(8, 13, 12), Color3.fromRGB(163, 188, 165), Color3.fromRGB(255, 255, 255)},
+        Halloween = {Color3.fromRGB(255, 162, 0), Color3.fromRGB(13, 11, 10), Color3.fromRGB(188, 156, 156), Color3.fromRGB(255, 242, 245)},
+        Christmas = {Color3.fromRGB(138, 220, 255), Color3.fromRGB(11, 13, 13), Color3.fromRGB(81, 103, 104), Color3.fromRGB(249, 249, 249)},
+        Valentine = {Color3.fromRGB(255, 0, 128), Color3.fromRGB(200, 15, 100), Color3.fromRGB(206, 162, 168), Color3.fromRGB(255, 255, 255)},
+        Summer = {Color3.fromRGB(0, 255, 127), Color3.fromRGB(0, 128, 102), Color3.fromRGB(173, 216, 230), Color3.fromRGB(255, 255, 255)},
+        Autumn = {Color3.fromRGB(255, 140, 0), Color3.fromRGB(139, 69, 19), Color3.fromRGB(188, 143, 143), Color3.fromRGB(255, 255, 255)},
+        Winter = {Color3.fromRGB(173, 216, 230), Color3.fromRGB(70, 130, 180), Color3.fromRGB(199, 219, 249), Color3.fromRGB(0, 0, 0)},
+        Ocean = {Color3.fromRGB(0, 150, 136), Color3.fromRGB(0, 51, 51), Color3.fromRGB(102, 153, 255), Color3.fromRGB(255, 255, 255)},
+        Nord = {Color3.fromRGB(136, 192, 208), Color3.fromRGB(46, 52, 64), Color3.fromRGB(88, 110, 117), Color3.fromRGB(216, 222, 227)},
+        Mint = {Color3.fromRGB(189, 252, 201), Color3.fromRGB(39, 174, 96), Color3.fromRGB(189, 220, 189), Color3.fromRGB(41, 128, 185)},
+        Sunset = {Color3.fromRGB(255, 69, 0), Color3.fromRGB(139, 69, 19), Color3.fromRGB(207, 207, 207), Color3.fromRGB(255, 255, 255)},
+        Rose = {Color3.fromRGB(255, 105, 180), Color3.fromRGB(96, 0, 77), Color3.fromRGB(204, 192, 179), Color3.fromRGB(255, 255, 255)},
+        Cyberpunk = {Color3.fromRGB(0, 252, 255), Color3.fromRGB(0, 0, 0), Color3.fromRGB(75, 75, 75), Color3.fromRGB(255, 255, 255)},
+        Lavender = {Color3.fromRGB(230, 230, 250), Color3.fromRGB(150, 150, 170), Color3.fromRGB(200, 200, 220), Color3.fromRGB(255, 255, 255)},
+        AquaMarine = {Color3.fromRGB(127, 255, 212), Color3.fromRGB(0, 100, 100), Color3.fromRGB(143, 188, 143), Color3.fromRGB(0, 0, 0)},
+        Midnight = {Color3.fromRGB(58, 69, 77), Color3.fromRGB(10, 10, 10), Color3.fromRGB(58, 69, 77), Color3.fromRGB(255, 255, 255)},
+        Sakura = {Color3.fromRGB(255, 182, 193), Color3.fromRGB(160, 82, 45), Color3.fromRGB(233, 185, 170), Color3.fromRGB(255, 255, 255)},
+        Desert = {Color3.fromRGB(255, 223, 129), Color3.fromRGB(139, 69, 19), Color3.fromRGB(210, 180, 140), Color3.fromRGB(0, 0, 0)},
+        Forest = {Color3.fromRGB(34, 139, 34), Color3.fromRGB(0, 100, 0), Color3.fromRGB(144, 238, 144), Color3.fromRGB(255, 255, 255)},
+        Royal = {Color3.fromRGB(102, 51, 153), Color3.fromRGB(0, 0, 0), Color3.fromRGB(173, 127, 168), Color3.fromRGB(255, 255, 255)},
+        Ruby = {Color3.fromRGB(224, 17, 95), Color3.fromRGB(139, 0, 0), Color3.fromRGB(233, 185, 170), Color3.fromRGB(255, 255, 255)},
+        Tropical = {Color3.fromRGB(255, 239, 213), Color3.fromRGB(0, 95, 87), Color3.fromRGB(218, 232, 218), Color3.fromRGB(10, 10, 10)},
+        Vintage = {Color3.fromRGB(139, 69, 19), Color3.fromRGB(112, 128, 144), Color3.fromRGB(191, 191, 191), Color3.fromRGB(255, 255, 255)},
+        Cobalt = {Color3.fromRGB(0, 255, 255), Color3.fromRGB(0, 0, 102), Color3.fromRGB(102, 153, 204), Color3.fromRGB(255, 255, 255)},
+        Sage = {Color3.fromRGB(158, 251, 155), Color3.fromRGB(75, 100, 70), Color3.fromRGB(188, 226, 184), Color3.fromRGB(0, 0, 0)},
+        Bronze = {Color3.fromRGB(205, 127, 50), Color3.fromRGB(139, 69, 19), Color3.fromRGB(222, 184, 135), Color3.fromRGB(255, 255, 255)},
+        Lagoon = {Color3.fromRGB(0, 150, 136), Color3.fromRGB(0, 51, 51), Color3.fromRGB(102, 153, 255), Color3.fromRGB(255, 255, 255)},
+        Amber = {Color3.fromRGB(255, 191, 0), Color3.fromRGB(139, 69, 19), Color3.fromRGB(255, 204, 102), Color3.fromRGB(0, 0, 0)},
+        Aurora = {Color3.fromRGB(138, 43, 226), Color3.fromRGB(26, 26, 26), Color3.fromRGB(72, 72, 72), Color3.fromRGB(255, 255, 255)},
+        Neon = {Color3.fromRGB(0, 252, 255), Color3.fromRGB(25, 25, 25), Color3.fromRGB(100, 100, 100), Color3.fromRGB(255, 255, 255)},
+        Pastel = {Color3.fromRGB(255, 158, 181), Color3.fromRGB(207, 207, 207), Color3.fromRGB(238, 238, 238), Color3.fromRGB(51, 51, 51)},
+        Jungle = {Color3.fromRGB(0, 128, 0), Color3.fromRGB(34, 34, 34), Color3.fromRGB(102, 153, 102), Color3.fromRGB(255, 255, 255)},
+        OceanBreeze = {Color3.fromRGB(0, 173, 239), Color3.fromRGB(41, 64, 90), Color3.fromRGB(131, 175, 155), Color3.fromRGB(255, 255, 255)},
+        Sunrise = {Color3.fromRGB(255, 159, 67), Color3.fromRGB(34, 34, 34), Color3.fromRGB(204, 153, 102), Color3.fromRGB(255, 255, 255)},
+        StarryNight = {Color3.fromRGB(70, 130, 180), Color3.fromRGB(12, 12, 12), Color3.fromRGB(53, 53, 53), Color3.fromRGB(255, 255, 255)},
+        Twilight = {Color3.fromRGB(75, 0, 130), Color3.fromRGB(45, 45, 60), Color3.fromRGB(100, 100, 120), Color3.fromRGB(255, 255, 255)},
+        Frost = {Color3.fromRGB(185, 225, 255), Color3.fromRGB(240, 250, 255), Color3.fromRGB(200, 215, 230), Color3.fromRGB(0, 0, 0)},
+        Floral = {Color3.fromRGB(255, 182, 193), Color3.fromRGB(135, 206, 235), Color3.fromRGB(225, 225, 225), Color3.fromRGB(10, 10, 10)},
+        SunsetBeach = {Color3.fromRGB(255, 69, 0), Color3.fromRGB(255, 140, 0), Color3.fromRGB(255, 213, 102), Color3.fromRGB(0, 0, 0)},
+        Mystic = {Color3.fromRGB(65, 105, 225), Color3.fromRGB(40, 50, 60), Color3.fromRGB(130, 140, 170), Color3.fromRGB(255, 255, 255)},
+        Elegant = {Color3.fromRGB(255, 193, 7), Color3.fromRGB(70, 30, 20), Color3.fromRGB(200, 160, 120), Color3.fromRGB(255, 255, 255)},
     }
+    local theme = themes[themeName]
+    if theme then
+        Library.Colors.Hightlight = theme[1]
+        Library.Colors.Default = theme[2]
+        Library.Colors.Disable = theme[3]
+        Library.Colors.TextColor = theme[4]
+    else
+        print("没有这个主题: " .. themeName)
+    end
 end
 
-function Library.Theme:Summer()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 255, 127), -- 酸橙色
-        Default = Color3.fromRGB(0, 128, 102), -- 深绿色
-        Disable = Color3.fromRGB(173, 216, 230), -- 天蓝色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Autumn()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 140, 0), -- 橙色
-        Default = Color3.fromRGB(139, 69, 19), -- 深棕色
-        Disable = Color3.fromRGB(188, 143, 143), -- 浅棕色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Winter()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(173, 216, 230), -- 天蓝色
-        Default = Color3.fromRGB(70, 130, 180), -- 深蓝色
-        Disable = Color3.fromRGB(199, 219, 249), -- 浅蓝色
-        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
-    }
-end
-
-function Library.Theme:Ocean()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 150, 136), -- 青绿色
-        Default = Color3.fromRGB(0, 51, 51), -- 深蓝色
-        Disable = Color3.fromRGB(102, 153, 255), -- 亮蓝色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Nord()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(136, 192, 208), -- 北欧蓝
-        Default = Color3.fromRGB(46, 52, 64), -- 北欧深灰
-        Disable = Color3.fromRGB(88, 110, 117), -- 北欧浅灰
-        TextColor = Color3.fromRGB(216, 222, 227), -- 北欧亮灰
-    }
-end
-
-function Library.Theme:Mint()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(189, 252, 201), -- 薄荷绿
-        Default = Color3.fromRGB(39, 174, 96), -- 深薄荷绿
-        Disable = Color3.fromRGB(189, 220, 189), -- 浅薄荷绿
-        TextColor = Color3.fromRGB(41, 128, 185), -- 薄荷蓝
-    }
-end
-
-function Library.Theme:Sunset()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 69, 0), -- 夕阳橙
-        Default = Color3.fromRGB(139, 69, 19), -- 深棕色
-        Disable = Color3.fromRGB(207, 207, 207), -- 浅灰色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Rose()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 105, 180), -- 玫瑰粉
-        Default = Color3.fromRGB(96, 0, 77), -- 深玫瑰红
-        Disable = Color3.fromRGB(204, 192, 179), -- 玫瑰棕
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Cyberpunk()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 252, 255), -- 霓虹青
-        Default = Color3.fromRGB(0, 0, 0), -- 黑色
-        Disable = Color3.fromRGB(75, 75, 75), -- 深灰色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Lavender()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(230, 230, 250), -- 淡紫色
-        Default = Color3.fromRGB(150, 150, 170), -- 深紫色
-        Disable = Color3.fromRGB(200, 200, 220), -- 浅紫色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:AquaMarine()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(127, 255, 212), -- 水绿色
-        Default = Color3.fromRGB(0, 100, 100), -- 深水绿
-        Disable = Color3.fromRGB(143, 188, 143), -- 浅水绿
-        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
-    }
-end
-
-function Library.Theme:Midnight()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(58, 69, 77), -- 午夜蓝
-        Default = Color3.fromRGB(10, 10, 10), -- 深午夜黑
-        Disable = Color3.fromRGB(58, 69, 77), -- 浅午夜灰
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Sakura()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 182, 193), -- 樱花粉
-        Default = Color3.fromRGB(160, 82, 45), -- 深棕色
-        Disable = Color3.fromRGB(233, 185, 170), -- 浅棕色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Desert()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 223, 129), -- 沙漠金
-        Default = Color3.fromRGB(139, 69, 19), -- 沙漠棕
-        Disable = Color3.fromRGB(210, 180, 140), -- 浅沙漠棕
-        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
-    }
-end
-
-function Library.Theme:Forest()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(34, 139, 34), -- 森林绿
-        Default = Color3.fromRGB(0, 100, 0), -- 深森林绿
-        Disable = Color3.fromRGB(144, 238, 144), -- 浅森林绿
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Royal()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(102, 51, 153), -- 皇家紫
-        Default = Color3.fromRGB(0, 0, 0), -- 黑色
-        Disable = Color3.fromRGB(173, 127, 168), -- 浅紫色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Ruby()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(224, 17, 95), -- 红宝石红
-        Default = Color3.fromRGB(139, 0, 0), -- 深红色
-        Disable = Color3.fromRGB(233, 185, 170), -- 浅红色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Tropical()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 239, 213), -- 热带黄
-        Default = Color3.fromRGB(0, 95, 87), -- 热带绿
-        Disable = Color3.fromRGB(218, 232, 218), -- 热带浅绿
-        TextColor = Color3.fromRGB(10, 10, 10), -- 深灰色
-    }
-end
-
-function Library.Theme:Vintage()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(139, 69, 19), -- 复古棕
-        Default = Color3.fromRGB(112, 128, 144), -- 复古灰
-        Disable = Color3.fromRGB(191, 191, 191), -- 复古浅灰
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Cobalt()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 255, 255), -- 钴蓝色
-        Default = Color3.fromRGB(0, 0, 102), -- 深钴蓝
-        Disable = Color3.fromRGB(102, 153, 204), -- 浅钴蓝
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Sage()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(158, 251, 155), -- 鼠尾草绿
-        Default = Color3.fromRGB(75, 100, 70), -- 深鼠尾草绿
-        Disable = Color3.fromRGB(188, 226, 184), -- 浅鼠尾草绿
-        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
-    }
-end
-
-function Library.Theme:Bronze()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(205, 127, 50), -- 青铜色
-        Default = Color3.fromRGB(139, 69, 19), -- 深青铜色
-        Disable = Color3.fromRGB(222, 184, 135), -- 浅青铜色
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Lagoon()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 150, 136), -- 泻湖绿
-        Default = Color3.fromRGB(0, 51, 51), -- 深海绿
-        Disable = Color3.fromRGB(102, 153, 255), -- 浅泻湖绿
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Amber()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 191, 0), -- 琥珀色
-        Default = Color3.fromRGB(139, 69, 19), -- 深琥珀色
-        Disable = Color3.fromRGB(255, 204, 102), -- 浅琥珀色
-        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
-    }
-end
-
-function Library.Theme:Aurora()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(138, 43, 226), -- 极光紫
-        Default = Color3.fromRGB(26, 26, 26), -- 深空黑
-        Disable = Color3.fromRGB(72, 72, 72), -- 星云灰
-        TextColor = Color3.fromRGB(255, 255, 255), -- 星光白
-    }
-end
-
-function Library.Theme:Neon()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 252, 255), -- 霓虹青
-        Default = Color3.fromRGB(25, 25, 25), -- 午夜黑
-        Disable = Color3.fromRGB(100, 100, 100), -- 深灰
-        TextColor = Color3.fromRGB(255, 255, 255), -- 亮白
-    }
-end
-
-function Library.Theme:Pastel()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 158, 181), -- 粉彩红
-        Default = Color3.fromRGB(207, 207, 207), -- 粉彩灰
-        Disable = Color3.fromRGB(238, 238, 238), -- 粉彩浅灰
-        TextColor = Color3.fromRGB(51, 51, 51), -- 深灰
-    }
-end
-
-function Library.Theme:Jungle()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 128, 0), -- 丛林绿
-        Default = Color3.fromRGB(34, 34, 34), -- 暗绿
-        Disable = Color3.fromRGB(102, 153, 102), -- 浅绿
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:OceanBreeze()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(0, 173, 239), -- 海洋蓝
-        Default = Color3.fromRGB(41, 64, 90), -- 海洋深蓝
-        Disable = Color3.fromRGB(131, 175, 155), -- 海洋浅蓝
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Sunrise()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 159, 67), -- 日出色
-        Default = Color3.fromRGB(34, 34, 34), -- 深灰
-        Disable = Color3.fromRGB(204, 153, 102), -- 日出橙
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:StarryNight()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(70, 130, 180), -- 星空蓝
-        Default = Color3.fromRGB(12, 12, 12), -- 深夜黑
-        Disable = Color3.fromRGB(53, 53, 53), -- 暗夜灰
-        TextColor = Color3.fromRGB(255, 255, 255), -- 星光白
-    }
-end
-
-function Library.Theme:Twilight()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(75, 0, 130), -- 暮光紫
-        Default = Color3.fromRGB(45, 45, 60), -- 暮光深灰
-        Disable = Color3.fromRGB(100, 100, 120), -- 暮光浅灰
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Frost()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(185, 225, 255), -- 霜冻蓝
-        Default = Color3.fromRGB(240, 250, 255), -- 霜冻白
-        Disable = Color3.fromRGB(200, 215, 230), -- 霜冻浅蓝
-        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
-    }
-end
-
-function Library.Theme:Floral()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 182, 193), -- 花园粉
-        Default = Color3.fromRGB(135, 206, 235), -- 花园蓝
-        Disable = Color3.fromRGB(225, 225, 225), -- 花园灰
-        TextColor = Color3.fromRGB(10, 10, 10), -- 深灰色
-    }
-end
-
-function Library.Theme:SunsetBeach()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 69, 0), -- 日落橙
-        Default = Color3.fromRGB(255, 140, 0), -- 沙滩金
-        Disable = Color3.fromRGB(255, 213, 102), -- 沙滩浅金
-        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
-    }
-end
-
-function Library.Theme:Mystic()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(65, 105, 225), -- 神秘蓝
-        Default = Color3.fromRGB(40, 50, 60), -- 神秘深灰
-        Disable = Color3.fromRGB(130, 140, 170), -- 神秘浅灰
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end
-
-function Library.Theme:Elegant()
-    Library.Colors = {
-        Hightlight = Color3.fromRGB(255, 193, 7), -- 优雅金
-        Default = Color3.fromRGB(70, 30, 20), -- 优雅深棕
-        Disable = Color3.fromRGB(200, 160, 120), -- 优雅浅棕
-        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
-    }
-end 
+-- 现在您可以通过调用 Library.Theme:SetTheme("ThemeName") 来设置主题，例如：
+-- Library.Theme:SetTheme("Dark")
+-- Library.Theme:SetTheme("Valentine")
+-- Library.Theme:SetTheme("Autumn")
+-- ...等等
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
@@ -3758,7 +3376,7 @@ function Library:CreateWindow(setup)
 				end;
 			end;
 		end)
-
+------ // 分隔符    ----------------------------------------------------------------------------------------
 		function Root:Block(Setup)
 			Setup = Setup or "Block";
 
@@ -3806,7 +3424,520 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
+------ //颜色选择器    ----------------------------------------------------------------------------------------
+        local TouchInputService = game:GetService("TouchInputService")
+		local RunService = game:GetService("RunService")
+		local Players = game:GetService("Players")
 
+		local RenderStepped = RunService.RenderStepped
+		local LocalPlayer = Players.LocalPlayer
+		local Mouse = LocalPlayer:GetMouse()
+
+		local Root = script.Parent.Parent
+		local Creator = require(Root.Creator)
+
+		local New = Creator.New
+		local Components = Root.Components
+
+		local Element = {}
+		Element.__index = Element
+		Element.__type = "Colorpicker"
+
+		function Element:New(Idx, Config)
+			local Library = self.Library
+			assert(Config.Title, "Colorpicker - Missing Title")
+			assert(Config.Default, "ColorPicker: Missing default value.")
+
+			local Colorpicker = {
+				Value = Config.Default,
+				Transparency = Config.Transparency or 0,
+				Type = "Colorpicker",
+				Title = type(Config.Title) == "string" and Config.Title or "Colorpicker",
+				Callback = Config.Callback or function(Color) end,
+			}
+
+			function Colorpicker:SetHSVFromRGB(Color)
+				local H, S, V = Color3.toHSV(Color)
+				Colorpicker.Hue = H
+				Colorpicker.Sat = S
+				Colorpicker.Vib = V
+			end
+
+			Colorpicker:SetHSVFromRGB(Colorpicker.Value)
+
+			local ColorpickerFrame = require(Components.Element)(Config.Title, Config.Description, self.Container, true)
+
+			Colorpicker.SetTitle = ColorpickerFrame.SetTitle
+			Colorpicker.SetDesc = ColorpickerFrame.SetDesc
+
+			local DisplayFrameColor = New("Frame", {
+				Size = UDim2.fromScale(1, 1),
+				BackgroundColor3 = Colorpicker.Value,
+				Parent = ColorpickerFrame.Frame,
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 4),
+				}),
+			})
+
+			local DisplayFrame = New("ImageLabel", {
+				Size = UDim2.fromOffset(26, 26),
+				Position = UDim2.new(1, -10, 0.5, 0),
+				AnchorPoint = Vector2.new(1, 0.5),
+				Parent = ColorpickerFrame.Frame,
+				Image = "http://www.roblox.com/asset/?id=14204231522",
+				ImageTransparency = 0.45,
+				ScaleType = Enum.ScaleType.Tile,
+				TileSize = UDim2.fromOffset(40, 40),
+			}, {
+				New("UICorner", {
+					CornerRadius = UDim.new(0, 4),
+				}),
+				DisplayFrameColor,
+			})
+
+			local function CreateColorDialog()
+				local Dialog = require(Components.Dialog):Create()
+				Dialog.Title.Text = Colorpicker.Title
+				Dialog.Root.Size = UDim2.fromOffset(430, 330)
+
+				local Hue, Sat, Vib = Colorpicker.Hue, Colorpicker.Sat, Colorpicker.Vib
+				local Transparency = Colorpicker.Transparency
+
+				local function CreateInput()
+					local Box = require(Components.Textbox)()
+					Box.Frame.Parent = Dialog.Root
+					Box.Frame.Size = UDim2.new(0, 90, 0, 32)
+
+					return Box
+				end
+
+				local function CreateInputLabel(Text, Pos)
+					return New("TextLabel", {
+						FontFace = Font.new(
+							"rbxasset://fonts/families/GothamSSm.json",
+							Enum.FontWeight.Medium,
+							Enum.FontStyle.Normal
+						),
+						Text = Text,
+						TextColor3 = Color3.fromRGB(240, 240, 240),
+						TextSize = 13,
+						TextXAlignment = Enum.TextXAlignment.Left,
+						Size = UDim2.new(1, 0, 0, 32),
+						Position = Pos,
+						BackgroundTransparency = 1,
+						Parent = Dialog.Root,
+						ThemeTag = {
+							TextColor3 = "Text",
+						},
+					})
+				end
+
+				local function GetRGB()
+					local Value = Color3.fromHSV(Hue, Sat, Vib)
+					return { R = math.floor(Value.r * 255), G = math.floor(Value.g * 255), B = math.floor(Value.b * 255) }
+				end
+
+				local SatCursor = New("ImageLabel", {
+					Size = UDim2.new(0, 18, 0, 18),
+					ScaleType = Enum.ScaleType.Fit,
+					AnchorPoint = Vector2.new(0.5, 0.5),
+					BackgroundTransparency = 1,
+					Image = "http://www.roblox.com/asset/?id=4805639000",
+				})
+
+				local SatVibMap = New("ImageLabel", {
+					Size = UDim2.fromOffset(180, 160),
+					Position = UDim2.fromOffset(20, 55),
+					Image = "rbxassetid://4155801252",
+					BackgroundColor3 = Colorpicker.Value,
+					BackgroundTransparency = 0,
+					Parent = Dialog.Root,
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(0, 4),
+					}),
+					SatCursor,
+				})
+
+				local OldColorFrame = New("Frame", {
+					BackgroundColor3 = Colorpicker.Value,
+					Size = UDim2.fromScale(1, 1),
+					BackgroundTransparency = Colorpicker.Transparency,
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(0, 4),
+					}),
+				})
+
+				local OldColorFrameChecker = New("ImageLabel", {
+					Image = "http://www.roblox.com/asset/?id=14204231522",
+					ImageTransparency = 0.45,
+					ScaleType = Enum.ScaleType.Tile,
+					TileSize = UDim2.fromOffset(40, 40),
+					BackgroundTransparency = 1,
+					Position = UDim2.fromOffset(112, 220),
+					Size = UDim2.fromOffset(88, 24),
+					Parent = Dialog.Root,
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(0, 4),
+					}),
+					New("UIStroke", {
+						Thickness = 2,
+						Transparency = 0.75,
+					}),
+					OldColorFrame,
+				})
+
+				local DialogDisplayFrame = New("Frame", {
+					BackgroundColor3 = Colorpicker.Value,
+					Size = UDim2.fromScale(1, 1),
+					BackgroundTransparency = 0,
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(0, 4),
+					}),
+				})
+
+				local DialogDisplayFrameChecker = New("ImageLabel", {
+					Image = "http://www.roblox.com/asset/?id=14204231522",
+					ImageTransparency = 0.45,
+					ScaleType = Enum.ScaleType.Tile,
+					TileSize = UDim2.fromOffset(40, 40),
+					BackgroundTransparency = 1,
+					Position = UDim2.fromOffset(20, 220),
+					Size = UDim2.fromOffset(88, 24),
+					Parent = Dialog.Root,
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(0, 4),
+					}),
+					New("UIStroke", {
+						Thickness = 2,
+						Transparency = 0.75,
+					}),
+					DialogDisplayFrame,
+				})
+
+				local SequenceTable = {}
+
+				for Color = 0, 1, 0.1 do
+					table.insert(SequenceTable, ColorSequenceKeypoint.new(Color, Color3.fromHSV(Color, 1, 1)))
+				end
+
+				local HueSliderGradient = New("UIGradient", {
+					Color = ColorSequence.new(SequenceTable),
+					Rotation = 90,
+				})
+
+				local HueDragHolder = New("Frame", {
+					Size = UDim2.new(1, 0, 1, -10),
+					Position = UDim2.fromOffset(0, 5),
+					BackgroundTransparency = 1,
+				})
+
+				local HueDrag = New("ImageLabel", {
+					Size = UDim2.fromOffset(14, 14),
+					Image = "http://www.roblox.com/asset/?id=12266946128",
+					Parent = HueDragHolder,
+					ThemeTag = {
+						ImageColor3 = "DialogInput",
+					},
+				})
+
+				local HueSlider = New("Frame", {
+					Size = UDim2.fromOffset(12, 190),
+					Position = UDim2.fromOffset(210, 55),
+					Parent = Dialog.Root,
+				}, {
+					New("UICorner", {
+						CornerRadius = UDim.new(1, 0),
+					}),
+					HueSliderGradient,
+					HueDragHolder,
+				})
+
+				local HexInput = CreateInput()
+				HexInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 55)
+				CreateInputLabel("Hex", UDim2.fromOffset(Config.Transparency and 360 or 340, 55))
+
+				local RedInput = CreateInput()
+				RedInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 95)
+				CreateInputLabel("Red", UDim2.fromOffset(Config.Transparency and 360 or 340, 95))
+
+				local GreenInput = CreateInput()
+				GreenInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 135)
+				CreateInputLabel("Green", UDim2.fromOffset(Config.Transparency and 360 or 340, 135))
+
+				local BlueInput = CreateInput()
+				BlueInput.Frame.Position = UDim2.fromOffset(Config.Transparency and 260 or 240, 175)
+				CreateInputLabel("Blue", UDim2.fromOffset(Config.Transparency and 360 or 340, 175))
+
+				local AlphaInput
+				if Config.Transparency then
+					AlphaInput = CreateInput()
+					AlphaInput.Frame.Position = UDim2.fromOffset(260, 215)
+					CreateInputLabel("Alpha", UDim2.fromOffset(360, 215))
+				end
+
+				local TransparencySlider, TransparencyDrag, TransparencyColor
+				if Config.Transparency then
+					local TransparencyDragHolder = New("Frame", {
+						Size = UDim2.new(1, 0, 1, -10),
+						Position = UDim2.fromOffset(0, 5),
+						BackgroundTransparency = 1,
+					})
+
+					TransparencyDrag = New("ImageLabel", {
+						Size = UDim2.fromOffset(14, 14),
+						Image = "http://www.roblox.com/asset/?id=12266946128",
+						Parent = TransparencyDragHolder,
+						ThemeTag = {
+							ImageColor3 = "DialogInput",
+						},
+					})
+
+					TransparencyColor = New("Frame", {
+						Size = UDim2.fromScale(1, 1),
+					}, {
+						New("UIGradient", {
+							Transparency = NumberSequence.new({
+								NumberSequenceKeypoint.new(0, 0),
+								NumberSequenceKeypoint.new(1, 1),
+							}),
+							Rotation = 270,
+						}),
+						New("UICorner", {
+							CornerRadius = UDim.new(1, 0),
+						}),
+					})
+
+					TransparencySlider = New("Frame", {
+						Size = UDim2.fromOffset(12, 190),
+						Position = UDim2.fromOffset(230, 55),
+						Parent = Dialog.Root,
+						BackgroundTransparency = 1,
+					}, {
+						New("UICorner", {
+							CornerRadius = UDim.new(1, 0),
+						}),
+						New("ImageLabel", {
+							Image = "http://www.roblox.com/asset/?id=14204231522",
+							ImageTransparency = 0.45,
+							ScaleType = Enum.ScaleType.Tile,
+							TileSize = UDim2.fromOffset(40, 40),
+							BackgroundTransparency = 1,
+							Size = UDim2.fromScale(1, 1),
+							Parent = Dialog.Root,
+						}, {
+							New("UICorner", {
+								CornerRadius = UDim.new(1, 0),
+							}),
+						}),
+						TransparencyColor,
+						TransparencyDragHolder,
+					})
+				end
+
+				local function Display()
+					SatVibMap.BackgroundColor3 = Color3.fromHSV(Hue, 1, 1)
+					HueDrag.Position = UDim2.new(0, -1, Hue, -6)
+					SatCursor.Position = UDim2.new(Sat, 0, 1 - Vib, 0)
+					DialogDisplayFrame.BackgroundColor3 = Color3.fromHSV(Hue, Sat, Vib)
+
+					HexInput.Input.Text = "#" .. Color3.fromHSV(Hue, Sat, Vib):ToHex()
+					RedInput.Input.Text = GetRGB()["R"]
+					GreenInput.Input.Text = GetRGB()["G"]
+					BlueInput.Input.Text = GetRGB()["B"]
+
+					if Config.Transparency then
+						TransparencyColor.BackgroundColor3 = Color3.fromHSV(Hue, Sat, Vib)
+						DialogDisplayFrame.BackgroundTransparency = Transparency
+						TransparencyDrag.Position = UDim2.new(0, -1, 1 - Transparency, -6)
+						AlphaInput.Input.Text = require(Root):Round((1 - Transparency) * 100, 0) .. "%"
+					end
+				end
+
+				Creator.AddSignal(HexInput.Input.FocusLost, function(Enter)
+					if Enter then
+						local Success, Result = pcall(Color3.fromHex, HexInput.Input.Text)
+						if Success and typeof(Result) == "Color3" then
+							Hue, Sat, Vib = Color3.toHSV(Result)
+						end
+					end
+					Display()
+				end)
+
+				Creator.AddSignal(RedInput.Input.FocusLost, function(Enter)
+					if Enter then
+						local CurrentColor = GetRGB()
+						local Success, Result = pcall(Color3.fromRGB, RedInput.Input.Text, CurrentColor["G"], CurrentColor["B"])
+						if Success and typeof(Result) == "Color3" then
+							if tonumber(RedInput.Input.Text) <= 255 then
+								Hue, Sat, Vib = Color3.toHSV(Result)
+							end
+						end
+					end
+					Display()
+				end)
+
+				Creator.AddSignal(GreenInput.Input.FocusLost, function(Enter)
+					if Enter then
+						local CurrentColor = GetRGB()
+						local Success, Result =
+							pcall(Color3.fromRGB, CurrentColor["R"], GreenInput.Input.Text, CurrentColor["B"])
+						if Success and typeof(Result) == "Color3" then
+							if tonumber(GreenInput.Input.Text) <= 255 then
+								Hue, Sat, Vib = Color3.toHSV(Result)
+							end
+						end
+					end
+					Display()
+				end)
+
+				Creator.AddSignal(BlueInput.Input.FocusLost, function(Enter)
+					if Enter then
+						local CurrentColor = GetRGB()
+						local Success, Result =
+							pcall(Color3.fromRGB, CurrentColor["R"], CurrentColor["G"], BlueInput.Input.Text)
+						if Success and typeof(Result) == "Color3" then
+							if tonumber(BlueInput.Input.Text) <= 255 then
+								Hue, Sat, Vib = Color3.toHSV(Result)
+							end
+						end
+					end
+					Display()
+				end)
+
+				if Config.Transparency then
+					Creator.AddSignal(AlphaInput.Input.FocusLost, function(Enter)
+						if Enter then
+							pcall(function()
+								local Value = tonumber(AlphaInput.Input.Text)
+								if Value >= 0 and Value <= 100 then
+									Transparency = 1 - Value * 0.01
+								end
+							end)
+						end
+						Display()
+					end)
+				end
+
+				Creator.AddSignal(SatVibMap.InputBegan, function(Input)
+					if
+						Input.UserInputType == Enum.UserInputType.MouseButton1
+						or Input.UserInputType == Enum.UserInputType.Touch
+					then
+						while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+							local MinX = SatVibMap.AbsolutePosition.X
+							local MaxX = MinX + SatVibMap.AbsoluteSize.X
+							local MouseX = math.clamp(Mouse.X, MinX, MaxX)
+
+							local MinY = SatVibMap.AbsolutePosition.Y
+							local MaxY = MinY + SatVibMap.AbsoluteSize.Y
+							local MouseY = math.clamp(Mouse.Y, MinY, MaxY)
+
+							Sat = (MouseX - MinX) / (MaxX - MinX)
+							Vib = 1 - ((MouseY - MinY) / (MaxY - MinY))
+							Display()
+
+							RenderStepped:Wait()
+						end
+					end
+				end)
+
+				Creator.AddSignal(HueSlider.InputBegan, function(Input)
+					if
+						Input.UserInputType == Enum.UserInputType.MouseButton1
+						or Input.UserInputType == Enum.UserInputType.Touch
+					then
+						while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+							local MinY = HueSlider.AbsolutePosition.Y
+							local MaxY = MinY + HueSlider.AbsoluteSize.Y
+							local MouseY = math.clamp(Mouse.Y, MinY, MaxY)
+
+							Hue = ((MouseY - MinY) / (MaxY - MinY))
+							Display()
+
+							RenderStepped:Wait()
+						end
+					end
+				end)
+
+				if Config.Transparency then
+					Creator.AddSignal(TransparencySlider.InputBegan, function(Input)
+						if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+							while UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) do
+								local MinY = TransparencySlider.AbsolutePosition.Y
+								local MaxY = MinY + TransparencySlider.AbsoluteSize.Y
+								local MouseY = math.clamp(Mouse.Y, MinY, MaxY)
+
+								Transparency = 1 - ((MouseY - MinY) / (MaxY - MinY))
+								Display()
+
+								RenderStepped:Wait()
+							end
+						end
+					end)
+				end
+
+				Display()
+
+				Dialog:Button("Done", function()
+					Colorpicker:SetValue({ Hue, Sat, Vib }, Transparency)
+				end)
+				Dialog:Button("Cancel")
+				Dialog:Open()
+			end
+
+			function Colorpicker:Display()
+				Colorpicker.Value = Color3.fromHSV(Colorpicker.Hue, Colorpicker.Sat, Colorpicker.Vib)
+
+				DisplayFrameColor.BackgroundColor3 = Colorpicker.Value
+				DisplayFrameColor.BackgroundTransparency = Colorpicker.Transparency
+
+				Element.Library:SafeCallback(Colorpicker.Callback, Colorpicker.Value)
+				Element.Library:SafeCallback(Colorpicker.Changed, Colorpicker.Value)
+			end
+
+			function Colorpicker:SetValue(HSV, Transparency)
+				local Color = Color3.fromHSV(HSV[1], HSV[2], HSV[3])
+
+				Colorpicker.Transparency = Transparency or 0
+				Colorpicker:SetHSVFromRGB(Color)
+				Colorpicker:Display()
+			end
+
+			function Colorpicker:SetValueRGB(Color, Transparency)
+				Colorpicker.Transparency = Transparency or 0
+				Colorpicker:SetHSVFromRGB(Color)
+				Colorpicker:Display()
+			end
+
+			function Colorpicker:OnChanged(Func)
+				Colorpicker.Changed = Func
+				Func(Colorpicker.Value)
+			end
+
+			function Colorpicker:Destroy()
+				ColorpickerFrame:Destroy()
+				Library.Options[Idx] = nil
+			end
+
+			Creator.AddSignal(ColorpickerFrame.Frame.MouseButton1Click, function()
+				CreateColorDialog()
+			end)
+
+			Colorpicker:Display()
+
+			Library.Options[Idx] = Colorpicker
+			return Colorpicker
+		end
+
+		    return Element;
+	    end;
+------ // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Button"
@@ -3939,7 +4070,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
-
+------ // 切换按钮   ----------------------------------------------------------------------------------------
 		function Root:Toggle(setup)
 			setup = setup or {};
 
@@ -4098,7 +4229,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
-
+------ // 输入框   ----------------------------------------------------------------------------------------
 		function Root:Textbox(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or 'TextBox';
@@ -4271,7 +4402,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
-
+------ // 信息标签   ----------------------------------------------------------------------------------------
 		function Root:Paragraph(Setup)
 			Setup = Setup or {};
 			Setup.Title = Setup.Title
@@ -4396,8 +4527,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
-
-
+------ // 滑块   ----------------------------------------------------------------------------------------
 		function Root:Slider(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or 'Slider';
@@ -4608,7 +4738,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
-
+------ // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
 		function Root:Keybind(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Keybind";
@@ -4803,8 +4933,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
-
-
+------ // 下拉菜单   ----------------------------------------------------------------------------------------
 		function Root:Dropdown(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Dropdown";
@@ -5011,8 +5140,8 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
-
-		function Root:AddImage(setup)
+------ // 图像   ----------------------------------------------------------------------------------------
+		function Root:Image(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Image";
 			setup.Asset = setup.Asset or "rbxassetid://13333189485";
