@@ -3807,7 +3807,7 @@ function Library:CreateWindow(setup)
 			return RootSkid;
 		end;
 ------ //颜色选择器    ----------------------------------------------------------------------------------------
-        local TouchInputService = game:GetService("TouchInputService")
+--[[     local TouchInputService = game:GetService("TouchInputService")
 		local RunService = game:GetService("RunService")
 		local Players = game:GetService("Players")
 
@@ -4319,6 +4319,7 @@ function Library:CreateWindow(setup)
 
 		    return Element;
 	    end;
+--]]
 ------ // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
 			setup = setup or {};
