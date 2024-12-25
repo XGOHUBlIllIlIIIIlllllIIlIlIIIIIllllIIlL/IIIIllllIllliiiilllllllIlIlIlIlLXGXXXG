@@ -2499,7 +2499,8 @@ function Library:CreateWindow(setup)
 		local UIStroke_4 = Instance.new("UIStroke")
 		local LTitle = Instance.new("TextLabel")
 		local LButton = Instance.new("TextButton")
-
+        local CloseButton = Instance.new("TextButton")
+        
 		AuthFunction.Name = "AuthFunction"
 		AuthFunction.Parent = MainFrame
 		AuthFunction.Active = true
@@ -2701,43 +2702,21 @@ function Library:CreateWindow(setup)
 		LButton.TextSize = 14.000
 		LButton.TextTransparency = 1.000
 		
-	    local CloseButton = Instance.new("TextButton")
-CloseButton.Name = "CloseButton"
-CloseButton.Parent = AuthFunction
-CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- 红色背景
-CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0) -- 按钮大小
-CloseButton.Position = UDim2.new(0.9, 0, 0.9, 0) -- 右上角位置
-CloseButton.Font = Enum.Font.GothamSemibold -- 字体
-CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色文字
-CloseButton.Text = "X" -- 按钮上的文字
-CloseButton.TextSize = 14 -- 文字大小
-
--- 关闭按钮点击事件
-CloseButton.MouseButton1Click:Connect(function()
-    -- 关闭脚本的逻辑
-    setup:CancelLogin()
-    -- 动画效果，使MainFrame淡出
-    Library:Tween(MainFrame, Library.TweenLibrary.SmallEffect, {
-        Size = UDim2.fromScale(0, 0),
-        Position = UDim2.fromScale(0.5, 0.5)
-    }).Completed:Connect(function()
-        -- 等待动画完成
-        task.wait()
-        -- 销毁阴影部分如果存在
-        local dropShadow = AuthFunction:FindFirstChild("DropShadow")
-        if dropShadow then
-            dropShadow:Destroy()
-        end
-        -- 销毁AuthFunction及其所有子元素
-        AuthFunction:Destroy()
-        -- 销毁MainFrame及其所有子元素
-        MainFrame:Destroy()
-        -- 销毁ScreenGui及其所有子元素
-        ScreenGui:Destroy()
-        -- 阻止执行后续代码
-        return
-    end)
-end)
+        CloseButton.Name = "CloseButton"
+        CloseButton.Parent = AuthFunction
+        CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- 红色背景
+        CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0) -- 按钮大小
+        CloseButton.Position = UDim2.new(0.9, 0, 0, 0) -- 右上角位置
+        CloseButton.Font = Enum.Font.GothamSemibold -- 字体
+        CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色文字
+        CloseButton.Text = "X" -- 按钮上的文字
+        CloseButton.TextSize = 14 -- 文字大小
+        CloseButton.MouseButton1Click:Connect(function()
+              Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
+              task.wait(0.5)
+             AuthFunction:Destroy() -- 销毁AuthFunction
+        repeat task.wait(1.5) until game:IsLoaded()
+        end)
 
 -- 使卡密UI界面可移动
 local function makeDraggable(frame)
