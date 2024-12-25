@@ -2706,20 +2706,17 @@ CloseButton.Name = "CloseButton"
 CloseButton.Parent = AuthFunction -- 假设你的主框架名为AuthFunction
 CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- 设置背景颜色为红色
 CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0) -- 设置按钮大小
-CloseButton.Position = UDim2.new(0.9, 0, 0.1, 0) -- 设置按钮位置在右上角
+CloseButton.Position = UDim2.new(0.9, 0, 0, 0) -- 设置按钮位置在右上角
 CloseButton.Font = Enum.Font.GothamSemibold -- 设置字体
 CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- 设置文字颜色为白色
 CloseButton.Text = "X" -- 设置按钮上的文字为"X"
 CloseButton.TextSize = 14 -- 设置文字大小
-
 -- 假设阴影部分的实例名为DropShadow
 local DropShadow = AuthFunction:FindFirstChild("DropShadow")
-
 -- 添加点击事件
 CloseButton.MouseButton1Click:Connect(function()
     -- 关闭脚本的逻辑
     setup:CancelLogin()
-    
     -- 动画效果，使MainFrame淡出
     Library:Tween(MainFrame, Library.TweenLibrary.SmallEffect, {
         Size = UDim2.fromScale(0, 0),
@@ -2727,25 +2724,19 @@ CloseButton.MouseButton1Click:Connect(function()
     }).Completed:Connect(function()
         -- 等待动画完成
         task.wait()
-        
         -- 销毁WindowLibrary及其所有子元素
         WindowLibrary:Destroy()
-        
         -- 如果需要，也可以在这里销毁AuthFunction
         if DropShadow then
             DropShadow:Destroy()
         end
         AuthFunction:Destroy()
+        -- 销毁MainFrame及其所有子元素
+        MainFrame:Destroy()
+        -- 销毁ScreenGui及其所有子元素
+        ScreenGui:Destroy()
     end)
-    
-    -- 如果MainFrame和ScreenGui也是需要被销毁的，确保它们不是游戏中其他UI的父级
-    -- 销毁MainFrame及其所有子元素
-    -- MainFrame:Destroy() -- 这行代码可以注释掉，因为上面的Tween完成后会销毁
-    
-    -- 销毁ScreenGui及其所有子元素
-    -- ScreenGui:Destroy() -- 这行代码也可以注释掉，如果ScreenGui是WindowLibrary的父级
 end)
-
 -- 使卡密UI界面可移动
 local function makeDraggable(frame)
     local drag = false
