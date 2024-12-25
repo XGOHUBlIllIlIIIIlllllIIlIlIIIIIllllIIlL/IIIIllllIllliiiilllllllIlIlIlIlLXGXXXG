@@ -3843,10 +3843,8 @@ function Root:Block(Setup)
 
     local RootSkid = {};
 
-    function RootSkid:Set(Value)
-        local Value = Value or "Block"
-        TextLabel.Text = Value
-        RootSkid.Value = Value
+    function RootSkid:Value(Setup)
+        TextLabel.Text = Setup
     end;
 
     function RootSkid:Visible(value)
@@ -3855,13 +3853,17 @@ function Root:Block(Setup)
 
     TextLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
         TextLabel.TextWrapped = false
-        BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (TextLabel.TextBounds.X // BlockLabel.AbsoluteSize.X)))
+        local contentWidth = TextLabel.TextBounds.X
+        local labelWidth = BlockLabel.AbsoluteSize.X
+        BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (contentWidth // labelWidth)))
         TextLabel.TextWrapped = true
         UpSize(ScrollingFrame) -- Assuming UpSize is a function that updates the size of ScrollingFrame
     end)
 
     TextLabel.TextWrapped = false
-    BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (TextLabel.TextBounds.X // BlockLabel.AbsoluteSize.X)))
+    local contentWidth = TextLabel.TextBounds.X
+    local labelWidth = BlockLabel.AbsoluteSize.X
+    BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (contentWidth // labelWidth)))
     TextLabel.TextWrapped = true
     UpSize(ScrollingFrame) -- Assuming UpSize is a function that updates the size of ScrollingFrame
 
