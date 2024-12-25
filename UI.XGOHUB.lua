@@ -2704,7 +2704,8 @@ function Library:CreateWindow(setup)
 		
         CloseButton.Name = "CloseButton"
         CloseButton.Parent = AuthFunction
-        CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- 红色背景
+        CloseButton.BackgroundColor3 = Color3.new(0, 0, 0) -- 透明背景
+        CloseButton.BackgroundTransparency = 1 -- 完全透明
         CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0) -- 按钮大小
         CloseButton.Position = UDim2.new(0.9, 0, 0, 0) -- 右上角位置
         CloseButton.Font = Enum.Font.GothamSemibold -- 字体
@@ -2714,8 +2715,14 @@ function Library:CreateWindow(setup)
         CloseButton.MouseButton1Click:Connect(function()
               Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
               task.wait(0.5)
-             AuthFunction:Destroy() -- 销毁AuthFunction
-             ScreenGui:Destroy()
+              Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{
+							Size = UDim2.fromScale(0,0),
+							Position = UDim2.fromScale(0.5,0.5)
+						}).Completed:Connect(function()
+							task.wait()
+                             AuthFunction:Destroy() -- 销毁AuthFunction
+                             ScreenGui:Destroy()
+                             BlurEle.Destroy()
         repeat task.wait(1.5) until game:IsLoaded()
         end)
 
@@ -3862,7 +3869,7 @@ function openColorPicker(callback)
     CloseButton.MouseButton1Click:Connect(function()
         ColorPickerDialog:Destroy();
     end);
-end
+    end
 
     local Colorpicker = {
         Value = setup.Default,
