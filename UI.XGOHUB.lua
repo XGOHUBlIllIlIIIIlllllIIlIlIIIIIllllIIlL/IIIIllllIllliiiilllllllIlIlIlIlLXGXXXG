@@ -2707,7 +2707,7 @@ CloseButton.Name = "CloseButton"
 CloseButton.Parent = AuthFunction
 CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- 红色背景
 CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0) -- 按钮大小
-CloseButton.Position = UDim2.new(0.9, 0, 0, 0) -- 右上角位置
+CloseButton.Position = UDim2.new(0.9, 0, 0.9, 0) -- 右上角位置
 CloseButton.Font = Enum.Font.GothamSemibold -- 字体
 CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色文字
 CloseButton.Text = "X" -- 按钮上的文字
@@ -2715,7 +2715,7 @@ CloseButton.TextSize = 14 -- 文字大小
 
 -- 关闭按钮点击事件
 CloseButton.MouseButton1Click:Connect(function()
-        -- 关闭脚本的逻辑
+    -- 关闭脚本的逻辑
     setup:CancelLogin()
     -- 动画效果，使MainFrame淡出
     Library:Tween(MainFrame, Library.TweenLibrary.SmallEffect, {
@@ -2724,16 +2724,18 @@ CloseButton.MouseButton1Click:Connect(function()
     }).Completed:Connect(function()
         -- 等待动画完成
         task.wait()
+        -- 销毁阴影部分如果存在
         if AuthFunction:FindFirstChild("DropShadow") then
-        AuthFunction:FindFirstChild("DropShadow"):Destroy()
-    end
+            AuthFunction:FindFirstChild("DropShadow"):Destroy()
+        end
+        -- 销毁AuthFunction及其所有子元素
         AuthFunction:Destroy()
         -- 销毁MainFrame及其所有子元素
         MainFrame:Destroy()
-        -- 销毁ScreenGui及其所有子元素
-        ScreenGui:Destroy()
-    return
+        return
+    end)
 end)
+
 -- 使卡密UI界面可移动
 local function makeDraggable(frame)
     local drag = false
