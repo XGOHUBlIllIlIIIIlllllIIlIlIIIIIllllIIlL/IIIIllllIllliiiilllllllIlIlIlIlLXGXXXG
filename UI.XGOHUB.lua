@@ -3757,7 +3757,7 @@ function Library:CreateWindow(setup)
 			end;
 		end)
 ------ // 分隔符    ----------------------------------------------------------------------------------------
-		function Root:Block(Setup)
+--[[     function Root:Block(Setup)
 			Setup = Setup or "Block";
 
 			local BlockLabel = Instance.new("Frame")
@@ -3804,62 +3804,66 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
+--]]
 ------ // 分隔符-新建    ----------------------------------------------------------------------------------------
-function Root:Seperator(Setup)
-    Setup = Setup or "Seperator";
+function Root:Block(Setup)
+    Setup = Setup or "Block";
 
-    local SeperatorLabel = Instance.new("Frame")
-    local SeperatorTextLabel = Instance.new("TextLabel")
+    local BlockLabel = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
 
-    SeperatorLabel.Name = "SeperatorLabel"
-    SeperatorLabel.Parent = ScrollLayer1
-    SeperatorLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    SeperatorLabel.BackgroundTransparency = 0.9990000128746033
-    SeperatorLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    SeperatorLabel.BorderSizePixel = 0
-    SeperatorLabel.Size = UDim2.new(1, -8, 0, 16)
-    SeperatorLabel.ZIndex = 10
+    BlockLabel.Name = "BlockLabel"
+    BlockLabel.Parent = ScrollingFrame
+    BlockLabel.BackgroundColor3 = Library.Colors.Default
+    BlockLabel.BackgroundTransparency = 1.000
+    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BlockLabel.BorderSizePixel = 0
+    BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
+    BlockLabel.ZIndex = 10
 
-    SeperatorTextLabel.Parent = SeperatorLabel
-    SeperatorTextLabel.AnchorPoint = Vector2.new(0, 0.5)
-    SeperatorTextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    SeperatorTextLabel.BackgroundTransparency = 0.9990000128746033
-    SeperatorTextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    SeperatorTextLabel.BorderSizePixel = 0
-    SeperatorTextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-    SeperatorTextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-    SeperatorTextLabel.ZIndex = 11
-    SeperatorTextLabel.Font = Enum.Font.GothamBold
-    SeperatorTextLabel.Text = Setup
-    SeperatorTextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    SeperatorTextLabel.TextSize = 11
-    SeperatorTextLabel.TextXAlignment = Enum.TextXAlignment.Left
-    SeperatorTextLabel.TextWrapped = true
-    SeperatorTextLabel.TextYAlignment = Enum.TextYAlignment.Center
+    TextLabel.Parent = BlockLabel
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+    TextLabel.ZIndex = 11
+    TextLabel.Font = Enum.Font.Gotham
+    TextLabel.Text = Setup
+    TextLabel.TextColor3 = Library.Colors.TextColor
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
+    TextLabel.TextStrokeTransparency = 0.950
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.RichText = true
 
     local RootSkid = {};
 
     function RootSkid:Set(Value)
-        local Value = Value or "Seperator"
-        SeperatorTextLabel.Text = Value
+        local Value = Value or "Block"
+        TextLabel.Text = Value
         RootSkid.Value = Value
     end;
 
     function RootSkid:Visible(value)
-        SeperatorLabel.Visible = value;
+        BlockLabel.Visible = value;
     end;
 
-    SeperatorTextLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-        SeperatorTextLabel.TextWrapped = false
-        SeperatorLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (SeperatorTextLabel.TextBounds.X // SeperatorLabel.AbsoluteSize.X)))
-        SeperatorTextLabel.TextWrapped = true
-        UpSize(ScrollLayer1)
+    TextLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+        TextLabel.TextWrapped = false
+        BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (TextLabel.TextBounds.X // BlockLabel.AbsoluteSize.X)))
+        TextLabel.TextWrapped = true
+        UpSize(ScrollingFrame) -- Assuming UpSize is a function that updates the size of ScrollingFrame
     end)
 
-    SeperatorTextLabel.TextWrapped = false
-    SeperatorLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (SeperatorTextLabel.TextBounds.X // SeperatorLabel.AbsoluteSize.X)))
-    SeperatorTextLabel.TextWrapped = true
-    UpSize(ScrollLayer1)
+    TextLabel.TextWrapped = false
+    BlockLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (TextLabel.TextBounds.X // BlockLabel.AbsoluteSize.X)))
+    TextLabel.TextWrapped = true
+    UpSize(ScrollingFrame) -- Assuming UpSize is a function that updates the size of ScrollingFrame
 
     return RootSkid;
 end;
