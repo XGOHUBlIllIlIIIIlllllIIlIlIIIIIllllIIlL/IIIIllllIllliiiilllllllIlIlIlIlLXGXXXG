@@ -2701,8 +2701,7 @@ function Library:CreateWindow(setup)
 		LButton.TextSize = 14.000
 		LButton.TextTransparency = 1.000
 		
-	    -- 创建关闭按钮
-local CloseButton = Instance.new("TextButton")
+	    local CloseButton = Instance.new("TextButton")
 CloseButton.Name = "CloseButton"
 CloseButton.Parent = AuthFunction
 CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- 红色背景
@@ -2725,13 +2724,17 @@ CloseButton.MouseButton1Click:Connect(function()
         -- 等待动画完成
         task.wait()
         -- 销毁阴影部分如果存在
-        if AuthFunction:FindFirstChild("DropShadow") then
-            AuthFunction:FindFirstChild("DropShadow"):Destroy()
+        local dropShadow = AuthFunction:FindFirstChild("DropShadow")
+        if dropShadow then
+            dropShadow:Destroy()
         end
         -- 销毁AuthFunction及其所有子元素
         AuthFunction:Destroy()
         -- 销毁MainFrame及其所有子元素
         MainFrame:Destroy()
+        -- 销毁ScreenGui及其所有子元素
+        ScreenGui:Destroy()
+        -- 阻止执行后续代码
         return
     end)
 end)
