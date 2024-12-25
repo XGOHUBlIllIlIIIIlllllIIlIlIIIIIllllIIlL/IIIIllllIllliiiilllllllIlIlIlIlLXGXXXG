@@ -48,152 +48,79 @@ end
 userInputService.InputBegan:Connect(onKeyActivated)
 
 Library.Icons = { -- 图片/常用图片
-    ["手"] = "rbxassetid://7733955740",
-    ["家"] = "rbxassetid://7733960981",
-    ["锚"] = "rbxassetid://7733911490",
-    ["票"] = "rbxassetid://7734086558",
-	["列"] = "rbxassetid://7733757178",
-	["秤"] = "rbxassetid://7734052454",
-	["伞"] = "rbxassetid://7743874820",
-	["云"] = "rbxassetid://7733746980",
-	["风"] = "rbxassetid://7743878264",
-	["雾"] = "rbxassetid://7733955969",
-	["CD"] = "rbxassetid://7734110220",
-	["CPU"] = "rbxassetid://7733765045",
-	["锤子"] = "rbxassetid://7733955511",
-	["历史"] = "rbxassetid://7733960880",
-	["叉号"] = "rbxassetid://7743878857",
-	["用户"] = "rbxassetid://7743875962",
-	["幼苗"] = "rbxassetid://7743872071",
-	["移动"] = "rbxassetid://7743870731",
-	["槌子"] = "rbxassetid://7733800044",
-	["鸡腿"] = "rbxassetid://8997385789",
-	["快进"] = "rbxassetid://7733799371",
-	["水滴"] = "rbxassetid://7733770982",
-	["钥匙"] = "rbxassetid://7733965118",
-	["电力"] = "rbxassetid://7733771628",
-	["加号"] = "rbxassetid://7734042071",
-	["吸管"] = "rbxassetid://7743871384",
-	["扫描"] = "rbxassetid://8997386861",
-	["RSS"] = "rbxassetid://7734052075",
-	["活动"] = "rbxassetid://7733655755",
-	["网格"] = "rbxassetid://7733955179",
-	["菜单"] = "rbxassetid://7733993211",
-	["地标"] = "rbxassetid://7733965184",
-	["钱包"] = "rbxassetid://7743877573",
-	["布局"] = "rbxassetid://7733970543",
-	["欧元"] = "rbxassetid://7733771891",
-	["图片"] = "rbxassetid://7733964126",
-	["缩进"] = "rbxassetid://7733964452",
-    ["井号"] = "rbxassetid://7733955906",
-	["光圈"] = "rbxassetid://7733666258",
-	["表格"] = "rbxassetid://7743871876",
-	["电视"] = "rbxassetid://7743874674",
-	["耳机"] = "rbxassetid://7733956063",
-	["回复"] = "rbxassetid://7734051594",
-	["来电"] = "rbxassetid://7743871120",
-	["倒带"] = "rbxassetid://7734051670",
-	["引用"] = "rbxassetid://7734045100",
-	["保存"] = "rbxassetid://7734052335",
-	["等于"] = "rbxassetid://7733771811",
-	["相机"] = "rbxassetid://7733708692",
-	["卡车"] = "rbxassetid://7743874482",
-	["解锁"] = "rbxassetid://7743875263",
-	["网络"] = "rbxassetid://7734021047",
-	["用户"] = "rbxassetid://7743876054",
-	["书籍"] = "rbxassetid://7733914390",
-	["放大"] = "rbxassetid://7743878977",
-	["目标"] = "rbxassetid://7743872758",
-	["快退"] = "rbxassetid://7734058404",
-	["投射"] = "rbxassetid://7733919326",
-	["电话"] = "rbxassetid://7734032056",
-	["类型"] = "rbxassetid://7743874740",
-	["虫子"] = "rbxassetid://7733701545",
-	["鸡蛋"] = "rbxassetid://8997385940",
-	["皇冠"] = "rbxassetid://7733765398",
-	["金币"] = "rbxassetid://7743866529",
-	["电池"] = "rbxassetid://7733674820",
-	["雪山"] = "rbxassetid://7743870286",
-	["礼物"] = "rbxassetid://7733946818",
-	["选项"] = "rbxassetid://7734021300",
-	["图钉"] = "rbxassetid://8997386648",
-	["铅笔"] = "rbxassetid://7734022107",
-	["云雾"] = "rbxassetid://7733920317",
-	["检查"] = "rbxassetid://7733964808",
-	["框架"] = "rbxassetid://7733799486",
-	["货币"] = "rbxassetid://7733765592",
-	["星星"] = "rbxassetid://7734068321",
-	["微笑"] = "rbxassetid://7734059095",
-	["下标"] = "rbxassetid://8997387937",
-	["太阳"] = "rbxassetid://7734068495",
-	["表格"] = "rbxassetid://7734073253",
-	["标签"] = "rbxassetid://7734075797",
-	["叉号"] = "rbxassetid://7733765224",
-	["宝石"] = "rbxassetid://7733942651",
-	["终端"] = "rbxassetid://7743872929",
-	["灯泡"] = "rbxassetid://7733975185",
-	["缩小"] = "rbxassetid://7734056971",
-	["邮件"] = "rbxassetid://7733992732",
-	["暂停"] = "rbxassetid://7734021897",
-	["加粗"] = "rbxassetid://7733687211",
-	["日历"] = "rbxassetid://7733919198",
-	["蓝牙"] = "rbxassetid://7733687147",
-	["指针"] = "rbxassetid://7734042307",
-	["扳手"] = "rbxassetid://7743878358",
-	["多云"] = "rbxassetid://7733747106",
-	["电影"] = "rbxassetid://7733942579",
-	["图层"] = "rbxassetid://7743868936",
-	["语言"] = "rbxassetid://7733965249",
-	["星号"] = "rbxassetid://7733673800",
-	["上标"] = "rbxassetid://8997388036",
-	["命令"] = "rbxassetid://7733924046",
-	["平板"] = "rbxassetid://7743872620",
-	["口袋"] = "rbxassetid://7734042139",
-	["手表"] = "rbxassetid://7743877668",
-	["定位"] = "rbxassetid://7733992469",
-	["英镑"] = "rbxassetid://7734042354",
-	["帐篷"] = "rbxassetid://7734078943",
-	["日出"] = "rbxassetid://7743872365",
-	["日落"] = "rbxassetid://7734070982",
-	["版权"] = "rbxassetid://7733764196",
-	["归档"] = "rbxassetid://7733911621",
-	["斜体"] = "rbxassetid://7733964917",
-	["建筑"] = "rbxassetid://7733701625",
-	["烧杯"] = "rbxassetid://7733674922",
-	["月亮"] = "rbxassetid://7743870134",
-	["眼镜"] = "rbxassetid://7733954403",
-	["羽毛"] = "rbxassetid://7733777166",
-	["快进"] = "rbxassetid://7734058495",
-	["下载"] = "rbxassetid://7733770755",
-	["眼睛"] = "rbxassetid://7733774602",
-	["包裹"] = "rbxassetid://7734021469",
-	["皱眉"] = "rbxassetid://7733799591",
-	["发送"] = "rbxassetid://7734053039",
-	["闹钟"] = "rbxassetid://7733656100",
-	["滑块"] = "rbxassetid://7734058803",
-	["音乐"] = "rbxassetid://7734020554",
-	["钞票"] = "rbxassetid://7733674153",
-	["硬盘"] = "rbxassetid://7733955793",
-	["搜索"] = "rbxassetid://7734052925",
-	["斜杠"] = "rbxassetid://8997387644",
-	["除法"] = "rbxassetid://7733769365",
-	["视图"] = "rbxassetid://7743876754",
-	["无奈"] = "rbxassetid://7733993147",
-	["版权"] = "rbxassetid://7733764275",
-	["减号"] = "rbxassetid://7734000129",
-	["山脉"] = "rbxassetid://7734008868",
-	["咖啡"] = "rbxassetid://7733752630",
-	["画笔"] = "rbxassetid://7733701455",
-	["登录"] = "rbxassetid://7733992604",
-	["上传"] = "rbxassetid://7743875428",
-	["勾选"] = "rbxassetid://7733715400",
-	["剪刀"] = "rbxassetid://7734052570",
-	["信息"] = "rbxassetid://7733964719",
-	["展开"] = "rbxassetid://7733771982",
-	["相册"] = "rbxassetid://7733658133",
-	["书签"] = "rbxassetid://7733692043",
-	["删除"] = "rbxassetid://7733768142",
-	["铲子"] = "rbxassetid://7734056878",
+    ["手"] = "rbxassetid://7733955740",     ["家"] = "rbxassetid://7733960981",
+    ["锚"] = "rbxassetid://7733911490",      ["票"] = "rbxassetid://7734086558",
+	["列"] = "rbxassetid://7733757178",      ["秤"] = "rbxassetid://7734052454",
+	["伞"] = "rbxassetid://7743874820",     ["云"] = "rbxassetid://7733746980",
+	["风"] = "rbxassetid://7743878264",     ["雾"] = "rbxassetid://7733955969",
+	["CD"] = "rbxassetid://7734110220",     ["CPU"] = "rbxassetid://7733765045",
+	["锤子"] = "rbxassetid://7733955511",	["历史"] = "rbxassetid://7733960880",
+	["叉号"] = "rbxassetid://7743878857",	["用户"] = "rbxassetid://7743875962",
+	["幼苗"] = "rbxassetid://7743872071",	["移动"] = "rbxassetid://7743870731",
+	["槌子"] = "rbxassetid://7733800044",	["鸡腿"] = "rbxassetid://8997385789",
+	["快进"] = "rbxassetid://7733799371",	["水滴"] = "rbxassetid://7733770982",
+	["钥匙"] = "rbxassetid://7733965118",	["电力"] = "rbxassetid://7733771628",
+	["加号"] = "rbxassetid://7734042071",	["吸管"] = "rbxassetid://7743871384",
+	["扫描"] = "rbxassetid://8997386861",	["RSS"] = "rbxassetid://7734052075",
+	["活动"] = "rbxassetid://7733655755",	["网格"] = "rbxassetid://7733955179",
+	["菜单"] = "rbxassetid://7733993211",	["地标"] = "rbxassetid://7733965184",
+	["钱包"] = "rbxassetid://7743877573",	["布局"] = "rbxassetid://7733970543",
+	["欧元"] = "rbxassetid://7733771891",	["图片"] = "rbxassetid://7733964126",
+	["缩进"] = "rbxassetid://7733964452",   ["井号"] = "rbxassetid://7733955906",
+	["光圈"] = "rbxassetid://7733666258",	["表格"] = "rbxassetid://7743871876",
+	["电视"] = "rbxassetid://7743874674",	["耳机"] = "rbxassetid://7733956063",
+	["回复"] = "rbxassetid://7734051594",	["来电"] = "rbxassetid://7743871120",
+	["倒带"] = "rbxassetid://7734051670",	["引用"] = "rbxassetid://7734045100",
+	["保存"] = "rbxassetid://7734052335",	["等于"] = "rbxassetid://7733771811",
+	["相机"] = "rbxassetid://7733708692",	["卡车"] = "rbxassetid://7743874482",
+	["解锁"] = "rbxassetid://7743875263",	["网络"] = "rbxassetid://7734021047",
+	["用户"] = "rbxassetid://7743876054",	["书籍"] = "rbxassetid://7733914390",
+	["放大"] = "rbxassetid://7743878977",	["目标"] = "rbxassetid://7743872758",
+	["快退"] = "rbxassetid://7734058404",	["投射"] = "rbxassetid://7733919326",
+	["电话"] = "rbxassetid://7734032056",	["类型"] = "rbxassetid://7743874740",
+	["虫子"] = "rbxassetid://7733701545",	["鸡蛋"] = "rbxassetid://8997385940",
+	["皇冠"] = "rbxassetid://7733765398",	["金币"] = "rbxassetid://7743866529",
+	["电池"] = "rbxassetid://7733674820",	["雪山"] = "rbxassetid://7743870286",
+	["礼物"] = "rbxassetid://7733946818",	["选项"] = "rbxassetid://7734021300",
+	["图钉"] = "rbxassetid://8997386648",	["铅笔"] = "rbxassetid://7734022107",
+	["云雾"] = "rbxassetid://7733920317",	["检查"] = "rbxassetid://7733964808",
+	["框架"] = "rbxassetid://7733799486",	["货币"] = "rbxassetid://7733765592",
+	["星星"] = "rbxassetid://7734068321",	["微笑"] = "rbxassetid://7734059095",
+	["下标"] = "rbxassetid://8997387937",	["太阳"] = "rbxassetid://7734068495",
+	["表格"] = "rbxassetid://7734073253",	["标签"] = "rbxassetid://7734075797",
+	["叉号"] = "rbxassetid://7733765224",	["宝石"] = "rbxassetid://7733942651",
+	["终端"] = "rbxassetid://7743872929",	["灯泡"] = "rbxassetid://7733975185",
+	["缩小"] = "rbxassetid://7734056971",	["邮件"] = "rbxassetid://7733992732",
+	["暂停"] = "rbxassetid://7734021897",	["加粗"] = "rbxassetid://7733687211",
+	["日历"] = "rbxassetid://7733919198",	["蓝牙"] = "rbxassetid://7733687147",
+	["指针"] = "rbxassetid://7734042307",	["扳手"] = "rbxassetid://7743878358",
+	["多云"] = "rbxassetid://7733747106",	["电影"] = "rbxassetid://7733942579",
+	["图层"] = "rbxassetid://7743868936",	["语言"] = "rbxassetid://7733965249",
+	["星号"] = "rbxassetid://7733673800",	["上标"] = "rbxassetid://8997388036",
+	["命令"] = "rbxassetid://7733924046",	["平板"] = "rbxassetid://7743872620",
+	["口袋"] = "rbxassetid://7734042139",	["手表"] = "rbxassetid://7743877668",
+	["定位"] = "rbxassetid://7733992469",	["英镑"] = "rbxassetid://7734042354",
+	["帐篷"] = "rbxassetid://7734078943",	["日出"] = "rbxassetid://7743872365",
+	["日落"] = "rbxassetid://7734070982",	["版权"] = "rbxassetid://7733764196",
+	["归档"] = "rbxassetid://7733911621",	["斜体"] = "rbxassetid://7733964917",
+	["建筑"] = "rbxassetid://7733701625",	["烧杯"] = "rbxassetid://7733674922",
+	["月亮"] = "rbxassetid://7743870134",	["眼镜"] = "rbxassetid://7733954403",
+	["羽毛"] = "rbxassetid://7733777166",	["快进"] = "rbxassetid://7734058495",
+	["下载"] = "rbxassetid://7733770755",	["眼睛"] = "rbxassetid://7733774602",
+	["包裹"] = "rbxassetid://7734021469",	["皱眉"] = "rbxassetid://7733799591",
+	["发送"] = "rbxassetid://7734053039",	["闹钟"] = "rbxassetid://7733656100",
+	["滑块"] = "rbxassetid://7734058803",	["音乐"] = "rbxassetid://7734020554",
+	["钞票"] = "rbxassetid://7733674153",	["硬盘"] = "rbxassetid://7733955793",
+	["搜索"] = "rbxassetid://7734052925",	["斜杠"] = "rbxassetid://8997387644",
+	["除法"] = "rbxassetid://7733769365",	["视图"] = "rbxassetid://7743876754",
+	["无奈"] = "rbxassetid://7733993147",	["版权"] = "rbxassetid://7733764275",
+	["减号"] = "rbxassetid://7734000129",	["山脉"] = "rbxassetid://7734008868",
+	["咖啡"] = "rbxassetid://7733752630",	["画笔"] = "rbxassetid://7733701455",
+	["登录"] = "rbxassetid://7733992604",	["上传"] = "rbxassetid://7743875428",
+	["勾选"] = "rbxassetid://7733715400",	["剪刀"] = "rbxassetid://7734052570",
+	["信息"] = "rbxassetid://7733964719",	["展开"] = "rbxassetid://7733771982",
+	["相册"] = "rbxassetid://7733658133",	["书签"] = "rbxassetid://7733692043",
+	["删除"] = "rbxassetid://7733768142",	["铲子"] = "rbxassetid://7734056878",
 	["播客"] = "rbxassetid://7734042234",
 	["注销"] = "rbxassetid://7733992677",
 	["点赞"] = "rbxassetid://7743873212",
@@ -1444,119 +1371,474 @@ Library.TweenService = game:GetService('TweenService');
 Library.LocalPlayer = game:GetService('Players').LocalPlayer;
 Library.CoreGui = (game:FindFirstChild('CoreGui') and Library.Cloneref(game:GetService('CoreGui'))) or Library.LocalPlayer.PlayerGui;
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
-Library = {
-    SizeLibrary = {
-        Default = UDim2.fromOffset(580, 385),
-        Auth = UDim2.new(0.05, 250, 0.05, 125),
-        Max = UDim2.fromScale(1, 1),
-        Loading = UDim2.new(0, 90, 0, 90),
-        Close = UDim2.new(0.01, 25, 0.01, 25)
-    },
-    Theme = {},
-    Colors = {
-        Hightlight = Color3.fromRGB(0, 255, 255),
-        Default = Color3.fromRGB(32, 33, 36),
-        Disable = Color3.fromRGB(167, 173, 188),
-        TextColor = Color3.fromRGB(220, 224, 234)
-    }
+Library.SizeLibrary = {
+	Default = UDim2.fromOffset(580, 385),
+	Auth = UDim2.new(0.05, 250,0.05, 125),
+	Max = UDim2.fromScale(1,1),
+	Loading = UDim2.new(0, 90,0, 90),
+	Close = UDim2.new(0.01, 25,0.01, 25)
+};
+
+Library.Theme = {}
+
+Library.Colors = {
+	Hightlight = Color3.fromRGB(0, 255, 255),
+	Default = Color3.fromRGB(32, 33, 36),
+	Disable = Color3.fromRGB(167, 173, 188),
+	TextColor = Color3.fromRGB(220, 224, 234),
+
 }
 
--- 通用的主题设置函数
-function Library.Theme:Set(themeName, highlight, defaultColor, disable, textColor)
-    self.Colors = {
-        Hightlight = Color3.fromRGB(highlight),
-        Default = Color3.fromRGB(defaultColor),
-        Disable = Color3.fromRGB(disable),
-        TextColor = Color3.fromRGB(textColor)
-    }
-    print(themeName, self.Colors)
-end
-
--- 默认主题
 function Library.Theme:Default()
-    self:Set("Default", 0, 255, 255, 32, 33, 36, 167, 173, 188, 220, 224, 234)
-end
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(0, 255, 255),
+		Default = Color3.fromRGB(32, 33, 36),
+		Disable = Color3.fromRGB(167, 173, 188),
+		TextColor = Color3.fromRGB(220, 224, 234),
+	}
+end;
 
--- 暗色主题
 function Library.Theme:Dark()
-    self:Set("Dark", 255, 255, 255, 20, 20, 22, 167, 173, 188, 220, 224, 234)
-end
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(255, 255, 255),
+		Default = Color3.fromRGB(20, 20, 22),
+		Disable = Color3.fromRGB(167, 173, 188),
+		TextColor = Color3.fromRGB(220, 224, 234),
+	}
+end;
 
--- Discord主题
 function Library.Theme:Discord()
-    self:Set("Discord", 114, 137, 218, 35, 37, 40, 167, 173, 188, 234, 234, 234)
-end
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(114,137,218),
+		Default = Color3.fromRGB(35, 37, 40),
+		Disable = Color3.fromRGB(167, 173, 188),
+		TextColor = Color3.fromRGB(234, 234, 234),
+	}
+end;
 
--- 浅色主题
 function Library.Theme:Light()
-    self:Set("Light", 0, 115, 255, 198, 211, 229, 74, 77, 83, 0, 0, 0)
-end
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(0, 115, 255),
+		Default = Color3.fromRGB(198, 211, 229),
+		Disable = Color3.fromRGB(74, 77, 83),
+		TextColor = Color3.fromRGB(0, 0, 0),
+	}
+end;
 
--- Catppuccin主题
 function Library.Theme:Catppuccin()
-    self:Set("Catppuccin", 201, 165, 245, 30, 31, 47, 109, 123, 154, 204, 204, 204)
-end
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(201,165,245),
+		Default = Color3.fromRGB(30,31,47),
+		Disable = Color3.fromRGB(109,123,154,255),
+		TextColor = Color3.fromRGB(204, 204, 204),
+	}
+end;
 
--- Houston主题
 function Library.Theme:Houston()
-    self:Set("Houston", 90, 212, 176, 22, 25, 29, 72, 72, 83, 191, 193, 195)
-end
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(90,212,176),
+		Default = Color3.fromRGB(22,25,29),
+		Disable = Color3.fromRGB(72,72,83),
+		TextColor = Color3.fromRGB(191,193,195),
+	}
+end;
 
--- Matcha主题
+
 function Library.Theme:Matcha()
-    self:Set("Matcha", 152, 132, 110, 38, 49, 55, 62, 83, 82, 165, 178, 175)
-end
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(152,132,110),
+		Default = Color3.fromRGB(38,49,55),
+		Disable = Color3.fromRGB(62,83,82),
+		TextColor = Color3.fromRGB(165,178,175),
+	}
+end;
 
--- Neverlose主题
 function Library.Theme:Neverlose()
-    self:Set("Neverlose", 0, 251, 255, 0, 13, 26, 167, 173, 188, 255, 255, 255)
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(0, 251, 255),
+		Default = Color3.fromRGB(0, 13, 26),
+		Disable = Color3.fromRGB(167, 173, 188),
+		TextColor = Color3.fromRGB(255, 255, 255),
+	}
+end;
+
+function Library.Theme:Custom(Hightlight,Default,Disable,TextColor)
+	Library.Colors = {
+		Hightlight = Hightlight,
+		Default = Default,
+		Disable = Disable,
+		TextColor = TextColor,
+	}
 end
 
--- 高绿主题
 function Library.Theme:HightGreen()
-    self:Set("HightGreen", 0, 255, 140, 8, 13, 12, 163, 188, 165, 255, 255, 255)
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(0, 255, 140),
+		Default = Color3.fromRGB(8, 13, 12),
+		Disable = Color3.fromRGB(163, 188, 165),
+		TextColor = Color3.fromRGB(255, 255, 255),
+	}
 end
 
--- 万圣节主题
 function Library.Theme:Halloween()
-    self:Set("Halloween", 255, 162, 0, 13, 11, 10, 188, 156, 156, 255, 242, 245)
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(255, 162, 0),
+		Default = Color3.fromRGB(13, 11, 10),
+		Disable = Color3.fromRGB(188, 156, 156),
+		TextColor = Color3.fromRGB(255, 242, 245),
+	}
 end
 
--- 圣诞节主题
 function Library.Theme:Christmas()
-    self:Set("Christmas", 138, 220, 255, 11, 13, 13, 81, 103, 104, 249, 249, 249)
+	Library.Colors = {
+		Hightlight = Color3.fromRGB(138, 220, 255),
+		Default = Color3.fromRGB(11, 13, 13),
+		Disable = Color3.fromRGB(81, 103, 104),
+		TextColor = Color3.fromRGB(249, 249, 249),
+	}
 end
 
--- 情人节主题
 function Library.Theme:Valentine()
-    self:Set("Valentine", 255, 0, 128, 200, 15, 100, 206, 162, 168, 255, 255, 255)
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 0, 128), -- 粉红色
+        Default = Color3.fromRGB(200, 15, 100), -- 深粉红色
+        Disable = Color3.fromRGB(206, 162, 168), -- 浅灰色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
 end
 
--- 夏季主题
 function Library.Theme:Summer()
-    self:Set("Summer", 0, 255, 127, 0, 128, 102, 173, 216, 230, 255, 255, 255)
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 255, 127), -- 酸橙色
+        Default = Color3.fromRGB(0, 128, 102), -- 深绿色
+        Disable = Color3.fromRGB(173, 216, 230), -- 天蓝色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
 end
 
--- 秋季主题
 function Library.Theme:Autumn()
-    self:Set("Autumn", 255, 140, 0, 139, 69, 19, 188, 143, 143, 255, 255, 255)
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 140, 0), -- 橙色
+        Default = Color3.fromRGB(139, 69, 19), -- 深棕色
+        Disable = Color3.fromRGB(188, 143, 143), -- 浅棕色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
 end
 
--- 冬季主题
 function Library.Theme:Winter()
-    self:Set("Winter", 173, 216, 230, 70, 130, 180, 199, 219, 249, 0, 0, 0)
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(173, 216, 230), -- 天蓝色
+        Default = Color3.fromRGB(70, 130, 180), -- 深蓝色
+        Disable = Color3.fromRGB(199, 219, 249), -- 浅蓝色
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
+    }
 end
 
--- 海洋主题
 function Library.Theme:Ocean()
-    self:Set("Ocean", 0, 150, 136, 0, 51, 51, 102, 153, 255, 255, 255, 255)
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 150, 136), -- 青绿色
+        Default = Color3.fromRGB(0, 51, 51), -- 深蓝色
+        Disable = Color3.fromRGB(102, 153, 255), -- 亮蓝色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
 end
 
--- 北欧主题
 function Library.Theme:Nord()
-    self:Set("Nord", 136, 192, 208, 46, 52, 64, 88, 110, 117, 216, 222, 227)
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(136, 192, 208), -- 北欧蓝
+        Default = Color3.fromRGB(46, 52, 64), -- 北欧深灰
+        Disable = Color3.fromRGB(88, 110, 117), -- 北欧浅灰
+        TextColor = Color3.fromRGB(216, 222, 227), -- 北欧亮灰
+    }
 end
 
+function Library.Theme:Mint()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(189, 252, 201), -- 薄荷绿
+        Default = Color3.fromRGB(39, 174, 96), -- 深薄荷绿
+        Disable = Color3.fromRGB(189, 220, 189), -- 浅薄荷绿
+        TextColor = Color3.fromRGB(41, 128, 185), -- 薄荷蓝
+    }
+end
+
+function Library.Theme:Sunset()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 69, 0), -- 夕阳橙
+        Default = Color3.fromRGB(139, 69, 19), -- 深棕色
+        Disable = Color3.fromRGB(207, 207, 207), -- 浅灰色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Rose()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 105, 180), -- 玫瑰粉
+        Default = Color3.fromRGB(96, 0, 77), -- 深玫瑰红
+        Disable = Color3.fromRGB(204, 192, 179), -- 玫瑰棕
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Cyberpunk()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 252, 255), -- 霓虹青
+        Default = Color3.fromRGB(0, 0, 0), -- 黑色
+        Disable = Color3.fromRGB(75, 75, 75), -- 深灰色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Lavender()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(230, 230, 250), -- 淡紫色
+        Default = Color3.fromRGB(150, 150, 170), -- 深紫色
+        Disable = Color3.fromRGB(200, 200, 220), -- 浅紫色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:AquaMarine()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(127, 255, 212), -- 水绿色
+        Default = Color3.fromRGB(0, 100, 100), -- 深水绿
+        Disable = Color3.fromRGB(143, 188, 143), -- 浅水绿
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
+    }
+end
+
+function Library.Theme:Midnight()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(58, 69, 77), -- 午夜蓝
+        Default = Color3.fromRGB(10, 10, 10), -- 深午夜黑
+        Disable = Color3.fromRGB(58, 69, 77), -- 浅午夜灰
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Sakura()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 182, 193), -- 樱花粉
+        Default = Color3.fromRGB(160, 82, 45), -- 深棕色
+        Disable = Color3.fromRGB(233, 185, 170), -- 浅棕色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Desert()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 223, 129), -- 沙漠金
+        Default = Color3.fromRGB(139, 69, 19), -- 沙漠棕
+        Disable = Color3.fromRGB(210, 180, 140), -- 浅沙漠棕
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
+    }
+end
+
+function Library.Theme:Forest()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(34, 139, 34), -- 森林绿
+        Default = Color3.fromRGB(0, 100, 0), -- 深森林绿
+        Disable = Color3.fromRGB(144, 238, 144), -- 浅森林绿
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Royal()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(102, 51, 153), -- 皇家紫
+        Default = Color3.fromRGB(0, 0, 0), -- 黑色
+        Disable = Color3.fromRGB(173, 127, 168), -- 浅紫色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Ruby()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(224, 17, 95), -- 红宝石红
+        Default = Color3.fromRGB(139, 0, 0), -- 深红色
+        Disable = Color3.fromRGB(233, 185, 170), -- 浅红色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Tropical()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 239, 213), -- 热带黄
+        Default = Color3.fromRGB(0, 95, 87), -- 热带绿
+        Disable = Color3.fromRGB(218, 232, 218), -- 热带浅绿
+        TextColor = Color3.fromRGB(10, 10, 10), -- 深灰色
+    }
+end
+
+function Library.Theme:Vintage()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(139, 69, 19), -- 复古棕
+        Default = Color3.fromRGB(112, 128, 144), -- 复古灰
+        Disable = Color3.fromRGB(191, 191, 191), -- 复古浅灰
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Cobalt()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 255, 255), -- 钴蓝色
+        Default = Color3.fromRGB(0, 0, 102), -- 深钴蓝
+        Disable = Color3.fromRGB(102, 153, 204), -- 浅钴蓝
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Sage()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(158, 251, 155), -- 鼠尾草绿
+        Default = Color3.fromRGB(75, 100, 70), -- 深鼠尾草绿
+        Disable = Color3.fromRGB(188, 226, 184), -- 浅鼠尾草绿
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
+    }
+end
+
+function Library.Theme:Bronze()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(205, 127, 50), -- 青铜色
+        Default = Color3.fromRGB(139, 69, 19), -- 深青铜色
+        Disable = Color3.fromRGB(222, 184, 135), -- 浅青铜色
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Lagoon()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 150, 136), -- 泻湖绿
+        Default = Color3.fromRGB(0, 51, 51), -- 深海绿
+        Disable = Color3.fromRGB(102, 153, 255), -- 浅泻湖绿
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Amber()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 191, 0), -- 琥珀色
+        Default = Color3.fromRGB(139, 69, 19), -- 深琥珀色
+        Disable = Color3.fromRGB(255, 204, 102), -- 浅琥珀色
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
+    }
+end
+
+function Library.Theme:Aurora()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(138, 43, 226), -- 极光紫
+        Default = Color3.fromRGB(26, 26, 26), -- 深空黑
+        Disable = Color3.fromRGB(72, 72, 72), -- 星云灰
+        TextColor = Color3.fromRGB(255, 255, 255), -- 星光白
+    }
+end
+
+function Library.Theme:Neon()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 252, 255), -- 霓虹青
+        Default = Color3.fromRGB(25, 25, 25), -- 午夜黑
+        Disable = Color3.fromRGB(100, 100, 100), -- 深灰
+        TextColor = Color3.fromRGB(255, 255, 255), -- 亮白
+    }
+end
+
+function Library.Theme:Pastel()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 158, 181), -- 粉彩红
+        Default = Color3.fromRGB(207, 207, 207), -- 粉彩灰
+        Disable = Color3.fromRGB(238, 238, 238), -- 粉彩浅灰
+        TextColor = Color3.fromRGB(51, 51, 51), -- 深灰
+    }
+end
+
+function Library.Theme:Jungle()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 128, 0), -- 丛林绿
+        Default = Color3.fromRGB(34, 34, 34), -- 暗绿
+        Disable = Color3.fromRGB(102, 153, 102), -- 浅绿
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:OceanBreeze()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(0, 173, 239), -- 海洋蓝
+        Default = Color3.fromRGB(41, 64, 90), -- 海洋深蓝
+        Disable = Color3.fromRGB(131, 175, 155), -- 海洋浅蓝
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Sunrise()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 159, 67), -- 日出色
+        Default = Color3.fromRGB(34, 34, 34), -- 深灰
+        Disable = Color3.fromRGB(204, 153, 102), -- 日出橙
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:StarryNight()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(70, 130, 180), -- 星空蓝
+        Default = Color3.fromRGB(12, 12, 12), -- 深夜黑
+        Disable = Color3.fromRGB(53, 53, 53), -- 暗夜灰
+        TextColor = Color3.fromRGB(255, 255, 255), -- 星光白
+    }
+end
+
+function Library.Theme:Twilight()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(75, 0, 130), -- 暮光紫
+        Default = Color3.fromRGB(45, 45, 60), -- 暮光深灰
+        Disable = Color3.fromRGB(100, 100, 120), -- 暮光浅灰
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Frost()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(185, 225, 255), -- 霜冻蓝
+        Default = Color3.fromRGB(240, 250, 255), -- 霜冻白
+        Disable = Color3.fromRGB(200, 215, 230), -- 霜冻浅蓝
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
+    }
+end
+
+function Library.Theme:Floral()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 182, 193), -- 花园粉
+        Default = Color3.fromRGB(135, 206, 235), -- 花园蓝
+        Disable = Color3.fromRGB(225, 225, 225), -- 花园灰
+        TextColor = Color3.fromRGB(10, 10, 10), -- 深灰色
+    }
+end
+
+function Library.Theme:SunsetBeach()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 69, 0), -- 日落橙
+        Default = Color3.fromRGB(255, 140, 0), -- 沙滩金
+        Disable = Color3.fromRGB(255, 213, 102), -- 沙滩浅金
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
+    }
+end
+
+function Library.Theme:Mystic()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(65, 105, 225), -- 神秘蓝
+        Default = Color3.fromRGB(40, 50, 60), -- 神秘深灰
+        Disable = Color3.fromRGB(130, 140, 170), -- 神秘浅灰
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
+
+function Library.Theme:Elegant()
+    Library.Colors = {
+        Hightlight = Color3.fromRGB(255, 193, 7), -- 优雅金
+        Default = Color3.fromRGB(70, 30, 20), -- 优雅深棕
+        Disable = Color3.fromRGB(200, 160, 120), -- 优雅浅棕
+        TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+end
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
@@ -2419,6 +2701,29 @@ function Library:CreateWindow(setup)
 		LButton.TextSize = 14.000
 		LButton.TextTransparency = 1.000
 
+local CloseButton = Instance.new("TextButton") -- 或者使用ImageButton，如果你想要一个图标而不是文字
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = AuthFunction -- 假设你的主框架名为AuthFunction
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- 设置背景颜色为红色
+CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0) -- 设置按钮大小
+CloseButton.Position = UDim2.new(0.9, 0, 0.9, 0) -- 设置按钮位置在右上角
+CloseButton.Font = Enum.Font.GothamSemibold -- 设置字体
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- 设置文字颜色为白色
+CloseButton.Text = "X" -- 设置按钮上的文字为"X"
+CloseButton.TextSize = 14 -- 设置文字大小
+
+-- 添加点击事件
+CloseButton.MouseButton1Click:Connect(function()
+    -- 关闭脚本的逻辑
+    setup:CancelLogin()
+    -- 动画效果，使AuthFunction淡出
+    Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
+    task.wait(0.5)
+    -- 确保游戏已加载
+    repeat task.wait(1.5) until game:IsLoaded()
+    -- 完全移除AuthFunction
+    AuthFunction:Destroy()
+end)
 
 		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
 		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
