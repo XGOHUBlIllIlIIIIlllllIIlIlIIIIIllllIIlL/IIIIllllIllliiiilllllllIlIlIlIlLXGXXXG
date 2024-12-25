@@ -2719,22 +2719,31 @@ local DropShadow = AuthFunction:FindFirstChild("DropShadow")
 CloseButton.MouseButton1Click:Connect(function()
     -- 关闭脚本的逻辑
     setup:CancelLogin()
-    -- 动画效果，使AuthFunction淡出
-    Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
-    task.wait(0.5)
     
-    -- 销毁AuthFunction及其所有子元素
-    if DropShadow then
-        DropShadow:Destroy()
-    end
-    AuthFunction:Destroy()
+    -- 动画效果，使MainFrame淡出
+    Library:Tween(MainFrame, Library.TweenLibrary.SmallEffect, {
+        Size = UDim2.fromScale(0, 0),
+        Position = UDim2.fromScale(0.5, 0.5)
+    }).Completed:Connect(function()
+        -- 等待动画完成
+        task.wait()
+        
+        -- 销毁WindowLibrary及其所有子元素
+        WindowLibrary:Destroy()
+        
+        -- 如果需要，也可以在这里销毁AuthFunction
+        if DropShadow then
+            DropShadow:Destroy()
+        end
+        AuthFunction:Destroy()
+    end)
     
     -- 如果MainFrame和ScreenGui也是需要被销毁的，确保它们不是游戏中其他UI的父级
     -- 销毁MainFrame及其所有子元素
-    MainFrame:Destroy()
+    -- MainFrame:Destroy() -- 这行代码可以注释掉，因为上面的Tween完成后会销毁
     
     -- 销毁ScreenGui及其所有子元素
-    ScreenGui:Destroy()
+    -- ScreenGui:Destroy() -- 这行代码也可以注释掉，如果ScreenGui是WindowLibrary的父级
 end)
 
 -- 使卡密UI界面可移动
