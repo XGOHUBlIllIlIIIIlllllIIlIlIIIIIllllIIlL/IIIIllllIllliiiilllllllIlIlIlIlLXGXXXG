@@ -2713,17 +2713,13 @@ function Library:CreateWindow(setup)
         CloseButton.Text = "X" -- 按钮上的文字
         CloseButton.TextSize = 14 -- 文字大小
         CloseButton.MouseButton1Click:Connect(function()
-              Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
-              task.wait(0.5)
-              Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{
-							Size = UDim2.fromScale(0,0),
-							Position = UDim2.fromScale(0.5,0.5)
-						}).Completed:Connect(function()
-							task.wait()
-                             AuthFunction:Destroy() -- 销毁AuthFunction
-                             ScreenGui:Destroy()
-                             BlurEle:Destroy()
-        repeat task.wait(1.5) until game:IsLoaded()
+                    Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
+                    task.wait(0.5)
+                    AuthFunction:Destroy() -- 销毁AuthFunction
+        for _, obj in pairs(game:GetService("CoreGui"):GetChildren()) do
+            if obj:IsA("ScreenGui") then
+            obj:Destroy()
+           end
         end)
 
 -- 使卡密UI界面可移动
