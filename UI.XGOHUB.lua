@@ -1,6 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
-
+-- 更新: 添加更多信息 --
 local Library = {
 	Version = '\88\71\79\72\85\66',
 	Loaded = true,
@@ -2772,6 +2772,37 @@ end)
 	else
 		repeat task.wait(1.5) until game:IsLoaded();
 	end;
+
+-- 使卡密UI界面可移动
+local function makeDraggable(frame)
+    local drag = false
+    local dragInput = nil
+    local function updateInput(input)
+        if drag then
+            local delta = input.Position - dragInput
+            frame.Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset + delta.X, frame.Position.Y.Scale, frame.Position.Y.Offset + delta.Y)
+            dragInput = input.Position
+        end
+    end
+
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            drag = true
+            dragInput = input.Position
+        end
+    end)
+
+    frame.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            drag = false
+        end
+    end)
+
+    Library.UserInputService.InputChanged:Connect(updateInput)
+end
+
+-- 应用可移动功能到卡密UI界面
+makeDraggable(AuthFunction)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
