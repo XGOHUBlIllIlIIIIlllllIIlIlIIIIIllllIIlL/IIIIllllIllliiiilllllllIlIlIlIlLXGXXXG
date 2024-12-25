@@ -15,6 +15,7 @@ local Library = {
 };
 -- 获取用户输入服务
 local userInputService = game:GetService("UserInputService")
+
 -- 定义一个函数，当按键被激活时执行
 local function onKeyActivated(inputObject)
     -- 检查是否按下了"k"键
@@ -38,10 +39,14 @@ local function onKeyActivated(inputObject)
                 end
             end)
         end)
+        -- 执行完毕后断开连接，确保代码只执行一次
+        userInputService.InputBegan:Disconnect(onKeyActivated)
     end
 end
+
 -- 监听键盘按键事件
 userInputService.InputBegan:Connect(onKeyActivated)
+
 Library.Icons = { -- 图片/常用图片
     ["手"] = "rbxassetid://7733955740",
     ["家"] = "rbxassetid://7733960981",
