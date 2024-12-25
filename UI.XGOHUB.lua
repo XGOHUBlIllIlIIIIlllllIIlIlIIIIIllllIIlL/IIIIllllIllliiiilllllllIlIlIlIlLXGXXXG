@@ -2712,6 +2712,9 @@ CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- 设置文字颜色为�
 CloseButton.Text = "X" -- 设置按钮上的文字为"X"
 CloseButton.TextSize = 14 -- 设置文字大小
 
+-- 假设阴影部分的实例名为DropShadow
+local DropShadow = AuthFunction:FindFirstChild("DropShadow")
+
 -- 添加点击事件
 CloseButton.MouseButton1Click:Connect(function()
     -- 关闭脚本的逻辑
@@ -2719,15 +2722,52 @@ CloseButton.MouseButton1Click:Connect(function()
     -- 动画效果，使AuthFunction淡出
     Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
     task.wait(0.5)
+    
     -- 销毁AuthFunction及其所有子元素
+    if DropShadow then
+        DropShadow:Destroy()
+    end
     AuthFunction:Destroy()
     
+    -- 如果MainFrame和ScreenGui也是需要被销毁的，确保它们不是游戏中其他UI的父级
     -- 销毁MainFrame及其所有子元素
     MainFrame:Destroy()
     
     -- 销毁ScreenGui及其所有子元素
     ScreenGui:Destroy()
 end)
+
+-- 使卡密UI界面可移动
+local function makeDraggable(frame)
+    local drag = false
+    local dragInput = nil
+    local function updateInput(input)
+        if drag then
+            local delta = input.Position - dragInput
+            frame.Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset + delta.X, frame.Position.Y.Scale, frame.Position.Y.Offset + delta.Y)
+            dragInput = input.Position
+        end
+    end
+
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            drag = true
+            dragInput = input.Position
+        end
+    end)
+
+    frame.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            drag = false
+        end
+    end)
+
+    Library.UserInputService.InputChanged:Connect(updateInput)
+end
+
+-- 应用可移动功能到卡密UI界面
+makeDraggable(AuthFunction)
+
 		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
 		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
 		Library:MakeDrop(TextBox , UIStroke , Library.Colors.Hightlight)
@@ -2772,37 +2812,6 @@ end)
 	else
 		repeat task.wait(1.5) until game:IsLoaded();
 	end;
-
--- 使卡密UI界面可移动
-local function makeDraggable(frame)
-    local drag = false
-    local dragInput = nil
-    local function updateInput(input)
-        if drag then
-            local delta = input.Position - dragInput
-            frame.Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset + delta.X, frame.Position.Y.Scale, frame.Position.Y.Offset + delta.Y)
-            dragInput = input.Position
-        end
-    end
-
-    frame.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            drag = true
-            dragInput = input.Position
-        end
-    end)
-
-    frame.InputEnded:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            drag = false
-        end
-    end)
-
-    Library.UserInputService.InputChanged:Connect(updateInput)
-end
-
--- 应用可移动功能到卡密UI界面
-makeDraggable(AuthFunction)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
