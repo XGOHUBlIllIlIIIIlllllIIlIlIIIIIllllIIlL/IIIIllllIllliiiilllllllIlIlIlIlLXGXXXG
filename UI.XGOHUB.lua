@@ -2722,7 +2722,7 @@ function Library:CreateWindow(setup)
 							task.wait()
                              AuthFunction:Destroy() -- 销毁AuthFunction
                              ScreenGui:Destroy()
-                             BlurEle.Destroy()
+                             BlurEle:Destroy()
         repeat task.wait(1.5) until game:IsLoaded()
         end)
 
