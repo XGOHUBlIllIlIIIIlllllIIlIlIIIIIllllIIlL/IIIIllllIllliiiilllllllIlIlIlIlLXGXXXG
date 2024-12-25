@@ -2715,6 +2715,7 @@ function Library:CreateWindow(setup)
               Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
               task.wait(0.5)
              AuthFunction:Destroy() -- 销毁AuthFunction
+             ScreenGui:Destroy()
         repeat task.wait(1.5) until game:IsLoaded()
         end)
 
