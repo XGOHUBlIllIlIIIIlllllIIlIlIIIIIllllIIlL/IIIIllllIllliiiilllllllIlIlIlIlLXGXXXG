@@ -2719,12 +2719,8 @@ CloseButton.MouseButton1Click:Connect(function()
     -- 动画效果，使AuthFunction淡出
     Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
     task.wait(0.5)
-    -- 确保游戏已加载
-    repeat task.wait(1.5) until game:IsLoaded()
-    -- 完全移除AuthFunction
-    AuthFunction:Destroy()
+    ScreenGui:Destroy()
 end)
-
 		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
 		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
 		Library:MakeDrop(TextBox , UIStroke , Library.Colors.Hightlight)
