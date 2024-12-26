@@ -2725,58 +2725,28 @@ function Library:CreateWindow(setup)
 		setup.KeySystemInfo.AntiSpam = false;
    
 		LButton.MouseButton1Click:Connect(function()
-			if setup.KeySystemInfo.AntiSpam then return end;
-			setup.KeySystemInfo.AntiSpam = true;
---[[			
+        -- 如果AntiSpam已启用，则不执行任何操作
+        if setup.KeySystemInfo.AntiSpam then return end;
+        setup.KeySystemInfo.AntiSpam = true;
+
+        -- 检查TextBox中是否有文本
         if TextBox.Text == "" then
-            TextBox.PlaceholderText = "请输入密钥"
+          TextBox.PlaceholderText = "你没有填入卡密"
         else
-            local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
-            if not verify then
-                TextBox.PlaceholderText = "你输入的卡密错误"
-                task.wait(1)
-                TextBox.PlaceholderText = "请输入密钥"
-                TextBox.Text = ""
-            else
-                setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-            end
-        end
-
-        setup.KeySystemInfo.AntiSpam = false
-    end)
---]]    
-    LButton.MouseButton1Click:Connect(function()
-        if setup.KeySystemInfo.AntiSpam then return end
-        setup.KeySystemInfo.AntiSpam = true
-
-        -- 先清空可能存在的旧错误信息
-        if TextBox.PlaceholderText ~= "请输入密钥" then
-            TextBox.PlaceholderText = "请输入密钥"
-        end
-
-        -- 执行登录验证
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
-
         if not verify then
-            -- 如果验证失败，立即显示错误信息
             TextBox.PlaceholderText = "你输入的卡密错误"
             task.wait(1)
-            -- 1秒后重置占位符文本
-            task.spawn(function()
-                task.wait(1)
-                TextBox.PlaceholderText = "请输入密钥"
-            end)
+            TextBox.PlaceholderText = "请输入密钥"
+            TextBox.Text = ""
         else
-            -- 如果验证成功，执行后续操作
             setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
         end
+        end
 
-        -- 重置AntiSpam标志
         setup.KeySystemInfo.AntiSpam = false
-        -- 清空文本框
-        TextBox.Text = ""
-    end)
-    
+        end)
+
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
 
 		function setup:CancelLogin()
