@@ -1,6 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
-
+-- 更新: 添加更多信息 --
 local Library = {
 	Version = '\88\71\79\72\85\66',
 	Loaded = true,
@@ -2501,7 +2501,7 @@ function Library:CreateWindow(setup)
 		local LButton = Instance.new("TextButton")
         local CloseButton = Instance.new("TextButton")
         
---[[     AuthFunction.Name = "AuthFunction"
+        AuthFunction.Name = "AuthFunction"
 		AuthFunction.Parent = MainFrame
 		AuthFunction.Active = true
 		AuthFunction.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2513,22 +2513,6 @@ function Library:CreateWindow(setup)
 		AuthFunction.Size = UDim2.new(1, 0, 1, 0)
 
 		Library:Tween(AuthFunction , Library.TweenLibrary.SmallEffect,{Position = UDim2.new(0.5, 0, 0.5, 0)})
---]]
-    AuthFunction.Name = "AuthFunction"
-    AuthFunction.Parent = MainFrame
-    AuthFunction.Active = true
-    AuthFunction.AnchorPoint = Vector2.new(0.5, 0.5)
-    AuthFunction.Position = UDim2.new(0.5, 0, 0.5, 0)
-    AuthFunction.Size = UDim2.new(1, 0, 1, 0)
-
-    -- 设置AuthFunction的背景图片
-    AuthFunction.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 默认背景颜色，图片加载失败时显示
-    AuthFunction.BackgroundTransparency = 1 -- 使背景透明以显示图片
-    AuthFunction.BackgroundImage = "rbxassetid://120611289434746" -- 替换为您的图片Asset ID
-    AuthFunction.BackgroundTilePosition = UDim2.new(0, 0, 0, 0) -- 设置图片不重复
-    AuthFunction.BackgroundTileSize = UDim2.new(1, 0, 1, 0) -- 设置图片铺满整个背景
-
-    Library:Tween(AuthFunction , Library.TweenLibrary.SmallEffect,{Position = UDim2.new(0.5, 0, 0.5, 0)})
           
 		Title.Name = "Title"
 		Title.Parent = AuthFunction
@@ -2749,13 +2733,16 @@ function Library:CreateWindow(setup)
 			if verify then
 				setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
 				return TextBox.Text;
-			end;
+			else
+               TextBox.PlaceholderText = "你输入的卡密错误"
+               task.wait(1)
+               TextBox.PlaceholderText = "请输入密钥"
+           end;
 
 			setup.KeySystemInfo.AntiSpam = false;
 			TextBox.Text = "";
 		end)
-
-
+        
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
 
 		function setup:CancelLogin()
