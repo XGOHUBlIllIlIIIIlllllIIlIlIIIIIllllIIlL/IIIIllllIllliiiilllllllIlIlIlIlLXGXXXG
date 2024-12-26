@@ -2613,35 +2613,37 @@ function Library:CreateWindow(setup)
 		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
 		Library:MakeDrop(TextBox , UIStroke , Library.Colors.Hightlight)
 		setup.KeySystemInfo.CodeId = game:GetService('HttpService'):GenerateGUID(false);
-		setup.KeySystemInfo.AntiSpam = false;
+        setup.KeySystemInfo.AntiSpam = false;
 
-LButton.MouseButton1Click:Connect(function()
-    if setup.KeySystemInfo.AntiSpam then return end;
-    setup.KeySystemInfo.AntiSpam = true;
+		LButton.MouseButton1Click:Connect(function()
+		    if setup.KeySystemInfo.AntiSpam then return end;
+		    setup.KeySystemInfo.AntiSpam = true;
 
-    -- 检查玩家是否输入了卡密
-    if TextBox.Text == "" then
-        TextBox.PlaceholderText = "你没有填入卡密"
-        task.wait(2.5) -- 等待2.5秒
-        TextBox.PlaceholderText = "请输入卡密" -- 2.5秒后更改提示信息
-    else
-        local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
+		    -- 检查玩家是否输入了卡密
+		    if TextBox.Text == "" then
+		        TextBox.PlaceholderText = "你没有填入卡密"
+		        task.wait(2.5) -- 等待2.5秒
+		        TextBox.PlaceholderText = "请输入卡密" -- 2.5秒后更改提示信息
+		    else
+		        local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
 
-        if verify then
-            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-            return TextBox.Text;
-        else
-            -- 玩家输入错误时的处理
-            task.wait(0.1) -- 等待0.1秒
-            TextBox.Text = "" -- 清除玩家输入
-            TextBox.PlaceholderText = "你输入的卡密错误" -- 显示错误信息
-            task.wait(2.5) -- 等待2.5秒后清除错误信息
-            TextBox.PlaceholderText = "请重新输入卡密" -- 更改提示信息
-        end;
-    end;
+		        if verify then
+		            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+		            
+		            CloseButton.Visible = false;
+		            return TextBox.Text;
+		        else
+		            -- 玩家输入错误时的处理
+		            task.wait(0.1) -- 等待0.1秒
+		            TextBox.Text = "" -- 清除玩家输入
+		            TextBox.PlaceholderText = "你输入的卡密错误" -- 显示错误信息
+		            task.wait(2.5) -- 等待2.5秒后清除错误信息
+		            TextBox.PlaceholderText = "请重新输入卡密" -- 更改提示信息
+		        end;
+		    end;
 
-    setup.KeySystemInfo.AntiSpam = false;
-end)
+		    setup.KeySystemInfo.AntiSpam = false;
+		end)
 	    
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
 
@@ -2663,7 +2665,7 @@ end)
 
 		task.wait(0.5)
 	else
-		repeat task.wait(1.5) until game:IsLoaded();
+		repeat task.wait(1.5) until game:IsLoaded();		
 	end;
 
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
