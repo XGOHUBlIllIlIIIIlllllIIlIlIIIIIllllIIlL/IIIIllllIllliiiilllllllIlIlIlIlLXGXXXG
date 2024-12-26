@@ -1856,7 +1856,6 @@ local LoadAcrylic = function()
 			},
 			Signal = nil
 		};
-
 		local Update = function()
 			local _,updatec = pcall(function()
 				local userSettings = UserSettings():GetService("UserGameSettings")
@@ -1896,34 +1895,26 @@ local LoadAcrylic = function()
 			BlockMesh.Scale  = size / 0.0101;
 			Part.CFrame = CurrentCamera.CFrame;
 		end
-
 		C4.Update = Update;
 		C4.Signal = RunService.RenderStepped:Connect(Update);
-
 		pcall(function()
 			C4.Signal2 = CurrentCamera:GetPropertyChangedSignal('CFrame'):Connect(function()
 				Part.CFrame = CurrentCamera.CFrame;
 			end);
 		end)
-
 		C4.Destroy = function()
 			C4.Signal:Disconnect();
 			C4.Signal2:Disconnect();
 			C4.Update = function()
-
 			end;
-
 			Twen:Create(Part,TweenInfo.new(1),{
 				Transparency = 1
 			}):Play();
-
 			DepthOfField:Destroy();
 			Part:Destroy()
 		end;
-
 		return C4;
 	end;
-
 	return GuiSystem;
 end;
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2525,6 +2516,17 @@ function Library:CreateWindow(setup)
 		GTitle.TextStrokeColor3 = Library.Colors.TextColor
 		GTitle.TextStrokeTransparency = 0.950
 		GTitle.TextWrapped = true
+		GTitle.MouseButton1Click:Connect(function()
+        -- 设置要复制的文本
+        local textToCopy = "请加入群聊"
+        -- 使用setclipboard函数复制文本到剪贴板
+            setclipboard(textToCopy)
+        -- 可以在这里添加一些反馈给用户，比如弹出提示
+        game.StarterGui:SetCore("SendNotification", {
+             Title = "复制成功";
+             Text = "已复制文本: " .. textToCopy;
+        })
+        end)
 
 		GButton.Name = "GButton"
 		GButton.Parent = GetButton
@@ -2624,56 +2626,6 @@ function Library:CreateWindow(setup)
 		setup.KeySystemInfo.CodeId = game:GetService('HttpService'):GenerateGUID(false);
 		setup.KeySystemInfo.AntiSpam = false;
    
--- 卡密保存和读取的路径配置
-local RayfieldFolder = game:GetService("UserSettings"):WaitForChild("RayfieldFolder")
-local ConfigurationExtension = ".lua" -- 配置文件扩展名
-
--- 创建文件夹如果不存在
-if not isfolder(RayfieldFolder) then
-    makefolder(RayfieldFolder)
-end
-
--- 创建云变量来存储卡密
-local KeyVariable = Instance.new("IntValue")
-KeyVariable.Name = "KeyVariable"
-KeyVariable.Value = 0 -- 默认值为0，表示没有卡密
-
--- 将云变量保存到游戏中
-KeyVariable.Parent = game:GetService("ReplicatedStorage")
-
--- 卡密保存函数
-local function saveKey(key)
-    KeyVariable.Value = key -- 将卡密保存到云变量
-end
-
--- 卡密读取函数
-local function readKey()
-    return KeyVariable.Value -- 从云变量读取卡密
-end
-
--- 检查卡密是否已经保存
-local function isKeySaved()
-    return KeyVariable.Value ~= 0 -- 如果云变量的值不为0，则表示卡密已保存
-end
-
--- 卡密文件路径
-local KeyFilePath = RayfieldFolder .. "/Key System/" .. Settings.KeySettings.FileName .. ConfigurationExtension
-
--- 卡密保存函数
-local function saveKeyToFile(key)
-    writefile(KeyFilePath, key) -- 将卡密写入文件
-end
-
--- 卡密读取函数
-local function readKeyFromFile()
-    return readfile(KeyFilePath) -- 从文件读取卡密
-end
-
--- 检查卡密是否已经保存
-local function isKeySaved()
-    return isfile(KeyFilePath) -- 检查文件是否存在
-end
-
 		LButton.MouseButton1Click:Connect(function()
         -- 如果AntiSpam已启用，则不执行任何操作
         if setup.KeySystemInfo.AntiSpam then return end;
@@ -2715,16 +2667,7 @@ end
 
 		TextBox.TextEditable = false;
 		
-if isKeySaved() then
-    local savedKey = readKeyFromFile()
-    -- 这里可以添加逻辑，使用savedKey进行一些操作，例如自动登录
-    print("卡密已保存，跳过输入界面")
-    -- 这里可以添加跳过输入界面的代码
-else
-    -- 显示输入界面
-    Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 0.5, 0)})
-end
---		Library:Tween(AuthFunction , Library.TweenLibrary.Normal,{Position = UDim2.new(0.5, 0, 1.5, 0)});
+		Library:Tween(AuthFunction , Library.TweenLibrary.Normal,{Position = UDim2.new(0.5, 0, 1.5, 0)});
 
 		task.wait(0.5)
 	else
