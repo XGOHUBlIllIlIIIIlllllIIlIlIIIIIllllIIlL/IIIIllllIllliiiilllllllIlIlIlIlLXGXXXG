@@ -2615,30 +2615,33 @@ function Library:CreateWindow(setup)
 		setup.KeySystemInfo.CodeId = game:GetService('HttpService'):GenerateGUID(false);
 		setup.KeySystemInfo.AntiSpam = false;
 
-		LButton.MouseButton1Click:Connect(function()
-        -- 如果AntiSpam已启用，则不执行任何操作
-             if setup.KeySystemInfo.AntiSpam then return end;
-                setup.KeySystemInfo.AntiSpam = true;
-             -- 检查TextBox中是否有文本
-             if TextBox.Text == "" then
-                TextBox.PlaceholderText = "你没有填入卡密"
-             task.wait(2.5)
-                TextBox.PlaceholderText = "请输入卡密"
+LButton.MouseButton1Click:Connect(function()
+    if setup.KeySystemInfo.AntiSpam then return end;
+    setup.KeySystemInfo.AntiSpam = true;
+
+    -- 检查玩家是否输入了卡密
+    if TextBox.Text == "" then
+        TextBox.PlaceholderText = "你没有填入卡密"
+        task.wait(2.5) -- 等待2.5秒
+        TextBox.PlaceholderText = "请输入卡密" -- 2.5秒后更改提示信息
+    else
+        local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
+
+        if verify then
+            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+            return TextBox.Text;
         else
-        local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
-             if verify then
-              task.wait(0.1) -- 等待0.1秒
-                 TextBox.Text = ""
-                 TextBox.PlaceholderText = "你输入的卡密错误"
-              task.wait(2.5) -- 等待1秒后清除错误信息
-                 TextBox.PlaceholderText = "请重新输入卡密"
-        else
-              saveKeyToFile(TextBox.Text)
-              setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-            end;
+            -- 玩家输入错误时的处理
+            task.wait(0.1) -- 等待0.1秒
+            TextBox.Text = "" -- 清除玩家输入
+            TextBox.PlaceholderText = "你输入的卡密错误" -- 显示错误信息
+            task.wait(2.5) -- 等待2.5秒后清除错误信息
+            TextBox.PlaceholderText = "请重新输入卡密" -- 更改提示信息
         end;
-            setup.KeySystemInfo.AntiSpam = false
-        end)
+    end;
+
+    setup.KeySystemInfo.AntiSpam = false;
+end)
 	    
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
 
