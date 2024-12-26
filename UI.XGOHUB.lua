@@ -121,100 +121,53 @@ Library.Icons = { -- 图片/常用图片
 	["信息"] = "rbxassetid://7733964719",	["展开"] = "rbxassetid://7733771982",
 	["相册"] = "rbxassetid://7733658133",	["书签"] = "rbxassetid://7733692043",
 	["删除"] = "rbxassetid://7733768142",	["铲子"] = "rbxassetid://7734056878",
-	["播客"] = "rbxassetid://7734042234",
-	["注销"] = "rbxassetid://7733992677",
-	["点赞"] = "rbxassetid://7743873212",
-	["复制"] = "rbxassetid://7733764083",
-	["斧头"] = "rbxassetid://7733674079",
-	["摇椅"] = "rbxassetid://7734051769",
-	["圆形"] = "rbxassetid://7733919881",
-	["鬼魂"] = "rbxassetid://7743868000",
-	["奖章"] = "rbxassetid://7733673987",
-	["盾牌"] = "rbxassetid://7734056608",
-	["导入"] = "rbxassetid://7733964240",
-	["尺子"] = "rbxassetid://7734052157",
-	["骷髅"] = "rbxassetid://7734058599",
-	["套索"] = "rbxassetid://7733967892",
-	["播放"] = "rbxassetid://7743871480",
-	["飞机"] = "rbxassetid://7734037723",
-	["盒子"] = "rbxassetid://7733917120",
-	["电源"] = "rbxassetid://7734042493",
-	["地图"] = "rbxassetid://7733992829",
-	["信号"] = "rbxassetid://8997387546",
-	["重做"] = "rbxassetid://7743871739",
-	["快进"] = "rbxassetid://7743867090",
-	["抓取"] = "rbxassetid://7733954884",
-	["饼干"] = "rbxassetid://8997385628",
-	["饼图"] = "rbxassetid://7734034378",
-	["充电"] = "rbxassetid://8997383136",
-	["视频"] = "rbxassetid://7743876610",
-	["铃铛"] = "rbxassetid://7733911828",
-	["火焰"] = "rbxassetid://7733798747",
-	["关机"] = "rbxassetid://7734042423",
-	["撤销"] = "rbxassetid://7743874974",
-	["裁剪"] = "rbxassetid://7733765140",
-	["震动"] = "rbxassetid://7743876302",
-	["心形"] = "rbxassetid://7733956134",
-	["锁定"] = "rbxassetid://7733992528",
-	["旗帜"] = "rbxassetid://7733798691",
-	["雪花"] = "rbxassetid://7734059180",
-	["汽车"] = "rbxassetid://7733708835",
-	["衬衫"] = "rbxassetid://7734056672",
-	["重复1"] = "rbxassetid://7734051342",
-	["重复2"] = "rbxassetid://7734051454",
-	["链接1"] = "rbxassetid://7733978098",
-	["链接2"] = "rbxassetid://7743869163",
-	["地球1"] = "rbxassetid://7733954760",
-	["地球2"] = "rbxassetid://7733954611",
-	["代码1"] = "rbxassetid://7733749837",
-	["代码2"] = "rbxassetid://7733920644",
-	["列表1"] = "rbxassetid://7743869612",
-	["列表2"] = "rbxassetid://7743869517",
-	["电视2"] = "rbxassetid://7743874599",
-	["导航1"] = "rbxassetid://7734020989",
-	["导航2"] = "rbxassetid://7734020942",
-	["分享1"] = "rbxassetid://7734053697",
-	["分享2"] = "rbxassetid://7734053595",
-	["设置1"] = "rbxassetid://7734053495",
-	["设置2"] = "rbxassetid://8997386997",
-    ["文件1"] = "rbxassetid://7743867554",
-	["文件2"] = "rbxassetid://7733793319",
-	["文件3"] = "rbxassetid://7743867811",
-	["音量1"] = "rbxassetid://7743877081",
-	["音量2"] = "rbxassetid://7743877250",
-	["音量3"] = "rbxassetid://7743877487",
-	["编辑1"] = "rbxassetid://7733771472",
-	["编辑2"] = "rbxassetid://7733771217",
-	["编辑3"] = "rbxassetid://7733771361",
-	["时钟1"] = "rbxassetid://8997383694",
-	["时钟2"] = "rbxassetid://8997384295",
-	["时钟3"] = "rbxassetid://8997384456",
-	["时钟4"] = "rbxassetid://8997384603",
-	["时钟5"] = "rbxassetid://8997384798",
-	["时钟6"] = "rbxassetid://8997384977",
-	["时钟7"] = "rbxassetid://8997385147",
-	["时钟8"] = "rbxassetid://8997385352",
-	["时钟9"] = "rbxassetid://8997385485",
-	["时钟10"] = "rbxassetid://8997383876",
-	["时钟11"] = "rbxassetid://8997384034",
-	["时钟12"] = "rbxassetid://8997384150",
-	["时钟13"] = "rbxassetid://7733734848",
-	["云-雨"] = "rbxassetid://7733746651",
-	["云-雪"] = "rbxassetid://7733746798",
-	["Wi-Fi"] = "rbxassetid://7743878148",
-	["左对齐"] = "rbxassetid://7733911357",
-	["右对齐"] = "rbxassetid://7733663582",
-	["文件夹"] = "rbxassetid://7733799185",
-	["无穷大"] = "rbxassetid://7733964640",
-	["右上角"] = "rbxassetid://7733764915",
-	["上右角"] = "rbxassetid://7733764680",
-	["左上角"] = "rbxassetid://7733764536",
-	["右下角"] = "rbxassetid://7733764605",
-	["左下角"] = "rbxassetid://7733764448",
-	["首选项"] = "rbxassetid://8997383275",
-	["安全帽"] = "rbxassetid://7733955850",
-	["荧光笔"] = "rbxassetid://7743868648",
-	["自行车"] = "rbxassetid://7733678330",
+	["播客"] = "rbxassetid://7734042234",	["注销"] = "rbxassetid://7733992677",
+	["点赞"] = "rbxassetid://7743873212",	["复制"] = "rbxassetid://7733764083",
+	["斧头"] = "rbxassetid://7733674079",	["摇椅"] = "rbxassetid://7734051769",
+	["圆形"] = "rbxassetid://7733919881",	["鬼魂"] = "rbxassetid://7743868000",
+	["奖章"] = "rbxassetid://7733673987",	["盾牌"] = "rbxassetid://7734056608",
+	["导入"] = "rbxassetid://7733964240",	["尺子"] = "rbxassetid://7734052157",
+	["骷髅"] = "rbxassetid://7734058599",	["套索"] = "rbxassetid://7733967892",
+	["播放"] = "rbxassetid://7743871480",	["飞机"] = "rbxassetid://7734037723",
+	["盒子"] = "rbxassetid://7733917120",	["电源"] = "rbxassetid://7734042493",
+	["地图"] = "rbxassetid://7733992829",	["信号"] = "rbxassetid://8997387546",
+	["重做"] = "rbxassetid://7743871739",	["快进"] = "rbxassetid://7743867090",
+	["抓取"] = "rbxassetid://7733954884",	["饼干"] = "rbxassetid://8997385628",
+	["饼图"] = "rbxassetid://7734034378",	["充电"] = "rbxassetid://8997383136",
+	["视频"] = "rbxassetid://7743876610",	["铃铛"] = "rbxassetid://7733911828",
+	["火焰"] = "rbxassetid://7733798747",	["关机"] = "rbxassetid://7734042423",
+	["撤销"] = "rbxassetid://7743874974",	["裁剪"] = "rbxassetid://7733765140",
+	["震动"] = "rbxassetid://7743876302",	["心形"] = "rbxassetid://7733956134",
+	["锁定"] = "rbxassetid://7733992528",	["旗帜"] = "rbxassetid://7733798691",
+	["雪花"] = "rbxassetid://7734059180",	["汽车"] = "rbxassetid://7733708835",
+	["衬衫"] = "rbxassetid://7734056672",	["重复1"] = "rbxassetid://7734051342",
+	["重复2"] = "rbxassetid://7734051454",	["链接1"] = "rbxassetid://7733978098",
+	["链接2"] = "rbxassetid://7743869163",	["地球1"] = "rbxassetid://7733954760",
+	["地球2"] = "rbxassetid://7733954611",	["代码1"] = "rbxassetid://7733749837",
+	["代码2"] = "rbxassetid://7733920644",	["列表1"] = "rbxassetid://7743869612",
+	["列表2"] = "rbxassetid://7743869517",	["电视2"] = "rbxassetid://7743874599",
+	["导航1"] = "rbxassetid://7734020989",	["导航2"] = "rbxassetid://7734020942",
+	["分享1"] = "rbxassetid://7734053697",	["分享2"] = "rbxassetid://7734053595",
+	["设置1"] = "rbxassetid://7734053495",	["设置2"] = "rbxassetid://8997386997",
+    ["文件1"] = "rbxassetid://7743867554",	["文件2"] = "rbxassetid://7733793319",
+	["文件3"] = "rbxassetid://7743867811",	["音量1"] = "rbxassetid://7743877081",
+	["音量2"] = "rbxassetid://7743877250",	["音量3"] = "rbxassetid://7743877487",
+	["编辑1"] = "rbxassetid://7733771472",	["编辑2"] = "rbxassetid://7733771217",
+	["编辑3"] = "rbxassetid://7733771361",	["时钟1"] = "rbxassetid://8997383694",
+	["时钟2"] = "rbxassetid://8997384295",	["时钟3"] = "rbxassetid://8997384456",
+	["时钟4"] = "rbxassetid://8997384603",	["时钟5"] = "rbxassetid://8997384798",
+	["时钟6"] = "rbxassetid://8997384977",	["时钟7"] = "rbxassetid://8997385147",
+	["时钟8"] = "rbxassetid://8997385352",	["时钟9"] = "rbxassetid://8997385485",
+	["时钟10"] = "rbxassetid://8997383876", ["时钟11"] = "rbxassetid://8997384034",
+	["时钟12"] = "rbxassetid://8997384150",	["时钟13"] = "rbxassetid://7733734848",
+	["云-雨"] = "rbxassetid://7733746651",	["云-雪"] = "rbxassetid://7733746798",
+	["Wi-Fi"] = "rbxassetid://7743878148",	["左对齐"] = "rbxassetid://7733911357",
+	["右对齐"] = "rbxassetid://7733663582",	["文件夹"] = "rbxassetid://7733799185",
+	["无穷大"] = "rbxassetid://7733964640", ["右上角"] = "rbxassetid://7733764915",
+	["上右角"] = "rbxassetid://7733764680",	["左上角"] = "rbxassetid://7733764536",
+	["右下角"] = "rbxassetid://7733764605",	["左下角"] = "rbxassetid://7733764448",
+	["首选项"] = "rbxassetid://8997383275",	["安全帽"] = "rbxassetid://7733955850",
+	["荧光笔"] = "rbxassetid://7743868648", ["自行车"] = "rbxassetid://7733678330",
 	["服务器"] = "rbxassetid://7734053426",
 	["笔工具"] = "rbxassetid://7734022041",
 	["显示器"] = "rbxassetid://7734002839",
@@ -2482,7 +2435,7 @@ function Library:CreateWindow(setup)
 		Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = Library.SizeLibrary.Auth})
 
 		task.wait(1);
-
+------ // 卡密系统设置    ----------------------------------------------------------------------------------------
 		local AuthFunction = Instance.new("Frame")
 		local Title = Instance.new("TextLabel")
 		local TextBox = Instance.new("TextBox")
@@ -2544,7 +2497,7 @@ function Library:CreateWindow(setup)
 		TextBox.ZIndex = 5
 		TextBox.ClearTextOnFocus = false
 		TextBox.Font = Enum.Font.SourceSans
-		TextBox.PlaceholderText = "请输入密钥"
+		TextBox.PlaceholderText = "请输入卡密"
 		TextBox.Text = ""
 		TextBox.TextColor3 = Library.Colors.TextColor
 		TextBox.TextSize = 13.000
@@ -2732,22 +2685,20 @@ function Library:CreateWindow(setup)
         if TextBox.Text == "" then
         TextBox.PlaceholderText = "你没有填入卡密"
         task.wait(1.5)
-            TextBox.PlaceholderText = "请输入密钥"
+            TextBox.PlaceholderText = "请输入卡密"
         else
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
         if not verify then
-            -- 等待一段时间后显示错误信息，以确保不会被覆盖
-            task.wait(1.5) -- 等待0.8秒
-            TextBox.PlaceholderText = "你输入的卡密错误"
-            task.wait(99) -- 再等待1秒后清除错误信息
-            TextBox.PlaceholderText = "请输入密钥"
+            -- 检测到错误卡密时立即清除输入框中的文字
             TextBox.Text = ""
+            -- 显示卡密错误信息
+            TextBox.PlaceholderText = "你输入的卡密错误"
+            task.wait(1.5) -- 等待后清除错误信息
+            TextBox.PlaceholderText = "请重新输入卡密"
         else
             setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
         end
-        end
-
-        setup.KeySystemInfo.AntiSpam = false
+            setup.KeySystemInfo.AntiSpam = false
         end)
 
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
