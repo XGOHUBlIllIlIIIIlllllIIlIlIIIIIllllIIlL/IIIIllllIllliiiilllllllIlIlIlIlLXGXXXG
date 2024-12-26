@@ -2516,17 +2516,23 @@ function Library:CreateWindow(setup)
 		GTitle.TextStrokeColor3 = Library.Colors.TextColor
 		GTitle.TextStrokeTransparency = 0.950
 		GTitle.TextWrapped = true
-		GTitle.MouseButton1Click:Connect(function()
-        -- 设置要复制的文本
-        local textToCopy = "请加入群聊"
-        -- 使用setclipboard函数复制文本到剪贴板
-            setclipboard(textToCopy)
-        -- 可以在这里添加一些反馈给用户，比如弹出提示
-        game.StarterGui:SetCore("SendNotification", {
-             Title = "复制成功";
-             Text = "已复制文本: " .. textToCopy;
-        })
-        end)
+		-- 添加点击事件监听器
+GTitle.MouseButton1Click:Connect(function()
+    -- 调用GButton的点击事件处理函数
+    GButton.MouseButton1Click:Fire()
+end)
+
+GButton.MouseButton1Click:Connect(function()
+    -- 设置要复制的文本
+    local textToCopy = "请加入群聊"
+    -- 使用setclipboard函数复制文本到剪贴板
+    setclipboard(textToCopy)
+    -- 可以在这里添加一些反馈给用户，比如弹出提示
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "复制成功";
+        Text = "已复制文本: " .. textToCopy;
+    })
+end)
 
 		GButton.Name = "GButton"
 		GButton.Parent = GetButton
