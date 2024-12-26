@@ -2727,22 +2727,24 @@ function Library:CreateWindow(setup)
 		LButton.MouseButton1Click:Connect(function()
 			if setup.KeySystemInfo.AntiSpam then return end;
 			setup.KeySystemInfo.AntiSpam = true;
-
-	    local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
-			if verify then
-            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+			
+        if TextBox.Text == "" then
+            TextBox.PlaceholderText = "请输入密钥"
         else
-            if TextBox.Text ~= "" then
+            local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
+            if not verify then
                 TextBox.PlaceholderText = "你输入的卡密错误"
-                task.wait(1.5)
+                task.wait(1)
                 TextBox.PlaceholderText = "请输入密钥"
+                TextBox.Text = ""
+            else
+                setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
             end
-        end;
+        end
 
-			setup.KeySystemInfo.AntiSpam = false;
-			TextBox.Text = "";
-		end)
-        
+        setup.KeySystemInfo.AntiSpam = false
+    end)
+       
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
 
 		function setup:CancelLogin()
