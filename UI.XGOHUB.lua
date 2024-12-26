@@ -2722,12 +2722,11 @@ function Library:CreateWindow(setup)
            end
         end)
 
--- 使卡密UI界面可移动
 local function makeDraggable(frame)
     local drag = false
     local dragInput = nil
     local function updateInput(input)
-        if drag then
+        if drag and input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             local delta = input.Position - dragInput
             frame.Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset + delta.X, frame.Position.Y.Scale, frame.Position.Y.Offset + delta.Y)
             dragInput = input.Position
@@ -2750,7 +2749,7 @@ local function makeDraggable(frame)
     Library.UserInputService.InputChanged:Connect(updateInput)
 end
 
--- 应用可移动功能到卡密UI界面
+-- 应用可移动功能到AuthFunction
 makeDraggable(AuthFunction)
 
 		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
