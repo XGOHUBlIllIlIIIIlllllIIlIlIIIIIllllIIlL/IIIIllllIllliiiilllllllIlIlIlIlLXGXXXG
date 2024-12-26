@@ -2616,75 +2616,27 @@ function Library:CreateWindow(setup)
 		setup.KeySystemInfo.AntiSpam = false;
 
 		LButton.MouseButton1Click:Connect(function()
-			if setup.KeySystemInfo.AntiSpam then return end;
-			setup.KeySystemInfo.AntiSpam = true;
-
-			local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
-
-			if verify then
-				setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-				return TextBox.Text;
-			end;
-
-			setup.KeySystemInfo.AntiSpam = false;
-			TextBox.Text = "";
-		end)
-
-
-		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
-
-		function setup:CancelLogin()
-			setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-		end;
-
-		while true do 
-			local this = setup.KeySystemInfo.Finished.Event:Wait();
-
-			if this == setup.KeySystemInfo.CodeId then
-				break;
-			end;
-		end;
-
-		TextBox.TextEditable = false;
-
-		Library:Tween(AuthFunction , Library.TweenLibrary.Normal,{Position = UDim2.new(0.5, 0, 1.5, 0)});
-
-		task.wait(0.5)
-	else
-		repeat task.wait(1.5) until game:IsLoaded();
-	end;
-
-	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
-	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
---[[
-		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
-		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
-		Library:MakeDrop(TextBox , UIStroke , Library.Colors.Hightlight)
-		setup.KeySystemInfo.CodeId = game:GetService('HttpService'):GenerateGUID(false);
-		setup.KeySystemInfo.AntiSpam = false;
-   
-		LButton.MouseButton1Click:Connect(function()
         -- 如果AntiSpam已启用，则不执行任何操作
-        if setup.KeySystemInfo.AntiSpam then return end;
-         setup.KeySystemInfo.AntiSpam = true;
-        -- 检查TextBox中是否有文本
-        if TextBox.Text == "" then
-        TextBox.PlaceholderText = "你没有填入卡密"
-        task.wait(2.5)
-            TextBox.PlaceholderText = "请输入卡密"
+             if setup.KeySystemInfo.AntiSpam then return end;
+                setup.KeySystemInfo.AntiSpam = true;
+             -- 检查TextBox中是否有文本
+             if TextBox.Text == "" then
+                TextBox.PlaceholderText = "你没有填入卡密"
+             task.wait(2.5)
+                TextBox.PlaceholderText = "请输入卡密"
         else
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
-        if not verify then
-            task.wait(0.1) -- 等待0.1秒
-            TextBox.Text = ""
-            TextBox.PlaceholderText = "你输入的卡密错误"
-            task.wait(2.5) -- 等待1秒后清除错误信息
-            TextBox.PlaceholderText = "请重新输入卡密"
+             if not verify then
+              task.wait(0.1) -- 等待0.1秒
+                 TextBox.Text = ""
+                 TextBox.PlaceholderText = "你输入的卡密错误"
+              task.wait(2.5) -- 等待1秒后清除错误信息
+                 TextBox.PlaceholderText = "请重新输入卡密"
         else
-            saveKeyToFile(TextBox.Text)
-            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-        end
-        end
+              saveKeyToFile(TextBox.Text)
+              setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+              end;
+        end;
             setup.KeySystemInfo.AntiSpam = false
         end)
 
@@ -2703,7 +2655,7 @@ function Library:CreateWindow(setup)
 		end;
 
 		TextBox.TextEditable = false;
-		
+
 		Library:Tween(AuthFunction , Library.TweenLibrary.Normal,{Position = UDim2.new(0.5, 0, 1.5, 0)});
 
 		task.wait(0.5)
@@ -2713,7 +2665,7 @@ function Library:CreateWindow(setup)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
---]]
+
 	local WindowLibrary = {};
 	local OpenDelay = tick();
 
