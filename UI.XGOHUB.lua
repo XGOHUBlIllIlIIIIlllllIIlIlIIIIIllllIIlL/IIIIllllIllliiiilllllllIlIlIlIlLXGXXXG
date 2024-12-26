@@ -2716,41 +2716,7 @@ function Library:CreateWindow(setup)
                     Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
                     task.wait(0.5)
                     AuthFunction:Destroy() -- 销毁AuthFunction
-        for _, obj in pairs(game:GetService("CoreGui"):GetChildren()) do
-            if obj:IsA("ScreenGui") then
-            obj:Destroy()
-           end
         end)
-
-local function makeDraggable(frame)
-    local drag = false
-    local dragInput = nil
-    local function updateInput(input)
-        if drag and input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            local delta = input.Position - dragInput
-            frame.Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset + delta.X, frame.Position.Y.Scale, frame.Position.Y.Offset + delta.Y)
-            dragInput = input.Position
-        end
-    end
-
-    frame.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            drag = true
-            dragInput = input.Position
-        end
-    end)
-
-    frame.InputEnded:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            drag = false
-        end
-    end)
-
-    Library.UserInputService.InputChanged:Connect(updateInput)
-end
-
--- 应用可移动功能到AuthFunction
-makeDraggable(AuthFunction)
 
 		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
 		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
