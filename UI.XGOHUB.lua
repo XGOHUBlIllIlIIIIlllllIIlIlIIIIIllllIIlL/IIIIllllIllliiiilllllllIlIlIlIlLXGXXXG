@@ -2727,7 +2727,7 @@ function Library:CreateWindow(setup)
 		LButton.MouseButton1Click:Connect(function()
 			if setup.KeySystemInfo.AntiSpam then return end;
 			setup.KeySystemInfo.AntiSpam = true;
-			
+--[[			
         if TextBox.Text == "" then
             TextBox.PlaceholderText = "请输入密钥"
         else
@@ -2744,7 +2744,39 @@ function Library:CreateWindow(setup)
 
         setup.KeySystemInfo.AntiSpam = false
     end)
-       
+--]]    
+    LButton.MouseButton1Click:Connect(function()
+        if setup.KeySystemInfo.AntiSpam then return end
+        setup.KeySystemInfo.AntiSpam = true
+
+        -- 先清空可能存在的旧错误信息
+        if TextBox.PlaceholderText ~= "请输入密钥" then
+            TextBox.PlaceholderText = "请输入密钥"
+        end
+
+        -- 执行登录验证
+        local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
+
+        if not verify then
+            -- 如果验证失败，立即显示错误信息
+            TextBox.PlaceholderText = "你输入的卡密错误"
+            task.wait(1)
+            -- 1秒后重置占位符文本
+            task.spawn(function()
+                task.wait(1)
+                TextBox.PlaceholderText = "请输入密钥"
+            end)
+        else
+            -- 如果验证成功，执行后续操作
+            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+        end
+
+        -- 重置AntiSpam标志
+        setup.KeySystemInfo.AntiSpam = false
+        -- 清空文本框
+        TextBox.Text = ""
+    end)
+    
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
 
 		function setup:CancelLogin()
