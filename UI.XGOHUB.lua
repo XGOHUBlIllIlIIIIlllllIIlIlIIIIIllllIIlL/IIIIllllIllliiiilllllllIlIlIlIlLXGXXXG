@@ -2633,13 +2633,16 @@ function Library:CreateWindow(setup)
               task.wait(2.5) -- 等待1秒后清除错误信息
                  TextBox.PlaceholderText = "请重新输入卡密"
         else
+             if verify then
               saveKeyToFile(TextBox.Text)
               setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-              end;
+              return TextBox.Text;
+            end;
         end;
             setup.KeySystemInfo.AntiSpam = false
+            TextBox.Text = "";
         end)
-
+	    
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
 
 		function setup:CancelLogin()
