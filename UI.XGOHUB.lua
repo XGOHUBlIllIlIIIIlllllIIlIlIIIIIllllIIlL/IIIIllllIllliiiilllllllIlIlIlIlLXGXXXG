@@ -2,7 +2,7 @@
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
 local Library = {
-	Version = '\88\71\79\72\85\66',
+	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
 	QQ = '259461151',
 	env = getgenv or getfenv,
@@ -5721,14 +5721,14 @@ end
 			setup.Title = setup.Title or "Dialog";
 			setup.Buttons = setup.Buttons or {
 				{
-					Title = "YES",
+					Title = "是",
 					Hightlight = true,
 					Callback = function()
 
 					end,
 				},
 				{
-					Title = "NO",
+					Title = "否",
 					Callback = function()
 
 					end,
@@ -6471,8 +6471,8 @@ end
 		if IsHold and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
 			if WindowLibrary.Toggle then
 				local pios = input.Position;
+				
 				local x = (pios.X - MainFrame.AbsolutePosition.X) 
-
 				local y = (pios.Y - MainFrame.AbsolutePosition.Y) 
 
 				if x < 460 then x = 460 end
