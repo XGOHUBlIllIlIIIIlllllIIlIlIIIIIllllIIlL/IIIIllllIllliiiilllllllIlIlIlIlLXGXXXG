@@ -2727,16 +2727,19 @@ function Library:CreateWindow(setup)
 		LButton.MouseButton1Click:Connect(function()
         -- 如果AntiSpam已启用，则不执行任何操作
         if setup.KeySystemInfo.AntiSpam then return end;
-        setup.KeySystemInfo.AntiSpam = true;
-
+         setup.KeySystemInfo.AntiSpam = true;
         -- 检查TextBox中是否有文本
         if TextBox.Text == "" then
-          TextBox.PlaceholderText = "你没有填入卡密"
+        TextBox.PlaceholderText = "你没有填入卡密"
+        task.wait(1.5)
+            TextBox.PlaceholderText = "请输入密钥"
         else
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
         if not verify then
+            -- 等待一段时间后显示错误信息，以确保不会被覆盖
+            task.wait(0.8) -- 等待0.1秒
             TextBox.PlaceholderText = "你输入的卡密错误"
-            task.wait(1)
+            task.wait(1.5) -- 再等待1秒后清除错误信息
             TextBox.PlaceholderText = "请输入密钥"
             TextBox.Text = ""
         else
