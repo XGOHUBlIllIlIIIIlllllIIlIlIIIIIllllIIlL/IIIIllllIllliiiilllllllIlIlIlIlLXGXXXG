@@ -3674,163 +3674,8 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
--- // 颜色选择器   ----------------------------------------------------------------------------------------
-function Root:Colorpicker(setup)
-    setup = setup or {};
-    setup.Title = setup.Title or "Colorpicker";
-    setup.Callback = setup.Callback or function() end;
-    setup.Default = setup.Default or Color3.fromRGB(255, 255, 255);
-    setup.Tip = setup.Tip or nil;
-
-    local ColorpickerBlock = Instance.new("Frame")
-    local DropShadow = Instance.new("ImageLabel")
-    local UIStroke = Instance.new("UIStroke")
-    local TextLabel = Instance.new("TextLabel")
-    local ColorSelector = Instance.new("ImageLabel")
-    local HueSelector = Instance.new("ImageLabel")
-    local Color = Instance.new("ImageLabel")
-    local Hue = Instance.new("Frame")
-    local ColorpickerButton = Instance.new("TextButton")
-
-    -- Configure ColorpickerBlock
-    ColorpickerBlock.Name = "ColorpickerBlock"
-    ColorpickerBlock.Parent = Root
-    ColorpickerBlock.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    ColorpickerBlock.BackgroundTransparency = 1
-    ColorpickerBlock.Size = UDim2.new(0, 300, 0, 50)
-    ColorpickerBlock.ZIndex = 10
-
-    -- Configure DropShadow
-    DropShadow.Name = "DropShadow"
-    DropShadow.Parent = ColorpickerBlock
-    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    DropShadow.BackgroundTransparency = 1
-    DropShadow.Position = UDim2.new(0, -5, 0, -5)
-    DropShadow.Size = UDim2.new(1, 10, 1, 10)
-    DropShadow.ZIndex = 9
-    DropShadow.Image = "rbxassetid://297694300"
-    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-    DropShadow.ImageTransparency = 0.5
-    DropShadow.ScaleType = Enum.ScaleType.Slice
-    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-    DropShadow.SliceScale = 0.05
-
-    -- Configure UIStroke
-    UIStroke.Parent = ColorpickerBlock
-    UIStroke.Thickness = 1
-
-    -- Configure TextLabel
-    TextLabel.Name = "TextLabel"
-    TextLabel.Parent = ColorpickerBlock
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.BackgroundTransparency = 1
-    TextLabel.Position = UDim2.new(0, 10, 0, 0)
-    TextLabel.Size = UDim2.new(0, 100, 0, 50)
-    TextLabel.Font = Enum.Font.Gotham
-    TextLabel.Text = setup.Title
-    TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-    TextLabel.TextSize = 14
-
-    -- Configure ColorSelector
-    ColorSelector.Name = "ColorSelector"
-    ColorSelector.Parent = ColorpickerBlock
-    ColorSelector.BackgroundColor3 = setup.Default
-    ColorSelector.BackgroundTransparency = 0.5
-    ColorSelector.Position = UDim2.new(0.7, 0, 0, 0)
-    ColorSelector.Size = UDim2.new(0, 20, 0, 20)
-
-    -- Configure HueSelector
-    HueSelector.Name = "HueSelector"
-    HueSelector.Parent = Hue
-    HueSelector.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    HueSelector.BackgroundTransparency = 1
-    HueSelector.Size = UDim2.new(0, 10, 0, 10)
-
-    -- Configure Color
-    Color.Name = "Color"
-    Color.Parent = ColorpickerBlock
-    Color.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Initial color
-    Color.Size = UDim2.new(1, -25, 1, 0)
-    Color.Visible = false
-
-    -- Configure Hue
-    Hue.Name = "Hue"
-    Hue.Parent = ColorpickerBlock
-    Hue.Size = UDim2.new(0, 20, 1, 0)
-    Hue.Position = UDim2.new(1, -20, 0, 0)
-    Hue.Visible = false
-
-    -- Configure ColorpickerButton
-    ColorpickerButton.Name = "ColorpickerButton"
-    ColorpickerButton.Parent = ColorpickerBlock
-    ColorpickerButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    ColorpickerButton.BackgroundTransparency = 1
-    ColorpickerButton.Size = UDim2.new(1, 0, 1, 0)
-    ColorpickerButton.ZIndex = 15
-    ColorpickerButton.Font = Enum.Font.SourceSans
-    ColorpickerButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-    ColorpickerButton.TextSize = 14
-    ColorpickerButton.Text = ""
-
-    -- Connect the colorpicker button click event
-    ColorpickerButton.MouseButton1Click:Connect(function()
-        Color.Visible = not Color.Visible
-        Hue.Visible = not Hue.Visible
-    end)
-
-    -- Update color when hue or color selector is moved
-    local function UpdateColorPicker()
-        local hue, sat, val = Color3.toHSV(ColorSelector.BackgroundColor3)
-        local newColor = Color3.fromHSV(hue, sat, val)
-        setup.Callback(newColor)
-    end
-
-    -- Add input for color selector
-    local function OnColorSelectorInputBegan(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            local conn = Color.InputBegan:Connect(function(input)
-                local x, y = input.Position.X, input.Position.Y
-                local colorX = (x - Color.AbsolutePosition.X) / Color.AbsoluteSize.X
-                local colorY = (y - Color.AbsolutePosition.Y) / Color.AbsoluteSize.Y
-                ColorSelector.Position = UDim2.new(colorX, 0, 1 - colorY, 0)
-                UpdateColorPicker()
-            end)
-            local endConn = Color.InputEnded:Connect(function()
-                conn:Disconnect()
-                endConn:Disconnect()
-            end)
-        end
-    end
-
-    local function OnHueSelectorInputBegan(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            local conn = Hue.InputBegan:Connect(function(input)
-                local y = input.Position.Y - Hue.AbsolutePosition.Y
-                local hueY = y / Hue.AbsoluteSize.Y
-                HueSelector.Position = UDim2.new(0.5, 0, hueY, 0)
-                UpdateColorPicker()
-            end)
-            local endConn = Hue.InputEnded:Connect(function()
-                conn:Disconnect()
-                endConn:Disconnect()
-            end)
-        end
-    end
-
-    Color.InputBegan:Connect(OnColorSelectorInputBegan)
-    Hue.InputBegan:Connect(OnHueSelectorInputBegan)
-
-    -- Add tooltip if needed
-    if setup.Tip then
-        WindowLibrary:AddToolTip(ColorpickerBlock, tostring(setup.Tip));
-    end
-
-    return {
-        UpdateColor = function(self, color)
-            ColorSelector.BackgroundColor3 = color
-        end
-    }
-end
+------ // 颜色选择器   ----------------------------------------------------------------------------------------
+--- 错误已删除
 ------ // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
 			setup = setup or {};
@@ -4422,6 +4267,209 @@ end
 			return RootSkid;
 		end;
 ------ // 滑块   ----------------------------------------------------------------------------------------
+function Root:Slider(setup)
+    setup = setup or {};
+    setup.Title = setup.Title or 'Slider';
+    setup.Min = setup.Min or 0;
+    setup.Max = setup.Max or 100;
+    setup.Default = setup.Default or setup.Min;
+    setup.Round = setup.Round or 0;
+    setup.Callback = setup.Callback or function() end;
+
+    local SliderBlock = Instance.new("Frame");
+    local SliderFrame_2 = Instance.new("Frame");
+    local UIStroke = Instance.new("UIStroke");
+    local UICorner = Instance.new("UICorner");
+    local ImageLabel = Instance.new("ImageLabel");
+    local TextLabel = Instance.new("TextLabel");
+    local SliderInput = Instance.new("Frame");
+    local SliderButton = Instance.new("Frame");
+    local SliderCount = Instance.new("Frame");
+    local Title_2 = Instance.new("TextButton");
+    local BoxFrame = Instance.new("Frame");
+    local SliderBox = Instance.new("TextBox");
+    local TextBoxUICorner = Instance.new("UICorner");
+
+    -- SliderBlock setup
+    SliderBlock.Name = "SliderBlock";
+    SliderBlock.Parent = ScrollingFrame;
+    SliderBlock.BackgroundColor3 = Color3.fromRGB(240, 240, 240);
+    SliderBlock.BackgroundTransparency = 1;
+    SliderBlock.BorderSizePixel = 0;
+    SliderBlock.Size = UDim2.new(0, 379, 0, 60);
+
+    -- SliderFrame_2 setup
+    SliderFrame_2.Name = "SliderFrame_2";
+    SliderFrame_2.Parent = SliderBlock;
+    SliderFrame_2.BackgroundColor3 = Color3.fromRGB(32, 33, 36);
+    SliderFrame_2.BackgroundTransparency = 0.8;
+    SliderFrame_2.BorderSizePixel = 0;
+    SliderFrame_2.Position = UDim2.new(0, 1, 0, 1);
+    SliderFrame_2.Size = UDim2.new(0, 379, 0, 60);
+
+    -- UIStroke setup
+    UIStroke.Parent = SliderFrame_2;
+    UIStroke.CornerRadius = UDim.new(0, 3);
+
+    -- ImageLabel setup
+    ImageLabel.Name = "ImageLabel";
+    ImageLabel.Parent = SliderFrame_2;
+    ImageLabel.BackgroundColor3 = Color3.fromRGB(240, 240, 240);
+    ImageLabel.BackgroundTransparency = 1;
+    ImageLabel.BorderSizePixel = 0;
+    ImageLabel.Position = UDim2.new(0, 7.5, 0, 7.5);
+    ImageLabel.Size = UDim2.new(0, 30, 0, 30);
+    ImageLabel.Image = "rbxassetid://86451637909512"; -- 头像 --[滑块]
+
+    -- TextLabel setup
+    TextLabel.Parent = SliderFrame_2;
+    TextLabel.BackgroundColor3 = Color3.fromRGB(150, 150, 150);
+    TextLabel.BackgroundTransparency = 1;
+    TextLabel.Position = UDim2.new(0, 45, 0, 5);
+    TextLabel.Size = UDim2.new(0, 280, 0, 30);
+    TextLabel.Font = Enum.Font.GothamSemibold;
+    TextLabel.Text = "|  " .. setup.Title;
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255);
+    TextLabel.TextSize = 15;
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left;
+
+    -- SliderInput setup
+    SliderInput.Name = "SliderInput";
+    SliderInput.Parent = SliderFrame_2;
+    SliderInput.BackgroundColor3 = Color3.fromRGB(39, 40, 41);
+    SliderInput.BackgroundTransparency = 0;
+    SliderInput.BorderSizePixel = 0;
+    SliderInput.Position = UDim2.new(0, 8, 0, 42);
+    SliderInput.Size = UDim2.new(0, 364, 0, 6);
+
+    -- UICorner setup
+    UICorner.Parent = SliderInput;
+    UICorner.CornerRadius = UDim.new(0, 100000);
+
+    -- SliderButton setup
+    SliderButton.Name = "SliderButton";
+    SliderButton.Parent = SliderInput;
+    SliderButton.BackgroundColor3 = Color3.fromRGB(39, 40, 41);
+    SliderButton.BackgroundTransparency = 1;
+    SliderButton.BorderSizePixel = 0;
+    SliderButton.Position = UDim2.new(0, 0, 0, -7);
+    SliderButton.Size = UDim2.new(0, 300, 0, 25);
+
+    -- SliderCount setup
+    SliderCount.Name = "SliderCount";
+    SliderCount.Parent = SliderButton;
+    SliderCount.BackgroundColor3 = Color3.fromRGB(50, 10, 20);
+    SliderCount.BackgroundTransparency = 0;
+    SliderCount.BorderSizePixel = 0;
+    SliderCount.Position = UDim2.new(0, setup.Default - setup.Min, 0, 0);
+    SliderCount.Size = UDim2.new(0, 18, 0, 18);
+
+    -- Title_2 setup
+    Title_2.Name = "Title_2";
+    Title_2.Parent = SliderButton;
+    Title_2.AnchorPoint = Vector2.new(0, 0);
+    Title_2.BackgroundColor3 = Color3.fromRGB(240, 10, 10);
+    Title_2.AutoButtonColor = false;
+    Title_2.BackgroundTransparency = 1;
+    Title_2.Position = UDim2.new(0, setup.Default - setup.Min, 0, 0);
+    Title_2.Size = UDim2.new(0, 18, 0, 18);
+    Title_2.Font = Enum.Font.GothamBold;
+    Title_2.Text = tostring(setup.Default);
+    Title_2.TextColor3 = Color3.fromRGB(255, 255, 255);
+    Title_2.TextSize = 8;
+    Title_2.TextXAlignment = Enum.TextXAlignment.Center;
+
+    -- BoxFrame setup
+    BoxFrame.Name = "BoxFrame";
+    BoxFrame.Parent = SliderFrame_2;
+    BoxFrame.BackgroundColor3 = Color3.fromRGB(240, 10, 10);
+    BoxFrame.BackgroundTransparency = 1;
+    BoxFrame.Size = UDim2.new(0, 50, 0, 15);
+    BoxFrame.Position = UDim2.new(0, 319, 0, 8);
+
+    -- SliderBox setup
+    SliderBox.Name = "SliderBox";
+    SliderBox.Parent = BoxFrame;
+    SliderBox.BackgroundColor3 = Color3.fromRGB(39, 40, 41);
+    SliderBox.BackgroundTransparency = 0.1;
+    SliderBox.BorderSizePixel = 0;
+    SliderBox.Position = UDim2.new(0, 0, 0, 1.65);
+    SliderBox.Size = UDim2.new(0, 50, 0, 15);
+    SliderBox.ClearTextOnFocus = false;
+    SliderBox.Font = Enum.Font.Code;
+    SliderBox.Text = tostring(setup.Default);
+    SliderBox.TextColor3 = Color3.fromRGB(200, 200, 200);
+    SliderBox.TextSize = 10;
+    SliderBox.TextTransparency = 0;
+    SliderBox.TextXAlignment = Enum.TextXAlignment.Center;
+    SliderBox.TextEditable = true;
+
+    -- TextBoxUICorner setup
+    TextBoxUICorner.Parent = BoxFrame;
+    TextBoxUICorner.CornerRadius = UDim.new(0, 2);
+
+    local function updateValue(newValue)
+        local normalized = (newValue - setup.Min) / (setup.Max - setup.Min);
+        Title_2.Text = tostring(newValue);
+        SliderCount:TweenPosition(UDim2.new(normalized, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 0.08, true);
+        Title_2:TweenPosition(UDim2.new(normalized, 0, 0, 0), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 0.12, true);
+        SliderBox.Text = tostring(newValue);
+        setup.Callback(newValue);
+    end
+
+    SliderButton.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            local X = input.Position.X - SliderButton.AbsolutePosition.X;
+            local normalized = X / SliderInput.AbsoluteSize.X;
+            local newValue = setup.Min + normalized * (setup.Max - setup.Min);
+            updateValue(newValue);
+        end
+    end)
+
+    Library.UserInputService.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+        if SliderButton.InputBegan then
+            local X = input.Position.X - SliderButton.AbsolutePosition.X;
+            local normalized = X / SliderInput.AbsoluteSize.X;
+            local newValue = setup.Min + normalized * (setup.Max - setup.Min);
+            updateValue(newValue);
+        end
+    end
+end)
+
+SliderButton.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        SliderButton.InputBegan = nil;
+    end
+end)
+
+SliderBox.Focused:Connect(function()
+    SliderBox.Changed:Connect(function()
+        local newValue = tonumber(SliderBox.Text);
+        if newValue and newValue >= setup.Min and newValue <= setup.Max then
+            updateValue(newValue);
+        end
+    end);
+end);
+
+SliderBox.FocusLost:Connect(function()
+    local newValue = tonumber(SliderBox.Text) or setup.Default;
+    if newValue < setup.Min then newValue = setup.Min;
+    elseif newValue > setup.Max then newValue = setup.Max; end
+    updateValue(newValue);
+end);
+
+function Root:SetValue(newValue)
+    updateValue(tonumber(newValue) or setup.Default);
+end;
+
+function Root:SetValueVisible(visible)
+    SliderBlock.Visible = visible;
+end;
+
+return Root;
+end;
+--[[---- // 滑块   ----------------------------------------------------------------------------------------
 		function Root:Slider(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or 'Slider';
@@ -4632,7 +4680,7 @@ end
 
 			return RootSkid;
 		end;
------- // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
+--]]---- // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
 		function Root:Keybind(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Keybind";
