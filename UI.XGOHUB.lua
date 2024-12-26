@@ -1,6 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
--- 更新: 添加更多信息 --
+-- UI.XGO修改更新 --
 local Library = {
 	Version = '\88\71\79\72\85\66',
 	Loaded = true,
@@ -2737,9 +2737,9 @@ function Library:CreateWindow(setup)
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
         if not verify then
             -- 等待一段时间后显示错误信息，以确保不会被覆盖
-            task.wait(0.8) -- 等待0.1秒
+            task.wait(1.5) -- 等待0.8秒
             TextBox.PlaceholderText = "你输入的卡密错误"
-            task.wait(1.5) -- 再等待1秒后清除错误信息
+            task.wait(99) -- 再等待1秒后清除错误信息
             TextBox.PlaceholderText = "请输入密钥"
             TextBox.Text = ""
         else
