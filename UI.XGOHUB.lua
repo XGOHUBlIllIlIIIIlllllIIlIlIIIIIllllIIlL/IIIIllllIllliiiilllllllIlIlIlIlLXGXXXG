@@ -2608,7 +2608,55 @@ function Library:CreateWindow(setup)
             task.wait(0.5)
             ScreenGui:Destroy()
         end)
+        
+        Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
+		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
+		Library:MakeDrop(TextBox , UIStroke , Library.Colors.Hightlight)
+		setup.KeySystemInfo.CodeId = game:GetService('HttpService'):GenerateGUID(false);
+		setup.KeySystemInfo.AntiSpam = false;
 
+		LButton.MouseButton1Click:Connect(function()
+			if setup.KeySystemInfo.AntiSpam then return end;
+			setup.KeySystemInfo.AntiSpam = true;
+
+			local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
+
+			if verify then
+				setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+				return TextBox.Text;
+			end;
+
+			setup.KeySystemInfo.AntiSpam = false;
+			TextBox.Text = "";
+		end)
+
+
+		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
+
+		function setup:CancelLogin()
+			setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+		end;
+
+		while true do 
+			local this = setup.KeySystemInfo.Finished.Event:Wait();
+
+			if this == setup.KeySystemInfo.CodeId then
+				break;
+			end;
+		end;
+
+		TextBox.TextEditable = false;
+
+		Library:Tween(AuthFunction , Library.TweenLibrary.Normal,{Position = UDim2.new(0.5, 0, 1.5, 0)});
+
+		task.wait(0.5)
+	else
+		repeat task.wait(1.5) until game:IsLoaded();
+	end;
+
+	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
+	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
+--[[
 		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
 		Library:MakeDrop(LoginButton , UIStroke_4 , Library.Colors.Hightlight)
 		Library:MakeDrop(TextBox , UIStroke , Library.Colors.Hightlight)
@@ -2665,7 +2713,7 @@ function Library:CreateWindow(setup)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
-
+--]]
 	local WindowLibrary = {};
 	local OpenDelay = tick();
 
