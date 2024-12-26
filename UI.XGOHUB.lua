@@ -2713,9 +2713,9 @@ function Library:CreateWindow(setup)
         CloseButton.Text = "X" -- 按钮上的文字
         CloseButton.TextSize = 14 -- 文字大小
         CloseButton.MouseButton1Click:Connect(function()
-                    Library:Tween(AuthFunction, Library.TweenLibrary.Normal, {Position = UDim2.new(0.5, 0, 1.5, 0)})
+                    Library:Tween(MainFrame, Library.TweenLibrary.Normal, {Size = UDim2.fromScale(0,0)})
                     task.wait(0.5)
-                    AuthFunction:Destroy() -- 销毁AuthFunction
+        ScreenGui:Destroy()
         end)
 
 		Library:MakeDrop(GetButton , UIStroke_3 , Library.Colors.Hightlight)
