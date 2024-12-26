@@ -2374,13 +2374,6 @@ function Library:CreateWindow(setup)
 
 		task.wait(1);
 ------ // 卡密系统设置    ----------------------------------------------------------------------------------------
-function copyTextToClipboard(text)
-    setclipboard(text)
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "复制成功";
-        Text = "已复制文本: " .. text;
-         })
-    end
 		local AuthFunction = Instance.new("Frame")
 		local Title = Instance.new("TextLabel")
 		local TextBox = Instance.new("TextBox")
@@ -2505,6 +2498,10 @@ function copyTextToClipboard(text)
 		UIStroke_3.Color = Color3.fromRGB(156, 156, 156)
 		UIStroke_3.Parent = GetButton
 
+        function copyTextToClipboard(text)
+              setclipboard(text)
+        end
+
 		GTitle.Name = "GTitle"
 		GTitle.Parent = GetButton
 		GTitle.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2524,7 +2521,7 @@ function copyTextToClipboard(text)
 		GTitle.TextStrokeTransparency = 0.950
 		GTitle.TextWrapped = true
 		GTitle.MouseButton1Click:Connect(function()
-             copyTextToClipboard("请加入群聊")
+            copyTextToClipboard("请加入群聊")
         end)
 
 		GButton.Name = "GButton"
@@ -2539,6 +2536,10 @@ function copyTextToClipboard(text)
 		GButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 		GButton.TextSize = 14.000
 		GButton.TextTransparency = 1.000
+		GButton.MouseButton1Click:Connect(function()
+        -- GButton的点击事件处理逻辑
+           setup.KeySystemInfo.OnGetKey()
+        end)
 
 		LoginButton.Name = "LoginButton"
 		LoginButton.Parent = AuthFunction
