@@ -1334,464 +1334,412 @@ Library.SizeLibrary = {
 
 Library.Theme = {}
 
-Library.Colors = {
-	Hightlight = Color3.fromRGB(0, 255, 255),
-	Default = Color3.fromRGB(32, 33, 36),
-	Disable = Color3.fromRGB(167, 173, 188),
-	TextColor = Color3.fromRGB(220, 224, 234),
-
-}
-
-function Library.Theme:Default()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 255, 255),
-		Default = Color3.fromRGB(32, 33, 36),
-		Disable = Color3.fromRGB(167, 173, 188),
-		TextColor = Color3.fromRGB(220, 224, 234),
+Library.Colors = { 
+        Hightlight = Color3.fromRGB(0, 255, 255),
+	    Default = Color3.fromRGB(32, 33, 36),
+	    Disable = Color3.fromRGB(167, 173, 188),
+	    TextColor = Color3.fromRGB(220, 224, 234),
+    }
+    function Library.Theme:Default()
+	Library.Colors = { 
+       Hightlight = Color3.fromRGB(0, 255, 255),
+	   Default = Color3.fromRGB(32, 33, 36),
+	   Disable = Color3.fromRGB(167, 173, 188),
+	   TextColor = Color3.fromRGB(220, 224, 234),
 	}
-end;
-
-function Library.Theme:Dark()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(255, 255, 255),
-		Default = Color3.fromRGB(20, 20, 22),
-		Disable = Color3.fromRGB(167, 173, 188),
-		TextColor = Color3.fromRGB(220, 224, 234),
-	}
-end;
-
-function Library.Theme:Discord()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(114,137,218),
+                   end;
+    function Library.Theme:Dark()
+	Library.Colors = { 
+       Hightlight = Color3.fromRGB(255, 255, 255),
+	   Default = Color3.fromRGB(20, 20, 22),
+	   Disable = Color3.fromRGB(167, 173, 188),
+	   TextColor = Color3.fromRGB(220, 224, 234),
+    }
+                  end;
+    function Library.Theme:Discord()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(114,137,218),
 		Default = Color3.fromRGB(35, 37, 40),
 		Disable = Color3.fromRGB(167, 173, 188),
 		TextColor = Color3.fromRGB(234, 234, 234),
 	}
-end;
-
-function Library.Theme:Light()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 115, 255),
+                  end;
+    function Library.Theme:Discord()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(0, 115, 255),
 		Default = Color3.fromRGB(198, 211, 229),
 		Disable = Color3.fromRGB(74, 77, 83),
 		TextColor = Color3.fromRGB(0, 0, 0),
 	}
-end;
-
-function Library.Theme:Catppuccin()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(201,165,245),
+                  end;
+    function Library.Theme:Catppuccin()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(201,165,245),
 		Default = Color3.fromRGB(30,31,47),
 		Disable = Color3.fromRGB(109,123,154,255),
 		TextColor = Color3.fromRGB(204, 204, 204),
 	}
-end;
-
-function Library.Theme:Houston()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(90,212,176),
+                  end;
+    function Library.Theme:Discord()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(90,212,176),
 		Default = Color3.fromRGB(22,25,29),
 		Disable = Color3.fromRGB(72,72,83),
 		TextColor = Color3.fromRGB(191,193,195),
 	}
-end;
-
-
-function Library.Theme:Matcha()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(152,132,110),
+                  end;
+    function Library.Theme:Matcha()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(152,132,110),
 		Default = Color3.fromRGB(38,49,55),
 		Disable = Color3.fromRGB(62,83,82),
 		TextColor = Color3.fromRGB(165,178,175),
 	}
-end;
-
-function Library.Theme:Neverlose()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 251, 255),
+                  end;
+    function Library.Theme:Neverlose()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(0, 251, 255),
 		Default = Color3.fromRGB(0, 13, 26),
 		Disable = Color3.fromRGB(167, 173, 188),
 		TextColor = Color3.fromRGB(255, 255, 255),
 	}
-end;
-
-function Library.Theme:Custom(Hightlight,Default,Disable,TextColor)
-	Library.Colors = {
-		Hightlight = Hightlight,
+                  end;
+    function Library.Theme:Custom(Hightlight,Default,Disable,TextColor)
+	Library.Colors = { 
+        Hightlight = Hightlight,
 		Default = Default,
 		Disable = Disable,
 		TextColor = TextColor,
 	}
-end
-
-function Library.Theme:HightGreen()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(0, 255, 140),
+                  end;
+    function Library.Theme:HightGreen()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(0, 255, 140),
 		Default = Color3.fromRGB(8, 13, 12),
 		Disable = Color3.fromRGB(163, 188, 165),
 		TextColor = Color3.fromRGB(255, 255, 255),
 	}
-end
-
-function Library.Theme:Halloween()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(255, 162, 0),
+                  end;
+    function Library.Theme:Halloween()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(255, 162, 0),
 		Default = Color3.fromRGB(13, 11, 10),
 		Disable = Color3.fromRGB(188, 156, 156),
 		TextColor = Color3.fromRGB(255, 242, 245),
 	}
-end
-
-function Library.Theme:Christmas()
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(138, 220, 255),
+                  end;
+    function Library.Theme:Christmas()
+	Library.Colors = { 
+        Hightlight = Color3.fromRGB(138, 220, 255),
 		Default = Color3.fromRGB(11, 13, 13),
 		Disable = Color3.fromRGB(81, 103, 104),
 		TextColor = Color3.fromRGB(249, 249, 249),
 	}
-end
-
-function Library.Theme:Valentine()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Valentine()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 0, 128), -- 粉红色
         Default = Color3.fromRGB(200, 15, 100), -- 深粉红色
         Disable = Color3.fromRGB(206, 162, 168), -- 浅灰色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Summer()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Summer()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 255, 127), -- 酸橙色
         Default = Color3.fromRGB(0, 128, 102), -- 深绿色
         Disable = Color3.fromRGB(173, 216, 230), -- 天蓝色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Autumn()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Autumn()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 140, 0), -- 橙色
         Default = Color3.fromRGB(139, 69, 19), -- 深棕色
         Disable = Color3.fromRGB(188, 143, 143), -- 浅棕色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Winter()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Winter()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(173, 216, 230), -- 天蓝色
         Default = Color3.fromRGB(70, 130, 180), -- 深蓝色
         Disable = Color3.fromRGB(199, 219, 249), -- 浅蓝色
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
-end
-
-function Library.Theme:Ocean()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Ocean()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 150, 136), -- 青绿色
         Default = Color3.fromRGB(0, 51, 51), -- 深蓝色
         Disable = Color3.fromRGB(102, 153, 255), -- 亮蓝色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Nord()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Nord()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(136, 192, 208), -- 北欧蓝
         Default = Color3.fromRGB(46, 52, 64), -- 北欧深灰
         Disable = Color3.fromRGB(88, 110, 117), -- 北欧浅灰
         TextColor = Color3.fromRGB(216, 222, 227), -- 北欧亮灰
     }
-end
-
-function Library.Theme:Mint()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Mint()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(189, 252, 201), -- 薄荷绿
         Default = Color3.fromRGB(39, 174, 96), -- 深薄荷绿
         Disable = Color3.fromRGB(189, 220, 189), -- 浅薄荷绿
         TextColor = Color3.fromRGB(41, 128, 185), -- 薄荷蓝
     }
-end
-
-function Library.Theme:Sunset()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Sunset()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 69, 0), -- 夕阳橙
         Default = Color3.fromRGB(139, 69, 19), -- 深棕色
         Disable = Color3.fromRGB(207, 207, 207), -- 浅灰色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Rose()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Rose()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 105, 180), -- 玫瑰粉
         Default = Color3.fromRGB(96, 0, 77), -- 深玫瑰红
         Disable = Color3.fromRGB(204, 192, 179), -- 玫瑰棕
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Cyberpunk()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Cyberpunk()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 252, 255), -- 霓虹青
         Default = Color3.fromRGB(0, 0, 0), -- 黑色
         Disable = Color3.fromRGB(75, 75, 75), -- 深灰色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Lavender()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Lavender()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(230, 230, 250), -- 淡紫色
         Default = Color3.fromRGB(150, 150, 170), -- 深紫色
         Disable = Color3.fromRGB(200, 200, 220), -- 浅紫色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:AquaMarine()
-    Library.Colors = {
+                  end;
+    function Library.Theme:AquaMarine()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(127, 255, 212), -- 水绿色
         Default = Color3.fromRGB(0, 100, 100), -- 深水绿
         Disable = Color3.fromRGB(143, 188, 143), -- 浅水绿
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
-end
-
-function Library.Theme:Midnight()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Midnight()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(58, 69, 77), -- 午夜蓝
         Default = Color3.fromRGB(10, 10, 10), -- 深午夜黑
         Disable = Color3.fromRGB(58, 69, 77), -- 浅午夜灰
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Sakura()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Sakura()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 182, 193), -- 樱花粉
         Default = Color3.fromRGB(160, 82, 45), -- 深棕色
         Disable = Color3.fromRGB(233, 185, 170), -- 浅棕色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Desert()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Desert()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 223, 129), -- 沙漠金
         Default = Color3.fromRGB(139, 69, 19), -- 沙漠棕
         Disable = Color3.fromRGB(210, 180, 140), -- 浅沙漠棕
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
-end
-
-function Library.Theme:Forest()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Forest()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(34, 139, 34), -- 森林绿
         Default = Color3.fromRGB(0, 100, 0), -- 深森林绿
         Disable = Color3.fromRGB(144, 238, 144), -- 浅森林绿
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Royal()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Royal()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(102, 51, 153), -- 皇家紫
         Default = Color3.fromRGB(0, 0, 0), -- 黑色
         Disable = Color3.fromRGB(173, 127, 168), -- 浅紫色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Ruby()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Ruby()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(224, 17, 95), -- 红宝石红
         Default = Color3.fromRGB(139, 0, 0), -- 深红色
         Disable = Color3.fromRGB(233, 185, 170), -- 浅红色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Tropical()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Tropical()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 239, 213), -- 热带黄
         Default = Color3.fromRGB(0, 95, 87), -- 热带绿
         Disable = Color3.fromRGB(218, 232, 218), -- 热带浅绿
         TextColor = Color3.fromRGB(10, 10, 10), -- 深灰色
     }
-end
-
-function Library.Theme:Vintage()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Vintage()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(139, 69, 19), -- 复古棕
         Default = Color3.fromRGB(112, 128, 144), -- 复古灰
         Disable = Color3.fromRGB(191, 191, 191), -- 复古浅灰
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Cobalt()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Cobalt()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 255, 255), -- 钴蓝色
         Default = Color3.fromRGB(0, 0, 102), -- 深钴蓝
         Disable = Color3.fromRGB(102, 153, 204), -- 浅钴蓝
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Sage()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Sage()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(158, 251, 155), -- 鼠尾草绿
         Default = Color3.fromRGB(75, 100, 70), -- 深鼠尾草绿
         Disable = Color3.fromRGB(188, 226, 184), -- 浅鼠尾草绿
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
-end
-
-function Library.Theme:Bronze()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Bronze()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(205, 127, 50), -- 青铜色
         Default = Color3.fromRGB(139, 69, 19), -- 深青铜色
         Disable = Color3.fromRGB(222, 184, 135), -- 浅青铜色
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Lagoon()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Lagoon()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 150, 136), -- 泻湖绿
         Default = Color3.fromRGB(0, 51, 51), -- 深海绿
         Disable = Color3.fromRGB(102, 153, 255), -- 浅泻湖绿
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Amber()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Amber()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 191, 0), -- 琥珀色
         Default = Color3.fromRGB(139, 69, 19), -- 深琥珀色
         Disable = Color3.fromRGB(255, 204, 102), -- 浅琥珀色
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
-end
-
-function Library.Theme:Aurora()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Aurora()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(138, 43, 226), -- 极光紫
         Default = Color3.fromRGB(26, 26, 26), -- 深空黑
         Disable = Color3.fromRGB(72, 72, 72), -- 星云灰
         TextColor = Color3.fromRGB(255, 255, 255), -- 星光白
     }
-end
-
-function Library.Theme:Neon()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Neon()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 252, 255), -- 霓虹青
         Default = Color3.fromRGB(25, 25, 25), -- 午夜黑
         Disable = Color3.fromRGB(100, 100, 100), -- 深灰
         TextColor = Color3.fromRGB(255, 255, 255), -- 亮白
     }
-end
-
-function Library.Theme:Pastel()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Pastel()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 158, 181), -- 粉彩红
         Default = Color3.fromRGB(207, 207, 207), -- 粉彩灰
         Disable = Color3.fromRGB(238, 238, 238), -- 粉彩浅灰
         TextColor = Color3.fromRGB(51, 51, 51), -- 深灰
     }
-end
-
-function Library.Theme:Jungle()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Jungle()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 128, 0), -- 丛林绿
         Default = Color3.fromRGB(34, 34, 34), -- 暗绿
         Disable = Color3.fromRGB(102, 153, 102), -- 浅绿
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:OceanBreeze()
-    Library.Colors = {
+                  end;
+    function Library.Theme:OceanBreeze()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 173, 239), -- 海洋蓝
         Default = Color3.fromRGB(41, 64, 90), -- 海洋深蓝
         Disable = Color3.fromRGB(131, 175, 155), -- 海洋浅蓝
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Sunrise()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Sunrise()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 159, 67), -- 日出色
         Default = Color3.fromRGB(34, 34, 34), -- 深灰
         Disable = Color3.fromRGB(204, 153, 102), -- 日出橙
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:StarryNight()
-    Library.Colors = {
+                  end;
+    function Library.Theme:StarryNight()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(70, 130, 180), -- 星空蓝
         Default = Color3.fromRGB(12, 12, 12), -- 深夜黑
         Disable = Color3.fromRGB(53, 53, 53), -- 暗夜灰
         TextColor = Color3.fromRGB(255, 255, 255), -- 星光白
     }
-end
-
-function Library.Theme:Twilight()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Twilight()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(75, 0, 130), -- 暮光紫
         Default = Color3.fromRGB(45, 45, 60), -- 暮光深灰
         Disable = Color3.fromRGB(100, 100, 120), -- 暮光浅灰
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Frost()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Frost()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(185, 225, 255), -- 霜冻蓝
         Default = Color3.fromRGB(240, 250, 255), -- 霜冻白
         Disable = Color3.fromRGB(200, 215, 230), -- 霜冻浅蓝
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
-end
-
-function Library.Theme:Floral()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Floral()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 182, 193), -- 花园粉
         Default = Color3.fromRGB(135, 206, 235), -- 花园蓝
         Disable = Color3.fromRGB(225, 225, 225), -- 花园灰
         TextColor = Color3.fromRGB(10, 10, 10), -- 深灰色
     }
-end
-
-function Library.Theme:SunsetBeach()
-    Library.Colors = {
+                  end;
+    function Library.Theme:SunsetBeach()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 69, 0), -- 日落橙
         Default = Color3.fromRGB(255, 140, 0), -- 沙滩金
         Disable = Color3.fromRGB(255, 213, 102), -- 沙滩浅金
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
-end
-
-function Library.Theme:Mystic()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Mystic()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(65, 105, 225), -- 神秘蓝
         Default = Color3.fromRGB(40, 50, 60), -- 神秘深灰
         Disable = Color3.fromRGB(130, 140, 170), -- 神秘浅灰
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
-
-function Library.Theme:Elegant()
-    Library.Colors = {
+                  end;
+    function Library.Theme:Elegant()
+    Library.Colors = { 
         Hightlight = Color3.fromRGB(255, 193, 7), -- 优雅金
         Default = Color3.fromRGB(70, 30, 20), -- 优雅深棕
         Disable = Color3.fromRGB(200, 160, 120), -- 优雅浅棕
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
-end
+end;
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
@@ -1800,9 +1748,9 @@ function Library.Theme:Random()
 		return RNG:NextNumber(0,255) , RNG:NextNumber(0,255) , RNG:NextNumber(0,255);
 	end;
 
-	Library.Colors = {
-		Hightlight = Color3.fromRGB(Start()),
-		Default = Color3.fromRGB(Start()),
+	Library.Colors = { 
+	    Hightlight = Color3.fromRGB(Start()),
+	    Default = Color3.fromRGB(Start()),
 		Disable = Color3.fromRGB(Start()),
 		TextColor = Color3.fromRGB(Start()),
 	};
@@ -1819,7 +1767,6 @@ Library.TweenLibrary = {
 	BinEffect = TweenInfo.new(0.01),
 	UltrsFast = TweenInfo.new(0.0001,Enum.EasingStyle.Linear)
 };
-
 
 local _C,Source = pcall(function() return loadstring(game:HttpGetAsync('https://github.com/GTAFAW/UI/raw/main/UI.BLUR.LUA'))() end);
 local operators = {"^(function)[^%w_]", "^(local)[^%w_]", "^(if)[^%w_]", "^(for)[^%w_]", "^(while)[^%w_]", "^(then)[^%w_]", "^(do)[^%w_]", "^(else)[^%w_]", "^(elseif)[^%w_]", "^(return)[^%w_]", "^(end)[^%w_]", "^(continue)[^%w_]", "^(and)[^%w_]", "^(not)[^%w_]", "^(or)[^%w_]", "[^%w_](or)[^%w_]", "[^%w_](and)[^%w_]", "[^%w_](not)[^%w_]", "[^%w_](continue)[^%w_]", "[^%w_](function)[^%w_]", "[^%w_](local)[^%w_]", "[^%w_](if)[^%w_]", "[^%w_](for)[^%w_]", "[^%w_](while)[^%w_]", "[^%w_](then)[^%w_]", "[^%w_](do)[^%w_]", "[^%w_](else)[^%w_]", "[^%w_](elseif)[^%w_]", "[^%w_](return)[^%w_]", "[^%w_](end)[^%w_]"}
@@ -2684,7 +2631,7 @@ function Library:CreateWindow(setup)
         -- 检查TextBox中是否有文本
         if TextBox.Text == "" then
         TextBox.PlaceholderText = "你没有填入卡密"
-        task.wait(1.5)
+        task.wait(2.5)
             TextBox.PlaceholderText = "请输入卡密"
         else
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
@@ -2692,7 +2639,7 @@ function Library:CreateWindow(setup)
             task.wait(0.1) -- 等待0.1秒
             TextBox.Text = ""
             TextBox.PlaceholderText = "你输入的卡密错误"
-            task.wait(1.5) -- 等待1秒后清除错误信息
+            task.wait(2.5) -- 等待1秒后清除错误信息
             TextBox.PlaceholderText = "请重新输入卡密"
         else
             setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
