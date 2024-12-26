@@ -2374,6 +2374,13 @@ function Library:CreateWindow(setup)
 
 		task.wait(1);
 ------ // 卡密系统设置    ----------------------------------------------------------------------------------------
+function copyTextToClipboard(text)
+    setclipboard(text)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "复制成功";
+        Text = "已复制文本: " .. text;
+         })
+    end
 		local AuthFunction = Instance.new("Frame")
 		local Title = Instance.new("TextLabel")
 		local TextBox = Instance.new("TextBox")
@@ -2517,16 +2524,8 @@ function Library:CreateWindow(setup)
 		GTitle.TextStrokeTransparency = 0.950
 		GTitle.TextWrapped = true
 		GTitle.MouseButton1Click:Connect(function()
-    -- 设置要复制的文本
-    local textToCopy = "请加入群聊"
-    -- 使用setclipboard函数复制文本到剪贴板
-    setclipboard(textToCopy)
-    -- 可以在这里添加一些反馈给用户，比如弹出提示
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "复制成功";
-        Text = "已复制文本: " .. textToCopy;
-    })
-end)
+             copyTextToClipboard("请加入群聊")
+        end)
 
 		GButton.Name = "GButton"
 		GButton.Parent = GetButton
