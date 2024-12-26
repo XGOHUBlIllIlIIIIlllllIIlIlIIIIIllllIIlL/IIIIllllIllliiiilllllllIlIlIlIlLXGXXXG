@@ -2689,14 +2689,14 @@ function Library:CreateWindow(setup)
         else
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
         if not verify then
-            -- 检测到错误卡密时立即清除输入框中的文字
+            task.wait(0.1) -- 等待0.1秒
             TextBox.Text = ""
-            -- 显示卡密错误信息
             TextBox.PlaceholderText = "你输入的卡密错误"
-            task.wait(1.5) -- 等待后清除错误信息
+            task.wait(1.5) -- 等待1秒后清除错误信息
             TextBox.PlaceholderText = "请重新输入卡密"
         else
             setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+        end
         end
             setup.KeySystemInfo.AntiSpam = false
         end)
