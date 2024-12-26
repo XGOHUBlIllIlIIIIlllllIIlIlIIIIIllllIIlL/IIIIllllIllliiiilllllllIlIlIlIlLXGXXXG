@@ -2723,21 +2723,21 @@ function Library:CreateWindow(setup)
 		Library:MakeDrop(TextBox , UIStroke , Library.Colors.Hightlight)
 		setup.KeySystemInfo.CodeId = game:GetService('HttpService'):GenerateGUID(false);
 		setup.KeySystemInfo.AntiSpam = false;
-
+   
 		LButton.MouseButton1Click:Connect(function()
 			if setup.KeySystemInfo.AntiSpam then return end;
 			setup.KeySystemInfo.AntiSpam = true;
 
-			local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
-
+	    local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
 			if verify then
-				setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-				return TextBox.Text;
-			else
-               TextBox.PlaceholderText = "你输入的卡密错误"
-               task.wait(1)
-               TextBox.PlaceholderText = "请输入密钥"
-           end;
+            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
+        else
+            if TextBox.Text ~= "" then
+                TextBox.PlaceholderText = "你输入的卡密错误"
+                task.wait(1.5)
+                TextBox.PlaceholderText = "请输入密钥"
+            end
+        end;
 
 			setup.KeySystemInfo.AntiSpam = false;
 			TextBox.Text = "";
