@@ -3246,7 +3246,7 @@ function Library:CreateWindow(setup)
 			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			UIListLayout.Padding = UDim.new(0, 1)
 
-			function WindowLibrary:AddWatermark(text)
+			function WindowLibrary:Watermark(text)
 				local Frame = Instance.new("Frame")
 				local UIStroke = Instance.new("UIStroke")
 				local TextLabel = Instance.new("TextLabel")
@@ -3674,68 +3674,13 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
------- //颜色选择器    ----------------------------------------------------------------------------------------
+-- // 颜色选择器   ----------------------------------------------------------------------------------------
 function Root:Colorpicker(setup)
     setup = setup or {};
     setup.Title = setup.Title or "Colorpicker";
     setup.Default = setup.Default or Color3.fromRGB(255, 255, 255);
     setup.Transparency = setup.Transparency or 0;
     setup.Callback = setup.Callback or function() end;
-
--- // 打开颜色选择器对话框 -----------------------------------------------------------------------------------
-function openColorPicker(callback)
-    local ColorPickerDialog = Instance.new("Frame");
-    local ColorPalette = Instance.new("ImageLabel");
-    local ColorSelector = Instance.new("Frame");
-    local SelectedColorDisplay = Instance.new("Frame");
-
-    -- 设置颜色选择器对话框
-    ColorPickerDialog.Name = "ColorPickerDialog";
-    ColorPickerDialog.Parent = game.CoreGui; -- 或者你的主UI
-    ColorPickerDialog.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-    ColorPickerDialog.Size = UDim2.new(0, 300, 0, 200);
-    ColorPickerDialog.Position = UDim2.new(0.5, -150, 0.5, -100);
-
-    -- 设置颜色面板
-    ColorPalette.Name = "ColorPalette";
-    ColorPalette.Parent = ColorPickerDialog;
-    ColorPalette.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-    ColorPalette.Size = UDim2.new(1, 0, 0.8, 0);
-    ColorPalette.Image = "rbxassetid://1387868216"; -- 颜色选择器的图片
-
-    -- 设置颜色选择器
-    ColorSelector.Name = "ColorSelector";
-    ColorSelector.Parent = ColorPickerDialog;
-    ColorSelector.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-    ColorSelector.Size = UDim2.new(0, 20, 0, 20);
-    ColorSelector.Position = UDim2.new(0.9, 0, 0.4, 0);
-    ColorSelector.ZIndex = 10;
-
-    -- 设置选中颜色显示框
-    SelectedColorDisplay.Name = "SelectedColorDisplay";
-    SelectedColorDisplay.Parent = ColorPickerDialog;
-    SelectedColorDisplay.BackgroundColor3 = Color3.fromRGB(255, 0, 0); -- 默认颜色为红色
-    SelectedColorDisplay.Size = UDim2.new(0, 100, 0, 30);
-    SelectedColorDisplay.Position = UDim2.new(0.5, -50, 0.9, 0);
-
-    -- 点击事件
-    ColorPalette.MouseButton1Click:Connect(function(x, y)
-        local color = ColorPalette:CaptureColor(x, y);
-        callback(color);
-        ColorSelector.BackgroundColor3 = color;
-        SelectedColorDisplay.BackgroundColor3 = color;
-    end);
-
-    -- 关闭按钮
-    local CloseButton = Instance.new("TextButton");
-    CloseButton.Parent = ColorPickerDialog;
-    CloseButton.Text = "Close";
-    CloseButton.Size = UDim2.new(0, 50, 0, 20);
-    CloseButton.Position = UDim2.new(0.5, -25, 0.9, 0);
-    CloseButton.MouseButton1Click:Connect(function()
-        ColorPickerDialog:Destroy();
-    end);
-    end
 
     local Colorpicker = {
         Value = setup.Default,
@@ -3953,10 +3898,10 @@ function openColorPicker(callback)
 
         local RedInput = CreateInput()
         RedInput.Frame.Position = UDim2.fromOffset(setup.Transparency and 260 or 240, 95)
-                CreateInputLabel("Red", UDim2.fromOffset(setup.Transparency and 360 or 340, 95))
+        CreateInputLabel("Red", UDim2.fromOffset(setup.Transparency and 360 or 340, 95))
 
         local GreenInput = CreateInput()
-        GreenInput.Frame.Position = UDim2.fromOffset(setup.Transparency and 260 or 240, 135)
+                GreenInput.Frame.Position = UDim2.fromOffset(setup.Transparency and 260 or 240, 135)
         CreateInputLabel("Green", UDim2.fromOffset(setup.Transparency and 360 or 340, 135))
 
         local BlueInput = CreateInput()
@@ -4171,49 +4116,63 @@ function openColorPicker(callback)
         Dialog:Button("Cancel")
         Dialog:Open()
     end
-           function Colorpicker:Display()
-        Colorpicker.Value = Color3.fromHSV(Colorpicker.Hue, Colorpicker.Sat, Colorpicker.Vib)
 
-        DisplayFrameColor.BackgroundColor3 = Colorpicker.Value
+    function Colorpicker:Display()
+    -- 从HSV值创建颜色
+    local color = Color3.fromHSV(Colorpicker.Hue, Colorpicker.Sat, Colorpicker.Vib)
+
+    -- 更新颜色选择器的值
+    Colorpicker.Value = color
+
+    -- 更新显示框的颜色
+    DisplayFrameColor.BackgroundColor3 = Colorpicker.Value
+
+    -- 如果考虑透明度，则更新背景透明度
+    if setup.Transparency then
         DisplayFrameColor.BackgroundTransparency = Colorpicker.Transparency
+    end
 
-        Element.Library:SafeCallback(Colorpicker.Callback, Colorpicker.Value)
+    -- 调用回调函数，传递当前颜色值
+    Element.Library:SafeCallback(Colorpicker.Callback, Colorpicker.Value)
+
+    -- 如果有颜色改变的回调函数，也进行调用
+    if Colorpicker.Changed then
         Element.Library:SafeCallback(Colorpicker.Changed, Colorpicker.Value)
     end
+end      
 
-    function Colorpicker:SetValue(HSV, Transparency)
-        local Color = Color3.fromHSV(HSV[1], HSV[2], HSV[3])
+function Colorpicker:SetValue(HSV, Transparency)
+    local Color = Color3.fromHSV(HSV[1], HSV[2], HSV[3])
 
-        Colorpicker.Transparency = Transparency or 0
-        Colorpicker:SetHSVFromRGB(Color)
-        Colorpicker:Display()
-    end
-
-    function Colorpicker:SetValueRGB(Color, Transparency)
-        Colorpicker.Transparency = Transparency or 0
-        Colorpicker:SetHSVFromRGB(Color)
-        Colorpicker:Display()
-    end
-
-    function Colorpicker:OnChanged(Func)
-        Colorpicker.Changed = Func
-        Func(Colorpicker.Value)
-    end
-
-    function Colorpicker:Destroy()
-        ColorpickerFrame:Destroy()
-        Library.Options[Idx] = nil
-    end
-
-    Creator.AddSignal(ColorpickerFrame.Frame.MouseButton1Click, function()
-        CreateColorDialog()
-    end)
-
+    Colorpicker.Transparency = Transparency or 0
+    Colorpicker:SetHSVFromRGB(Color)
     Colorpicker:Display()
-
-    Library.Options[Idx] = Colorpicker
-    return Colorpicker
 end
+
+function Colorpicker:SetValueRGB(Color, Transparency)
+    Colorpicker.Transparency = Transparency or 0
+    Colorpicker:SetHSVFromRGB(Color)
+    Colorpicker:Display()
+end
+
+function Colorpicker:OnChanged(Func)
+    Colorpicker.Changed = Func
+    Func(Colorpicker.Value)
+end
+
+function Colorpicker:Destroy()
+    ColorpickerFrame:Destroy()
+    Library.Options[Idx] = nil
+end
+
+Creator.AddSignal(ColorpickerFrame.Frame.MouseButton1Click, function()
+    CreateColorDialog()
+end)
+
+Colorpicker:Display()
+
+Library.Options[Idx] = Colorpicker
+return Colorpicker
 ------ // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
 			setup = setup or {};
