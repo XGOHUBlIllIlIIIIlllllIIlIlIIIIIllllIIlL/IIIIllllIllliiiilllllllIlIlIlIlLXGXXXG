@@ -2516,13 +2516,7 @@ function Library:CreateWindow(setup)
 		GTitle.TextStrokeColor3 = Library.Colors.TextColor
 		GTitle.TextStrokeTransparency = 0.950
 		GTitle.TextWrapped = true
-		-- 添加点击事件监听器
-GTitle.MouseButton1Click:Connect(function()
-    -- 调用GButton的点击事件处理函数
-    GButton.MouseButton1Click:Fire()
-end)
-
-GButton.MouseButton1Click:Connect(function()
+		GTitle.MouseButton1Click:Connect(function()
     -- 设置要复制的文本
     local textToCopy = "请加入群聊"
     -- 使用setclipboard函数复制文本到剪贴板
