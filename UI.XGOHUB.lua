@@ -2501,7 +2501,7 @@ function Library:CreateWindow(setup)
 		local LButton = Instance.new("TextButton")
         local CloseButton = Instance.new("TextButton")
         
-		AuthFunction.Name = "AuthFunction"
+--[[     AuthFunction.Name = "AuthFunction"
 		AuthFunction.Parent = MainFrame
 		AuthFunction.Active = true
 		AuthFunction.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2513,7 +2513,26 @@ function Library:CreateWindow(setup)
 		AuthFunction.Size = UDim2.new(1, 0, 1, 0)
 
 		Library:Tween(AuthFunction , Library.TweenLibrary.SmallEffect,{Position = UDim2.new(0.5, 0, 0.5, 0)})
+--]]
+        AuthFunction.Name = "AuthFunction"
+        AuthFunction.Parent = MainFrame
+        AuthFunction.Active = true
+        AuthFunction.AnchorPoint = Vector2.new(0.5, 0.5)
+        AuthFunction.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 默认背景颜色，图片加载失败时显示
+        AuthFunction.BackgroundTransparency = 1 -- 完全透明，以便显示图片
+        AuthFunction.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        AuthFunction.BorderSizePixel = 0
+        AuthFunction.Position = UDim2.new(0.5, 0, -1.5, 0)
+        AuthFunction.Size = UDim2.new(1, 0, 1, 0)
+        AuthFunction.ClipsDescendants = true
+        AuthFunction.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 设置背景颜色，图片加载失败时显示
+        AuthFunction.BackgroundImage = "rbxassetid://120611289434746" -- 替换为您的图片Asset ID
+        AuthFunction.BackgroundTransparency = 0 -- 不透明
+        AuthFunction.BackgroundTilePosition = UDim2.new(0, 0, 0, 0) -- 设置图片不重复
+        AuthFunction.BackgroundTileSize = UDim2.new(1, 0, 1, 0) -- 设置图片铺满整个背景
 
+        Library:Tween(AuthFunction , Library.TweenLibrary.SmallEffect,{Position = UDim2.new(0.5, 0, 0.5, 0)})
+      
 		Title.Name = "Title"
 		Title.Parent = AuthFunction
 		Title.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2713,8 +2732,8 @@ function Library:CreateWindow(setup)
         CloseButton.Text = "X" -- 按钮上的文字
         CloseButton.TextSize = 14 -- 文字大小
         CloseButton.MouseButton1Click:Connect(function()
-                    Library:Tween(MainFrame, Library.TweenLibrary.Normal, {Size = UDim2.fromScale(0,0)})
-                    task.wait(0.5)
+        Library:Tween(MainFrame, Library.TweenLibrary.Normal, {Size = UDim2.fromScale(0,0)})
+        task.wait(0.5)
         ScreenGui:Destroy()
         end)
 
