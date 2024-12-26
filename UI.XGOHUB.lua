@@ -2498,10 +2498,6 @@ function Library:CreateWindow(setup)
 		UIStroke_3.Color = Color3.fromRGB(156, 156, 156)
 		UIStroke_3.Parent = GetButton
 
-        function copyTextToClipboard(text)
-              setclipboard(text)
-        end
-
 		GTitle.Name = "GTitle"
 		GTitle.Parent = GetButton
 		GTitle.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2520,10 +2516,7 @@ function Library:CreateWindow(setup)
 		GTitle.TextStrokeColor3 = Library.Colors.TextColor
 		GTitle.TextStrokeTransparency = 0.950
 		GTitle.TextWrapped = true
-		GTitle.MouseButton1Click:Connect(function()
-            copyTextToClipboard("请加入群聊")
-        end)
-
+		
 		GButton.Name = "GButton"
 		GButton.Parent = GetButton
 		GButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2536,11 +2529,7 @@ function Library:CreateWindow(setup)
 		GButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 		GButton.TextSize = 14.000
 		GButton.TextTransparency = 1.000
-		GButton.MouseButton1Click:Connect(function()
-        -- GButton的点击事件处理逻辑
-           setup.KeySystemInfo.OnGetKey()
-        end)
-
+		
 		LoginButton.Name = "LoginButton"
 		LoginButton.Parent = AuthFunction
 		LoginButton.AnchorPoint = Vector2.new(0.5, 0.5)
