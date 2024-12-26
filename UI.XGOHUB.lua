@@ -2626,21 +2626,18 @@ function Library:CreateWindow(setup)
                 TextBox.PlaceholderText = "请输入卡密"
         else
         local verify = setup.KeySystemInfo.OnLogin(TextBox.Text)
-             if not verify then
+             if verify then
               task.wait(0.1) -- 等待0.1秒
                  TextBox.Text = ""
                  TextBox.PlaceholderText = "你输入的卡密错误"
               task.wait(2.5) -- 等待1秒后清除错误信息
                  TextBox.PlaceholderText = "请重新输入卡密"
         else
-             if verify then
               saveKeyToFile(TextBox.Text)
               setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
-              return TextBox.Text;
             end;
         end;
             setup.KeySystemInfo.AntiSpam = false
-            TextBox.Text = "";
         end)
 	    
 		GButton.MouseButton1Click:Connect(setup.KeySystemInfo.OnGetKey)
