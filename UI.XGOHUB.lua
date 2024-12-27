@@ -4621,36 +4621,36 @@ function Library:CreateWindow(setup)
     InputField.ClearTextOnFocus = false
     InputField.Text = tostring(setup.Default)
 
-    local IsHold = false
-    local RoundNum = setup.Round;
+			local IsHold = false
+			local RoundNum = setup.Round;
 
-    Library:MakeDrop(SliderBlock, UIStroke, Library.Colors.Hightlight)
+			Library:MakeDrop(SliderBlock , UIStroke , Library.Colors.Hightlight)
 
-    if setup.Tip then
-        WindowLibrary:AddToolTip(SliderBlock, tostring(setup.Tip));
-    end;
 
-    local function Rounding(num, numDecimalPlaces)
-        local mult = 10^(numDecimalPlaces or 0)
-        return math.floor(num * mult + 0.5) / mult
-    end
+			if setup.Tip then
+				WindowLibrary:AddToolTip(SliderBlock , tostring(setup.Tip));
+			end;
 
-    local UpdateSize = function()
-        if not WindowLibrary.Toggle then
-            return;
-        end
+			local function Rounding(num, numDecimalPlaces)
+				local mult = 10^(numDecimalPlaces or 0)
+				return math.floor(num * mult + 0.5) / mult
+			end
 
-        Block.Size = UDim2.new(0, (SliderBlock.AbsoluteSize.X / 2), 0.225, 0)
-    end;
+			local UpdateSize = function()
+				if not WindowLibrary.Toggle then
+					return;
+				end
 
-    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-        Position = UDim2.new((setup.Default - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
-    });
+				Block.Size = UDim2.new(0, (SliderBlock.AbsoluteSize.X / 2), 0.225, 0)
+			end;
 
-    SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
-    
-	-- 修复后的 update 函数
-    local function update(Input)
+			Library:Tween(Move , Library.TweenLibrary.FastEffect,{
+				Position = UDim2.new((setup.Default - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
+			});
+
+			SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
+
+	local function update(Input)
         local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
         local Value = setup.Min + (setup.Max - setup.Min) * SizeScale
         Value = Rounding(Value, RoundNum)
@@ -4699,35 +4699,11 @@ InputField:GetPropertyChangedSignal("Text"):Connect(function()
             setup.Callback(clampedValue)
         end
     end)
- -- 修复后的 GotFocus 和 FocusLost 事件处理函数
-    InputField.GotFocus:Connect(function()
-        InputField.Text = ""
-    end)
 
-    InputField.FocusLost:Connect(function(enterPressed)
-        if enterPressed or InputField.Text == "" then
-            local newValue = tonumber(InputField.Text) or setup.Default
-            if newValue then
-                setup.Default = newValue
-                updateSliderPosition(newValue)
-                setup.Callback(newValue)
-            end
-        end
-    end)
+			local RootSkid = {};
 
-    -- 定义 updateSliderPosition 函数
-    local function updateSliderPosition(value)
-        local normalized = (value - setup.Min) / (setup.Max - setup.Min)
-        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-            Position = UDim2.new(normalized, 0, 0.5, 0)
-        });
-        ValueText.Text = tostring(value)
-    end
-
-    local RootSkid = {};
-
-    function RootSkid:Value(setup)
-        setup.Default = setup; -- 修复：将 Setup 改为 setup
+	function RootSkid:Value(Setup)
+        setup.Default = Setup;
 
         Library:Tween(Move, Library.TweenLibrary.FastEffect, {
             Position = UDim2.new(setup.Default / setup.Max, 0, 0.5, 0)
@@ -4738,10 +4714,7 @@ InputField:GetPropertyChangedSignal("Text"):Connect(function()
     end;
 
     function RootSkid:Visible(value)
-        -- 修复：添加类型检查
-        if type(value) == "boolean" then
-            SliderBlock.Visible = value;
-        end
+        SliderBlock.Visible = value;
     end;
 
     return RootSkid;
