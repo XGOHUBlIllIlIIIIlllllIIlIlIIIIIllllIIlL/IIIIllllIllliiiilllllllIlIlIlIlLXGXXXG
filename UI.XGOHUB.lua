@@ -4610,8 +4610,8 @@ function Library:CreateWindow(setup)
     InputField.BackgroundTransparency = 0.5
     InputField.BorderColor3 = Color3.fromRGB(0, 0, 0)
     InputField.BorderSizePixel = 0
-    InputField.Position = UDim2.new(0.95, 0, 0.4, 0) -- 调整输入框位置
-    InputField.Size = UDim2.new(0.05, 0, 0.2, 0)
+    InputField.Position = UDim2.new(0.05, 0, 0.4, 0) -- 输入框放置在滑块左侧
+    InputField.Size = UDim2.new(0.2, 0, 0.2, 0) -- 输入框大小调整为原来的两倍
     InputField.ZIndex = 11
     InputField.Font = Enum.Font.Gotham
     InputField.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色字体
