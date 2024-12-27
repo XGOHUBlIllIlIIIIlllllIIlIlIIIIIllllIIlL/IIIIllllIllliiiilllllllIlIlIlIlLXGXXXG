@@ -4610,18 +4610,16 @@ function Library:CreateWindow(setup)
     InputField.BackgroundTransparency = 0.5
     InputField.BorderColor3 = Color3.fromRGB(0, 0, 0)
     InputField.BorderSizePixel = 0
-    InputField.Position = UDim2.new(0.85, 0, 0.5, 0) -- 根据需要调整位置
-    InputField.Size = UDim2.new(0.15, 0, 1, 0)
+    InputField.Position = UDim2.new(0.800000000, 0, 0.100000000, 0)
+    InputField.Size = UDim2.new(0.200000000, 0, 0.800000000, 0)
     InputField.ZIndex = 11
     InputField.Font = Enum.Font.Gotham
-    InputField.TextColor3 = Library.Colors.TextColor
+    InputField.TextColor3 = Color3.fromRGB(0, 0, 0)
     InputField.TextScaled = true
     InputField.TextSize = 14.000
-    InputField.TextStrokeColor3 = Library.Colors.TextColor
-    InputField.TextStrokeTransparency = 0.950
-    InputField.TextWrapped = true
     InputField.TextXAlignment = Enum.TextXAlignment.Right
-    InputField.ClearTextOnFocus = false -- 保持文本在选择时可见
+    InputField.ClearTextOnFocus = false
+    InputField.Text = tostring(setup.Default)
 
 			local IsHold = false
 			local RoundNum = setup.Round;
@@ -4654,9 +4652,8 @@ function Library:CreateWindow(setup)
 
 	local function update(Input)
         local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
-        local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
-        local Value = Rounding(Main, RoundNum)
-        local PositionX = UDim2.fromScale(SizeScale, 1)
+        local Value = setup.Min + (setup.Max - setup.Min) * SizeScale
+        Value = Rounding(Value, RoundNum)
         local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
 
         Library:Tween(Move, Library.TweenLibrary.FastEffect, {
@@ -4664,10 +4661,10 @@ function Library:CreateWindow(setup)
         });
 
         ValueText.Text = tostring(Value)
-        InputField.Text = tostring(Value) -- 更新输入框的值
+        InputField.Text = tostring(Value)
 
         setup.Callback(Value)
-    end;
+    end
 
 			Block.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
@@ -4689,6 +4686,20 @@ function Library:CreateWindow(setup)
 					end
 				end
 			end)
+			
+InputField:GetPropertyChangedSignal("Text"):Connect(function()
+        local textValue = tonumber(InputField.Text)
+        if textValue then
+            local clampedValue = math.clamp(textValue, setup.Min, setup.Max)
+            setup.Default = clampedValue
+            Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+                Position = UDim2.new((clampedValue - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
+            });
+            ValueText.Text = tostring(clampedValue)
+            setup.Callback(clampedValue)
+        end
+    end)
+
 
 			local RootSkid = {};
 
@@ -4699,8 +4710,8 @@ function Library:CreateWindow(setup)
             Position = UDim2.new(setup.Default / setup.Max, 0, 0.5, 0)
         });
 
-        ValueText.Text = tostring(setup.Default) .. '/' .. tostring(setup.Max)
-        InputField.Text = tostring(setup.Default) -- 更新输入框的值
+        ValueText.Text = tostring(setup.Default)
+        InputField.Text = tostring(setup.Default)
     end;
 
     function RootSkid:Visible(value)
