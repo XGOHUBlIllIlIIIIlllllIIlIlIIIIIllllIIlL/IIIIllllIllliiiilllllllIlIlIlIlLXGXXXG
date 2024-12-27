@@ -4626,7 +4626,7 @@ function Library:CreateWindow(setup)
     InputBox.BackgroundTransparency = 1.000
     InputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
     InputBox.BorderSizePixel = 0
-    InputBox.Position = UDim2.new(0.819999993, 0, 0.5, 0)
+    InputBox.Position = UDim2.new(0.25, 0, 0.4, 0) -- 输入框放置在滑块左侧
     InputBox.Size = UDim2.new(0.180000007, 0, 0.400000006, 0)
     InputBox.ZIndex = 11
     InputBox.Font = Enum.Font.Gotham
