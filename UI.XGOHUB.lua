@@ -4606,8 +4606,8 @@ function Library:CreateWindow(setup)
 			
     InputField.Name = "InputField"
     InputField.Parent = SliderBlock
-    InputField.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- 背景
-    InputField.BackgroundTransparency = 0.5
+    InputField.BackgroundColor3 = Library.Colors.Default -- 设置输入框背景颜色与滑块相同
+    InputField.BackgroundTransparency = 0.5 -- 如果需要，可以设置与滑块相同的透明度
     InputField.BorderColor3 = Color3.fromRGB(0, 0, 0)
     InputField.BorderSizePixel = 0
     InputField.Position = UDim2.new(0.25, 0, 0.4, 0) -- 输入框放置在滑块左侧
@@ -4700,6 +4700,31 @@ InputField:GetPropertyChangedSignal("Text"):Connect(function()
         end
     end)
 
+-- 当输入框获得焦点时，清空文本
+InputField.GotFocus:Connect(function()
+    InputField.Text = ""
+end)
+
+-- 当输入框失去焦点或玩家按下回车键时，更新滑块位置
+InputField.FocusLost:Connect(function(enterPressed)
+    if enterPressed or InputField.Text == "" then
+        local newValue = tonumber(InputField.Text) or setup.Default
+        if newValue then
+            setup.Default = newValue
+            updateSliderPosition(newValue)
+            setup.Callback(newValue)
+        end
+    end
+end)
+
+-- 更新滑块位置的函数
+local function updateSliderPosition(value)
+    local normalized = (value - setup.Min) / (setup.Max - setup.Min)
+    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+        Position = UDim2.new(normalized, 0, 0.5, 0)
+    });
+    ValueText.Text = tostring(value)
+end
 
 			local RootSkid = {};
 
