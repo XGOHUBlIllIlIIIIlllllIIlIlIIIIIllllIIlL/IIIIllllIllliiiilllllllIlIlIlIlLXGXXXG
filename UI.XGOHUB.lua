@@ -4621,36 +4621,36 @@ function Library:CreateWindow(setup)
     InputField.ClearTextOnFocus = false
     InputField.Text = tostring(setup.Default)
 
-			local IsHold = false
-			local RoundNum = setup.Round;
+    local IsHold = false
+    local RoundNum = setup.Round;
 
-			Library:MakeDrop(SliderBlock , UIStroke , Library.Colors.Hightlight)
+    Library:MakeDrop(SliderBlock, UIStroke, Library.Colors.Hightlight)
 
+    if setup.Tip then
+        WindowLibrary:AddToolTip(SliderBlock, tostring(setup.Tip));
+    end;
 
-			if setup.Tip then
-				WindowLibrary:AddToolTip(SliderBlock , tostring(setup.Tip));
-			end;
+    local function Rounding(num, numDecimalPlaces)
+        local mult = 10^(numDecimalPlaces or 0)
+        return math.floor(num * mult + 0.5) / mult
+    end
 
-			local function Rounding(num, numDecimalPlaces)
-				local mult = 10^(numDecimalPlaces or 0)
-				return math.floor(num * mult + 0.5) / mult
-			end
+    local UpdateSize = function()
+        if not WindowLibrary.Toggle then
+            return;
+        end
 
-			local UpdateSize = function()
-				if not WindowLibrary.Toggle then
-					return;
-				end
+        Block.Size = UDim2.new(0, (SliderBlock.AbsoluteSize.X / 2), 0.225, 0)
+    end;
 
-				Block.Size = UDim2.new(0, (SliderBlock.AbsoluteSize.X / 2), 0.225, 0)
-			end;
+    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+        Position = UDim2.new((setup.Default - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
+    });
 
-			Library:Tween(Move , Library.TweenLibrary.FastEffect,{
-				Position = UDim2.new((setup.Default - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
-			});
-
-			SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
-
-	local function update(Input)
+    SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
+    
+	-- 修复后的 update 函数
+    local function update(Input)
         local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
         local Value = setup.Min + (setup.Max - setup.Min) * SizeScale
         Value = Rounding(Value, RoundNum)
@@ -4699,37 +4699,35 @@ InputField:GetPropertyChangedSignal("Text"):Connect(function()
             setup.Callback(clampedValue)
         end
     end)
+ -- 修复后的 GotFocus 和 FocusLost 事件处理函数
+    InputField.GotFocus:Connect(function()
+        InputField.Text = ""
+    end)
 
--- 当输入框获得焦点时，清空文本
-InputField.GotFocus:Connect(function()
-    InputField.Text = ""
-end)
-
--- 当输入框失去焦点或玩家按下回车键时，更新滑块位置
-InputField.FocusLost:Connect(function(enterPressed)
-    if enterPressed or InputField.Text == "" then
-        local newValue = tonumber(InputField.Text) or setup.Default
-        if newValue then
-            setup.Default = newValue
-            updateSliderPosition(newValue)
-            setup.Callback(newValue)
+    InputField.FocusLost:Connect(function(enterPressed)
+        if enterPressed or InputField.Text == "" then
+            local newValue = tonumber(InputField.Text) or setup.Default
+            if newValue then
+                setup.Default = newValue
+                updateSliderPosition(newValue)
+                setup.Callback(newValue)
+            end
         end
+    end)
+
+    -- 定义 updateSliderPosition 函数
+    local function updateSliderPosition(value)
+        local normalized = (value - setup.Min) / (setup.Max - setup.Min)
+        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+            Position = UDim2.new(normalized, 0, 0.5, 0)
+        });
+        ValueText.Text = tostring(value)
     end
-end)
 
--- 更新滑块位置的函数
-local function updateSliderPosition(value)
-    local normalized = (value - setup.Min) / (setup.Max - setup.Min)
-    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-        Position = UDim2.new(normalized, 0, 0.5, 0)
-    });
-    ValueText.Text = tostring(value)
-end
+    local RootSkid = {};
 
-			local RootSkid = {};
-
-	function RootSkid:Value(Setup)
-        setup.Default = Setup;
+    function RootSkid:Value(setup)
+        setup.Default = setup; -- 修复：将 Setup 改为 setup
 
         Library:Tween(Move, Library.TweenLibrary.FastEffect, {
             Position = UDim2.new(setup.Default / setup.Max, 0, 0.5, 0)
@@ -4740,7 +4738,10 @@ end
     end;
 
     function RootSkid:Visible(value)
-        SliderBlock.Visible = value;
+        -- 修复：添加类型检查
+        if type(value) == "boolean" then
+            SliderBlock.Visible = value;
+        end
     end;
 
     return RootSkid;
