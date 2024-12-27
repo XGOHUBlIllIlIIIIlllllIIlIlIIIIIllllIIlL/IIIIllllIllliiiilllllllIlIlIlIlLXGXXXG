@@ -4641,6 +4641,8 @@ function Library:CreateWindow(setup)
 
 			local IsHold = false
 			local RoundNum = setup.Round;
+			
+            local currentSliderValue = setup.Default; -- 用于记录当前滑块的值
 
 			Library:MakeDrop(SliderBlock , UIStroke , Library.Colors.Hightlight)
 
@@ -4668,7 +4670,7 @@ function Library:CreateWindow(setup)
 
 			SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
 
-		local function update(Input)
+--[[	local function update(Input)
 			
         local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
         local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
@@ -4683,6 +4685,25 @@ function Library:CreateWindow(setup)
         ValueText.Text = tostring(Value)
         InputBox.Text = tostring(Value) -- 更新输入框的值
 
+        setup.Callback(Value)
+    end;]]
+
+local function update(Input)
+
+        local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
+        local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
+        local Value = Rounding(Main, RoundNum)
+        local PositionX = UDim2.fromScale(SizeScale, 1)
+        local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
+
+        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+            Position = UDim2.new(normalized, 0, 0.5, 0)
+        });
+
+        ValueText.Text = tostring(Value)
+        InputBox.Text = tostring(Value) -- 更新输入框的值
+
+        currentSliderValue = Value -- 更新当前滑块的值
         setup.Callback(Value)
     end;
 
@@ -4707,7 +4728,19 @@ function Library:CreateWindow(setup)
 				end
 			end)
 
-    InputBox:GetPropertyChangedSignal("Text"):Connect(function()
+--[[   InputBox:GetPropertyChangedSignal("Text"):Connect(function()
+        local textValue = tonumber(InputBox.Text) or setup.Default
+        if textValue then
+            local normalized = (textValue - setup.Min) / (setup.Max - setup.Min)
+            Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+                Position = UDim2.new(normalized, 0, 0.5, 0)
+            });
+            ValueText.Text = tostring(textValue)
+            setup.Callback(textValue)
+        end
+    end)]]
+
+InputBox:GetPropertyChangedSignal("Text"):Connect(function()
         local textValue = tonumber(InputBox.Text) or setup.Default
         if textValue then
             local normalized = (textValue - setup.Min) / (setup.Max - setup.Min)
@@ -4719,6 +4752,24 @@ function Library:CreateWindow(setup)
         end
     end)
 
+    InputBox.Focused:Connect(function()
+        -- 当输入框获得焦点时，记录当前滑块的值
+        currentSliderValue = tonumber(InputBox.Text) or setup.Default
+    end)
+
+    InputBox.FocusReleased:Connect(function()
+        -- 当输入框失去焦点时，更新滑块的值
+        if tonumber(InputBox.Text) then
+            local confirmedValue = tonumber(InputBox.Text)
+            local normalized = (confirmedValue - setup.Min) / (setup.Max - setup.Min)
+            Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+                Position = UDim2.new(normalized, 0, 0.5, 0)
+            });
+            ValueText.Text = tostring(confirmedValue)
+            setup.Callback(confirmedValue)
+        end
+    end)
+    
 			local RootSkid = {};
 
 			function RootSkid:Value(Setup)
