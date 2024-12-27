@@ -4478,7 +4478,23 @@ function Library:CreateWindow(setup)
 			return RootSkid;
 		end;
 --]]---- // 滑块   ----------------------------------------------------------------------------------------
-		function Root:Slider(setup)
+--[[ InputField.Name = "InputField"
+    InputField.Parent = SliderBlock
+    InputField.BackgroundColor3 = Library.Colors.Default -- 设置输入框背景颜色与滑块相同
+    InputField.BackgroundTransparency = 0.5 -- 如果需要，可以设置与滑块相同的透明度
+    InputField.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    InputField.BorderSizePixel = 0
+    InputField.Position = UDim2.new(0.25, 0, 0.4, 0) -- 输入框放置在滑块左侧
+    InputField.Size = UDim2.new(0.05, 0, 0.6, 0)
+    InputField.ZIndex = 15
+    InputField.Font = Enum.Font.Gotham
+    InputField.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色字体
+    InputField.TextScaled = true
+    InputField.TextSize = 14.000
+    InputField.TextXAlignment = Enum.TextXAlignment.Right
+    InputField.ClearTextOnFocus = false
+    InputField.Text = tostring(setup.Default)]]
+    function Root:Slider(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or 'Slider';
 			setup.Min = setup.Min or 0;
@@ -4498,7 +4514,7 @@ function Library:CreateWindow(setup)
 			local UICorner_2 = Instance.new("UICorner")
 			local UIStroke_3 = Instance.new("UIStroke")
 			local ValueText = Instance.new("TextLabel")
-			local InputField = Instance.new("TextBox") -- 新增输入框
+			local InputBox = Instance.new("TextBox") -- 添加输入框
 
 			SliderBlock.Name = "SliderBlock"
 			SliderBlock.Parent = ScrollingFrame
@@ -4604,22 +4620,24 @@ function Library:CreateWindow(setup)
 			ValueText.TextWrapped = true
 			ValueText.TextXAlignment = Enum.TextXAlignment.Right
 			
-    InputField.Name = "InputField"
-    InputField.Parent = SliderBlock
-    InputField.BackgroundColor3 = Library.Colors.Default -- 设置输入框背景颜色与滑块相同
-    InputField.BackgroundTransparency = 0.5 -- 如果需要，可以设置与滑块相同的透明度
-    InputField.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    InputField.BorderSizePixel = 0
-    InputField.Position = UDim2.new(0.25, 0, 0.4, 0) -- 输入框放置在滑块左侧
-    InputField.Size = UDim2.new(0.05, 0, 0.6, 0)
-    InputField.ZIndex = 15
-    InputField.Font = Enum.Font.Gotham
-    InputField.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色字体
-    InputField.TextScaled = true
-    InputField.TextSize = 14.000
-    InputField.TextXAlignment = Enum.TextXAlignment.Right
-    InputField.ClearTextOnFocus = false
-    InputField.Text = tostring(setup.Default)
+	InputBox.Name = "InputBox"
+    InputBox.Parent = SliderBlock
+    InputBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    InputBox.BackgroundTransparency = 1.000
+    InputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    InputBox.BorderSizePixel = 0
+    InputBox.Position = UDim2.new(0.819999993, 0, 0.5, 0)
+    InputBox.Size = UDim2.new(0.180000007, 0, 0.400000006, 0)
+    InputBox.ZIndex = 11
+    InputBox.Font = Enum.Font.Gotham
+    InputBox.TextColor3 = Library.Colors.TextColor
+    InputBox.TextScaled = true
+    InputBox.TextSize = 14.000
+    InputBox.TextStrokeColor3 = Library.Colors.TextColor
+    InputBox.TextStrokeTransparency = 0.950
+    InputBox.TextWrapped = true
+    InputBox.TextXAlignment = Enum.TextXAlignment.Right
+    InputBox.Text = tostring(setup.Default) -- 设置初始值
 
 			local IsHold = false
 			local RoundNum = setup.Round;
@@ -4650,10 +4668,12 @@ function Library:CreateWindow(setup)
 
 			SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
 
-	local function update(Input)
+		local function update(Input)
+			
         local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
-        local Value = setup.Min + (setup.Max - setup.Min) * SizeScale
-        Value = Rounding(Value, RoundNum)
+        local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
+        local Value = Rounding(Main, RoundNum)
+        local PositionX = UDim2.fromScale(SizeScale, 1)
         local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
 
         Library:Tween(Move, Library.TweenLibrary.FastEffect, {
@@ -4661,10 +4681,10 @@ function Library:CreateWindow(setup)
         });
 
         ValueText.Text = tostring(Value)
-        InputField.Text = tostring(Value)
+        InputBox.Text = tostring(Value) -- 更新输入框的值
 
         setup.Callback(Value)
-    end
+    end;
 
 			Block.InputBegan:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
@@ -4686,39 +4706,37 @@ function Library:CreateWindow(setup)
 					end
 				end
 			end)
-			
-InputField:GetPropertyChangedSignal("Text"):Connect(function()
-        local textValue = tonumber(InputField.Text)
+
+    InputBox:GetPropertyChangedSignal("Text"):Connect(function()
+        local textValue = tonumber(InputBox.Text) or setup.Default
         if textValue then
-            local clampedValue = math.clamp(textValue, setup.Min, setup.Max)
-            setup.Default = clampedValue
+            local normalized = (textValue - setup.Min) / (setup.Max - setup.Min)
             Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-                Position = UDim2.new((clampedValue - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
+                Position = UDim2.new(normalized, 0, 0.5, 0)
             });
-            ValueText.Text = tostring(clampedValue)
-            setup.Callback(clampedValue)
+            ValueText.Text = tostring(textValue)
+            setup.Callback(textValue)
         end
     end)
 
 			local RootSkid = {};
 
-	function RootSkid:Value(Setup)
-        setup.Default = Setup;
+			function RootSkid:Value(Setup)
+				setup.Default = Setup;
 
-        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-            Position = UDim2.new(setup.Default / setup.Max, 0, 0.5, 0)
-        });
+				Library:Tween(Move , Library.TweenLibrary.FastEffect,{
+					Position = UDim2.new(setup.Default / setup.Max, 0, 0.5, 0)
+				});
 
-        ValueText.Text = tostring(setup.Default)
-        InputField.Text = tostring(setup.Default)
-    end;
+				ValueText.Text = tostring(setup.Default) .. '/' .. tostring(setup.Max)
+			end;
 
-    function RootSkid:Visible(value)
-        SliderBlock.Visible = value;
-    end;
+			function RootSkid:Visible(value)
+				SliderBlock.Visible = value;
+			end;
 
-    return RootSkid;
-end;
+			return RootSkid;
+		end;
 ------ // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
 		function Root:Keybind(setup)
 			setup = setup or {};
