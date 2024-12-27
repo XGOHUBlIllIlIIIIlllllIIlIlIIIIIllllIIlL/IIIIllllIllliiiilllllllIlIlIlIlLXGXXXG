@@ -4604,17 +4604,17 @@ function Library:CreateWindow(setup)
 			ValueText.TextWrapped = true
 			ValueText.TextXAlignment = Enum.TextXAlignment.Right
 			
-	InputField.Name = "InputField"
+    InputField.Name = "InputField"
     InputField.Parent = SliderBlock
-    InputField.BackgroundColor3 = Library.Colors.Default
+    InputField.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 背景
     InputField.BackgroundTransparency = 0.5
     InputField.BorderColor3 = Color3.fromRGB(0, 0, 0)
     InputField.BorderSizePixel = 0
-    InputField.Position = UDim2.new(0.800000000, 0, 0.100000000, 0)
-    InputField.Size = UDim2.new(0.200000000, 0, 0.800000000, 0)
+    InputField.Position = UDim2.new(0.95, 0, 0.4, 0) -- 调整输入框位置
+    InputField.Size = UDim2.new(0.05, 0, 0.2, 0)
     InputField.ZIndex = 11
     InputField.Font = Enum.Font.Gotham
-    InputField.TextColor3 = Color3.fromRGB(0, 0, 0)
+    InputField.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色字体
     InputField.TextScaled = true
     InputField.TextSize = 14.000
     InputField.TextXAlignment = Enum.TextXAlignment.Right
