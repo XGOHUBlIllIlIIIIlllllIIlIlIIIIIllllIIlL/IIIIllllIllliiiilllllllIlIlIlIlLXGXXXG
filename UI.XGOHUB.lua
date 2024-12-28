@@ -4673,24 +4673,38 @@ Move.SliceScale = 1.0 -- 设置切片缩放
 
 			SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
 
+
+local function update(Input)
+    local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
+    local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
+    local Value = Rounding(Main, RoundNum)
+    local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
+
+    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+        Position = UDim2.new(normalized, 0, 0.5, 0)
+    });
+
+    ValueText.Text = tostring(Value)
+    InputBox.Text = tostring(Value) -- 更新输入框的值
+
+    currentSliderValue = Value -- 更新当前滑块的值
+    setup.Callback(Value)
+end;
+
+
+
+--[[
 			local function update(Input)
 
 				local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
 				local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
 				local Value = Rounding(Main,RoundNum)
 				local PositionX = UDim2.fromScale(SizeScale, 1)
---[[			local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
+     			local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
 
 				Library:Tween(Move , Library.TweenLibrary.FastEffect,{
 					Position = UDim2.new(normalized, 0, 0.5, 0)
 				});
---]]
-
-local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
-    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-        Position = UDim2.new(normalized, 0, 0.5, 0),
-        Scale = UDim2.new(1, 0, 0.5, 0) -- 根据需要调整三角形的大小
-    });
 
 				ValueText.Text = tostring(Value)
 				InputBox.Text = tostring(Value) -- 更新输入框的值
@@ -4718,6 +4732,27 @@ local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
 					end
 				end
 			end)
+--]]
+Block.InputBegan:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+        IsHold = true
+        update(Input)
+    end
+end)
+
+Block.InputEnded:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
+        IsHold = false
+    end
+end)
+
+Library.UserInputService.InputChanged:Connect(function(Input)
+    if IsHold then
+        if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch) then
+            update(Input)
+        end
+    end
+end)
 
 			InputBox:GetPropertyChangedSignal("Text"):Connect(function()
 			        local textValue = tonumber(InputBox.Text) or setup.Default
