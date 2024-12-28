@@ -4524,21 +4524,7 @@ return ColorPickerSettings
 
 			UICorner.CornerRadius = UDim.new(5, 100)
 			UICorner.Parent = Block
---[[
-			ValueBlock.Name = "ValueBlock"
-			ValueBlock.Parent = Block
-			ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
-			ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
-			ValueBlock.BackgroundTransparency = 0.250
-			ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			ValueBlock.BorderSizePixel = 0
-			ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
-			ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
-			ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
-			ValueBlock.ZIndex = 15
-
---]]-- ...之前的代码...
-
+			
 -- 设置ValueBlock的属性
 ValueBlock.Name = "ValueBlock"
 ValueBlock.Parent = Block
@@ -4586,23 +4572,19 @@ StateImage.ScaleType = Enum.ScaleType.Fit
 			if setup.Tip then
 				WindowLibrary:AddToolTip(A2ToggleBlock , tostring(setup.Tip));
 			end;
---[[
-			local UILib = function(value)
-				if value then
-					Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
-						Position = UDim2.new(0.75, 0, 0.5, 0),
-						BackgroundColor3 = Library.Colors.Hightlight
-					})
-				else
-					Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
-						Position = UDim2.new(0.25, 0, 0.5, 0),
-						BackgroundColor3 = Library.Colors.Disable
-					})
-				end;
-			end;
---]]
+			
+-- 更新图片大小以适应按钮大小
+local function updateImageSize()
+    local blockSize = Block.Size.X.Scale * Block.AbsoluteSize.X
+    local blockHeight = Block.Size.Y.Scale * Block.AbsoluteSize.Y
+    StateImage.Size = UDim2.new(blockSize / ValueBlock.AbsoluteSize.X, 0, blockHeight / ValueBlock.AbsoluteSize.Y, 0)
+end
 
--- ...之后的代码...
+-- 初始更新图片大小
+updateImageSize()
+
+-- 监听ValueBlock大小变化以更新图片大小
+ValueBlock:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateImageSize)
 
 -- 定义UILib函数，用于更新滑块的状态
 local UILib = function(value)
@@ -4621,8 +4603,6 @@ local UILib = function(value)
     end;
     ValueBlock.BackgroundColor3 = value and Library.Colors.Hightlight or Library.Colors.Disable
 end;
-
--- ...之后的代码...
 
 			UILib(setup.Default);
 
