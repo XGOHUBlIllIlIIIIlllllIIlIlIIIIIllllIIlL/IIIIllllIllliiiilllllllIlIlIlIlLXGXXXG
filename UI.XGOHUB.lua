@@ -3674,7 +3674,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
------- // 颜色选择器   ----------------------------------------------------------------------------------------
+--[[---- // 颜色选择器   ----------------------------------------------------------------------------------------
 
 local function SaveConfiguration()
     if not CEnabled then return end
@@ -3969,7 +3969,7 @@ Rayfield.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 end)
 
 return ColorPickerSettings
------- // 按钮   ----------------------------------------------------------------------------------------
+--]]---- // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Button"
@@ -4110,17 +4110,18 @@ return ColorPickerSettings
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
-			local ToggleBlock = Instance.new("Frame")
-			local DropShadow = Instance.new("ImageLabel")
-			local UIStroke = Instance.new("UIStroke")
-			local TextLabel = Instance.new("TextLabel")
-			local Block = Instance.new("Frame")
-			local UIStroke_2 = Instance.new("UIStroke")
-			local UICorner = Instance.new("UICorner")
-			local ValueBlock = Instance.new("Frame")
-			local UICorner_2 = Instance.new("UICorner")
-			local Button = Instance.new("TextButton")
-
+			-- 创建UI元素
+		    local ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
+		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
+		    local UIStroke = Instance.new("UIStroke") -- UI边框
+		    local TextLabel = Instance.new("TextLabel") -- 文本标签
+		    local Block = Instance.new("Frame") -- 滑块的背景框
+		    local UIStroke_2 = Instance.new("UIStroke") -- 滑块背景框的边框
+		    local UICorner = Instance.new("UICorner") -- 用于创建圆角效果
+		    local ValueBlock = Instance.new("Frame") -- 滑块的值框
+		    local UICorner_2 = Instance.new("UICorner") -- 滑块值框的圆角效果
+		    local Button = Instance.new("TextButton") -- 按钮
+		    
 			ToggleBlock.Name = "ToggleBlock"
 			ToggleBlock.Parent = ScrollingFrame
 			ToggleBlock.BackgroundColor3 = Library.Colors.Default
@@ -4220,7 +4221,7 @@ return ColorPickerSettings
 			if setup.Tip then
 				WindowLibrary:AddToolTip(ToggleBlock , tostring(setup.Tip));
 			end;
-
+--[[
 			local UILib = function(value)
 				if value then
 					Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
@@ -4234,6 +4235,26 @@ return ColorPickerSettings
 					})
 				end;
 			end;
+--]]
+local UILib = function(value)
+    if value then
+        -- 开启状态
+        Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+            Position = UDim2.new(0.75, 0, 0.5, 0),
+            BackgroundColor3 = Library.Colors.Hightlight
+        })
+        -- 设置开启状态的图片
+        ValueBlock.Image = "rbxassetid://7733955511" -- 替换为你的开启状态图片ID
+    else
+        -- 关闭状态
+        Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+            Position = UDim2.new(0.25, 0, 0.5, 0),
+            BackgroundColor3 = Library.Colors.Disable
+        })
+        -- 设置关闭状态的图片
+        ValueBlock.Image = "rbxassetid://7733965118" -- 替换为你的关闭状态图片ID
+    end;
+end;
 
 			UILib(setup.Default);
 
