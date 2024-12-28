@@ -4187,7 +4187,7 @@ return ColorPickerSettings
 
 			UICorner.CornerRadius = UDim.new(5, 100)
 			UICorner.Parent = Block
-
+--[[
 			ValueBlock.Name = "ValueBlock"
 			ValueBlock.Parent = Block
 			ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -4199,6 +4199,34 @@ return ColorPickerSettings
 			ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
 			ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			ValueBlock.ZIndex = 15
+
+--]]-- ...之前的代码...
+
+-- 设置ValueBlock的属性
+ValueBlock.Name = "ValueBlock"
+ValueBlock.Parent = Block
+ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
+ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
+ValueBlock.BackgroundTransparency = 1.000 -- 使背景透明
+ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ValueBlock.BorderSizePixel = 0
+ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
+ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
+ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
+ValueBlock.ZIndex = 15
+
+-- 添加三角形图像
+local TriangleImage = Instance.new("ImageLabel")
+TriangleImage.Name = "Triangle"
+TriangleImage.Parent = ValueBlock
+TriangleImage.AnchorPoint = Vector2.new(0.5, 0.5)
+TriangleImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TriangleImage.BackgroundTransparency = 1.000
+TriangleImage.Position = UDim2.new(0.5, 0, 0.5, 0)
+TriangleImage.Size = UDim2.new(1, 0, 1, 0)
+TriangleImage.Image = "rbxassetid://7733965118" -- 替换为你的三角形图像资源ID
+TriangleImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
+TriangleImage.ScaleType = Enum.ScaleType.Fit
 
 			UICorner_2.CornerRadius = UDim.new(5, 100)
 			UICorner_2.Parent = ValueBlock
@@ -4236,25 +4264,28 @@ return ColorPickerSettings
 				end;
 			end;
 --]]
+
+-- ...之后的代码...
+
+-- 定义UILib函数，用于更新滑块的状态
 local UILib = function(value)
     if value then
-        -- 开启状态
-        Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+        Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
             Position = UDim2.new(0.75, 0, 0.5, 0),
-            BackgroundColor3 = Library.Colors.Hightlight
         })
-        -- 设置开启状态的图片
-        ValueBlock.Image = "rbxassetid://7733955511" -- 替换为你的开启状态图片ID
+        -- 使三角形指向右侧
+        TriangleImage.Rotation = 0
     else
-        -- 关闭状态
-        Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+        Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
             Position = UDim2.new(0.25, 0, 0.5, 0),
-            BackgroundColor3 = Library.Colors.Disable
         })
-        -- 设置关闭状态的图片
-        ValueBlock.Image = "rbxassetid://7733965118" -- 替换为你的关闭状态图片ID
+        -- 使三角形指向左侧
+        TriangleImage.Rotation = 180
     end;
+    ValueBlock.BackgroundColor3 = value and Library.Colors.Hightlight or Library.Colors.Disable
 end;
+
+-- ...之后的代码...
 
 			UILib(setup.Default);
 
