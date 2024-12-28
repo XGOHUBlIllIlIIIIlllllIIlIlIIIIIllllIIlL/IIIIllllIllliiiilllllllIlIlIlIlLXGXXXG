@@ -4493,8 +4493,11 @@ function Library:CreateWindow(setup)
 			local TextLabel = Instance.new("TextLabel")
 			local Block = Instance.new("Frame")
 			local UIStroke_2 = Instance.new("UIStroke")
-			local UICorner = Instance.new("UICorner")
-			local Move = Instance.new("Frame")
+			local UICorner = Instance.new("UICorner")			
+--			local Move = Instance.new("Frame")
+
+			local Move = Instance.new("ImageLabel") -- 将Frame改为ImageLabel以显示三角形
+			
 			local UICorner_2 = Instance.new("UICorner")
 			local UIStroke_3 = Instance.new("UIStroke")
 			local ValueText = Instance.new("TextLabel")
@@ -4565,7 +4568,7 @@ function Library:CreateWindow(setup)
 
 			UICorner.CornerRadius = UDim.new(0.300000012, 0)
 			UICorner.Parent = Block
-
+--[[
 			Move.Name = "Move"
 			Move.Parent = Block
 			Move.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -4576,6 +4579,24 @@ function Library:CreateWindow(setup)
 			Move.Size = UDim2.new(1.5, 0, 1.5, 0)
 			Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Move.ZIndex = 15
+--]]
+
+Move.Name = "Move"
+Move.Parent = Block
+Move.AnchorPoint = Vector2.new(0.5, 0.5)
+Move.BackgroundColor3 = Library.Colors.Hightlight
+Move.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Move.BorderSizePixel = 0
+Move.Position = UDim2.new(0.5, 0, 0.5, 0)
+Move.Size = UDim2.new(1.5, 0, 1.5, 0)
+Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
+Move.ZIndex = 15
+Move.Image = "rbxassetid://7743874367" -- 使用你的三角形图片的Asset ID
+Move.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 三角形的颜色
+Move.ImageTransparency = 0 -- 设置不透明
+Move.ScaleType = Enum.ScaleType.Slice
+Move.SliceCenter = Rect.new(50, 50, 50, 50) -- 根据你的图片调整切片中心
+Move.SliceScale = 1.0 -- 设置切片缩放
 
 			UICorner_2.CornerRadius = UDim.new(1, 0)
 			UICorner_2.Parent = Move
@@ -4658,11 +4679,18 @@ function Library:CreateWindow(setup)
 				local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
 				local Value = Rounding(Main,RoundNum)
 				local PositionX = UDim2.fromScale(SizeScale, 1)
-				local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
+--[[			local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
 
 				Library:Tween(Move , Library.TweenLibrary.FastEffect,{
 					Position = UDim2.new(normalized, 0, 0.5, 0)
 				});
+--]]
+
+local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
+    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+        Position = UDim2.new(normalized, 0, 0.5, 0),
+        Scale = UDim2.new(1, 0, 0.5, 0) -- 根据需要调整三角形的大小
+    });
 
 				ValueText.Text = tostring(Value)
 				InputBox.Text = tostring(Value) -- 更新输入框的值
