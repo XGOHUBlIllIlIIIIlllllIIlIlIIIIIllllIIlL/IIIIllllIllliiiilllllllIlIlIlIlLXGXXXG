@@ -15,8 +15,22 @@ local Library = {
 };
 -- 获取用户输入服务
 local userInputService = game:GetService("UserInputService")
-local blurEffect = Instance.new("BlurEffect")
-local TweenService = game:GetService("TweenService")
+    local blurEffect = Instance.new((function()
+        local a={895,1441,1558,1519,934,1363,1363,1350,1324,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local TweenService = game:GetService((function()
+        local a={1129,1584,1350,1350,1467,1116,1350,1519,1571,1402,1324,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
 
 blurEffect.Parent = game.Lighting
 blurEffect.Size = 60
@@ -26,9 +40,11 @@ local blurTweenInfo = TweenInfo.new(4, Enum.EasingStyle.Quad, Enum.EasingDirecti
 local blurTween = TweenService:Create(blurEffect, blurTweenInfo, {Size = 0})
 blurTween:Play()
 
-wait(2.5) -- 等待阴影虚化效果完成
-
-blurEffect:Destroy() -- 销毁效果实例
+-- 异步等待模糊效果完成
+coroutine.resume(coroutine.create(function()
+    wait(1.5) -- 等待模糊效果完成
+    blurEffect:Destroy() -- 销毁效果实例
+end))
 
 -- 定义一个函数，当按键被激活时执行
 local function onKeyActivated(inputObject)
@@ -2280,10 +2296,10 @@ function Library:Tween(Frame :GuiObject , TweenInfo: TweenInfo , Properties : {}
 	return Instance
 end;
 -----------------------------------UI.UI设置-------------------------------------------------------------------------------------
-function Library:CreateWindow(setup)
+function Library:Windowxgo(setup)
 	setup = setup or {};
 
-	setup.Title = setup.Title or "Window";
+	setup.Title = setup.Title or "Windowxgo";
 	setup.Keybind = setup.Keybind or Enum.KeyCode.LeftControl;
 	setup.Size = setup.Size or Library.SizeLibrary.Default;
 	setup.KeySystem = setup.KeySystem or false;
@@ -2298,9 +2314,7 @@ function Library:CreateWindow(setup)
 		setup.KeySystemInfo.OnLogin = setup.KeySystemInfo.OnLogin or function() wait( 0.1) return true end;
 
 	end
---   设置背景图片
---   Library.BackgroundImage = "rbxassetid://96996396016819" -- 在这里设置你的背景图片Asset ID
-
+	
 	local ScreenGui = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
 	local DropShadow = Instance.new("ImageLabel")
@@ -2316,12 +2330,7 @@ function Library:CreateWindow(setup)
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = ScreenGui
 	MainFrame.Active = true
---[[ MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 默认颜色，图片加载失败时显示
-    MainFrame.BackgroundImage = Library.BackgroundImage -- 设置背景图片
-    MainFrame.BackgroundTransparency = 1 -- 不透明
-    MainFrame.BackgroundTilePosition = UDim2.new(0, 0, 0, 0) -- 设置图片不重复
-    MainFrame.BackgroundTileSize = UDim2.new(1, 0, 1, 0) -- 设置图片铺满整个背景
---]] MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 	MainFrame.BackgroundColor3 = Library.Colors.Default
 	MainFrame.BackgroundTransparency = 0.250
 	MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
