@@ -4403,7 +4403,7 @@ function Library:CreateWindow(setup)
 			
 			InputBox.Name = "InputBox"
 		    InputBox.Parent = SliderBlock
-    		InputBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    		InputBox.BackgroundColor3 = Library.Colors.Default
     	    InputBox.BackgroundTransparency = 1.000
     	    InputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
     	    InputBox.BorderSizePixel = 0
