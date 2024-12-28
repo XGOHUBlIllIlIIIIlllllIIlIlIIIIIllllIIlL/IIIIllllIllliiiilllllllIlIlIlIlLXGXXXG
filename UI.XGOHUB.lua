@@ -4102,7 +4102,272 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
------- // 切换按钮[原ui]   ----------------------------------------------------------------------------------------
+------ // 切换按钮  ------------------------------------------------------------------------------------------
+local function CreateToggleBase(setup)
+    setup = setup or {};
+    setup.Title = setup.Title or "Toggle";
+    setup.Default = setup.Default or false;
+    setup.Callback = setup.Callback or function() end;
+
+    local ToggleBlock = Instance.new("Frame");
+    local DropShadow = Instance.new("ImageLabel");
+    local UIStroke = Instance.new("UIStroke");
+    local TextLabel = Instance.new("TextLabel");
+    local Block = Instance.new("Frame");
+    local UIStroke_2 = Instance.new("UIStroke");
+    local UICorner = Instance.new("UICorner");
+
+    ToggleBlock.Name = "ToggleBlock";
+    ToggleBlock.Parent = ScrollingFrame;
+    ToggleBlock.BackgroundColor3 = Library.Colors.Default;
+    ToggleBlock.BackgroundTransparency = 0.250;
+    ToggleBlock.BorderColor3 = Color3.fromRGB(0, 0, 0);
+    ToggleBlock.BorderSizePixel = 0;
+    ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight);
+    ToggleBlock.ZIndex = 10;
+
+    DropShadow.Name = "DropShadow";
+    DropShadow.Parent = ToggleBlock;
+    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    DropShadow.BackgroundTransparency = 1.000;
+    DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53);
+    DropShadow.Position = UDim2.new(0, -5, 0, -5);
+    DropShadow.Size = UDim2.new(1, 10, 1, 10);
+    DropShadow.ZIndex = 9;
+    DropShadow.Image = "rbxassetid://297694300";
+    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0);
+    DropShadow.ImageTransparency = 0.500;
+    DropShadow.ScaleType = Enum.ScaleType.Slice;
+    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902);
+    DropShadow.SliceScale = 0.050;
+
+    UIStroke.Transparency = 0.850;
+    UIStroke.Color = Color3.fromRGB(156, 156, 156);
+    UIStroke.Parent = ToggleBlock;
+
+    TextLabel.RichText = true;
+    TextLabel.Parent = ToggleBlock;
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5);
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    TextLabel.BackgroundTransparency = 1.000;
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0);
+    TextLabel.BorderSizePixel = 0;
+    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0);
+    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0);
+    TextLabel.ZIndex = 11;
+    TextLabel.Font = Enum.Font.Gotham;
+    TextLabel.Text = setup.Title;
+    TextLabel.TextColor3 = Library.Colors.TextColor;
+    TextLabel.TextScaled = true;
+    TextLabel.TextSize = 14.000;
+    TextLabel.TextStrokeColor3 = Library.Colors.TextColor;
+    TextLabel.TextStrokeTransparency = 0.950;
+    TextLabel.TextWrapped = true;
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left;
+
+    Block.Name = "Block";
+    Block.Parent = ToggleBlock;
+    Block.AnchorPoint = Vector2.new(1, 0.5);
+    Block.BackgroundColor3 = Library.Colors.Default;
+    Block.BackgroundTransparency = 0.500;
+    Block.BorderColor3 = Color3.fromRGB(0, 0, 0);
+    Block.BorderSizePixel = 0;
+    Block.Position = UDim2.new(0.980000019, 0, 0.5, 0);
+    Block.Size = UDim2.new(0, 35, 0.5, 0);
+    Block.ZIndex = 14;
+
+    UIStroke_2.Transparency = 0.850;
+    UIStroke_2.Color = Color3.fromRGB(156, 156, 156);
+    UIStroke_2.Parent = Block;
+
+    UICorner.CornerRadius = UDim.new(5, 100);
+    UICorner.Parent = Block;
+
+    return ToggleBlock, DropShadow, UIStroke, TextLabel, Block, UIStroke_2, UICorner;
+end
+
+------ // 切换按钮 A1 ------------------------------------------------------------------------------------------
+function Root:A1Toggle(setup)
+    local setup = setup or {};
+    local ToggleBlock, DropShadow, UIStroke, TextLabel, Block, UIStroke_2, UICorner = CreateToggleBase(setup);
+
+    local ValueBlock = Instance.new("Frame");
+    local UICorner_2 = Instance.new("UICorner");
+    local TriangleImage = Instance.new("ImageLabel");
+
+    ValueBlock.Name = "ValueBlock";
+    ValueBlock.Parent = Block;
+    ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5);
+    ValueBlock.BackgroundColor3 = Library.Colors.Hightlight;
+    ValueBlock.BackgroundTransparency = 1.000;
+    ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0);
+    ValueBlock.BorderSizePixel = 0;
+    ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0);
+    ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0);
+    ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY;
+    ValueBlock.ZIndex = 15;
+
+    UICorner_2.CornerRadius = UDim.new(5, 100);
+    UICorner_2.Parent = ValueBlock;
+
+    TriangleImage.Name = "Triangle";
+    TriangleImage.Parent = ValueBlock;
+    TriangleImage.AnchorPoint = Vector2.new(0.5, 0.5);
+    TriangleImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    TriangleImage.BackgroundTransparency = 1.000;
+    TriangleImage.Position = UDim2.new(0.5, 0, 0.5, 0);
+    TriangleImage.Size = UDim2.new(1, 0, 1, 0);
+    TriangleImage.Image = "rbxassetid://7733965118";
+    TriangleImage.ImageColor3 = Color3.fromRGB(255, 255, 255);
+    TriangleImage.ScaleType = Enum.ScaleType.Fit;
+
+    local Button = Instance.new("TextButton");
+    Button.Name = "Button";
+    Button.Parent = ToggleBlock;
+    Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    Button.BackgroundTransparency = 1.000;
+    Button.BorderColor3 = Color3.fromRGB(0, 0, 0);
+    Button.BorderSizePixel = 0;
+    Button.Size = UDim2.new(1, 0, 1, 0);
+    Button.ZIndex = 15;
+    Button.Font = Enum.Font.SourceSans;
+    Button.TextColor3 = Color3.fromRGB(0, 0, 0);
+    Button.TextSize = 14.000;
+    Button.TextTransparency = 1.000;
+
+    Library:MakeDrop(ToggleBlock, UIStroke, Library.Colors.Hightlight);
+
+    if setup.Tip then
+        WindowLibrary:AddToolTip(ToggleBlock, tostring(setup.Tip));
+    end;
+
+    local UILib = function(value)
+        if value then
+            Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+                Position = UDim2.new(0.75, 0, 0.5, 0),
+            });
+            TriangleImage.Rotation = 0;
+        else
+            Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+                Position = UDim2.new(0.25, 0, 0.5, 0),
+            });
+            TriangleImage.Rotation = 180;
+        end;
+        ValueBlock.BackgroundColor3 = value and Library.Colors.Hightlight or Library.Colors.Disable;
+    end;
+
+    UILib(setup.Default);
+
+    Button.MouseButton1Click:Connect(function()
+        setup.Default = not setup.Default;
+        UILib(setup.Default);
+        setup.Callback(setup.Default);
+    end);
+
+    local RootSkid = {};
+    function RootSkid:Value(Setup)
+        setup.Default = Setup;
+        UILib(setup.Default);
+        setup.Callback(setup.Default);
+    end;
+    function RootSkid:Visible(value)
+        ToggleBlock.Visible = value;
+    end;
+
+    return RootSkid;
+end
+
+------ // 切换按钮 A2 ------------------------------------------------------------------------------------------
+function Root:A2Toggle(setup)
+    local setup = setup or {};
+    local ToggleBlock, DropShadow, UIStroke, TextLabel, Block, UIStroke_2, UICorner = CreateToggleBase(setup);
+
+    local ValueBlock = Instance.new("Frame");
+    local UICorner_2 = Instance.new("UICorner");
+    local StateImage = Instance.new("ImageLabel");
+
+    ValueBlock.Name = "ValueBlock";
+    ValueBlock.Parent = Block;
+    ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5);
+    ValueBlock.BackgroundColor3 = Library.Colors.Highlight;
+    ValueBlock.BackgroundTransparency = 1.000;
+    ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0);
+    ValueBlock.BorderSizePixel = 0;
+    ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0);
+    ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0);
+    ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY;
+    ValueBlock.ZIndex = 15;
+
+    UICorner_2.CornerRadius = UDim.new(5, 100);
+    UICorner_2.Parent = ValueBlock;
+
+    StateImage.Name = "StateImage";
+    StateImage.Parent = ValueBlock;
+    StateImage.AnchorPoint = Vector2.new(0.5, 0.5);
+    StateImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    StateImage.BackgroundTransparency = 1.000;
+    StateImage.Position = UDim2.new(0.5, 0, 0.5, 0);
+    StateImage.Size = UDim2.new(1, 0, 1, 0);
+    StateImage.Image = "rbxassetid://7733771811"; -- Default off state image
+    StateImage.ImageColor3 = Color3.fromRGB(255, 255, 255);
+    StateImage.ScaleType = Enum.ScaleType.Fit;
+
+    local Button = Instance.new("TextButton");
+    Button.Name = "Button";
+    Button.Parent = ToggleBlock;
+    Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+    Button.BackgroundTransparency = 1.000;
+    Button.BorderColor3 = Color3.fromRGB(0, 0, 0);
+    Button.BorderSizePixel = 0;
+    Button.Size = UDim2.new(1, 0, 1, 0);
+    Button.ZIndex = 15;
+    Button.Font = Enum.Font.SourceSans;
+    Button.TextColor3 = Color3.fromRGB(0, 0, 0);
+    Button.TextSize = 14.000;
+    Button.TextTransparency = 1.000;
+
+    Library:MakeDrop(ToggleBlock, UIStroke, Library.Colors.Highlight);
+
+    if setup.Tip then
+        WindowLibrary:AddToolTip(ToggleBlock, tostring(setup.Tip));
+    end;
+
+    local UILib = function(value)
+        if value then
+            Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+                Position = UDim2.new(0.75, 0, 0.5, 0),
+            });
+            StateImage.Image = "rbxassetid://7733771811"; -- On state image
+        else
+            Library:Tween(ValueBlock, Library.TweenLibrary.SmallEffect, {
+                Position = UDim2.new(0.25, 0, 0.5, 0),
+            });
+            StateImage.Image = "rbxassetid://7734045100"; -- Off state image
+        end;
+        ValueBlock.BackgroundColor3 = value and Library.Colors.Highlight or Library.Colors.Disable;
+    end;
+
+    UILib(setup.Default);
+
+    Button.MouseButton1Click:Connect(function()
+        setup.Default = not setup.Default;
+        UILib(setup.Default);
+        setup.Callback(setup.Default);
+    end);
+
+    local RootSkid = {};
+    function RootSkid:Value(Setup)
+        setup.Default = Setup;
+        UILib(setup.Default);
+        setup.Callback(setup.Default);
+    end;
+    function RootSkid:Visible(value)
+        ToggleBlock.Visible = value;
+    end;
+
+    return RootSkid;
+end
+--[[---- // 切换按钮[原ui]   ----------------------------------------------------------------------------------------
         function Root:Toggle(setup)
 			setup = setup or {};
 
@@ -4458,6 +4723,7 @@ return ColorPickerSettings
 		    local ValueBlock = Instance.new("Frame") -- 滑块的值框
 		    local UICorner_2 = Instance.new("UICorner") -- 滑块值框的圆角效果
 		    local Button = Instance.new("TextButton") -- 按钮
+		    local StateImage = Instance.new("ImageLabel")
 		    
 			A2ToggleBlock.Name = "A2ToggleBlock"
 			A2ToggleBlock.Parent = ScrollingFrame
@@ -4525,31 +4791,30 @@ return ColorPickerSettings
 			UICorner.CornerRadius = UDim.new(5, 100)
 			UICorner.Parent = Block
 			
--- 设置ValueBlock的属性
-ValueBlock.Name = "ValueBlock"
-ValueBlock.Parent = Block
-ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
-ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
-ValueBlock.BackgroundTransparency = 1.000 -- 使背景透明
-ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ValueBlock.BorderSizePixel = 0
-ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
-ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
-ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
-ValueBlock.ZIndex = 15
+           -- 设置ValueBlock的属性
+            ValueBlock.Name = "ValueBlock"
+            ValueBlock.Parent = Block
+            ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
+            ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
+            ValueBlock.BackgroundTransparency = 1.000 -- 使背景透明
+            ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            ValueBlock.BorderSizePixel = 0
+            ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
+            ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
+            ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
+            ValueBlock.ZIndex = 15
 
--- 添加ImageLabel用于显示开关状态的图片
-local StateImage = Instance.new("ImageLabel")
-StateImage.Name = "StateImage"
-StateImage.Parent = ValueBlock
-StateImage.AnchorPoint = Vector2.new(0.5, 0.5)
-StateImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-StateImage.BackgroundTransparency = 1.000
-StateImage.Position = UDim2.new(0.5, 0, 0.5, 0)
-StateImage.Size = UDim2.new(1, 0, 1, 0)
-StateImage.Image = "rbxassetid://7733771811" -- 默认为关闭状态的图片
-StateImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-StateImage.ScaleType = Enum.ScaleType.Fit
+            -- 添加ImageLabel用于显示开关状态的图片
+            StateImage.Name = "StateImage"
+            StateImage.Parent = ValueBlock
+            StateImage.AnchorPoint = Vector2.new(0.5, 0.5)
+            StateImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            StateImage.BackgroundTransparency = 1.000
+            StateImage.Position = UDim2.new(0.5, 0, 0.5, 0)
+            StateImage.Size = UDim2.new(1, 0, 1, 0)
+            StateImage.Image = "rbxassetid://7733771811" -- 默认为关闭状态的图片
+            StateImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
+            StateImage.ScaleType = Enum.ScaleType.Fit
 
 			UICorner_2.CornerRadius = UDim.new(5, 100)
 			UICorner_2.Parent = ValueBlock
@@ -4573,36 +4838,23 @@ StateImage.ScaleType = Enum.ScaleType.Fit
 				WindowLibrary:AddToolTip(A2ToggleBlock , tostring(setup.Tip));
 			end;
 			
--- 更新图片大小以适应按钮大小
-local function updateImageSize()
-    local blockSize = Block.Size.X.Scale * Block.AbsoluteSize.X
-    local blockHeight = Block.Size.Y.Scale * Block.AbsoluteSize.Y
-    StateImage.Size = UDim2.new(blockSize / ValueBlock.AbsoluteSize.X, 0, blockHeight / ValueBlock.AbsoluteSize.Y, 0)
-end
-
--- 初始更新图片大小
-updateImageSize()
-
--- 监听ValueBlock大小变化以更新图片大小
-ValueBlock:GetPropertyChangedSignal("AbsoluteSize"):Connect(updateImageSize)
-
--- 定义UILib函数，用于更新滑块的状态
-local UILib = function(value)
-    if value then
-        Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
-            Position = UDim2.new(0.75, 0, 0.5, 0),
-        })
-        -- 更新图片为开启状态的图片
-        StateImage.Image = "rbxassetid://7733771811"
-    else
-        Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
-            Position = UDim2.new(0.25, 0, 0.5, 0),
-        })
-        -- 更新图片为关闭状态的图片
-        StateImage.Image = "rbxassetid://7734045100"
-    end;
-    ValueBlock.BackgroundColor3 = value and Library.Colors.Hightlight or Library.Colors.Disable
-end;
+            -- 定义UILib函数，用于更新滑块的状态
+            local UILib = function(value)
+                if value then
+                    Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
+                        Position = UDim2.new(0.75, 0, 0.5, 0),
+                    })
+                    -- 更新图片为开启状态的图片
+                    StateImage.Image = "rbxassetid://7733771811"
+                else
+                    Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
+                        Position = UDim2.new(0.25, 0, 0.5, 0),
+                    })
+                    -- 更新图片为关闭状态的图片
+                    StateImage.Image = "rbxassetid://7734045100"
+                end;
+                ValueBlock.BackgroundColor3 = value and Library.Colors.Hightlight or Library.Colors.Disable
+            end;
 
 			UILib(setup.Default);
 
@@ -4630,7 +4882,7 @@ end;
 
 			return RootSkid;
 		end;
------- // 输入框   ----------------------------------------------------------------------------------------
+--]]---- // 输入框   ----------------------------------------------------------------------------------------
 		function Root:Textbox(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or 'TextBox';
