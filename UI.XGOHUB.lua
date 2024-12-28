@@ -4554,7 +4554,9 @@ function Library:CreateWindow(setup)
 			Block.Name = "Block"
 			Block.Parent = SliderBlock
 			Block.AnchorPoint = Vector2.new(1, 0.5)
-			Block.BackgroundColor3 = Library.Colors.Default
+--			Block.BackgroundColor3 = Library.Colors.Default
+			Block.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 将背景颜色设置为白色
+            Block.BackgroundTransparency = 1 -- 设置背景透明度为1，即完全透明
 			Block.BackgroundTransparency = 0.500
 			Block.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Block.BorderSizePixel = 0
