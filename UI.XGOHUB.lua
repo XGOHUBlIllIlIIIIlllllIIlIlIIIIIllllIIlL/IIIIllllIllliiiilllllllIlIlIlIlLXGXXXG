@@ -3676,11 +3676,11 @@ function Library:CreateWindow(setup)
 		end;
 ------ // 颜色选择器   ----------------------------------------------------------------------------------------
 -- 颜色选择器
-function Root:ColorPicker(setup) -- by Throit
+function Root:ColorPicker(setup)
     setup = setup or {};
     setup.Title = setup.Title or "ColorPicker";
+    setup.Default = setup.Default or Color3.fromRGB(255, 0, 0);
     setup.Callback = setup.Callback or function() end;
-    setup.Color = setup.Color or Color3.fromRGB(255, 0, 0);
 
     local ColorPicker = Instance.new("Frame")
     local Title = Instance.new("TextLabel")
@@ -3695,6 +3695,7 @@ function Root:ColorPicker(setup) -- by Throit
     }
     local HexInput = Instance.new("TextBox")
 
+    -- Frame setup
     ColorPicker.Name = "ColorPicker"
     ColorPicker.Parent = ScrollingFrame
     ColorPicker.BackgroundColor3 = Library.Colors.Default
@@ -3704,6 +3705,7 @@ function Root:ColorPicker(setup) -- by Throit
     ColorPicker.Size = UDim2.new(0.99000001, 0, 0, 200)
     ColorPicker.ZIndex = 10
 
+    -- Title setup
     Title.Name = "Title"
     Title.Parent = ColorPicker
     Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3722,6 +3724,7 @@ function Root:ColorPicker(setup) -- by Throit
     Title.TextWrapped = true
     Title.TextXAlignment = Enum.TextXAlignment.Left
 
+    -- ColorDisplay setup
     ColorDisplay.Name = "ColorDisplay"
     ColorDisplay.Parent = ColorPicker
     ColorDisplay.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3731,9 +3734,10 @@ function Root:ColorPicker(setup) -- by Throit
     ColorDisplay.Position = UDim2.new(0.5, 0, 0.0500000007, 0)
     ColorDisplay.Size = UDim2.new(0.300000012, 0, 0.200000003, 0)
     ColorDisplay.Image = "rbxassetid://13333189485"
-    ColorDisplay.ImageColor3 = setup.Color
+    ColorDisplay.ImageColor3 = setup.Default
     ColorDisplay.ScaleType = Enum.ScaleType.Stretch
 
+    -- ColorPickerMain setup
     ColorPickerMain.Name = "ColorPickerMain"
     ColorPickerMain.Parent = ColorPicker
     ColorPickerMain.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3743,6 +3747,7 @@ function Root:ColorPicker(setup) -- by Throit
     ColorPickerMain.Position = UDim2.new(0.0449999999, 0, 0.25, 0)
     ColorPickerMain.Size = UDim2.new(0.904999971, 0, 0.454500019, 0)
 
+    -- ColorPickerSlider setup
     ColorPickerSlider.Name = "ColorPickerSlider"
     ColorPickerSlider.Parent = ColorPickerMain
     ColorPickerSlider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3752,6 +3757,7 @@ function Root:ColorPicker(setup) -- by Throit
     ColorPickerSlider.Position = UDim2.new(0, 0, 0.5, 0)
     ColorPickerSlider.Size = UDim2.new(1, 0, 0.075000003, 0)
 
+    -- ColorPickerSliderPoint setup
     ColorPickerSliderPoint.Name = "ColorPickerSliderPoint"
     ColorPickerSliderPoint.Parent = ColorPickerSlider
     ColorPickerSliderPoint.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3761,11 +3767,12 @@ function Root:ColorPicker(setup) -- by Throit
     ColorPickerSliderPoint.Position = UDim2.new(0, 0, 0.5, 0)
     ColorPickerSliderPoint.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
     ColorPickerSliderPoint.Image = "rbxassetid://96996396016819"
-    ColorPickerSliderPoint.ImageColor3 = Color3.fromRGB(255, 255, 255)
+    ColorPickerSliderPoint.ImageColor3 = setup.Default
     ColorPickerSliderPoint.ScaleType = Enum.ScaleType.Slice
     ColorPickerSliderPoint.SliceCenter = Rect.new(50, 50, 50, 50)
     ColorPickerSliderPoint.SliceScale = 1.0
 
+    -- RGBInputs setup
     for i, v in pairs(RGBInputs) do
         v.Name = i
         v.Parent = ColorPicker
@@ -3777,7 +3784,7 @@ function Root:ColorPicker(setup) -- by Throit
         v.Size = UDim2.new(0.25, 0, 0.05, 0)
         v.Font = Enum.Font.Gotham
         v.PlaceholderColor3 = Library.Colors.TextColor
-        v.Text = tostring(setup.Color[i]:clamp())
+        v.Text = tostring(setup.Default[i])
         v.TextColor3 = Library.Colors.TextColor
         v.TextSize = 12.000
         v.TextStrokeTransparency = 0.950
@@ -3785,13 +3792,14 @@ function Root:ColorPicker(setup) -- by Throit
         v.TextXAlignment = Enum.TextXAlignment.Right
 
         v:GetPropertyChangedSignal("Text"):Connect(function()
-            local value = tonumber(v.Text) or setup.Color[i]:clamp()
-            setup.Color = Color3.fromRGB(value, setup.Color.G, setup.Color.B)
+            local value = tonumber(v.Text) or setup.Default[i]
+            setup.Color = Color3.fromRGB(tonumber(RGBInputs.R.Text) or 255, tonumber(RGBInputs.G.Text) or 0, tonumber(RGBInputs.B.Text) or 0)
             ColorDisplay.ImageColor3 = setup.Color
             setup.Callback(setup.Color)
         end)
     end
 
+    -- HexInput setup
     HexInput.Name = "HexInput"
     HexInput.Parent = ColorPicker
     HexInput.BackgroundColor3 = Library.Colors.Default
@@ -3802,7 +3810,7 @@ function Root:ColorPicker(setup) -- by Throit
     HexInput.Size = UDim2.new(0.2, 0, 0.1, 0)
     HexInput.Font = Enum.Font.Gotham
     HexInput.PlaceholderColor3 = Library.Colors.TextColor
-    HexInput.Text = Color3.toHex(setup.Color)
+    HexInput.Text = Color3.toHex(setup.Default)
     HexInput.TextColor3 = Library.Colors.TextColor
     HexInput.TextSize = 12.000
     HexInput.TextStrokeTransparency = 0.950
@@ -3811,12 +3819,14 @@ function Root:ColorPicker(setup) -- by Throit
 
     HexInput:GetPropertyChangedSignal("Text"):Connect(function()
         local color = Color3.fromHex(HexInput.Text)
-        setup.Color = color or setup.Color
-        ColorDisplay.ImageColor3 = setup.Color
-        for i, v in pairs(RGBInputs) do
-            v.Text = tostring(setup.Color[i]:clamp())
+        if color then
+            setup.Color = color
+            ColorDisplay.ImageColor3 = setup.Color
+            for i, v in pairs(RGBInputs) do
+                v.Text = tostring(setup.Color[i])
+            end
+            setup.Callback(setup.Color)
         end
-        setup.Callback(setup.Color)
     end)
 
     return ColorPicker
