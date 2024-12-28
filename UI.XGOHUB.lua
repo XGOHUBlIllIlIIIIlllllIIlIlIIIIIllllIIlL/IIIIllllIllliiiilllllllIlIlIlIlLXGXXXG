@@ -3675,270 +3675,151 @@ function Library:CreateWindow(setup)
 			return RootSkid;
 		end;
 ------ // 颜色选择器   ----------------------------------------------------------------------------------------
-function Root:Colorpicker(setup)
-    setup = setup or {}
-    setup.Name = setup.Name or "Colorpicker"
-    setup.Default = setup.Default or Color3.fromRGB(255, 255, 255)
-    setup.Callback = setup.Callback or function() end
-    setup.Flag = setup.Flag or nil
-    setup.Save = setup.Save or false
+-- 颜色选择器
+function Root:ColorPicker(setup) -- by Throit
+    setup = setup or {};
+    setup.Title = setup.Title or "ColorPicker";
+    setup.Callback = setup.Callback or function() end;
+    setup.Color = setup.Color or Color3.fromRGB(255, 0, 0);
 
-    local Colorpicker = {
-        Value = setup.Default,
-        Toggled = false,
-        Type = "Colorpicker",
-        Save = setup.Save
+    local ColorPicker = Instance.new("Frame")
+    local Title = Instance.new("TextLabel")
+    local ColorDisplay = Instance.new("ImageLabel")
+    local ColorPickerMain = Instance.new("Frame")
+    local ColorPickerSlider = Instance.new("Frame")
+    local ColorPickerSliderPoint = Instance.new("ImageLabel")
+    local RGBInputs = {
+        R = Instance.new("TextBox"),
+        G = Instance.new("TextBox"),
+        B = Instance.new("TextBox")
     }
+    local HexInput = Instance.new("TextBox")
 
-    local function Create(Name, Properties, Children)
-        local Object = Instance.new(Name)
-        for i, v in next, Properties or {} do
-            Object[i] = v
-        end
-        for i, v in next, Children or {} do
-            v.Parent = Object
-        end
-        return Object
+    ColorPicker.Name = "ColorPicker"
+    ColorPicker.Parent = ScrollingFrame
+    ColorPicker.BackgroundColor3 = Library.Colors.Default
+    ColorPicker.BackgroundTransparency = 0.250
+    ColorPicker.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ColorPicker.BorderSizePixel = 0
+    ColorPicker.Size = UDim2.new(0.99000001, 0, 0, 200)
+    ColorPicker.ZIndex = 10
+
+    Title.Name = "Title"
+    Title.Parent = ColorPicker
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Position = UDim2.new(0.0199999996, 0, 0, 0)
+    Title.Size = UDim2.new(0.980000019, 0, 0.050000001, 0)
+    Title.Font = Enum.Font.Gotham
+    Title.Text = setup.Title
+    Title.TextColor3 = Library.Colors.TextColor
+    Title.TextScaled = true
+    Title.TextSize = 14.000
+    Title.TextStrokeColor3 = Library.Colors.TextColor
+    Title.TextStrokeTransparency = 0.950
+    Title.TextWrapped = true
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+
+    ColorDisplay.Name = "ColorDisplay"
+    ColorDisplay.Parent = ColorPicker
+    ColorDisplay.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ColorDisplay.BackgroundTransparency = 1.000
+    ColorDisplay.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ColorDisplay.BorderSizePixel = 0
+    ColorDisplay.Position = UDim2.new(0.5, 0, 0.0500000007, 0)
+    ColorDisplay.Size = UDim2.new(0.300000012, 0, 0.200000003, 0)
+    ColorDisplay.Image = "rbxassetid://13333189485"
+    ColorDisplay.ImageColor3 = setup.Color
+    ColorDisplay.ScaleType = Enum.ScaleType.Stretch
+
+    ColorPickerMain.Name = "ColorPickerMain"
+    ColorPickerMain.Parent = ColorPicker
+    ColorPickerMain.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ColorPickerMain.BackgroundTransparency = 1.000
+    ColorPickerMain.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ColorPickerMain.BorderSizePixel = 0
+    ColorPickerMain.Position = UDim2.new(0.0449999999, 0, 0.25, 0)
+    ColorPickerMain.Size = UDim2.new(0.904999971, 0, 0.454500019, 0)
+
+    ColorPickerSlider.Name = "ColorPickerSlider"
+    ColorPickerSlider.Parent = ColorPickerMain
+    ColorPickerSlider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ColorPickerSlider.BackgroundTransparency = 1.000
+    ColorPickerSlider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ColorPickerSlider.BorderSizePixel = 0
+    ColorPickerSlider.Position = UDim2.new(0, 0, 0.5, 0)
+    ColorPickerSlider.Size = UDim2.new(1, 0, 0.075000003, 0)
+
+    ColorPickerSliderPoint.Name = "ColorPickerSliderPoint"
+    ColorPickerSliderPoint.Parent = ColorPickerSlider
+    ColorPickerSliderPoint.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ColorPickerSliderPoint.BackgroundTransparency = 1.000
+    ColorPickerSliderPoint.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ColorPickerSliderPoint.BorderSizePixel = 0
+    ColorPickerSliderPoint.Position = UDim2.new(0, 0, 0.5, 0)
+    ColorPickerSliderPoint.Size = UDim2.new(0.200000003, 0, 0.200000003, 0)
+    ColorPickerSliderPoint.Image = "rbxassetid://96996396016819"
+    ColorPickerSliderPoint.ImageColor3 = Color3.fromRGB(255, 255, 255)
+    ColorPickerSliderPoint.ScaleType = Enum.ScaleType.Slice
+    ColorPickerSliderPoint.SliceCenter = Rect.new(50, 50, 50, 50)
+    ColorPickerSliderPoint.SliceScale = 1.0
+
+    for i, v in pairs(RGBInputs) do
+        v.Name = i
+        v.Parent = ColorPicker
+        v.BackgroundColor3 = Library.Colors.Default
+        v.BackgroundTransparency = 1.000
+        v.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        v.BorderSizePixel = 0
+        v.Position = UDim2.new(0.05, 0, 0.75, 0)
+        v.Size = UDim2.new(0.25, 0, 0.05, 0)
+        v.Font = Enum.Font.Gotham
+        v.PlaceholderColor3 = Library.Colors.TextColor
+        v.Text = tostring(setup.Color[i]:clamp())
+        v.TextColor3 = Library.Colors.TextColor
+        v.TextSize = 12.000
+        v.TextStrokeTransparency = 0.950
+        v.TextWrapped = true
+        v.TextXAlignment = Enum.TextXAlignment.Right
+
+        v:GetPropertyChangedSignal("Text"):Connect(function()
+            local value = tonumber(v.Text) or setup.Color[i]:clamp()
+            setup.Color = Color3.fromRGB(value, setup.Color.G, setup.Color.B)
+            ColorDisplay.ImageColor3 = setup.Color
+            setup.Callback(setup.Color)
+        end)
     end
 
-    local function AddThemeObject(Object, Type)
-        if not OrionLib.ThemeObjects[Type] then
-            OrionLib.ThemeObjects[Type] = {}
+    HexInput.Name = "HexInput"
+    HexInput.Parent = ColorPicker
+    HexInput.BackgroundColor3 = Library.Colors.Default
+    HexInput.BackgroundTransparency = 1.000
+    HexInput.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    HexInput.BorderSizePixel = 0
+    HexInput.Position = UDim2.new(0.75, 0, 0.75, 0)
+    HexInput.Size = UDim2.new(0.2, 0, 0.1, 0)
+    HexInput.Font = Enum.Font.Gotham
+    HexInput.PlaceholderColor3 = Library.Colors.TextColor
+    HexInput.Text = Color3.toHex(setup.Color)
+    HexInput.TextColor3 = Library.Colors.TextColor
+    HexInput.TextSize = 12.000
+    HexInput.TextStrokeTransparency = 0.950
+    HexInput.TextWrapped = true
+    HexInput.TextXAlignment = Enum.TextXAlignment.Right
+
+    HexInput:GetPropertyChangedSignal("Text"):Connect(function()
+        local color = Color3.fromHex(HexInput.Text)
+        setup.Color = color or setup.Color
+        ColorDisplay.ImageColor3 = setup.Color
+        for i, v in pairs(RGBInputs) do
+            v.Text = tostring(setup.Color[i]:clamp())
         end
-        table.insert(OrionLib.ThemeObjects[Type], Object)
-        Object[ReturnProperty(Object)] = OrionLib.Themes[OrionLib.SelectedTheme][Type]
-        return Object
-    end
-
-    local function ReturnProperty(Object)
-        if Object:IsA("Frame") or Object:IsA("TextButton") then
-            return "BackgroundColor3"
-        end
-        if Object:IsA("ScrollingFrame") then
-            return "ScrollBarImageColor3"
-        end
-        if Object:IsA("UIStroke") then
-            return "Color"
-        end
-        if Object:IsA("TextLabel") or Object:IsA("TextBox") then
-            return "TextColor3"
-        end
-        if Object:IsA("ImageLabel") or Object:IsA("ImageButton") then
-            return "ImageColor3"
-        end
-    end
-
-    local ColorSelection = Create("ImageLabel", {
-        Size = UDim2.new(0, 18, 0, 18),
-        Position = UDim2.new(select(3, Color3.toHSV(Colorpicker.Value))),
-        ScaleType = Enum.ScaleType.Fit,
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundTransparency = 1,
-        Image = "http://www.roblox.com/asset/?id=4805639000"
-    })
-
-    local HueSelection = Create("ImageLabel", {
-        Size = UDim2.new(0, 18, 0, 18),
-        Position = UDim2.new(0.5, 0, 1 - select(1, Color3.toHSV(Colorpicker.Value))),
-        ScaleType = Enum.ScaleType.Fit,
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundTransparency = 1,
-        Image = "http://www.roblox.com/asset/?id=4805639000"
-    })
-
-    local Color = Create("ImageLabel", {
-        Size = UDim2.new(1, -25, 1, 0),
-        Visible = false,
-        Image = "rbxassetid://4155801252"
-    }, {
-        Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
-        ColorSelection
-    })
-
-    local Hue = Create("Frame", {
-        Size = UDim2.new(0, 20, 1, 0),
-        Position = UDim2.new(1, -20, 0, 0),
-        Visible = false
-    }, {
-        Create("UIGradient", {
-            Rotation = 270,
-            Color = ColorSequence.new {
-                ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 4)),
-                ColorSequenceKeypoint.new(0.20, Color3.fromRGB(234, 255, 0)),
-                ColorSequenceKeypoint.new(0.40, Color3.fromRGB(21, 255, 0)),
-                ColorSequenceKeypoint.new(0.60, Color3.fromRGB(0, 255, 255)),
-                ColorSequenceKeypoint.new(0.80, Color3.fromRGB(0, 17, 255)),
-                ColorSequenceKeypoint.new(0.90, Color3.fromRGB(255, 0, 251)),
-                ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 0, 4))
-            }
-        }),
-        Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
-        HueSelection
-    })
-
-    local ColorpickerContainer = Create("Frame", {
-        Position = UDim2.new(0, 0, 0, 32),
-        Size = UDim2.new(1, 0, 1, -32),
-        BackgroundTransparency = 1,
-        ClipsDescendants = true
-    }, {
-        Hue,
-        Color,
-        Create("UIPadding", {
-            PaddingLeft = UDim.new(0, 35),
-            PaddingRight = UDim.new(0, 35),
-            PaddingBottom = UDim.new(0, 10),
-            PaddingTop = UDim.new(0, 17)
-        })
-    })
-
-    local Click = Create("TextButton", {
-        Size = UDim2.new(1, 0, 1, 0)
-    })
-
-    local ColorpickerBox = AddThemeObject(Create("RoundFrame", {
-        Color = Color3.fromRGB(255, 255, 255),
-        BorderSizePixel = 0,
-        CornerRadius = 4
-    }, {
-        Create("UICorner", {CornerRadius = UDim.new(0, 5)}),
-        Create("Stroke", {Thickness = 1})
-    }), "Main")
-
-    local ColorpickerFrame = AddThemeObject(Create("RoundFrame", {
-        Color = Color3.fromRGB(255, 255, 255),
-        BorderSizePixel = 0,
-        CornerRadius = 5
-    }, {
-        Create("UIPadding", {
-            PaddingLeft = UDim.new(0, 12),
-            PaddingRight = UDim.new(0, 12),
-            PaddingBottom = UDim.new(0, 10),
-            PaddingTop = UDim.new(0, 17)
-        }),
-        Create("Label", {
-            Text = setup.Name,
-            Font = Enum.Font.GothamBold,
-            Size = 15,
-            Color = Color3.fromRGB(255, 255, 255)
-        }),
-        ColorpickerBox,
-        Click,
-        Create("Frame", {
-            Size = UDim2.new(1, 0, 0, 1),
-            Position = UDim2.new(0, 0, 1, -1),
-            Name = "Line",
-            Visible = false
-        })
-    }), "Second")
-
-    local function UpdateColorPicker()
-        ColorpickerBox.BackgroundColor3 = Color3.fromHSV(ColorH, ColorS, ColorV)
-        Color.BackgroundColor3 = Color3.fromHSV(ColorH, 1, 1)
-        Colorpicker:Set(ColorpickerBox.BackgroundColor3)
-        setup.Callback(ColorpickerBox.BackgroundColor3)
-        SaveCfg(game.GameId)
-    end
-
-    local ColorH, ColorS, ColorV = 1, 1, 1
-    ColorH = 1 - (math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
-    ColorS = (math.clamp(ColorSelection.AbsolutePosition.X - Color.AbsolutePosition.X, 0, Color.AbsoluteSize.X) / Color.AbsoluteSize.X)
-    ColorV = 1 - (math.clamp(ColorSelection.AbsolutePosition.Y - Color.AbsolutePosition.Y, 0, Color.AbsoluteSize.Y) / Color.AbsoluteSize.Y)
-
-    Color.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            if ColorInput then
-                ColorInput:Disconnect()
-            end
-            ColorInput = RunService.RenderStepped:Connect(function()
-                local inputPosition = UserInputService:GetLastInputType() == Enum.UserInputType.Touch and input.Position or UserInputService:GetMouseLocation()
-                local ColorX = math.clamp((inputPosition.X - Color.AbsolutePosition.X) / Color.AbsoluteSize.X, 0, 1)
-                local ColorY = math.clamp((inputPosition.Y - Color.AbsolutePosition.Y) / Color.AbsoluteSize.Y, 0, 1)
-                ColorSelection.Position = UDim2.new(ColorX, 0, ColorY, 0)
-                ColorS = ColorX
-                ColorV = 1 - ColorY
-                UpdateColorPicker()
-            end)
-        end
+        setup.Callback(setup.Color)
     end)
 
-    Color.InputEnded:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            if ColorInput then
-                ColorInput:Disconnect()
-                ColorInput = nil
-                    end
-    end)
-
-    Click.MouseButton1Click:Connect(function()
-        Colorpicker.Toggled = not Colorpicker.Toggled
-        TweenService:Create(
-            ColorpickerFrame,
-            TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-            {Size = Colorpicker.Toggled and UDim2.new(1, 0, 0, 148) or UDim2.new(1, 0, 0, 38)}
-        ):Play()
-        Color.Visible = Colorpicker.Toggled
-        Hue.Visible = Colorpicker.Toggled
-        ColorpickerFrame.Line.Visible = Colorpicker.Toggled
-    end)
-
-    Hue.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            if HueInput then
-                HueInput:Disconnect()
-            end
-            HueInput = RunService.RenderStepped:Connect(function()
-                local inputPosition = UserInputService:GetLastInputType() == Enum.UserInputType.Touch and input.Position or UserInputService:GetMouseLocation()
-                local HueY = math.clamp((inputPosition.Y - Hue.AbsolutePosition.Y) / Hue.AbsoluteSize.Y, 0, 1)
-                HueSelection.Position = UDim2.new(0.5, 0, HueY, 0)
-                ColorH = 1 - HueY
-                UpdateColorPicker()
-            end)
-        end
-    end)
-
-    Hue.InputEnded:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            if HueInput then
-                HueInput:Disconnect()
-                HueInput = nil
-            end
-        end
-    end)
-
-    function Colorpicker:Set(Value)
-        Colorpicker.Value = Value
-        ColorpickerBox.BackgroundColor3 = Colorpicker.Value
-        setup.Callback(Colorpicker.Value)
-    end
-
-    Colorpicker:Set(Colorpicker.Value)
-    if setup.Flag then
-        OrionLib.Flags[setup.Flag] = Colorpicker
-    end
-
-    local RootSkid = {}
-
-    function RootSkid:Value(Setup)
-        ColorpickerBox.BackgroundColor3 = Setup
-        Colorpicker.Value = Setup
-        setup.Callback(Setup)
-        SaveCfg(game.GameId)
-    end
-
-    function RootSkid:Fire(...)
-        return setup.Callback(...)
-    end
-
-    function RootSkid:Set(Value)
-        Colorpicker:Set(Value)
-    end
-
-    function RootSkid:Visible(value)
-        ColorpickerFrame.Visible = value
-    end
-
-    return RootSkid
+    return ColorPicker
 end
 ------ // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
