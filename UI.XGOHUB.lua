@@ -4266,218 +4266,7 @@ function Library:CreateWindow(setup)
 
 			return RootSkid;
 		end;
---[[---- // 滑块   ----------------------------------------------------------------------------------------
-		function Root:Slider(setup)
-			setup = setup or {};
-			setup.Title = setup.Title or 'Slider';
-			setup.Min = setup.Min or 0;
-			setup.Max = setup.Max or 100;
-			setup.Default = setup.Default or setup.Min;
-			setup.Round = setup.Round or 0;
-			setup.Callback = setup.Callback or function() end;
-
-			local SliderBlock = Instance.new("Frame")
-			local DropShadow = Instance.new("ImageLabel")
-			local UIStroke = Instance.new("UIStroke")
-			local TextLabel = Instance.new("TextLabel")
-			local Block = Instance.new("Frame")
-			local UIStroke_2 = Instance.new("UIStroke")
-			local UICorner = Instance.new("UICorner")
-			local Move = Instance.new("Frame")
-			local UICorner_2 = Instance.new("UICorner")
-			local UIStroke_3 = Instance.new("UIStroke")
-			local ValueText = Instance.new("TextLabel")
-
-			SliderBlock.Name = "SliderBlock"
-			SliderBlock.Parent = ScrollingFrame
-			SliderBlock.BackgroundColor3 = Library.Colors.Default
-			SliderBlock.BackgroundTransparency = 0.250
-			SliderBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			SliderBlock.BorderSizePixel = 0
-			SliderBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
-			SliderBlock.ZIndex = 10
-
-			DropShadow.Name = "DropShadow"
-			DropShadow.Parent = SliderBlock
-			DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			DropShadow.BackgroundTransparency = 1.000
-			DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
-			DropShadow.Position = UDim2.new(0, -5, 0, -5)
-			DropShadow.Size = UDim2.new(1, 10, 1, 10)
-			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://297694300"
-			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-			DropShadow.ImageTransparency = 0.500
-			DropShadow.ScaleType = Enum.ScaleType.Slice
-			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-			DropShadow.SliceScale = 0.050
-
-			UIStroke.Transparency = 0.850
-			UIStroke.Color = Color3.fromRGB(156, 156, 156)
-			UIStroke.Parent = SliderBlock
-
-			TextLabel.RichText = true
-			TextLabel.Parent = SliderBlock
-			TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			TextLabel.BackgroundTransparency = 1.000
-			TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			TextLabel.BorderSizePixel = 0
-			TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-			TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
-			TextLabel.ZIndex = 11
-			TextLabel.Font = Enum.Font.Gotham
-			TextLabel.Text = setup.Title
-			TextLabel.TextColor3 = Library.Colors.TextColor
-			TextLabel.TextScaled = true
-			TextLabel.TextSize = 14.000
-			TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-			TextLabel.TextStrokeTransparency = 0.950
-			TextLabel.TextWrapped = true
-			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-
-			Block.Name = "Block"
-			Block.Parent = SliderBlock
-			Block.AnchorPoint = Vector2.new(1, 0.5)
-			Block.BackgroundColor3 = Library.Colors.Default
-			Block.BackgroundTransparency = 0.500
-			Block.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			Block.BorderSizePixel = 0
-			Block.Position = UDim2.new(0.980000019, 0, 0.649999976, 0)
-			Block.Size = UDim2.new(0, 95, 0.45, 0)
-			Block.ZIndex = 14
-
-			UIStroke_2.Transparency = 0.850
-			UIStroke_2.Color = Color3.fromRGB(156, 156, 156)
-			UIStroke_2.Parent = Block
-
-			UICorner.CornerRadius = UDim.new(0.300000012, 0)
-			UICorner.Parent = Block
-
-			Move.Name = "Move"
-			Move.Parent = Block
-			Move.AnchorPoint = Vector2.new(0.5, 0.5)
-			Move.BackgroundColor3 = Library.Colors.Hightlight
-			Move.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			Move.BorderSizePixel = 0
-			Move.Position = UDim2.new(0.5, 0, 0.5, 0)
-			Move.Size = UDim2.new(1.5, 0, 1.5, 0)
-			Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
-			Move.ZIndex = 15
-
-			UICorner_2.CornerRadius = UDim.new(1, 0)
-			UICorner_2.Parent = Move
-
-			UIStroke_3.Transparency = 0.850
-			UIStroke_3.Color = Color3.fromRGB(156, 156, 156)
-			UIStroke_3.Parent = Move
-
-			ValueText.Name = "ValueText"
-			ValueText.Parent = SliderBlock
-			ValueText.AnchorPoint = Vector2.new(0, 0.5)
-			ValueText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			ValueText.BackgroundTransparency = 1.000
-			ValueText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			ValueText.BorderSizePixel = 0
-			ValueText.Position = UDim2.new(0.0199999996, 0, 0.239999995, 0)
-			ValueText.Size = UDim2.new(0.964999974, 0, 0.25, 0)
-			ValueText.ZIndex = 11
-			ValueText.Font = Enum.Font.Gotham
-			ValueText.Text = tostring(setup.Default)
-			ValueText.TextColor3 = Library.Colors.TextColor
-			ValueText.TextScaled = true
-			ValueText.TextSize = 14.000
-			ValueText.TextStrokeColor3 = Library.Colors.TextColor
-			ValueText.TextStrokeTransparency = 0.950
-			ValueText.TextWrapped = true
-			ValueText.TextXAlignment = Enum.TextXAlignment.Right
-
-			local IsHold = false
-			local RoundNum = setup.Round;
-
-			Library:MakeDrop(SliderBlock , UIStroke , Library.Colors.Hightlight)
-
-
-			if setup.Tip then
-				WindowLibrary:AddToolTip(SliderBlock , tostring(setup.Tip));
-			end;
-
-			local function Rounding(num, numDecimalPlaces)
-				local mult = 10^(numDecimalPlaces or 0)
-				return math.floor(num * mult + 0.5) / mult
-			end
-
-			local UpdateSize = function()
-				if not WindowLibrary.Toggle then
-					return;
-				end
-
-				Block.Size = UDim2.new(0, (SliderBlock.AbsoluteSize.X / 2), 0.225, 0)
-			end;
-
-			Library:Tween(Move , Library.TweenLibrary.FastEffect,{
-				Position = UDim2.new((setup.Default - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
-			});
-
-			SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
-
-			local function update(Input)
-
-				local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
-				local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
-				local Value = Rounding(Main,RoundNum)
-				local PositionX = UDim2.fromScale(SizeScale, 1)
-				local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
-
-				Library:Tween(Move , Library.TweenLibrary.FastEffect,{
-					Position = UDim2.new(normalized, 0, 0.5, 0)
-				});
-
-				ValueText.Text = tostring(Value)
-
-				setup.Callback(Value)
-			end;
-
-			Block.InputBegan:Connect(function(Input)
-				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-					IsHold = true
-					update(Input)
-				end
-			end)
-
-			Block.InputEnded:Connect(function(Input)
-				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-					IsHold = false
-				end
-			end)
-
-			Library.UserInputService.InputChanged:Connect(function(Input)
-				if IsHold then
-					if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch)  then
-						update(Input)
-					end
-				end
-			end)
-
-			local RootSkid = {};
-
-			function RootSkid:Value(Setup)
-				setup.Default = Setup;
-
-				Library:Tween(Move , Library.TweenLibrary.FastEffect,{
-					Position = UDim2.new(setup.Default / setup.Max, 0, 0.5, 0)
-				});
-
-				ValueText.Text = tostring(setup.Default) .. '/' .. tostring(setup.Max)
-			end;
-
-			function RootSkid:Visible(value)
-				SliderBlock.Visible = value;
-			end;
-
-			return RootSkid;
-		end;
---]]---- // 滑块   ----------------------------------------------------------------------------------------
+------ // 滑块   ----------------------------------------------------------------------------------------
         function Root:Slider(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or 'Slider';
@@ -4493,11 +4282,8 @@ function Library:CreateWindow(setup)
 			local TextLabel = Instance.new("TextLabel")
 			local Block = Instance.new("Frame")
 			local UIStroke_2 = Instance.new("UIStroke")
-			local UICorner = Instance.new("UICorner")			
---			local Move = Instance.new("Frame")
-
-			local Move = Instance.new("ImageLabel") -- 将Frame改为ImageLabel以显示三角形
-			
+			local UICorner = Instance.new("UICorner")
+			local Move = Instance.new("ImageLabel") -- 将Frame改为ImageLabel
 			local UICorner_2 = Instance.new("UICorner")
 			local UIStroke_3 = Instance.new("UIStroke")
 			local ValueText = Instance.new("TextLabel")
@@ -4568,37 +4354,25 @@ function Library:CreateWindow(setup)
 
 			UICorner.CornerRadius = UDim.new(0.300000012, 0)
 			UICorner.Parent = Block
---[[
+
 			Move.Name = "Move"
 			Move.Parent = Block
 			Move.AnchorPoint = Vector2.new(0.5, 0.5)
-			Move.BackgroundColor3 = Library.Colors.Hightlight
+
+			Move.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 将背景颜色设置为白色
+			Move.BackgroundTransparency = 1 -- 设置背景透明度为1，即完全透明
 			Move.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Move.BorderSizePixel = 0
 			Move.Position = UDim2.new(0.5, 0, 0.5, 0)
 			Move.Size = UDim2.new(1.5, 0, 1.5, 0)
 			Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Move.ZIndex = 15
---]]
-
-Move.Name = "Move"
-Move.Parent = Block
-Move.AnchorPoint = Vector2.new(0.5, 0.5)
---Move.BackgroundColor3 = Library.Colors.Hightlight
-Move.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 将背景颜色设置为白色
-Move.BackgroundTransparency = 1 -- 设置背景透明度为1，即完全透明
-Move.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Move.BorderSizePixel = 0
-Move.Position = UDim2.new(0.5, 0, 0.5, 0)
-Move.Size = UDim2.new(1.5, 0, 1.5, 0)
-Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
-Move.ZIndex = 15
-Move.Image = "rbxassetid://96996396016819" -- 使用你的三角形图片的Asset ID
-Move.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 三角形的颜色
-Move.ImageTransparency = 0 -- 设置不透明
-Move.ScaleType = Enum.ScaleType.Slice
-Move.SliceCenter = Rect.new(50, 50, 50, 50) -- 根据你的图片调整切片中心
-Move.SliceScale = 1.0 -- 设置切片缩放
+			Move.Image = "rbxassetid://96996396016819" -- 使用你的图片的Asset ID
+			Move.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 颜色
+			Move.ImageTransparency = 0 -- 设置不透明
+			Move.ScaleType = Enum.ScaleType.Slice
+			Move.SliceCenter = Rect.new(50, 50, 50, 50) -- 根据图片调整切片中心
+			Move.SliceScale = 1.0 -- 设置切片缩放
 
 			UICorner_2.CornerRadius = UDim.new(1, 0)
 			UICorner_2.Parent = Move
@@ -4676,42 +4450,21 @@ Move.SliceScale = 1.0 -- 设置切片缩放
 			SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize);
 
 
-local function update(Input)
-    local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
-    local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
-    local Value = Rounding(Main, RoundNum)
-    local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
-
-    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-        Position = UDim2.new(normalized, 0, 0.5, 0)
-    });
-
-    ValueText.Text = tostring(Value)
-    InputBox.Text = tostring(Value) -- 更新输入框的值
-
-    currentSliderValue = Value -- 更新当前滑块的值
-    setup.Callback(Value)
-end;
-
-
-
---[[
 			local function update(Input)
+			    local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
+			    local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
+			    local Value = Rounding(Main, RoundNum)
+			    local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
 
-				local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
-				local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min;
-				local Value = Rounding(Main,RoundNum)
-				local PositionX = UDim2.fromScale(SizeScale, 1)
-     			local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
+			    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+			        Position = UDim2.new(normalized, 0, 0.5, 0)
+			    });
 
-				Library:Tween(Move , Library.TweenLibrary.FastEffect,{
-					Position = UDim2.new(normalized, 0, 0.5, 0)
-				});
+			    ValueText.Text = tostring(Value)
+			    InputBox.Text = tostring(Value) -- 更新输入框的值
 
-				ValueText.Text = tostring(Value)
-				InputBox.Text = tostring(Value) -- 更新输入框的值
-
-				setup.Callback(Value)
+			    currentSliderValue = Value -- 更新当前滑块的值
+			    setup.Callback(Value)
 			end;
 
 			Block.InputBegan:Connect(function(Input)
@@ -4724,37 +4477,16 @@ end;
 			Block.InputEnded:Connect(function(Input)
 				if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 					IsHold = false
-				end
+    				end
 			end)
 
-			Library.UserInputService.InputChanged:Connect(function(Input)
-				if IsHold then
-					if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch)  then
-						update(Input)
-					end
-				end
-			end)
---]]
-Block.InputBegan:Connect(function(Input)
-    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-        IsHold = true
-        update(Input)
-    end
-end)
-
-Block.InputEnded:Connect(function(Input)
-    if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-        IsHold = false
-    end
-end)
-
-Library.UserInputService.InputChanged:Connect(function(Input)
-    if IsHold then
-        if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch) then
-            update(Input)
-        end
-    end
-end)
+            Library.UserInputService.InputChanged:Connect(function(Input)
+                if IsHold then
+                    if (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch) then
+                        update(Input)
+                    end
+                end
+            end)
 
 			InputBox:GetPropertyChangedSignal("Text"):Connect(function()
 			        local textValue = tonumber(InputBox.Text) or setup.Default
