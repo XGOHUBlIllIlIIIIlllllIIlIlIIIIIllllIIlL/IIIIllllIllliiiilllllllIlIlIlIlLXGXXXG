@@ -4314,7 +4314,7 @@ end;
 			return RootSkid;
 		end;
 ------ // 切换按钮v2   ----------------------------------------------------------------------------------------
-		function Root:Toggle[2](setup)
+		function Root:A1Toggle(setup)
 			setup = setup or {};
 
 			setup.Title = setup.Title or "Toggle"
@@ -4322,7 +4322,7 @@ end;
 			setup.Callback = setup.Callback or function() end;
 
 			-- 创建UI元素
-		    local ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
+		    local A1ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
 		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
@@ -4333,17 +4333,17 @@ end;
 		    local UICorner_2 = Instance.new("UICorner") -- 滑块值框的圆角效果
 		    local Button = Instance.new("TextButton") -- 按钮
 		    
-			ToggleBlock.Name = "ToggleBlock"
-			ToggleBlock.Parent = ScrollingFrame
-			ToggleBlock.BackgroundColor3 = Library.Colors.Default
-			ToggleBlock.BackgroundTransparency = 0.250
-			ToggleBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			ToggleBlock.BorderSizePixel = 0
-			ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
-			ToggleBlock.ZIndex = 10
+			A1ToggleBlock.Name = "A1ToggleBlock"
+			A1ToggleBlock.Parent = ScrollingFrame
+			A1ToggleBlock.BackgroundColor3 = Library.Colors.Default
+			A1ToggleBlock.BackgroundTransparency = 0.250
+			A1ToggleBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			A1ToggleBlock.BorderSizePixel = 0
+			A1ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
+			A1ToggleBlock.ZIndex = 10
 
 			DropShadow.Name = "DropShadow"
-			DropShadow.Parent = ToggleBlock
+			DropShadow.Parent = A1ToggleBlock
 			DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			DropShadow.BackgroundTransparency = 1.000
 			DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
@@ -4359,10 +4359,10 @@ end;
 
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
-			UIStroke.Parent = ToggleBlock
+			UIStroke.Parent = A1ToggleBlock
 
 			TextLabel.RichText = true
-			TextLabel.Parent = ToggleBlock
+			TextLabel.Parent = A1ToggleBlock
 			TextLabel.AnchorPoint = Vector2.new(0, 0.5)
 			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			TextLabel.BackgroundTransparency = 1.000
@@ -4382,7 +4382,7 @@ end;
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 
 			Block.Name = "Block"
-			Block.Parent = ToggleBlock
+			Block.Parent = A1ToggleBlock
 			Block.AnchorPoint = Vector2.new(1, 0.5)
 			Block.BackgroundColor3 = Library.Colors.Default
 			Block.BackgroundTransparency = 0.500
@@ -4443,7 +4443,7 @@ TriangleImage.ScaleType = Enum.ScaleType.Fit
 			UICorner_2.Parent = ValueBlock
 
 			Button.Name = "Button"
-			Button.Parent = ToggleBlock
+			Button.Parent = A1ToggleBlock
 			Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Button.BackgroundTransparency = 1.000
 			Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -4455,10 +4455,10 @@ TriangleImage.ScaleType = Enum.ScaleType.Fit
 			Button.TextSize = 14.000
 			Button.TextTransparency = 1.000
 
-			Library:MakeDrop(ToggleBlock , UIStroke , Library.Colors.Hightlight)
+			Library:MakeDrop(A1ToggleBlock , UIStroke , Library.Colors.Hightlight)
 
 			if setup.Tip then
-				WindowLibrary:AddToolTip(ToggleBlock , tostring(setup.Tip));
+				WindowLibrary:AddToolTip(A1ToggleBlock , tostring(setup.Tip));
 			end;
 --[[
 			local UILib = function(value)
@@ -4519,7 +4519,7 @@ end;
 			end;
 
 			function RootSkid:Visible(value)
-				ToggleBlock.Visible = value;
+				A1ToggleBlock.Visible = value;
 			end;
 
 			return RootSkid;
