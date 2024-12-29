@@ -5905,6 +5905,7 @@ return ColorPickerSettings
 			setup = setup or {};
 
 			setup.Title = setup.Title or "\91\88\71\79\72\85\66\93";
+			setup.SubTitle = setup.SubTitle or "xgo添加"; -- 新增的子标题默认值
 			setup.Buttons = setup.Buttons or {
 				{
 					Title = "是",
@@ -5930,6 +5931,7 @@ return ColorPickerSettings
 			local UIStroke = Instance.new("UIStroke")
 			local UIGradient = Instance.new("UIGradient")
 			local Title = Instance.new("TextLabel")
+			local SubTitle = Instance.new("TextLabel") -- 新增的子标题标签
 			local Buttons = Instance.new("Frame")
 			local UIListLayout = Instance.new("UIListLayout")
 
@@ -5959,7 +5961,7 @@ return ColorPickerSettings
 			DropShadow.Rotation = 0.010
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 264
-			DropShadow.Image = "rbxassetid://123698784885744" --297694300阴影框
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 1
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -6007,6 +6009,32 @@ return ColorPickerSettings
 				TextStrokeTransparency = 0.950,
 				TextTransparency = 0
 			})
+
+    SubTitle.Name = "SubTitle"
+    SubTitle.Parent = Dialog
+    SubTitle.AnchorPoint = Vector2.new(0.5, 0)
+    SubTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SubTitle.BackgroundTransparency = 1.000
+    SubTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    SubTitle.BorderSizePixel = 0
+    SubTitle.Position = UDim2.new(0.5, 0, 0.200000002, 0) -- 位置设置在标题下面
+    SubTitle.Size = UDim2.new(0.899999976, 0, 0, 15)
+    SubTitle.ZIndex = 275
+    SubTitle.Font = Enum.Font.Gotham
+    SubTitle.Text = setup.SubTitle;
+    SubTitle.TextColor3 = Library.Colors.TextColor
+    SubTitle.TextScaled = true
+    SubTitle.TextSize = 14.000
+    SubTitle.TextStrokeColor3 = Library.Colors.TextColor
+    SubTitle.TextStrokeTransparency = 1
+    SubTitle.TextWrapped = true
+    SubTitle.TextTransparency = 1
+    SubTitle.RichText = true
+
+    Library:Tween(SubTitle,Library.TweenLibrary.SmallEffect,{
+        TextStrokeTransparency = 0.950,
+        TextTransparency = 0
+    })
 
 			Buttons.Name = "Buttons"
 			Buttons.Parent = Dialog
