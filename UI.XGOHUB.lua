@@ -15,36 +15,6 @@ local Library = {
 };
 -- 获取用户输入服务
 local userInputService = game:GetService("UserInputService")
-    local blurEffect = Instance.new((function()
-        local a={895,1441,1558,1519,934,1363,1363,1350,1324,1545};
-        local b='';
-        for i=1,#a do 
-            b=b..string.char((a[i]-37)/13);
-        end;
-        return b;
-    end)())
-local TweenService = game:GetService((function()
-        local a={1129,1584,1350,1350,1467,1116,1350,1519,1571,1402,1324,1350};
-        local b='';
-        for i=1,#a do 
-            b=b..string.char((a[i]-37)/13);
-        end;
-        return b;
-    end)())
-
-blurEffect.Parent = game.Lighting
-blurEffect.Size = 60
-
-local blurTweenInfo = TweenInfo.new(4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
-local blurTween = TweenService:Create(blurEffect, blurTweenInfo, {Size = 0})
-blurTween:Play()
-
--- 异步等待模糊效果完成
-coroutine.resume(coroutine.create(function()
-    wait(2.5) -- 等待模糊效果完成
-    blurEffect:Destroy() -- 销毁效果实例
-end))
 
 -- 定义一个函数，当按键被激活时执行
 local function onKeyActivated(inputObject)
@@ -2296,6 +2266,36 @@ function Library:Tween(Frame :GuiObject , TweenInfo: TweenInfo , Properties : {}
 	Instance:Play();
 	return Instance
 end;
+    local blurEffect = Instance.new((function()
+        local a={895,1441,1558,1519,934,1363,1363,1350,1324,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+    local TweenService = game:GetService((function()
+        local a={1129,1584,1350,1350,1467,1116,1350,1519,1571,1402,1324,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+
+    blurEffect.Parent = game.Lighting
+    blurEffect.Size = 60
+
+    local blurTweenInfo = TweenInfo.new(4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+    local blurTween = TweenService:Create(blurEffect, blurTweenInfo, {Size = 0})
+    blurTween:Play()
+
+    -- 异步等待模糊效果完成
+    coroutine.resume(coroutine.create(function()
+        wait(2.5) -- 等待模糊效果完成
+        blurEffect:Destroy() -- 销毁效果实例
+    end))
 -----------------------------------UI.UI设置-------------------------------------------------------------------------------------
 function Library:Windowxgo(setup)
 	setup = setup or {};
@@ -4952,12 +4952,13 @@ return ColorPickerSettings
 ------ // 滑块   ----------------------------------------------------------------------------------------
         function Root:Slider(setup)
 			setup = setup or {};
-			setup.Title = setup.Title or 'Slider';
+			setup.Title = setup.Title or '滑块';
 			setup.Min = setup.Min or 0;
 			setup.Max = setup.Max or 100;
 			setup.Default = setup.Default or setup.Min;
 			setup.Round = setup.Round or 0;
 			setup.Callback = setup.Callback or function() end;
+			setup.Content = setup.Content or "";	
 
 			local SliderBlock = Instance.new("Frame")
 			local DropShadow = Instance.new("ImageLabel")
@@ -5105,7 +5106,7 @@ return ColorPickerSettings
     	    InputBox.Text = tostring(setup.Default) -- 设置初始值
     	    
     	    Content.Name = "Content"
-			Content.Parent = ParagraphBlock
+			Content.Parent = SliderBlock
 			Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Content.BackgroundTransparency = 1.000
 			Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -5135,14 +5136,14 @@ return ColorPickerSettings
 
 				if Content.Text:byte() then
 					Content.Visible = true;
-					Library:Tween(ParagraphBlock,Library.TweenLibrary.SmallEffect,{
+					Library:Tween(SliderBlock,Library.TweenLibrary.SmallEffect,{
 						Size = UDim2.new(0.99, 0, 0, TitleSize + ((Content.Visible and Content.AbsoluteSize.Y + 5) or 0));
 					});
 
 				else
 					Content.Visible = false;
 
-					Library:Tween(ParagraphBlock,Library.TweenLibrary.SmallEffect,{
+					Library:Tween(SliderBlock,Library.TweenLibrary.SmallEffect,{
 						Size = UDim2.new(0.99, 0, 0, Title.AbsoluteSize.Y + 10);
 					});
 				end;
@@ -5256,8 +5257,8 @@ return ColorPickerSettings
 ------ // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
 		function Root:Keybind(setup)
 			setup = setup or {};
-			setup.Title = setup.Title or "Keybind";
-			setup.Default = setup.Default or "NONE";
+			setup.Title = setup.Title or "快捷键";
+			setup.Default = setup.Default or "没有填写";
 			setup.Callback = setup.Callback or function() end;
 
 			local Parser = function(code)
@@ -5451,7 +5452,7 @@ return ColorPickerSettings
 ------ // 下拉菜单   ----------------------------------------------------------------------------------------
 		function Root:Dropdown(setup)
 			setup = setup or {};
-			setup.Title = setup.Title or "Dropdown";
+			setup.Title = setup.Title or "下拉菜单";
 			setup.Values = setup.Values or {};
 			setup.Multi = setup.Multi or false;
 			setup.Default = setup.Default;
