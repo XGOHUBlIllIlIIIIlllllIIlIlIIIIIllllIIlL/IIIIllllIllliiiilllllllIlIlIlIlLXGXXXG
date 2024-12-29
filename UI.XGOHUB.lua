@@ -5905,7 +5905,7 @@ return ColorPickerSettings
 			setup = setup or {};
 
 			setup.Title = setup.Title or "\91\32\45\88\71\79\45\72\85\66\45\32\93";
---			setup.SubTitle = setup.SubTitle or "\91\32\45\88\71\79\45\72\85\66\45\32\93"; -- 新增的子标题默认值
+            setup.Content = setup.Content or "\91\32\45\88\71\79\45\72\85\66\45\32\93"; -- 允许外部传入内容 -- 新增的子标题默认值
 			setup.Buttons = setup.Buttons or {
 				{
 					Title = "是",
@@ -5931,7 +5931,6 @@ return ColorPickerSettings
 			local UIStroke = Instance.new("UIStroke")
 			local UIGradient = Instance.new("UIGradient")
 			local Title = Instance.new("TextLabel")
---			local SubTitle = Instance.new("TextLabel") -- 新增的子标题标签
             local Content = Instance.new("TextLabel") -- 新增的内容标签
 			local Buttons = Instance.new("Frame")
 			local UIListLayout = Instance.new("UIListLayout")
@@ -6010,59 +6009,32 @@ return ColorPickerSettings
 				TextStrokeTransparency = 0.950,
 				TextTransparency = 0
 			})
---[[
-    SubTitle.Name = "SubTitle"
-    SubTitle.Parent = Dialog
-    SubTitle.AnchorPoint = Vector2.new(0.5, 0)
-    SubTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    SubTitle.BackgroundTransparency = 1.000
-    SubTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    SubTitle.BorderSizePixel = 0
-    SubTitle.Position = UDim2.new(0.5, 0, 0.200000002, 0) 
-    SubTitle.Size = UDim2.new(0.899999976, 0, 0, 15)
-    SubTitle.ZIndex = 275
-    SubTitle.Font = Enum.Font.Gotham
-    SubTitle.Text = setup.SubTitle;
-    SubTitle.TextColor3 = Library.Colors.TextColor
-    SubTitle.TextScaled = true
-    SubTitle.TextSize = 14.000
-    SubTitle.TextStrokeColor3 = Library.Colors.TextColor
-    SubTitle.TextStrokeTransparency = 1
-    SubTitle.TextWrapped = true
-    SubTitle.TextTransparency = 1
-    SubTitle.RichText = true
-
-    Library:Tween(SubTitle,Library.TweenLibrary.SmallEffect,{
-        TextStrokeTransparency = 0.950,
-        TextTransparency = 0
-    })
---]]		
             
             Content.Name = "Content"
-    Content.Parent = Dialog
-    Content.AnchorPoint = Vector2.new(0.5, 0)
-    Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Content.BackgroundTransparency = 1.000
-    Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Content.BorderSizePixel = 0
-    Content.Position = UDim2.new(0.5, 0, 0.200000002, 0) -- 位置设置在标题下面
-    Content.Size = UDim2.new(0.899999976, 0, 0, 30)
-    Content.ZIndex = 275
-    Content.Font = Enum.Font.Gotham
-    Content.Text = setup.Content or "\91\32\45\88\71\79\45\72\85\66\45\32\93"; -- 允许外部传入内容
-    Content.TextColor3 = Library.Colors.TextColor
-    Content.TextScaled = true
-    Content.TextSize = 14.000
-    Content.TextStrokeColor3 = Library.Colors.TextColor
-    Content.TextStrokeTransparency = 1
-    Content.TextWrapped = true
-    Content.TextTransparency = 1
-    Content.RichText = true
+            Content.Parent = Dialog
+            Content.AnchorPoint = Vector2.new(0.5, 0)
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0.5, 0, 0.3000000059604645, 0)
+            Content.Size = UDim2.new(0.899999976, 0, 0, 30)
+            Content.ZIndex = 275
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content; -- 使用外部传入的内容
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextScaled = true
+            Content.TextSize = 14.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 1
+            Content.TextWrapped = true
+            Content.TextTransparency = 1
+            Content.RichText = true
 
-    Library:Tween(Content, Library.TweenLibrary.SmallEffect, {
-        TextStrokeTransparency = 0.950,
-        TextTransparency = 0
-    })
+            Library:Tween(Content, Library.TweenLibrary.SmallEffect, {
+                TextStrokeTransparency = 0.950,
+                TextTransparency = 0
+            })
             
             Buttons.Name = "Buttons"
 			Buttons.Parent = Dialog
