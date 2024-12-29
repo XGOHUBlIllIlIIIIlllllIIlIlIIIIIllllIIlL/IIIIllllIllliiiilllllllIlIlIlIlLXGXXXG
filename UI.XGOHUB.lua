@@ -6017,7 +6017,7 @@ return ColorPickerSettings
             Content.BackgroundTransparency = 1.000
             Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
             Content.BorderSizePixel = 0
-            Content.Position = UDim2.new(0.5, 0, 0.3000000059604645, 0)
+            Content.Position = UDim2.new(0.5, 0, 0.2000000059604645, 0)
             Content.Size = UDim2.new(0.899999976, 0, 0, 30)
             Content.ZIndex = 275
             Content.Font = Enum.Font.Gotham
@@ -6116,11 +6116,16 @@ return ColorPickerSettings
 				Library:Tween(UIStroke,Library.TweenLibrary.SmallEffect,{
 					Transparency = 1
 				})
-
+                -- 立即开始标题和内容标签的消失动画
 				Library:Tween(Title,Library.TweenLibrary.SmallEffect,{
 					TextStrokeTransparency = 1,
 					TextTransparency = 1
 				})
+
+                Library:Tween(Content, Library.TweenLibrary.SmallEffect, {
+                    TextStrokeTransparency = 1,
+                    TextTransparency = 1
+                })
 
 				task.delay(1,function()
 					Dialog:Destroy()
@@ -6300,7 +6305,8 @@ return ColorPickerSettings
 
 	CloseButton.MouseButton1Click:Connect(function()
 		WindowLibrary:Dialog({
-			Title = "-你要关闭脚本吗-关闭后不会隐藏,请选择",
+			Title = "-- 你要关闭脚本吗 --",
+			Content = "关闭后不会隐藏,请选择",
 			Buttons = {
 				{
 					Title = '执意关闭',
