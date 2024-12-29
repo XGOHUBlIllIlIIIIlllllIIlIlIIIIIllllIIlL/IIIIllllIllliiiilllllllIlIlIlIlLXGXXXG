@@ -4971,6 +4971,7 @@ return ColorPickerSettings
 			local UIStroke_3 = Instance.new("UIStroke")
 			local ValueText = Instance.new("TextLabel")
 			local InputBox = Instance.new("TextBox") -- 添加输入框
+			local Content = Instance.new("TextLabel")
 
 			SliderBlock.Name = "SliderBlock"
 			SliderBlock.Parent = ScrollingFrame
@@ -5019,7 +5020,7 @@ return ColorPickerSettings
 			TextLabel.TextStrokeTransparency = 0.950
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-
+			
 			Block.Name = "Block"
 			Block.Parent = SliderBlock
 			Block.AnchorPoint = Vector2.new(1, 0.5)
@@ -5102,6 +5103,50 @@ return ColorPickerSettings
     	    InputBox.TextWrapped = true
     	    InputBox.TextXAlignment = Enum.TextXAlignment.Right
     	    InputBox.Text = tostring(setup.Default) -- 设置初始值
+    	    
+    	    Content.Name = "Content"
+			Content.Parent = ParagraphBlock
+			Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Content.BackgroundTransparency = 1.000
+			Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			Content.BorderSizePixel = 0
+			Content.Position = UDim2.new(0, 5, 0, 21)
+			Content.Size = UDim2.new(1, 0, 0, 45)
+			Content.Visible = false
+			Content.ZIndex = 11
+			Content.Font = Enum.Font.Gotham
+			Content.Text = Setup.Content
+			Content.TextColor3 = Library.Colors.TextColor
+			Content.TextSize = 13.000
+			Content.TextStrokeColor3 = Library.Colors.TextColor
+			Content.TextStrokeTransparency = 0.950
+			Content.TextTransparency = 0.500
+			Content.TextWrapped = true
+			Content.TextXAlignment = Enum.TextXAlignment.Left
+			Content.TextYAlignment = Enum.TextYAlignment.Top
+			Content.RichText = true
+
+			local UpdateBlock = function()
+				local TitleSize = 14;
+				local MainSize = Library:GetTextSize(Content.Text,Content.TextSize,Content.Font);
+				local ContentSize = MainSize.Y;
+
+				Content.Size = UDim2.new(1, MainSize.X, 0, ContentSize + 5)
+
+				if Content.Text:byte() then
+					Content.Visible = true;
+					Library:Tween(ParagraphBlock,Library.TweenLibrary.SmallEffect,{
+						Size = UDim2.new(0.99, 0, 0, TitleSize + ((Content.Visible and Content.AbsoluteSize.Y + 5) or 0));
+					});
+
+				else
+					Content.Visible = false;
+
+					Library:Tween(ParagraphBlock,Library.TweenLibrary.SmallEffect,{
+						Size = UDim2.new(0.99, 0, 0, Title.AbsoluteSize.Y + 10);
+					});
+				end;
+			end;
 
 			local IsHold = false
 			local RoundNum = setup.Round;
@@ -5183,6 +5228,8 @@ return ColorPickerSettings
 			        end
 			    end)
 
+            UpdateBlock()
+            
 			local RootSkid = {};
 
 			function RootSkid:Value(Setup)
@@ -5197,6 +5244,11 @@ return ColorPickerSettings
 
 			function RootSkid:Visible(value)
 				SliderBlock.Visible = value;
+			end;
+			
+			function RootSkid:Content(Setup)
+				Content.Text = Setup
+				UpdateBlock()
 			end;
 
 			return RootSkid;
