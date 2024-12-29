@@ -4949,7 +4949,7 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
---[[---- // 滑块   ----------------------------------------------------------------------------------------
+------ // 滑块   ----------------------------------------------------------------------------------------
         function Root:Slider(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or '滑块';
@@ -4958,7 +4958,7 @@ return ColorPickerSettings
 			setup.Default = setup.Default or setup.Min;
 			setup.Round = setup.Round or 0;
 			setup.Callback = setup.Callback or function() end;
-			setup.Content = setup.Content or "";	
+--			setup.Content = setup.Content or "";	
 
 			local SliderBlock = Instance.new("Frame")
 			local DropShadow = Instance.new("ImageLabel")
@@ -4972,7 +4972,7 @@ return ColorPickerSettings
 			local UIStroke_3 = Instance.new("UIStroke")
 			local ValueText = Instance.new("TextLabel")
 			local InputBox = Instance.new("TextBox") -- 添加输入框
-			local Content = Instance.new("TextLabel")
+--			local Content = Instance.new("TextLabel")
 
 			SliderBlock.Name = "SliderBlock"
 			SliderBlock.Parent = ScrollingFrame
@@ -5104,7 +5104,7 @@ return ColorPickerSettings
     	    InputBox.TextWrapped = true
     	    InputBox.TextXAlignment = Enum.TextXAlignment.Right
     	    InputBox.Text = tostring(setup.Default) -- 设置初始值
-    	    
+-- 
     	    Content.Name = "Content"
 			Content.Parent = SliderBlock
 			Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -5116,7 +5116,7 @@ return ColorPickerSettings
 			Content.Visible = false
 			Content.ZIndex = 11
 			Content.Font = Enum.Font.Gotham
-			Content.Text = Setup.Content
+			Content.Text = setup.Content
 			Content.TextColor3 = Library.Colors.TextColor
 			Content.TextSize = 13.000
 			Content.TextStrokeColor3 = Library.Colors.TextColor
@@ -5125,29 +5125,7 @@ return ColorPickerSettings
 			Content.TextWrapped = true
 			Content.TextXAlignment = Enum.TextXAlignment.Left
 			Content.TextYAlignment = Enum.TextYAlignment.Top
-			Content.RichText = true
-
-			local UpdateBlock = function()
-				local TitleSize = 14;
-				local MainSize = Library:GetTextSize(Content.Text,Content.TextSize,Content.Font);
-				local ContentSize = MainSize.Y;
-
-				Content.Size = UDim2.new(1, MainSize.X, 0, ContentSize + 5)
-
-				if Content.Text:byte() then
-					Content.Visible = true;
-					Library:Tween(SliderBlock,Library.TweenLibrary.SmallEffect,{
-						Size = UDim2.new(0.99, 0, 0, TitleSize + ((Content.Visible and Content.AbsoluteSize.Y + 5) or 0));
-					});
-
-				else
-					Content.Visible = false;
-
-					Library:Tween(SliderBlock,Library.TweenLibrary.SmallEffect,{
-						Size = UDim2.new(0.99, 0, 0, Title.AbsoluteSize.Y + 10);
-					});
-				end;
-			end;
+			Content.RichText = true			
 
 			local IsHold = false
 			local RoundNum = setup.Round;
@@ -5229,6 +5207,48 @@ return ColorPickerSettings
 			        end
 			    end)
 
+local UpdateBlock = function()
+    local ContentTextSize = 14 -- 根据您的设计设置文本大小
+    local ContentText = Content.Text
+    local TextSize = Library:GetTextSize(ContentText, ContentTextSize, Content.Font) -- 假设Library中有这个函数来获取文本尺寸
+
+    -- 根据文本内容调整Content的大小
+    Content.Size = UDim2.new(1, 0, 0, TextSize + 10) -- 假设底部和顶部各有5的间距
+
+    -- 根据Content的可见性调整SliderBlock的大小
+    if Content.Visible or TextSize > 0 then -- 如果文本不为空，则视为可见
+        Library:Tween(SliderBlock, Library.TweenLibrary.SmallEffect, {
+            Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + TextSize + 20) -- 假设顶部和底部各有10的间距
+        })
+    else
+        Library:Tween(SliderBlock, Library.TweenLibrary.SmallEffect, {
+            Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + 10) -- 恢复原来大小
+        })
+    end
+end
+
+-- 在InputBox文本变化时调用UpdateBlock
+InputBox:GetPropertyChangedSignal("Text"):Connect(function()
+    local textValue = tonumber(InputBox.Text) or setup.Default
+    if textValue then
+        local normalized = (textValue - setup.Min) / (setup.Max - setup.Min)
+        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
+            Position = UDim2.new(normalized, 0, 0.5, 0)
+        })
+        ValueText.Text = tostring(textValue)
+        setup.Callback(textValue)
+        Content.Text = InputBox.Text -- 更新Content的文本
+        UpdateBlock() -- 调整SliderBlock的大小
+    end
+end)
+
+-- 在Content文本变化时调用UpdateBlock
+function RootSkid:Content(Setup)
+    Content.Text = Setup
+    UpdateBlock()
+end
+
+--            确保在滑块创建时也调用UpdateBlock来设置正确的大小
             UpdateBlock()
             
 			local RootSkid = {};
@@ -5245,6 +5265,7 @@ return ColorPickerSettings
 
 			function RootSkid:Visible(value)
 				SliderBlock.Visible = value;
+				UpdateBlock()			
 			end;
 			
 			function RootSkid:Content(Setup)
@@ -5254,308 +5275,7 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
---]]---- // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
-function Root:Slider(setup)
-    setup = setup or {};
-    setup.Title = setup.Title or '滑块';
-    setup.Min = setup.Min or 0;
-    setup.Max = setup.Max or 100;
-    setup.Default = setup.Default or setup.Min;
-    setup.Round = setup.Round or 0;
-    setup.Callback = setup.Callback or function() end;
-    setup.Content = setup.Content or "";	
-
-    local SliderBlock = Instance.new("Frame")
-    local DropShadow = Instance.new("ImageLabel")
-    local UIStroke = Instance.new("UIStroke")
-    local TextLabel = Instance.new("TextLabel")
-    local Block = Instance.new("Frame")
-    local UIStroke_2 = Instance.new("UIStroke")
-    local UICorner = Instance.new("UICorner")
-    local Move = Instance.new("ImageLabel") -- 将Frame改为ImageLabel
-    local UICorner_2 = Instance.new("UICorner")
-    local UIStroke_3 = Instance.new("UIStroke")
-    local ValueText = Instance.new("TextLabel")
-    local InputBox = Instance.new("TextBox") -- 添加输入框
-    local Content = Instance.new("TextLabel")
-
-    SliderBlock.Name = "SliderBlock"
-    SliderBlock.Parent = ScrollingFrame
-    SliderBlock.BackgroundColor3 = Library.Colors.Default
-    SliderBlock.BackgroundTransparency = 0.250
-    SliderBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    SliderBlock.BorderSizePixel = 0
-    SliderBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
-    SliderBlock.ZIndex = 10
-
-    DropShadow.Name = "DropShadow"
-    DropShadow.Parent = SliderBlock
-    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    DropShadow.BackgroundTransparency = 1.000
-    DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
-    DropShadow.Position = UDim2.new(0, -5, 0, -5)
-    DropShadow.Size = UDim2.new(1, 10, 1, 10)
-    DropShadow.ZIndex = 9
-    DropShadow.Image = "rbxassetid://297694300"
-    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-    DropShadow.ImageTransparency = 0.500
-    DropShadow.ScaleType = Enum.ScaleType.Slice
-    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-    DropShadow.SliceScale = 0.050
-
-    UIStroke.Transparency = 0.850
-    UIStroke.Color = Color3.fromRGB(156, 156, 156)
-    UIStroke.Parent = SliderBlock
-
-    TextLabel.RichText = true
-    TextLabel.Parent = SliderBlock
-    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.BackgroundTransparency = 1.000
-    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
-    TextLabel.ZIndex = 11
-    TextLabel.Font = Enum.Font.Gotham
-    TextLabel.Text = setup.Title
-    TextLabel.TextColor3 = Library.Colors.TextColor
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 14.000
-    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-    TextLabel.TextStrokeTransparency = 0.950
-    TextLabel.TextWrapped = true
-    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-	
-    Block.Name = "Block"
-    Block.Parent = SliderBlock
-    Block.AnchorPoint = Vector2.new(1, 0.5)
-    Block.BackgroundColor3 = Library.Colors.Default
-    Block.BackgroundTransparency = 0.500
-    Block.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Block.BorderSizePixel = 0
-    Block.Position = UDim2.new(0.980000019, 0, 0.649999976, 0)
-    Block.Size = UDim2.new(0, 95, 0.45, 0)
-    Block.ZIndex = 14
-
-    UIStroke_2.Transparency = 0.850
-    UIStroke_2.Color = Color3.fromRGB(156, 156, 156)
-    UIStroke_2.Parent = Block
-
-    UICorner.CornerRadius = UDim.new(0.300000012, 0)
-    UICorner.Parent = Block
-
-    Move.Name = "Move"
-    Move.Parent = Block
-    Move.AnchorPoint = Vector2.new(0.5, 0.5)
-
-    Move.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 将背景颜色设置为白色
-    Move.BackgroundTransparency = 1 -- 设置背景透明度为1，即完全透明
-    Move.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Move.BorderSizePixel = 0
-    Move.Position = UDim2.new(0.5, 0, 0.5, 0)
-    Move.Size = UDim2.new(1.5, 0, 1.5, 0)
-    Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
-    Move.ZIndex = 15
-    Move.Image = "rbxassetid://96996396016819" -- 使用你的图片的Asset ID
-    Move.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 颜色
-    Move.ImageTransparency = 0 -- 设置不透明
-    Move.ScaleType = Enum.ScaleType.Slice
-    Move.SliceCenter = Rect.new(50, 50, 50, 50) -- 根据图片调整切片中心
-    Move.SliceScale = 1.0 -- 设置切片缩放
-
-    UICorner_2.CornerRadius = UDim.new(1, 0)
-    UICorner_2.Parent = Move
-
-    UIStroke_3.Transparency = 0.850
-    UIStroke_3.Color = Color3.fromRGB(156, 156, 156)
-    UIStroke_3.Parent = Move
-
-    ValueText.Name = "ValueText"
-    ValueText.Parent = SliderBlock
-    ValueText.AnchorPoint = Vector2.new(0, 0.5)
-    ValueText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    ValueText.BackgroundTransparency = 1.000
-    ValueText.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    ValueText.BorderSizePixel = 0
-    ValueText.Position = UDim2.new(0.0199999996, 0, 0.239999995, 0)
-    ValueText.Size = UDim2.new(0.964999974, 0, 0.25, 0)
-    ValueText.ZIndex = 11
-    ValueText.Font = Enum.Font.Gotham
-    ValueText.Text = tostring(setup.Default)
-    ValueText.TextColor3 = Library.Colors.TextColor
-    ValueText.TextScaled = true
-    ValueText.TextSize = 14.000
-    ValueText.TextStrokeColor3 = Library.Colors.TextColor
-    ValueText.TextStrokeTransparency = 0.950
-    ValueText.TextWrapped = true
-    ValueText.TextXAlignment = Enum.TextXAlignment.Right
-	
-    InputBox.Name = "InputBox"
-    InputBox.Parent = SliderBlock
-    InputBox.BackgroundColor3 = Library.Colors.Default
-    InputBox.BackgroundTransparency = 1.000
-    InputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    InputBox.BorderSizePixel = 0
-    InputBox.Position = UDim2.new(0.25, 0, 0.4, 0) -- 输入框放置在滑块左侧
-    InputBox.Size = UDim2.new(0.180000007, 0, 0.400000006, 0)
-    InputBox.ZIndex = 11
-    InputBox.Font = Enum.Font.Gotham
-    InputBox.TextColor3 = Library.Colors.TextColor
-    InputBox.TextScaled = true
-    InputBox.TextSize = 14.000
-    InputBox.TextStrokeColor3 = Library.Colors.TextColor
-    InputBox.TextStrokeTransparency = 0.950
-    InputBox.TextWrapped = true
-    InputBox.TextXAlignment = Enum.TextXAlignment.Right
-    InputBox.Text = tostring(setup.Default) -- 设置初始值
-	
-    Content.Name = "Content"
-    Content.Parent = SliderBlock
-    Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Content.BackgroundTransparency = 1.000
-    Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Content.BorderSizePixel = 0
-    Content.Position = UDim2.new(0, 5, 0, 21)
-    Content.Size = UDim2.new(1, 0, 0, 45)
-    Content.Visible = false
-    Content.ZIndex = 11
-    Content.Font = Enum.Font.Gotham
-    Content.Text = setup.Content
-    Content.TextColor3 = Library.Colors.TextColor
-    Content.TextSize = 13.000
-    Content.TextStrokeColor3 = Library.Colors.TextColor
-    Content.TextStrokeTransparency = 0.950
-    Content.TextTransparency = 0.500
-    Content.TextWrapped = true
-    Content.TextXAlignment = Enum.TextXAlignment.Left
-    Content.TextYAlignment = Enum.TextYAlignment.Top
-    Content.RichText = true
-
-    local UpdateBlock = function()
-        local TitleSize = 14
-        local MainSize = Library:GetTextSize(Content.Text, Content.TextSize, Content.Font)
-        local ContentSize = MainSize.Y
-
-        Content.Size = UDim2.new(1, MainSize.X, 0, ContentSize + 5)
-
-        if Content.Text:byte() > 0 then
-            Content.Visible = true
-            Library:Tween(SliderBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, TitleSize + ((Content.Visible and Content.AbsoluteSize.Y + 5) or 0))
-            })
-        else
-            Content.Visible = false
-            Library:Tween(SliderBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + 10)
-            })
-        end
-    end
-
-    local IsHold = false
-    local RoundNum = setup.Round
-
-    Library:MakeDrop(SliderBlock, UIStroke, Library.Colors.Hightlight)
-
-    if setup.Tip then
-        WindowLibrary:AddToolTip(SliderBlock, tostring(setup.Tip))
-    end
-
-    local function Rounding(num, numDecimalPlaces)
-        local mult = 10^(numDecimalPlaces or 0)
-        return math.floor(num * mult + 0.5) / mult
-    end
-
-    local UpdateSize = function()
-        if not WindowLibrary.Toggle then
-            return
-        end
-
-        Block.Size = UDim2.new(0, (SliderBlock.AbsoluteSize.X / 2), 0.225, 0)
-    end
-
-    Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-        Position = UDim2.new((setup.Default - setup.Min) / (setup.Max - setup.Min), 0, 0.5, 0)
-    })
-
-    SliderBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(UpdateSize)
-
-    local function update(Input)
-        local SizeScale = math.clamp((((Input.Position.X) - Block.AbsolutePosition.X) / Block.AbsoluteSize.X), 0, 1)
-        local Main = ((setup.Max - setup.Min) * SizeScale) + setup.Min
-        local Value = Rounding(Main, RoundNum)
-        local normalized = (Value - setup.Min) / (setup.Max - setup.Min)
-
-        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-            Position = UDim2.new(normalized, 0, 0.5, 0)
-        })
-
-        ValueText.Text = tostring(Value)
-        InputBox.Text = tostring(Value) -- 更新输入框的值
-
-        local currentSliderValue = Value -- 更新当前滑块的值
-        setup.Callback(currentSliderValue)
-    end
-
-    Block.InputBegan:Connect(function(Input)
-        if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-            IsHold = true
-            update(Input)
-        end
-    end)
-
-    Block.InputEnded:Connect(function(Input)
-        if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
-            IsHold = false
-        end
-    end)
-
-    Library.UserInputService.InputChanged:Connect(function(Input)
-        if IsHold then
-            if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
-                update(Input)
-            end
-        end
-    end)
-
-    InputBox:GetPropertyChangedSignal("Text"):Connect(function()
-        local textValue = tonumber(InputBox.Text) or setup.Default
-        if textValue then
-            local normalized = (textValue - setup.Min) / (setup.Max - setup.Min)
-            Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-                Position = UDim2.new(normalized, 0, 0.5, 0)
-            })
-            ValueText.Text = tostring(textValue)
-            setup.Callback(textValue)
-        end
-    end)
-
-    UpdateBlock()
-
-    local RootSkid = {}
-
-    function RootSkid:Value(Setup)
-        setup.Default = Setup
-
-        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-            Position = UDim2.new(setup.Default / setup.Max, 0, 0.5, 0)
-        })
-
-        ValueText.Text = tostring(setup.Default) .. '/' .. tostring(setup.Max)
-    end
-
-    function RootSkid:Visible(value)
-        SliderBlock.Visible = value
-    end
-
-    function RootSkid:Content(Setup)
-        Content.Text = Setup
-        UpdateBlock()
-    end
-
-    return RootSkid
-end
---]]---- // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
+------ // 按钮绑定键<快捷键>   ----------------------------------------------------------------------------------------
 		function Root:Keybind(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "快捷键";
