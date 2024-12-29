@@ -42,7 +42,7 @@ blurTween:Play()
 
 -- 异步等待模糊效果完成
 coroutine.resume(coroutine.create(function()
-    wait(1.5) -- 等待模糊效果完成
+    wait(2.5) -- 等待模糊效果完成
     blurEffect:Destroy() -- 销毁效果实例
 end))
 
@@ -2299,7 +2299,7 @@ end;
 function Library:Windowxgo(setup)
 	setup = setup or {};
 
-	setup.Title = setup.Title or "Windowxgo";
+	setup.Title = setup.Title or "Window";
 	setup.Keybind = setup.Keybind or Enum.KeyCode.LeftControl;
 	setup.Size = setup.Size or Library.SizeLibrary.Default;
 	setup.KeySystem = setup.KeySystem or false;
@@ -6446,7 +6446,200 @@ return ColorPickerSettings
 	UIListLayout.Parent = NotificationBar
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 10)
-------------------------------------通知窗口-------------------------------------------------------------------------------------------------------------
+------------------------------------通知窗口1-------------------------------------------------------------------------------------------------------------
+    local A = game.CoreGui:FindFirstChild("ThunderScreen");
+       if A then A:Destroy(); end
+
+    local B = game:GetService("UserInputService")
+    local C = game:GetService("TweenService")
+    local D = {}
+    local C = game:GetService("TweenService")
+    local E = Instance.new("ScreenGui")
+    local F = Instance.new("Frame")
+    local G = Instance.new("UIListLayout")
+
+    E.Name = "E"
+    E.Parent = game.CoreGui
+    E.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    F.Name = "F"
+    F.Parent = E
+    F.AnchorPoint = Vector2.new(0.5, 0.5)
+    F.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    F.BackgroundTransparency = 1
+    F.Position = UDim2.new(1.2, 0, 0.0613496937, 0)
+    F.Size = UDim2.new(0, 1632, 0, 100)
+    G.Name = "G"
+    G.Parent = F
+    G.FillDirection = Enum.FillDirection.Vertical
+    G.SortOrder = Enum.SortOrder.LayoutOrder
+    G.Padding = UDim.new(0, 5)
+	-- 彩虹文本效果函数
+	local function RainbowText(text)
+		spawn(function()
+			local colors = {
+				Color3.fromRGB(255, 0, 0),
+				Color3.fromRGB(255, 127, 0),
+				Color3.fromRGB(255, 255, 0),
+				Color3.fromRGB(0, 255, 0),
+				Color3.fromRGB(0, 0, 255),
+				Color3.fromRGB(75, 0, 130),
+				Color3.fromRGB(148, 0, 211)
+			}
+			local colorIndex = 1
+
+			while true do
+				text.TextColor3 = colors[colorIndex]
+				colorIndex = (colorIndex % #colors) + 1
+				wait(0.7)
+			end
+		end)
+	end
+
+	function D:Notification(H, I, J, K)
+		if K == nil then
+			K = "86451637909512"
+		end
+		if J == nil then
+			J = 1
+		end
+		local L = Instance.new("Frame")
+
+		L.Name = "L"
+		L.Parent = F
+		L.BackgroundColor3 = Color3.fromRGB(35,35,35)
+		L.Size = UDim2.new(0, 0, 0, 0)
+
+		local M = Instance.new("UIStroke")
+        M.Thickness = 1 -- 设置边框厚度
+        M.Name = ""
+        M.Parent = L
+        M.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        M.LineJoinMode = Enum.LineJoinMode.Round
+        M.Transparency = 0 -- 设置边框透明度为不透明
+        -- 彩色边框效果函数--如果你会写，不建议让像我这样
+        local function ColorfulBorder()
+        local colors = {
+             Color3.fromRGB(255, 0, 0), -- 红色
+             Color3.fromRGB(0, 255, 0), -- 绿色
+             Color3.fromRGB(0, 0, 255), -- 蓝色
+             Color3.fromRGB(255, 255, 0), -- 黄色
+             Color3.fromRGB(255, 165, 0) -- 橙色
+        }
+        local colorIndex = 1
+
+        while true do
+            M.Color = colors[colorIndex]
+            colorIndex = (colorIndex % #colors) + 1
+          wait(0.7) -- 每1秒更换一次颜色
+        end
+        end
+        spawn(ColorfulBorder)
+
+		L:TweenSizeAndPosition(UDim2.new(0, 250-10, 0, 70),  UDim2.new(0.5, 0, 0.5,0), "Out", "Back", 0.3, true)
+
+		local N = Instance.new("UICorner")
+		local O = Instance.new("ImageLabel")
+		local P = Instance.new("TextLabel")
+		local Q = Instance.new("Frame")
+		local R = Instance.new("TextLabel")
+		
+		N.CornerRadius = UDim.new(0, 4)
+		N.Name = "N"
+		N.Parent = L
+	    O.Name = "O"
+		O.Parent = L
+		O.AnchorPoint = Vector2.new(0.5, 0.5)
+		O.BackgroundColor3 = Color3.fromRGB(225, 0, 255)
+		O.Position = UDim2.new(0.135999978, 0, 0.5, 0)
+		O.Size = UDim2.new(0, 50, 0, 50)
+		O.BackgroundTransparency = 1
+		O.Image = "http://www.roblox.com/asset/?id="..tostring(K)		
+		P.Name = "P"
+		P.Parent = L
+		P.BackgroundColor3 = Color3.fromRGB(225, 0, 255)
+		P.BackgroundTransparency = 1.000
+		P.Position = UDim2.new(0.25, 0, 0.25, 0)
+		P.Size = UDim2.new(0, 175, 0, 24)
+		P.Font = Enum.Font.GothamSemibold
+		P.TextColor3 = Color3.fromRGB(225, 0, 255)
+		P.TextSize = 13.000
+		P.Text = H
+		P.TextXAlignment = Enum.TextXAlignment.Left
+		Q.Name = "Q"
+		Q.Parent = L
+		Q.AnchorPoint = Vector2.new(0.5, 0.5)
+		Q.BackgroundColor3 = Color3.fromRGB(225, 0, 255)
+		Q.BackgroundTransparency = 1.000
+		Q.Position = UDim2.new(0.625999987, 0, 0.620000005, 0)
+		Q.Size = UDim2.new(0, 175, 0, 25)
+		R.Name = "R"
+		R.Parent = Q
+		R.Active = true
+		R.BackgroundColor3 = Color3.fromRGB(225, 0, 255)
+		R.BackgroundTransparency = 1.000
+		R.Size = UDim2.new(0, 175, 0, 25)
+		R.Font = Enum.Font.Gotham
+		R.Text = I
+		R.TextColor3 = Color3.fromRGB(225, 0, 255)
+		R.TextSize = 12.000
+		R.TextXAlignment = Enum.TextXAlignment.Left
+
+		-- 应用彩虹文本效果
+		RainbowText(P) -- 标题文本
+		RainbowText(R) -- 内容文本
+
+		repeat wait() until L.Size == UDim2.new(0, 250-10, 0, 70)
+
+		local S = Instance.new("Frame")
+		local T = Instance.new("UICorner")
+		local U = Instance.new("UIPadding")
+
+		S.Name = "S"
+		S.Parent = L
+		S.Active = true
+		S.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		S.BorderSizePixel = 0
+		S.Position = UDim2.new(0.0320000015, 0, 0.870000005, 0)
+		S.Size = UDim2.new(0, 236, 0, 3)		
+		T.Parent = S
+		T.CornerRadius = UDim.new(0, 4)
+		T.Name = ""
+		U.Parent = F
+		U.PaddingLeft = UDim.new(0, 15)
+		U.PaddingTop = UDim.new(0, 15)
+		C:Create(
+			S,
+			TweenInfo.new(tonumber(J), Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+			{Size = UDim2.new(0, 0, 0, 3)} -- UDim2.new(0, 128, 0, 25)
+		):Play()
+		delay(tonumber(J),function()
+			C:Create(
+				O,
+				TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+				{ImageTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+			):Play()
+			C:Create(
+				R,
+				TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+				{TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+			):Play()
+			C:Create(
+				P,
+				TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut),
+				{TextTransparency = 1} -- UDim2.new(0, 128, 0, 25)
+			):Play()
+			wait(0.3)
+			C:Create(
+				L,
+				TweenInfo.new(0.4, Enum.EasingStyle.Quart, Enum.EasingDirection.InOut),
+				{Size = UDim2.new(0, 0, 0, 70)} -- UDim2.new(0, 128, 0, 25)
+			):Play()
+			wait(0.3)
+			L:Destroy()
+		end
+		)
+	end
+------------------------------------通知窗口2-------------------------------------------------------------------------------------------------------------
 	function WindowLibrary:Notify(setup)
 		setup = setup or {};
 		setup.Title = setup.Title or "Norification";
