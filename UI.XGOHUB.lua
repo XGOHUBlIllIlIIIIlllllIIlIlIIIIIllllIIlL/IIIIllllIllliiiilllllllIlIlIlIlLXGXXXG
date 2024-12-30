@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 22
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -5256,6 +5256,7 @@ return ColorPickerSettings
         function Root:Slider(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or '滑块';
+			setup.Content = setup.Content or "";
 			setup.Min = setup.Min or 0;
 			setup.Max = setup.Max or 100;
 			setup.Default = setup.Default or setup.Min;
@@ -5266,6 +5267,7 @@ return ColorPickerSettings
 			local DropShadow = Instance.new("ImageLabel")
 			local UIStroke = Instance.new("UIStroke")
 			local TextLabel = Instance.new("TextLabel")
+			local Content = Instance.new("TextLabel")
 			local Block = Instance.new("Frame")
 			local UIStroke_2 = Instance.new("UIStroke")
 			local UICorner = Instance.new("UICorner")
@@ -5322,6 +5324,28 @@ return ColorPickerSettings
 			TextLabel.TextStrokeTransparency = 0.950
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+			
+			Content.Name = "Content"
+            Content.Parent = SliderBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true			
 			
 			Block.Name = "Block"
 			Block.Parent = SliderBlock
@@ -5485,8 +5509,35 @@ return ColorPickerSettings
 			            setup.Callback(textValue)
 			        end
 			    end)
+			
+			local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                end
+
+                SliderBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+            end
+            UpdateBlock() -- 初始调用以设置正确的大小
 			    
 			local RootSkid = {};
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:Value(Setup)
 				setup.Default = Setup;
@@ -5496,6 +5547,7 @@ return ColorPickerSettings
 				});
 
 				ValueText.Text = tostring(setup.Default) .. '/' .. tostring(setup.Max)
+				UpdateBlock()
 			end;
 
 			function RootSkid:Visible(value)
