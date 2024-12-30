@@ -3748,7 +3748,6 @@ function Root:Seperator(Setup)
     end)
 
     function Seperator:SetText(Value)
-        local Value = Value or "Seperator"
         SeperatorLabel.Text = Value
     end
 
