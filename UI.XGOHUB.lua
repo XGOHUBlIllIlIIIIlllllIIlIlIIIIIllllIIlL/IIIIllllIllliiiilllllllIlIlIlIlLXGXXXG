@@ -165,27 +165,18 @@ Library.Icons = { -- 图片/常用图片
 	["右对齐"] = "rbxassetid://7733663582",	["文件夹"] = "rbxassetid://7733799185",
 	["无穷大"] = "rbxassetid://7733964640", ["右上角"] = "rbxassetid://7733764915",
 	["上右角"] = "rbxassetid://7733764680",	["左上角"] = "rbxassetid://7733764536",
-	["右下角"] = "rbxassetid://7733764605",	["左下角"] = "rbxassetid://7733764448",
+	["右下角1"] = "rbxassetid://7733764605", ["左下角"] = "rbxassetid://7733764448",
 	["首选项"] = "rbxassetid://8997383275",	["安全帽"] = "rbxassetid://7733955850",
 	["荧光笔"] = "rbxassetid://7743868648", ["自行车"] = "rbxassetid://7733678330",
-	["服务器"] = "rbxassetid://7734053426",
-	["阴影框"] = "rbxassetid://297694300",
-	["笔工具"] = "rbxassetid://7734022041",
-	["显示器"] = "rbxassetid://7734002839",
-	["删除线"] = "rbxassetid://7734068425",
-	["麦克风"] = "rbxassetid://7743869805",
-	["瞄准器"] = "rbxassetid://7733765307",
-	["扩音器"] = "rbxassetid://7733993049",
-	["龙卷风"] = "rbxassetid://7743873633",
-	["二维码"] = "rbxassetid://7743871575",
-	["图书馆"] = "rbxassetid://7743869054",
-	["充电中"] = "rbxassetid://7734021231",
-	["左下角"] = "rbxassetid://7733764327",
-	["信号低"] = "rbxassetid://8997387189",
-	["三角形"] = "rbxassetid://7743874367",
-	["侧边栏"] = "rbxassetid://7734058260",
-	["西格玛"] = "rbxassetid://7734058345",
-	["云关闭"] = "rbxassetid://7733745572",
+	["服务器"] = "rbxassetid://7734053426", ["阴影框"] = "rbxassetid://297694300",
+	["笔工具"] = "rbxassetid://7734022041",	["显示器"] = "rbxassetid://7734002839",
+	["删除线"] = "rbxassetid://7734068425", ["麦克风"] = "rbxassetid://7743869805",
+	["瞄准器"] = "rbxassetid://7733765307",	["扩音器"] = "rbxassetid://7733993049",
+	["龙卷风"] = "rbxassetid://7743873633",	["二维码"] = "rbxassetid://7743871575",
+	["图书馆"] = "rbxassetid://7743869054", ["充电中"] = "rbxassetid://7734021231",
+	["左下角1"] = "rbxassetid://7733764327", ["信号低"] = "rbxassetid://8997387189",
+	["三角形"] = "rbxassetid://7743874367",	["侧边栏"] = "rbxassetid://7734058260",
+	["西格玛"] = "rbxassetid://7734058345", ["云关闭"] = "rbxassetid://7733745572",
 	["收件箱"] = "rbxassetid://7733964370",
 	["礼品卡"] = "rbxassetid://7733945018",
 	["摄像头"] = "rbxassetid://7743877896",
@@ -1749,6 +1740,14 @@ Library.Colors = {
         Default = Color3.fromRGB(70, 30, 20), -- 优雅深棕
         Disable = Color3.fromRGB(200, 160, 120), -- 优雅浅棕
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
+    }
+                   end;
+    function Library.Theme:ChineseNewYear()
+    Library.Colors = { 
+        Highlight = Color3.fromRGB(255, 0, 0), -- 红色，代表喜庆和好运
+        Default = Color3.fromRGB(255, 165, 0), -- 橙色，代表活力和繁荣
+        Disable = Color3.fromRGB(255, 215, 205), -- 浅红色，代表温和和吉祥
+        TextColor = Color3.fromRGB(0, 0, 0), -- 黑色，用于文本，保持清晰可读
     }
 end;
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
