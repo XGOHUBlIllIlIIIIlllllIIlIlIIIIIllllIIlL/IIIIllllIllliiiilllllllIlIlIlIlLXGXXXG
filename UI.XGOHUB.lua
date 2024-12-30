@@ -1366,7 +1366,7 @@ Library.Colors = {
 		TextColor = Color3.fromRGB(234, 234, 234),
 	}
                   end;
-    function Library.Theme:Discord()
+    function Library.Theme:Discord1()
 	Library.Colors = { 
         Hightlight = Color3.fromRGB(0, 115, 255),
 		Default = Color3.fromRGB(198, 211, 229),
@@ -1382,7 +1382,7 @@ Library.Colors = {
 		TextColor = Color3.fromRGB(204, 204, 204),
 	}
                   end;
-    function Library.Theme:Discord()
+    function Library.Theme:Discord2()
 	Library.Colors = { 
         Hightlight = Color3.fromRGB(90,212,176),
 		Default = Color3.fromRGB(22,25,29),
@@ -1742,21 +1742,21 @@ Library.Colors = {
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
                    end;
-    function Library.Theme:Chinesenewyear()
+    function Library.Theme:ChineseNewYear()
     Library.Colors = { 
-        Highlight = Color3.fromRGB(255, 0, 0), -- 红色，代表喜庆和好运
+        Hightlight = Color3.fromRGB(255, 0, 0), -- 红色，代表喜庆和好运
         Default = Color3.fromRGB(255, 165, 0), -- 橙色，代表活力和繁荣
         Disable = Color3.fromRGB(255, 215, 205), -- 浅红色，代表温和和吉祥
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色，用于文本，保持清晰可读
     }
                    end;
-    function Library.Theme:Randomcolor()
+    function Library.Theme:RandomColor()
     local randomColor = function()
         return Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
     end
 
     Library.Colors = { 
-        Highlight = randomColor(), -- 随机高亮色
+        Hightlight = randomColor(), -- 随机高亮色
         Default = randomColor(), -- 随机默认色
         Disable = randomColor(), -- 随机禁用色
         TextColor = randomColor() -- 随机文本色
