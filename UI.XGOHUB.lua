@@ -1,5 +1,5 @@
 -- 更新：延迟修复与主题更新 --
-
+-- 这不是 hyprland --
 -- UI.XGO修改更新 --
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -4374,7 +4374,7 @@ function Root:Button(setup)
         TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
     else
         Description.Visible = false
-        TotalHeight = TotalHeight + 10 -- 如果没有描述，增加额外的高度
+        TotalHeight = TotalHeight + 20 -- 如果没有描述，增加额外的高度
     end
 
     ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
