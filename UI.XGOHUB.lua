@@ -4232,7 +4232,7 @@ function Root:Button(setup)
     ButtonBlock.BackgroundTransparency = 0.250
     ButtonBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
     ButtonBlock.BorderSizePixel = 0
-    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, 24)
+    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
     ButtonBlock.ZIndex = 10
 
     DropShadow.Name = "DropShadow"
@@ -4260,7 +4260,7 @@ function Root:Button(setup)
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
     TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(0, 5, 0, 10)
+    TextLabel.Position = UDim2.new(0, 5, 0, 12)
     TextLabel.Size = UDim2.new(1, 0, 0, 14)
     TextLabel.ZIndex = 11
     TextLabel.Font = Enum.Font.Gotham
