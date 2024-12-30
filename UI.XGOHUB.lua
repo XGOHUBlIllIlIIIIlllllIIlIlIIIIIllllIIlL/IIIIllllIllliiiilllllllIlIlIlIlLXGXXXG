@@ -4204,7 +4204,7 @@ function Root:Button(setup)
     local TextLabel = Instance.new("TextLabel")
     local Description = Instance.new("TextLabel")
     local Arrow = Instance.new("ImageLabel")
-    local Button = Instance.new("TextButton")
+    local Button = Instance.new("TextButton")            
 
     ButtonBlock.Name = "ButtonBlock"
     ButtonBlock.Parent = ScrollingFrame
@@ -4212,7 +4212,7 @@ function Root:Button(setup)
     ButtonBlock.BackgroundTransparency = 0.250
     ButtonBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
     ButtonBlock.BorderSizePixel = 0
-    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
+    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, 24)
     ButtonBlock.ZIndex = 10
 
     DropShadow.Name = "DropShadow"
