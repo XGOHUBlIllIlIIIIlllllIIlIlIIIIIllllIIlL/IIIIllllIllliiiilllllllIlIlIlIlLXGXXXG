@@ -1749,6 +1749,18 @@ Library.Colors = {
         Disable = Color3.fromRGB(255, 215, 205), -- 浅红色，代表温和和吉祥
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色，用于文本，保持清晰可读
     }
+                   end;
+    function Library.Theme:RandomColor()
+    local randomColor = function()
+        return Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
+    end
+
+    Library.Colors = { 
+        Highlight = randomColor(), -- 随机高亮色
+        Default = randomColor(), -- 随机默认色
+        Disable = randomColor(), -- 随机禁用色
+        TextColor = randomColor() -- 随机文本色
+    }
 end;
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
