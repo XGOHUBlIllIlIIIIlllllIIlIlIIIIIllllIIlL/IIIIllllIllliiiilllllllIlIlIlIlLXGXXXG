@@ -4190,11 +4190,11 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
---距离]]
+]]
 function Root:Button(setup)
     setup = setup or {};
     setup.Title = setup.Title or "Button";
-    setup.Description = setup.Description or "";
+    setup.Content = setup.Content or ""; -- 添加Content属性
     setup.Callback = setup.Callback or function() end;
     setup.Tip = setup.Tip or nil;
 
@@ -4202,9 +4202,9 @@ function Root:Button(setup)
     local DropShadow = Instance.new("ImageLabel")
     local UIStroke = Instance.new("UIStroke")
     local TextLabel = Instance.new("TextLabel")
-    local Description = Instance.new("TextLabel")
+    local ContentLabel = Instance.new("TextLabel") -- 新增显示Content的TextLabel
     local Arrow = Instance.new("ImageLabel")
-    local Button = Instance.new("TextButton")            
+    local Button = Instance.new("TextButton")
 
     ButtonBlock.Name = "ButtonBlock"
     ButtonBlock.Parent = ScrollingFrame
@@ -4212,7 +4212,7 @@ function Root:Button(setup)
     ButtonBlock.BackgroundTransparency = 0.250
     ButtonBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
     ButtonBlock.BorderSizePixel = 0
-    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, 24)
+    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
     ButtonBlock.ZIndex = 10
 
     DropShadow.Name = "DropShadow"
@@ -4254,27 +4254,33 @@ function Root:Button(setup)
     TextLabel.TextXAlignment = Enum.TextXAlignment.Left
     TextLabel.RichText = true
 
-    Description.Name = "Description"
-    Description.Parent = ButtonBlock
-    Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Description.BackgroundTransparency = 1.000
-    Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Description.BorderSizePixel = 0
-    Description.Position = UDim2.new(0, 5, 0, 21)
-    Description.Size = UDim2.new(1, 0, 0, 45)
-    Description.Visible = false
-    Description.ZIndex = 11
-    Description.Font = Enum.Font.Gotham
-    Description.Text = setup.Description
-    Description.TextColor3 = Library.Colors.TextColor
-    Description.TextSize = 13.000
-    Description.TextStrokeColor3 = Library.Colors.TextColor
-    Description.TextStrokeTransparency = 0.950
-    Description.TextTransparency = 0.500
-    Description.TextWrapped = true
-    Description.TextXAlignment = Enum.TextXAlignment.Left
-    Description.TextYAlignment = Enum.TextYAlignment.Top
-    Description.RichText = true
+    -- 新增ContentLabel的代码
+    ContentLabel.Parent = ButtonBlock
+    ContentLabel.AnchorPoint = Vector2.new(0, 0.5)
+    ContentLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ContentLabel.BackgroundTransparency = 1.000
+    ContentLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ContentLabel.BorderSizePixel = 0
+    ContentLabel.Position = UDim2.new(0.0199999996, 0, 0.6, 0) -- 调整位置以显示在标题下方
+    ContentLabel.Size = UDim2.new(1, 0, 0.300000012, 0) -- 调整大小以适应内容
+    ContentLabel.ZIndex = 11
+    ContentLabel.Font = Enum.Font.Gotham
+    ContentLabel.Text = setup.Content
+    ContentLabel.TextColor3 = Library.Colors.TextColor
+    ContentLabel.TextScaled = true
+    ContentLabel.TextSize = 12.000 -- 可以调整字体大小以适应内容
+    ContentLabel.TextStrokeColor3 = Library.Colors.TextColor
+    ContentLabel.TextStrokeTransparency = 0.950
+    ContentLabel.TextWrapped = true
+    ContentLabel.TextXAlignment = Enum.TextXAlignment.Left
+    ContentLabel.RichText = true
+
+    -- 动态更新按钮大小
+    ContentLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+        local contentHeight = ContentLabel.AbsoluteSize.Y
+        local buttonHeight = TextLabel.AbsoluteSize.Y + contentHeight + 20 -- 20为标题和内容之间的间距
+        ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, buttonHeight)
+    end)
 
     Arrow.Name = "Arrow"
     Arrow.Parent = ButtonBlock
@@ -4303,21 +4309,21 @@ function Root:Button(setup)
     Button.TextSize = 14.000
     Button.TextTransparency = 1.000
 
-    Library:MakeDrop(ButtonBlock, UIStroke, Library.Colors.Hightlight)
+    Library:MakeDrop(ButtonBlock , UIStroke , Library.Colors.Hightlight)
 
     if setup.Tip then
-        WindowLibrary:AddToolTip(ButtonBlock, tostring(setup.Tip));
+        WindowLibrary:AddToolTip(ButtonBlock , tostring(setup.Tip));
     end;
 
     Button.MouseButton1Down:Connect(function()
-        Library:Tween(Arrow, Library.TweenLibrary.SmallEffect, {
+        Library:Tween(Arrow,Library.TweenLibrary.SmallEffect,{
             Position = UDim2.new(0.999, 0, 0.5, 0),
             ImageTransparency = 0.4
         })
     end)
 
     Button.MouseButton1Up:Connect(function()
-        Library:Tween(Arrow, Library.TweenLibrary.SmallEffect, {
+        Library:Tween(Arrow,Library.TweenLibrary.SmallEffect,{
             Position = UDim2.new(0.980000019, 0, 0.5, 0),
             ImageTransparency = 0.15
         })
@@ -4326,41 +4332,11 @@ function Root:Button(setup)
     Button.MouseButton1Click:Connect(function()
         setup.Callback()
     end)
-    
-    local UpdateBlock = function()
-        local TitleSize = 14;
-        local MainSize = Library:GetTextSize(setup.Title, TextLabel.TextSize, TextLabel.Font);
-        local DescriptionSize = MainSize.Y;
 
-        Description.Size = UDim2.new(1, MainSize.X, 0, DescriptionSize + 5)
-
-        if setup.Description:len() > 0 then
-            Description.Visible = true;
-            Library:Tween(ButtonBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, TitleSize + ((Description.Visible and Description.AbsoluteSize.Y + 5) or 0));
-            });
-
-        else
-            Description.Visible = false;
-
-            Library:Tween(ButtonBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + 10);
-            });
-        end;
-    end;
-    
-    UpdateBlock()
-    
     local RootSkid = {};
-    
-    function RootSkid:Description(Setup)
-        Description.Text = Setup
-        UpdateBlock()
-    end;
 
     function RootSkid:Value(Setup)
         TextLabel.Text = Setup
-        UpdateBlock()
     end;
 
     function RootSkid:Fire(...)
@@ -4369,7 +4345,10 @@ function Root:Button(setup)
 
     function RootSkid:Title(title)
         TextLabel.Text = title;
-        UpdateBlock()
+    end;
+
+    function RootSkid:Content(content)
+        ContentLabel.Text = content;
     end;
 
     function RootSkid:Visible(value)
