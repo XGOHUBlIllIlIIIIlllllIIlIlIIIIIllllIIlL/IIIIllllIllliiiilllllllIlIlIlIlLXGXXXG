@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 修复切换错误 --
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -4297,8 +4297,8 @@ return ColorPickerSettings
 			ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			ValueBlock.ZIndex = 15
 
-			UICorner_2.CornerRadius = UDim.new(5, 100)
-			UICorner_2.Parent = ValueBlock
+            UICorner_2.CornerRadius = UDim.new(1, 0)
+            UICorner_2.Parent = ValueBlock
 
 			Button.Name = "Button"
 			Button.Parent = ToggleBlock
@@ -4701,8 +4701,8 @@ return ColorPickerSettings
             StateImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
             StateImage.ScaleType = Enum.ScaleType.Fit
 
-			UICorner_2.CornerRadius = UDim.new(5, 100)
-			UICorner_2.Parent = ValueBlock
+            UICorner_2.CornerRadius = UDim.new(1, 0)
+            UICorner_2.Parent = TriangleImage
 
 			Button.Name = "Button"
 			Button.Parent = A2ToggleBlock
