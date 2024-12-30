@@ -1742,7 +1742,7 @@ Library.Colors = {
         TextColor = Color3.fromRGB(255, 255, 255), -- 白色
     }
                    end;
-    function Library.Theme:ChineseNewYear()
+    function Library.Theme:Chinesenewyear()
     Library.Colors = { 
         Highlight = Color3.fromRGB(255, 0, 0), -- 红色，代表喜庆和好运
         Default = Color3.fromRGB(255, 165, 0), -- 橙色，代表活力和繁荣
@@ -1750,7 +1750,7 @@ Library.Colors = {
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色，用于文本，保持清晰可读
     }
                    end;
-    function Library.Theme:RandomColor()
+    function Library.Theme:Randomcolor()
     local randomColor = function()
         return Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
     end
