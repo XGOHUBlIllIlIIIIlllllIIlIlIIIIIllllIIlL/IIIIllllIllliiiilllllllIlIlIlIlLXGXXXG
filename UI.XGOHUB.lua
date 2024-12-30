@@ -4958,7 +4958,6 @@ return ColorPickerSettings
 			setup.Default = setup.Default or setup.Min;
 			setup.Round = setup.Round or 0;
 			setup.Callback = setup.Callback or function() end;
---			setup.Content = setup.Content or "";	
 
 			local SliderBlock = Instance.new("Frame")
 			local DropShadow = Instance.new("ImageLabel")
@@ -4972,7 +4971,6 @@ return ColorPickerSettings
 			local UIStroke_3 = Instance.new("UIStroke")
 			local ValueText = Instance.new("TextLabel")
 			local InputBox = Instance.new("TextBox") -- 添加输入框
---			local Content = Instance.new("TextLabel")
 
 			SliderBlock.Name = "SliderBlock"
 			SliderBlock.Parent = ScrollingFrame
@@ -5104,28 +5102,6 @@ return ColorPickerSettings
     	    InputBox.TextWrapped = true
     	    InputBox.TextXAlignment = Enum.TextXAlignment.Right
     	    InputBox.Text = tostring(setup.Default) -- 设置初始值
--- 
-    	    Content.Name = "Content"
-			Content.Parent = SliderBlock
-			Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			Content.BackgroundTransparency = 1.000
-			Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			Content.BorderSizePixel = 0
-			Content.Position = UDim2.new(0, 5, 0, 21)
-			Content.Size = UDim2.new(1, 0, 0, 45)
-			Content.Visible = false
-			Content.ZIndex = 11
-			Content.Font = Enum.Font.Gotham
-			Content.Text = setup.Content
-			Content.TextColor3 = Library.Colors.TextColor
-			Content.TextSize = 13.000
-			Content.TextStrokeColor3 = Library.Colors.TextColor
-			Content.TextStrokeTransparency = 0.950
-			Content.TextTransparency = 0.500
-			Content.TextWrapped = true
-			Content.TextXAlignment = Enum.TextXAlignment.Left
-			Content.TextYAlignment = Enum.TextYAlignment.Top
-			Content.RichText = true			
 
 			local IsHold = false
 			local RoundNum = setup.Round;
@@ -5206,51 +5182,7 @@ return ColorPickerSettings
 			            setup.Callback(textValue)
 			        end
 			    end)
-
-local UpdateBlock = function()
-    local ContentTextSize = 14 -- 根据您的设计设置文本大小
-    local ContentText = Content.Text
-    local TextSize = Library:GetTextSize(ContentText, ContentTextSize, Content.Font) -- 假设Library中有这个函数来获取文本尺寸
-
-    -- 根据文本内容调整Content的大小
-    Content.Size = UDim2.new(1, 0, 0, TextSize + 10) -- 假设底部和顶部各有5的间距
-
-    -- 根据Content的可见性调整SliderBlock的大小
-    if Content.Visible or TextSize > 0 then -- 如果文本不为空，则视为可见
-        Library:Tween(SliderBlock, Library.TweenLibrary.SmallEffect, {
-            Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + TextSize + 20) -- 假设顶部和底部各有10的间距
-        })
-    else
-        Library:Tween(SliderBlock, Library.TweenLibrary.SmallEffect, {
-            Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + 10) -- 恢复原来大小
-        })
-    end
-end
-
--- 在InputBox文本变化时调用UpdateBlock
-InputBox:GetPropertyChangedSignal("Text"):Connect(function()
-    local textValue = tonumber(InputBox.Text) or setup.Default
-    if textValue then
-        local normalized = (textValue - setup.Min) / (setup.Max - setup.Min)
-        Library:Tween(Move, Library.TweenLibrary.FastEffect, {
-            Position = UDim2.new(normalized, 0, 0.5, 0)
-        })
-        ValueText.Text = tostring(textValue)
-        setup.Callback(textValue)
-        Content.Text = InputBox.Text -- 更新Content的文本
-        UpdateBlock() -- 调整SliderBlock的大小
-    end
-end)
-
--- 在Content文本变化时调用UpdateBlock
-function RootSkid:Content(Setup)
-    Content.Text = Setup
-    UpdateBlock()
-end
-
---            确保在滑块创建时也调用UpdateBlock来设置正确的大小
-            UpdateBlock()
-            
+			    
 			local RootSkid = {};
 
 			function RootSkid:Value(Setup)
@@ -5264,13 +5196,7 @@ end
 			end;
 
 			function RootSkid:Visible(value)
-				SliderBlock.Visible = value;
-				UpdateBlock()			
-			end;
-			
-			function RootSkid:Content(Setup)
-				Content.Text = Setup
-				UpdateBlock()
+				SliderBlock.Visible = value;	
 			end;
 
 			return RootSkid;
