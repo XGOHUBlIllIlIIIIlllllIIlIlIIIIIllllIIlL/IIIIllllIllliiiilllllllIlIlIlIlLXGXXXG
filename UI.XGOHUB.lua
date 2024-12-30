@@ -4348,22 +4348,6 @@ function Root:Button(setup)
     end)
     --[[
     local UpdateBlock = function()
-        local TitleSize = TextLabel.TextSize
-        local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
-        local DescriptionSize = Library:GetTextSize(setup.Description, Description.TextSize, Description.Font)
-        
-        local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
-        if setup.Description:len() > 0 then
-            Description.Visible = true
-            TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-        else
-            Description.Visible = false
-        end
-
-        ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
-    end]]
-
-    local UpdateBlock = function()
     local TitleSize = TextLabel.TextSize
     local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
     local DescriptionSize = setup.Description:len() > 0 and Library:GetTextSize(setup.Description, Description.TextSize, Description.Font) or Vector2.new(0, 0)
@@ -4374,10 +4358,32 @@ function Root:Button(setup)
         TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
     else
         Description.Visible = false
-        TotalHeight = TotalHeight + 20 -- 如果没有描述，增加额外的高度
+        TotalHeight = TotalHeight + 17 -- 如果没有描述，增加额外的高度
     end
 
     ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+end
+--]]
+    local UpdateBlock = function()
+    local TitleSize = TextLabel.TextSize
+    local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+    local DescriptionSize = setup.Description:len() > 0 and Library:GetTextSize(setup.Description, Description.TextSize, Description.Font) or Vector2.new(0, 0)
+    
+    local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+    if setup.Description:len() > 0 then
+        Description.Visible = true
+        TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+        TextLabel.Position = UDim2.new(0, 5, 0, 5) -- 有描述时的标题位置
+        TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 有描述时的标题大小
+    else
+        Description.Visible = false
+        TotalHeight = MainSize.Y + 17 -- 没有描述时，只增加标题的高度和一些间距
+        TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 没有描述时恢复标题的原始位置
+        TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 没有描述时恢复标题的原始大小
+    end
+
+    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+    TextLabel.TextXAlignment = setup.Description:len() > 0 and Enum.TextXAlignment.Left or Enum.TextXAlignment.Center -- 如果没有描述，标题居中
 end
 
     UpdateBlock() -- 初始调用以设置正确的大小
