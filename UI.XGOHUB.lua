@@ -3721,7 +3721,6 @@ function Library:Windowxgo(setup)
 			return RootSkid;
 		end;
 --[[---- // 颜色选择器   ----------------------------------------------------------------------------------------
-
 local function SaveConfiguration()
     if not CEnabled then return end
 
@@ -4470,7 +4469,7 @@ return ColorPickerSettings
 			UICorner.CornerRadius = UDim.new(5, 100)
 			UICorner.Parent = Block
 
-            -- 设置ValueBlock的属性
+            --[[ 设置ValueBlock的属性
             ValueBlock.Name = "ValueBlock"
             ValueBlock.Parent = Block
             ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -4483,7 +4482,7 @@ return ColorPickerSettings
             ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
             ValueBlock.ZIndex = 15
 
-            -- 添加三角形图像            
+            -- 添加三角形图像     
             TriangleImage.Name = "Triangle"
             TriangleImage.Parent = ValueBlock
             TriangleImage.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -4497,6 +4496,44 @@ return ColorPickerSettings
 
 			UICorner_2.CornerRadius = UDim.new(5, 100)
 			UICorner_2.Parent = ValueBlock
+]]
+-- 设置ValueBlock的属性
+ValueBlock.Name = "ValueBlock"
+ValueBlock.Parent = Block
+ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
+ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
+ValueBlock.BackgroundTransparency = 1.000 -- 使背景透明
+ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ValueBlock.BorderSizePixel = 0
+ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
+ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
+ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
+ValueBlock.ZIndex = 15
+
+-- 添加圆形图片
+TriangleImage.Name = "Triangle"
+TriangleImage.Parent = ValueBlock
+TriangleImage.AnchorPoint = Vector2.new(0.5, 0.5)
+TriangleImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TriangleImage.BackgroundTransparency = 1.000
+TriangleImage.Position = UDim2.new(0.5, 0, 0.5, 0)
+TriangleImage.Size = UDim2.new(1, 0, 1, 0)
+TriangleImage.Image = "rbxassetid://102797584513959" -- 替换为你的三角形图像资源ID
+TriangleImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
+TriangleImage.ScaleType = Enum.ScaleType.Fit
+
+-- 添加UICorner以实现圆角效果
+UICorner_2.CornerRadius = UDim.new(1, 0) -- 设置为100%的圆角，即圆形
+UICorner_2.Parent = TriangleImage
+
+-- 由于TriangleImage是正方形，我们需要裁剪它以显示圆形部分
+-- 我们可以通过设置ImageRectOffset和ImageRectSize来实现
+-- 假设图片资源是正方形的，我们只需要显示中心的圆形部分
+local imageRectOffset = Vector2.new(TriangleImage.ImageRectSize.X.Offset / 2, TriangleImage.ImageRectSize.Y.Offset / 2)
+local imageRectSize = Vector2.new(TriangleImage.ImageRectSize.X.Size / 2, TriangleImage.ImageRectSize.Y.Size / 2)
+TriangleImage.ImageRectOffset = imageRectOffset
+TriangleImage.ImageRectSize = imageRectSize
+
 
 			Button.Name = "Button"
 			Button.Parent = A1ToggleBlock
@@ -5516,6 +5553,7 @@ return ColorPickerSettings
 		function Root:Dropdown(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "下拉菜单";
+			setup.Content = setup.Content or "";
 			setup.Values = setup.Values or {};
 			setup.Multi = setup.Multi or false;
 			setup.Default = setup.Default;
@@ -5548,6 +5586,7 @@ return ColorPickerSettings
 			local DropShadow = Instance.new("ImageLabel")
 			local UIStroke = Instance.new("UIStroke")
 			local TextLabel = Instance.new("TextLabel")
+			local Content = Instance.new("TextLabel")
 			local Block = Instance.new("Frame")
 			local UIStroke_2 = Instance.new("UIStroke")
 			local UICorner = Instance.new("UICorner")
@@ -5601,6 +5640,28 @@ return ColorPickerSettings
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 			TextLabel.RichText = true
+			
+			Content.Name = "Content"
+            Content.Parent = DropdownBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true
 
 			Block.Name = "Block"
 			Block.Parent = DropdownBlock
@@ -5694,12 +5755,39 @@ return ColorPickerSettings
 
 				WindowLibrary:OpenDropdown(Block);
 			end)
+			
+			local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                end
+
+                DropdownBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+            end
+            UpdateBlock() -- 初始调用以设置正确的大小
 
 			local RootSkid = {};
 
 			function RootSkid:GetValue()
 				return setup.Default;
 			end;
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:Value(SetupR)
 				setup.Default = SetupR;
@@ -5707,6 +5795,7 @@ return ColorPickerSettings
 				setup.Default = SetupR;
 				UpdateSize()
 				setup.Callback(SetupR)
+				UpdateBlock()
 			end;
 
 			function RootSkid:SetValue(data)
