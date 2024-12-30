@@ -3480,8 +3480,8 @@ function Library:Windowxgo(setup)
 
 	function WindowLibrary:Tab(TabSetup)
 		TabSetup = TabSetup or {};
-		TabSetup.Title = TabSetup.Title or "Example";
-		TabSetup.Icon = TabSetup.Icon or 'home';
+		TabSetup.Title = TabSetup.Title or "菜单";
+		TabSetup.Icon = TabSetup.Icon or 'XGO1';
 
 		local TFrame = Instance.new("Frame")
 		local DropShadow = Instance.new("ImageLabel")
@@ -3672,7 +3672,7 @@ function Library:Windowxgo(setup)
 				end;
 			end;
 		end)
------- // 分隔符    ----------------------------------------------------------------------------------------
+------ // 分隔符[左]    ----------------------------------------------------------------------------------------
         function Root:Block(Setup)
 			Setup = Setup or "Block";
 
@@ -3720,6 +3720,44 @@ function Library:Windowxgo(setup)
 
 			return RootSkid;
 		end;
+function Root:Seperator(Setup)
+    Setup = Setup or "Seperator";
+
+    local SeperatorLabel = Instance.new("TextLabel")
+    local Seperator = {}
+
+    SeperatorLabel.Name = "SeperatorLabel"
+    SeperatorLabel.Parent = ScrollLayer1
+    SeperatorLabel.Font = Enum.Font.GothamBold
+    SeperatorLabel.Text = Setup
+    SeperatorLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    SeperatorLabel.TextSize = 11
+    SeperatorLabel.TextXAlignment = Enum.TextXAlignment.Left
+    SeperatorLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SeperatorLabel.BackgroundTransparency = 0.9990000128746033
+    SeperatorLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    SeperatorLabel.BorderSizePixel = 0
+    SeperatorLabel.Size = UDim2.new(1, -8, 0, 16)
+    SeperatorLabel.ZIndex = 10
+
+    SeperatorLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
+        SeperatorLabel.TextWrapped = false
+        SeperatorLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (SeperatorLabel.TextBounds.X // SeperatorLabel.AbsoluteSize.X)))
+        SeperatorLabel.TextWrapped = true
+        UpSize(ScrollLayer1)
+    end)
+
+    function Seperator:SetText(Value)
+        local Value = Value or "Seperator"
+        SeperatorLabel.Text = Value
+    end
+
+    function Seperator:UpdateLayoutOrder(Order)
+        SeperatorLabel.LayoutOrder = Order
+    end
+
+    return Seperator
+end;
 --[[---- // 颜色选择器   ----------------------------------------------------------------------------------------
 local function SaveConfiguration()
     if not CEnabled then return end
@@ -4204,6 +4242,7 @@ return ColorPickerSettings
 			setup = setup or {};
 
 			setup.Title = setup.Title or "Toggle"
+			setup.Content = setup.Content or "";
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
@@ -4212,6 +4251,7 @@ return ColorPickerSettings
 		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
+		    local Content = Instance.new("TextLabel")
 		    local Block = Instance.new("Frame") -- 滑块的背景框
 		    local UIStroke_2 = Instance.new("UIStroke") -- 滑块背景框的边框
 		    local UICorner = Instance.new("UICorner") -- 用于创建圆角效果
@@ -4266,6 +4306,28 @@ return ColorPickerSettings
 			TextLabel.TextStrokeTransparency = 0.950
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+			
+			Content.Name = "Content"
+            Content.Parent = ToggleBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true			
 
 			Block.Name = "Block"
 			Block.Parent = ToggleBlock
@@ -4342,15 +4404,41 @@ return ColorPickerSettings
 
 				setup.Callback(setup.Default)
 			end)
+			
+			local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                end
+
+                ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+            end
+            UpdateBlock() -- 初始调用以设置正确的大小
 
 			local RootSkid = {};
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:Value(Setup)
 				setup.Default = Setup
-
 				UILib(setup.Default);
-
 				setup.Callback(setup.Default)
+				UpdateBlock()
 			end;
 
 			function RootSkid:Visible(value)
@@ -4400,7 +4488,7 @@ return ColorPickerSettings
 			DropShadow.ZIndex = 9
 			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-			DropShadow.ImageTransparency = 1
+			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 			DropShadow.SliceScale = 0.050
@@ -4575,11 +4663,8 @@ return ColorPickerSettings
 
 			function RootSkid:Value(Setup)
 				setup.Default = Setup
-
 				UILib(setup.Default);
-
 				setup.Callback(setup.Default)
-				
 				UpdateBlock()
 			end;
 
@@ -4594,6 +4679,7 @@ return ColorPickerSettings
 			setup = setup or {};
 
 			setup.Title = setup.Title or "切换按钮[2]"
+			setup.Content = setup.Content or "";
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
@@ -4602,6 +4688,7 @@ return ColorPickerSettings
 		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
+		    local Content = Instance.new("TextLabel")
 		    local Block = Instance.new("Frame") -- 滑块的背景框
 		    local UIStroke_2 = Instance.new("UIStroke") -- 滑块背景框的边框
 		    local UICorner = Instance.new("UICorner") -- 用于创建圆角效果
@@ -4657,6 +4744,28 @@ return ColorPickerSettings
 			TextLabel.TextStrokeTransparency = 0.950
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+			
+			Content.Name = "Content"
+            Content.Parent = A2ToggleBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true			
 
 			Block.Name = "Block"
 			Block.Parent = A2ToggleBlock
@@ -4750,15 +4859,41 @@ return ColorPickerSettings
 
 				setup.Callback(setup.Default)
 			end)
+			
+			local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                end
+
+                A2ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+            end
+            UpdateBlock() -- 初始调用以设置正确的大小
 
 			local RootSkid = {};
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:Value(Setup)
 				setup.Default = Setup
-
 				UILib(setup.Default);
-
 				setup.Callback(setup.Default)
+				UpdateBlock()
 			end;
 
 			function RootSkid:Visible(value)
@@ -4771,6 +4906,7 @@ return ColorPickerSettings
 		function Root:Textbox(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or '输入框';
+			setup.Content = setup.Content or "";
 			setup.PlaceHolder = setup.PlaceHolder or '';
 			setup.Default = setup.Default or '';
 			setup.Callback = setup.Callback or function() end;
@@ -4780,6 +4916,7 @@ return ColorPickerSettings
 			local DropShadow = Instance.new("ImageLabel")
 			local UIStroke = Instance.new("UIStroke")
 			local TextLabel = Instance.new("TextLabel")
+			local Content = Instance.new("TextLabel")
 			local Block = Instance.new("Frame")
 			local UIStroke_2 = Instance.new("UIStroke")
 			local UICorner = Instance.new("UICorner")
@@ -4832,6 +4969,28 @@ return ColorPickerSettings
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 			TextLabel.RichText = true
+			
+			Content.Name = "Content"
+            Content.Parent = TextBoxBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true			
 
 			Block.Name = "Block"
 			Block.Parent = TextBoxBlock
@@ -4917,8 +5076,35 @@ return ColorPickerSettings
 			TextBoxBlock:GetPropertyChangedSignal('AbsoluteSize'):Connect(Update);
 
 			Update();
+			
+			local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                end
+
+                TextBoxBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+            end
+            UpdateBlock() -- 初始调用以设置正确的大小
 
 			local RootSkid = {};
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:Empty()
 				setup.Default = ""
@@ -4932,6 +5118,7 @@ return ColorPickerSettings
 				TextBox.Text = setup.Default
 				Update()
 				setup.Callback(setup.Default)
+				UpdateBlock()
 			end;
 
 			function RootSkid:Visible(value)
@@ -5321,6 +5508,7 @@ return ColorPickerSettings
 		function Root:Keybind(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "快捷键";
+			setup.Content = setup.Content or "";
 			setup.Default = setup.Default or "NONE";
 			setup.Callback = setup.Callback or function() end;
 
@@ -5344,6 +5532,7 @@ return ColorPickerSettings
 			local DropShadow = Instance.new("ImageLabel")
 			local UIStroke = Instance.new("UIStroke")
 			local TextLabel = Instance.new("TextLabel")
+			local Content = Instance.new("TextLabel")
 			local Block = Instance.new("Frame")
 			local UIStroke_2 = Instance.new("UIStroke")
 			local UICorner = Instance.new("UICorner")
@@ -5397,6 +5586,28 @@ return ColorPickerSettings
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 			TextLabel.RichText = true
+			
+			Content.Name = "Content"
+            Content.Parent = KeybindBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true			
 
 			Block.Name = "Block"
 			Block.Parent = KeybindBlock
@@ -5493,8 +5704,35 @@ return ColorPickerSettings
 				setup.Callback(KeyCode)
 				Await = false;
 			end)
+			
+			local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                end
+
+                KeybindBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+            end
+            UpdateBlock() -- 初始调用以设置正确的大小
 
 			local RootSkid = {};
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:Value(Setup)
 				setup.Default = Setup;
@@ -5504,6 +5742,7 @@ return ColorPickerSettings
 				UpdateSize();
 
 				setup.Callback(Setup)
+				UpdateBlock()
 			end;
 
 			function RootSkid:Visible(value)
