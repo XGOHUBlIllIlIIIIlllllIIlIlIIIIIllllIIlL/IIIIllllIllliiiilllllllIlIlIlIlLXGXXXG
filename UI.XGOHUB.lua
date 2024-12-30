@@ -4006,7 +4006,8 @@ return ColorPickerSettings
 --]]---- // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
 			setup = setup or {};
-			setup.Title = setup.Title or "Button"
+			setup.Title = setup.Title or "按钮"
+			setup.Description = setup.Description or ""; -- 添加Description字段
 			setup.Callback = setup.Callback or function() end;
 			setup.Tip = setup.Tip or nil;
 
@@ -4014,6 +4015,7 @@ return ColorPickerSettings
 			local DropShadow = Instance.new("ImageLabel")
 			local UIStroke = Instance.new("UIStroke")
 			local TextLabel = Instance.new("TextLabel")
+			local DescriptionLabel = Instance.new("TextLabel") -- 添加DescriptionLabel
 			local Arrow = Instance.new("ImageLabel")
 			local Button = Instance.new("TextButton")
 
@@ -4064,6 +4066,27 @@ return ColorPickerSettings
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 			TextLabel.RichText = true
+			
+	DescriptionLabel.Name = "DescriptionLabel"
+    DescriptionLabel.Parent = ButtonBlock
+    DescriptionLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DescriptionLabel.BackgroundTransparency = 1.000
+    DescriptionLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    DescriptionLabel.BorderSizePixel = 0
+    DescriptionLabel.Position = UDim2.new(0, 5, 0, 30) -- 根据需要调整位置
+    DescriptionLabel.Size = UDim2.new(1, -10, 0, 0) -- 初始大小
+    DescriptionLabel.ZIndex = 11
+    DescriptionLabel.Font = Enum.Font.Gotham
+    DescriptionLabel.Text = setup.Description
+    DescriptionLabel.TextColor3 = Library.Colors.TextColor
+    DescriptionLabel.TextSize = 13.000
+    DescriptionLabel.TextStrokeColor3 = Library.Colors.TextColor
+    DescriptionLabel.TextStrokeTransparency = 0.950
+    DescriptionLabel.TextTransparency = 0.500
+    DescriptionLabel.TextWrapped = true
+    DescriptionLabel.TextXAlignment = Enum.TextXAlignment.Left
+    DescriptionLabel.TextYAlignment = Enum.TextYAlignment.Top
+    DescriptionLabel.RichText = true
 
 			Arrow.Name = "Arrow"
 			Arrow.Parent = ButtonBlock
@@ -4112,8 +4135,17 @@ return ColorPickerSettings
 				})
 			end)
 
+local UpdateButtonSize = function()
+        local DescriptionSize = Library:GetTextSize(setup.Description, 13, Enum.Font.Gotham)
+        DescriptionLabel.Size = UDim2.new(1, -10, 0, DescriptionSize.Y + 10) -- 根据文本大小调整DescriptionLabel大小
+        ButtonBlock.Size = UDim2.new(0.99, 0, 0, 50 + DescriptionSize.Y) -- 根据DescriptionLabel大小调整ButtonBlock大小
+    end
+
+    UpdateButtonSize() -- 初始调用更新大小
+
 			Button.MouseButton1Click:Connect(function()
 				setup.Callback()
+				UpdateButtonSize() -- 点击后更新大小，以适应可能的文本变化
 			end)
 
 			local RootSkid = {};
@@ -4129,6 +4161,12 @@ return ColorPickerSettings
 			function RootSkid:Title(title)
 				TextLabel.Text = title;
 			end;
+
+function RootSkid:Description(description) -- 添加设置Description的方法
+        setup.Description = description
+        DescriptionLabel.Text = description
+        UpdateButtonSize() -- 更新UI大小
+    end;
 
 			function RootSkid:Visible(value)
 				ButtonBlock.Visible = value;
@@ -5205,7 +5243,7 @@ return ColorPickerSettings
 		function Root:Keybind(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "快捷键";
-			setup.Default = setup.Default or "没有填写";
+			setup.Default = setup.Default or "NONE";
 			setup.Callback = setup.Callback or function() end;
 
 			local Parser = function(code)
