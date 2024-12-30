@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -4369,7 +4369,7 @@ return ColorPickerSettings
 
 			-- 创建UI元素
 		    local A1ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
---		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
+		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
 		    local Content = Instance.new("TextLabel")
@@ -4389,7 +4389,7 @@ return ColorPickerSettings
 			A1ToggleBlock.BorderSizePixel = 0
 			A1ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
 			A1ToggleBlock.ZIndex = 10
---[[
+
 			DropShadow.Name = "DropShadow"
 			DropShadow.Parent = A1ToggleBlock
 			DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4400,11 +4400,11 @@ return ColorPickerSettings
 			DropShadow.ZIndex = 9
 			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-			DropShadow.ImageTransparency = 0.500
+			DropShadow.ImageTransparency = 1
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 			DropShadow.SliceScale = 0.050
---]]
+
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
 			UIStroke.Parent = A1ToggleBlock
