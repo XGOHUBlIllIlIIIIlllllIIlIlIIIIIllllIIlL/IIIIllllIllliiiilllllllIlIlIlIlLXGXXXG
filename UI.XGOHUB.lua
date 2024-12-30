@@ -4469,7 +4469,7 @@ return ColorPickerSettings
 			UICorner.CornerRadius = UDim.new(5, 100)
 			UICorner.Parent = Block
 
-            --[[ 设置ValueBlock的属性
+            -- 设置ValueBlock的属性
             ValueBlock.Name = "ValueBlock"
             ValueBlock.Parent = Block
             ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -4493,48 +4493,11 @@ return ColorPickerSettings
             TriangleImage.Image = "rbxassetid://102797584513959" -- 替换为你的三角形图像资源ID
             TriangleImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
             TriangleImage.ScaleType = Enum.ScaleType.Fit
-
-			UICorner_2.CornerRadius = UDim.new(5, 100)
-			UICorner_2.Parent = ValueBlock
-]]
--- 设置ValueBlock的属性
-ValueBlock.Name = "ValueBlock"
-ValueBlock.Parent = Block
-ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
-ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
-ValueBlock.BackgroundTransparency = 1.000 -- 使背景透明
-ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ValueBlock.BorderSizePixel = 0
-ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
-ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
-ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
-ValueBlock.ZIndex = 15
-
--- 添加圆形图片
-TriangleImage.Name = "Triangle"
-TriangleImage.Parent = ValueBlock
-TriangleImage.AnchorPoint = Vector2.new(0.5, 0.5)
-TriangleImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TriangleImage.BackgroundTransparency = 1.000
-TriangleImage.Position = UDim2.new(0.5, 0, 0.5, 0)
-TriangleImage.Size = UDim2.new(1, 0, 1, 0)
-TriangleImage.Image = "rbxassetid://102797584513959" -- 替换为你的三角形图像资源ID
-TriangleImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-TriangleImage.ScaleType = Enum.ScaleType.Fit
-
--- 添加UICorner以实现圆角效果
-UICorner_2.CornerRadius = UDim.new(1, 0) -- 设置为100%的圆角，即圆形
-UICorner_2.Parent = TriangleImage
-
--- 由于TriangleImage是正方形，我们需要裁剪它以显示圆形部分
--- 我们可以通过设置ImageRectOffset和ImageRectSize来实现
--- 假设图片资源是正方形的，我们只需要显示中心的圆形部分
-local imageRectOffset = Vector2.new(TriangleImage.ImageRectSize.X.Offset / 2, TriangleImage.ImageRectSize.Y.Offset / 2)
-local imageRectSize = Vector2.new(TriangleImage.ImageRectSize.X.Size / 2, TriangleImage.ImageRectSize.Y.Size / 2)
-TriangleImage.ImageRectOffset = imageRectOffset
-TriangleImage.ImageRectSize = imageRectSize
-
-
+            
+			-- 添加UICorner以实现圆角效果
+            UICorner_2.CornerRadius = UDim.new(1, 0) -- 设置为100%的圆角，即圆形
+            UICorner_2.Parent = TriangleImage
+            
 			Button.Name = "Button"
 			Button.Parent = A1ToggleBlock
 			Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4547,6 +4510,15 @@ TriangleImage.ImageRectSize = imageRectSize
 			Button.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Button.TextSize = 14.000
 			Button.TextTransparency = 1.000
+			
+			if TriangleImage and TriangleImage.ImageRectSize then
+                local imageRectOffset = Vector2.new(TriangleImage.ImageRectSize.X.Offset / 2, TriangleImage.ImageRectSize.Y.Offset / 2)
+                local imageRectSize = Vector2.new(TriangleImage.ImageRectSize.X.Size / 2, TriangleImage.ImageRectSize.Y.Size / 2)
+                TriangleImage.ImageRectOffset = imageRectOffset
+                TriangleImage.ImageRectSize = imageRectSize
+            else
+                print("TriangleImage or ImageRectSize is not ready")
+            end
 
 			Library:MakeDrop(A1ToggleBlock , UIStroke , Library.Colors.Hightlight)
 
