@@ -4509,16 +4509,7 @@ return ColorPickerSettings
 			Button.Font = Enum.Font.SourceSans
 			Button.TextColor3 = Color3.fromRGB(0, 0, 0)
 			Button.TextSize = 14.000
-			Button.TextTransparency = 1.000
-			
-			if TriangleImage and TriangleImage.ImageRectSize then
-                local imageRectOffset = Vector2.new(TriangleImage.ImageRectSize.X.Offset / 2, TriangleImage.ImageRectSize.Y.Offset / 2)
-                local imageRectSize = Vector2.new(TriangleImage.ImageRectSize.X.Size / 2, TriangleImage.ImageRectSize.Y.Size / 2)
-                TriangleImage.ImageRectOffset = imageRectOffset
-                TriangleImage.ImageRectSize = imageRectSize
-            else
-                print("TriangleImage or ImageRectSize is not ready")
-            end
+			Button.TextTransparency = 1.000			
 
 			Library:MakeDrop(A1ToggleBlock , UIStroke , Library.Colors.Hightlight)
 
