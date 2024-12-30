@@ -4260,7 +4260,7 @@ function Root:Button(setup)
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
     TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(0, 5, 0, 5)
+    TextLabel.Position = UDim2.new(0, 5, 0, 10)
     TextLabel.Size = UDim2.new(1, 0, 0, 14)
     TextLabel.ZIndex = 11
     TextLabel.Font = Enum.Font.Gotham
@@ -4280,7 +4280,7 @@ function Root:Button(setup)
     Description.BackgroundTransparency = 1.000
     Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
     Description.BorderSizePixel = 0
-    Description.Position = UDim2.new(0, 5, 0, 21)
+    Description.Position = UDim2.new(0, 5, 0, 18)
     Description.Size = UDim2.new(1, 0, 0, 45)
     Description.Visible = false
     Description.ZIndex = 11
