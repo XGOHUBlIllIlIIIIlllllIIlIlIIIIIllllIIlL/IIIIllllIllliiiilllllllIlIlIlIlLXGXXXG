@@ -4633,6 +4633,7 @@ return ColorPickerSettings
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 			DropShadow.SliceScale = 0.050
+			DropShadow.Visible = false
 
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
@@ -4702,7 +4703,7 @@ return ColorPickerSettings
             StateImage.ScaleType = Enum.ScaleType.Fit
 
             UICorner_2.CornerRadius = UDim.new(1, 0)
-            UICorner_2.Parent = TriangleImage
+            UICorner_2.Parent = StateImage
 
 			Button.Name = "Button"
 			Button.Parent = A2ToggleBlock
@@ -4808,6 +4809,7 @@ return ColorPickerSettings
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 			DropShadow.SliceScale = 0.050
+			DropShadow.Visible = false
 
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
