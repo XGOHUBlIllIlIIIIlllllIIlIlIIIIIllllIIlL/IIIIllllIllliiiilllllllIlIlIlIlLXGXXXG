@@ -3673,7 +3673,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符[左]    ----------------------------------------------------------------------------------------
-        function Root:Block(Setup)
+--[[     function Root:Block(Setup)
 			Setup = Setup or "Block";
 
 			local BlockLabel = Instance.new("Frame")
@@ -3719,43 +3719,62 @@ function Library:Windowxgo(setup)
 			end;
 
 			return RootSkid;
-		end;
-function Root:Seperator(Setup)
-    Setup = Setup or "Seperator";
+		end;]]
+function Root:Block(Setup)
+    Setup = Setup or "Block";
 
-    local SeperatorLabel = Instance.new("TextLabel")
-    local Seperator = {}
+    local BlockLabel = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
 
-    SeperatorLabel.Name = "SeperatorLabel"
-    SeperatorLabel.Parent = ScrollLayer1
-    SeperatorLabel.Font = Enum.Font.GothamBold
-    SeperatorLabel.Text = Setup
-    SeperatorLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    SeperatorLabel.TextSize = 11
-    SeperatorLabel.TextXAlignment = Enum.TextXAlignment.Left
-    SeperatorLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    SeperatorLabel.BackgroundTransparency = 0.9990000128746033
-    SeperatorLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    SeperatorLabel.BorderSizePixel = 0
-    SeperatorLabel.Size = UDim2.new(1, -8, 0, 16)
-    SeperatorLabel.ZIndex = 10
+    -- 设置BlockLabel的属性
+    BlockLabel.Name = "BlockLabel"
+    BlockLabel.Parent = ScrollingFrame
+    BlockLabel.BackgroundColor3 = Library.Colors.Default
+    BlockLabel.BackgroundTransparency = 1.000
+    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BlockLabel.BorderSizePixel = 0
+    BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
+    BlockLabel.ZIndex = 10
 
-    SeperatorLabel:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
-        SeperatorLabel.TextWrapped = false
-        SeperatorLabel.Size = UDim2.new(1, -8, 0, 16 + (11 * (SeperatorLabel.TextBounds.X // SeperatorLabel.AbsoluteSize.X)))
-        SeperatorLabel.TextWrapped = true
-        UpSize(ScrollLayer1)
-    end)
+    -- 设置TextLabel的属性
+    TextLabel.Parent = BlockLabel
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+    TextLabel.ZIndex = 11
+    TextLabel.Font = Enum.Font.Gotham
+    TextLabel.Text = Setup
+    TextLabel.TextColor3 = Library.Colors.TextColor
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
+    TextLabel.TextStrokeTransparency = 0.950
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.RichText = true
 
-    function Seperator:SetText(Value)
-        SeperatorLabel.Text = Value
+    local valueFunction -- 用于存储动态值的函数
+
+    function Root:SetValueFunction(func)
+        valueFunction = func
+        self:UpdateValue() -- 初始调用以设置值
     end
 
-    function Seperator:UpdateLayoutOrder(Order)
-        SeperatorLabel.LayoutOrder = Order
+    function Root:UpdateValue()
+        if valueFunction then
+            TextLabel.Text = tostring(valueFunction()) -- 更新TextLabel的文本为函数的返回值
+        end
     end
 
-    return Seperator
+    function RootSkid:Visible(value)
+        BlockLabel.Visible = value;
+    end;
+
+    return RootSkid;
 end;
 --[[---- // 颜色选择器   ----------------------------------------------------------------------------------------
 local function SaveConfiguration()
