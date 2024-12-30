@@ -4006,8 +4006,8 @@ return ColorPickerSettings
 --]]---- // 按钮   ----------------------------------------------------------------------------------------
 		function Root:Button(setup)
 			setup = setup or {};
-			setup.Title = setup.Title or "按钮"
-			setup.Description = setup.Description or ""; -- 添加Description字段
+			setup.Title = setup.Title or "Button"
+			Setup.Description = Setup.Description or "";
 			setup.Callback = setup.Callback or function() end;
 			setup.Tip = setup.Tip or nil;
 
@@ -4015,7 +4015,7 @@ return ColorPickerSettings
 			local DropShadow = Instance.new("ImageLabel")
 			local UIStroke = Instance.new("UIStroke")
 			local TextLabel = Instance.new("TextLabel")
-			local DescriptionLabel = Instance.new("TextLabel") -- 添加DescriptionLabel
+			local Description = Instance.new("TextLabel")
 			local Arrow = Instance.new("ImageLabel")
 			local Button = Instance.new("TextButton")
 
@@ -4067,26 +4067,27 @@ return ColorPickerSettings
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 			TextLabel.RichText = true
 			
-	DescriptionLabel.Name = "DescriptionLabel"
-    DescriptionLabel.Parent = ButtonBlock
-    DescriptionLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    DescriptionLabel.BackgroundTransparency = 1.000
-    DescriptionLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    DescriptionLabel.BorderSizePixel = 0
-    DescriptionLabel.Position = UDim2.new(0, 5, 0, 30) -- 根据需要调整位置
-    DescriptionLabel.Size = UDim2.new(1, -10, 0, 0) -- 初始大小
-    DescriptionLabel.ZIndex = 11
-    DescriptionLabel.Font = Enum.Font.Gotham
-    DescriptionLabel.Text = setup.Description
-    DescriptionLabel.TextColor3 = Library.Colors.TextColor
-    DescriptionLabel.TextSize = 13.000
-    DescriptionLabel.TextStrokeColor3 = Library.Colors.TextColor
-    DescriptionLabel.TextStrokeTransparency = 0.950
-    DescriptionLabel.TextTransparency = 0.500
-    DescriptionLabel.TextWrapped = true
-    DescriptionLabel.TextXAlignment = Enum.TextXAlignment.Left
-    DescriptionLabel.TextYAlignment = Enum.TextYAlignment.Top
-    DescriptionLabel.RichText = true
+			Description.Name = "Description"
+			Description.Parent = ButtonBlock
+			Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Description.BackgroundTransparency = 1.000
+			Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			Description.BorderSizePixel = 0
+			Description.Position = UDim2.new(0, 5, 0, 21)
+			Description.Size = UDim2.new(1, 0, 0, 45)
+			Description.Visible = false
+			Description.ZIndex = 11
+			Description.Font = Enum.Font.Gotham
+			Description.Text = Setup.Description
+			Description.TextColor3 = Library.Colors.TextColor
+			Description.TextSize = 13.000
+			Description.TextStrokeColor3 = Library.Colors.TextColor
+			Description.TextStrokeTransparency = 0.950
+			Description.TextTransparency = 0.500
+			Description.TextWrapped = true
+			Description.TextXAlignment = Enum.TextXAlignment.Left
+			Description.TextYAlignment = Enum.TextYAlignment.Top
+			Description.RichText = true
 
 			Arrow.Name = "Arrow"
 			Arrow.Parent = ButtonBlock
@@ -4135,23 +4136,44 @@ return ColorPickerSettings
 				})
 			end)
 
-local UpdateButtonSize = function()
-        local DescriptionSize = Library:GetTextSize(setup.Description, 13, Enum.Font.Gotham)
-        DescriptionLabel.Size = UDim2.new(1, -10, 0, DescriptionSize.Y + 10) -- 根据文本大小调整DescriptionLabel大小
-        ButtonBlock.Size = UDim2.new(0.99, 0, 0, 50 + DescriptionSize.Y) -- 根据DescriptionLabel大小调整ButtonBlock大小
-    end
-
-    UpdateButtonSize() -- 初始调用更新大小
-
 			Button.MouseButton1Click:Connect(function()
 				setup.Callback()
-				UpdateButtonSize() -- 点击后更新大小，以适应可能的文本变化
 			end)
+			
+			local UpdateBlock = function()
+				local TitleSize = 14;
+				local MainSize = Library:GetTextSize(Description.Text,Description.TextSize,Description.Font);
+				local DescriptionSize = MainSize.Y;
 
+				Description.Size = UDim2.new(1, MainSize.X, 0, DescriptionSize + 5)
+
+				if Description.Text:byte() then
+					Description.Visible = true;
+					Library:Tween(ButtonBlock,Library.TweenLibrary.SmallEffect,{
+						Size = UDim2.new(0.99, 0, 0, TitleSize + ((Description.Visible and Description.AbsoluteSize.Y + 5) or 0));
+					});
+
+				else
+					Description.Visible = false;
+
+					Library:Tween(ButtonBlock,Library.TweenLibrary.SmallEffect,{
+						Size = UDim2.new(0.99, 0, 0, Title.AbsoluteSize.Y + 10);
+					});
+				end;
+			end;
+		
+            UpdateBlock()
+            
 			local RootSkid = {};
+			
+			function RootSkid:Description(Setup)
+				Description.Text = Setup
+				UpdateBlock()
+			end;
 
 			function RootSkid:Value(Setup)
 				TextLabel.Text = Setup
+				UpdateBlock()
 			end;
 
 			function RootSkid:Fire(...)
@@ -4161,12 +4183,6 @@ local UpdateButtonSize = function()
 			function RootSkid:Title(title)
 				TextLabel.Text = title;
 			end;
-
-function RootSkid:Description(description) -- 添加设置Description的方法
-        setup.Description = description
-        DescriptionLabel.Text = description
-        UpdateButtonSize() -- 更新UI大小
-    end;
 
 			function RootSkid:Visible(value)
 				ButtonBlock.Visible = value;
