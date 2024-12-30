@@ -4374,7 +4374,7 @@ function Root:Button(setup)
         TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
     else
         Description.Visible = false
-        TotalHeight = TotalHeight + 5 -- 如果没有描述，增加额外的高度
+        TotalHeight = TotalHeight + 10 -- 如果没有描述，增加额外的高度
     end
 
     ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
