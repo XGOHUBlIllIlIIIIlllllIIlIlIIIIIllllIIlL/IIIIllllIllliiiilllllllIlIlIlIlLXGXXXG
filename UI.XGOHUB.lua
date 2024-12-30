@@ -4348,28 +4348,6 @@ function Root:Button(setup)
     end)
     --[[
     local UpdateBlock = function()
-        local TitleSize = 14;
-        local MainSize = Library:GetTextSize(setup.Title, TextLabel.TextSize, TextLabel.Font);
-        local DescriptionSize = MainSize.Y;
-
-        Description.Size = UDim2.new(1, MainSize.X, 0, DescriptionSize + 5)
-
-        if setup.Description:len() > 0 then
-            Description.Visible = true;
-            Library:Tween(ButtonBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, TitleSize + ((Description.Visible and Description.AbsoluteSize.Y + 5) or 0));
-            });
-
-        else
-            Description.Visible = false;
-
-            Library:Tween(ButtonBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + 10);
-            });
-        end;
-    end;
-    --]]
-    local UpdateBlock = function()
         local TitleSize = TextLabel.TextSize
         local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
         local DescriptionSize = Library:GetTextSize(setup.Description, Description.TextSize, Description.Font)
@@ -4383,7 +4361,24 @@ function Root:Button(setup)
         end
 
         ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+    end]]
+
+    local UpdateBlock = function()
+    local TitleSize = TextLabel.TextSize
+    local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+    local DescriptionSize = setup.Description:len() > 0 and Library:GetTextSize(setup.Description, Description.TextSize, Description.Font) or Vector2.new(0, 0)
+    
+    local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+    if setup.Description:len() > 0 then
+        Description.Visible = true
+        TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+    else
+        Description.Visible = false
+        TotalHeight = TotalHeight + 5 -- 如果没有描述，增加额外的高度
     end
+
+    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+end
 
     UpdateBlock() -- 初始调用以设置正确的大小
     
