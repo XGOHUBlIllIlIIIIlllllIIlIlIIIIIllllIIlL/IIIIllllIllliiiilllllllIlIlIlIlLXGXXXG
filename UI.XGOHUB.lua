@@ -1772,6 +1772,45 @@ Library.Colors = {
                    end;
     local function zigzag(X)
     return math.acos(math.cos(X * math.pi)) / math.pi
+end
+
+local function getRandomColor()
+    return Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
+end
+
+local function colorChange(colorProperty)
+    local counter = 0
+    return function()
+        colorProperty = Color3.fromHSV(zigzag(counter), 1, 1)
+        counter = counter + 0.01
+    end
+end
+
+function Library.Theme:RandomTheme()
+    Library.Colors = { 
+        Highlight = getRandomColor(), -- 随机高亮色
+        Default = getRandomColor(), -- 随机默认色
+        Disable = getRandomColor(), -- 随机禁用色
+        TextColor = getRandomColor(), -- 随机文本色
+    }
+
+    -- 应用颜色变化到每个颜色属性
+    local updateHighlight = colorChange(Library.Colors.Highlight)
+    local updateDefault = colorChange(Library.Colors.Default)
+    local updateDisable = colorChange(Library.Colors.Disable)
+    local updateTextColor = colorChange(Library.Colors.TextColor)
+
+    while true do
+        wait(1)
+        updateHighlight() -- 更新高亮色
+        updateDefault() -- 更新默认色
+        updateDisable() -- 更新禁用色
+        updateTextColor() -- 更新文本色
+    end
+end
+    --[[
+    local function zigzag(X)
+    return math.acos(math.cos(X * math.pi)) / math.pi
     end
 
     local function getRandomColor()
@@ -1807,7 +1846,7 @@ Library.Colors = {
         updateDisable() -- 更新禁用色
         updateTextColor() -- 更新文本色
     end
-end;
+end;]]
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
