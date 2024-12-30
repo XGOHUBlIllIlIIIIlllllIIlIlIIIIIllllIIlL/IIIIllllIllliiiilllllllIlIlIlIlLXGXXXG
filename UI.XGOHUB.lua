@@ -3673,7 +3673,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符[左]    ----------------------------------------------------------------------------------------
---[[     function Root:Block(Setup)
+        function Root:Block(Setup)
 			Setup = Setup or "Block";
 
 			local BlockLabel = Instance.new("Frame")
@@ -3719,14 +3719,14 @@ function Library:Windowxgo(setup)
 			end;
 
 			return RootSkid;
-		end;]]
-function Root:Block(Setup)
-    Setup = Setup or "Block";
+		end;
+function Root:Block1(Setup)
+    Setup = Setup or "Block1";
 
     local BlockLabel = Instance.new("Frame")
     local TextLabel = Instance.new("TextLabel")
 
-    -- 设置BlockLabel的属性
+    -- 设置BlockLabel属性
     BlockLabel.Name = "BlockLabel"
     BlockLabel.Parent = ScrollingFrame
     BlockLabel.BackgroundColor3 = Library.Colors.Default
@@ -3736,7 +3736,7 @@ function Root:Block(Setup)
     BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
     BlockLabel.ZIndex = 10
 
-    -- 设置TextLabel的属性
+    -- 设置TextLabel属性
     TextLabel.Parent = BlockLabel
     TextLabel.AnchorPoint = Vector2.new(0, 0.5)
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3757,21 +3757,23 @@ function Root:Block(Setup)
     TextLabel.TextXAlignment = Enum.TextXAlignment.Left
     TextLabel.RichText = true
 
-    local valueFunction -- 用于存储动态值的函数
+    local RootSkid = {};
 
-    function Root:SetValueFunction(func)
-        valueFunction = func
-        self:UpdateValue() -- 初始调用以设置值
-    end
+    -- 更新TextLabel的文本
+    function RootSkid:SetText(Setup)
+        TextLabel.Text = Setup
+    end;
 
-    function Root:UpdateValue()
-        if valueFunction then
-            TextLabel.Text = tostring(valueFunction()) -- 更新TextLabel的文本为函数的返回值
-        end
-    end
-
+    -- 控制BlockLabel的可见性
     function RootSkid:Visible(value)
         BlockLabel.Visible = value;
+    end;
+
+    -- 更新BlockLabel的位置以跟随玩家
+    function RootSkid:FollowPlayer()
+        local player = game.Players.LocalPlayer
+        local humanoidRootPart = player.Character.HumanoidRootPart
+        BlockLabel.Position = UDim2.new(0, humanoidRootPart.Position.X, 0, humanoidRootPart.Position.Y)
     end;
 
     return RootSkid;
