@@ -4369,7 +4369,7 @@ return ColorPickerSettings
 
 			-- 创建UI元素
 		    local A1ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
-		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
+--		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
 		    local Content = Instance.new("TextLabel")
@@ -4389,7 +4389,7 @@ return ColorPickerSettings
 			A1ToggleBlock.BorderSizePixel = 0
 			A1ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
 			A1ToggleBlock.ZIndex = 10
-
+--[[
 			DropShadow.Name = "DropShadow"
 			DropShadow.Parent = A1ToggleBlock
 			DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -4404,11 +4404,10 @@ return ColorPickerSettings
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 			DropShadow.SliceScale = 0.050
-
+--]]
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
 			UIStroke.Parent = A1ToggleBlock
-			UIStroke.ZIndex = 10
 
 			TextLabel.RichText = true
 			TextLabel.Parent = A1ToggleBlock
