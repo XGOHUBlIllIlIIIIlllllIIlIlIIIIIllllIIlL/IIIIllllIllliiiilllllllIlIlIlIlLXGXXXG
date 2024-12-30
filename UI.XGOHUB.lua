@@ -4408,7 +4408,7 @@ return ColorPickerSettings
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
 			UIStroke.Parent = A1ToggleBlock
-			UIStroke.Parent = nil
+			UIStroke.ZIndex = 10
 
 			TextLabel.RichText = true
 			TextLabel.Parent = A1ToggleBlock
@@ -4466,7 +4466,6 @@ return ColorPickerSettings
 			UIStroke_2.Transparency = 0.850
 			UIStroke_2.Color = Color3.fromRGB(156, 156, 156)
 			UIStroke_2.Parent = Block
-			UIStroke_2.Parent = nil
 
 			UICorner.CornerRadius = UDim.new(5, 100)
 			UICorner.Parent = Block			
