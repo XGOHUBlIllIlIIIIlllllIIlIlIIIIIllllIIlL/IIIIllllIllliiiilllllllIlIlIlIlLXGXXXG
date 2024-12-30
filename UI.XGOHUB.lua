@@ -1,6 +1,7 @@
--- 更新：延迟修复与主题更新 --
+-- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -2301,15 +2302,13 @@ end;
         end;
         return b;
     end)())
-
     blurEffect.Parent = game.Lighting
     blurEffect.Size = 60
 
     local blurTweenInfo = TweenInfo.new(4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-
     local blurTween = TweenService:Create(blurEffect, blurTweenInfo, {Size = 0})
+    
     blurTween:Play()
-
     -- 异步等待模糊效果完成
     coroutine.resume(coroutine.create(function()
         wait(2.5) -- 等待模糊效果完成
@@ -2671,7 +2670,6 @@ function Library:Windowxgo(setup)
 		LButton.MouseButton1Click:Connect(function()
 		    if setup.KeySystemInfo.AntiSpam then return end;
 		    setup.KeySystemInfo.AntiSpam = true;
-
 		    -- 检查玩家是否输入了卡密
 		    if TextBox.Text == "" then
 		        TextBox.PlaceholderText = "你没有填入卡密"
@@ -2679,7 +2677,6 @@ function Library:Windowxgo(setup)
 		        TextBox.PlaceholderText = "请输入卡密" -- 更改提示信息
 		    else
 		        local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
-
 		        if verify then
 		            setup.KeySystemInfo.Finished:Fire(setup.KeySystemInfo.CodeId)
 		            
@@ -2694,7 +2691,6 @@ function Library:Windowxgo(setup)
 		            TextBox.PlaceholderText = "请重新输入卡密" -- 更改提示信息
 		        end;
 		    end;
-
 		    setup.KeySystemInfo.AntiSpam = false;
 		end)
 	    
@@ -3237,15 +3233,12 @@ function Library:Windowxgo(setup)
 
 					local UIStroke = Button.Parent:WaitForChild('UIStroke');
 
-
 					Button.MouseButton1Click:Connect(function()
 						if MultiData[v] then
 							UIStroke.Color = Color3.fromRGB(156, 156, 156)
 							Button.Parent:WaitForChild('TextLabel').TextColor3 = Library.Colors.TextColor
 
 							MultiData[v] = nil;
-
-
 						else
 							if (Len() + 1) > MaxMulti then
 								return;
@@ -4370,8 +4363,8 @@ return ColorPickerSettings
 ------ // 切换按钮   ----------------------------------------------------------------------------------------
 		function Root:A1Toggle(setup)
 			setup = setup or {};
-
-			setup.Title = setup.Title or "A1Toggle"
+			setup.Title = setup.Title or "切换按钮[1]"
+			setup.Content = setup.Content or "";
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
@@ -4380,6 +4373,7 @@ return ColorPickerSettings
 		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
+		    local Content = Instance.new("TextLabel")
 		    local Block = Instance.new("Frame") -- 滑块的背景框
 		    local UIStroke_2 = Instance.new("UIStroke") -- 滑块背景框的边框
 		    local UICorner = Instance.new("UICorner") -- 用于创建圆角效果
@@ -4435,6 +4429,28 @@ return ColorPickerSettings
 			TextLabel.TextStrokeTransparency = 0.950
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+			
+			Content.Name = "Content"
+            Content.Parent = A1ToggleBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true			
 
 			Block.Name = "Block"
 			Block.Parent = A1ToggleBlock
@@ -4527,8 +4543,35 @@ return ColorPickerSettings
 
 				setup.Callback(setup.Default)
 			end)
+			
+		    local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                end
+
+                A1ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+            end
+            UpdateBlock() -- 初始调用以设置正确的大小
 
 			local RootSkid = {};
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:Value(Setup)
 				setup.Default = Setup
@@ -4536,6 +4579,8 @@ return ColorPickerSettings
 				UILib(setup.Default);
 
 				setup.Callback(setup.Default)
+				
+				UpdateBlock()
 			end;
 
 			function RootSkid:Visible(value)
@@ -4548,7 +4593,7 @@ return ColorPickerSettings
 		function Root:A2Toggle(setup)
 			setup = setup or {};
 
-			setup.Title = setup.Title or "A2Toggle"
+			setup.Title = setup.Title or "切换按钮[2]"
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
@@ -4725,7 +4770,7 @@ return ColorPickerSettings
 ------ // 输入框   ----------------------------------------------------------------------------------------
 		function Root:Textbox(setup)
 			setup = setup or {};
-			setup.Title = setup.Title or 'TextBox';
+			setup.Title = setup.Title or '输入框';
 			setup.PlaceHolder = setup.PlaceHolder or '';
 			setup.Default = setup.Default or '';
 			setup.Callback = setup.Callback or function() end;
