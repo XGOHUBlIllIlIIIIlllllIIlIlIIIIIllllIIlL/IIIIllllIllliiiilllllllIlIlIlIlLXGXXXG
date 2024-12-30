@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 偷狗东西 --
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -4359,7 +4359,7 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
------- // 切换按钮   ----------------------------------------------------------------------------------------
+------ // 切换按钮[1]   ----------------------------------------------------------------------------------------
 		function Root:A1Toggle(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "切换按钮[1]"
@@ -4408,6 +4408,7 @@ return ColorPickerSettings
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
 			UIStroke.Parent = A1ToggleBlock
+			UIStroke.Parent = nil
 
 			TextLabel.RichText = true
 			TextLabel.Parent = A1ToggleBlock
@@ -4465,9 +4466,10 @@ return ColorPickerSettings
 			UIStroke_2.Transparency = 0.850
 			UIStroke_2.Color = Color3.fromRGB(156, 156, 156)
 			UIStroke_2.Parent = Block
+			UIStroke_2.Parent = nil
 
 			UICorner.CornerRadius = UDim.new(5, 100)
-			UICorner.Parent = Block
+			UICorner.Parent = Block			
 
             -- 设置ValueBlock的属性
             ValueBlock.Name = "ValueBlock"
@@ -4589,7 +4591,7 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
------- // 切换按钮v2   ----------------------------------------------------------------------------------------
+------ // 切换按钮[2]   ----------------------------------------------------------------------------------------
 		function Root:A2Toggle(setup)
 			setup = setup or {};
 
@@ -4633,7 +4635,6 @@ return ColorPickerSettings
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 			DropShadow.SliceScale = 0.050
-			DropShadow.Visible = false
 
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
@@ -4809,7 +4810,6 @@ return ColorPickerSettings
 			DropShadow.ScaleType = Enum.ScaleType.Slice
 			DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 			DropShadow.SliceScale = 0.050
-			DropShadow.Visible = false
 
 			UIStroke.Transparency = 0.850
 			UIStroke.Color = Color3.fromRGB(156, 156, 156)
