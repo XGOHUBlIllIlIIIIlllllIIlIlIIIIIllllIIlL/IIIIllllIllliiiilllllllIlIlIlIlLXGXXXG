@@ -4003,8 +4003,8 @@ Rayfield.Main:GetPropertyChangedSignal('BackgroundColor3'):Connect(function()
 end)
 
 return ColorPickerSettings
---]]---- // 按钮   ----------------------------------------------------------------------------------------
-		function Root:Button(setup)
+--]]---- // 按钮组件   ----------------------------------------------------------------------------------------
+--[[距离 function Root:Button(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Button"
 			Setup.Description = Setup.Description or "";
@@ -4190,6 +4190,194 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
+--距离]]
+function Root:Button(setup)
+    setup = setup or {};
+    setup.Title = setup.Title or "Button";
+    setup.Description = setup.Description or "";
+    setup.Callback = setup.Callback or function() end;
+    setup.Tip = setup.Tip or nil;
+
+    local ButtonBlock = Instance.new("Frame")
+    local DropShadow = Instance.new("ImageLabel")
+    local UIStroke = Instance.new("UIStroke")
+    local TextLabel = Instance.new("TextLabel")
+    local Description = Instance.new("TextLabel")
+    local Arrow = Instance.new("ImageLabel")
+    local Button = Instance.new("TextButton")
+
+    ButtonBlock.Name = "ButtonBlock"
+    ButtonBlock.Parent = ScrollingFrame
+    ButtonBlock.BackgroundColor3 = Library.Colors.Default
+    ButtonBlock.BackgroundTransparency = 0.250
+    ButtonBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ButtonBlock.BorderSizePixel = 0
+    ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
+    ButtonBlock.ZIndex = 10
+
+    DropShadow.Name = "DropShadow"
+    DropShadow.Parent = ButtonBlock
+    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DropShadow.BackgroundTransparency = 1.000
+    DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
+    DropShadow.Position = UDim2.new(0, -5, 0, -5)
+    DropShadow.Size = UDim2.new(1, 10, 1, 10)
+    DropShadow.ZIndex = 9
+    DropShadow.Image = "rbxassetid://297694300"
+    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    DropShadow.ImageTransparency = 0.500
+    DropShadow.ScaleType = Enum.ScaleType.Slice
+    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
+    DropShadow.SliceScale = 0.050
+
+    UIStroke.Transparency = 0.850
+    UIStroke.Color = Color3.fromRGB(156, 156, 156)
+    UIStroke.Parent = ButtonBlock
+
+    TextLabel.Parent = ButtonBlock
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
+    TextLabel.ZIndex = 11
+    TextLabel.Font = Enum.Font.Gotham
+    TextLabel.Text = setup.Title
+    TextLabel.TextColor3 = Library.Colors.TextColor
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
+    TextLabel.TextStrokeTransparency = 0.950
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.RichText = true
+
+    Description.Name = "Description"
+    Description.Parent = ButtonBlock
+    Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Description.BackgroundTransparency = 1.000
+    Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Description.BorderSizePixel = 0
+    Description.Position = UDim2.new(0, 5, 0, 21)
+    Description.Size = UDim2.new(1, 0, 0, 45)
+    Description.Visible = false
+    Description.ZIndex = 11
+    Description.Font = Enum.Font.Gotham
+    Description.Text = setup.Description
+    Description.TextColor3 = Library.Colors.TextColor
+    Description.TextSize = 13.000
+    Description.TextStrokeColor3 = Library.Colors.TextColor
+    Description.TextStrokeTransparency = 0.950
+    Description.TextTransparency = 0.500
+    Description.TextWrapped = true
+    Description.TextXAlignment = Enum.TextXAlignment.Left
+    Description.TextYAlignment = Enum.TextYAlignment.Top
+    Description.RichText = true
+
+    Arrow.Name = "Arrow"
+    Arrow.Parent = ButtonBlock
+    Arrow.AnchorPoint = Vector2.new(1, 0.5)
+    Arrow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Arrow.BackgroundTransparency = 1.000
+    Arrow.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Arrow.BorderSizePixel = 0
+    Arrow.Position = UDim2.new(0.980000019, 0, 0.5, 0)
+    Arrow.Size = UDim2.new(0.400000006, 0, 0.400000006, 0)
+    Arrow.SizeConstraint = Enum.SizeConstraint.RelativeYY
+    Arrow.ZIndex = 11
+    Arrow.Image = "rbxassetid://10709791437"
+    Arrow.ImageTransparency = 0.150
+
+    Button.Name = "Button"
+    Button.Parent = ButtonBlock
+    Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Button.BackgroundTransparency = 1.000
+    Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Button.BorderSizePixel = 0
+    Button.Size = UDim2.new(1, 0, 1, 0)
+    Button.ZIndex = 15
+    Button.Font = Enum.Font.SourceSans
+    Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Button.TextSize = 14.000
+    Button.TextTransparency = 1.000
+
+    Library:MakeDrop(ButtonBlock, UIStroke, Library.Colors.Hightlight)
+
+    if setup.Tip then
+        WindowLibrary:AddToolTip(ButtonBlock, tostring(setup.Tip));
+    end;
+
+    Button.MouseButton1Down:Connect(function()
+        Library:Tween(Arrow, Library.TweenLibrary.SmallEffect, {
+            Position = UDim2.new(0.999, 0, 0.5, 0),
+            ImageTransparency = 0.4
+        })
+    end)
+
+    Button.MouseButton1Up:Connect(function()
+        Library:Tween(Arrow, Library.TweenLibrary.SmallEffect, {
+            Position = UDim2.new(0.980000019, 0, 0.5, 0),
+            ImageTransparency = 0.15
+        })
+    end)
+
+    Button.MouseButton1Click:Connect(function()
+        setup.Callback()
+    end)
+    
+    local UpdateBlock = function()
+        local TitleSize = 14;
+        local MainSize = Library:GetTextSize(setup.Title, TextLabel.TextSize, TextLabel.Font);
+        local DescriptionSize = MainSize.Y;
+
+        Description.Size = UDim2.new(1, MainSize.X, 0, DescriptionSize + 5)
+
+        if setup.Description:len() > 0 then
+            Description.Visible = true;
+            Library:Tween(ButtonBlock, Library.TweenLibrary.SmallEffect, {
+                Size = UDim2.new(0.99, 0, 0, TitleSize + ((Description.Visible and Description.AbsoluteSize.Y + 5) or 0));
+            });
+
+        else
+            Description.Visible = false;
+
+            Library:Tween(ButtonBlock, Library.TweenLibrary.SmallEffect, {
+                Size = UDim2.new(0.99, 0, 0, TextLabel.AbsoluteSize.Y + 10);
+            });
+        end;
+    end;
+    
+    UpdateBlock()
+    
+    local RootSkid = {};
+    
+    function RootSkid:Description(Setup)
+        Description.Text = Setup
+        UpdateBlock()
+    end;
+
+    function RootSkid:Value(Setup)
+        TextLabel.Text = Setup
+        UpdateBlock()
+    end;
+
+    function RootSkid:Fire(...)
+        return setup.Callback(...);  
+    end;
+
+    function RootSkid:Title(title)
+        TextLabel.Text = title;
+        UpdateBlock()
+    end;
+
+    function RootSkid:Visible(value)
+        ButtonBlock.Visible = value;
+    end;
+
+    return RootSkid;
+end;
 ------ // 切换按钮[原ui]   ----------------------------------------------------------------------------------------
         function Root:Toggle(setup)
 			setup = setup or {};
