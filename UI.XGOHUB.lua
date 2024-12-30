@@ -3728,23 +3728,23 @@ function Root:Block1(Setup)
 
     -- 设置BlockLabel属性
     BlockLabel.Name = "BlockLabel"
-    BlockLabel.Parent = ScrollingFrame
+    BlockLabel.Parent = ScrollingFrame -- 假设您希望标签显示在屏幕中央
     BlockLabel.BackgroundColor3 = Library.Colors.Default
     BlockLabel.BackgroundTransparency = 1.000
     BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
     BlockLabel.BorderSizePixel = 0
-    BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
+    BlockLabel.Size = UDim2.new(0, 200, 0, 50) -- 设置为固定大小
+    BlockLabel.Position = UDim2.new(0.5, 0, 0.5, 0) -- 初始位置在屏幕中央
     BlockLabel.ZIndex = 10
 
     -- 设置TextLabel属性
     TextLabel.Parent = BlockLabel
-    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
     TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+    TextLabel.Position = UDim2.new(0, 0, 0, 0)
+    TextLabel.Size = UDim2.new(1, 0, 1, 0)
     TextLabel.ZIndex = 11
     TextLabel.Font = Enum.Font.Gotham
     TextLabel.Text = Setup
@@ -3767,13 +3767,6 @@ function Root:Block1(Setup)
     -- 控制BlockLabel的可见性
     function RootSkid:Visible(value)
         BlockLabel.Visible = value;
-    end;
-
-    -- 更新BlockLabel的位置以跟随玩家
-    function RootSkid:FollowPlayer()
-        local player = game.Players.LocalPlayer
-        local humanoidRootPart = player.Character.HumanoidRootPart
-        BlockLabel.Position = UDim2.new(0, humanoidRootPart.Position.X, 0, humanoidRootPart.Position.Y)
     end;
 
     return RootSkid;
