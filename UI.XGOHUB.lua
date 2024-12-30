@@ -1788,7 +1788,7 @@ end
 
 function Library.Theme:RandomTheme()
     Library.Colors = { 
-        Highlight = getRandomColor(), -- 随机高亮色
+        Hightlight = getRandomColor(), -- 随机高亮色
         Default = getRandomColor(), -- 随机默认色
         Disable = getRandomColor(), -- 随机禁用色
         TextColor = getRandomColor(), -- 随机文本色
