@@ -1,6 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
-
+-- UI.XGO修改更新 --
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -1752,8 +1752,8 @@ Library.Colors = {
                    end;
     function Library.Theme:Celebration()
     Library.Colors = { 
-        Hightlight = Color3.fromRGB(255, 0, 0), -- 喜庆红
-        Default = Color3.fromRGB(255, 165, 0), -- 金色
+        Hightlight = Color3.fromRGB(250, 1, 1), -- 喜庆红
+        Default = Color3.fromRGB(255, 0, 0), -- 金色
         Disable = Color3.fromRGB(255, 192, 203), -- 浅粉色
         TextColor = Color3.fromRGB(0, 0, 0), -- 黑色
     }
@@ -1769,84 +1769,7 @@ Library.Colors = {
         Disable = randomColor(), -- 随机禁用色
         TextColor = randomColor() -- 随机文本色
     }
-                   end;
-    local function zigzag(X)
-    return math.acos(math.cos(X * math.pi)) / math.pi
-end
-
-local function getRandomColor()
-    return Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
-end
-
-local function colorChange(colorProperty)
-    local counter = 0
-    return function()
-        colorProperty = Color3.fromHSV(zigzag(counter), 1, 1)
-        counter = counter + 0.01
-    end
-end
-
-function Library.Theme:RandomTheme()
-    Library.Colors = { 
-        Hightlight = getRandomColor(), -- 随机高亮色
-        Default = getRandomColor(), -- 随机默认色
-        Disable = getRandomColor(), -- 随机禁用色
-        TextColor = getRandomColor(), -- 随机文本色
-    }
-
-    -- 应用颜色变化到每个颜色属性
-    local updateHighlight = colorChange(Library.Colors.Highlight)
-    local updateDefault = colorChange(Library.Colors.Default)
-    local updateDisable = colorChange(Library.Colors.Disable)
-    local updateTextColor = colorChange(Library.Colors.TextColor)
-
-    while true do
-        wait(1)
-        updateHighlight() -- 更新高亮色
-        updateDefault() -- 更新默认色
-        updateDisable() -- 更新禁用色
-        updateTextColor() -- 更新文本色
-    end
-end
-    --[[
-    local function zigzag(X)
-    return math.acos(math.cos(X * math.pi)) / math.pi
-    end
-
-    local function getRandomColor()
-    return Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))
-    end
-
-    local function colorChange(colorProperty)
-    local counter = 0
-    return function()
-        colorProperty.Value = Color3.fromHSV(zigzag(counter), 1, 1)
-        counter = counter + 0.01
-    end
-    end
-
-    function Library.Theme:RandomTheme()
-    Library.Colors = { 
-        Hightlight = {Value = getRandomColor()}, -- 随机高亮色
-        Default = {Value = getRandomColor()}, -- 随机默认色
-        Disable = {Value = getRandomColor()}, -- 随机禁用色
-        TextColor = {Value = getRandomColor()}, -- 随机文本色
-    }
-
-    -- 应用颜色变化到每个颜色属性
-    local updateHighlight = colorChange(Library.Colors.Highlight)
-    local updateDefault = colorChange(Library.Colors.Default)
-    local updateDisable = colorChange(Library.Colors.Disable)
-    local updateTextColor = colorChange(Library.Colors.TextColor)
-
-    while true do
-        wait(1)
-        updateHighlight() -- 更新高亮色
-        updateDefault() -- 更新默认色
-        updateDisable() -- 更新禁用色
-        updateTextColor() -- 更新文本色
-    end
-end;]]
+end;
 ------------------------------------UI.主题颜色------------------------------------------------------------------------------------------------------------
 function Library.Theme:Random()
 	local RNG = Random.new();
@@ -4423,7 +4346,7 @@ function Root:Button(setup)
     Button.MouseButton1Click:Connect(function()
         setup.Callback()
     end)
-    
+    --[[
     local UpdateBlock = function()
         local TitleSize = 14;
         local MainSize = Library:GetTextSize(setup.Title, TextLabel.TextSize, TextLabel.Font);
@@ -4445,8 +4368,24 @@ function Root:Button(setup)
             });
         end;
     end;
-    
-    UpdateBlock()
+    --]]
+    local UpdateBlock = function()
+        local TitleSize = TextLabel.TextSize
+        local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+        local DescriptionSize = Library:GetTextSize(setup.Description, Description.TextSize, Description.Font)
+        
+        local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+        if setup.Description:len() > 0 then
+            Description.Visible = true
+            TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+        else
+            Description.Visible = false
+        end
+
+        ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+    end
+
+    UpdateBlock() -- 初始调用以设置正确的大小
     
     local RootSkid = {};
     
@@ -4461,7 +4400,7 @@ function Root:Button(setup)
     end;
 
     function RootSkid:Fire(...)
-        return setup.Callback(...);  
+        return setup.Callback(...);
     end;
 
     function RootSkid:Title(title)
