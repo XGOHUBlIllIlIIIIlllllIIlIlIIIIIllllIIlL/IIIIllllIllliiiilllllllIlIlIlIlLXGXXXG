@@ -1,7 +1,6 @@
 -- 更新：延迟修复与主题更新 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
-
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -4024,196 +4023,10 @@ end)
 
 return ColorPickerSettings
 --]]---- // 按钮组件   ----------------------------------------------------------------------------------------
---[[     function Root:Button(setup)
-			setup = setup or {};
-			setup.Title = setup.Title or "Button"
-			Setup.Description = Setup.Description or "";
-			setup.Callback = setup.Callback or function() end;
-			setup.Tip = setup.Tip or nil;
-
-            local ButtonBlock = Instance.new("Frame")
-			local DropShadow = Instance.new("ImageLabel")
-			local UIStroke = Instance.new("UIStroke")
-			local TextLabel = Instance.new("TextLabel")
-			local Description = Instance.new("TextLabel")
-			local Arrow = Instance.new("ImageLabel")
-			local Button = Instance.new("TextButton")
-
-            ButtonBlock.Name = "ButtonBlock"
-            ButtonBlock.Parent = ScrollingFrame
-            ButtonBlock.BackgroundColor3 = Library.Colors.Default
-            ButtonBlock.BackgroundTransparency = 0.250
-            ButtonBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            ButtonBlock.BorderSizePixel = 0
-            ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, Library.ItemHeight)
-            ButtonBlock.ZIndex = 10
-
-            DropShadow.Name = "DropShadow"
-            DropShadow.Parent = ButtonBlock
-            DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            DropShadow.BackgroundTransparency = 1.000
-            DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
-            DropShadow.Position = UDim2.new(0, -5, 0, -5)
-            DropShadow.Size = UDim2.new(1, 10, 1, 10)
-            DropShadow.ZIndex = 9
-            DropShadow.Image = "rbxassetid://297694300"
-            DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-            DropShadow.ImageTransparency = 0.500
-            DropShadow.ScaleType = Enum.ScaleType.Slice
-            DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-            DropShadow.SliceScale = 0.050
-
-            UIStroke.Transparency = 0.850
-            UIStroke.Color = Color3.fromRGB(156, 156, 156)
-            UIStroke.Parent = ButtonBlock
-
-            TextLabel.Parent = ButtonBlock
-            TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-            TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            TextLabel.BackgroundTransparency = 1.000
-            TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            TextLabel.BorderSizePixel = 0
-            TextLabel.Position = UDim2.new(0, 5, 0, 12)
-            TextLabel.Size = UDim2.new(1, 0, 0, 14)
-            TextLabel.ZIndex = 11
-            TextLabel.Font = Enum.Font.Gotham
-            TextLabel.Text = setup.Title
-            TextLabel.TextColor3 = Library.Colors.TextColor
-            TextLabel.TextScaled = true
-            TextLabel.TextSize = 14.000
-            TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-            TextLabel.TextStrokeTransparency = 0.950
-            TextLabel.TextWrapped = true
-            TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-            TextLabel.RichText = true
-    
-            Description.Name = "Description"
-            Description.Parent = ButtonBlock
-            Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Description.BackgroundTransparency = 1.000
-            Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Description.BorderSizePixel = 0
-            Description.Position = UDim2.new(0, 5, 0, 18)
-            Description.Size = UDim2.new(1, 0, 0, 45)
-            Description.Visible = false
-            Description.ZIndex = 11
-            Description.Font = Enum.Font.Gotham
-            Description.Text = setup.Description
-            Description.TextColor3 = Library.Colors.TextColor
-            Description.TextSize = 13.000
-            Description.TextStrokeColor3 = Library.Colors.TextColor
-            Description.TextStrokeTransparency = 0.950
-            Description.TextTransparency = 0.500
-            Description.TextWrapped = true
-            Description.TextXAlignment = Enum.TextXAlignment.Left
-            Description.TextYAlignment = Enum.TextYAlignment.Top
-            Description.RichText = true
-    
-            Arrow.Name = "Arrow"
-            Arrow.Parent = ButtonBlock
-            Arrow.AnchorPoint = Vector2.new(1, 0.5)
-            Arrow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Arrow.BackgroundTransparency = 1.000
-            Arrow.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Arrow.BorderSizePixel = 0
-            Arrow.Position = UDim2.new(0.980000019, 0, 0.5, 0)
-            Arrow.Size = UDim2.new(0.400000006, 0, 0.400000006, 0)
-            Arrow.SizeConstraint = Enum.SizeConstraint.RelativeYY
-            Arrow.ZIndex = 11
-            Arrow.Image = "rbxassetid://10709791437"
-            Arrow.ImageTransparency = 0.150
-
-            Button.Name = "Button"
-            Button.Parent = ButtonBlock
-            Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Button.BackgroundTransparency = 1.000
-            Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Button.BorderSizePixel = 0
-            Button.Size = UDim2.new(1, 0, 1, 0)
-            Button.ZIndex = 15
-            Button.Font = Enum.Font.SourceSans
-            Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-            Button.TextSize = 14.000
-            Button.TextTransparency = 1.000
-
-            Library:MakeDrop(ButtonBlock, UIStroke, Library.Colors.Hightlight)
-
-            if setup.Tip then
-                WindowLibrary:AddToolTip(ButtonBlock, tostring(setup.Tip));
-            end;
-
-            Button.MouseButton1Down:Connect(function()
-                Library:Tween(Arrow, Library.TweenLibrary.SmallEffect, {
-                    Position = UDim2.new(0.999, 0, 0.5, 0),
-                    ImageTransparency = 0.4
-                })
-            end)
-
-            Button.MouseButton1Up:Connect(function()
-                Library:Tween(Arrow, Library.TweenLibrary.SmallEffect, {
-                    Position = UDim2.new(0.980000019, 0, 0.5, 0),
-                    ImageTransparency = 0.15
-                })
-            end)
-
-            Button.MouseButton1Click:Connect(function()
-                setup.Callback()
-            end)
-    
-            local UpdateBlock = function()
-            local TitleSize = TextLabel.TextSize
-            local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
-            local DescriptionSize = setup.Description:len() > 0 and Library:GetTextSize(setup.Description, Description.TextSize, Description.Font) or Vector2.new(0, 0)
-    
-            local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
-            if setup.Description:len() > 0 then
-                Description.Visible = true
-                TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
-            else
-                Description.Visible = false
-                TotalHeight = TotalHeight + 16.50000000000001 -- 如果没有描述，增加额外的高度
-                TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
-            end
-
-            ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
-            end
-    
-            UpdateBlock() -- 初始调用以设置正确的大小
-    
-            local RootSkid = {};
-    
-            function RootSkid:Description(Setup)
-                Description.Text = Setup
-                UpdateBlock()
-            end;
-
-            function RootSkid:Value(Setup)
-                TextLabel.Text = Setup
-                UpdateBlock()
-            end;
-
-            function RootSkid:Fire(...)
-                return setup.Callback(...);
-            end;
-
-            function RootSkid:Title(title)
-                TextLabel.Text = title;
-                UpdateBlock()
-            end;
-
-            function RootSkid:Visible(value)
-                ButtonBlock.Visible = value;
-            end;
-
-            return RootSkid;
-        end;]]
         function Root:Button(setup)
             setup = setup or {};
             setup.Title = setup.Title or "Button";
-            setup.Description = setup.Description or "";
+            setup.Content = setup.Content or "";
             setup.Callback = setup.Callback or function() end;
             setup.Tip = setup.Tip or nil;
 
@@ -4221,7 +4034,7 @@ return ColorPickerSettings
             local DropShadow = Instance.new("ImageLabel")
             local UIStroke = Instance.new("UIStroke")
             local TextLabel = Instance.new("TextLabel")
-            local Description = Instance.new("TextLabel")
+            local Content = Instance.new("TextLabel")
             local Arrow = Instance.new("ImageLabel")
             local Button = Instance.new("TextButton")            
 
@@ -4272,27 +4085,27 @@ return ColorPickerSettings
             TextLabel.TextXAlignment = Enum.TextXAlignment.Left
             TextLabel.RichText = true
     
-            Description.Name = "Description"
-            Description.Parent = ButtonBlock
-            Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Description.BackgroundTransparency = 1.000
-            Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            Description.BorderSizePixel = 0
-            Description.Position = UDim2.new(0, 5, 0, 18)
-            Description.Size = UDim2.new(1, 0, 0, 45)
-            Description.Visible = false
-            Description.ZIndex = 11
-            Description.Font = Enum.Font.Gotham
-            Description.Text = setup.Description
-            Description.TextColor3 = Library.Colors.TextColor
-            Description.TextSize = 13.000
-            Description.TextStrokeColor3 = Library.Colors.TextColor
-            Description.TextStrokeTransparency = 0.950
-            Description.TextTransparency = 0.500
-            Description.TextWrapped = true
-            Description.TextXAlignment = Enum.TextXAlignment.Left
-            Description.TextYAlignment = Enum.TextYAlignment.Top
-            Description.RichText = true
+            Content.Name = "Content"
+            Content.Parent = ButtonBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true
     
             Arrow.Name = "Arrow"
             Arrow.Parent = ButtonBlock
@@ -4348,16 +4161,16 @@ return ColorPickerSettings
             local UpdateBlock = function()
                 local TitleSize = TextLabel.TextSize
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
-                local DescriptionSize = setup.Description:len() > 0 and Library:GetTextSize(setup.Description, Description.TextSize, Description.Font) or Vector2.new(0, 0)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
                 local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
-                if setup.Description:len() > 0 then
-                    Description.Visible = true
-                    TotalHeight = TotalHeight + DescriptionSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
                     TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
                     TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
                 else
-                    Description.Visible = false
+                    Content.Visible = false
                     TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
                     TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
                     TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
@@ -4369,8 +4182,8 @@ return ColorPickerSettings
     
             local RootSkid = {};
     
-            function RootSkid:Description(Setup)
-                Description.Text = Setup
+            function RootSkid:Content(Setup)
+                Content.Text = Setup
                 UpdateBlock()
             end;
 
