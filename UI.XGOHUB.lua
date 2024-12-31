@@ -3673,7 +3673,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
+--[[     function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
             Setup = Setup or "分隔符";
             positionUDim = positionUDim or 0.02;
             sizeUDim = sizeUDim or 0.99000001;
@@ -3748,7 +3748,99 @@ function Library:Windowxgo(setup)
             end
 
             return RootSkid;
-        end;
+        end;]]
+function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
+    -- 创建一个包含默认值的表
+    local defaults = {
+        Setup = "分隔符",
+        positionUDim = 0.02,
+        sizeUDim = 0.99000001,
+        fontType = Enum.Font.Gotham,
+        textColor = Library.Colors.TextColor,
+        colorEffect = false
+    };
+
+    -- 更新提供的参数
+    for i, v in pairs({Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect}) do
+        if v ~= nil then
+            defaults[i] = v;
+        end
+    end
+
+    -- 创建Frame和TextLabel实例
+    local BlockLabel = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
+
+    -- 设置BlockLabel的属性
+    BlockLabel.Name = "BlockLabel"
+    BlockLabel.Parent = ScrollingFrame
+    BlockLabel.BackgroundColor3 = Library.Colors.Default
+    BlockLabel.BackgroundTransparency = 1.000
+    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BlockLabel.BorderSizePixel = 0
+    BlockLabel.Size = UDim2.new(defaults.sizeUDim, 0, 0, 25)
+    BlockLabel.ZIndex = 10
+
+    -- 设置TextLabel的属性
+    TextLabel.Parent = BlockLabel
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(defaults.positionUDim, 0, 0.5, 0)
+    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+    TextLabel.ZIndex = 11
+    TextLabel.Font = defaults.fontType
+    TextLabel.Text = defaults.Setup
+    TextLabel.TextColor3 = defaults.textColor
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextStrokeColor3 = defaults.textColor
+    TextLabel.TextStrokeTransparency = 0.950
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.RichText = true
+
+    -- 创建RootSkid表和函数
+    local RootSkid = {}
+
+    function RootSkid:Set(XG0HubText)
+        TextLabel.Text = XG0HubText;
+    end;
+
+    function RootSkid:SetVisible(value)
+        BlockLabel.Visible = value;
+    end;
+
+    function RootSkid:SetTextColor(newTextColor)
+        TextLabel.TextColor3 = newTextColor;
+        TextLabel.TextStrokeColor3 = newTextColor; -- 更新文本和描边颜色
+    end;
+
+    -- 应用颜色效果
+    if defaults.colorEffect then
+        local function zigzag(X)
+            return math.acos(math.cos(X * math.pi)) / math.pi
+        end
+
+        local function colorChange(textLabel)
+            local counter = 0
+            spawn(function()
+                while true do
+                    wait(0.03)
+                    textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
+                    counter = counter + 0.01
+                end
+            end)
+        end
+
+        colorChange(TextLabel)
+    end
+
+    -- 返回RootSkid
+    return RootSkid;
+end;
 ------ // 信息标签   ----------------------------------------------------------------------------------------
 		function Root:Paragraph(Setup)
 			Setup = Setup or {};
