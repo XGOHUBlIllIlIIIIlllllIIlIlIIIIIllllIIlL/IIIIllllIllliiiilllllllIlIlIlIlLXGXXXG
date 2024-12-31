@@ -3729,57 +3729,44 @@ function Root:Block(Setup)
 
     -- 设置BlockLabel属性
     BlockLabel.Name = "BlockLabel"
-			BlockLabel.Parent = ScrollingFrame
-			BlockLabel.BackgroundColor3 = Library.Colors.Default
-			BlockLabel.BackgroundTransparency = 1.000
-			BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			BlockLabel.BorderSizePixel = 0
-			BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
-			BlockLabel.ZIndex = 10
+    BlockLabel.Parent = ScrollingFrame
+    BlockLabel.BackgroundColor3 = Library.Colors.Default
+    BlockLabel.BackgroundTransparency = 1.000
+    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BlockLabel.BorderSizePixel = 0
+    BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
+    BlockLabel.ZIndex = 10
 
-			TextLabel.Parent = BlockLabel
-			TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			TextLabel.BackgroundTransparency = 1.000
-			TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			TextLabel.BorderSizePixel = 0
-			TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-			TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-			TextLabel.ZIndex = 11
-			TextLabel.Font = Enum.Font.Gotham
-			TextLabel.Text = Setup
-			TextLabel.TextColor3 = Library.Colors.TextColor
-			TextLabel.TextScaled = true
-			TextLabel.TextSize = 14.000
-			TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-			TextLabel.TextStrokeTransparency = 0.950
-			TextLabel.TextWrapped = true
-			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-			TextLabel.RichText = true
-
-    local currentValue = Setup; -- 初始值
+    -- 设置TextLabel属性
+    TextLabel.Parent = BlockLabel
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+    TextLabel.ZIndex = 11
+    TextLabel.Font = Enum.Font.Gotham
+    TextLabel.Text = Setup
+    TextLabel.TextColor3 = Library.Colors.TextColor
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
+    TextLabel.TextStrokeTransparency = 0.950
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.RichText = true
 
     local RootSkid = {};
 
-    function RootSkid:Value(Setup)
-        TextLabel.Text = Setup
+    function RootSkid:SetText(textContent)
+        TextLabel.Text = textContent;
     end;
 
-    function RootSkid:Visible(value)
+    function RootSkid:SetVisible(value)
         BlockLabel.Visible = value;
     end;
-
-    -- 动态更新标签内容
-    function RootSkid:UpdateLabel(updateFunction, interval)
-        assert(type(updateFunction) == "function", "updateFunction must be a function")
-        assert(type(interval) == "number" and interval > 0, "interval must be a positive number")
-
-        while true do
-            currentValue = updateFunction(currentValue) -- 使用提供的函数更新当前值
-            TextLabel.Text = currentValue -- 更新标签文本
-            wait(interval) -- 等待interval秒
-        end
-    end
 
     return RootSkid;
 end;
