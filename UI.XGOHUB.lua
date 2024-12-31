@@ -3673,14 +3673,16 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, textColor)
+        function Root:Block(Setup, positionUDim, sizeUDim, textColor, fontType)
             Setup = Setup or "分隔符";
             positionUDim = positionUDim or 0.02; -- 默认为左对齐
             sizeUDim = sizeUDim or 0.99000001; -- 默认大小
             textColor = textColor or Library.Colors.TextColor; -- 默认文本颜色
+            fontType = fontType or Enum.Font.Gotham; -- 默认字体类型
     
             local BlockLabel = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
+            local Dropdown = Instance.new("Dropdown")
 
             BlockLabel.Name = "BlockLabel"
             BlockLabel.Parent = ScrollingFrame
@@ -3710,6 +3712,19 @@ function Library:Windowxgo(setup)
             TextLabel.TextWrapped = true
             TextLabel.TextXAlignment = Enum.TextXAlignment.Left
             TextLabel.RichText = true
+            
+            Dropdown.Parent = BlockLabel
+            Dropdown.Position = UDim2.new(0.9, 0, 0.5, 0)
+            Dropdown.Size = UDim2.new(0.1, 0, 0.4, 0)
+            Dropdown.ZIndex = 12
+            Dropdown.Items = {
+                {Text = "Gotham", Value = Enum.Font.Gotham},
+                {Text = "Arial", Value = Enum.Font.Arial},
+                {Text = "TimesNewRoman", Value = Enum.Font.TimesNewRoman}
+            }
+            Dropdown.Changed:Connect(function()
+                TextLabel.Font = Dropdown:GetSelectedValue()
+            end)
 
             local RootSkid = {}
 
