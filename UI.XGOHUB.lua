@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 分隔符类
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -3672,43 +3672,46 @@ function Library:Windowxgo(setup)
 				end;
 			end;
 		end)
------- // 分隔符[左]    ----------------------------------------------------------------------------------------
---[[     function Root:Block(Setup)
-			Setup = Setup or "Block";
+------ // 分隔符  ----------------------------------------------------------------------------------------
+        function Root:Block(Setup, positionUDim, sizeUDim, textColor)
+            Setup = Setup or "分隔符";
+            positionUDim = positionUDim or 0.02; -- 默认为左对齐
+            sizeUDim = sizeUDim or 0.99000001; -- 默认大小
+            textColor = textColor or Library.Colors.TextColor; -- 默认文本颜色
+    
+            local BlockLabel = Instance.new("Frame")
+            local TextLabel = Instance.new("TextLabel")
 
-			local BlockLabel = Instance.new("Frame")
-			local TextLabel = Instance.new("TextLabel")
+            BlockLabel.Name = "BlockLabel"
+            BlockLabel.Parent = ScrollingFrame
+            BlockLabel.BackgroundColor3 = Library.Colors.Default
+            BlockLabel.BackgroundTransparency = 1.000
+            BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            BlockLabel.BorderSizePixel = 0
+            BlockLabel.Size = UDim2.new(sizeUDim, 0, 0, 25)
+            BlockLabel.ZIndex = 10
 
-			BlockLabel.Name = "BlockLabel"
-			BlockLabel.Parent = ScrollingFrame
-			BlockLabel.BackgroundColor3 = Library.Colors.Default
-			BlockLabel.BackgroundTransparency = 1.000
-			BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			BlockLabel.BorderSizePixel = 0
-			BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
-			BlockLabel.ZIndex = 10
+            TextLabel.Parent = BlockLabel
+            TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+            TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            TextLabel.BackgroundTransparency = 1.000
+            TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            TextLabel.BorderSizePixel = 0
+            TextLabel.Position = UDim2.new(positionUDim, 0, 0.5, 0)
+            TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+            TextLabel.ZIndex = 11
+            TextLabel.Font = Enum.Font.Gotham
+            TextLabel.Text = Setup
+            TextLabel.TextColor3 = textColor -- 使用传入的 textColor 参数
+            TextLabel.TextScaled = true
+            TextLabel.TextSize = 14.000
+            TextLabel.TextStrokeColor3 = textColor -- 文本描边也使用相同的颜色
+            TextLabel.TextStrokeTransparency = 0.950
+            TextLabel.TextWrapped = true
+            TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+            TextLabel.RichText = true
 
-			TextLabel.Parent = BlockLabel
-			TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			TextLabel.BackgroundTransparency = 1.000
-			TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			TextLabel.BorderSizePixel = 0
-			TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
-			TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-			TextLabel.ZIndex = 11
-			TextLabel.Font = Enum.Font.Gotham
-			TextLabel.Text = Setup
-			TextLabel.TextColor3 = Library.Colors.TextColor
-			TextLabel.TextScaled = true
-			TextLabel.TextSize = 14.000
-			TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-			TextLabel.TextStrokeTransparency = 0.950
-			TextLabel.TextWrapped = true
-			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-			TextLabel.RichText = true
-
-            local RootSkid = {};
+            local RootSkid = {}
 
             function RootSkid:Set(XG0HubText)
                 TextLabel.Text = XG0HubText;
@@ -3716,155 +3719,15 @@ function Library:Windowxgo(setup)
 
             function RootSkid:SetVisible(value)
                 BlockLabel.Visible = value;
+            end;
+            
+            function RootSkid:SetTextColor(newTextColor)
+                TextLabel.TextColor3 = newTextColor;
+                TextLabel.TextStrokeColor3 = newTextColor; -- 更新文本和描边颜色
             end;
 
             return RootSkid;
         end;
------- // 分隔符[右]    ----------------------------------------------------------------------------------------
-function Root:A1Block(Setup)
-    Setup = Setup or "A1Block"; -- 设置默认值
-
-    local BlockLabel = Instance.new("Frame")
-    local TextLabel = Instance.new("TextLabel")
-
-    BlockLabel.Name = "BlockLabel" -- 设置名称
-    BlockLabel.Parent = ScrollingFrame -- 设置父级
-    BlockLabel.BackgroundColor3 = Library.Colors.Default -- 设置背景颜色
-    BlockLabel.BackgroundTransparency = 1.000 -- 设置透明度
-    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0) -- 设置边框颜色
-    BlockLabel.BorderSizePixel = 0 -- 设置边框大小
-    BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25) -- 设置大小
-    BlockLabel.ZIndex = 10 -- 设置层级
-
-    TextLabel.Parent = BlockLabel -- 设置父级
-    TextLabel.AnchorPoint = Vector2.new(0, 0.5) -- 设置锚点
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 设置背景颜色
-    TextLabel.BackgroundTransparency = 1.000 -- 设置透明度
-    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0) -- 设置边框颜色
-    TextLabel.BorderSizePixel = 0 -- 设置边框大小
-    TextLabel.Position = UDim2.new(0.9000001, 0, 0.5, 0) -- 设置位置在右边
-    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0) -- 设置大小
-    TextLabel.ZIndex = 11 -- 设置层级
-    TextLabel.Font = Enum.Font.Gotham -- 设置字体
-    TextLabel.Text = Setup -- 设置文本
-    TextLabel.TextColor3 = Library.Colors.TextColor -- 设置文本颜色
-    TextLabel.TextScaled = true -- 设置文本缩放
-    TextLabel.TextSize = 14.000 -- 设置文本大小
-    TextLabel.TextStrokeColor3 = Library.Colors.TextColor -- 设置文本描边颜色
-    TextLabel.TextStrokeTransparency = 0.950 -- 设置文本描边透明度
-    TextLabel.TextWrapped = true -- 设置文本换行
-    TextLabel.TextXAlignment = Enum.TextXAlignment.Left -- 设置文本对齐
-    TextLabel.RichText = true -- 设置富文本
-
-    local RootSkid = {}
-
-    function RootSkid:Set(XG0HubText)
-        TextLabel.Text = XG0HubText; -- 设置文本
-    end;
-
-    function RootSkid:SetVisible(value)
-        BlockLabel.Visible = value; -- 设置可见性
-    end;
-
-    return RootSkid;
-end;
------- // 分隔符[中间]    ----------------------------------------------------------------------------------------
-        function Root:A2Block(Setup)
-			Setup = Setup or "A2Block";
-
-			local BlockLabel = Instance.new("Frame")
-			local TextLabel = Instance.new("TextLabel")
-
-			BlockLabel.Name = "BlockLabel"
-			BlockLabel.Parent = ScrollingFrame
-			BlockLabel.BackgroundColor3 = Library.Colors.Default
-			BlockLabel.BackgroundTransparency = 1.000
-			BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			BlockLabel.BorderSizePixel = 0
-			BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
-			BlockLabel.ZIndex = 10
-
-			TextLabel.Parent = BlockLabel
-			TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			TextLabel.BackgroundTransparency = 1.000
-			TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-			TextLabel.BorderSizePixel = 0
-			TextLabel.Position = UDim2.new(0.45867051, 0, 0.5, 0) -- 设置位置在中间
-			TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-			TextLabel.ZIndex = 11
-			TextLabel.Font = Enum.Font.Gotham
-			TextLabel.Text = Setup
-			TextLabel.TextColor3 = Library.Colors.TextColor
-			TextLabel.TextScaled = true
-			TextLabel.TextSize = 14.000
-			TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-			TextLabel.TextStrokeTransparency = 0.950
-			TextLabel.TextWrapped = true
-			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-			TextLabel.RichText = true
-
-            local RootSkid = {};
-
-            function RootSkid:Set(XG0HubText)
-                TextLabel.Text = XG0HubText;
-            end;
-
-            function RootSkid:SetVisible(value)
-                BlockLabel.Visible = value;
-            end;
-
-            return RootSkid;
-        end;]]
-function Root:Block(Setup, positionUDim, sizeUDim)
-    Setup = Setup or "分隔符";
-    positionUDim = positionUDim or 0.02; -- 默认为左对齐
-    sizeUDim = sizeUDim or 0.99000001; -- 默认大小
-    
-    local BlockLabel = Instance.new("Frame")
-    local TextLabel = Instance.new("TextLabel")
-
-    BlockLabel.Name = "BlockLabel"
-    BlockLabel.Parent = ScrollingFrame
-    BlockLabel.BackgroundColor3 = Library.Colors.Default
-    BlockLabel.BackgroundTransparency = 1.000
-    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    BlockLabel.BorderSizePixel = 0
-    BlockLabel.Size = UDim2.new(sizeUDim, 0, 0, 25)
-    BlockLabel.ZIndex = 10
-
-    TextLabel.Parent = BlockLabel
-    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.BackgroundTransparency = 1.000
-    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(positionUDim, 0, 0.5, 0)
-    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-    TextLabel.ZIndex = 11
-    TextLabel.Font = Enum.Font.Gotham
-    TextLabel.Text = Setup
-    TextLabel.TextColor3 = Library.Colors.TextColor
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 14.000
-    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-    TextLabel.TextStrokeTransparency = 0.950
-    TextLabel.TextWrapped = true
-    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-    TextLabel.RichText = true
-
-    local RootSkid = {}
-
-    function RootSkid:Set(XG0HubText)
-        TextLabel.Text = XG0HubText;
-    end;
-
-    function RootSkid:SetVisible(value)
-        BlockLabel.Visible = value;
-    end;
-
-    return RootSkid;
-end;
 --[[---- // 颜色选择器   ----------------------------------------------------------------------------------------
 local function SaveConfiguration()
     if not CEnabled then return end
@@ -4162,7 +4025,7 @@ return ColorPickerSettings
 --]]---- // 按钮组件   ----------------------------------------------------------------------------------------
         function Root:Button(setup)
             setup = setup or {};
-            setup.Title = setup.Title or "Button";
+            setup.Title = setup.Title or "按钮";
             setup.Content = setup.Content or "";
             setup.Callback = setup.Callback or function() end;
             setup.Tip = setup.Tip or nil;
