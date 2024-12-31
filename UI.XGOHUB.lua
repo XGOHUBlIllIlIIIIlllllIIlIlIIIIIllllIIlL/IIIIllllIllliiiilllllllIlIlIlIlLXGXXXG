@@ -3742,7 +3742,7 @@ function Root:A1Block(Setup)
     TextLabel.BackgroundTransparency = 1.000 -- 设置透明度
     TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0) -- 设置边框颜色
     TextLabel.BorderSizePixel = 0 -- 设置边框大小
-    TextLabel.Position = UDim2.new(0.98, 0, 0.5, 0) -- 设置位置在右边
+    TextLabel.Position = UDim2.new(0.89, 0, 0.5, 0) -- 设置位置在右边
     TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0) -- 设置大小
     TextLabel.ZIndex = 11 -- 设置层级
     TextLabel.Font = Enum.Font.Gotham -- 设置字体
