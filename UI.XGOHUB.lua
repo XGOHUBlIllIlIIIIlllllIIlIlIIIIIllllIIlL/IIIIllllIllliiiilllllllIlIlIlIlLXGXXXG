@@ -3682,7 +3682,6 @@ function Library:Windowxgo(setup)
     
             local BlockLabel = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
-            local Dropdown = Instance.new("Dropdown")
 
             BlockLabel.Name = "BlockLabel"
             BlockLabel.Parent = ScrollingFrame
@@ -3702,7 +3701,7 @@ function Library:Windowxgo(setup)
             TextLabel.Position = UDim2.new(positionUDim, 0, 0.5, 0)
             TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
             TextLabel.ZIndex = 11
-            TextLabel.Font = Enum.Font.Gotham
+            TextLabel.Font = fontType
             TextLabel.Text = Setup
             TextLabel.TextColor3 = textColor -- 使用传入的 textColor 参数
             TextLabel.TextScaled = true
@@ -3713,19 +3712,6 @@ function Library:Windowxgo(setup)
             TextLabel.TextXAlignment = Enum.TextXAlignment.Left
             TextLabel.RichText = true
             
-            Dropdown.Parent = BlockLabel
-            Dropdown.Position = UDim2.new(0.9, 0, 0.5, 0)
-            Dropdown.Size = UDim2.new(0.1, 0, 0.4, 0)
-            Dropdown.ZIndex = 12
-            Dropdown.Items = {
-                {Text = "Gotham", Value = Enum.Font.Gotham},
-                {Text = "Arial", Value = Enum.Font.Arial},
-                {Text = "TimesNewRoman", Value = Enum.Font.TimesNewRoman}
-            }
-            Dropdown.Changed:Connect(function()
-                TextLabel.Font = Dropdown:GetSelectedValue()
-            end)
-
             local RootSkid = {}
 
             function RootSkid:Set(XG0HubText)
