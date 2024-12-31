@@ -3673,7 +3673,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符[左]    ----------------------------------------------------------------------------------------
-        function Root:Block(Setup)
+--[[     function Root:Block(Setup)
 			Setup = Setup or "Block";
 
 			local BlockLabel = Instance.new("Frame")
@@ -3815,7 +3815,53 @@ end;
             end;
 
             return RootSkid;
-        end;
+        end;]]
+function Root:Block(Setup, positionUDim, sizeUDim)
+    Setup = Setup or "DefaultText";
+    local BlockLabel = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
+
+    BlockLabel.Name = "BlockLabel"
+    BlockLabel.Parent = ScrollingFrame
+    BlockLabel.BackgroundColor3 = Library.Colors.Default
+    BlockLabel.BackgroundTransparency = 1.000
+    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BlockLabel.BorderSizePixel = 0
+    BlockLabel.Size = UDim2.new(sizeUDim, 0, 0, 25)
+    BlockLabel.ZIndex = 10
+
+    TextLabel.Parent = BlockLabel
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(positionUDim, 0, 0.5, 0)
+    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+    TextLabel.ZIndex = 11
+    TextLabel.Font = Enum.Font.Gotham
+    TextLabel.Text = Setup
+    TextLabel.TextColor3 = Library.Colors.TextColor
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
+    TextLabel.TextStrokeTransparency = 0.950
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.RichText = true
+
+    local RootSkid = {}
+
+    function RootSkid:Set(XG0HubText)
+        TextLabel.Text = XG0HubText;
+    end;
+
+    function RootSkid:SetVisible(value)
+        BlockLabel.Visible = value;
+    end;
+
+    return RootSkid;
+end;
 --[[---- // 颜色选择器   ----------------------------------------------------------------------------------------
 local function SaveConfiguration()
     if not CEnabled then return end
