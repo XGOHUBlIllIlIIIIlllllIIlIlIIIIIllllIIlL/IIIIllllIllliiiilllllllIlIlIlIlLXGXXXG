@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 彩虹
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -3732,16 +3732,20 @@ function Library:Windowxgo(setup)
                 local function zigzag(X)
                     return math.acos(math.cos(X * math.pi)) / math.pi
                 end
+
                 local function colorChange(textLabel)
                     local counter = 0
-                    while true do
-                        wait(0.03)
-                        textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
-                        counter = counter + 0.01
-                    end
+                    spawn(function()
+                        while true do
+                            wait(0.03)
+                            textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
+                            counter = counter + 0.01
+                        end
+                    end)
                 end
+
                 colorChange(TextLabel)
-            end;
+            end
 
             return RootSkid;
         end;
