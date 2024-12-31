@@ -3673,13 +3673,14 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
+        function Root:Block(Setup, positionUDim, sizeUDim, fontType, colorEffect, textColor, enableRainbowEffect)
             Setup = Setup or "分隔符";
-            positionUDim = positionUDim or 0.02; -- 默认为左对齐
-            sizeUDim = sizeUDim or 0.99000001; -- 默认大小
-            fontType = fontType or Enum.Font.Gotham; -- 默认字体类型
-            textColor = textColor or Library.Colors.TextColor; -- 默认文本颜色
-            colorEffect = colorEffect or false; -- 默认不开启颜色效果
+            positionUDim = positionUDim or 0.02;
+            sizeUDim = sizeUDim or 0.99000001;
+            fontType = fontType or Enum.Font.Gotham;
+            colorEffect = colorEffect or false;
+            textColor = textColor or Library.Colors.TextColor;            
+            enableRainbowEffect = enableRainbowEffect or false;
     
             local BlockLabel = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
@@ -3727,7 +3728,7 @@ function Library:Windowxgo(setup)
                 TextLabel.TextColor3 = newTextColor;
                 TextLabel.TextStrokeColor3 = newTextColor; -- 更新文本和描边颜色
             end;
-           --[[ 
+           
             if colorEffect then
                 local function zigzag(X)
                     return math.acos(math.cos(X * math.pi)) / math.pi
@@ -3745,22 +3746,37 @@ function Library:Windowxgo(setup)
                 end
 
                 colorChange(TextLabel)
-            end]]
-if colorEffect then
-        local function colorChange(textLabel)
-            local hue = 0
-            spawn(function()
-                while true do
-                    wait(0.03)
-                    -- 将 hue 值从 0 增加到 360，然后循环
-                    hue = (hue + 1) % 360
-                    textLabel.TextColor3 = Color3.fromHSV(hue / 360, 1, 1)
-                end
-            end)
-        end
+            end
+            
+            local function createRainbowText(text)
+                local colors = {Color3.fromRGB(255, 0, 0), Color3.fromRGB(255, 127, 0), Color3.fromRGB(255, 255, 0),
+                                Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 0, 255), Color3.fromRGB(75, 0, 130), 
+                                Color3.fromRGB(148, 0, 211)}
 
-        colorChange(TextLabel)
-    end
+                local function colorToHex(color)
+                    return string.format("#%02X%02X%02X", color.R * 255, color.G * 255, color.B * 255)
+                end
+
+                local rainbowText = ""
+                for i = 1, #text do
+                    local char = text:sub(i, i)
+                    local color = colors[(i - 1) % #colors + 1]
+                    rainbowText = rainbowText .. "<font color=\"" .. colorToHex(color) .. "\">" .. char .. "</font>"
+                end
+                return rainbowText
+            end
+
+            local function applyRainbowIfFound()
+                local textToFind = game.Players.LocalPlayer:WaitForChild("Input"):WaitForChild("Text").Text
+                if string.find(Setup, textToFind) then
+                    TextLabel.RichText = true
+                    TextLabel.Text = createRainbowText(Setup)
+                end
+            end
+
+            if enableRainbowEffect then
+                applyRainbowIfFound();
+            end
     
             return RootSkid;
         end;
