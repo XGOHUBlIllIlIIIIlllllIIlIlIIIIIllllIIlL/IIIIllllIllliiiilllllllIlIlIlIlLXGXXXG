@@ -3673,12 +3673,13 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor)
+        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
             Setup = Setup or "分隔符";
             positionUDim = positionUDim or 0.02; -- 默认为左对齐
             sizeUDim = sizeUDim or 0.99000001; -- 默认大小
             fontType = fontType or Enum.Font.Gotham; -- 默认字体类型
             textColor = textColor or Library.Colors.TextColor; -- 默认文本颜色
+            colorEffect = colorEffect or false; -- 默认不开启颜色效果
     
             local BlockLabel = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
@@ -3725,6 +3726,21 @@ function Library:Windowxgo(setup)
             function RootSkid:SetTextColor(newTextColor)
                 TextLabel.TextColor3 = newTextColor;
                 TextLabel.TextStrokeColor3 = newTextColor; -- 更新文本和描边颜色
+            end;
+            
+            if colorEffect then
+                local function zigzag(X)
+                    return math.acos(math.cos(X * math.pi)) / math.pi
+                end
+                local function colorChange(textLabel)
+                    local counter = 0
+                    while true do
+                        wait(0.03)
+                        textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
+                        counter = counter + 0.01
+                    end
+                end
+                colorChange(TextLabel)
             end;
 
             return RootSkid;
