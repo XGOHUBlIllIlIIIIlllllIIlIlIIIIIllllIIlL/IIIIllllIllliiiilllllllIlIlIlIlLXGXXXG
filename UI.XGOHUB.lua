@@ -3673,12 +3673,12 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, textColor, fontType)
+        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor)
             Setup = Setup or "分隔符";
             positionUDim = positionUDim or 0.02; -- 默认为左对齐
             sizeUDim = sizeUDim or 0.99000001; -- 默认大小
-            textColor = textColor or Library.Colors.TextColor; -- 默认文本颜色
             fontType = fontType or Enum.Font.Gotham; -- 默认字体类型
+            textColor = textColor or Library.Colors.TextColor; -- 默认文本颜色
     
             local BlockLabel = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
