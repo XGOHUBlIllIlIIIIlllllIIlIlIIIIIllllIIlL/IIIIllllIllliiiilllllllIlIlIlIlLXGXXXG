@@ -1,6 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
+-- 分隔符进化
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -3750,8 +3751,8 @@ function Library:Windowxgo(setup)
             return RootSkid;
         end;]]
 function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
-    -- 创建一个包含默认值的表
-    local defaults = {
+    -- 设置默认值
+    local params = {
         Setup = "分隔符",
         positionUDim = 0.02,
         sizeUDim = 0.99000001,
@@ -3760,12 +3761,13 @@ function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEff
         colorEffect = false
     };
 
-    -- 更新提供的参数
-    for i, v in pairs({Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect}) do
-        if v ~= nil then
-            defaults[i] = v;
-        end
-    end
+    -- 更新params表中的值，只有当传入的参数不为空时才更新
+    if Setup ~= nil then params.Setup = Setup end
+    if positionUDim ~= nil then params.positionUDim = positionUDim end
+    if sizeUDim ~= nil then params.sizeUDim = sizeUDim end
+    if fontType ~= nil then params.fontType = fontType end
+    if textColor ~= nil then params.textColor = textColor end
+    if colorEffect ~= nil then params.colorEffect = colorEffect end
 
     -- 创建Frame和TextLabel实例
     local BlockLabel = Instance.new("Frame")
@@ -3778,7 +3780,7 @@ function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEff
     BlockLabel.BackgroundTransparency = 1.000
     BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
     BlockLabel.BorderSizePixel = 0
-    BlockLabel.Size = UDim2.new(defaults.sizeUDim, 0, 0, 25)
+    BlockLabel.Size = UDim2.new(params.sizeUDim, 0, 0, 25)
     BlockLabel.ZIndex = 10
 
     -- 设置TextLabel的属性
@@ -3788,15 +3790,15 @@ function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEff
     TextLabel.BackgroundTransparency = 1.000
     TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
     TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(defaults.positionUDim, 0, 0.5, 0)
+    TextLabel.Position = UDim2.new(params.positionUDim, 0, 0.5, 0)
     TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
     TextLabel.ZIndex = 11
-    TextLabel.Font = defaults.fontType
-    TextLabel.Text = defaults.Setup
-    TextLabel.TextColor3 = defaults.textColor
+    TextLabel.Font = params.fontType
+    TextLabel.Text = params.Setup
+    TextLabel.TextColor3 = params.textColor
     TextLabel.TextScaled = true
     TextLabel.TextSize = 14.000
-    TextLabel.TextStrokeColor3 = defaults.textColor
+    TextLabel.TextStrokeColor3 = params.textColor
     TextLabel.TextStrokeTransparency = 0.950
     TextLabel.TextWrapped = true
     TextLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -3819,7 +3821,7 @@ function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEff
     end;
 
     -- 应用颜色效果
-    if defaults.colorEffect then
+    if params.colorEffect then
         local function zigzag(X)
             return math.acos(math.cos(X * math.pi)) / math.pi
         end
