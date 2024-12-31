@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
-
+-- 分隔符v2
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -3750,99 +3750,90 @@ function Library:Windowxgo(setup)
 
             return RootSkid;
         end;]]
-function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
-    -- 设置默认值
-    local params = {
-        Setup = "分隔符",
-        positionUDim = 0.02,
-        sizeUDim = 0.99000001,
-        fontType = Enum.Font.Gotham,
-        textColor = Library.Colors.TextColor,
-        colorEffect = false
-    };
+        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
+            local params = {
+                Setup = "分隔符",
+                positionUDim = 0.02,
+                sizeUDim = 0.99000001,
+                fontType = Enum.Font.Gotham,
+                textColor = Library.Colors.TextColor,
+                colorEffect = false
+            };
+            if Setup ~= nil then params.Setup = Setup end
+            if positionUDim ~= nil then params.positionUDim = positionUDim end
+            if sizeUDim ~= nil then params.sizeUDim = sizeUDim end
+            if fontType ~= nil then params.fontType = fontType end
+            if textColor ~= nil then params.textColor = textColor end
+            if colorEffect ~= nil then params.colorEffect = colorEffect end
 
-    -- 更新params表中的值，只有当传入的参数不为空时才更新
-    if Setup ~= nil then params.Setup = Setup end
-    if positionUDim ~= nil then params.positionUDim = positionUDim end
-    if sizeUDim ~= nil then params.sizeUDim = sizeUDim end
-    if fontType ~= nil then params.fontType = fontType end
-    if textColor ~= nil then params.textColor = textColor end
-    if colorEffect ~= nil then params.colorEffect = colorEffect end
+            local BlockLabel = Instance.new("Frame")
+            local TextLabel = Instance.new("TextLabel")
 
-    -- 创建Frame和TextLabel实例
-    local BlockLabel = Instance.new("Frame")
-    local TextLabel = Instance.new("TextLabel")
+            BlockLabel.Name = "BlockLabel"
+            BlockLabel.Parent = ScrollingFrame
+            BlockLabel.BackgroundColor3 = Library.Colors.Default
+            BlockLabel.BackgroundTransparency = 1.000
+            BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            BlockLabel.BorderSizePixel = 0
+            BlockLabel.Size = UDim2.new(params.sizeUDim, 0, 0, 25)
+            BlockLabel.ZIndex = 10
 
-    -- 设置BlockLabel的属性
-    BlockLabel.Name = "BlockLabel"
-    BlockLabel.Parent = ScrollingFrame
-    BlockLabel.BackgroundColor3 = Library.Colors.Default
-    BlockLabel.BackgroundTransparency = 1.000
-    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    BlockLabel.BorderSizePixel = 0
-    BlockLabel.Size = UDim2.new(params.sizeUDim, 0, 0, 25)
-    BlockLabel.ZIndex = 10
+            TextLabel.Parent = BlockLabel
+            TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+            TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            TextLabel.BackgroundTransparency = 1.000
+            TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            TextLabel.BorderSizePixel = 0
+            TextLabel.Position = UDim2.new(params.positionUDim, 0, 0.5, 0)
+            TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+            TextLabel.ZIndex = 11
+            TextLabel.Font = params.fontType
+            TextLabel.Text = params.Setup
+            TextLabel.TextColor3 = params.textColor
+            TextLabel.TextScaled = true
+            TextLabel.TextSize = 14.000
+            TextLabel.TextStrokeColor3 = params.textColor
+            TextLabel.TextStrokeTransparency = 0.950
+            TextLabel.TextWrapped = true
+            TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+            TextLabel.RichText = true
 
-    -- 设置TextLabel的属性
-    TextLabel.Parent = BlockLabel
-    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.BackgroundTransparency = 1.000
-    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(params.positionUDim, 0, 0.5, 0)
-    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-    TextLabel.ZIndex = 11
-    TextLabel.Font = params.fontType
-    TextLabel.Text = params.Setup
-    TextLabel.TextColor3 = params.textColor
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 14.000
-    TextLabel.TextStrokeColor3 = params.textColor
-    TextLabel.TextStrokeTransparency = 0.950
-    TextLabel.TextWrapped = true
-    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-    TextLabel.RichText = true
+            local RootSkid = {}
 
-    -- 创建RootSkid表和函数
-    local RootSkid = {}
+            function RootSkid:Set(XG0HubText)
+                TextLabel.Text = XG0HubText;
+            end;
 
-    function RootSkid:Set(XG0HubText)
-        TextLabel.Text = XG0HubText;
-    end;
+            function RootSkid:SetVisible(value)
+                BlockLabel.Visible = value;
+            end;
 
-    function RootSkid:SetVisible(value)
-        BlockLabel.Visible = value;
-    end;
-
-    function RootSkid:SetTextColor(newTextColor)
-        TextLabel.TextColor3 = newTextColor;
-        TextLabel.TextStrokeColor3 = newTextColor; -- 更新文本和描边颜色
-    end;
-
-    -- 应用颜色效果
-    if params.colorEffect then
-        local function zigzag(X)
-            return math.acos(math.cos(X * math.pi)) / math.pi
-        end
-
-        local function colorChange(textLabel)
-            local counter = 0
-            spawn(function()
-                while true do
-                    wait(0.03)
-                    textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
-                    counter = counter + 0.01
+            function RootSkid:SetTextColor(newTextColor)
+                TextLabel.TextColor3 = newTextColor;
+                TextLabel.TextStrokeColor3 = newTextColor;
+            end;
+           
+            if colorEffect then
+                local function zigzag(X)
+                    return math.acos(math.cos(X * math.pi)) / math.pi
                 end
-            end)
-        end
 
-        colorChange(TextLabel)
-    end
+                local function colorChange(textLabel)
+                    local counter = 0
+                    spawn(function()
+                        while true do
+                            wait(0.03)
+                            textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
+                            counter = counter + 0.01
+                        end
+                    end)
+                end
 
-    -- 返回RootSkid
-    return RootSkid;
-end;
+                colorChange(TextLabel)
+            end
+
+            return RootSkid;
+        end;
 ------ // 信息标签   ----------------------------------------------------------------------------------------
 		function Root:Paragraph(Setup)
 			Setup = Setup or {};
