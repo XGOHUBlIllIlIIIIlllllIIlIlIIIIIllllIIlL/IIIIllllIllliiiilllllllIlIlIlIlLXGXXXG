@@ -3673,7 +3673,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符[左]    ----------------------------------------------------------------------------------------
-        function Root:Block(Setup)
+--[[      function Root:Block(Setup)
 			Setup = Setup or "Block";
 
 			local BlockLabel = Instance.new("Frame")
@@ -3720,54 +3720,66 @@ function Library:Windowxgo(setup)
 
 			return RootSkid;
 		end;
-function Root:Block1(Setup)
-    Setup = Setup or "Block1";
+		]]
+function Root:Block(Setup)
+    Setup = Setup or "Block"; -- 默认值为空字符串
 
     local BlockLabel = Instance.new("Frame")
     local TextLabel = Instance.new("TextLabel")
 
     -- 设置BlockLabel属性
     BlockLabel.Name = "BlockLabel"
-    BlockLabel.Parent = ScrollingFrame -- 假设您希望标签显示在屏幕中央
-    BlockLabel.BackgroundColor3 = Library.Colors.Default
-    BlockLabel.BackgroundTransparency = 1.000
-    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    BlockLabel.BorderSizePixel = 0
-    BlockLabel.Size = UDim2.new(0, 200, 0, 50) -- 设置为固定大小
-    BlockLabel.Position = UDim2.new(0.5, 0, 0.5, 0) -- 初始位置在屏幕中央
-    BlockLabel.ZIndex = 10
+			BlockLabel.Parent = ScrollingFrame
+			BlockLabel.BackgroundColor3 = Library.Colors.Default
+			BlockLabel.BackgroundTransparency = 1.000
+			BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			BlockLabel.BorderSizePixel = 0
+			BlockLabel.Size = UDim2.new(0.99000001, 0, 0, 25)
+			BlockLabel.ZIndex = 10
 
-    -- 设置TextLabel属性
-    TextLabel.Parent = BlockLabel
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.BackgroundTransparency = 1.000
-    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    TextLabel.BorderSizePixel = 0
-    TextLabel.Position = UDim2.new(0, 0, 0, 0)
-    TextLabel.Size = UDim2.new(1, 0, 1, 0)
-    TextLabel.ZIndex = 11
-    TextLabel.Font = Enum.Font.Gotham
-    TextLabel.Text = Setup
-    TextLabel.TextColor3 = Library.Colors.TextColor
-    TextLabel.TextScaled = true
-    TextLabel.TextSize = 14.000
-    TextLabel.TextStrokeColor3 = Library.Colors.TextColor
-    TextLabel.TextStrokeTransparency = 0.950
-    TextLabel.TextWrapped = true
-    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-    TextLabel.RichText = true
+			TextLabel.Parent = BlockLabel
+			TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+			TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			TextLabel.BackgroundTransparency = 1.000
+			TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+			TextLabel.BorderSizePixel = 0
+			TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+			TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+			TextLabel.ZIndex = 11
+			TextLabel.Font = Enum.Font.Gotham
+			TextLabel.Text = Setup
+			TextLabel.TextColor3 = Library.Colors.TextColor
+			TextLabel.TextScaled = true
+			TextLabel.TextSize = 14.000
+			TextLabel.TextStrokeColor3 = Library.Colors.TextColor
+			TextLabel.TextStrokeTransparency = 0.950
+			TextLabel.TextWrapped = true
+			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+			TextLabel.RichText = true
+
+    local currentValue = Setup; -- 初始值
 
     local RootSkid = {};
 
-    -- 更新TextLabel的文本
-    function RootSkid:SetText(Setup)
+    function RootSkid:Value(Setup)
         TextLabel.Text = Setup
     end;
 
-    -- 控制BlockLabel的可见性
     function RootSkid:Visible(value)
         BlockLabel.Visible = value;
     end;
+
+    -- 动态更新标签内容
+    function RootSkid:UpdateLabel(updateFunction, interval)
+        assert(type(updateFunction) == "function", "updateFunction must be a function")
+        assert(type(interval) == "number" and interval > 0, "interval must be a positive number")
+
+        while true do
+            currentValue = updateFunction(currentValue) -- 使用提供的函数更新当前值
+            TextLabel.Text = currentValue -- 更新标签文本
+            wait(interval) -- 等待interval秒
+        end
+    end
 
     return RootSkid;
 end;
