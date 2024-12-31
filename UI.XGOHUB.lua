@@ -3673,14 +3673,13 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, fontType, colorEffect, textColor, enableRainbowEffect)
+        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
             Setup = Setup or "分隔符";
             positionUDim = positionUDim or 0.02;
             sizeUDim = sizeUDim or 0.99000001;
             fontType = fontType or Enum.Font.Gotham;
+            textColor = textColor or Library.Colors.TextColor; 
             colorEffect = colorEffect or false;
-            textColor = textColor or Library.Colors.TextColor;            
-            enableRainbowEffect = enableRainbowEffect or false;
     
             local BlockLabel = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
@@ -3747,37 +3746,7 @@ function Library:Windowxgo(setup)
 
                 colorChange(TextLabel)
             end
-            
-            local function createRainbowText(text)
-                local colors = {Color3.fromRGB(255, 0, 0), Color3.fromRGB(255, 127, 0), Color3.fromRGB(255, 255, 0),
-                                Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 0, 255), Color3.fromRGB(75, 0, 130), 
-                                Color3.fromRGB(148, 0, 211)}
 
-                local function colorToHex(color)
-                    return string.format("#%02X%02X%02X", color.R * 255, color.G * 255, color.B * 255)
-                end
-
-                local rainbowText = ""
-                for i = 1, #text do
-                    local char = text:sub(i, i)
-                    local color = colors[(i - 1) % #colors + 1]
-                    rainbowText = rainbowText .. "<font color=\"" .. colorToHex(color) .. "\">" .. char .. "</font>"
-                end
-                return rainbowText
-            end
-
-            local function applyRainbowIfFound()
-                local textToFind = game.Players.LocalPlayer:WaitForChild("Input"):WaitForChild("Text").Text
-                if string.find(Setup, textToFind) then
-                    TextLabel.RichText = true
-                    TextLabel.Text = createRainbowText(Setup)
-                end
-            end
-
-            if enableRainbowEffect then
-                applyRainbowIfFound();
-            end
-    
             return RootSkid;
         end;
 ------ // 信息标签   ----------------------------------------------------------------------------------------
