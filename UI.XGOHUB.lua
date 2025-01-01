@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.03
+-- 边框v1.09
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2382,14 +2382,11 @@ function Library:Windowxgo(setup)
 		setup.KeySystemInfo.OnLogin = setup.KeySystemInfo.OnLogin or function() wait( 0.1) return true end;
 	end
 	
---[[ local ScreenGui = Instance.new("ScreenGui")
-	local MainFrame = Instance.new("Frame")
-	local BackgroundImage = Instance.new("ImageLabel")
-	local DropShadow = Instance.new("ImageLabel")
-	local Ico = Instance.new("ImageLabel")
-	local UICorner = Instance.new("UICorner")
-	
-	ScreenGui.Parent = Library.CoreGui
+--  local ScreenGui = Instance.new("ScreenGui")
+--	local MainFrame = Instance.new("Frame")
+--	local BackgroundImage = Instance.new("ImageLabel")
+		
+--[[	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = false
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
@@ -2411,40 +2408,51 @@ function Library:Windowxgo(setup)
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.BackgroundTransparency = 1
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-    BackgroundImage.Image = ImageList[currentImageIndex]
-    BackgroundImage.ScaleType = Enum.ScaleType.Stretch
+    BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.UICorner = UICorner
-
---  UICorner.CornerRadius = UDim.new(0, 10)
---  UICorner.Parent = BackgroundImage]]
-
-local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local BackgroundImage = Instance.new("ImageLabel")
-local UICorner = Instance.new("UICorner")
-
-local images = {
+    BackgroundImage.ScaleType = Enum.ScaleType.Stretch
+    ]]
+local currentImageIndex = 1
+local backgroundImages = {
     "rbxassetid://86451637909512", -- 图片1
     "rbxassetid://120611289434746", -- 图片2
     "rbxassetid://128885038925647", -- 图片3
     "rbxassetid://96996396016819", -- 图片4
 }
 
--- 当前图片索引
+-- 初始化当前图片索引
 local currentImageIndex = 1
 
-ScreenGui.Parent = game.CoreGui
+-- 定义一个函数来切换背景图片
+local function changeBackgroundImage()
+    -- 设置下一张图片为背景
+    BackgroundImage.Image = backgroundImages[currentImageIndex]
+
+    -- 更新索引，如果到达表的末尾，则回到开始
+    currentImageIndex = (currentImageIndex % #backgroundImages) + 1
+end
+
+-- 创建ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local BackgroundImage = Instance.new("ImageLabel")
+    local DropShadow = Instance.new("ImageLabel")
+	local Ico = Instance.new("ImageLabel")
+	local UICorner = Instance.new("UICorner")
+
+ScreenGui.Parent = Library.CoreGui
 ScreenGui.ResetOnSpawn = false
 ScreenGui.IgnoreGuiInset = false
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-game.ReplicatedStorage.ProtectGui(ScreenGui);
+Library.ProtectGui(ScreenGui);
+
+-- 创建MainFrame
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundColor3 = Library.Colors.Default
 MainFrame.BackgroundTransparency = 1
 MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderSizePixel = 0
@@ -2452,45 +2460,26 @@ MainFrame.ClipsDescendants = true
 MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 MainFrame.Size = UDim2.fromScale(1, 0.5)
 
+-- 创建BackgroundImage
+
 BackgroundImage.Parent = MainFrame
 BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 BackgroundImage.BackgroundTransparency = 1
 BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-BackgroundImage.Image = ImageList[currentImageIndex]
-BackgroundImage.ScaleType = Enum.ScaleType.Stretch
+BackgroundImage.Image = nil -- 初始化时不设置图片
 BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-BackgroundImage.UICorner = UICorner
+BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
-UICorner.CornerRadius = UDim.new(0.1, 0)
-UICorner.Parent = BackgroundImage
-
--- 切换图片的函数
-local function changeImage()
-    currentImageIndex = currentImageIndex + 1
-    if currentImageIndex > #ImageList then
-        currentImageIndex = 1
+-- 创建一个循环，每两秒调用一次changeBackgroundImage函数
+spawn(function()
+    while true do
+        wait(2) -- 等待两秒
+        changeBackgroundImage() -- 调用函数更换背景图片
     end
-    BackgroundImage.Image = ImageList[currentImageIndex]
-end
-
--- 使用RunService.Heartbeat来周期性调用changeImage函数
-local connection = game:GetService("RunService").Heartbeat:Connect(function()
-    changeImage()
 end)
 
--- 设置切换间隔为2秒
-local switchInterval = 2
-local lastSwitchTime = tick()
-local function update(dt)
-    local currentTime = tick()
-    if currentTime - lastSwitchTime >= switchInterval then
-        changeImage()
-        lastSwitchTime = currentTime
-    end
-end
-
-connection = game:GetService("RunService").Heartbeat:Connect(update)
-
+-- 初始调用函数设置第一张图片
+changeBackgroundImage()
 	spawn(function()
 		while MainFrame do task.wait(1)
 			pcall(function()
