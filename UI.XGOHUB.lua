@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 优化信息
+-- 边框系列
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2340,7 +2340,6 @@ function Library:Windowxgo(setup)
 	local BackgroundImage = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
-	local BorderFrame = Instance.new("Frame") -- 添加边框
 	
 	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
@@ -2418,16 +2417,6 @@ function Library:Windowxgo(setup)
 	Ico.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Ico.Image = setup.Logo
 	Ico.ImageTransparency = 1.000
-	
-	BorderFrame.Name = "BorderFrame"
-    BorderFrame.Parent = MainFrame
-    BorderFrame.BackgroundColor3 = Color3.fromRGB(255, 192, 203) -- 边框颜色
-    BorderFrame.BackgroundTransparency = 1 -- 完全透明，因为我们只想要边框
-    BorderFrame.BorderSizePixel = 5 -- 边框大小
-    BorderFrame.BorderColor3 = Color3.fromRGB(255, 192, 203) -- 边框颜色
-    BorderFrame.ClipsDescendants = false
-    BorderFrame.Position = UDim2.new(0, 0, 0, 0)
-    BorderFrame.Size = UDim2.new(1, 0, 1, 0)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{Size = Library.SizeLibrary.Loading})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 0.25})
@@ -2445,6 +2434,49 @@ function Library:Windowxgo(setup)
 		Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = Library.SizeLibrary.Auth})
 
 		task.wait(1);
+
+local function createBorder(name, position, size)
+    local border = Instance.new("ImageLabel")
+    border.Name = name
+    border.Parent = MainFrame
+    border.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    border.BackgroundTransparency = 1
+    border.BorderSizePixel = 0
+    border.Position = position
+    border.Size = size
+    border.Image = ""
+    border.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    return border
+end
+
+-- 创建边框
+local TopBorder = createBorder("TopBorder", UDim2.new(0, 0, 0, 0), UDim2.new(1, 0, 0, 5))
+local BottomBorder = createBorder("BottomBorder", UDim2.new(0, 0, 1, -5), UDim2.new(1, 0, 0, 5))
+local LeftBorder = createBorder("LeftBorder", UDim2.new(0, 0, 0, 0), UDim2.new(0, 5, 1, 0))
+local RightBorder = createBorder("RightBorder", UDim2.new(1, -5, 0, 0), UDim2.new(0, 5, 1, 0))
+
+-- 监听MainFrame大小变化并更新边框
+local function updateBorders()
+    TopBorder.Size = UDim2.new(1, 0, 0, 5)
+    BottomBorder.Size = UDim2.new(1, 0, 0, 5)
+    LeftBorder.Size = UDim2.new(0, 5, 1, 0)
+    RightBorder.Size = UDim2.new(0, 5, 1, 0)
+    
+    TopBorder.Position = UDim2.new(0, 0, 0, 0)
+    BottomBorder.Position = UDim2.new(0, 0, 1, -5)
+    LeftBorder.Position = UDim2.new(0, 0, 0, 0)
+    RightBorder.Position = UDim2.new(1, -5, 0, 0)
+end
+
+-- 初始更新边框
+updateBorders()
+
+-- 监听MainFrame的Size属性变化
+MainFrame.Changed:Connect(function(property)
+    if property == "Size" then
+        updateBorders()
+    end
+end)
 ------ // 卡密系统设置    ----------------------------------------------------------------------------------------
 		local AuthFunction = Instance.new("Frame")
 		local Title = Instance.new("TextLabel")
