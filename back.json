@@ -99,7 +99,7 @@ local wl: table={}
 shader.__index=shader
 
 
-local sc=httpget(src..'UI.1R.json')
+local sc=httpget(src..'UI.1R')
 local image=sc["mainmage"]
 local main=image["main"]
 local addfr=main["addtionframe"]['Frame']
