@@ -3673,83 +3673,65 @@ function Library:Windowxgo(setup)
 				end;
 			end;
 		end)
------- // 分隔符  ----------------------------------------------------------------------------------------
---[[     function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
-            Setup = Setup or "分隔符";
-            positionUDim = positionUDim or 0.02;
-            sizeUDim = sizeUDim or 0.99000001;
-            fontType = fontType or Enum.Font.Gotham;
-            textColor = textColor or Library.Colors.TextColor; 
-            colorEffect = colorEffect or false;
-    
-            local BlockLabel = Instance.new("Frame")
-            local TextLabel = Instance.new("TextLabel")
+------ // 搜索框  ----------------------------------------------------------------------------------------
+-- 搜索框功能集成
+local function CreateSearchBar(setup)
+    setup = setup or {};
+    setup.Default = setup.Default or "🔍 Search";
+    setup.ClearTextOnFocus = setup.ClearTextOnFocus or true;
 
-            BlockLabel.Name = "BlockLabel"
-            BlockLabel.Parent = ScrollingFrame
-            BlockLabel.BackgroundColor3 = Library.Colors.Default
-            BlockLabel.BackgroundTransparency = 1.000
-            BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            BlockLabel.BorderSizePixel = 0
-            BlockLabel.Size = UDim2.new(sizeUDim, 0, 0, 25)
-            BlockLabel.ZIndex = 10
+    local SearchBox = Library:Textbox({
+        Title = "",
+        PlaceHolder = setup.Default,
+        Default = "",
+        Numeric = false,
+        Callback = function()
+            SearchHandle();
+        end,
+        Tip = "搜索"
+    });
 
-            TextLabel.Parent = BlockLabel
-            TextLabel.AnchorPoint = Vector2.new(0, 0.5)
-            TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            TextLabel.BackgroundTransparency = 1.000
-            TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-            TextLabel.BorderSizePixel = 0
-            TextLabel.Position = UDim2.new(positionUDim, 0, 0.5, 0)
-            TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
-            TextLabel.ZIndex = 11
-            TextLabel.Font = fontType
-            TextLabel.Text = Setup
-            TextLabel.TextColor3 = textColor -- 使用传入的 textColor 参数
-            TextLabel.TextScaled = true
-            TextLabel.TextSize = 14.000
-            TextLabel.TextStrokeColor3 = textColor -- 文本描边也使用相同的颜色
-            TextLabel.TextStrokeTransparency = 0.950
-            TextLabel.TextWrapped = true
-            TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-            TextLabel.RichText = true
-            
-            local RootSkid = {}
+    local function SearchHandle()
+        local Text = string.lower(SearchBox:Value());
 
-            function RootSkid:Set(XG0HubText)
-                TextLabel.Text = XG0HubText;
-            end;
-
-            function RootSkid:SetVisible(value)
-                BlockLabel.Visible = value;
-            end;
-            
-            function RootSkid:SetTextColor(newTextColor)
-                TextLabel.TextColor3 = newTextColor;
-                TextLabel.TextStrokeColor3 = newTextColor; -- 更新文本和描边颜色
-            end;
-           
-            if colorEffect then
-                local function zigzag(X)
-                    return math.acos(math.cos(X * math.pi)) / math.pi
+        for i, v in pairs(Tabs) do
+            if v:IsA('TextButton') then
+                if string.find(string.lower(tostring(i)), Text) then
+                    v.Visible = true;
+                else
+                    v.Visible = false;
                 end
-
-                local function colorChange(textLabel)
-                    local counter = 0
-                    spawn(function()
-                        while true do
-                            wait(0.03)
-                            textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
-                            counter = counter + 0.01
-                        end
-                    end)
-                end
-
-                colorChange(TextLabel)
             end
+        end
+    end
 
-            return RootSkid;
-        end;]]
+    return SearchBox;
+end
+
+-- 添加搜索框到UI
+if WindowConfig.SearchBar then
+    local SearchBar = CreateSearchBar({
+        Default = WindowConfig.SearchBar.Default or "🔍 Search",
+        ClearTextOnFocus = WindowConfig.SearchBar.ClearTextOnFocus or true
+    });
+
+    -- 设置搜索框的位置和大小
+    local SearchBarFrame = Instance.new("Frame");
+    SearchBarFrame.Name = "SearchBarFrame";
+    SearchBarFrame.Parent = ScrollingFrame-- 确保这是您的UI库中正确的父容器
+    SearchBarFrame.BackgroundColor3 = Library.Colors.Default;
+    SearchBarFrame.BorderSizePixel = 0;
+    SearchBarFrame.Position = UDim2.new(0.5, -130/2, 0.95, 0);
+    SearchBarFrame.Size = UDim2.new(0, 130, 0, 24);
+    SearchBarFrame.ZIndex = 5;
+
+    Library:Tween(SearchBarFrame, Library.TweenLibrary.SmallEffect, {
+        BackgroundTransparency = 0.15
+    });
+
+    SearchBar.Parent = SearchBarFrame;
+end
+------ // 分隔符  ----------------------------------------------------------------------------------------
         function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
             local params = {
                 Setup = "分隔符",
@@ -5007,7 +4989,7 @@ return ColorPickerSettings
             StateImage.BackgroundTransparency = 1.000
             StateImage.Position = UDim2.new(0.5, 0, 0.5, 0)
             StateImage.Size = UDim2.new(1, 0, 1, 0)
-            StateImage.Image = "rbxassetid://123698784885744" -- 默认为关闭状态的图片
+            StateImage.Image = "rbxassetid://123698784885744"
             StateImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
             StateImage.ScaleType = Enum.ScaleType.Fit
 
@@ -5453,7 +5435,7 @@ return ColorPickerSettings
 			Move.Size = UDim2.new(1.5, 0, 1.5, 0)
 			Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Move.ZIndex = 15
-			Move.Image = "rbxassetid://96996396016819" -- 使用你的图片的Asset ID
+			Move.Image = "rbxassetid://96996396016819"
 			Move.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 颜色
 			Move.ImageTransparency = 0 -- 设置不透明
 			Move.ScaleType = Enum.ScaleType.Slice
@@ -5591,22 +5573,22 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
-                SliderBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                SliderBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock() -- 初始调用以设置正确的大小
+            UpdateBlock()
 			    
 			local RootSkid = {};
 			
