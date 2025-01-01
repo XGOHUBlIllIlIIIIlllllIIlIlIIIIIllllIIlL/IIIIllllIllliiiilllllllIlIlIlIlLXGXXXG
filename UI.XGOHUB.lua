@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.1
+-- 边框v1.11
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2413,33 +2413,8 @@ function Library:Windowxgo(setup)
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
     BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.ScaleType = Enum.ScaleType.Stretch
-
-local images = {
-    "rbxassetid://86451637909512", -- 图片1
-    "rbxassetid://120611289434746", -- 图片2
-    "rbxassetid://128885038925647", -- 图片3
-    "rbxassetid://96996396016819", -- 图片4
-}
-local currentImageIndex = 1
-
-local function changeImage()
-    BackgroundImage.Image = images[currentImageIndex]
-    currentImageIndex = currentImageIndex + 1
-    if currentImageIndex > #images then
-        currentImageIndex = 1
-    end
-end
-
-local function startImageCycle()
-    while true do
-        changeImage()
-        wait(1.9)
-    end
-end
-
-startImageCycle()
-
+    BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
+    
 	spawn(function()
 		while MainFrame do task.wait(1)
 			pcall(function()
