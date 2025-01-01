@@ -2337,16 +2337,17 @@ function Library:Windowxgo(setup)
 	
 	local ScreenGui = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
+	local BackgroundImage = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
-
+	
 	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = false
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 	Library.ProtectGui(ScreenGui);
 	
---  在这里设置MainFrame的属性
+--[[  在这里设置MainFrame的属性
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = ScreenGui
 	MainFrame.Active = true
@@ -2359,7 +2360,7 @@ function Library:Windowxgo(setup)
 	MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 	MainFrame.Size = UDim2.fromScale(0,0);
 	
--- 设置背景图片
+	-- 设置背景图片
 local backgroundImage = Instance.new("ImageLabel")
 backgroundImage.Parent = MainFrame
 backgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 设置为白色，因为图片会覆盖它
@@ -2369,7 +2370,29 @@ backgroundImage.Image = "rbxassetid://88666635012556" -- 替换为你的图片�
 backgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 图片颜色，通常设置为白色
 backgroundImage.ScaleType = Enum.ScaleType.Slice -- 根据需要调整
 backgroundImage.SliceCenter = Rect.new(0, 0, 10, 10) -- 根据需要调整
+	]]
+	-- 设置MainFrame的属性
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainFrame.BackgroundColor3 = Library.Colors.Default
+MainFrame.BackgroundTransparency = 1 -- 因为我们将使用图片作为背景
+MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainFrame.Size = UDim2.fromScale(1, 1) -- 设置MainFrame的大小以覆盖整个屏幕
 
+-- 设置背景图片
+BackgroundImage.Parent = MainFrame
+BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 设置为白色，因为图片会覆盖它
+BackgroundImage.BackgroundTransparency = 1 -- 完全透明
+BackgroundImage.Size = UDim2.new(1, 0, 1, 0) -- 填满整个MainFrame
+BackgroundImage.Image = "rbxassetid://88666635012556" -- 替换为你的图片资产ID
+BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 图片颜色，通常设置为白色
+BackgroundImage.ScaleType = Enum.ScaleType.Stretch -- 拉伸图片以填充整个MainFrame
+	
 	spawn(function()
 		while MainFrame do task.wait(1)
 			pcall(function()
