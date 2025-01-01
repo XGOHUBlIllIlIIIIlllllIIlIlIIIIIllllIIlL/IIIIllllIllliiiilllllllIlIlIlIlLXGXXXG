@@ -2315,7 +2315,7 @@ end;
         wait(2.5)
         blurEffect:Destroy()
     end))
-------------------------------    UI.标题设置    -------------------------------------------------------------------------------------
+------------------------------//    UI.标题设置    //-------------------------------------------------------------------------------------
 function Library:Windowxgo(setup)
 	setup = setup or {};
 
@@ -2340,6 +2340,7 @@ function Library:Windowxgo(setup)
 	local BackgroundImage = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
+	local BorderFrame = Instance.new("Frame") -- 添加边框
 	
 	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
@@ -2347,51 +2348,25 @@ function Library:Windowxgo(setup)
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 	Library.ProtectGui(ScreenGui);
 	
---[[  在这里设置MainFrame的属性
-	MainFrame.Name = "MainFrame"
-	MainFrame.Parent = ScreenGui
-	MainFrame.Active = true
+    MainFrame.Name = "MainFrame"
+    MainFrame.Parent = ScreenGui
+    MainFrame.Active = true
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-	MainFrame.BackgroundColor3 = Library.Colors.Default
-	MainFrame.BackgroundTransparency = 0.250
-	MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	MainFrame.BorderSizePixel = 0
-	MainFrame.ClipsDescendants = true
-	MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-	MainFrame.Size = UDim2.fromScale(0,0);
-	
-	-- 设置背景图片
-local backgroundImage = Instance.new("ImageLabel")
-backgroundImage.Parent = MainFrame
-backgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 设置为白色，因为图片会覆盖它
-backgroundImage.BackgroundTransparency = 1 -- 完全透明
-backgroundImage.Size = UDim2.new(1, 0, 1, 0) -- 填满整个MainFrame
-backgroundImage.Image = "rbxassetid://88666635012556" -- 替换为你的图片资产ID
-backgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 图片颜色，通常设置为白色
-backgroundImage.ScaleType = Enum.ScaleType.Slice -- 根据需要调整
-backgroundImage.SliceCenter = Rect.new(0, 0, 10, 10) -- 根据需要调整
-	]]
-	-- 设置MainFrame的属性
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
-MainFrame.Active = true
-MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.BackgroundColor3 = Library.Colors.Default
-MainFrame.BackgroundTransparency = 1 -- 因为我们将使用图片作为背景
-MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-MainFrame.BorderSizePixel = 0
-MainFrame.ClipsDescendants = true
-MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0) -- 从屏幕中间开始
-MainFrame.Size = UDim2.fromScale(1, 0.5) -- 占据屏幕的一半高度
+    MainFrame.BackgroundColor3 = Library.Colors.Default
+    MainFrame.BackgroundTransparency = 1
+    MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    MainFrame.BorderSizePixel = 0
+    MainFrame.ClipsDescendants = true
+    MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    MainFrame.Size = UDim2.fromScale(1, 0.5)
 
--- 设置背景图片
-BackgroundImage.Parent = MainFrame
-BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 设置为白色，因为图片会覆盖它
-BackgroundImage.BackgroundTransparency = 1 -- 完全透明
-BackgroundImage.Size = UDim2.new(1, 0, 1, 0) -- 填满整个MainFrame
-BackgroundImage.Image = "rbxassetid://88666635012556" -- 替换为你的图片资产ID
-BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 图片颜色，通常设置为白色
-BackgroundImage.ScaleType = Enum.ScaleType.Stretch -- 拉伸图片以填充整个MainFrame
+    BackgroundImage.Parent = MainFrame
+    BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    BackgroundImage.BackgroundTransparency = 1
+    BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
+    BackgroundImage.Image = "rbxassetid://88666635012556"
+    BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
+    BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
 	
 	spawn(function()
 		while MainFrame do task.wait(1)
@@ -2443,6 +2418,16 @@ BackgroundImage.ScaleType = Enum.ScaleType.Stretch -- 拉伸图片以填充整�
 	Ico.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Ico.Image = setup.Logo
 	Ico.ImageTransparency = 1.000
+	
+	BorderFrame.Name = "BorderFrame"
+    BorderFrame.Parent = MainFrame
+    BorderFrame.BackgroundColor3 = Color3.fromRGB(255, 192, 203) -- 边框颜色
+    BorderFrame.BackgroundTransparency = 1 -- 完全透明，因为我们只想要边框
+    BorderFrame.BorderSizePixel = 5 -- 边框大小
+    BorderFrame.BorderColor3 = Color3.fromRGB(255, 192, 203) -- 边框颜色
+    BorderFrame.ClipsDescendants = false
+    BorderFrame.Position = UDim2.new(0, 0, 0, 0)
+    BorderFrame.Size = UDim2.new(1, 0, 1, 0)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{Size = Library.SizeLibrary.Loading})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 0.25})
