@@ -2,7 +2,6 @@
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
 -- 优化信息
--- 星瑞ui
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2393,7 +2392,7 @@ function Library:Windowxgo(setup)
 	DropShadow.ZIndex = -5
 	DropShadow.Image = "rbxassetid://128885038925647"  --第1个阴影修改
 	DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-	DropShadow.ImageTransparency = 1
+	DropShadow.ImageTransparency = 0
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 	DropShadow.SliceScale = 0.050
