@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.02
+-- 边框v1.03
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2314,6 +2314,66 @@ end;
         wait(2.5)
         blurEffect:Destroy()
     end))
+local function rainbowEffect(border)
+    local ts = game:GetService("TweenService")
+    local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+    local gradient = Instance.new("ColorSequence")
+    local list = {}
+    local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
+    local counter = 0
+    local status = "down"
+
+    local function rainbowColors()
+        local sat, val = 1, 1
+        for i = 1, 10 do
+            local hue = i / 10
+            table.insert(list, Color3.fromHSV(hue, sat, val))
+        end
+    end
+    rainbowColors()
+    gradient.Color = s({kpt(0, list[1]), kpt(1, list[#list])})
+
+    local function animate()
+        if ((counter == (#list - 1)) and (status == "down")) then
+            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
+            counter = 1
+            status = "up"
+        elseif ((counter == #list) and (status == "down")) then
+            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[1]), kpt(1, list[2])})
+            counter = 2
+            status = "up"
+        elseif ((counter <= (#list - 2)) and (status == "down")) then
+            gradient.Color = s({
+                kpt(0, list[counter + 1]),
+                kpt(0.5, list[counter + 2]),
+                kpt(1, list[counter + 3])
+            })
+            counter = counter + 1
+            status = "up"
+        end
+        if ((counter == (#list - 1)) and (status == "up")) then
+            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
+            counter = 1
+            status = "down"
+        elseif ((counter == #list) and (status == "up")) then
+            gradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, list[2])})
+            counter = 2
+            status = "down"
+        elseif ((counter <= (#list - 2)) and (status == "up")) then
+            gradient.Color = s({
+                kpt(0, list[counter + 2]),
+                kpt(0.5, list[counter + 1]),
+                kpt(1, list[counter + 2])
+            })
+            counter = counter + 1
+            status = "down"
+        end
+        border.ImageColor3 = gradient.Color
+        ts:Create(border, ti, {ImageColor3 = gradient.Color}):Play()
+        animate = task.delay(0.1, animate)
+    end
+    animate()
+end
 ------------------------------//    UI.标题设置    //-------------------------------------------------------------------------------------
 function Library:Windowxgo(setup)
 	setup = setup or {};
@@ -2407,6 +2467,8 @@ function Library:Windowxgo(setup)
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 	DropShadow.SliceScale = 0.050
+	
+	rainbowEffect(DropShadow)
 
 	Ico.Name = "Ico"
 	Ico.Parent = MainFrame
@@ -7189,78 +7251,6 @@ return ColorPickerSettings
 			end;
 		end;
 	end)
-
-local function addRainbowToBackground()
-    local script = Instance.new("LocalScript", ScriptTitle)
-    local gui = script.Parent
-    local tweenService = game:GetService("TweenService")
-    local dropShadow = gui:FindFirstChild("DropShadow") -- 确保这是正确的ImageLabel名称
-
-    if not dropShadow then
-        print("DropShadow not found")
-        return
-    end
-
-    local list = {}
-    local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
-    local counter = 0
-    local status = "down"
-
-    local function rainbowColors()
-        for i = 1, 10 do
-            local hue = i * 17
-            table.insert(list, Color3.fromHSV(hue / 255, 1, 1))
-        end
-    end
-
-    rainbowColors()
-
-    local function animate()
-        local colors = {
-            kpt(0, list[#list]),
-            kpt(0.5, list[#list - 1]),
-            kpt(1, list[#list - 2])
-        }
-
-        dropShadow.ImageColor3 = s(colors)
-        dropShadow.Rotation = (dropShadow.Rotation + 10) % 360
-
-        if status == "down" then
-            if counter >= #list - 2 then
-                status = "up"
-                counter = #list - 2
-            else
-                counter = counter + 1
-            end
-        elseif status == "up" then
-            if counter == 1 then
-                status = "down"
-                counter = 1
-            else
-                counter = counter - 1
-            end
-        end
-
-        local newColors = {
-            kpt(0, list[counter]),
-            kpt(0.5, list[counter + 1]),
-            kpt(1, list[counter + 2])
-        }
-
-        dropShadow.ImageColor3 = s(newColors)
-
-        tweenService:Create(dropShadow, TweenInfo.new(1), {ImageTransparency = 0.5}):SetOnStep(function()
-            dropShadow.ImageColor3 = s(newColors)
-        end):Play()
-
-        task.wait(0.1)
-        animate()
-    end
-
-    animate()
-end
-
-addRainbowToBackground()
 
 	return WindowLibrary;
 end;
