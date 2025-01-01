@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 分隔符v2
+-- 优化信息
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -3759,7 +3759,7 @@ function Library:Windowxgo(setup)
             return RootSkid;
         end;
 ------ // 信息标签   ----------------------------------------------------------------------------------------
---[[	function Root:Paragraph(Setup)
+     	function Root:Paragraph(Setup)
 			Setup = Setup or {};
 			Setup.Title = Setup.Title
 			Setup.Description = Setup.Description or "";
@@ -3883,146 +3883,6 @@ function Library:Windowxgo(setup)
 
 			return RootSkid;
 		end;
-		]]
-function Root:Paragraph(Setup)
-    Setup = Setup or {};
-    Setup.Title = Setup.Title or "";
-    Setup.Description = Setup.Description or "";
-    Setup.ImageAssetId = Setup.ImageAssetId; -- 添加图片资源ID的设置
-    Setup.ShowImage = Setup.ShowImage or false; -- 是否显示图片的设置
-
-    local ParagraphBlock = Instance.new("Frame")
-    local DropShadow = Instance.new("ImageLabel")
-    local UIStroke = Instance.new("UIStroke")
-    local Title = Instance.new("TextLabel")
-    local Description = Instance.new("TextLabel")
-    local Image = Instance.new("ImageLabel") -- 添加ImageLabel组件
-    
-    ParagraphBlock.Name = "ParagraphBlock"
-    ParagraphBlock.Parent = ScrollingFrame
-    ParagraphBlock.BackgroundColor3 = Library.Colors.Default
-    ParagraphBlock.BackgroundTransparency = 0.250
-    ParagraphBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    ParagraphBlock.BorderSizePixel = 0
-    ParagraphBlock.Size = UDim2.new(0.99000001, 0, 0, 24)
-    ParagraphBlock.ZIndex = 10
-
-    DropShadow.Name = "DropShadow"
-    DropShadow.Parent = ParagraphBlock
-    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    DropShadow.BackgroundTransparency = 1.000
-    DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
-    DropShadow.Position = UDim2.new(0, -5, 0, -5)
-    DropShadow.Size = UDim2.new(1, 10, 1, 10)
-    DropShadow.ZIndex = 9
-    DropShadow.Image = "rbxassetid://297694300"
-    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-    DropShadow.ImageTransparency = 0.500
-    DropShadow.ScaleType = Enum.ScaleType.Slice
-    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-    DropShadow.SliceScale = 0.050
-
-    UIStroke.Transparency = 0.850
-    UIStroke.Color = Color3.fromRGB(156, 156, 156)
-    UIStroke.Parent = ParagraphBlock
-
-    Title.RichText = true
-    Title.Name = "Title"
-    Title.Parent = ParagraphBlock
-    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Title.BackgroundTransparency = 1.000
-    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Title.BorderSizePixel = 0
-    Title.Position = UDim2.new(0, 5, 0, 5)
-    Title.Size = UDim2.new(1, 0, 0, 14)
-    Title.ZIndex = 11
-    Title.Font = Enum.Font.Gotham
-    Title.Text = Setup.Title
-    Title.TextColor3 = Library.Colors.TextColor
-    Title.TextScaled = true
-    Title.TextSize = 14.000
-    Title.TextStrokeColor3 = Library.Colors.TextColor
-    Title.TextStrokeTransparency = 0.950
-    Title.TextWrapped = true
-    Title.TextXAlignment = Enum.TextXAlignment.Left
-    Title.RichText = true
-
-    Description.Name = "Description"
-    Description.Parent = ParagraphBlock
-    Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Description.BackgroundTransparency = 1.000
-    Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Description.BorderSizePixel = 0
-    Description.Position = UDim2.new(0, 5, 0, 21)
-    Description.Size = UDim2.new(1, 0, 0, 45)
-    Description.Visible = false
-    Description.ZIndex = 11
-    Description.Font = Enum.Font.Gotham
-    Description.Text = Setup.Description
-    Description.TextColor3 = Library.Colors.TextColor
-    Description.TextSize = 13.000
-    Description.TextStrokeColor3 = Library.Colors.TextColor
-    Description.TextStrokeTransparency = 0.950
-    Description.TextTransparency = 0.500
-    Description.TextWrapped = true
-    Description.TextXAlignment = Enum.TextXAlignment.Left
-    Description.TextYAlignment = Enum.TextYAlignment.Top
-    Description.RichText = true
-
-    Image.Name = "Image"
-    Image.Parent = ParagraphBlock
-    Image.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Image.BackgroundTransparency = 1.000
-    Image.Position = UDim2.new(0, 5, 0, 5)
-    Image.Size = UDim2.new(0, 0, 0, 0) -- 初始化图片大小为0
-    Image.ZIndex = 10
-    Image.ImageTransparency = 1 -- 默认不显示图片
-
-    local UpdateBlock = function()
-        local TitleSize = Title.AbsoluteSize.Y
-        local DescriptionSize = Description.Visible and Description.AbsoluteSize.Y or 0
-
-        local totalSize = TitleSize + DescriptionSize + 10 -- 10为顶部和底部的间距
-
-        if Setup.ShowImage and Image.Image ~= "" and Image.Image ~= nil then
-            -- 如果显示图片，调整框架大小
-            local imageSize = Image.AbsoluteSize
-            ParagraphBlock.Size = UDim2.new(0.99, 0, 0, TitleSize + imageSize.Y + DescriptionSize + 20)
-            Image.Size = UDim2.new(0, imageSize.X, 0, imageSize.Y) -- 设置图片大小
-            Image.ImageTransparency = 0 -- 显示图片
-        else
-            -- 如果不显示图片，调整框架大小为默认大小
-            ParagraphBlock.Size = UDim2.new(0.99, 0, 0, totalSize)
-            Image.ImageTransparency = 1 -- 不显示图片
-        end
-    end;
-
-    UpdateBlock()
-
-    local RootSkid = {};
-
-    function RootSkid:Title(Setup)
-        Title.Text = Setup
-        UpdateBlock()
-    end;
-
-    function RootSkid:Description(Setup)
-        Description.Text = Setup
-        UpdateBlock()
-    end;
-
-    function RootSkid:Visible(value)
-        ParagraphBlock.Visible = value;
-    end;
-
-    function RootSkid:Image(AssetId, Visible)
-        Image.Image = AssetId
-        Image.ImageTransparency = Visible and 0 or 1
-        UpdateBlock()
-    end;
-
-    return RootSkid;
-end;
 --[[---- // 颜色选择器   ----------------------------------------------------------------------------------------
 local function SaveConfiguration()
     if not CEnabled then return end
