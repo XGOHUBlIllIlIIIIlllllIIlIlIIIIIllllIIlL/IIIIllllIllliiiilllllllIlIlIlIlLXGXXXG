@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1
+-- 边框v1.01
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -3491,73 +3491,61 @@ function Library:Windowxgo(setup)
 		end)
 	end;
 
-local function rainbowEffect()
-    local gradient = Instance.new("ColorSequence")
+local function rainbowEffect(border)
     local ts = game:GetService("TweenService")
     local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-    local offset = {Offset = Vector2.new(1, 0)}
-    local create = ts:Create(gradient, ti, offset)
-    local startingPos = Vector2.new(-1, 0)
+    local gradient = Instance.new("ColorSequence")
     local list = {}
     local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
     local counter = 0
     local status = "down"
 
-    gradient.Offset = startingPos
     local function rainbowColors()
-        local sat, val = 255, 255
+        local sat, val = 1, 1
         for i = 1, 10 do
-            local hue = i * 17
-            table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255))
+            local hue = i / 10
+            table.insert(list, Color3.fromHSV(hue, sat, val))
         end
     end
     rainbowColors()
-    gradient.Color = s({kpt(0, list[#list]), kpt(0.5, list[#list - 1]), kpt(1, list[#list - 2])})
-    counter = #list
+    gradient.Color = s({kpt(0, list[1]), kpt(1, list[#list])})
 
     local function animate()
-        create:Play()
-        create.Completed:Wait()
-        gradient.Offset = startingPos
-        gradient.Rotation = 180
         if ((counter == (#list - 1)) and (status == "down")) then
-            gradient.Color = s({kpt(0, gradient.Color.Keypoints[1].Value), kpt(0.5, list[#list]), kpt(1, list[1])})
+            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
             counter = 1
             status = "up"
         elseif ((counter == #list) and (status == "down")) then
-            gradient.Color = s({kpt(0, gradient.Color.Keypoints[1].Value), kpt(0.5, list[1]), kpt(1, list[2])})
+            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[1]), kpt(1, list[2])})
             counter = 2
             status = "up"
         elseif ((counter <= (#list - 2)) and (status == "down")) then
             gradient.Color = s({
-                kpt(0, gradient.Color.Keypoints[1].Value),
-                kpt(0.5, list[counter + 1]),
-                kpt(1, list[counter + 2])
+                kpt(0, list[counter + 1]),
+                kpt(0.5, list[counter + 2]),
+                kpt(1, list[counter + 3])
             })
-            counter = counter + 2
+            counter = counter + 1
             status = "up"
         end
-        create:Play()
-        create.Completed:Wait()
-        gradient.Offset = startingPos
-        gradient.Rotation = 0
         if ((counter == (#list - 1)) and (status == "up")) then
-            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, gradient.Color.Keypoints[3].Value)})
+            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
             counter = 1
             status = "down"
         elseif ((counter == #list) and (status == "up")) then
-            gradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, gradient.Color.Keypoints[3].Value)})
+            gradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, list[2])})
             counter = 2
             status = "down"
         elseif ((counter <= (#list - 2)) and (status == "up")) then
             gradient.Color = s({
                 kpt(0, list[counter + 2]),
                 kpt(0.5, list[counter + 1]),
-                kpt(1, gradient.Color.Keypoints[3].Value)
+                kpt(1, list[counter + 2])
             })
-            counter = counter + 2
+            counter = counter + 1
             status = "down"
         end
+        border.ImageColor3 = gradient.Color
         animate()
     end
     animate()
@@ -3570,12 +3558,13 @@ end
 
 		local TFrame = Instance.new("Frame")
 		local DropShadow = Instance.new("ImageLabel")
-		local UIStroke = Instance.new("UIStroke")
+--		local UIStroke = Instance.new("UIStroke")
+		local Border = Instance.new("ImageLabel")
 		local Icon = Instance.new("ImageLabel")
 		local Title = Instance.new("TextLabel")
 		local Arrow = Instance.new("ImageLabel")
 		local Button = Instance.new("TextButton")
-
+        
 		TFrame.Name = "TFrame"
 		TFrame.Parent = DataScrollingFrame
 		TFrame.BackgroundColor3 = Library.Colors.Default
@@ -3600,11 +3589,23 @@ end
 		DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 		DropShadow.SliceScale = 0.050
 
-UIStroke.Transparency = 1
-UIStroke.Color = Color3.fromRGB(156, 156, 156)
-UIStroke.Parent = TFrame
+--[[     UIStroke.Transparency = 1
+        UIStroke.Color = Color3.fromRGB(156, 156, 156)
+        UIStroke.Parent = TFrame]]
+        
+Border.Name = "Border"
+Border.Parent = TFrame
+Border.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Border.BackgroundTransparency = 1
+Border.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Border.BorderSizePixel = 0
+Border.Position = UDim2.new(0, 0, 0, 0)
+Border.Size = TFrame.Size
+Border.ZIndex = 5
+Border.Image = "rbxassetid://1383306984"
+Border.ImageColor3 = Color3.fromRGB(0, 0, 0)
 
-rainbowEffect(UIStroke)
+rainbowEffect(Border)
 
 		Icon.Name = "Icon"
 		Icon.Parent = TFrame
