@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边角系列
+-- 图片
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2340,6 +2340,7 @@ function Library:Windowxgo(setup)
 	local BackgroundImage = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
+	local UICorner = Instance.new("UICorner")
 	
 	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
@@ -2352,7 +2353,7 @@ function Library:Windowxgo(setup)
     MainFrame.Active = true
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
     MainFrame.BackgroundColor3 = Library.Colors.Default
-    MainFrame.BackgroundTransparency = 1
+    MainFrame.BackgroundTransparency = 0.500
     MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
     MainFrame.BorderSizePixel = 0
     MainFrame.ClipsDescendants = true
@@ -2361,20 +2362,14 @@ function Library:Windowxgo(setup)
 
     BackgroundImage.Parent = MainFrame
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.BackgroundTransparency = 1
+    BackgroundImage.BackgroundTransparency = 0.500
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
     BackgroundImage.Image = "rbxassetid://88666635012556"
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
-    
-    -- 创建MainFrame和BackgroundImage的代码保持不变
 
--- 创建UICorner实例
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 10) -- 设置圆角大小为10像素
-UICorner.Parent = BackgroundImage -- 将UICorner应用到BackgroundImage上
-
--- 由于MainFrame是BackgroundImage的父级，所以UICorner的效果会应用于MainFrame的四个角
+    UICorner.CornerRadius = UDim.new(0, 10)
+    UICorner.Parent = BackgroundImage
 	
 	spawn(function()
 		while MainFrame do task.wait(1)
