@@ -82,7 +82,7 @@ local fdist,fsize,ftrans={1.7,0.3,-0.3,-0.9},{0.7,0.2,1.2,0.45},{0.8,0.7,0.9,0.6
 local fls,sre,sflare,rmod={},ins('ScreenGui',pg),ins('ImageLabel'),1
 local bmut,ber,lor=11,5,cam['CFrame']['LookVector']
 local colorcor,atmosphere,bloom,blur,depth,sky,sray,cloud
-local randomstring='https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/'
+local randomstring='https://raw.githubusercontent.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/IIIIllllIllliiiilllllllIlIlIlIlLXGXXXG/refs/heads/main/'
 local technology=ghp(lg,'Technology') or 'ShadowMap'
 local lan=httpget(randomstring..'lan/every.json')
 local randomsky=randomstring..'sky/'
@@ -99,7 +99,7 @@ local wl: table={}
 shader.__index=shader
 
 
-local sc=httpget(src..'ui')
+local sc=httpget(src..'UI.1R.json')
 local image=sc["mainmage"]
 local main=image["main"]
 local addfr=main["addtionframe"]['Frame']
