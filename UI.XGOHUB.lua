@@ -2424,6 +2424,7 @@ function Library:Windowxgo(setup)
     "rbxassetid://120611289434746", -- 图片2
     "rbxassetid://128885038925647", -- 图片3
     "rbxassetid://96996396016819", -- 图片4
+    -- 添加更多图片ID
 }
 
 local currentImageIndex = 1
@@ -2435,16 +2436,21 @@ local function changeImage()
         currentImageIndex = 1
     end
 end
-
 local function startImageCycle()
     local heartbeat = game:GetService("RunService").Heartbeat
     heartbeat:Connect(function()
+        -- 淡出效果
+        BackgroundImage.ImageTransparency = 1
+        wait(1) -- 等待0.5秒来完成淡出效果
+        -- 更换图片
         changeImage()
+        -- 淡入效果
+        BackgroundImage.ImageTransparency = 0
+        wait(2) -- 等待0.5秒来完成淡入效果
     end)
 end
 
 startImageCycle()
-
 --   UICorner.CornerRadius = UDim.new(0, 10)
 --   UICorner.Parent = BackgroundImage
 	
