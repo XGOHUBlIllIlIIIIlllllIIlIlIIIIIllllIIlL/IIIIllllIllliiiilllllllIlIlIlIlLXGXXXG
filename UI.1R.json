@@ -1,0 +1,2182 @@
+local UIXGOHUB = {};
+
+-- StarterGui.pshade
+UIXGOHUB["1"] = Instance.new("ScreenGui");
+UIXGOHUB["1"]["SafeAreaCompatibility"] = Enum.SafeAreaCompatibility.None;
+UIXGOHUB["1"]["IgnoreGuiInset"] = true;
+UIXGOHUB["1"]["DisplayOrder"] = math.huge;
+UIXGOHUB["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
+UIXGOHUB["1"]["ClipToDeviceSafeArea"] = false;
+UIXGOHUB["1"]["Name"] = [[pshade]];
+UIXGOHUB["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+UIXGOHUB["1"]["ResetOnSpawn"] = false;
+
+
+-- StarterGui.pshade.mainmage
+UIXGOHUB["2"] = Instance.new("ImageLabel", UIXGOHUB["1"]);
+UIXGOHUB["2"]["BorderSizePixel"] = 0;
+UIXGOHUB["2"]["BackgroundColor3"] = Color3.fromRGB(146, 146, 146);
+UIXGOHUB["2"]["ImageTransparency"] = 0.4;
+UIXGOHUB["2"]["ImageColor3"] = Color3.fromRGB(157, 157, 157);
+UIXGOHUB["2"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["2"]["Image"] = [[rbxassetid://72978449934552]];
+UIXGOHUB["2"]["Size"] = UDim2.new(0.53903, 0, 0.55488, 0);
+UIXGOHUB["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["2"]["BackgroundTransparency"] = 1;
+UIXGOHUB["2"]["Name"] = [[mainmage]];
+UIXGOHUB["2"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+
+
+-- StarterGui.pshade.mainmage.main
+UIXGOHUB["3"] = Instance.new("Frame", UIXGOHUB["2"]);
+UIXGOHUB["3"]["BorderSizePixel"] = 0;
+UIXGOHUB["3"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
+UIXGOHUB["3"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["3"]["Size"] = UDim2.new(0.94943, 0, 0.92674, 0);
+UIXGOHUB["3"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+UIXGOHUB["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["3"]["Name"] = [[main]];
+UIXGOHUB["3"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.UICorner
+UIXGOHUB["4"] = Instance.new("UICorner", UIXGOHUB["3"]);
+UIXGOHUB["4"]["CornerRadius"] = UDim.new(0.05, 0);
+
+
+-- StarterGui.pshade.mainmage.main.UIStroke
+UIXGOHUB["5"] = Instance.new("UIStroke", UIXGOHUB["3"]);
+UIXGOHUB["5"]["Transparency"] = 0.72;
+UIXGOHUB["5"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar
+UIXGOHUB["6"] = Instance.new("Frame", UIXGOHUB["3"]);
+UIXGOHUB["6"]["BorderSizePixel"] = 0;
+UIXGOHUB["6"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
+UIXGOHUB["6"]["Size"] = UDim2.new(1, 0, 0.13439, 0);
+UIXGOHUB["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["6"]["Name"] = [[mainbar]];
+UIXGOHUB["6"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame
+UIXGOHUB["7"] = Instance.new("Frame", UIXGOHUB["6"]);
+UIXGOHUB["7"]["BorderSizePixel"] = 0;
+UIXGOHUB["7"]["BackgroundColor3"] = Color3.fromRGB(107, 107, 107);
+UIXGOHUB["7"]["Size"] = UDim2.new(0.9661, 0, 0.64706, 0);
+UIXGOHUB["7"]["Position"] = UDim2.new(0.01695, 0, 0.17647, 0);
+UIXGOHUB["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["7"]["BackgroundTransparency"] = 0.75;
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.UICorner
+UIXGOHUB["8"] = Instance.new("UICorner", UIXGOHUB["7"]);
+UIXGOHUB["8"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.UIListLayout
+UIXGOHUB["9"] = Instance.new("UIListLayout", UIXGOHUB["7"]);
+UIXGOHUB["9"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["9"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["9"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.UIStroke
+UIXGOHUB["a"] = Instance.new("UIStroke", UIXGOHUB["7"]);
+UIXGOHUB["a"]["Transparency"] = 0.56;
+UIXGOHUB["a"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame
+UIXGOHUB["b"] = Instance.new("Frame", UIXGOHUB["7"]);
+UIXGOHUB["b"]["BorderSizePixel"] = 0;
+UIXGOHUB["b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["b"]["Size"] = UDim2.new(0.71429, 0, 1, 0);
+UIXGOHUB["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["b"]["LayoutOrder"] = -1;
+UIXGOHUB["b"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame.maintitle
+UIXGOHUB["c"] = Instance.new("TextLabel", UIXGOHUB["b"]);
+UIXGOHUB["c"]["TextWrapped"] = true;
+UIXGOHUB["c"]["Active"] = true;
+UIXGOHUB["c"]["BorderSizePixel"] = 0;
+UIXGOHUB["c"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["c"]["TextScaled"] = true;
+UIXGOHUB["c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["c"]["TextSize"] = 14;
+UIXGOHUB["c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["c"]["BackgroundTransparency"] = 1;
+UIXGOHUB["c"]["RichText"] = true;
+UIXGOHUB["c"]["Size"] = UDim2.new(0.34429, 0, 1, 0);
+UIXGOHUB["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["c"]["Text"] = [[ Pshade ultimate]];
+UIXGOHUB["c"]["Name"] = [[maintitle]];
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame.UIListLayout
+UIXGOHUB["d"] = Instance.new("UIListLayout", UIXGOHUB["b"]);
+UIXGOHUB["d"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["d"]["VerticalAlignment"] = Enum.VerticalAlignment.Bottom;
+UIXGOHUB["d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["d"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.Frame.secondtitle
+UIXGOHUB["e"] = Instance.new("TextLabel", UIXGOHUB["b"]);
+UIXGOHUB["e"]["TextWrapped"] = true;
+UIXGOHUB["e"]["Active"] = true;
+UIXGOHUB["e"]["BorderSizePixel"] = 0;
+UIXGOHUB["e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["e"]["TextTransparency"] = 0.72;
+UIXGOHUB["e"]["TextScaled"] = true;
+UIXGOHUB["e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["e"]["TextSize"] = 14;
+UIXGOHUB["e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["e"]["BackgroundTransparency"] = 1;
+UIXGOHUB["e"]["RichText"] = true;
+UIXGOHUB["e"]["Size"] = UDim2.new(0.18289, 0, 0.59091, 0);
+UIXGOHUB["e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["e"]["Text"] = [[patrick shaders]];
+UIXGOHUB["e"]["Name"] = [[secondtitle]];
+UIXGOHUB["e"]["Position"] = UDim2.new(0.35131, 0, 0.40909, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar
+UIXGOHUB["f"] = Instance.new("Frame", UIXGOHUB["7"]);
+UIXGOHUB["f"]["BorderSizePixel"] = 0;
+UIXGOHUB["f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["f"]["Size"] = UDim2.new(0.28087, 0, 1, 0);
+UIXGOHUB["f"]["Position"] = UDim2.new(0.71913, 0, 0, 0);
+UIXGOHUB["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["f"]["Name"] = [[functionbar]];
+UIXGOHUB["f"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.UICorner
+UIXGOHUB["10"] = Instance.new("UICorner", UIXGOHUB["f"]);
+UIXGOHUB["10"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.UIStroke
+UIXGOHUB["11"] = Instance.new("UIStroke", UIXGOHUB["f"]);
+UIXGOHUB["11"]["Enabled"] = false;
+UIXGOHUB["11"]["Transparency"] = 0.35;
+UIXGOHUB["11"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.UIListLayout
+UIXGOHUB["12"] = Instance.new("UIListLayout", UIXGOHUB["f"]);
+UIXGOHUB["12"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Right;
+UIXGOHUB["12"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["12"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["12"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.minimize
+UIXGOHUB["13"] = Instance.new("ImageButton", UIXGOHUB["f"]);
+UIXGOHUB["13"]["BorderSizePixel"] = 0;
+UIXGOHUB["13"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["13"]["Image"] = [[http://www.roblox.com/asset/?id=6026568240]];
+UIXGOHUB["13"]["Size"] = UDim2.new(0.20085, 0, 1, 0);
+UIXGOHUB["13"]["BackgroundTransparency"] = 1;
+UIXGOHUB["13"]["Name"] = [[minimize]];
+UIXGOHUB["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["13"]["Position"] = UDim2.new(0.232, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.minimize.UIStroke
+UIXGOHUB["14"] = Instance.new("UIStroke", UIXGOHUB["13"]);
+UIXGOHUB["14"]["Transparency"] = 0.56;
+UIXGOHUB["14"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.minimize.UICorner
+UIXGOHUB["15"] = Instance.new("UICorner", UIXGOHUB["13"]);
+UIXGOHUB["15"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.feedback
+UIXGOHUB["16"] = Instance.new("ImageButton", UIXGOHUB["f"]);
+UIXGOHUB["16"]["BorderSizePixel"] = 0;
+UIXGOHUB["16"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["16"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["16"]["Image"] = [[http://www.roblox.com/asset/?id=6023426957]];
+UIXGOHUB["16"]["Size"] = UDim2.new(0.22973, 0, 1, 0);
+UIXGOHUB["16"]["BackgroundTransparency"] = 1;
+UIXGOHUB["16"]["Name"] = [[feedback]];
+UIXGOHUB["16"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["16"]["Position"] = UDim2.new(0.4507, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.feedback.UICorner
+UIXGOHUB["17"] = Instance.new("UICorner", UIXGOHUB["16"]);
+UIXGOHUB["17"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.feedback.UIStroke
+UIXGOHUB["18"] = Instance.new("UIStroke", UIXGOHUB["16"]);
+UIXGOHUB["18"]["Transparency"] = 0.52;
+UIXGOHUB["18"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.setting
+UIXGOHUB["19"] = Instance.new("ImageButton", UIXGOHUB["f"]);
+UIXGOHUB["19"]["BorderSizePixel"] = 0;
+UIXGOHUB["19"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["19"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["19"]["Image"] = [[http://www.roblox.com/asset/?id=6031280882]];
+UIXGOHUB["19"]["Size"] = UDim2.new(0.21249, 0, 1, 0);
+UIXGOHUB["19"]["BackgroundTransparency"] = 1;
+UIXGOHUB["19"]["Name"] = [[setting]];
+UIXGOHUB["19"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["19"]["Position"] = UDim2.new(0.78751, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.setting.UICorner
+UIXGOHUB["1a"] = Instance.new("UICorner", UIXGOHUB["19"]);
+UIXGOHUB["1a"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainbar.Frame.functionbar.setting.UIStroke
+UIXGOHUB["1b"] = Instance.new("UIStroke", UIXGOHUB["19"]);
+UIXGOHUB["1b"]["Transparency"] = 0.52;
+UIXGOHUB["1b"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.UIListLayout
+UIXGOHUB["1c"] = Instance.new("UIListLayout", UIXGOHUB["3"]);
+UIXGOHUB["1c"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["1c"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage
+UIXGOHUB["1d"] = Instance.new("Frame", UIXGOHUB["3"]);
+UIXGOHUB["1d"]["BorderSizePixel"] = 0;
+UIXGOHUB["1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["1d"]["Size"] = UDim2.new(1, 0, 0.71937, 0);
+UIXGOHUB["1d"]["Position"] = UDim2.new(-0, 0, 0.14229, 0);
+UIXGOHUB["1d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["1d"]["Name"] = [[mainpage]];
+UIXGOHUB["1d"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.UICorner
+UIXGOHUB["1e"] = Instance.new("UICorner", UIXGOHUB["1d"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.UIListLayout
+UIXGOHUB["1f"] = Instance.new("UIListLayout", UIXGOHUB["1d"]);
+UIXGOHUB["1f"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["1f"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["1f"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage
+UIXGOHUB["20"] = Instance.new("Frame", UIXGOHUB["1d"]);
+UIXGOHUB["20"]["BorderSizePixel"] = 0;
+UIXGOHUB["20"]["BackgroundColor3"] = Color3.fromRGB(162, 162, 162);
+UIXGOHUB["20"]["ClipsDescendants"] = true;
+UIXGOHUB["20"]["Size"] = UDim2.new(0.7128, 0, 0.99425, 0);
+UIXGOHUB["20"]["Position"] = UDim2.new(0.27845, 0, 0, 0);
+UIXGOHUB["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["20"]["Name"] = [[showpage]];
+UIXGOHUB["20"]["LayoutOrder"] = 1;
+UIXGOHUB["20"]["BackgroundTransparency"] = 0.8;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.UICorner
+UIXGOHUB["21"] = Instance.new("UICorner", UIXGOHUB["20"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.UIStroke
+UIXGOHUB["22"] = Instance.new("UIStroke", UIXGOHUB["20"]);
+UIXGOHUB["22"]["Transparency"] = 0.84;
+UIXGOHUB["22"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.UIListLayout
+UIXGOHUB["23"] = Instance.new("UIListLayout", UIXGOHUB["20"]);
+UIXGOHUB["23"]["Padding"] = UDim.new(0, 5);
+UIXGOHUB["23"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample
+UIXGOHUB["24"] = Instance.new("Frame", UIXGOHUB["20"]);
+UIXGOHUB["24"]["BorderSizePixel"] = 0;
+UIXGOHUB["24"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["24"]["Size"] = UDim2.new(1, 0, 1, 0);
+UIXGOHUB["24"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["24"]["Name"] = [[sample]];
+UIXGOHUB["24"]["LayoutOrder"] = 1;
+UIXGOHUB["24"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.UIListLayout
+UIXGOHUB["25"] = Instance.new("UIListLayout", UIXGOHUB["24"]);
+UIXGOHUB["25"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["25"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe
+UIXGOHUB["26"] = Instance.new("Frame", UIXGOHUB["24"]);
+UIXGOHUB["26"]["BorderSizePixel"] = 0;
+UIXGOHUB["26"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
+UIXGOHUB["26"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
+UIXGOHUB["26"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["26"]["Name"] = [[searchframe]];
+UIXGOHUB["26"]["BackgroundTransparency"] = 0.8;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.UICorner
+UIXGOHUB["27"] = Instance.new("UICorner", UIXGOHUB["26"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.UIStroke
+UIXGOHUB["28"] = Instance.new("UIStroke", UIXGOHUB["26"]);
+UIXGOHUB["28"]["Transparency"] = 0.61;
+UIXGOHUB["28"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.UIListLayout
+UIXGOHUB["29"] = Instance.new("UIListLayout", UIXGOHUB["26"]);
+UIXGOHUB["29"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["29"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["29"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.TextBox
+UIXGOHUB["2a"] = Instance.new("TextBox", UIXGOHUB["26"]);
+UIXGOHUB["2a"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["2a"]["BorderSizePixel"] = 0;
+UIXGOHUB["2a"]["TextWrapped"] = true;
+UIXGOHUB["2a"]["TextSize"] = 14;
+UIXGOHUB["2a"]["TextScaled"] = true;
+UIXGOHUB["2a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["2a"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["2a"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
+UIXGOHUB["2a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["2a"]["Text"] = [[search]];
+UIXGOHUB["2a"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.searchframe.ImageButton
+UIXGOHUB["2b"] = Instance.new("ImageButton", UIXGOHUB["26"]);
+UIXGOHUB["2b"]["BorderSizePixel"] = 0;
+UIXGOHUB["2b"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["2b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["2b"]["LayoutOrder"] = 1;
+UIXGOHUB["2b"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
+UIXGOHUB["2b"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+UIXGOHUB["2b"]["BackgroundTransparency"] = 1;
+UIXGOHUB["2b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["2b"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame
+UIXGOHUB["2c"] = Instance.new("Frame", UIXGOHUB["24"]);
+UIXGOHUB["2c"]["BorderSizePixel"] = 0;
+UIXGOHUB["2c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["2c"]["Size"] = UDim2.new(1, 0, 0.79191, 0);
+UIXGOHUB["2c"]["Position"] = UDim2.new(0, 0, 0.21965, 0);
+UIXGOHUB["2c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["2c"]["LayoutOrder"] = 2;
+UIXGOHUB["2c"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc
+UIXGOHUB["2d"] = Instance.new("ScrollingFrame", UIXGOHUB["2c"]);
+UIXGOHUB["2d"]["Active"] = true;
+UIXGOHUB["2d"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+UIXGOHUB["2d"]["BorderSizePixel"] = 0;
+UIXGOHUB["2d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["2d"]["Name"] = [[sc]];
+UIXGOHUB["2d"]["ScrollBarImageTransparency"] = 0.2;
+UIXGOHUB["2d"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+UIXGOHUB["2d"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
+UIXGOHUB["2d"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["2d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["2d"]["ScrollBarThickness"] = 3;
+UIXGOHUB["2d"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.UIGridLayout
+UIXGOHUB["2e"] = Instance.new("UIGridLayout", UIXGOHUB["2d"]);
+UIXGOHUB["2e"]["CellSize"] = UDim2.new(0.314, 0, 0.65, 0);
+UIXGOHUB["2e"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["2e"]["CellPadding"] = UDim2.new(0.02, 0, 0.05, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader
+UIXGOHUB["2f"] = Instance.new("Frame", UIXGOHUB["2d"]);
+UIXGOHUB["2f"]["Visible"] = false;
+UIXGOHUB["2f"]["BorderSizePixel"] = 0;
+UIXGOHUB["2f"]["BackgroundColor3"] = Color3.fromRGB(231, 231, 231);
+UIXGOHUB["2f"]["Size"] = UDim2.new(0, 100, 0, 100);
+UIXGOHUB["2f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["2f"]["Name"] = [[sampleshader]];
+UIXGOHUB["2f"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.UICorner
+UIXGOHUB["30"] = Instance.new("UICorner", UIXGOHUB["2f"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.UIStroke
+UIXGOHUB["31"] = Instance.new("UIStroke", UIXGOHUB["2f"]);
+UIXGOHUB["31"]["Transparency"] = 0.55;
+UIXGOHUB["31"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.UIListLayout
+UIXGOHUB["32"] = Instance.new("UIListLayout", UIXGOHUB["2f"]);
+UIXGOHUB["32"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.title
+UIXGOHUB["33"] = Instance.new("TextLabel", UIXGOHUB["2f"]);
+UIXGOHUB["33"]["TextWrapped"] = true;
+UIXGOHUB["33"]["Active"] = true;
+UIXGOHUB["33"]["BorderSizePixel"] = 0;
+UIXGOHUB["33"]["TextScaled"] = true;
+UIXGOHUB["33"]["BackgroundColor3"] = Color3.fromRGB(103, 103, 103);
+UIXGOHUB["33"]["TextSize"] = 14;
+UIXGOHUB["33"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["33"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["33"]["RichText"] = true;
+UIXGOHUB["33"]["Size"] = UDim2.new(1, 0, 0.12536, 0);
+UIXGOHUB["33"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["33"]["Text"] = [[shader sample]];
+UIXGOHUB["33"]["Name"] = [[title]];
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.title.UICorner
+UIXGOHUB["34"] = Instance.new("UICorner", UIXGOHUB["33"]);
+UIXGOHUB["34"]["CornerRadius"] = UDim.new(0, 2);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.image
+UIXGOHUB["35"] = Instance.new("ImageButton", UIXGOHUB["2f"]);
+UIXGOHUB["35"]["BorderSizePixel"] = 0;
+UIXGOHUB["35"]["ImageTransparency"] = 0.52;
+UIXGOHUB["35"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["35"]["Image"] = [[http://www.roblox.com/asset/?id=10141946703]];
+UIXGOHUB["35"]["Size"] = UDim2.new(0.99389, 0, 0.8661, 0);
+UIXGOHUB["35"]["BackgroundTransparency"] = 1;
+UIXGOHUB["35"]["Name"] = [[image]];
+UIXGOHUB["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["35"]["Position"] = UDim2.new(0, 0, 0.12536, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.Frame.sc.sampleshader.image.UICorner
+UIXGOHUB["36"] = Instance.new("UICorner", UIXGOHUB["35"]);
+UIXGOHUB["36"]["CornerRadius"] = UDim.new(0, 5);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.label
+UIXGOHUB["37"] = Instance.new("TextLabel", UIXGOHUB["24"]);
+UIXGOHUB["37"]["TextWrapped"] = true;
+UIXGOHUB["37"]["BorderSizePixel"] = 0;
+UIXGOHUB["37"]["TextScaled"] = true;
+UIXGOHUB["37"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["37"]["TextSize"] = 14;
+UIXGOHUB["37"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["37"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["37"]["BackgroundTransparency"] = 0.75;
+UIXGOHUB["37"]["RichText"] = true;
+UIXGOHUB["37"]["Size"] = UDim2.new(1, 0, 0.08671, 0);
+UIXGOHUB["37"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["37"]["Text"] = [[sample label]];
+UIXGOHUB["37"]["LayoutOrder"] = 1;
+UIXGOHUB["37"]["Name"] = [[label]];
+UIXGOHUB["37"]["Position"] = UDim2.new(0, 0, 0.12139, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.label.UICorner
+UIXGOHUB["38"] = Instance.new("UICorner", UIXGOHUB["37"]);
+UIXGOHUB["38"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.sample.label.UIStroke
+UIXGOHUB["39"] = Instance.new("UIStroke", UIXGOHUB["37"]);
+UIXGOHUB["39"]["Transparency"] = 0.24;
+UIXGOHUB["39"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+UIXGOHUB["39"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home
+UIXGOHUB["3a"] = Instance.new("Frame", UIXGOHUB["20"]);
+UIXGOHUB["3a"]["BorderSizePixel"] = 0;
+UIXGOHUB["3a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["3a"]["Size"] = UDim2.new(1, 0, 1.00578, 0);
+UIXGOHUB["3a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["3a"]["Name"] = [[home]];
+UIXGOHUB["3a"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.UIListLayout
+UIXGOHUB["3b"] = Instance.new("UIListLayout", UIXGOHUB["3a"]);
+UIXGOHUB["3b"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["3b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro
+UIXGOHUB["3c"] = Instance.new("Frame", UIXGOHUB["3a"]);
+UIXGOHUB["3c"]["BorderSizePixel"] = 0;
+UIXGOHUB["3c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["3c"]["Size"] = UDim2.new(1, 0, 0.31609, 0);
+UIXGOHUB["3c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["3c"]["Name"] = [[playerintro]];
+UIXGOHUB["3c"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.UICorner
+UIXGOHUB["3d"] = Instance.new("UICorner", UIXGOHUB["3c"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.UIStroke
+UIXGOHUB["3e"] = Instance.new("UIStroke", UIXGOHUB["3c"]);
+UIXGOHUB["3e"]["Enabled"] = false;
+UIXGOHUB["3e"]["Transparency"] = 0.61;
+UIXGOHUB["3e"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.playerimage
+UIXGOHUB["3f"] = Instance.new("ImageLabel", UIXGOHUB["3c"]);
+UIXGOHUB["3f"]["BorderSizePixel"] = 0;
+UIXGOHUB["3f"]["BackgroundColor3"] = Color3.fromRGB(60, 60, 60);
+UIXGOHUB["3f"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+UIXGOHUB["3f"]["Size"] = UDim2.new(0.19463, 0, 1, 0);
+UIXGOHUB["3f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["3f"]["BackgroundTransparency"] = 0.8;
+UIXGOHUB["3f"]["Name"] = [[playerimage]];
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.playerimage.UICorner
+UIXGOHUB["40"] = Instance.new("UICorner", UIXGOHUB["3f"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.UIListLayout
+UIXGOHUB["41"] = Instance.new("UIListLayout", UIXGOHUB["3c"]);
+UIXGOHUB["41"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["41"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["41"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame
+UIXGOHUB["42"] = Instance.new("Frame", UIXGOHUB["3c"]);
+UIXGOHUB["42"]["BorderSizePixel"] = 0;
+UIXGOHUB["42"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["42"]["Size"] = UDim2.new(0.79827, 0, 1.02557, 0);
+UIXGOHUB["42"]["Position"] = UDim2.new(0.20142, 0, 0, 0);
+UIXGOHUB["42"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["42"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame.title
+UIXGOHUB["43"] = Instance.new("TextLabel", UIXGOHUB["42"]);
+UIXGOHUB["43"]["TextWrapped"] = true;
+UIXGOHUB["43"]["BorderSizePixel"] = 0;
+UIXGOHUB["43"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["43"]["TextScaled"] = true;
+UIXGOHUB["43"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["43"]["TextSize"] = 14;
+UIXGOHUB["43"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["43"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["43"]["BackgroundTransparency"] = 1;
+UIXGOHUB["43"]["RichText"] = true;
+UIXGOHUB["43"]["Size"] = UDim2.new(0.98164, 0, 0.63497, 0);
+UIXGOHUB["43"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["43"]["Text"] = [[welcome to pshade reborn]];
+UIXGOHUB["43"]["LayoutOrder"] = 1;
+UIXGOHUB["43"]["Name"] = [[title]];
+UIXGOHUB["43"]["Position"] = UDim2.new(0.01845, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame.UIListLayout
+UIXGOHUB["44"] = Instance.new("UIListLayout", UIXGOHUB["42"]);
+UIXGOHUB["44"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["44"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.playerintro.Frame.name
+UIXGOHUB["45"] = Instance.new("TextLabel", UIXGOHUB["42"]);
+UIXGOHUB["45"]["TextWrapped"] = true;
+UIXGOHUB["45"]["BorderSizePixel"] = 0;
+UIXGOHUB["45"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["45"]["TextTransparency"] = 0.2;
+UIXGOHUB["45"]["TextScaled"] = true;
+UIXGOHUB["45"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["45"]["TextSize"] = 14;
+UIXGOHUB["45"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["45"]["TextColor3"] = Color3.fromRGB(205, 205, 205);
+UIXGOHUB["45"]["BackgroundTransparency"] = 1;
+UIXGOHUB["45"]["RichText"] = true;
+UIXGOHUB["45"]["Size"] = UDim2.new(0.79243, 0, 0.156, 0);
+UIXGOHUB["45"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["45"]["Text"] = [[@unkown]];
+UIXGOHUB["45"]["LayoutOrder"] = 1;
+UIXGOHUB["45"]["Name"] = [[name]];
+UIXGOHUB["45"]["Position"] = UDim2.new(0, 0, 0.66886, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player
+UIXGOHUB["46"] = Instance.new("Frame", UIXGOHUB["3a"]);
+UIXGOHUB["46"]["BorderSizePixel"] = 0;
+UIXGOHUB["46"]["BackgroundColor3"] = Color3.fromRGB(39, 39, 39);
+UIXGOHUB["46"]["Size"] = UDim2.new(1, 0, 0.10953, 0);
+UIXGOHUB["46"]["Position"] = UDim2.new(0, 0, 0.32742, 0);
+UIXGOHUB["46"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["46"]["Name"] = [[player]];
+UIXGOHUB["46"]["BackgroundTransparency"] = 0.55;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.UICorner
+UIXGOHUB["47"] = Instance.new("UICorner", UIXGOHUB["46"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.UIStroke
+UIXGOHUB["48"] = Instance.new("UIStroke", UIXGOHUB["46"]);
+UIXGOHUB["48"]["Transparency"] = 0.61;
+UIXGOHUB["48"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.UIListLayout
+UIXGOHUB["49"] = Instance.new("UIListLayout", UIXGOHUB["46"]);
+UIXGOHUB["49"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["49"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["49"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.patrickicon
+UIXGOHUB["4a"] = Instance.new("ImageLabel", UIXGOHUB["46"]);
+UIXGOHUB["4a"]["BorderSizePixel"] = 0;
+UIXGOHUB["4a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["4a"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["4a"]["Image"] = [[rbxassetid://76177268606293]];
+UIXGOHUB["4a"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+UIXGOHUB["4a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["4a"]["BackgroundTransparency"] = 1;
+UIXGOHUB["4a"]["Name"] = [[patrickicon]];
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.patrickicon.UICorner
+UIXGOHUB["4b"] = Instance.new("UICorner", UIXGOHUB["4a"]);
+UIXGOHUB["4b"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.TextLabel
+UIXGOHUB["4c"] = Instance.new("TextLabel", UIXGOHUB["46"]);
+UIXGOHUB["4c"]["TextWrapped"] = true;
+UIXGOHUB["4c"]["BorderSizePixel"] = 0;
+UIXGOHUB["4c"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["4c"]["TextScaled"] = true;
+UIXGOHUB["4c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["4c"]["TextSize"] = 14;
+UIXGOHUB["4c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["4c"]["TextColor3"] = Color3.fromRGB(217, 217, 217);
+UIXGOHUB["4c"]["BackgroundTransparency"] = 1;
+UIXGOHUB["4c"]["Size"] = UDim2.new(0.60067, 0, 1, 0);
+UIXGOHUB["4c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["4c"]["Text"] = [[@Im_Patrick]];
+UIXGOHUB["4c"]["Position"] = UDim2.new(0.12081, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.TextLabel.UITextSizeConstraint
+UIXGOHUB["4d"] = Instance.new("UITextSizeConstraint", UIXGOHUB["4c"]);
+UIXGOHUB["4d"]["MaxTextSize"] = 14;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button
+UIXGOHUB["4e"] = Instance.new("TextButton", UIXGOHUB["46"]);
+UIXGOHUB["4e"]["TextWrapped"] = true;
+UIXGOHUB["4e"]["BorderSizePixel"] = 0;
+UIXGOHUB["4e"]["TextSize"] = 14;
+UIXGOHUB["4e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["4e"]["TextScaled"] = true;
+UIXGOHUB["4e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["4e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["4e"]["RichText"] = true;
+UIXGOHUB["4e"]["Size"] = UDim2.new(0.30537, 0, 1, 0);
+UIXGOHUB["4e"]["Name"] = [[button]];
+UIXGOHUB["4e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["4e"]["Text"] = [[subscribe]];
+UIXGOHUB["4e"]["Position"] = UDim2.new(0.69463, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button.UICorner
+UIXGOHUB["4f"] = Instance.new("UICorner", UIXGOHUB["4e"]);
+UIXGOHUB["4f"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button.UIGradient
+UIXGOHUB["50"] = Instance.new("UIGradient", UIXGOHUB["4e"]);
+UIXGOHUB["50"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(32, 32, 32)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(81, 81, 81))};
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.player.button.TextLabel
+UIXGOHUB["51"] = Instance.new("TextLabel", UIXGOHUB["4e"]);
+UIXGOHUB["51"]["TextWrapped"] = true;
+UIXGOHUB["51"]["BorderSizePixel"] = 0;
+UIXGOHUB["51"]["TextScaled"] = true;
+UIXGOHUB["51"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["51"]["TextSize"] = 14;
+UIXGOHUB["51"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["51"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["51"]["BackgroundTransparency"] = 1;
+UIXGOHUB["51"]["RichText"] = true;
+UIXGOHUB["51"]["Size"] = UDim2.new(0.84615, 0, 0.73913, 0);
+UIXGOHUB["51"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["51"]["Text"] = [[subscribe]];
+UIXGOHUB["51"]["Position"] = UDim2.new(0.07692, 0, 0.13043, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.TextLabel
+UIXGOHUB["52"] = Instance.new("TextLabel", UIXGOHUB["3a"]);
+UIXGOHUB["52"]["TextWrapped"] = true;
+UIXGOHUB["52"]["BorderSizePixel"] = 0;
+UIXGOHUB["52"]["TextScaled"] = true;
+UIXGOHUB["52"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["52"]["TextSize"] = 14;
+UIXGOHUB["52"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["52"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["52"]["BackgroundTransparency"] = 0.8;
+UIXGOHUB["52"]["RichText"] = true;
+UIXGOHUB["52"]["Size"] = UDim2.new(1, 0, 0.07471, 0);
+UIXGOHUB["52"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["52"]["Text"] = [[changelogs]];
+UIXGOHUB["52"]["Position"] = UDim2.new(0, 0, 0.47126, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.ScrollingFrame
+UIXGOHUB["53"] = Instance.new("ScrollingFrame", UIXGOHUB["3a"]);
+UIXGOHUB["53"]["Active"] = true;
+UIXGOHUB["53"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+UIXGOHUB["53"]["BorderSizePixel"] = 0;
+UIXGOHUB["53"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["53"]["ScrollBarImageTransparency"] = 0.48;
+UIXGOHUB["53"]["Size"] = UDim2.new(1, 0, 0.43678, 0);
+UIXGOHUB["53"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["53"]["Position"] = UDim2.new(0, 0, 0.55747, 0);
+UIXGOHUB["53"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["53"]["ScrollBarThickness"] = 2;
+UIXGOHUB["53"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.ScrollingFrame.changelog
+UIXGOHUB["54"] = Instance.new("TextLabel", UIXGOHUB["53"]);
+UIXGOHUB["54"]["TextWrapped"] = true;
+UIXGOHUB["54"]["BorderSizePixel"] = 0;
+UIXGOHUB["54"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["54"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+UIXGOHUB["54"]["TextScaled"] = true;
+UIXGOHUB["54"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["54"]["TextSize"] = 17;
+UIXGOHUB["54"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["54"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["54"]["BackgroundTransparency"] = 1;
+UIXGOHUB["54"]["Size"] = UDim2.new(1, 0, 1, 0);
+UIXGOHUB["54"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["54"]["Text"] = [[> update ui]];
+UIXGOHUB["54"]["AutomaticSize"] = Enum.AutomaticSize.Y;
+UIXGOHUB["54"]["Name"] = [[changelog]];
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.home.ScrollingFrame.changelog.UITextSizeConstraint
+UIXGOHUB["55"] = Instance.new("UITextSizeConstraint", UIXGOHUB["54"]);
+UIXGOHUB["55"]["MaxTextSize"] = 17;
+UIXGOHUB["55"]["MinTextSize"] = 17;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample
+UIXGOHUB["56"] = Instance.new("Frame", UIXGOHUB["20"]);
+UIXGOHUB["56"]["BorderSizePixel"] = 0;
+UIXGOHUB["56"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["56"]["Size"] = UDim2.new(1, 0, 0.9711, 0);
+UIXGOHUB["56"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["56"]["Name"] = [[additionsample]];
+UIXGOHUB["56"]["LayoutOrder"] = 1;
+UIXGOHUB["56"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.UIListLayout
+UIXGOHUB["57"] = Instance.new("UIListLayout", UIXGOHUB["56"]);
+UIXGOHUB["57"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["57"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe
+UIXGOHUB["58"] = Instance.new("Frame", UIXGOHUB["56"]);
+UIXGOHUB["58"]["BorderSizePixel"] = 0;
+UIXGOHUB["58"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
+UIXGOHUB["58"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
+UIXGOHUB["58"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["58"]["Name"] = [[searchframe]];
+UIXGOHUB["58"]["BackgroundTransparency"] = 0.8;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.UICorner
+UIXGOHUB["59"] = Instance.new("UICorner", UIXGOHUB["58"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.UIStroke
+UIXGOHUB["5a"] = Instance.new("UIStroke", UIXGOHUB["58"]);
+UIXGOHUB["5a"]["Transparency"] = 0.61;
+UIXGOHUB["5a"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.UIListLayout
+UIXGOHUB["5b"] = Instance.new("UIListLayout", UIXGOHUB["58"]);
+UIXGOHUB["5b"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["5b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["5b"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.TextBox
+UIXGOHUB["5c"] = Instance.new("TextBox", UIXGOHUB["58"]);
+UIXGOHUB["5c"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["5c"]["BorderSizePixel"] = 0;
+UIXGOHUB["5c"]["TextWrapped"] = true;
+UIXGOHUB["5c"]["TextSize"] = 14;
+UIXGOHUB["5c"]["TextScaled"] = true;
+UIXGOHUB["5c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["5c"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["5c"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
+UIXGOHUB["5c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["5c"]["Text"] = [[search]];
+UIXGOHUB["5c"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.searchframe.ImageButton
+UIXGOHUB["5d"] = Instance.new("ImageButton", UIXGOHUB["58"]);
+UIXGOHUB["5d"]["BorderSizePixel"] = 0;
+UIXGOHUB["5d"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["5d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["5d"]["LayoutOrder"] = 1;
+UIXGOHUB["5d"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
+UIXGOHUB["5d"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+UIXGOHUB["5d"]["BackgroundTransparency"] = 1;
+UIXGOHUB["5d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["5d"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.Frame
+UIXGOHUB["5e"] = Instance.new("Frame", UIXGOHUB["56"]);
+UIXGOHUB["5e"]["BorderSizePixel"] = 0;
+UIXGOHUB["5e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["5e"]["Size"] = UDim2.new(1, 0, 0.90803, 0);
+UIXGOHUB["5e"]["Position"] = UDim2.new(0, 0, 0.12173, 0);
+UIXGOHUB["5e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["5e"]["LayoutOrder"] = 2;
+UIXGOHUB["5e"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.Frame.sc
+UIXGOHUB["5f"] = Instance.new("ScrollingFrame", UIXGOHUB["5e"]);
+UIXGOHUB["5f"]["Active"] = true;
+UIXGOHUB["5f"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+UIXGOHUB["5f"]["BorderSizePixel"] = 0;
+UIXGOHUB["5f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["5f"]["Name"] = [[sc]];
+UIXGOHUB["5f"]["ScrollBarImageTransparency"] = 0.2;
+UIXGOHUB["5f"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+UIXGOHUB["5f"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
+UIXGOHUB["5f"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["5f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["5f"]["ScrollBarThickness"] = 3;
+UIXGOHUB["5f"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.additionsample.Frame.sc.UIListLayout
+UIXGOHUB["60"] = Instance.new("UIListLayout", UIXGOHUB["5f"]);
+UIXGOHUB["60"]["Padding"] = UDim.new(0, 3);
+UIXGOHUB["60"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings
+UIXGOHUB["61"] = Instance.new("Frame", UIXGOHUB["20"]);
+UIXGOHUB["61"]["BorderSizePixel"] = 0;
+UIXGOHUB["61"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["61"]["Size"] = UDim2.new(1, 0, 0.9711, 0);
+UIXGOHUB["61"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["61"]["Name"] = [[settings]];
+UIXGOHUB["61"]["LayoutOrder"] = 1;
+UIXGOHUB["61"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.UIListLayout
+UIXGOHUB["62"] = Instance.new("UIListLayout", UIXGOHUB["61"]);
+UIXGOHUB["62"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["62"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe
+UIXGOHUB["63"] = Instance.new("Frame", UIXGOHUB["61"]);
+UIXGOHUB["63"]["BorderSizePixel"] = 0;
+UIXGOHUB["63"]["BackgroundColor3"] = Color3.fromRGB(222, 222, 222);
+UIXGOHUB["63"]["Size"] = UDim2.new(1, 0, 0.10983, 0);
+UIXGOHUB["63"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["63"]["Name"] = [[searchframe]];
+UIXGOHUB["63"]["BackgroundTransparency"] = 0.8;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.UICorner
+UIXGOHUB["64"] = Instance.new("UICorner", UIXGOHUB["63"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.UIStroke
+UIXGOHUB["65"] = Instance.new("UIStroke", UIXGOHUB["63"]);
+UIXGOHUB["65"]["Transparency"] = 0.61;
+UIXGOHUB["65"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.UIListLayout
+UIXGOHUB["66"] = Instance.new("UIListLayout", UIXGOHUB["63"]);
+UIXGOHUB["66"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["66"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["66"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.TextBox
+UIXGOHUB["67"] = Instance.new("TextBox", UIXGOHUB["63"]);
+UIXGOHUB["67"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["67"]["BorderSizePixel"] = 0;
+UIXGOHUB["67"]["TextWrapped"] = true;
+UIXGOHUB["67"]["TextSize"] = 14;
+UIXGOHUB["67"]["TextScaled"] = true;
+UIXGOHUB["67"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["67"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["67"]["Size"] = UDim2.new(0.91275, 0, 1, 0);
+UIXGOHUB["67"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["67"]["Text"] = [[search]];
+UIXGOHUB["67"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.searchframe.ImageButton
+UIXGOHUB["68"] = Instance.new("ImageButton", UIXGOHUB["63"]);
+UIXGOHUB["68"]["BorderSizePixel"] = 0;
+UIXGOHUB["68"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["68"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["68"]["LayoutOrder"] = 1;
+UIXGOHUB["68"]["Image"] = [[http://www.roblox.com/asset/?id=6031154871]];
+UIXGOHUB["68"]["Size"] = UDim2.new(0.08054, 0, 1, 0);
+UIXGOHUB["68"]["BackgroundTransparency"] = 1;
+UIXGOHUB["68"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["68"]["Position"] = UDim2.new(0.91946, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.Frame
+UIXGOHUB["69"] = Instance.new("Frame", UIXGOHUB["61"]);
+UIXGOHUB["69"]["BorderSizePixel"] = 0;
+UIXGOHUB["69"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["69"]["Size"] = UDim2.new(1, 0, 0.90803, 0);
+UIXGOHUB["69"]["Position"] = UDim2.new(0, 0, 0.12173, 0);
+UIXGOHUB["69"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["69"]["LayoutOrder"] = 2;
+UIXGOHUB["69"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.Frame.sc
+UIXGOHUB["6a"] = Instance.new("ScrollingFrame", UIXGOHUB["69"]);
+UIXGOHUB["6a"]["Active"] = true;
+UIXGOHUB["6a"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+UIXGOHUB["6a"]["BorderSizePixel"] = 0;
+UIXGOHUB["6a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["6a"]["Name"] = [[sc]];
+UIXGOHUB["6a"]["ScrollBarImageTransparency"] = 0.2;
+UIXGOHUB["6a"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+UIXGOHUB["6a"]["Size"] = UDim2.new(1, 0, 0.9854, 0);
+UIXGOHUB["6a"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["6a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["6a"]["ScrollBarThickness"] = 3;
+UIXGOHUB["6a"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.settings.Frame.sc.UIListLayout
+UIXGOHUB["6b"] = Instance.new("UIListLayout", UIXGOHUB["6a"]);
+UIXGOHUB["6b"]["Padding"] = UDim.new(0, 3);
+UIXGOHUB["6b"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback
+UIXGOHUB["6c"] = Instance.new("Frame", UIXGOHUB["20"]);
+UIXGOHUB["6c"]["BorderSizePixel"] = 0;
+UIXGOHUB["6c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["6c"]["Size"] = UDim2.new(1, 0, 1.01734, 0);
+UIXGOHUB["6c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["6c"]["Name"] = [[feedback]];
+UIXGOHUB["6c"]["LayoutOrder"] = 2;
+UIXGOHUB["6c"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.UIListLayout
+UIXGOHUB["6d"] = Instance.new("UIListLayout", UIXGOHUB["6c"]);
+UIXGOHUB["6d"]["Padding"] = UDim.new(0, 1);
+UIXGOHUB["6d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.label
+UIXGOHUB["6e"] = Instance.new("TextLabel", UIXGOHUB["6c"]);
+UIXGOHUB["6e"]["TextWrapped"] = true;
+UIXGOHUB["6e"]["BorderSizePixel"] = 0;
+UIXGOHUB["6e"]["TextScaled"] = true;
+UIXGOHUB["6e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["6e"]["TextSize"] = 14;
+UIXGOHUB["6e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["6e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["6e"]["BackgroundTransparency"] = 0.6;
+UIXGOHUB["6e"]["RichText"] = true;
+UIXGOHUB["6e"]["Size"] = UDim2.new(1, 0, 0.07568, 0);
+UIXGOHUB["6e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["6e"]["Text"] = [[Feedback]];
+UIXGOHUB["6e"]["Name"] = [[label]];
+UIXGOHUB["6e"]["Position"] = UDim2.new(0, 0, 0.71983, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.label.UIStroke
+UIXGOHUB["6f"] = Instance.new("UIStroke", UIXGOHUB["6e"]);
+UIXGOHUB["6f"]["Transparency"] = 0.61;
+UIXGOHUB["6f"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.label.UICorner
+UIXGOHUB["70"] = Instance.new("UICorner", UIXGOHUB["6e"]);
+UIXGOHUB["70"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.TextBox
+UIXGOHUB["71"] = Instance.new("TextBox", UIXGOHUB["6c"]);
+UIXGOHUB["71"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["71"]["BorderSizePixel"] = 0;
+UIXGOHUB["71"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["71"]["TextWrapped"] = true;
+UIXGOHUB["71"]["TextSize"] = 14;
+UIXGOHUB["71"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+UIXGOHUB["71"]["TextScaled"] = true;
+UIXGOHUB["71"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["71"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["71"]["RichText"] = true;
+UIXGOHUB["71"]["Size"] = UDim2.new(1, 0, 0.72159, 0);
+UIXGOHUB["71"]["Position"] = UDim2.new(0, 0, 0.08136, 0);
+UIXGOHUB["71"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["71"]["Text"] = [[]];
+UIXGOHUB["71"]["BackgroundTransparency"] = 0.5;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.TextBox.UICorner
+UIXGOHUB["72"] = Instance.new("UICorner", UIXGOHUB["71"]);
+UIXGOHUB["72"]["CornerRadius"] = UDim.new(0.05, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.TextBox.UITextSizeConstraint
+UIXGOHUB["73"] = Instance.new("UITextSizeConstraint", UIXGOHUB["71"]);
+UIXGOHUB["73"]["MaxTextSize"] = 15;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.send
+UIXGOHUB["74"] = Instance.new("ImageButton", UIXGOHUB["6c"]);
+UIXGOHUB["74"]["BorderSizePixel"] = 0;
+UIXGOHUB["74"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["74"]["BackgroundColor3"] = Color3.fromRGB(47, 233, 0);
+UIXGOHUB["74"]["Image"] = [[http://www.roblox.com/asset/?id=6035067832]];
+UIXGOHUB["74"]["Size"] = UDim2.new(1, 0, 0.1875, 0);
+UIXGOHUB["74"]["BackgroundTransparency"] = 0.2;
+UIXGOHUB["74"]["Name"] = [[send]];
+UIXGOHUB["74"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["74"]["Position"] = UDim2.new(0, 0, 0.80863, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.showpage.feedback.send.UICorner
+UIXGOHUB["75"] = Instance.new("UICorner", UIXGOHUB["74"]);
+UIXGOHUB["75"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page
+UIXGOHUB["76"] = Instance.new("Frame", UIXGOHUB["1d"]);
+UIXGOHUB["76"]["BorderSizePixel"] = 0;
+UIXGOHUB["76"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["76"]["Size"] = UDim2.new(0.27361, 0, 0.99425, 0);
+UIXGOHUB["76"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["76"]["Name"] = [[page]];
+UIXGOHUB["76"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame
+UIXGOHUB["77"] = Instance.new("Frame", UIXGOHUB["76"]);
+UIXGOHUB["77"]["BorderSizePixel"] = 0;
+UIXGOHUB["77"]["BackgroundColor3"] = Color3.fromRGB(162, 162, 162);
+UIXGOHUB["77"]["Size"] = UDim2.new(0.926, 0, 0.99473, 0);
+UIXGOHUB["77"]["Position"] = UDim2.new(0.06195, 0, 0, 0);
+UIXGOHUB["77"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["77"]["BackgroundTransparency"] = 0.85;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.UICorner
+UIXGOHUB["78"] = Instance.new("UICorner", UIXGOHUB["77"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.UIListLayout
+UIXGOHUB["79"] = Instance.new("UIListLayout", UIXGOHUB["77"]);
+UIXGOHUB["79"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["79"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.UIStroke
+UIXGOHUB["7a"] = Instance.new("UIStroke", UIXGOHUB["77"]);
+UIXGOHUB["7a"]["Transparency"] = 0.72;
+UIXGOHUB["7a"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc
+UIXGOHUB["7b"] = Instance.new("ScrollingFrame", UIXGOHUB["77"]);
+UIXGOHUB["7b"]["Active"] = true;
+UIXGOHUB["7b"]["ScrollingDirection"] = Enum.ScrollingDirection.Y;
+UIXGOHUB["7b"]["BorderSizePixel"] = 0;
+UIXGOHUB["7b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["7b"]["Name"] = [[sc]];
+UIXGOHUB["7b"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+UIXGOHUB["7b"]["Size"] = UDim2.new(0.99115, 0, 1.00578, 0);
+UIXGOHUB["7b"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["7b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["7b"]["ScrollBarThickness"] = 2;
+UIXGOHUB["7b"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.UIListLayout
+UIXGOHUB["7c"] = Instance.new("UIListLayout", UIXGOHUB["7b"]);
+UIXGOHUB["7c"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["7c"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home
+UIXGOHUB["7d"] = Instance.new("Frame", UIXGOHUB["7b"]);
+UIXGOHUB["7d"]["BorderSizePixel"] = 0;
+UIXGOHUB["7d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["7d"]["Size"] = UDim2.new(1, 0, 0.1, 0);
+UIXGOHUB["7d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["7d"]["Name"] = [[home]];
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.UICorner
+UIXGOHUB["7e"] = Instance.new("UICorner", UIXGOHUB["7d"]);
+UIXGOHUB["7e"]["CornerRadius"] = UDim.new(0.25, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.TextButton
+UIXGOHUB["7f"] = Instance.new("TextButton", UIXGOHUB["7d"]);
+UIXGOHUB["7f"]["TextWrapped"] = true;
+UIXGOHUB["7f"]["BorderSizePixel"] = 0;
+UIXGOHUB["7f"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["7f"]["TextSize"] = 14;
+UIXGOHUB["7f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["7f"]["TextScaled"] = true;
+UIXGOHUB["7f"]["BackgroundColor3"] = Color3.fromRGB(172, 172, 172);
+UIXGOHUB["7f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["7f"]["RichText"] = true;
+UIXGOHUB["7f"]["Size"] = UDim2.new(1, 0, 1, 0);
+UIXGOHUB["7f"]["BackgroundTransparency"] = 1;
+UIXGOHUB["7f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["7f"]["Text"] = [[home]];
+UIXGOHUB["7f"]["Position"] = UDim2.new(0.0625, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.UIStroke
+UIXGOHUB["80"] = Instance.new("UIStroke", UIXGOHUB["7d"]);
+UIXGOHUB["80"]["Transparency"] = 0.61;
+UIXGOHUB["80"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.home.UIGradient
+UIXGOHUB["81"] = Instance.new("UIGradient", UIXGOHUB["7d"]);
+UIXGOHUB["81"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(123, 123, 123))};
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample
+UIXGOHUB["82"] = Instance.new("Frame", UIXGOHUB["7b"]);
+UIXGOHUB["82"]["Visible"] = false;
+UIXGOHUB["82"]["BorderSizePixel"] = 0;
+UIXGOHUB["82"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["82"]["Size"] = UDim2.new(1, 0, 0.1, 0);
+UIXGOHUB["82"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["82"]["Name"] = [[sample]];
+UIXGOHUB["82"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.TextButton
+UIXGOHUB["83"] = Instance.new("TextButton", UIXGOHUB["82"]);
+UIXGOHUB["83"]["TextWrapped"] = true;
+UIXGOHUB["83"]["BorderSizePixel"] = 0;
+UIXGOHUB["83"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["83"]["TextSize"] = 14;
+UIXGOHUB["83"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["83"]["TextScaled"] = true;
+UIXGOHUB["83"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["83"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["83"]["RichText"] = true;
+UIXGOHUB["83"]["Size"] = UDim2.new(1, 0, 1, 0);
+UIXGOHUB["83"]["BackgroundTransparency"] = 1;
+UIXGOHUB["83"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["83"]["Text"] = [[sample]];
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UIStroke
+UIXGOHUB["84"] = Instance.new("UIStroke", UIXGOHUB["82"]);
+UIXGOHUB["84"]["Transparency"] = 0.61;
+UIXGOHUB["84"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UICorner
+UIXGOHUB["85"] = Instance.new("UICorner", UIXGOHUB["82"]);
+UIXGOHUB["85"]["CornerRadius"] = UDim.new(0.25, 0);
+
+
+-- StarterGui.pshade.mainmage.main.mainpage.page.Frame.sc.sample.UIGradient
+UIXGOHUB["86"] = Instance.new("UIGradient", UIXGOHUB["82"]);
+UIXGOHUB["86"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(0, 0, 0)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(123, 123, 123))};
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe
+UIXGOHUB["87"] = Instance.new("Frame", UIXGOHUB["3"]);
+UIXGOHUB["87"]["BorderSizePixel"] = 0;
+UIXGOHUB["87"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["87"]["Size"] = UDim2.new(1, 0, 0.13043, 0);
+UIXGOHUB["87"]["Position"] = UDim2.new(-0, 0, 0.83794, 0);
+UIXGOHUB["87"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["87"]["Name"] = [[addtionframe]];
+UIXGOHUB["87"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame
+UIXGOHUB["88"] = Instance.new("Frame", UIXGOHUB["87"]);
+UIXGOHUB["88"]["BorderSizePixel"] = 0;
+UIXGOHUB["88"]["BackgroundColor3"] = Color3.fromRGB(136, 136, 136);
+UIXGOHUB["88"]["Size"] = UDim2.new(0.9661, 0, 0.63636, 0);
+UIXGOHUB["88"]["Position"] = UDim2.new(0.01695, 0, 0.09091, 0);
+UIXGOHUB["88"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["88"]["BackgroundTransparency"] = 0.75;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.UICorner
+UIXGOHUB["89"] = Instance.new("UICorner", UIXGOHUB["88"]);
+UIXGOHUB["89"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.UIListLayout
+UIXGOHUB["8a"] = Instance.new("UIListLayout", UIXGOHUB["88"]);
+UIXGOHUB["8a"]["Padding"] = UDim.new(0, 2);
+UIXGOHUB["8a"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["8a"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.UIStroke
+UIXGOHUB["8b"] = Instance.new("UIStroke", UIXGOHUB["88"]);
+UIXGOHUB["8b"]["Transparency"] = 0.68;
+UIXGOHUB["8b"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.add
+UIXGOHUB["8c"] = Instance.new("Frame", UIXGOHUB["88"]);
+UIXGOHUB["8c"]["BorderSizePixel"] = 0;
+UIXGOHUB["8c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["8c"]["Size"] = UDim2.new(0.881, 0, 1.053, 0);
+UIXGOHUB["8c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["8c"]["Name"] = [[add]];
+UIXGOHUB["8c"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc
+UIXGOHUB["8d"] = Instance.new("ScrollingFrame", UIXGOHUB["8c"]);
+UIXGOHUB["8d"]["Active"] = true;
+UIXGOHUB["8d"]["ScrollingDirection"] = Enum.ScrollingDirection.X;
+UIXGOHUB["8d"]["BorderSizePixel"] = 0;
+UIXGOHUB["8d"]["CanvasSize"] = UDim2.new(2.1, 0, 0, 0);
+UIXGOHUB["8d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["8d"]["Name"] = [[sc]];
+UIXGOHUB["8d"]["ScrollBarImageTransparency"] = 0.64;
+UIXGOHUB["8d"]["AutomaticCanvasSize"] = Enum.AutomaticSize.X;
+UIXGOHUB["8d"]["Size"] = UDim2.new(0.98662, 0, 1.05128, 0);
+UIXGOHUB["8d"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["8d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["8d"]["ScrollBarThickness"] = 3;
+UIXGOHUB["8d"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.UIListLayout
+UIXGOHUB["8e"] = Instance.new("UIListLayout", UIXGOHUB["8d"]);
+UIXGOHUB["8e"]["Padding"] = UDim.new(0, 5);
+UIXGOHUB["8e"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["8e"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.sample
+UIXGOHUB["8f"] = Instance.new("TextButton", UIXGOHUB["8d"]);
+UIXGOHUB["8f"]["TextWrapped"] = true;
+UIXGOHUB["8f"]["BorderSizePixel"] = 0;
+UIXGOHUB["8f"]["TextSize"] = 21;
+UIXGOHUB["8f"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["8f"]["BackgroundColor3"] = Color3.fromRGB(49, 49, 49);
+UIXGOHUB["8f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["8f"]["RichText"] = true;
+UIXGOHUB["8f"]["AutomaticSize"] = Enum.AutomaticSize.X;
+UIXGOHUB["8f"]["Size"] = UDim2.new(0.2, 0, 1, 0);
+UIXGOHUB["8f"]["BackgroundTransparency"] = 0.25;
+UIXGOHUB["8f"]["Name"] = [[sample]];
+UIXGOHUB["8f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["8f"]["Text"] = [[sample]];
+UIXGOHUB["8f"]["Visible"] = false;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.sample.UICorner
+UIXGOHUB["90"] = Instance.new("UICorner", UIXGOHUB["8f"]);
+UIXGOHUB["90"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.add.sc.sample.UIStroke
+UIXGOHUB["91"] = Instance.new("UIStroke", UIXGOHUB["8f"]);
+UIXGOHUB["91"]["Transparency"] = 0.58;
+UIXGOHUB["91"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+UIXGOHUB["91"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe
+UIXGOHUB["92"] = Instance.new("Frame", UIXGOHUB["88"]);
+UIXGOHUB["92"]["BorderSizePixel"] = 0;
+UIXGOHUB["92"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["92"]["Size"] = UDim2.new(0.11329, 0, 1, 0);
+UIXGOHUB["92"]["Position"] = UDim2.new(0.8952, 0, 0, 0);
+UIXGOHUB["92"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["92"]["Name"] = [[toggleshaderframe]];
+UIXGOHUB["92"]["BackgroundTransparency"] = 0.85;
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.UICorner
+UIXGOHUB["93"] = Instance.new("UICorner", UIXGOHUB["92"]);
+UIXGOHUB["93"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.UIStroke
+UIXGOHUB["94"] = Instance.new("UIStroke", UIXGOHUB["92"]);
+UIXGOHUB["94"]["Transparency"] = 0.35;
+UIXGOHUB["94"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.handle
+UIXGOHUB["95"] = Instance.new("ImageButton", UIXGOHUB["92"]);
+UIXGOHUB["95"]["BorderSizePixel"] = 0;
+UIXGOHUB["95"]["ImageTransparency"] = 1;
+UIXGOHUB["95"]["BackgroundColor3"] = Color3.fromRGB(27, 255, 0);
+UIXGOHUB["95"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+UIXGOHUB["95"]["Size"] = UDim2.new(0.48214, 0, 1, 0);
+UIXGOHUB["95"]["Name"] = [[handle]];
+UIXGOHUB["95"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["95"]["Position"] = UDim2.new(0.51786, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.addtionframe.Frame.toggleshaderframe.handle.UICorner
+UIXGOHUB["96"] = Instance.new("UICorner", UIXGOHUB["95"]);
+UIXGOHUB["96"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample
+UIXGOHUB["97"] = Instance.new("Folder", UIXGOHUB["3"]);
+UIXGOHUB["97"]["Name"] = [[propperty sample]];
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box
+UIXGOHUB["98"] = Instance.new("Frame", UIXGOHUB["97"]);
+UIXGOHUB["98"]["Visible"] = false;
+UIXGOHUB["98"]["BorderSizePixel"] = 0;
+UIXGOHUB["98"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["98"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+UIXGOHUB["98"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["98"]["Name"] = [[box]];
+UIXGOHUB["98"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.UICorner
+UIXGOHUB["99"] = Instance.new("UICorner", UIXGOHUB["98"]);
+UIXGOHUB["99"]["CornerRadius"] = UDim.new(0.1, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.UIStroke
+UIXGOHUB["9a"] = Instance.new("UIStroke", UIXGOHUB["98"]);
+UIXGOHUB["9a"]["Transparency"] = 0.58;
+UIXGOHUB["9a"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.ImageLabel
+UIXGOHUB["9b"] = Instance.new("ImageLabel", UIXGOHUB["98"]);
+UIXGOHUB["9b"]["BorderSizePixel"] = 0;
+UIXGOHUB["9b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["9b"]["ScaleType"] = Enum.ScaleType.Crop;
+UIXGOHUB["9b"]["Image"] = [[http://www.roblox.com/asset/?id=6034941708]];
+UIXGOHUB["9b"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+UIXGOHUB["9b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["9b"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.ImageLabel.UICorner
+UIXGOHUB["9c"] = Instance.new("UICorner", UIXGOHUB["9b"]);
+UIXGOHUB["9c"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.UIListLayout
+UIXGOHUB["9d"] = Instance.new("UIListLayout", UIXGOHUB["98"]);
+UIXGOHUB["9d"]["Padding"] = UDim.new(0, 3);
+UIXGOHUB["9d"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["9d"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.TextButton
+UIXGOHUB["9e"] = Instance.new("TextButton", UIXGOHUB["98"]);
+UIXGOHUB["9e"]["TextWrapped"] = true;
+UIXGOHUB["9e"]["BorderSizePixel"] = 0;
+UIXGOHUB["9e"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["9e"]["TextSize"] = 14;
+UIXGOHUB["9e"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["9e"]["TextScaled"] = true;
+UIXGOHUB["9e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["9e"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["9e"]["RichText"] = true;
+UIXGOHUB["9e"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
+UIXGOHUB["9e"]["BackgroundTransparency"] = 1;
+UIXGOHUB["9e"]["LayoutOrder"] = 1;
+UIXGOHUB["9e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["9e"]["Text"] = [[textbox sample]];
+UIXGOHUB["9e"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.TextBox
+UIXGOHUB["9f"] = Instance.new("TextBox", UIXGOHUB["98"]);
+UIXGOHUB["9f"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["9f"]["PlaceholderColor3"] = Color3.fromRGB(86, 86, 86);
+UIXGOHUB["9f"]["BorderSizePixel"] = 0;
+UIXGOHUB["9f"]["TextWrapped"] = true;
+UIXGOHUB["9f"]["TextSize"] = 14;
+UIXGOHUB["9f"]["TextScaled"] = true;
+UIXGOHUB["9f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["9f"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["9f"]["Size"] = UDim2.new(0.163, 0, 1, 0);
+UIXGOHUB["9f"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+UIXGOHUB["9f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["9f"]["BackgroundTransparency"] = 0.5;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.TextBox.UICorner
+UIXGOHUB["a0"] = Instance.new("UICorner", UIXGOHUB["9f"]);
+UIXGOHUB["a0"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.box.TextBox.UIStroke
+UIXGOHUB["a1"] = Instance.new("UIStroke", UIXGOHUB["9f"]);
+UIXGOHUB["a1"]["Transparency"] = 0.56;
+UIXGOHUB["a1"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+UIXGOHUB["a1"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.button
+UIXGOHUB["a2"] = Instance.new("Frame", UIXGOHUB["97"]);
+UIXGOHUB["a2"]["Visible"] = false;
+UIXGOHUB["a2"]["BorderSizePixel"] = 0;
+UIXGOHUB["a2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["a2"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+UIXGOHUB["a2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["a2"]["Name"] = [[button]];
+UIXGOHUB["a2"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.button.UICorner
+UIXGOHUB["a3"] = Instance.new("UICorner", UIXGOHUB["a2"]);
+UIXGOHUB["a3"]["CornerRadius"] = UDim.new(0.1, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.button.UIStroke
+UIXGOHUB["a4"] = Instance.new("UIStroke", UIXGOHUB["a2"]);
+UIXGOHUB["a4"]["Transparency"] = 0.58;
+UIXGOHUB["a4"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.button.ImageLabel
+UIXGOHUB["a5"] = Instance.new("ImageLabel", UIXGOHUB["a2"]);
+UIXGOHUB["a5"]["BorderSizePixel"] = 0;
+UIXGOHUB["a5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["a5"]["ScaleType"] = Enum.ScaleType.Crop;
+UIXGOHUB["a5"]["Image"] = [[http://www.roblox.com/asset/?id=6022668955]];
+UIXGOHUB["a5"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+UIXGOHUB["a5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["a5"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.button.ImageLabel.UICorner
+UIXGOHUB["a6"] = Instance.new("UICorner", UIXGOHUB["a5"]);
+UIXGOHUB["a6"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.button.UIListLayout
+UIXGOHUB["a7"] = Instance.new("UIListLayout", UIXGOHUB["a2"]);
+UIXGOHUB["a7"]["Padding"] = UDim.new(0, 3);
+UIXGOHUB["a7"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["a7"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.button.TextButton
+UIXGOHUB["a8"] = Instance.new("TextButton", UIXGOHUB["a2"]);
+UIXGOHUB["a8"]["TextWrapped"] = true;
+UIXGOHUB["a8"]["BorderSizePixel"] = 0;
+UIXGOHUB["a8"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["a8"]["TextSize"] = 14;
+UIXGOHUB["a8"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["a8"]["TextScaled"] = true;
+UIXGOHUB["a8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["a8"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["a8"]["RichText"] = true;
+UIXGOHUB["a8"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
+UIXGOHUB["a8"]["BackgroundTransparency"] = 1;
+UIXGOHUB["a8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["a8"]["Text"] = [[sample button]];
+UIXGOHUB["a8"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle
+UIXGOHUB["a9"] = Instance.new("Frame", UIXGOHUB["97"]);
+UIXGOHUB["a9"]["Visible"] = false;
+UIXGOHUB["a9"]["BorderSizePixel"] = 0;
+UIXGOHUB["a9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["a9"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+UIXGOHUB["a9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["a9"]["Name"] = [[toggle]];
+UIXGOHUB["a9"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.UICorner
+UIXGOHUB["aa"] = Instance.new("UICorner", UIXGOHUB["a9"]);
+UIXGOHUB["aa"]["CornerRadius"] = UDim.new(0.1, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.UIStroke
+UIXGOHUB["ab"] = Instance.new("UIStroke", UIXGOHUB["a9"]);
+UIXGOHUB["ab"]["Transparency"] = 0.58;
+UIXGOHUB["ab"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.ImageLabel
+UIXGOHUB["ac"] = Instance.new("ImageLabel", UIXGOHUB["a9"]);
+UIXGOHUB["ac"]["BorderSizePixel"] = 0;
+UIXGOHUB["ac"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["ac"]["ScaleType"] = Enum.ScaleType.Crop;
+UIXGOHUB["ac"]["Image"] = [[http://www.roblox.com/asset/?id=6031068430]];
+UIXGOHUB["ac"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+UIXGOHUB["ac"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["ac"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.ImageLabel.UICorner
+UIXGOHUB["ad"] = Instance.new("UICorner", UIXGOHUB["ac"]);
+UIXGOHUB["ad"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.UIListLayout
+UIXGOHUB["ae"] = Instance.new("UIListLayout", UIXGOHUB["a9"]);
+UIXGOHUB["ae"]["Padding"] = UDim.new(0, 3);
+UIXGOHUB["ae"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["ae"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.TextButton
+UIXGOHUB["af"] = Instance.new("TextButton", UIXGOHUB["a9"]);
+UIXGOHUB["af"]["TextWrapped"] = true;
+UIXGOHUB["af"]["BorderSizePixel"] = 0;
+UIXGOHUB["af"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["af"]["TextSize"] = 14;
+UIXGOHUB["af"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["af"]["TextScaled"] = true;
+UIXGOHUB["af"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["af"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["af"]["RichText"] = true;
+UIXGOHUB["af"]["Size"] = UDim2.new(0.87919, 0, 1, 0);
+UIXGOHUB["af"]["BackgroundTransparency"] = 1;
+UIXGOHUB["af"]["LayoutOrder"] = 2;
+UIXGOHUB["af"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["af"]["Text"] = [[sample toggle]];
+UIXGOHUB["af"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle
+UIXGOHUB["b0"] = Instance.new("Frame", UIXGOHUB["a9"]);
+UIXGOHUB["b0"]["BorderSizePixel"] = 0;
+UIXGOHUB["b0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["b0"]["Size"] = UDim2.new(0.19463, 0, 1.03943, 0);
+UIXGOHUB["b0"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+UIXGOHUB["b0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["b0"]["Name"] = [[fhandle]];
+UIXGOHUB["b0"]["BackgroundTransparency"] = 0.5;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.UICorner
+UIXGOHUB["b1"] = Instance.new("UICorner", UIXGOHUB["b0"]);
+UIXGOHUB["b1"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.UIStroke
+UIXGOHUB["b2"] = Instance.new("UIStroke", UIXGOHUB["b0"]);
+UIXGOHUB["b2"]["Transparency"] = 0.58;
+UIXGOHUB["b2"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.hdl
+UIXGOHUB["b3"] = Instance.new("ImageButton", UIXGOHUB["b0"]);
+UIXGOHUB["b3"]["BorderSizePixel"] = 0;
+UIXGOHUB["b3"]["ImageTransparency"] = 1;
+UIXGOHUB["b3"]["BackgroundColor3"] = Color3.fromRGB(255, 0, 0);
+UIXGOHUB["b3"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+UIXGOHUB["b3"]["Size"] = UDim2.new(0.5, 0, 1, 0);
+UIXGOHUB["b3"]["Name"] = [[hdl]];
+UIXGOHUB["b3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.toggle.fhandle.hdl.UICorner
+UIXGOHUB["b4"] = Instance.new("UICorner", UIXGOHUB["b3"]);
+UIXGOHUB["b4"]["CornerRadius"] = UDim.new(0.4, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.label
+UIXGOHUB["b5"] = Instance.new("TextLabel", UIXGOHUB["97"]);
+UIXGOHUB["b5"]["TextWrapped"] = true;
+UIXGOHUB["b5"]["BorderSizePixel"] = 0;
+UIXGOHUB["b5"]["TextScaled"] = true;
+UIXGOHUB["b5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["b5"]["TextSize"] = 14;
+UIXGOHUB["b5"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["b5"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["b5"]["BackgroundTransparency"] = 0.6;
+UIXGOHUB["b5"]["RichText"] = true;
+UIXGOHUB["b5"]["Size"] = UDim2.new(1, 0, 0.07568, 0);
+UIXGOHUB["b5"]["Visible"] = false;
+UIXGOHUB["b5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["b5"]["Text"] = [[Label sample]];
+UIXGOHUB["b5"]["Name"] = [[label]];
+UIXGOHUB["b5"]["Position"] = UDim2.new(0, 0, 0.71983, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.label.UIStroke
+UIXGOHUB["b6"] = Instance.new("UIStroke", UIXGOHUB["b5"]);
+UIXGOHUB["b6"]["Transparency"] = 0.61;
+UIXGOHUB["b6"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.label.UICorner
+UIXGOHUB["b7"] = Instance.new("UICorner", UIXGOHUB["b5"]);
+
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider
+UIXGOHUB["b8"] = Instance.new("Frame", UIXGOHUB["97"]);
+UIXGOHUB["b8"]["Visible"] = false;
+UIXGOHUB["b8"]["BorderSizePixel"] = 0;
+UIXGOHUB["b8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["b8"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+UIXGOHUB["b8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["b8"]["Name"] = [[slider]];
+UIXGOHUB["b8"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.UIStroke
+UIXGOHUB["b9"] = Instance.new("UIStroke", UIXGOHUB["b8"]);
+UIXGOHUB["b9"]["Transparency"] = 0.58;
+UIXGOHUB["b9"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.ImageLabel
+UIXGOHUB["ba"] = Instance.new("ImageLabel", UIXGOHUB["b8"]);
+UIXGOHUB["ba"]["BorderSizePixel"] = 0;
+UIXGOHUB["ba"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["ba"]["ScaleType"] = Enum.ScaleType.Crop;
+UIXGOHUB["ba"]["Image"] = [[http://www.roblox.com/asset/?id=6034910907]];
+UIXGOHUB["ba"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+UIXGOHUB["ba"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["ba"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.ImageLabel.UICorner
+UIXGOHUB["bb"] = Instance.new("UICorner", UIXGOHUB["ba"]);
+UIXGOHUB["bb"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.UIListLayout
+UIXGOHUB["bc"] = Instance.new("UIListLayout", UIXGOHUB["b8"]);
+UIXGOHUB["bc"]["Padding"] = UDim.new(0, 3);
+UIXGOHUB["bc"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["bc"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.TextButton
+UIXGOHUB["bd"] = Instance.new("TextButton", UIXGOHUB["b8"]);
+UIXGOHUB["bd"]["TextWrapped"] = true;
+UIXGOHUB["bd"]["BorderSizePixel"] = 0;
+UIXGOHUB["bd"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["bd"]["TextSize"] = 14;
+UIXGOHUB["bd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["bd"]["TextScaled"] = true;
+UIXGOHUB["bd"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["bd"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["bd"]["RichText"] = true;
+UIXGOHUB["bd"]["Size"] = UDim2.new(0.26174, 0, 1, 0);
+UIXGOHUB["bd"]["BackgroundTransparency"] = 1;
+UIXGOHUB["bd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["bd"]["Text"] = [[sample toggle]];
+UIXGOHUB["bd"]["Position"] = UDim2.new(0.09732, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.num
+UIXGOHUB["be"] = Instance.new("TextBox", UIXGOHUB["b8"]);
+UIXGOHUB["be"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["be"]["BorderSizePixel"] = 0;
+UIXGOHUB["be"]["TextWrapped"] = true;
+UIXGOHUB["be"]["TextSize"] = 14;
+UIXGOHUB["be"]["Name"] = [[num]];
+UIXGOHUB["be"]["TextScaled"] = true;
+UIXGOHUB["be"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["be"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["be"]["Size"] = UDim2.new(0.09396, 0, 0.99786, 0);
+UIXGOHUB["be"]["Position"] = UDim2.new(0.36913, 0, 0, 0);
+UIXGOHUB["be"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["be"]["Text"] = [[0.1]];
+UIXGOHUB["be"]["BackgroundTransparency"] = 0.3;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.num.UICorner
+UIXGOHUB["bf"] = Instance.new("UICorner", UIXGOHUB["be"]);
+UIXGOHUB["bf"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.num.UIStroke
+UIXGOHUB["c0"] = Instance.new("UIStroke", UIXGOHUB["be"]);
+UIXGOHUB["c0"]["Transparency"] = 0.28;
+UIXGOHUB["c0"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+UIXGOHUB["c0"]["Thickness"] = 2;
+UIXGOHUB["c0"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.UICorner
+UIXGOHUB["c1"] = Instance.new("UICorner", UIXGOHUB["b8"]);
+UIXGOHUB["c1"]["CornerRadius"] = UDim.new(0.1, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame
+UIXGOHUB["c2"] = Instance.new("Frame", UIXGOHUB["b8"]);
+UIXGOHUB["c2"]["BorderSizePixel"] = 0;
+UIXGOHUB["c2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["c2"]["Size"] = UDim2.new(0.52685, 0, 0.99786, 0);
+UIXGOHUB["c2"]["Position"] = UDim2.new(0.47315, 0, 0, 0);
+UIXGOHUB["c2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["c2"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle
+UIXGOHUB["c3"] = Instance.new("Frame", UIXGOHUB["c2"]);
+UIXGOHUB["c3"]["ZIndex"] = 3;
+UIXGOHUB["c3"]["BorderSizePixel"] = 0;
+UIXGOHUB["c3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["c3"]["Size"] = UDim2.new(0.7624, 0, 0.20894, 0);
+UIXGOHUB["c3"]["Position"] = UDim2.new(0.0828, 0, 0.41606, 0);
+UIXGOHUB["c3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["c3"]["Name"] = [[sliderhandle]];
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.UICorner
+UIXGOHUB["c4"] = Instance.new("UICorner", UIXGOHUB["c3"]);
+UIXGOHUB["c4"]["CornerRadius"] = UDim.new(0.7, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.drag
+UIXGOHUB["c5"] = Instance.new("ImageButton", UIXGOHUB["c3"]);
+UIXGOHUB["c5"]["BorderSizePixel"] = 0;
+UIXGOHUB["c5"]["ImageTransparency"] = 1;
+UIXGOHUB["c5"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["c5"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+UIXGOHUB["c5"]["Size"] = UDim2.new(0.14925, 0, 4, 0);
+UIXGOHUB["c5"]["Name"] = [[drag]];
+UIXGOHUB["c5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["c5"]["Position"] = UDim2.new(0, 0, -1.5, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.slider.Frame.sliderhandle.drag.UICorner
+UIXGOHUB["c6"] = Instance.new("UICorner", UIXGOHUB["c5"]);
+UIXGOHUB["c6"]["CornerRadius"] = UDim.new(0.2, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown
+UIXGOHUB["c7"] = Instance.new("Frame", UIXGOHUB["97"]);
+UIXGOHUB["c7"]["Visible"] = false;
+UIXGOHUB["c7"]["ZIndex"] = 23;
+UIXGOHUB["c7"]["BorderSizePixel"] = 0;
+UIXGOHUB["c7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["c7"]["Size"] = UDim2.new(1, 0, 0.16, 0);
+UIXGOHUB["c7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["c7"]["Name"] = [[dropdown]];
+UIXGOHUB["c7"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UIStroke
+UIXGOHUB["c8"] = Instance.new("UIStroke", UIXGOHUB["c7"]);
+UIXGOHUB["c8"]["Transparency"] = 0.58;
+UIXGOHUB["c8"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.ImageLabel
+UIXGOHUB["c9"] = Instance.new("ImageLabel", UIXGOHUB["c7"]);
+UIXGOHUB["c9"]["BorderSizePixel"] = 0;
+UIXGOHUB["c9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["c9"]["ScaleType"] = Enum.ScaleType.Crop;
+UIXGOHUB["c9"]["Image"] = [[http://www.roblox.com/asset/?id=6031091004]];
+UIXGOHUB["c9"]["Size"] = UDim2.new(0.08725, 0, 1, 0);
+UIXGOHUB["c9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["c9"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.ImageLabel.UICorner
+UIXGOHUB["ca"] = Instance.new("UICorner", UIXGOHUB["c9"]);
+UIXGOHUB["ca"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UIListLayout
+UIXGOHUB["cb"] = Instance.new("UIListLayout", UIXGOHUB["c7"]);
+UIXGOHUB["cb"]["Padding"] = UDim.new(0, 3);
+UIXGOHUB["cb"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["cb"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.TextButton
+UIXGOHUB["cc"] = Instance.new("TextButton", UIXGOHUB["c7"]);
+UIXGOHUB["cc"]["TextWrapped"] = true;
+UIXGOHUB["cc"]["BorderSizePixel"] = 0;
+UIXGOHUB["cc"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["cc"]["TextSize"] = 14;
+UIXGOHUB["cc"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["cc"]["TextScaled"] = true;
+UIXGOHUB["cc"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["cc"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["cc"]["RichText"] = true;
+UIXGOHUB["cc"]["Size"] = UDim2.new(0.36577, 0, 1, 0);
+UIXGOHUB["cc"]["BackgroundTransparency"] = 1;
+UIXGOHUB["cc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["cc"]["Text"] = [[sample dropdown]];
+UIXGOHUB["cc"]["Position"] = UDim2.new(0.09732, 0, -0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle
+UIXGOHUB["cd"] = Instance.new("TextButton", UIXGOHUB["c7"]);
+UIXGOHUB["cd"]["TextWrapped"] = true;
+UIXGOHUB["cd"]["BorderSizePixel"] = 0;
+UIXGOHUB["cd"]["TextSize"] = 14;
+UIXGOHUB["cd"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["cd"]["TextScaled"] = true;
+UIXGOHUB["cd"]["BackgroundColor3"] = Color3.fromRGB(46, 46, 46);
+UIXGOHUB["cd"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["cd"]["ZIndex"] = 23;
+UIXGOHUB["cd"]["Size"] = UDim2.new(0.52685, 0, 0.99786, 0);
+UIXGOHUB["cd"]["BackgroundTransparency"] = 0.75;
+UIXGOHUB["cd"]["Name"] = [[drophandle]];
+UIXGOHUB["cd"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["cd"]["Text"] = [[show]];
+UIXGOHUB["cd"]["Position"] = UDim2.new(0.47315, 0, 0, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.UICorner
+UIXGOHUB["ce"] = Instance.new("UICorner", UIXGOHUB["cd"]);
+UIXGOHUB["ce"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.UIStroke
+UIXGOHUB["cf"] = Instance.new("UIStroke", UIXGOHUB["cd"]);
+UIXGOHUB["cf"]["Transparency"] = 0.36;
+UIXGOHUB["cf"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+UIXGOHUB["cf"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame
+UIXGOHUB["d0"] = Instance.new("Frame", UIXGOHUB["cd"]);
+UIXGOHUB["d0"]["Visible"] = false;
+UIXGOHUB["d0"]["BorderSizePixel"] = 0;
+UIXGOHUB["d0"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["d0"]["Size"] = UDim2.new(1, 0, 1.08333, 0);
+UIXGOHUB["d0"]["Position"] = UDim2.new(0, 0, 1, 0);
+UIXGOHUB["d0"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["d0"]["BackgroundTransparency"] = 1;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.UIListLayout
+UIXGOHUB["d1"] = Instance.new("UIListLayout", UIXGOHUB["d0"]);
+UIXGOHUB["d1"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample
+UIXGOHUB["d2"] = Instance.new("TextButton", UIXGOHUB["d0"]);
+UIXGOHUB["d2"]["TextWrapped"] = true;
+UIXGOHUB["d2"]["BorderSizePixel"] = 0;
+UIXGOHUB["d2"]["TextSize"] = 14;
+UIXGOHUB["d2"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["d2"]["TextScaled"] = true;
+UIXGOHUB["d2"]["BackgroundColor3"] = Color3.fromRGB(57, 57, 57);
+UIXGOHUB["d2"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["d2"]["RichText"] = true;
+UIXGOHUB["d2"]["Size"] = UDim2.new(1, 0, 1, 0);
+UIXGOHUB["d2"]["BackgroundTransparency"] = 0.65;
+UIXGOHUB["d2"]["Name"] = [[sample]];
+UIXGOHUB["d2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["d2"]["Text"] = [[]];
+UIXGOHUB["d2"]["Visible"] = false;
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.TextLabel
+UIXGOHUB["d3"] = Instance.new("TextLabel", UIXGOHUB["d2"]);
+UIXGOHUB["d3"]["TextWrapped"] = true;
+UIXGOHUB["d3"]["BorderSizePixel"] = 0;
+UIXGOHUB["d3"]["TextScaled"] = true;
+UIXGOHUB["d3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["d3"]["TextSize"] = 14;
+UIXGOHUB["d3"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["d3"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["d3"]["BackgroundTransparency"] = 1;
+UIXGOHUB["d3"]["Size"] = UDim2.new(1, 0, 0.46154, 0);
+UIXGOHUB["d3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["d3"]["Text"] = [[sample]];
+UIXGOHUB["d3"]["Position"] = UDim2.new(0, 0, 0.26923, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.UICorner
+UIXGOHUB["d4"] = Instance.new("UICorner", UIXGOHUB["d2"]);
+UIXGOHUB["d4"]["CornerRadius"] = UDim.new(0.3, 0);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.drophandle.Frame.sample.UIStroke
+UIXGOHUB["d5"] = Instance.new("UIStroke", UIXGOHUB["d2"]);
+UIXGOHUB["d5"]["Transparency"] = 0.36;
+UIXGOHUB["d5"]["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border;
+UIXGOHUB["d5"]["Color"] = Color3.fromRGB(181, 181, 181);
+
+
+-- StarterGui.pshade.mainmage.main.propperty sample.dropdown.UICorner
+UIXGOHUB["d6"] = Instance.new("UICorner", UIXGOHUB["c7"]);
+UIXGOHUB["d6"]["CornerRadius"] = UDim.new(0.1, 0);
+
+
+-- StarterGui.pshade.mainmage.UIAspectRatioConstraint
+UIXGOHUB["d7"] = Instance.new("UIAspectRatioConstraint", UIXGOHUB["2"]);
+UIXGOHUB["d7"]["AspectRatio"] = 1.59341;
+
+
+-- StarterGui.pshade.dark
+UIXGOHUB["d8"] = Instance.new("Frame", UIXGOHUB["1"]);
+UIXGOHUB["d8"]["Visible"] = false;
+UIXGOHUB["d8"]["ZIndex"] = -1;
+UIXGOHUB["d8"]["BorderSizePixel"] = 0;
+UIXGOHUB["d8"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["d8"]["Size"] = UDim2.new(1, 0, 1, 0);
+UIXGOHUB["d8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["d8"]["Name"] = [[dark]];
+UIXGOHUB["d8"]["BackgroundTransparency"] = 0.7;
+
+
+-- StarterGui.pshade.colorvalue
+UIXGOHUB["d9"] = Instance.new("Color3Value", UIXGOHUB["1"]);
+UIXGOHUB["d9"]["Name"] = [[colorvalue]];
+UIXGOHUB["d9"]["Value"] = Color3.fromRGB(21, 6, 176);
+
+
+-- StarterGui.pshade.click
+UIXGOHUB["da"] = Instance.new("Sound", UIXGOHUB["1"]);
+UIXGOHUB["da"]["Name"] = [[click]];
+UIXGOHUB["da"]["SoundId"] = [[rbxassetid://876939830]];
+
+
+-- StarterGui.pshade.clicking
+UIXGOHUB["db"] = Instance.new("Sound", UIXGOHUB["1"]);
+UIXGOHUB["db"]["Name"] = [[clicking]];
+UIXGOHUB["db"]["SoundId"] = [[rbxassetid://4499400560]];
+
+
+-- StarterGui.pshade.icon
+UIXGOHUB["dc"] = Instance.new("Frame", UIXGOHUB["1"]);
+UIXGOHUB["dc"]["Visible"] = false;
+UIXGOHUB["dc"]["BorderSizePixel"] = 0;
+UIXGOHUB["dc"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["dc"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["dc"]["Size"] = UDim2.new(0.05362, 0, 0.0874, 0);
+UIXGOHUB["dc"]["Position"] = UDim2.new(0.12469, 0, 0.18293, 0);
+UIXGOHUB["dc"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["dc"]["Name"] = [[icon]];
+UIXGOHUB["dc"]["BackgroundTransparency"] = 0.55;
+
+
+-- StarterGui.pshade.icon.UICorner
+UIXGOHUB["dd"] = Instance.new("UICorner", UIXGOHUB["dc"]);
+UIXGOHUB["dd"]["CornerRadius"] = UDim.new(1, 0);
+
+
+-- StarterGui.pshade.icon.button
+UIXGOHUB["de"] = Instance.new("ImageButton", UIXGOHUB["dc"]);
+UIXGOHUB["de"]["BorderSizePixel"] = 0;
+UIXGOHUB["de"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["de"]["ImageTransparency"] = 1;
+UIXGOHUB["de"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["de"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["de"]["Image"] = [[rbxasset://textures/ui/GuiImagePlaceholder.png]];
+UIXGOHUB["de"]["Size"] = UDim2.new(0.72093, 0, 0.72093, 0);
+UIXGOHUB["de"]["BackgroundTransparency"] = 0.2;
+UIXGOHUB["de"]["Name"] = [[button]];
+UIXGOHUB["de"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["de"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+
+
+-- StarterGui.pshade.icon.button.UICorner
+UIXGOHUB["df"] = Instance.new("UICorner", UIXGOHUB["de"]);
+UIXGOHUB["df"]["CornerRadius"] = UDim.new(1, 0);
+
+
+-- StarterGui.pshade.icon.UIAspectRatioConstraint
+UIXGOHUB["e0"] = Instance.new("UIAspectRatioConstraint", UIXGOHUB["dc"]);
+
+
+
+-- StarterGui.pshade.icon.UIStroke
+UIXGOHUB["e1"] = Instance.new("UIStroke", UIXGOHUB["dc"]);
+UIXGOHUB["e1"]["Color"] = Color3.fromRGB(255, 255, 255);
+
+
+-- StarterGui.pshade.notif
+UIXGOHUB["e2"] = Instance.new("ImageLabel", UIXGOHUB["1"]);
+UIXGOHUB["e2"]["BorderSizePixel"] = 0;
+UIXGOHUB["e2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["e2"]["ImageTransparency"] = 0.36;
+UIXGOHUB["e2"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["e2"]["Image"] = [[rbxassetid://72978449934552]];
+UIXGOHUB["e2"]["Size"] = UDim2.new(0.512, 0, 0.118, 0);
+UIXGOHUB["e2"]["Visible"] = false;
+UIXGOHUB["e2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["e2"]["BackgroundTransparency"] = 1;
+UIXGOHUB["e2"]["Name"] = [[notif]];
+UIXGOHUB["e2"]["Position"] = UDim2.new(0.5, 0, 0.15, 0);
+
+
+-- StarterGui.pshade.notif.UIAspectRatioConstraint
+UIXGOHUB["e3"] = Instance.new("UIAspectRatioConstraint", UIXGOHUB["e2"]);
+UIXGOHUB["e3"]["AspectRatio"] = 7.08621;
+
+
+-- StarterGui.pshade.notif.UICorner
+UIXGOHUB["e4"] = Instance.new("UICorner", UIXGOHUB["e2"]);
+UIXGOHUB["e4"]["CornerRadius"] = UDim.new(0.1, 0);
+
+
+-- StarterGui.pshade.notif.UIListLayout
+UIXGOHUB["e5"] = Instance.new("UIListLayout", UIXGOHUB["e2"]);
+UIXGOHUB["e5"]["Padding"] = UDim.new(0.01, 0);
+UIXGOHUB["e5"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+UIXGOHUB["e5"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+
+-- StarterGui.pshade.notif.image
+UIXGOHUB["e6"] = Instance.new("ImageLabel", UIXGOHUB["e2"]);
+UIXGOHUB["e6"]["BorderSizePixel"] = 0;
+UIXGOHUB["e6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["e6"]["ScaleType"] = Enum.ScaleType.Fit;
+UIXGOHUB["e6"]["Image"] = [[http://www.roblox.com/asset/?id=6034308946]];
+UIXGOHUB["e6"]["Size"] = UDim2.new(0.14112, 0, 1, 0);
+UIXGOHUB["e6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["e6"]["BackgroundTransparency"] = 1;
+UIXGOHUB["e6"]["Name"] = [[image]];
+
+
+-- StarterGui.pshade.notif.title
+UIXGOHUB["e7"] = Instance.new("TextLabel", UIXGOHUB["e2"]);
+UIXGOHUB["e7"]["TextWrapped"] = true;
+UIXGOHUB["e7"]["BorderSizePixel"] = 0;
+UIXGOHUB["e7"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+UIXGOHUB["e7"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+UIXGOHUB["e7"]["TextScaled"] = true;
+UIXGOHUB["e7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["e7"]["TextSize"] = 21;
+UIXGOHUB["e7"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["e7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["e7"]["BackgroundTransparency"] = 1;
+UIXGOHUB["e7"]["RichText"] = true;
+UIXGOHUB["e7"]["Size"] = UDim2.new(0.84672, 0, 1, 0);
+UIXGOHUB["e7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["e7"]["Text"] = [[sample]];
+UIXGOHUB["e7"]["Name"] = [[title]];
+UIXGOHUB["e7"]["Position"] = UDim2.new(0.15112, 0, 0, 0);
+
+
+-- StarterGui.pshade.notif.title.UITextSizeConstraint
+UIXGOHUB["e8"] = Instance.new("UITextSizeConstraint", UIXGOHUB["e7"]);
+UIXGOHUB["e8"]["MaxTextSize"] = 21;
+
+
+-- StarterGui.pshade.intro
+UIXGOHUB["e9"] = Instance.new("ImageLabel", UIXGOHUB["1"]);
+UIXGOHUB["e9"]["BorderSizePixel"] = 0;
+UIXGOHUB["e9"]["BackgroundColor3"] = Color3.fromRGB(146, 146, 146);
+UIXGOHUB["e9"]["ImageTransparency"] = 0.4;
+UIXGOHUB["e9"]["ImageColor3"] = Color3.fromRGB(157, 157, 157);
+UIXGOHUB["e9"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["e9"]["Image"] = [[rbxassetid://72978449934552]];
+UIXGOHUB["e9"]["Size"] = UDim2.new(0.53903, 0, 0.55488, 0);
+UIXGOHUB["e9"]["Visible"] = false;
+UIXGOHUB["e9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["e9"]["BackgroundTransparency"] = 1;
+UIXGOHUB["e9"]["Name"] = [[intro]];
+UIXGOHUB["e9"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+
+
+-- StarterGui.pshade.intro.UIAspectRatioConstraint
+UIXGOHUB["ea"] = Instance.new("UIAspectRatioConstraint", UIXGOHUB["e9"]);
+UIXGOHUB["ea"]["AspectRatio"] = 1.59341;
+
+
+-- StarterGui.pshade.intro.main
+UIXGOHUB["eb"] = Instance.new("Frame", UIXGOHUB["e9"]);
+UIXGOHUB["eb"]["BorderSizePixel"] = 0;
+UIXGOHUB["eb"]["BackgroundColor3"] = Color3.fromRGB(203, 203, 203);
+UIXGOHUB["eb"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["eb"]["Size"] = UDim2.new(0.94943, 0, 0.92674, 0);
+UIXGOHUB["eb"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+UIXGOHUB["eb"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["eb"]["Name"] = [[main]];
+UIXGOHUB["eb"]["BackgroundTransparency"] = 0.9;
+
+
+-- StarterGui.pshade.intro.main.TextLabel
+UIXGOHUB["ec"] = Instance.new("TextLabel", UIXGOHUB["eb"]);
+UIXGOHUB["ec"]["TextWrapped"] = true;
+UIXGOHUB["ec"]["BorderSizePixel"] = 0;
+UIXGOHUB["ec"]["TextScaled"] = true;
+UIXGOHUB["ec"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["ec"]["TextSize"] = 14;
+UIXGOHUB["ec"]["FontFace"] = Font.new([[rbxasset://fonts/families/FredokaOne.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+UIXGOHUB["ec"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+UIXGOHUB["ec"]["BackgroundTransparency"] = 1;
+UIXGOHUB["ec"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+UIXGOHUB["ec"]["Size"] = UDim2.new(0.82851, 0, 0.51329, 0);
+UIXGOHUB["ec"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+UIXGOHUB["ec"]["Text"] = [[welcome to pshade ultimate]];
+UIXGOHUB["ec"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+
+
+
+return UIXGOHUB["1"];
