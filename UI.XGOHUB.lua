@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.10
+-- 边框v1.11
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2421,10 +2421,8 @@ local images = {
     "rbxassetid://128885038925647", -- 图片3
     "rbxassetid://96996396016819", -- 图片4
 }
-
 local currentImageIndex = 1
 
--- 切换图片的函数
 local function changeImage()
     BackgroundImage.Image = images[currentImageIndex]
     currentImageIndex = currentImageIndex + 1
@@ -2433,13 +2431,13 @@ local function changeImage()
     end
 end
 
--- 启动图片更换循环
 local function startImageCycle()
     while true do
         changeImage()
-        wait(3)
+        wait(1.9)
     end
 end
+
 startImageCycle()
 
 	spawn(function()
