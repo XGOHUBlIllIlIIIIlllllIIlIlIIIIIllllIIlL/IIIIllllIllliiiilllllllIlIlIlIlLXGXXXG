@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.09
+-- 边框v1.10
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2411,7 +2411,7 @@ function Library:Windowxgo(setup)
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.BackgroundTransparency = 1
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-    BackgroundImage.Image = images[currentImageIndex] --7733920644
+    BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
