@@ -449,10 +449,10 @@ Library.Icons = { -- 图片/常用图片
 	["XGO4"]= "rbxassetid://96996396016819",
 	["XGO5"]= "rbxassetid://128885038925647",
 	["XGO6"]= "rbxassetid://120611289434746",
-	["XGO7"]= "rbxassetid://",
-	["XGO8"]= "rbxassetid://",
-	["XGO9"]= "rbxassetid://",
-	["XGO10"]= "rbxassetid://",
+	["XGO7"]= "rbxassetid://86451637909512",
+	["XGO8"]= "rbxassetid://109948306798374",
+	["XGO9"]= "rbxassetid://92630758837243",
+	["XGO10"]= "rbxassetid://96996396016819",
 	["向下箭头-圆形"] = "rbxassetid://7733671763",
 	["收音机-接收器"] = "rbxassetid://7734045155",
 	["垂直结束对齐"] = "rbxassetid://8997380907",
@@ -2353,7 +2353,7 @@ function Library:Windowxgo(setup)
     MainFrame.Active = true
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
     MainFrame.BackgroundColor3 = Library.Colors.Default
-    MainFrame.BackgroundTransparency = 0.500
+    MainFrame.BackgroundTransparency = 1
     MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
     MainFrame.BorderSizePixel = 0
     MainFrame.ClipsDescendants = true
@@ -2362,9 +2362,9 @@ function Library:Windowxgo(setup)
 
     BackgroundImage.Parent = MainFrame
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.BackgroundTransparency = 0.500
+    BackgroundImage.BackgroundTransparency = 1
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-    BackgroundImage.Image = "rbxassetid://88666635012556"
+    BackgroundImage.Image = "rbxassetid://116869691128691"
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
 
