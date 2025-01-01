@@ -6630,7 +6630,7 @@ return ColorPickerSettings
 				})
 
 				UIStroke.Transparency = 1
-				UIStroke.Color = Color3.fromRGB(156, 156, 156)
+				UIStroke.Color = Color3.fromRGB(255, 195, 203) --关闭的红色信号值156
 				UIStroke.Parent = Frame
 
 				Library:Tween(UIStroke,Library.TweenLibrary.SmallEffect,{
@@ -6765,7 +6765,7 @@ return ColorPickerSettings
 	CloseButton.MouseButton1Click:Connect(function()
 		WindowLibrary:Dialog({
 			Title = "-- 你要关闭脚本吗 --",
-			Content = "关闭后不会隐藏,请选择",
+			Content = "关闭后不会隐藏\n请选择",
 			Buttons = {
 				{
 					Title = '执意关闭',
