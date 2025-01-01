@@ -2382,11 +2382,14 @@ function Library:Windowxgo(setup)
 		setup.KeySystemInfo.OnLogin = setup.KeySystemInfo.OnLogin or function() wait( 0.1) return true end;
 	end
 	
---  local ScreenGui = Instance.new("ScreenGui")
---	local MainFrame = Instance.new("Frame")
---	local BackgroundImage = Instance.new("ImageLabel")
-		
---[[	ScreenGui.Parent = Library.CoreGui
+    local ScreenGui = Instance.new("ScreenGui")
+	local MainFrame = Instance.new("Frame")
+	local BackgroundImage = Instance.new("ImageLabel")
+	local DropShadow = Instance.new("ImageLabel")
+	local Ico = Instance.new("ImageLabel")
+	local UICorner = Instance.new("UICorner")
+	
+	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = false
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
@@ -2408,78 +2411,37 @@ function Library:Windowxgo(setup)
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.BackgroundTransparency = 1
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-    BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
+    BackgroundImage.Image = images[currentImageIndex] --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
-    ]]
-local currentImageIndex = 1
-local backgroundImages = {
+
+local images = {
     "rbxassetid://86451637909512", -- 图片1
     "rbxassetid://120611289434746", -- 图片2
     "rbxassetid://128885038925647", -- 图片3
     "rbxassetid://96996396016819", -- 图片4
 }
 
--- 初始化当前图片索引
 local currentImageIndex = 1
 
--- 定义一个函数来切换背景图片
-local function changeBackgroundImage()
-    -- 设置下一张图片为背景
-    BackgroundImage.Image = backgroundImages[currentImageIndex]
-
-    -- 更新索引，如果到达表的末尾，则回到开始
-    currentImageIndex = (currentImageIndex % #backgroundImages) + 1
+-- 切换图片的函数
+local function changeImage()
+    BackgroundImage.Image = images[currentImageIndex]
+    currentImageIndex = currentImageIndex + 1
+    if currentImageIndex > #images then
+        currentImageIndex = 1
+    end
 end
 
--- 创建ScreenGui
-local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local BackgroundImage = Instance.new("ImageLabel")
-    local DropShadow = Instance.new("ImageLabel")
-	local Ico = Instance.new("ImageLabel")
-	local UICorner = Instance.new("UICorner")
-
-ScreenGui.Parent = Library.CoreGui
-ScreenGui.ResetOnSpawn = false
-ScreenGui.IgnoreGuiInset = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-Library.ProtectGui(ScreenGui);
-
--- 创建MainFrame
-
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
-MainFrame.Active = true
-MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.BackgroundColor3 = Library.Colors.Default
-MainFrame.BackgroundTransparency = 1
-MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-MainFrame.BorderSizePixel = 0
-MainFrame.ClipsDescendants = true
-MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-MainFrame.Size = UDim2.fromScale(1, 0.5)
-
--- 创建BackgroundImage
-
-BackgroundImage.Parent = MainFrame
-BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-BackgroundImage.BackgroundTransparency = 1
-BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-BackgroundImage.Image = nil -- 初始化时不设置图片
-BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-BackgroundImage.ScaleType = Enum.ScaleType.Stretch
-
--- 创建一个循环，每两秒调用一次changeBackgroundImage函数
-spawn(function()
+-- 启动图片更换循环
+local function startImageCycle()
     while true do
-        wait(2) -- 等待两秒
-        changeBackgroundImage() -- 调用函数更换背景图片
+        changeImage()
+        wait(3)
     end
-end)
+end
+startImageCycle()
 
--- 初始调用函数设置第一张图片
-changeBackgroundImage()
 	spawn(function()
 		while MainFrame do task.wait(1)
 			pcall(function()
