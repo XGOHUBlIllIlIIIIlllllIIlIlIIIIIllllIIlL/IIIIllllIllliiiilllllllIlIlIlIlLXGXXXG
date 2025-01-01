@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.01
+-- 边框v1.02
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -7190,79 +7190,79 @@ return ColorPickerSettings
 		end;
 	end)
 
-	return WindowLibrary;
-end;
 local function addRainbowToBackground()
     local script = Instance.new("LocalScript", ScriptTitle)
     local gui = script.Parent
     local tweenService = game:GetService("TweenService")
-    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-    local dropShadow = gui.DropShadow -- 假设背景阴影是名为DropShadow的ImageLabel
+    local dropShadow = gui:FindFirstChild("DropShadow") -- 确保这是正确的ImageLabel名称
 
-    local startingPos = Vector2.new(-1, 0)
+    if not dropShadow then
+        print("DropShadow not found")
+        return
+    end
+
     local list = {}
     local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
     local counter = 0
     local status = "down"
 
     local function rainbowColors()
-        local sat, val = 1, 1
         for i = 1, 10 do
             local hue = i * 17
-            table.insert(list, Color3.fromHSV(hue / 255, sat, val))
+            table.insert(list, Color3.fromHSV(hue / 255, 1, 1))
         end
     end
 
     rainbowColors()
 
-    dropShadow.ImageColor3 = s({kpt(0, list[#list]), kpt(0.5, list[#list - 1]), kpt(1, list[#list - 2])})
-    counter = #list
-
     local function animate()
-        dropShadow.Offset = startingPos
-        dropShadow.Rotation = 180
-        if ((counter == (#list - 1)) and (status == "down")) then
-            dropShadow.ImageColor3 = s({kpt(0, dropShadow.ImageColor3.Keypoints[1].Value), kpt(0.5, list[#list]), kpt(1, list[1])})
-            counter = 1
-            status = "up"
-        elseif ((counter == #list) and (status == "down")) then
-            dropShadow.ImageColor3 = s({kpt(0, dropShadow.ImageColor3.Keypoints[1].Value), kpt(0.5, list[1]), kpt(1, list[2])})
-            counter = 2
-            status = "up"
-        elseif ((counter <= (#list - 2)) and (status == "down")) then
-            dropShadow.ImageColor3 = s({
-                kpt(0, dropShadow.ImageColor3.Keypoints[1].Value),
-                kpt(0.5, list[counter + 1]),
-                kpt(1, list[counter + 2])
-            })
-            counter = counter + 2
-            status = "up"
+        local colors = {
+            kpt(0, list[#list]),
+            kpt(0.5, list[#list - 1]),
+            kpt(1, list[#list - 2])
+        }
+
+        dropShadow.ImageColor3 = s(colors)
+        dropShadow.Rotation = (dropShadow.Rotation + 10) % 360
+
+        if status == "down" then
+            if counter >= #list - 2 then
+                status = "up"
+                counter = #list - 2
+            else
+                counter = counter + 1
+            end
+        elseif status == "up" then
+            if counter == 1 then
+                status = "down"
+                counter = 1
+            else
+                counter = counter - 1
+            end
         end
 
-        dropShadow.Offset = startingPos
-        dropShadow.Rotation = 0
-        if ((counter == (#list - 1)) and (status == "up")) then
-            dropShadow.ImageColor3 = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, dropShadow.ImageColor3.Keypoints[3].Value)})
-            counter = 1
-            status = "down"
-        elseif ((counter == #list) and (status == "up")) then
-            dropShadow.ImageColor3 = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, dropShadow.ImageColor3.Keypoints[3].Value)})
-            counter = 2
-            status = "down"
-        elseif ((counter <= (#list - 2)) and (status == "up")) then
-            dropShadow.ImageColor3 = s({
-                kpt(0, list[counter + 2]),
-                kpt(0.5, list[counter + 1]),
-                kpt(1, dropShadow.ImageColor3.Keypoints[3].Value)
-            })
-            counter = counter + 2
-            status = "down"
-        end
+        local newColors = {
+            kpt(0, list[counter]),
+            kpt(0.5, list[counter + 1]),
+            kpt(1, list[counter + 2])
+        }
 
+        dropShadow.ImageColor3 = s(newColors)
+
+        tweenService:Create(dropShadow, TweenInfo.new(1), {ImageTransparency = 0.5}):SetOnStep(function()
+            dropShadow.ImageColor3 = s(newColors)
+        end):Play()
+
+        task.wait(0.1)
         animate()
     end
 
     animate()
 end
+
+addRainbowToBackground()
+
+	return WindowLibrary;
+end;
 
 return Library;
