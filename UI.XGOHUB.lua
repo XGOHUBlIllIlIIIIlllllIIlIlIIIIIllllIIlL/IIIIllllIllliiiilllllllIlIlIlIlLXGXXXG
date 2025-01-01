@@ -2721,116 +2721,73 @@ function Library:Windowxgo(setup)
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
 
------- // 卡密系统设置    ----------------------------------------------------------------------------------------
--- 卡密验证框架
-local AuthFunction = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local TextBox = Instance.new("TextBox")
-local DropShadow = Instance.new("ImageLabel")
-local UIStroke = Instance.new("UIStroke")
-local ServerIdLabel = Instance.new("TextLabel") -- 用于显示服务器ID的标签
+------ // 检测系统设置    ----------------------------------------------------------------------------------------
+		local AuthFunction = Instance.new("Frame")
+		local Title = Instance.new("TextLabel")
+		local DropShadow = Instance.new("ImageLabel")
+		local UIStroke = Instance.new("UIStroke")
+        
+        AuthFunction.Name = "AuthFunction"
+		AuthFunction.Parent = MainFrame
+		AuthFunction.Active = true
+		AuthFunction.AnchorPoint = Vector2.new(0.5, 0.5)
+		AuthFunction.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		AuthFunction.BackgroundTransparency = 1.000
+		AuthFunction.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		AuthFunction.BorderSizePixel = 0
+		AuthFunction.Position = UDim2.new(0.5, 0, -1.5, 0)
+		AuthFunction.Size = UDim2.new(1, 0, 1, 0)
 
--- 设置AuthFunction属性
-AuthFunction.Name = "AuthFunction"
-AuthFunction.Parent = game.CoreGui -- 假设你想要将这个框架放在CoreGui下
-AuthFunction.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AuthFunction.BackgroundTransparency = 1.000
-AuthFunction.Size = UDim2.new(0.3, 0, 0.3, 0)
-AuthFunction.Position = UDim2.new(0.35, 0, 0.35, 0)
+		Library:Tween(AuthFunction , Library.TweenLibrary.SmallEffect,{Position = UDim2.new(0.5, 0, 0.5, 0)})
+          
+		Title.Name = "Title"
+		Title.Parent = AuthFunction
+		Title.AnchorPoint = Vector2.new(0.5, 0.5)
+		Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Title.BackgroundTransparency = 1.000
+		Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Title.BorderSizePixel = 0
+		Title.Position = UDim2.new(0.5, 0, 0.100000001, 0)
+		Title.Size = UDim2.new(0.899999976, 0, 0.100000001, 0)
+		Title.Font = Enum.Font.Gotham
+		Title.Text = setup.KeySystemInfo.Title
+		Title.TextColor3 = Library.Colors.TextColor
+		Title.TextScaled = true
+		Title.TextSize = 14.000
+		Title.TextStrokeColor3 = Library.Colors.TextColor
+		Title.TextStrokeTransparency = 0.950
+		Title.TextWrapped = true
+		Title.RichText = true;
 
--- 设置Title属性
-Title.Parent = AuthFunction
-Title.Text = "服务器ID检测"
-Title.Font = Enum.Font.Gotham
-Title.TextColor3 = Color3.fromRGB(0, 0, 0)
-Title.TextSize = 18
-Title.Position = UDim2.new(0, 0, 0, 0)
-Title.Size = UDim2.new(1, 0, 0.2, 0)
+		DropShadow.Name = "DropShadow"
+		DropShadow.Parent = TextBox
+		DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		DropShadow.BackgroundTransparency = 1.000
+		DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
+		DropShadow.Position = UDim2.new(0, -5, 0, -5)
+		DropShadow.Size = UDim2.new(1, 10, 1, 10)
+		DropShadow.ZIndex = 4
+		DropShadow.Image = "rbxassetid://297694300"
+		DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+		DropShadow.ImageTransparency = 0.500
+		DropShadow.ScaleType = Enum.ScaleType.Slice
+		DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
+		DropShadow.SliceScale = 0.050
 
--- 设置TextBox属性（这里用作显示检测结果，不可编辑）
-TextBox.Parent = AuthFunction
-TextBox.Position = UDim2.new(0, 10, 0.2, 0)
-TextBox.Size = UDim2.new(1, -20, 0.15, 0)
-TextBox.Text = "检测中..."
-TextBox.Font = Enum.Font.SourceSans
-TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextBox.TextSize = 14
-TextBox.ClearTextOnFocus = false
-TextBox.TextEditable = false
+		UIStroke.Transparency = 0.850
+		UIStroke.Color = Color3.fromRGB(156, 156, 156)
+		UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+		UIStroke.Parent = TextBox
 
--- 设置DropShadow属性
-DropShadow.Parent = TextBox
-DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DropShadow.BackgroundTransparency = 1.000
-DropShadow.Position = UDim2.new(0, -5, 0, -5)
-DropShadow.Size = UDim2.new(1, 10, 1, 10)
-DropShadow.Image = "rbxassetid://297694300"
-DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-DropShadow.ImageTransparency = 0.500
-DropShadow.ScaleType = Enum.ScaleType.Slice
-DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-DropShadow.SliceScale = 0.050
+		UIStroke_2.Transparency = 0.850
+		UIStroke_2.Color = Color3.fromRGB(156, 156, 156)
+		UIStroke_2.Parent = AuthFunction
 
--- 设置UIStroke属性
-UIStroke.Parent = TextBox
+		repeat task.wait(1.5) until game:IsLoaded();		
+	end;
 
--- 设置ServerIdLabel属性
-ServerIdLabel.Parent = AuthFunction
-ServerIdLabel.Position = UDim2.new(0, 0, 0.4, 0)
-ServerIdLabel.Size = UDim2.new(1, 0, 0.1, 0)
-ServerIdLabel.Font = Enum.Font.Gotham
-ServerIdLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-ServerIdLabel.TextSize = 14
-
--- 检测逻辑
-local function checkScript(placeId)
-    ServerIdLabel.Text = "服务器ID: " .. placeId
-    -- 根据服务器ID执行特定脚本或通用脚本
-    local scriptUrl
-    if placeId == 10449761463 then -- 最强的战场
-        scriptUrl = "https://example.com/script-for-strongest-battlefield.lua"
-    elseif placeId == 2413927524 then -- The rake重置版
-        scriptUrl = "https://example.com/script-for-rake-reset.lua"
-    elseif placeId == 16732694052 then -- Fisch鱼
-        scriptUrl = "https://example.com/script-for-fischfish.lua"
-    elseif placeId == 138837502355157 or placeId == 110333320616502 then -- 格蕾丝
-        scriptUrl = "https://example.com/script-for-grace.lua"
-    else
-        scriptUrl = "https://example.com/general-script.lua" -- 通用脚本
-    end
-
-    if scriptUrl then
-        local success, scriptContent = pcall(gameHttpGet, scriptUrl)
-        if success and scriptContent then
-            local func = loadstring(scriptContent)
-            if func then
-                func()
-                ServerIdLabel.Text = "脚本加载成功: " .. scriptUrl
-            else
-                ServerIdLabel.Text = "脚本加载失败: 无法加载脚本内容"
-            end
-        else
-            ServerIdLabel.Text = "脚本加载失败: 无法下载脚本"
-        end
-    else
-        ServerIdLabel.Text = "未知服务器ID，未加载脚本"
-    end
-end
-
--- 辅助函数，使用HttpGet下载脚本
-local function gameHttpGet(url)
-    local httpService = game:GetService("HttpService")
-    local response = httpService:RequestAsync(url)
-    if response and response.StatusCode == 200 then
-        return true, httpService:JSONDecode(response.Body)
-    else
-        return false
-    end
-end
-
--- 调用检测逻辑
-local placeId = game.PlaceId
-checkScript(placeId)
+	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
+	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
 ------ //     ----------------------------------------------------------------------------------------
 
 	local WindowLibrary = {};
