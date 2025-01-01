@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.03
+-- 边框v1.05
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2369,21 +2369,17 @@ rainbowEffect(DropShadow)
 ------------------------------//    UI.标题设置    //-------------------------------------------------------------------------------------
 function Library:Windowxgo(setup)
 	setup = setup or {};
-
 	setup.Title = setup.Title or "Window";
 	setup.Keybind = setup.Keybind or Enum.KeyCode.LeftControl;
 	setup.Size = setup.Size or Library.SizeLibrary.Default;
 	setup.KeySystem = setup.KeySystem or false;
 	setup.Logo = setup.Logo or "rbxassetid://116869691128691";
 	setup.ToggleMethod = setup.ToggleMethod or "Application";
-	
 	if setup.KeySystem then
 		setup.KeySystemInfo = setup.KeySystemInfo or {};
-
 		setup.KeySystemInfo.Title = setup.KeySystemInfo.Title or "Key System";
 		setup.KeySystemInfo.OnGetKey = setup.KeySystemInfo.OnGetKey or function() end;
 		setup.KeySystemInfo.OnLogin = setup.KeySystemInfo.OnLogin or function() wait( 0.1) return true end;
-
 	end
 	
 	local ScreenGui = Instance.new("ScreenGui")
@@ -2392,6 +2388,15 @@ function Library:Windowxgo(setup)
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
 	local UICorner = Instance.new("UICorner")
+	
+	local images = {
+    "rbxassetid://86451637909512", -- 图片1
+    "rbxassetid://120611289434746", -- 图片2
+    "rbxassetid://128885038925647", -- 图片3
+    "rbxassetid://96996396016819", -- 图片4
+}
+
+local currentImageIndex = 1
 	
 	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
@@ -2415,45 +2420,25 @@ function Library:Windowxgo(setup)
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.BackgroundTransparency = 1
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-    BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
+    BackgroundImage.Image = ImageList[currentImageIndex]
+    BackgroundImage.ScaleType = Enum.ScaleType.Stretch
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
-    
-    local images = {
-    "rbxassetid://86451637909512", -- 图片1
-    "rbxassetid://120611289434746", -- 图片2
-    "rbxassetid://128885038925647", -- 图片3
-    "rbxassetid://96996396016819", -- 图片4
-    -- 添加更多图片ID
-}
+    BackgroundImage.UICorner = UICorner
 
-local currentImageIndex = 1
+--  UICorner.CornerRadius = UDim.new(0, 10)
+--  UICorner.Parent = BackgroundImage
 
 local function changeImage()
-    BackgroundImage.Image = images[currentImageIndex]
     currentImageIndex = currentImageIndex + 1
-    if currentImageIndex > #images then
+    if currentImageIndex > #ImageList then
         currentImageIndex = 1
     end
-end
-local function startImageCycle()
-    local heartbeat = game:GetService("RunService").Heartbeat
-    heartbeat:Connect(function()
-        -- 淡出效果
-        BackgroundImage.ImageTransparency = 1
-        wait(1) -- 等待0.5秒来完成淡出效果
-        -- 更换图片
-        changeImage()
-        -- 淡入效果
-        BackgroundImage.ImageTransparency = 0
-        wait(2) -- 等待0.5秒来完成淡入效果
-    end)
+    BackgroundImage.Image = ImageList[currentImageIndex]
+    wait(2) -- 等待两秒
+    changeImage() -- 递归调用以实现循环切换
 end
 
-startImageCycle()
---   UICorner.CornerRadius = UDim.new(0, 10)
---   UICorner.Parent = BackgroundImage
-	
+changeImage()
 	spawn(function()
 		while MainFrame do task.wait(1)
 			pcall(function()
