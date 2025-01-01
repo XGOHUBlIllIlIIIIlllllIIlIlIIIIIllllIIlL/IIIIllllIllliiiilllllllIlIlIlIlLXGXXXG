@@ -2314,6 +2314,7 @@ end;
         wait(2.5)
         blurEffect:Destroy()
     end))
+    --[[旋转动态彩虹效果
 local function rainbowEffect(border)
     local ts = game:GetService("TweenService")
     local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
@@ -2374,6 +2375,8 @@ local function rainbowEffect(border)
     end
     animate()
 end
+rainbowEffect(DropShadow)
+]]
 ------------------------------//    UI.标题设置    //-------------------------------------------------------------------------------------
 function Library:Windowxgo(setup)
 	setup = setup or {};
@@ -2427,8 +2430,8 @@ function Library:Windowxgo(setup)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
 
-    UICorner.CornerRadius = UDim.new(0, 10)
-    UICorner.Parent = BackgroundImage
+--   UICorner.CornerRadius = UDim.new(0, 10)
+--   UICorner.Parent = BackgroundImage
 	
 	spawn(function()
 		while MainFrame do task.wait(1)
@@ -2468,8 +2471,6 @@ function Library:Windowxgo(setup)
 	DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 	DropShadow.SliceScale = 0.050
 	
-	rainbowEffect(DropShadow)
-
 	Ico.Name = "Ico"
 	Ico.Parent = MainFrame
 	Ico.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2504,7 +2505,7 @@ function Library:Windowxgo(setup)
 		local Title = Instance.new("TextLabel")
 		local TextBox = Instance.new("TextBox")
 		local DropShadow = Instance.new("ImageLabel")
-		local UIStroke = Instance.new("UIStroke")
+		local UIStroke = Instance.new("UIStroke") -- 边框
 		local UIStroke_2 = Instance.new("UIStroke")
 		local GetButton = Instance.new("Frame")
 		local DropShadow_2 = Instance.new("ImageLabel")
