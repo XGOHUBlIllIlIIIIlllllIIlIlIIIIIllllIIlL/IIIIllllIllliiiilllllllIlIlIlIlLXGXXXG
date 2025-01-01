@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.05
+-- 边框v1.03
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2382,21 +2382,12 @@ function Library:Windowxgo(setup)
 		setup.KeySystemInfo.OnLogin = setup.KeySystemInfo.OnLogin or function() wait( 0.1) return true end;
 	end
 	
-	local ScreenGui = Instance.new("ScreenGui")
+--[[ local ScreenGui = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
 	local BackgroundImage = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
 	local UICorner = Instance.new("UICorner")
-	
-	local images = {
-    "rbxassetid://86451637909512", -- 图片1
-    "rbxassetid://120611289434746", -- 图片2
-    "rbxassetid://128885038925647", -- 图片3
-    "rbxassetid://96996396016819", -- 图片4
-}
-
-local currentImageIndex = 1
 	
 	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
@@ -2426,19 +2417,80 @@ local currentImageIndex = 1
     BackgroundImage.UICorner = UICorner
 
 --  UICorner.CornerRadius = UDim.new(0, 10)
---  UICorner.Parent = BackgroundImage
+--  UICorner.Parent = BackgroundImage]]
 
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local BackgroundImage = Instance.new("ImageLabel")
+local UICorner = Instance.new("UICorner")
+
+local images = {
+    "rbxassetid://86451637909512", -- 图片1
+    "rbxassetid://120611289434746", -- 图片2
+    "rbxassetid://128885038925647", -- 图片3
+    "rbxassetid://96996396016819", -- 图片4
+}
+
+-- 当前图片索引
+local currentImageIndex = 1
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ResetOnSpawn = false
+ScreenGui.IgnoreGuiInset = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+game.ReplicatedStorage.ProtectGui(ScreenGui);
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundTransparency = 1
+MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainFrame.Size = UDim2.fromScale(1, 0.5)
+
+BackgroundImage.Parent = MainFrame
+BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BackgroundImage.BackgroundTransparency = 1
+BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
+BackgroundImage.Image = ImageList[currentImageIndex]
+BackgroundImage.ScaleType = Enum.ScaleType.Stretch
+BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
+BackgroundImage.UICorner = UICorner
+
+UICorner.CornerRadius = UDim.new(0.1, 0)
+UICorner.Parent = BackgroundImage
+
+-- 切换图片的函数
 local function changeImage()
     currentImageIndex = currentImageIndex + 1
     if currentImageIndex > #ImageList then
         currentImageIndex = 1
     end
     BackgroundImage.Image = ImageList[currentImageIndex]
-    wait(2) -- 等待两秒
-    changeImage() -- 递归调用以实现循环切换
 end
 
-changeImage()
+-- 使用RunService.Heartbeat来周期性调用changeImage函数
+local connection = game:GetService("RunService").Heartbeat:Connect(function()
+    changeImage()
+end)
+
+-- 设置切换间隔为2秒
+local switchInterval = 2
+local lastSwitchTime = tick()
+local function update(dt)
+    local currentTime = tick()
+    if currentTime - lastSwitchTime >= switchInterval then
+        changeImage()
+        lastSwitchTime = currentTime
+    end
+end
+
+connection = game:GetService("RunService").Heartbeat:Connect(update)
+
 	spawn(function()
 		while MainFrame do task.wait(1)
 			pcall(function()
