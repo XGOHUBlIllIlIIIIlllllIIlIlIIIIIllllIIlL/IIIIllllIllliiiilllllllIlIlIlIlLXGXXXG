@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 图片
+-- 边框
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -452,7 +452,6 @@ Library.Icons = { -- 图片/常用图片
 	["XGO7"]= "rbxassetid://86451637909512",
 	["XGO8"]= "rbxassetid://109948306798374",
 	["XGO9"]= "rbxassetid://92630758837243",
-	["XGO10"]= "rbxassetid://96996396016819",
 	["向下箭头-圆形"] = "rbxassetid://7733671763",
 	["收音机-接收器"] = "rbxassetid://7734045155",
 	["垂直结束对齐"] = "rbxassetid://8997380907",
@@ -2323,7 +2322,7 @@ function Library:Windowxgo(setup)
 	setup.Keybind = setup.Keybind or Enum.KeyCode.LeftControl;
 	setup.Size = setup.Size or Library.SizeLibrary.Default;
 	setup.KeySystem = setup.KeySystem or false;
-	setup.Logo = setup.Logo or "rbxassetid://7733920644";
+	setup.Logo = setup.Logo or "rbxassetid://116869691128691";
 	setup.ToggleMethod = setup.ToggleMethod or "Application";
 	
 	if setup.KeySystem then
@@ -2364,7 +2363,7 @@ function Library:Windowxgo(setup)
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.BackgroundTransparency = 1
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-    BackgroundImage.Image = "rbxassetid://116869691128691"
+    BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
 
@@ -3530,7 +3529,7 @@ function Library:Windowxgo(setup)
 		DropShadow.SliceScale = 0.050
 
 		UIStroke.Transparency = 0.850
-		UIStroke.Color = Color3.fromRGB(156, 156, 156)
+		UIStroke.Color = Color3.fromRGB(255, 192, 203)
 		UIStroke.Parent = TFrame
 
 		Icon.Name = "Icon"
