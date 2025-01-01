@@ -3897,7 +3897,7 @@ function Root:Paragraph(Setup)
     local Title = Instance.new("TextLabel")
     local Description = Instance.new("TextLabel")
     local Image = Instance.new("ImageLabel") -- 添加ImageLabel组件
-
+    
     ParagraphBlock.Name = "ParagraphBlock"
     ParagraphBlock.Parent = ScrollingFrame
     ParagraphBlock.BackgroundColor3 = Library.Colors.Default
@@ -3974,30 +3974,27 @@ function Root:Paragraph(Setup)
     Image.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Image.BackgroundTransparency = 1.000
     Image.Position = UDim2.new(0, 5, 0, 5)
-    Image.Size = UDim2.new(1, 0, 0, 24)
+    Image.Size = UDim2.new(0, 0, 0, 0) -- 初始化图片大小为0
     Image.ZIndex = 10
     Image.ImageTransparency = 1 -- 默认不显示图片
 
     local UpdateBlock = function()
-        local TitleSize = 14;
-        local MainSize = Library:GetTextSize(Description.Text, Description.TextSize, Description.Font);
-        local DescriptionSize = MainSize.Y;
+        local TitleSize = Title.AbsoluteSize.Y
+        local DescriptionSize = Description.Visible and Description.AbsoluteSize.Y or 0
 
-        Description.Size = UDim2.new(1, MainSize.X, 0, DescriptionSize + 5)
+        local totalSize = TitleSize + DescriptionSize + 10 -- 10为顶部和底部的间距
 
-        if Description.Text:byte() then
-            Description.Visible = true;
-            Library:Tween(ParagraphBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, TitleSize + ((Description.Visible and Description.AbsoluteSize.Y + 5) or 0));
-            });
-
+        if Setup.ShowImage and Image.Image ~= "" and Image.Image ~= nil then
+            -- 如果显示图片，调整框架大小
+            local imageSize = Image.AbsoluteSize
+            ParagraphBlock.Size = UDim2.new(0.99, 0, 0, TitleSize + imageSize.Y + DescriptionSize + 20)
+            Image.Size = UDim2.new(0, imageSize.X, 0, imageSize.Y) -- 设置图片大小
+            Image.ImageTransparency = 0 -- 显示图片
         else
-            Description.Visible = false;
-
-            Library:Tween(ParagraphBlock, Library.TweenLibrary.SmallEffect, {
-                Size = UDim2.new(0.99, 0, 0, Title.AbsoluteSize.Y + 10);
-            });
-        end;
+            -- 如果不显示图片，调整框架大小为默认大小
+            ParagraphBlock.Size = UDim2.new(0.99, 0, 0, totalSize)
+            Image.ImageTransparency = 1 -- 不显示图片
+        end
     end;
 
     UpdateBlock()
