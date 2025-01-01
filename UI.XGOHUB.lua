@@ -2390,9 +2390,9 @@ function Library:Windowxgo(setup)
 	DropShadow.Rotation = 0.010
 	DropShadow.Size = UDim2.new(1, 10, 1, 10)
 	DropShadow.ZIndex = -5
-	DropShadow.Image = "rbxassetid://128885038925647"
+	DropShadow.Image = "rbxassetid://128885038925647"  --第1个阴影修改
 	DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-	DropShadow.ImageTransparency = 0.500
+	DropShadow.ImageTransparency = 1
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 	DropShadow.SliceScale = 0.050
@@ -2505,7 +2505,7 @@ function Library:Windowxgo(setup)
 		DropShadow.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow.ZIndex = 4
-		DropShadow.Image = "rbxassetid://128885038925647"
+		DropShadow.Image = "rbxassetid://297694300"
 		DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow.ImageTransparency = 0.500
 		DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -2540,7 +2540,7 @@ function Library:Windowxgo(setup)
 		DropShadow_2.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow_2.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow_2.ZIndex = 4
-		DropShadow_2.Image = "rbxassetid://128885038925647"
+		DropShadow_2.Image = "rbxassetid://297694300"
 		DropShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow_2.ImageTransparency = 0.500
 		DropShadow_2.ScaleType = Enum.ScaleType.Slice
@@ -2602,7 +2602,7 @@ function Library:Windowxgo(setup)
 		DropShadow_3.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow_3.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow_3.ZIndex = 4
-		DropShadow_3.Image = "rbxassetid://128885038925647"
+		DropShadow_3.Image = "rbxassetid://297694300"
 		DropShadow_3.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow_3.ImageTransparency = 0.500
 		DropShadow_3.ScaleType = Enum.ScaleType.Slice
@@ -3053,7 +3053,7 @@ function Library:Windowxgo(setup)
 		DropShadow.Rotation = 0.010
 		DropShadow.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow.ZIndex = 99
-		DropShadow.Image = "rbxassetid://128885038925647"
+		DropShadow.Image = "rbxassetid://297694300"
 		DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow.ImageTransparency = 0.500
 		DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -3084,7 +3084,7 @@ function Library:Windowxgo(setup)
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 114
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -3509,7 +3509,7 @@ function Library:Windowxgo(setup)
 		DropShadow.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow.ZIndex = 4
-		DropShadow.Image = "rbxassetid://128885038925647"
+		DropShadow.Image = "rbxassetid://297694300"
 		DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow.ImageTransparency = 0.500
 		DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -3787,7 +3787,7 @@ function Library:Windowxgo(setup)
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -4210,7 +4210,7 @@ return ColorPickerSettings
             DropShadow.Position = UDim2.new(0, -5, 0, -5)
             DropShadow.Size = UDim2.new(1, 10, 1, 10)
             DropShadow.ZIndex = 9
-            DropShadow.Image = "rbxassetid://128885038925647"
+            DropShadow.Image = "rbxassetid://297694300"
             DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
             DropShadow.ImageTransparency = 0.500
             DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -4401,7 +4401,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -4611,7 +4611,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -4839,7 +4839,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -5064,7 +5064,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -5294,7 +5294,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -5608,7 +5608,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -5864,7 +5864,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -6091,7 +6091,7 @@ return ColorPickerSettings
 			DropShadow.Position = UDim2.new(0, -5, 0, -5)
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 9
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 0.500
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -6238,7 +6238,7 @@ return ColorPickerSettings
 			DropShadow.Rotation = 0.010
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 264
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 1
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -6420,7 +6420,7 @@ return ColorPickerSettings
 			DropShadow.Rotation = 0.010
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 264
-			DropShadow.Image = "rbxassetid://128885038925647"
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 1
 			DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -6646,7 +6646,7 @@ return ColorPickerSettings
 				DropShadow.Rotation = 0.010
 				DropShadow.Size = UDim2.new(1, 10, 1, 10)
 				DropShadow.ZIndex = 284
-				DropShadow.Image = "rbxassetid://128885038925647"
+				DropShadow.Image = "rbxassetid://297694300"
 				DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 				DropShadow.ImageTransparency = 1
 				DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -7022,7 +7022,7 @@ return ColorPickerSettings
 		DropShadow.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow.ZIndex = -5
-		DropShadow.Image = "rbxassetid://128885038925647"
+		DropShadow.Image = "rbxassetid://297694300"
 		DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow.ImageTransparency = 1
 		DropShadow.ScaleType = Enum.ScaleType.Slice
