@@ -6062,17 +6062,19 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
------- // 图像   ----------------------------------------------------------------------------------------
+------ // 图像组件   ----------------------------------------------------------------------------------------
 		function Root:Image(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Image";
-			setup.Asset = setup.Asset or "rbxassetid://13333189485";
+			setup.Content = setup.Content or "";
+			setup.Asset = setup.Asset or "rbxassetid://123698784885744";
 			setup.Height = setup.Height or 120;
 
 			local ImageBlock = Instance.new("Frame")
 			local DropShadow = Instance.new("ImageLabel")
 			local UIStroke = Instance.new("UIStroke")
 			local Title = Instance.new("TextLabel")
+			local Content = Instance.new("TextLabel")
 			local ImageLabel = Instance.new("ImageLabel")
 
 			ImageBlock.Name = "ImageBlock"
@@ -6121,6 +6123,28 @@ return ColorPickerSettings
 			Title.TextColor3 = Library.Colors.TextColor;
 			Title.TextWrapped = true
 			Title.TextXAlignment = Enum.TextXAlignment.Left
+			
+			Content.Name = "Content"
+            Content.Parent = ImageBlock
+            Content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Content.BackgroundTransparency = 1.000
+            Content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            Content.BorderSizePixel = 0
+            Content.Position = UDim2.new(0, 5, 0, 18)
+            Content.Size = UDim2.new(1, 0, 0, 45)
+            Content.Visible = false
+            Content.ZIndex = 11
+            Content.Font = Enum.Font.Gotham
+            Content.Text = setup.Content
+            Content.TextColor3 = Library.Colors.TextColor
+            Content.TextSize = 13.000
+            Content.TextStrokeColor3 = Library.Colors.TextColor
+            Content.TextStrokeTransparency = 0.950
+            Content.TextTransparency = 0.500
+            Content.TextWrapped = true
+            Content.TextXAlignment = Enum.TextXAlignment.Left
+            Content.TextYAlignment = Enum.TextYAlignment.Top
+            Content.RichText = true
 
 			ImageLabel.Parent = ImageBlock
 			ImageLabel.AnchorPoint = Vector2.new(0.5, 0)
@@ -6151,8 +6175,35 @@ return ColorPickerSettings
 			update()
 
 			MainFrame:GetPropertyChangedSignal('AbsoluteSize'):Connect(update)
+			
+			local UpdateBlock = function()
+                local TitleSize = TextLabel.TextSize
+                local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
+                local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
+        
+                local TotalHeight = MainSize.Y + 10
+                if setup.Content:len() > 0 then
+                    Content.Visible = true
+                    TotalHeight = TotalHeight + ContentSize.Y + 5
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
+                else
+                    Content.Visible = false
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
+                end
+
+                ImageBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
+            end
+            UpdateBlock()
 
 			local RootSkid = {};
+			
+			function RootSkid:Content(Setup)
+                Content.Text = Setup
+                UpdateBlock()
+            end;
 
 			function RootSkid:GetValue()
 				return ImageLabel.Image;
@@ -6164,6 +6215,7 @@ return ColorPickerSettings
 				ImageLabel.Size = UDim2.new(0.980000019, 0, 0, height)
 
 				update()
+				UpdateBlock()
 			end;
 
 			function RootSkid:Visible(value)
