@@ -3490,67 +3490,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 	end;
-
-local function rainbowEffect(border)
-    local ts = game:GetService("TweenService")
-    local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-    local gradient = Instance.new("ColorSequence")
-    local list = {}
-    local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
-    local counter = 0
-    local status = "down"
-
-    local function rainbowColors()
-        local sat, val = 1, 1
-        for i = 1, 10 do
-            local hue = i / 10
-            table.insert(list, Color3.fromHSV(hue, sat, val))
-        end
-    end
-    rainbowColors()
-    gradient.Color = s({kpt(0, list[1]), kpt(1, list[#list])})
-
-    local function animate()
-        if ((counter == (#list - 1)) and (status == "down")) then
-            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
-            counter = 1
-            status = "up"
-        elseif ((counter == #list) and (status == "down")) then
-            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[1]), kpt(1, list[2])})
-            counter = 2
-            status = "up"
-        elseif ((counter <= (#list - 2)) and (status == "down")) then
-            gradient.Color = s({
-                kpt(0, list[counter + 1]),
-                kpt(0.5, list[counter + 2]),
-                kpt(1, list[counter + 3])
-            })
-            counter = counter + 1
-            status = "up"
-        end
-        if ((counter == (#list - 1)) and (status == "up")) then
-            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
-            counter = 1
-            status = "down"
-        elseif ((counter == #list) and (status == "up")) then
-            gradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, list[2])})
-            counter = 2
-            status = "down"
-        elseif ((counter <= (#list - 2)) and (status == "up")) then
-            gradient.Color = s({
-                kpt(0, list[counter + 2]),
-                kpt(0.5, list[counter + 1]),
-                kpt(1, list[counter + 2])
-            })
-            counter = counter + 1
-            status = "down"
-        end
-        border.ImageColor3 = gradient.Color
-        animate()
-    end
-    animate()
-end
-
+	
 	function WindowLibrary:XG(TabSetup)
 		TabSetup = TabSetup or {};
 		TabSetup.Title = TabSetup.Title or "菜单";
@@ -3558,8 +3498,7 @@ end
 
 		local TFrame = Instance.new("Frame")
 		local DropShadow = Instance.new("ImageLabel")
---		local UIStroke = Instance.new("UIStroke")
-		local Border = Instance.new("ImageLabel")
+		local UIStroke = Instance.new("UIStroke")
 		local Icon = Instance.new("ImageLabel")
 		local Title = Instance.new("TextLabel")
 		local Arrow = Instance.new("ImageLabel")
@@ -3589,23 +3528,9 @@ end
 		DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 		DropShadow.SliceScale = 0.050
 
---[[     UIStroke.Transparency = 1
+        UIStroke.Transparency = 1
         UIStroke.Color = Color3.fromRGB(156, 156, 156)
-        UIStroke.Parent = TFrame]]
-        
-Border.Name = "Border"
-Border.Parent = TFrame
-Border.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Border.BackgroundTransparency = 1
-Border.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Border.BorderSizePixel = 0
-Border.Position = UDim2.new(0, 0, 0, 0)
-Border.Size = TFrame.Size
-Border.ZIndex = 5
-Border.Image = "rbxassetid://1383306984"
-Border.ImageColor3 = Color3.fromRGB(0, 0, 0)
-
-rainbowEffect(Border)
+        UIStroke.Parent = TFrame
 
 		Icon.Name = "Icon"
 		Icon.Parent = TFrame
@@ -7267,5 +7192,77 @@ return ColorPickerSettings
 
 	return WindowLibrary;
 end;
+local function addRainbowToBackground()
+    local script = Instance.new("LocalScript", ScriptTitle)
+    local gui = script.Parent
+    local tweenService = game:GetService("TweenService")
+    local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+    local dropShadow = gui.DropShadow -- 假设背景阴影是名为DropShadow的ImageLabel
+
+    local startingPos = Vector2.new(-1, 0)
+    local list = {}
+    local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
+    local counter = 0
+    local status = "down"
+
+    local function rainbowColors()
+        local sat, val = 1, 1
+        for i = 1, 10 do
+            local hue = i * 17
+            table.insert(list, Color3.fromHSV(hue / 255, sat, val))
+        end
+    end
+
+    rainbowColors()
+
+    dropShadow.ImageColor3 = s({kpt(0, list[#list]), kpt(0.5, list[#list - 1]), kpt(1, list[#list - 2])})
+    counter = #list
+
+    local function animate()
+        dropShadow.Offset = startingPos
+        dropShadow.Rotation = 180
+        if ((counter == (#list - 1)) and (status == "down")) then
+            dropShadow.ImageColor3 = s({kpt(0, dropShadow.ImageColor3.Keypoints[1].Value), kpt(0.5, list[#list]), kpt(1, list[1])})
+            counter = 1
+            status = "up"
+        elseif ((counter == #list) and (status == "down")) then
+            dropShadow.ImageColor3 = s({kpt(0, dropShadow.ImageColor3.Keypoints[1].Value), kpt(0.5, list[1]), kpt(1, list[2])})
+            counter = 2
+            status = "up"
+        elseif ((counter <= (#list - 2)) and (status == "down")) then
+            dropShadow.ImageColor3 = s({
+                kpt(0, dropShadow.ImageColor3.Keypoints[1].Value),
+                kpt(0.5, list[counter + 1]),
+                kpt(1, list[counter + 2])
+            })
+            counter = counter + 2
+            status = "up"
+        end
+
+        dropShadow.Offset = startingPos
+        dropShadow.Rotation = 0
+        if ((counter == (#list - 1)) and (status == "up")) then
+            dropShadow.ImageColor3 = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, dropShadow.ImageColor3.Keypoints[3].Value)})
+            counter = 1
+            status = "down"
+        elseif ((counter == #list) and (status == "up")) then
+            dropShadow.ImageColor3 = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, dropShadow.ImageColor3.Keypoints[3].Value)})
+            counter = 2
+            status = "down"
+        elseif ((counter <= (#list - 2)) and (status == "up")) then
+            dropShadow.ImageColor3 = s({
+                kpt(0, list[counter + 2]),
+                kpt(0.5, list[counter + 1]),
+                kpt(1, dropShadow.ImageColor3.Keypoints[3].Value)
+            })
+            counter = counter + 2
+            status = "down"
+        end
+
+        animate()
+    end
+
+    animate()
+end
 
 return Library;
