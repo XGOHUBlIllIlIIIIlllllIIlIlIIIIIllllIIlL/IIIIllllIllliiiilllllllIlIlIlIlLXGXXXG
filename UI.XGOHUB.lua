@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 优化
+-- 优化信息
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2381,8 +2381,8 @@ MainFrame.BackgroundTransparency = 1 -- 因为我们将使用图片作为背景
 MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.ClipsDescendants = true
-MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-MainFrame.Size = UDim2.fromScale(1, 1) -- 设置MainFrame的大小以覆盖整个屏幕
+MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0) -- 从屏幕中间开始
+MainFrame.Size = UDim2.fromScale(1, 0.5) -- 占据屏幕的一半高度
 
 -- 设置背景图片
 BackgroundImage.Parent = MainFrame
