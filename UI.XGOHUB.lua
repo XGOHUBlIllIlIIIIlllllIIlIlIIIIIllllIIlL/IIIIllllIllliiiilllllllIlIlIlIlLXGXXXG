@@ -3479,92 +3479,7 @@ function Library:Windowxgo(setup)
 		end)
 	end;
 
-------------------------------------搜索框------------------------------------------------------------------------------------------------------------
-function Library:Search(setup)
-    setup = setup or {};
-    setup.Parent = setup.Parent or DataScrollingFrame; -- 设置搜索框的父级为DataScrollingFrame
-    setup.Size = setup.Size or UDim2.new(0, 200, 0, 30); -- 默认大小
-    setup.Position = setup.Position or UDim2.new(0, 10, 0, 10); -- 默认位置
-    setup.PlaceholderText = setup.PlaceholderText or "搜索..."; -- 默认占位符文本
-
-    local SearchFrame = Instance.new("Frame")
-    local UIS = Instance.new("UIStroke")
-    local SearchTextBox = Instance.new("TextBox")
-
-    SearchFrame.Name = "SearchFrame"
-    SearchFrame.Parent = setup.Parent
-    SearchFrame.BackgroundColor3 = Library.Colors.Default
-    SearchFrame.BackgroundTransparency = 0.250
-    SearchFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    SearchFrame.BorderSizePixel = 0
-    SearchFrame.Size = setup.Size
-    SearchFrame.Position = setup.Position
-    SearchFrame.ZIndex = 5
-
-    UIS.Name = "UIS"
-    UIS.Parent = SearchFrame
-    UIS.Transparency = 0.850
-    UIS.Color = Color3.fromRGB(156, 156, 156)
-    UIS.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-
-    SearchTextBox.Name = "SearchTextBox"
-    SearchTextBox.Parent = SearchFrame
-    SearchTextBox.BackgroundColor3 = Library.Colors.Default
-    SearchTextBox.BackgroundTransparency = 1
-    SearchTextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    SearchTextBox.BorderSizePixel = 0
-    SearchTextBox.Size = UDim2.new(1, 0, 1, 0)
-    SearchTextBox.ZIndex = 6
-    SearchTextBox.Font = Enum.Font.SourceSans
-    SearchTextBox.PlaceholderText = setup.PlaceholderText
-    SearchTextBox.TextColor3 = Library.Colors.TextColor
-    SearchTextBox.TextSize = 14
-    SearchTextBox.TextStrokeColor3 = Library.Colors.TextColor
-    SearchTextBox.TextStrokeTransparency = 0.950
-    SearchTextBox.TextTransparency = 0.250
-
-    -- 搜索框输入变化时的事件
-    SearchTextBox:GetPropertyChangedSignal('Text'):Connect(function()
-        local searchText = SearchTextBox.Text:lower()
-        if #searchText > 0 then
-            if not Elements.UIPageLayout.CurrentPage:FindFirstChild('SearchTitle-fsefsefesfsefesfesfThanks') then 
-                local searchTitle = Elements.Template.SectionTitle:Clone()
-                searchTitle.Parent = Elements.UIPageLayout.CurrentPage
-                searchTitle.Name = 'SearchTitle-fsefsefesfsefesfesfThanks'
-                searchTitle.LayoutOrder = -100
-                searchTitle.Title.Text = "Results from '"..Elements.UIPageLayout.CurrentPage.Name.."'"
-                searchTitle.Visible = true
-            end
-        else
-            local searchTitle = Elements.UIPageLayout.CurrentPage:FindFirstChild('SearchTitle-fsefsefesfsefesfesfThanks')
-            if searchTitle then
-                searchTitle:Destroy()
-            end
-        end
-
-        for _, element in ipairs(Elements.UIPageLayout.CurrentPage:GetChildren()) do
-            if element.ClassName ~= 'UIListLayout' and element.Name ~= 'Placeholder' and element.Name ~= 'SearchTitle-fsefsefesfsefesfesfThanks' then
-                if element.Name == 'SectionTitle' then
-                    if #searchText == 0 then
-                        element.Visible = true
-                    else
-                        element.Visible = false
-                    end
-                else
-                    if string.lower(element.Name):find(searchText, 1, true) then
-                        element.Visible = true
-                    else
-                        element.Visible = false
-                    end
-                end
-            end
-        end
-    end)
-
-    return SearchFrame, SearchTextBox
-end;
-
-	function WindowLibrary:Tab(TabSetup)
+	function WindowLibrary:XG(TabSetup)
 		TabSetup = TabSetup or {};
 		TabSetup.Title = TabSetup.Title or "菜单";
 		TabSetup.Icon = TabSetup.Icon or 'XGO1';
@@ -3651,7 +3566,7 @@ end;
 		Arrow.Size = UDim2.new(0.400000006, 0, 0.400000006, 0)
 		Arrow.SizeConstraint = Enum.SizeConstraint.RelativeYY
 		Arrow.ZIndex = 5
-		Arrow.Image = "rbxassetid://10709791437"
+		Arrow.Image = "rbxassetid://10709791437" -->图
 		Arrow.ImageTransparency = 1
 
 		Button.Name = "Button"
