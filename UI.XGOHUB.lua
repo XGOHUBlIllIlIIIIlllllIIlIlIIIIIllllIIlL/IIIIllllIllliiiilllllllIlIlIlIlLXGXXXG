@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.12
+-- 边框v1.13
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -168,52 +168,29 @@ Library.Icons = { -- 图片/常用图片
 	["左下角1"] = "rbxassetid://7733764327", ["信号低"] = "rbxassetid://8997387189",
 	["三角形"] = "rbxassetid://7743874367",	["侧边栏"] = "rbxassetid://7734058260",
 	["西格玛"] = "rbxassetid://7734058345", ["云关闭"] = "rbxassetid://7733745572",
-	["收件箱"] = "rbxassetid://7733964370",
-	["礼品卡"] = "rbxassetid://7733945018",
-	["摄像头"] = "rbxassetid://7743877896",
-	["手电筒"] = "rbxassetid://7733798851",
-	["数据库"] = "rbxassetid://7743866778",
-	["魔法棒"] = "rbxassetid://8997388430",
-	["温度计"] = "rbxassetid://7734084149",
-	["机器人"] = "rbxassetid://7733916988",
-	["不等于"] = "rbxassetid://7733771726",
-	["毕业帽"] = "rbxassetid://7733955058",
-	["三叶草"] = "rbxassetid://7733747233",
-	["仪表盘"] = "rbxassetid://7733799969",
-	["书打开"] = "rbxassetid://7733687281",
-	["回形针"] = "rbxassetid://7734021680",
-	["收音机"] = "rbxassetid://7743871662",
-	["调色板"] = "rbxassetid://7734021595",
-	["八边形"] = "rbxassetid://7734021165",
-	["购物袋"] = "rbxassetid://7734056747",
-	["对比度"] = "rbxassetid://7733764005",
-	["胡萝卜"] = "rbxassetid://8997382987",
-	["二进制"] = "rbxassetid://7733678388",
-	["公文包"] = "rbxassetid://7733919017",
-	["过滤器"] = "rbxassetid://7733798407",
-	["计算器"] = "rbxassetid://7733919105",
-	["救生圈"] = "rbxassetid://7733973479",
-	["存钱罐"] = "rbxassetid://7734034513",
-	["百分比"] = "rbxassetid://7743870852",
-	["联系人"] = "rbxassetid://7743866666",
-	["下箭头"] = "rbxassetid://7733717447",
-	["六边形"] = "rbxassetid://7743868527",
-	["正方形"] = "rbxassetid://7743872181",
-	["已验证"] = "rbxassetid://7743876142",
-	["公交车"] = "rbxassetid://7733701715",
-	["购物车"] = "rbxassetid://7734056813",
-	["代码笔"] = "rbxassetid://7733920768",
-	["下划线"] = "rbxassetid://7743874904",
-	["扫描线"] = "rbxassetid://8997386772",
-	["下载云"] = "rbxassetid://7733770689",
-	["计时器"] = "rbxassetid://7743873443",
-	["打印机"] = "rbxassetid://7734042580",
-	["指南针"] = "rbxassetid://7733924216",
-	["扬声器"] = "rbxassetid://7734063416",
-	["剪贴板"] = "rbxassetid://7733734762",
-	["条形图1"] = "rbxassetid://7733674319",
-	["条形图2"] = "rbxassetid://7733674239",
-	["加载器1"] = "rbxassetid://7733992358",
+	["收件箱"] = "rbxassetid://7733964370",	["礼品卡"] = "rbxassetid://7733945018",
+	["摄像头"] = "rbxassetid://7743877896",	["手电筒"] = "rbxassetid://7733798851",
+	["数据库"] = "rbxassetid://7743866778",	["魔法棒"] = "rbxassetid://8997388430",
+	["温度计"] = "rbxassetid://7734084149",	["机器人"] = "rbxassetid://7733916988",
+	["不等于"] = "rbxassetid://7733771726",	["毕业帽"] = "rbxassetid://7733955058",
+	["三叶草"] = "rbxassetid://7733747233",	["仪表盘"] = "rbxassetid://7733799969",
+	["书打开"] = "rbxassetid://7733687281",	["回形针"] = "rbxassetid://7734021680",
+	["收音机"] = "rbxassetid://7743871662",	["调色板"] = "rbxassetid://7734021595",
+	["八边形"] = "rbxassetid://7734021165",	["购物袋"] = "rbxassetid://7734056747",
+	["对比度"] = "rbxassetid://7733764005", ["胡萝卜"] = "rbxassetid://8997382987",
+	["二进制"] = "rbxassetid://7733678388",	["公文包"] = "rbxassetid://7733919017",
+	["过滤器"] = "rbxassetid://7733798407",	["计算器"] = "rbxassetid://7733919105",
+	["救生圈"] = "rbxassetid://7733973479",	["存钱罐"] = "rbxassetid://7734034513",
+	["百分比"] = "rbxassetid://7743870852",	["联系人"] = "rbxassetid://7743866666",
+	["下箭头"] = "rbxassetid://7733717447",	["六边形"] = "rbxassetid://7743868527",
+	["正方形"] = "rbxassetid://7743872181",	["已验证"] = "rbxassetid://7743876142",
+	["公交车"] = "rbxassetid://7733701715",	["购物车"] = "rbxassetid://7734056813",
+	["代码笔"] = "rbxassetid://7733920768",	["下划线"] = "rbxassetid://7743874904",
+	["扫描线"] = "rbxassetid://8997386772",	["下载云"] = "rbxassetid://7733770689",
+	["计时器"] = "rbxassetid://7743873443", ["打印机"] = "rbxassetid://7734042580",
+	["指南针"] = "rbxassetid://7733924216",	["扬声器"] = "rbxassetid://7734063416",
+	["剪贴板"] = "rbxassetid://7733734762",	["条形图1"] = "rbxassetid://7733674319",
+	["条形图2"] = "rbxassetid://7733674239",["加载器1"] = "rbxassetid://7733992358",
 	["加载器2"] = "rbxassetid://7733989869",
 	["最小化1"] = "rbxassetid://7733997941",
 	["最小化2"] = "rbxassetid://7733997870",
@@ -2386,12 +2363,66 @@ function Library:Windowxgo(setup)
 
 	end
 	
-	local ScreenGui = Instance.new("ScreenGui")
-	local MainFrame = Instance.new("Frame")
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local BackgroundImage = Instance.new("ImageLabel")
+
+local images = {
+    "rbxassetid://86451637909512", -- 图片1
+    "rbxassetid://120611289434746", -- 图片2
+    "rbxassetid://128885038925647", -- 图片3
+    "rbxassetid://96996396016819", -- 图片4
+}
+local currentImageIndex = 1
+
+-- 切换图片的函数
+local function changeImage()
+    currentImageIndex = currentImageIndex + 1
+    if currentImageIndex > #images then
+        currentImageIndex = 1 -- 重置索引到第一张图片
+    end
+    BackgroundImage.Image = images[currentImageIndex]
+end
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ResetOnSpawn = false
+ScreenGui.IgnoreGuiInset = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+Library.ProtectGui(ScreenGui);
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundTransparency = 0.250
+MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.ClipsDescendants = true
+MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainFrame.Size = UDim2.fromScale(0, 0)
+
+BackgroundImage.Parent = MainFrame
+BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BackgroundImage.BackgroundTransparency = 1
+BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
+BackgroundImage.Image = images[currentImageIndex] -- 设置初始图片
+BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
+BackgroundImage.ScaleType = Enum.ScaleType.Stretch
+
+local interval = 3
+
+while true do
+    wait(interval)
+    changeImage()
+end
+	
+--	local ScreenGui = Instance.new("ScreenGui")
+--	local MainFrame = Instance.new("Frame")
 	local BackgroundImage = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
-	
+--[[	
 
 	ScreenGui.Parent = Library.CoreGui
 	ScreenGui.ResetOnSpawn = false
@@ -2417,7 +2448,7 @@ function Library:Windowxgo(setup)
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
     BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.ScaleType = Enum.ScaleType.Stretch 
+    BackgroundImage.ScaleType = Enum.ScaleType.Stretch ]]
 
 	spawn(function()
 		while MainFrame do task.wait(1)
