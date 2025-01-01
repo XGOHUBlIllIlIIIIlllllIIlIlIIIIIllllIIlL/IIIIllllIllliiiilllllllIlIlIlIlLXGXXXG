@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 优化
+-- 优化信息
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2310,12 +2310,12 @@ end;
     local blurTween = TweenService:Create(blurEffect, blurTweenInfo, {Size = 0})
     
     blurTween:Play()
-    -- 异步等待模糊效果完成
+
     coroutine.resume(coroutine.create(function()
-        wait(2.5) -- 等待模糊效果完成
-        blurEffect:Destroy() -- 销毁效果实例
+        wait(2.5)
+        blurEffect:Destroy()
     end))
------------------------------------UI.UI设置-------------------------------------------------------------------------------------
+------------------------------    UI.标题设置    -------------------------------------------------------------------------------------
 function Library:Windowxgo(setup)
 	setup = setup or {};
 
@@ -2358,6 +2358,17 @@ function Library:Windowxgo(setup)
 	MainFrame.ClipsDescendants = true
 	MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 	MainFrame.Size = UDim2.fromScale(0,0);
+	
+-- 设置背景图片
+local backgroundImage = Instance.new("ImageLabel")
+backgroundImage.Parent = MainFrame
+backgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 设置为白色，因为图片会覆盖它
+backgroundImage.BackgroundTransparency = 1 -- 完全透明
+backgroundImage.Size = UDim2.new(1, 0, 1, 0) -- 填满整个MainFrame
+backgroundImage.Image = "rbxassetid://88666635012556" -- 替换为你的图片资产ID
+backgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 图片颜色，通常设置为白色
+backgroundImage.ScaleType = Enum.ScaleType.Slice -- 根据需要调整
+backgroundImage.SliceCenter = Rect.new(0, 0, 10, 10) -- 根据需要调整
 
 	spawn(function()
 		while MainFrame do task.wait(1)
@@ -2390,7 +2401,7 @@ function Library:Windowxgo(setup)
 	DropShadow.Rotation = 0.010
 	DropShadow.Size = UDim2.new(1, 10, 1, 10)
 	DropShadow.ZIndex = -5
-	DropShadow.Image = "rbxassetid://297694300"
+	DropShadow.Image = "rbxassetid://297694300" --1
 	DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 	DropShadow.ImageTransparency = 0.500
 	DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -2505,7 +2516,7 @@ function Library:Windowxgo(setup)
 		DropShadow.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow.ZIndex = 4
-		DropShadow.Image = "rbxassetid://297694300"
+		DropShadow.Image = "rbxassetid://297694300"  --2
 		DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow.ImageTransparency = 0.500
 		DropShadow.ScaleType = Enum.ScaleType.Slice
@@ -2540,7 +2551,7 @@ function Library:Windowxgo(setup)
 		DropShadow_2.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow_2.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow_2.ZIndex = 4
-		DropShadow_2.Image = "rbxassetid://297694300"
+		DropShadow_2.Image = "rbxassetid://297694300"  --3
 		DropShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow_2.ImageTransparency = 0.500
 		DropShadow_2.ScaleType = Enum.ScaleType.Slice
@@ -2602,7 +2613,7 @@ function Library:Windowxgo(setup)
 		DropShadow_3.Position = UDim2.new(0, -5, 0, -5)
 		DropShadow_3.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow_3.ZIndex = 4
-		DropShadow_3.Image = "rbxassetid://297694300"
+		DropShadow_3.Image = "rbxassetid://297694300"  --4
 		DropShadow_3.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow_3.ImageTransparency = 0.500
 		DropShadow_3.ScaleType = Enum.ScaleType.Slice
@@ -2720,116 +2731,6 @@ function Library:Windowxgo(setup)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
-
------- // 检测系统设置    ----------------------------------------------------------------------------------------
-local AuthFunction = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local ServerIdLabel = Instance.new("TextLabel")
-local ServerNameLabel = Instance.new("TextLabel")
-local DropShadow = Instance.new("ImageLabel")
-local UIStroke = Instance.new("UIStroke")
-
-AuthFunction.Name = "AuthFunction"
-AuthFunction.Parent = MainFrame
-AuthFunction.Active = true
-AuthFunction.AnchorPoint = Vector2.new(0.5, 0.5)
-AuthFunction.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-AuthFunction.BackgroundTransparency = 1.000
-AuthFunction.BorderColor3 = Color3.fromRGB(0, 0, 0)
-AuthFunction.BorderSizePixel = 0
-AuthFunction.Position = UDim2.new(0.5, 0, -1.5, 0)
-AuthFunction.Size = UDim2.new(1, 0, 1, 0)
-
-Library:Tween(AuthFunction, Library.TweenLibrary.SmallEffect, {Position = UDim2.new(0.5, 0, 0.5, 0)})
-
-Title.Name = "Title"
-Title.Parent = AuthFunction
-Title.AnchorPoint = Vector2.new(0.5, 0.5)
-Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundTransparency = 1.000
-Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title.BorderSizePixel = 0
-Title.Position = UDim2.new(0.5, 0, 0.100000001, 0)
-Title.Size = UDim2.new(0.899999976, 0, 0.100000001, 0)
-Title.Font = Enum.Font.Gotham
-Title.Text = "检测框架"
-Title.TextColor3 = Library.Colors.TextColor
-Title.TextScaled = true
-Title.TextSize = 14.000
-Title.TextStrokeColor3 = Library.Colors.TextColor
-Title.TextStrokeTransparency = 0.950
-Title.TextWrapped = true
-Title.RichText = true;
-
-ServerIdLabel.Parent = AuthFunction
-ServerIdLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-ServerIdLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ServerIdLabel.BackgroundTransparency = 1.000
-ServerIdLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ServerIdLabel.BorderSizePixel = 0
-ServerIdLabel.Position = UDim2.new(0.5, 0, 0.4, 0)
-ServerIdLabel.Size = UDim2.new(0.699999988, 0, 0.125, 0)
-ServerIdLabel.Font = Enum.Font.SourceSans
-ServerIdLabel.TextColor3 = Library.Colors.TextColor
-ServerIdLabel.TextSize = 12.000
-ServerIdLabel.TextStrokeColor3 = Library.Colors.TextColor
-ServerIdLabel.TextStrokeTransparency = 0.950
-ServerIdLabel.Text = "服务器ID: "
-ServerIdLabel.TextWrapped = true
-
-ServerNameLabel.Parent = AuthFunction
-ServerNameLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-ServerNameLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ServerNameLabel.BackgroundTransparency = 1.000
-ServerNameLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ServerNameLabel.BorderSizePixel = 0
-ServerNameLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-ServerNameLabel.Size = UDim2.new(0.699999988, 0, 0.125, 0)
-ServerNameLabel.Font = Enum.Font.SourceSans
-ServerNameLabel.TextColor3 = Library.Colors.TextColor
-ServerNameLabel.TextSize = 12.000
-ServerNameLabel.TextStrokeColor3 = Library.Colors.TextColor
-ServerNameLabel.TextStrokeTransparency = 0.950
-ServerNameLabel.Text = "服务器名称: "
-ServerNameLabel.TextWrapped = true
-
-DropShadow.Name = "DropShadow"
-DropShadow.Parent = ServerIdLabel
-DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DropShadow.BackgroundTransparency = 1.000
-DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
-DropShadow.Position = UDim2.new(0, -5, 0, -5)
-DropShadow.Size = UDim2.new(1, 10, 1, 10)
-DropShadow.ZIndex = 4
-DropShadow.Image = "rbxassetid://297694300"
-DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-DropShadow.ImageTransparency = 0.500
-DropShadow.ScaleType = Enum.ScaleType.Slice
-DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-DropShadow.SliceScale = 0.050
-
-UIStroke.Transparency = 0.850
-UIStroke.Color = Color3.fromRGB(156, 156, 156)
-UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-UIStroke.Parent = ServerIdLabel
-
-UIStroke_2.Transparency = 0.850
-UIStroke_2.Color = Color3.fromRGB(156, 156, 156)
-UIStroke_2.Parent = AuthFunction
-
--- 假设的服务器ID和名称
-local serverId = "12345"
-local serverName = "Example Server"
-
--- 更新服务器ID和名称的文本
-ServerIdLabel.Text = "服务器ID: " .. serverId
-ServerNameLabel.Text = "服务器名称: " .. serverName
-
-repeat task.wait(50) until game:IsLoaded();		
-end;
-
-Library:Tween(MainFrame, Library.TweenLibrary.WindowChanged, {Size = setup.Size})
-Library:Tween(Ico, Library.TweenLibrary.SmallEffect, {ImageTransparency = 1})
 ------ //     ----------------------------------------------------------------------------------------
 
 	local WindowLibrary = {};
@@ -3164,7 +3065,7 @@ Library:Tween(Ico, Library.TweenLibrary.SmallEffect, {ImageTransparency = 1})
 		DropShadow.Rotation = 0.010
 		DropShadow.Size = UDim2.new(1, 10, 1, 10)
 		DropShadow.ZIndex = 99
-		DropShadow.Image = "rbxassetid://297694300"
+		DropShadow.Image = "rbxassetid://297694300"  --5
 		DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 		DropShadow.ImageTransparency = 0.500
 		DropShadow.ScaleType = Enum.ScaleType.Slice
