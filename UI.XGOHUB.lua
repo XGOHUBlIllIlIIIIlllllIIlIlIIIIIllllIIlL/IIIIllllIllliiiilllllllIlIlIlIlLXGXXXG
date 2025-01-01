@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.13
+-- 边框v1.14
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2377,18 +2377,18 @@ local currentImageIndex = 1
 
 -- 切换图片的函数
 local function changeImage()
-    currentImageIndex = currentImageIndex + 1
-    if currentImageIndex > #images then
-        currentImageIndex = 1 -- 重置索引到第一张图片
+    if images[currentImageIndex] then
+        BackgroundImage.Image = images[currentImageIndex]
+        BackgroundImage.ImageTransparency = 0
+    else
+        warn("Invalid image ID at index " .. currentImageIndex)
     end
-    BackgroundImage.Image = images[currentImageIndex]
 end
 
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ResetOnSpawn = false
 ScreenGui.IgnoreGuiInset = false
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-Library.ProtectGui(ScreenGui);
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
@@ -2406,16 +2406,25 @@ BackgroundImage.Parent = MainFrame
 BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 BackgroundImage.BackgroundTransparency = 1
 BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-BackgroundImage.Image = images[currentImageIndex] -- 设置初始图片
 BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
 BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
+-- 设置自动切换图片的时间间隔（例如，每3秒切换一次）
 local interval = 3
+local timeSinceLastChange = 0
 
-while true do
-    wait(interval)
-    changeImage()
-end
+-- 使用RunService.RenderStepped来周期性地调用changeImage函数
+game:GetService("RunService").RenderStepped:Connect(function()
+    timeSinceLastChange = timeSinceLastChange + 1
+    if timeSinceLastChange >= interval then
+        changeImage()
+        timeSinceLastChange = 0
+        currentImageIndex = currentImageIndex + 1
+        if currentImageIndex > #images then
+            currentImageIndex = 1
+        end
+    end
+end)
 	
 --	local ScreenGui = Instance.new("ScreenGui")
 --	local MainFrame = Instance.new("Frame")
