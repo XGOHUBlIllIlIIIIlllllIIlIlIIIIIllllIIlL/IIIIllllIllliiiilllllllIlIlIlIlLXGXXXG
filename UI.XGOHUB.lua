@@ -2352,7 +2352,7 @@ function Library:Windowxgo(setup)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
-    local interval = 2.5
+    local interval = 5.5
     local timeSinceLastChange = 0
 --  时间自己设置，自己乘以自己设置的时间就行了 [ 3/10 = 2倍速  2/10 = 1倍速 <5正常率10中等倍率15超快倍率等..> ]
     game:GetService("RunService").Heartbeat:Connect(function()
@@ -4380,7 +4380,7 @@ return ColorPickerSettings
 			setup.Callback = setup.Callback or function() end;
 			
 		    local ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
-		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
+		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果图标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
 		    local Content = Instance.new("TextLabel")
@@ -6059,9 +6059,9 @@ return ColorPickerSettings
 			return RootSkid;
 		end;
 ------ // 图像组件   ----------------------------------------------------------------------------------------
---[[	function Root:Image(setup)
+    	function Root:Image(setup)
 			setup = setup or {};
-			setup.Title = setup.Title or "Image";
+			setup.Title = setup.Title or "图像";
 			setup.Asset = setup.Asset or "rbxassetid://123698784885744";
 			setup.Height = setup.Height or 120;
 
@@ -6171,118 +6171,6 @@ return ColorPickerSettings
 
 		return Root;
 	end;
-]]
-function Root:Image(setup)
-    setup = setup or {};
-    setup.Title = setup.Title or "Image";
-    setup.Assets = setup.Assets or {"rbxassetid://123698784885744"}; -- 假设Assets是一个包含多个图像ID的表
-    setup.Height = setup.Height or 120;
-
-    local ImageBlock = Instance.new("Frame")
-    local DropShadow = Instance.new("ImageLabel")
-    local UIStroke = Instance.new("UIStroke")
-    local Title = Instance.new("TextLabel")
-    local ImageList = Instance.new("ImageList") -- 使用ImageList来显示多个图像
-
-    ImageBlock.Name = "ImageBlock"
-    ImageBlock.Parent = ScrollingFrame
-    ImageBlock.BackgroundColor3 = Library.Colors.Default
-    ImageBlock.BackgroundTransparency = 0.250
-    ImageBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    ImageBlock.BorderSizePixel = 0
-    ImageBlock.Size = UDim2.new(0.99000001, 0, 0, 150)
-    ImageBlock.ZIndex = 10
-
-    DropShadow.Name = "DropShadow"
-    DropShadow.Parent = ImageBlock
-    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    DropShadow.BackgroundTransparency = 1.000
-    DropShadow.Position = UDim2.new(0, -5, 0, -5)
-    DropShadow.Size = UDim2.new(1, 10, 1, 10)
-    DropShadow.ZIndex = 9
-    DropShadow.Image = "rbxassetid://297694300"
-    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-    DropShadow.ImageTransparency = 0.500
-    DropShadow.ScaleType = Enum.ScaleType.Slice
-    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
-    DropShadow.SliceScale = 0.050
-
-    UIStroke.Transparency = 0.850
-    UIStroke.Color = Color3.fromRGB(156, 156, 156)
-    UIStroke.Parent = ImageBlock
-
-    Title.Name = "Title"
-    Title.Parent = ImageBlock
-    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Title.BackgroundTransparency = 1.000
-    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Title.BorderSizePixel = 0
-    Title.Position = UDim2.new(0, 5, 0, 5)
-    Title.Size = UDim2.new(1, 0, 0, 14)
-    Title.ZIndex = 11
-    Title.Font = Enum.Font.Gotham
-    Title.Text = setup.Title
-    Title.TextColor3 = Library.Colors.TextColor
-    Title.TextScaled = true
-    Title.TextSize = 14.000
-    Title.TextStrokeColor3 = Color3.fromRGB(191, 193, 195)
-    Title.TextStrokeTransparency = 0.950
-    Title.TextColor3 = Library.Colors.TextColor;
-    Title.TextWrapped = true
-    Title.TextXAlignment = Enum.TextXAlignment.Left
-
-    ImageList.Parent = ImageBlock
-    ImageList.AnchorPoint = Vector2.new(0.5, 0)
-    ImageList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    ImageList.BackgroundTransparency = 1.000
-    ImageList.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    ImageList.BorderSizePixel = 0
-    ImageList.Position = UDim2.new(0.5, 0, 0, 23)
-    ImageList.Size = UDim2.new(0.980000019, 0, 0, setup.Height)
-    ImageList.ZIndex = 11
-    ImageList.Image = setup.Assets -- 设置多个图像
-    ImageList.ScaleType = Enum.ScaleType.Fit
-
-    if setup.Tip then
-        WindowLibrary:AddToolTip(ImageBlock , tostring(setup.Tip));
-    end;
-
-    local update = function()
-        if not WindowLibrary.Toggle then
-            return;
-        end
-
-        Library:Tween(ImageBlock,Library.TweenLibrary.SmallEffect,{
-            Size = UDim2.new(0.99000001, 0, 0, Title.AbsoluteSize.Y + 17 + ImageList.AbsoluteSize.Y)
-        })
-    end;
-
-    update()
-
-    MainFrame:GetPropertyChangedSignal('AbsoluteSize'):Connect(update)
-
-    local RootSkid = {};
-
-    function RootSkid:GetValue()
-        return ImageList.Image;
-    end;
-
-    function RootSkid:Value(Setup,height)
-        height = height or setup.Height;
-        ImageList.Image = Setup
-        ImageList.Size = UDim2.new(0.980000019, 0, 0, height)
-
-        update()
-    end;
-
-    function RootSkid:Visible(value)
-        ImageBlock.Visible = value;
-    end;
-
-    return RootSkid;
-end;
-
-return Root;
 	do
 		local Black = Instance.new("Frame")
 
