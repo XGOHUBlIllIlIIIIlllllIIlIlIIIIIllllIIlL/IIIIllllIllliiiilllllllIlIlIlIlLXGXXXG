@@ -1,0 +1,177 @@
+-- 检查是否已经存在名为"xgo Hub Status"的GUI，并删除
+local function removeExistingGui()
+    local existingGui = game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("xgo Hub Status")
+    if existingGui then
+        existingGui:Destroy()
+    end
+end
+
+-- 创建GUI和文本标签
+local function createGui()
+    local a = Instance.new("ScreenGui")
+    a.Name = "xgo Hub Status"
+    a.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    a.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+    local b = Instance.new("TextLabel")
+    b.Parent = a
+    b.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    b.BackgroundTransparency = 1
+    b.BorderSizePixel = 0
+    b.Position = UDim2.new(0.5, -125, 0, -30)
+    b.Size = UDim2.new(0, 300, 0, 30)
+    b.Font = Enum.Font.Fondamento
+    b.TextColor3 = Color3.fromRGB(255, 255, 255)
+    b.TextSize = 11.5
+    b.TextStrokeTransparency = 0.8
+    b.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+    b.TextWrapped = true
+    b.Text = "xgo Hub TIME\n正在协调中，请耐心等待..."
+
+    local c = Instance.new("UIGradient")
+    c.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255))),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(math.random(0, 255), math.random(0, 255), math.random(0, 255)))
+    }
+    c.Rotation = 45
+    c.Parent = b
+
+    local d = Instance.new("UICorner")
+    d.Parent = b
+    d.CornerRadius = UDim.new(0, 8)
+
+    return a, b
+end
+
+-- 更新FPS标签
+local function updateFpsLabel(b)
+    local frameCounter = 0
+    game:GetService("RunService").RenderStepped:Connect(function()
+        frameCounter = frameCounter + 1
+        if frameCounter >= 20 then -- 20帧
+            local fps = math.floor(1 / game:GetService("RunService").RenderStepped:Wait())
+            b.Text = b.Text:gsub("帧率: (%d+)", "帧率: " .. fps)
+            frameCounter = 0
+        end
+    end)
+end
+
+-- FPS, PING, 和时间更新逻辑
+local function updateTimeLabel(b)
+    local startTime = tick()
+    spawn(function()
+        while task.wait(0.1) do
+            pcall(function()
+                local elapsedTime = tick() - startTime
+                local hours = math.floor(elapsedTime / 3600)
+                local minutes = math.floor((elapsedTime % 3600) / 60)
+                local seconds = math.floor(elapsedTime % 60)
+                local gameTime = os.date("%H:%M:%S") -- 获取游戏内的时间
+                local currentHour = tonumber(os.date("%H")) -- 获取当前小时数
+                local timeOfDay
+                if currentHour >= 0 and currentHour < 5 then
+                    timeOfDay = "已经<凌晨>了,还不睡"
+                elseif currentHour >= 5 and currentHour < 12 then
+                    timeOfDay = "哎呀已经<早上>了"
+                elseif currentHour == 12 then
+                    timeOfDay = "<中午>吃饭的时间到喽"
+                elseif currentHour > 12 and currentHour < 18 then
+                    timeOfDay = "<下午>时间没事做˂⁽ˈ₍ ⁾˲₎₌"
+                else
+                    timeOfDay = "已经<晚上>了呀,早点睡"
+                end
+
+                local fps = math.floor(1 / game:GetService("RunService").RenderStepped:Wait())
+                b.Text = "脚本时长: " .. string.format("%02d:%02d:%02d", hours, minutes, seconds) ..
+                    " | 帧率: " .. fps ..
+                    " | PING: " .. game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString() ..
+                    "\n正在玩:  " .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name ..
+                    " | 北京时间: " .. gameTime ..               
+                    "    " .. timeOfDay
+            end)
+        end
+    end)
+end
+
+-- Rainbow effect for TextLabel
+local function rainbowEffect(b)
+    local gradient = b.UIGradient
+    local ts = game:GetService("TweenService")
+    local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+    local offset = {Offset = Vector2.new(1, 0)}
+    local create = ts:Create(gradient, ti, offset)
+    local startingPos = Vector2.new(-1, 0)
+    local list = {}
+    local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
+    local counter = 0
+    local status = "down"
+
+    gradient.Offset = startingPos
+    local function rainbowColors()
+        local sat, val = 255, 255
+        for i = 1, 10 do
+            local hue = i * 17
+            table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255))
+        end
+    end
+    rainbowColors()
+    gradient.Color = s({kpt(0, list[#list]), kpt(0.5, list[#list - 1]), kpt(1, list[#list - 2])})
+    counter = #list
+
+    local function animate()
+        create:Play()
+        create.Completed:Wait()
+        gradient.Offset = startingPos
+        gradient.Rotation = 180
+        if ((counter == (#list - 1)) and (status == "down")) then
+            gradient.Color = s({kpt(0, gradient.Color.Keypoints[1].Value), kpt(0.5, list[#list]), kpt(1, list[1])})
+            counter = 1
+            status = "up"
+        elseif ((counter == #list) and (status == "down")) then
+            gradient.Color = s({kpt(0, gradient.Color.Keypoints[1].Value), kpt(0.5, list[1]), kpt(1, list[2])})
+            counter = 2
+            status = "up"
+        elseif ((counter <= (#list - 2)) and (status == "down")) then
+            gradient.Color = s({
+                kpt(0, gradient.Color.Keypoints[1].Value),
+                kpt(0.5, list[counter + 1]),
+                kpt(1, list[counter + 2])
+            })
+            counter = counter + 2
+            status = "up"
+        end
+        create:Play()
+        create.Completed:Wait()
+        gradient.Offset = startingPos
+        gradient.Rotation = 0
+        if ((counter == (#list - 1)) and (status == "up")) then
+            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, gradient.Color.Keypoints[3].Value)})
+            counter = 1
+            status = "down"
+        elseif ((counter == #list) and (status == "up")) then
+            gradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, gradient.Color.Keypoints[3].Value)})
+            counter = 2
+            status = "down"
+        elseif ((counter <= (#list - 2)) and (status == "up")) then
+            gradient.Color = s({
+                kpt(0, list[counter + 2]),
+                kpt(0.5, list[counter + 1]),
+                kpt(1, gradient.Color.Keypoints[3].Value)
+            })
+            counter = counter + 2
+            status = "down"
+        end
+        animate()
+    end
+    animate()
+end
+local function initGui()
+    removeExistingGui()
+    local a, b = createGui()
+    updateFpsLabel(b)
+    updateTimeLabel(b)
+    rainbowEffect(b)
+end
+initGui()
+wait(0.1)
+loadstring(game:HttpGet("https://github.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/IIIIllllIllliiiilllllllIlIlIlIlLXGXXXG/raw/main/UI.XGOHUB.lua"))()
