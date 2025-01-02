@@ -3721,7 +3721,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect)
+        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect,  rotatingColorEffect)
             local params = {
                 Setup = "分隔符",
                 positionUDim = 0.02,
@@ -3729,6 +3729,7 @@ function Library:Windowxgo(setup)
                 fontType = Enum.Font.Gotham,
                 textColor = Library.Colors.TextColor,
                 colorEffect = false
+                rotatingColorEffect = false
             };
             if Setup ~= nil then params.Setup = Setup end
             if positionUDim ~= nil then params.positionUDim = positionUDim end
@@ -3736,6 +3737,7 @@ function Library:Windowxgo(setup)
             if fontType ~= nil then params.fontType = fontType end
             if textColor ~= nil then params.textColor = textColor end
             if colorEffect ~= nil then params.colorEffect = colorEffect end
+            if rotatingColorEffect ~= nil then params.rotatingColorEffect = rotatingColorEffect end
 
             local BlockLabel = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
@@ -3802,6 +3804,66 @@ function Library:Windowxgo(setup)
 
                 colorChange(TextLabel)
             end
+            
+            if params.rotatingColorEffect then
+                local function rainbowColors()
+                    local sat, val = 1, 1
+                    for i = 1, 10 do
+                        local hue = i / 10
+                        table.insert(list, Color3.fromHSV(hue, sat, val))
+                    end
+                end
+                local list = {}
+                rainbowColors()
+                local gradient = Instance.new("ColorSequence")
+                gradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, list[1]), ColorSequenceKeypoint.new(1, list[#list])})
+
+                local function animate()
+                    local ts = game:GetService("TweenService")
+                    local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+                    local counter = 0
+                    local status = "down"
+
+                    if ((counter == (#list - 1)) and (status == "down")) then
+                        gradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, list[1]), ColorSequenceKeypoint.new(0.5, list[#list]), ColorSequenceKeypoint.new(1, list[1])})
+                        counter = 1
+                        status = "up"
+                    elseif ((counter == #list) and (status == "down")) then
+                        gradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, list[1]), ColorSequenceKeypoint.new(0.5, list[1]), ColorSequenceKeypoint.new(1, list[2])})
+                        counter = 2
+                        status = "up"
+                    elseif ((counter <= (#list - 2)) and (status == "down")) then
+                        gradient.Color = ColorSequence.new({
+                           ColorSequenceKeypoint.new(0, list[counter + 1]),
+                           ColorSequenceKeypoint.new(0.5, list[counter + 2]),
+                           ColorSequenceKeypoint.new(1, list[counter + 3])
+                        })
+                        counter = counter + 1
+                        status = "up"
+                    end
+                    if ((counter == (#list - 1)) and (status == "up")) then
+                        gradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, list[1]), ColorSequenceKeypoint.new(0.5, list[#list]), ColorSequenceKeypoint.new(1, list[1])})
+                        counter = 1
+                        status = "down"
+                    elseif ((counter == #list) and (status == "up")) then
+                        gradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, list[2]), ColorSequenceKeypoint.new(0.5, list[1]), ColorSequenceKeypoint.new(1, list[2])})
+                        counter = 2
+                        status = "down"
+                    elseif ((counter <= (#list - 2)) and (status == "up")) then
+                        gradient.Color = ColorSequence.new({
+                           ColorSequenceKeypoint.new(0, list[counter + 2]),
+                           ColorSequenceKeypoint.new(0.5, list[counter + 1]),
+                           ColorSequenceKeypoint.new(1, list[counter + 2])
+                        })
+                        counter = counter + 1
+                        status = "down"
+                    end
+                    TextLabel.TextColor3 = gradient:Evaluate(0)
+                    ts:Create(TextLabel, ti, {TextColor3 = gradient:Evaluate(0)}):Play()
+                    animate = task.delay(0.1, animate)
+                        end
+                        animate()
+                    end
 
             return RootSkid;
         end;
