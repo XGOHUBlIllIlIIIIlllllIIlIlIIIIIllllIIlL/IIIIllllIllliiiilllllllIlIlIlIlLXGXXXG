@@ -2415,9 +2415,9 @@ function Library:Windowxgo(setup)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
-    local interval = 2
+    local interval = 2.5
     local timeSinceLastChange = 0
---  时间自己设置，自己乘以自己设置的时间就行了
+--  时间自己设置，自己乘以自己设置的时间就行了 [ 3/10 = 2倍速  2/10 = 1倍速 <5正常率10中等倍率15超快倍率等..> ]
     game:GetService("RunService").Heartbeat:Connect(function()
         timeSinceLastChange = timeSinceLastChange + 1
         if timeSinceLastChange >= interval * 10 then
@@ -5801,22 +5801,22 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
-                KeybindBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                KeybindBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock() -- 初始调用以设置正确的大小
+            UpdateBlock()
 
 			local RootSkid = {};
 			
@@ -6054,20 +6054,20 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
-                DropdownBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                DropdownBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
             UpdateBlock() -- 初始调用以设置正确的大小
 
