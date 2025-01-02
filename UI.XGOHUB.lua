@@ -1394,7 +1394,7 @@ Library.Colors = {
         Hightlight = Color3.fromRGB(255, 162, 0),
 		Default = Color3.fromRGB(13, 11, 10),
 		Disable = Color3.fromRGB(188, 156, 156),
-		TextColor = Color3.fromRGB(255, 242, 245),
+		TextColor = Color3.fromRGB(255, 0, 0),
 	}
                   end;
     function Library.Theme:Christmas()
@@ -3263,6 +3263,7 @@ function Library:Windowxgo(setup)
 			end;
 		end;
 		do
+-----// 水印 ---------------------------------------------------------------------------------------------------------------------------------------------
 			local Watermark = Instance.new("Frame")
 			local UIListLayout = Instance.new("UIListLayout")
 
