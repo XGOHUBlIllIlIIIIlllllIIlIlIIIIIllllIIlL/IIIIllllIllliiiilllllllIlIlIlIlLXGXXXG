@@ -3742,64 +3742,78 @@ function WindowLibrary:XG(TabSetup)
     Icon.Image = Library.Icons[TabSetup.Icon] or Library.Icons2["lucide-"..TabSetup.Icon] or TabSetup.Icon;
     Icon.ImageTransparency = 0.150
 
-    Title.Name = "Title"
-    Title.Parent = TFrame
-    Title.AnchorPoint = Vector2.new(0, 0.5)
-    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Title.BackgroundTransparency = 1.000
-    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Title.BorderSizePixel = 0
-    Title.Position = UDim2.new(0.665000021, 0, 0.5, 0)
-    Title.Size = UDim2.new(0.899999976, 0, 0.400000006, 0)
-    Title.ZIndex = 6
-    Title.Font = Enum.Font.Gotham
-    Title.Text = TabSetup.Title
-    Title.TextColor3 = Library.Colors.TextColor
-    Title.TextScaled = true
-    Title.TextSize = 14.000
-    Title.TextStrokeColor3 = Library.Colors.TextColor
-    Title.TextStrokeTransparency = 0.950
-    Title.TextWrapped = true
-    Title.TextXAlignment = Enum.TextXAlignment.Left
-    Title.RichText = true;
+-- Title的设置
+Title.Name = "Title"
+Title.Parent = TFrame
+Title.AnchorPoint = Vector2.new(0, 0.5)
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.05, 0, 0.5, 0) -- 调整Title的位置，使其靠左
+Title.Size = UDim2.new(0.6, 0, 1, 0) -- 调整Title的大小
+Title.ZIndex = 6
+Title.Font = Enum.Font.Gotham
+Title.Text = TabSetup.Title
+Title.TextColor3 = Library.Colors.TextColor
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextStrokeColor3 = Library.Colors.TextColor
+Title.TextStrokeTransparency = 0.950
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.RichText = true;
 
-    Separator.Name = "Separator"
-    Separator.Parent = TFrame
-    Separator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Separator.BackgroundTransparency = 1.000
-    Separator.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Separator.BorderSizePixel = 0
-    Separator.Position = UDim2.new(0.7200000286, 0, 0.5, 0) -- 紧挨着Title的右侧
-    Separator.Size = UDim2.new(0.0500000007, 0, 0.400000006, 0)
-    Separator.ZIndex = 6
-    Separator.Font = Enum.Font.Gotham
-    Separator.Text = "-"
-    Separator.TextColor3 = Library.Colors.TextColor
-    Separator.TextScaled = true
-    Separator.TextSize = 14.000
-    Separator.TextStrokeColor3 = Library.Colors.TextColor
-    Separator.TextStrokeTransparency = 0.950
-    Separator.TextWrapped = true
-    Separator.TextXAlignment = Enum.TextXAlignment.Left
-    Separator.RichText = true;
+-- Separator的设置（初始时不可见）
+Separator.Name = "Separator"
+Separator.Parent = TFrame
+Separator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Separator.BackgroundTransparency = 1.000
+Separator.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Separator.BorderSizePixel = 0
+Separator.Position = UDim2.new(0.665, 0, 0.5, 0) -- 紧挨着Title的右侧
+Separator.Size = UDim2.new(0.05, 0, 1, 0) -- 调整Separator的大小
+Separator.ZIndex = 6
+Separator.Font = Enum.Font.Gotham
+Separator.Text = "-" -- 短横线
+Separator.TextColor3 = Color3.fromRGB(255, 192, 203) -- 设置字体颜色为白色
+Separator.TextScaled = true
+Separator.TextSize = 14.000
+Separator.TextStrokeColor3 = Color3.fromRGB(255, 255, 255) -- 设置描边颜色为白色
+Separator.TextStrokeTransparency = 1.000 -- 初始时完全透明
+Separator.TextWrapped = true
+Separator.TextXAlignment = Enum.TextXAlignment.Center
 
-    Description.Name = "Description"
-    Description.Parent = TFrame
-    Description.AnchorPoint = Vector2.new(0, 0.5)
-    Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Description.BackgroundTransparency = 1.000
-    Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Description.BorderSizePixel = 0
-    Description.Position = UDim2.new(0.7750000358, 0, 0.699999988, 0) -- 将Description的位置调整到分隔符的右侧，并保持一定的距离
-    Description.Size = UDim2.new(1, 0, 0.300000012, 0)
-    Description.Font = Enum.Font.GothamBold
-    Description.Text = TabSetup.Description
-    Description.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Description.TextScaled = true
-    Description.TextSize = 14.000
-    Description.TextTransparency = 0.500
-    Description.TextWrapped = true
-    Description.TextXAlignment = Enum.TextXAlignment.Left
+-- Description的设置（初始时不可见）
+Description.Name = "Description"
+Description.Parent = TFrame
+Description.AnchorPoint = Vector2.new(0, 0.5)
+Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Description.BackgroundTransparency = 1.000
+Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Description.BorderSizePixel = 0
+Description.Position = UDim2.new(0.72, 0, 0.5, 0) -- 紧挨着Separator的右侧
+Description.Size = UDim2.new(0.25, 0, 1, 0) -- 调整Description的大小
+Description.ZIndex = 6
+Description.Font = Enum.Font.GothamBold
+Description.Text = TabSetup.Description
+Description.TextColor3 = Color3.fromRGB(255, 255, 255) -- 设置字体颜色为白色
+Description.TextScaled = true
+Description.TextSize = 14.000
+Description.TextTransparency = 1.000 -- 初始时完全透明
+Description.TextWrapped = true
+Description.TextXAlignment = Enum.TextXAlignment.Left
+
+-- 鼠标悬停事件
+Title.MouseEnter:Connect(function()
+    Description.TextTransparency = 0.000 -- 显示Description
+    Separator.TextStrokeTransparency = 0.000 -- 显示Separator
+end)
+
+Title.MouseLeave:Connect(function()
+    Description.TextTransparency = 1.000 -- 隐藏Description
+    Separator.TextStrokeTransparency = 1.000 -- 隐藏Separator
+end)
 
     Arrow.Name = "Arrow"
     Arrow.Parent = TFrame
