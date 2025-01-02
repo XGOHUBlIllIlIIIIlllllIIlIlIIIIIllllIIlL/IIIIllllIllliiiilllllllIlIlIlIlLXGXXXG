@@ -2800,7 +2800,8 @@ function Library:Windowxgo(setup)
 	WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	WindowControl.BorderSizePixel = 0
 	WindowControl.Position = UDim2.new(0.99000001, 0, 0.5, 0)
-	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
+--	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
+	WindowControl.Size = UDim2.new(0.99000001, 0, 0.5, 0)
 
 	UIListLayout.Parent = WindowControl
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
