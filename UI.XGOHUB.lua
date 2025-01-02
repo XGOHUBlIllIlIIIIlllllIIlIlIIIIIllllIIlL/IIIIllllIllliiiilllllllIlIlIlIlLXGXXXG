@@ -2365,72 +2365,110 @@ function Library:Windowxgo(setup)
 	
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
-local BackgroundImage = Instance.new("ImageLabel")
-
-local images = {
-    "rbxassetid://86451637909512", -- 图片1
-    "rbxassetid://120611289434746", -- 图片2
-    "rbxassetid://128885038925647", -- 图片3
-    "rbxassetid://96996396016819", -- 图片4
-}
-local currentImageIndex = 1
-
--- 切换图片的函数
-local function changeImage()
-    if images[currentImageIndex] then
-        BackgroundImage.Image = images[currentImageIndex]
-        BackgroundImage.ImageTransparency = 0
-    else
-        warn("Invalid image ID at index " .. currentImageIndex)
-    end
-end
+local VideoFrame = Instance.new("VideoFrame")
+local VideoPlayer = Instance.new("VideoPlayer")
+local DropShadow = Instance.new("ImageLabel")
+local Ico = Instance.new("ImageLabel")
 
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ResetOnSpawn = false
 ScreenGui.IgnoreGuiInset = false
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+game:GetService("ReplicatedStorage").ProtectGui(ScreenGui);
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainFrame.BackgroundColor3 = game:GetService("ReplicatedStorage").Colors.Default
 MainFrame.BackgroundTransparency = 0.250
 MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.ClipsDescendants = true
 MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-MainFrame.Size = UDim2.fromScale(0, 0)
+MainFrame.Size = UDim2.fromScale(0,0);
 
-BackgroundImage.Parent = MainFrame
-BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-BackgroundImage.BackgroundTransparency = 1
-BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-BackgroundImage.ScaleType = Enum.ScaleType.Stretch
+VideoFrame.Parent = MainFrame
+VideoFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+VideoFrame.BackgroundTransparency = 1
+VideoFrame.Size = UDim2.new(1, 0, 1, 0)
 
--- 设置自动切换图片的时间间隔（例如，每3秒切换一次）
-local interval = 3
-local timeSinceLastChange = 0
+VideoPlayer.Parent = VideoFrame
+VideoPlayer.AutoPlayOnLoad = true
+VideoPlayer.Looped = true
+VideoPlayer.Video = "https://github.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/IIIIllllIllliiiilllllllIlIlIlIlLXGXXXG/raw/main/R1YK.123XGO.HUB.mp4"
 
--- 使用RunService.Heartbeat来周期性地调用changeImage函数
-game:GetService("RunService").Heartbeat:Connect(function()
-    timeSinceLastChange = timeSinceLastChange + 1
-    if timeSinceLastChange >= interval then
-        changeImage()
-        timeSinceLastChange = 0
-        currentImageIndex = currentImageIndex + 1
-        if currentImageIndex > #images then
-            currentImageIndex = 1
-        end
-    end
+spawn(function()
+	while MainFrame do task.wait(1)
+		pcall(function()
+			local userSettings = game:GetService("UserSettings"):GetService("UserGameSettings")
+			local qualityLevel = userSettings.SavedQualityLevel.Value
+
+			if qualityLevel < 8 then
+				game:GetService("ReplicatedStorage"):Tween(MainFrame , game:GetService("ReplicatedStorage").TweenLibrary.SmallEffect , {
+					BackgroundTransparency = 0.075
+				})
+			else
+				game:GetService("ReplicatedStorage"):Tween(MainFrame , game:GetService("ReplicatedStorage").TweenLibrary.SmallEffect , {
+					BackgroundTransparency = 0.15
+				})
+
+			end;
+		end);
+	end;
 end)
+
+local BlurEle = game:GetService("ReplicatedStorage").UIBlur.new(MainFrame,true);
+
+DropShadow.Name = "DropShadow"
+DropShadow.Parent = MainFrame
+DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DropShadow.BackgroundTransparency = 1.000
+DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
+DropShadow.Position = UDim2.new(0, -5, 0, -5)
+DropShadow.Rotation = 0.010
+DropShadow.Size = UDim2.new(1, 10, 1, 10)
+DropShadow.ZIndex = -5
+DropShadow.Image = "rbxassetid://297694300"
+DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+DropShadow.ImageTransparency = 0.500
+DropShadow.ScaleType = Enum.ScaleType.Slice
+DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
+DropShadow.SliceScale = 0.050
+
+Ico.Name = "Ico"
+Ico.Parent = MainFrame
+Ico.AnchorPoint = Vector2.new(0.5, 0.5)
+Ico.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Ico.BackgroundTransparency = 1.000
+Ico.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Ico.BorderSizePixel = 0
+Ico.Position = UDim2.new(0.5, 0, 0.5, 0)
+Ico.Size = UDim2.new(0.600000024, 0, 0.600000024, 0)
+Ico.SizeConstraint = Enum.SizeConstraint.RelativeYY
+Ico.Image = setup.Logo
+Ico.ImageTransparency = 1.000
+
+game:GetService("ReplicatedStorage"):Tween(MainFrame , game:GetService("ReplicatedStorage").TweenLibrary.SmallEffect,{Size = game:GetService("ReplicatedStorage").SizeLibrary.Loading})
+game:GetService("ReplicatedStorage"):Tween(Ico , game:GetService("ReplicatedStorage").TweenLibrary.SmallEffect,{ImageTransparency = 0.25})
+
+if setup.KeySystem then
+	setup.KeySystemInfo.Enabled = true;
+	setup.KeySystemInfo.Finished = Instance.new('BindableEvent');
+
+	task.wait(1)
+
+	task.delay(0.1,function()
+		game:GetService("ReplicatedStorage"):Tween(Ico , game:GetService("ReplicatedStorage").TweenLibrary.SmallEffect,{ImageTransparency = 1})
+	end)
+
+	game:GetService("ReplicatedStorage"):Tween(MainFrame , game:GetService("ReplicatedStorage").TweenLibrary.WindowChanged,{Size = game:GetService("ReplicatedStorage").SizeLibrary.Auth})
+
+	task.wait(1);
 	
---	local ScreenGui = Instance.new("ScreenGui")
---	local MainFrame = Instance.new("Frame")
-	local BackgroundImage = Instance.new("ImageLabel")
-	local DropShadow = Instance.new("ImageLabel")
-	local Ico = Instance.new("ImageLabel")
+--	local BackgroundImage = Instance.new("ImageLabel")
+--	local DropShadow = Instance.new("ImageLabel")
+--	local Ico = Instance.new("ImageLabel")
 --[[	
 
 	ScreenGui.Parent = Library.CoreGui
@@ -2457,7 +2495,7 @@ end)
     BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
     BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.ScaleType = Enum.ScaleType.Stretch ]]
+    BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
 	spawn(function()
 		while MainFrame do task.wait(1)
@@ -2525,7 +2563,7 @@ end)
 
 		Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = Library.SizeLibrary.Auth})
 
-		task.wait(1);
+		task.wait(1);]]
 ------ // 卡密系统设置    ----------------------------------------------------------------------------------------
 		local AuthFunction = Instance.new("Frame")
 		local Title = Instance.new("TextLabel")
