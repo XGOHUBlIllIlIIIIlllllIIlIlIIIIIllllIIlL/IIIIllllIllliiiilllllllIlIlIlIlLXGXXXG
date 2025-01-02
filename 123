@@ -173,5 +173,3 @@ local function initGui()
     rainbowEffect(b)
 end
 initGui()
-wait(0.1)
-loadstring(game:HttpGet("https://github.com/XGOHUBlIllIlIIIIlllllIIlIlIIIIIllllIIlL/IIIIllllIllliiiilllllllIlIlIlIlLXGXXXG/raw/main/UI.XGOHUB.lua"))()
