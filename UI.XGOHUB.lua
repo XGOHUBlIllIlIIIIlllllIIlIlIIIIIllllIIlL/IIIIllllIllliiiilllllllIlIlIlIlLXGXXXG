@@ -2707,8 +2707,8 @@ function Library:Windowxgo(setup)
 
 	Library:Tween(MainFrame , Library.TweenLibrary.WindowChanged,{Size = setup.Size})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 1})
------- //     ----------------------------------------------------------------------------------------
-
+	
+------ // 最小化设置    ----------------------------------------------------------------------------------------
 	local WindowLibrary = {};
 	local OpenDelay = tick();
 
@@ -2838,7 +2838,7 @@ function Library:Windowxgo(setup)
 	UICorner_2.Parent = MaxisizweButton
 
 	UIStroke_2.Parent = MaxisizweButton
-
+--[[
 	CloseButton.Name = "CloseButton"
 	CloseButton.Parent = WindowControl
 	CloseButton.BackgroundColor3 = Color3.fromRGB(255, 88, 91)
@@ -2848,6 +2848,18 @@ function Library:Windowxgo(setup)
 	CloseButton.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	CloseButton.ZIndex = 10;
 	CloseButton.HoverImage = "rbxassetid://9886659671";
+--]]
+
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = WindowControl
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 88, 91)
+CloseButton.BackgroundTransparency = 1
+CloseButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+CloseButton.BorderSizePixel = 0
+CloseButton.Size = UDim2.new(0, 20, 0, 20)
+CloseButton.ZIndex = 10
+CloseButton.Image = "rbxassetid://9886659671"
+CloseButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
 
 	task.delay(1,function()
 		Library:Tween(MinimizeButton , TweenInfo.new(0.5,Enum.EasingStyle.Quint),{
@@ -3732,8 +3744,8 @@ function Library:Windowxgo(setup)
 
             local RootSkid = {}
 
-            function RootSkid:Set(XG0HubText)
-                TextLabel.Text = XG0HubText;
+            function RootSkid:Set(XGoHubText)
+                TextLabel.Text = XGoHubText;
             end;
 
             function RootSkid:SetVisible(value)
@@ -4374,7 +4386,7 @@ return ColorPickerSettings
         function Root:Toggle(setup)
 			setup = setup or {};
 
-			setup.Title = setup.Title or "Toggle"
+			setup.Title = setup.Title or "切换按钮"
 			setup.Content = setup.Content or "";
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
