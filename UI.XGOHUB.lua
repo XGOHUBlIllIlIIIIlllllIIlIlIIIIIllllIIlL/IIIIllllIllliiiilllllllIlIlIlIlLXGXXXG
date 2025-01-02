@@ -2363,121 +2363,68 @@ function Library:Windowxgo(setup)
 
 	end
 	
-local ScreenGui = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local BackgroundImage = Instance.new("ImageLabel")
-
-local images = {
-    "rbxassetid://86451637909512", -- 图片1
-    "rbxassetid://120611289434746", -- 图片2
-    "rbxassetid://128885038925647", -- 图片3
-    "rbxassetid://96996396016819", -- 图片4
-}
-local currentImageIndex = 1
-
--- 切换图片的函数
-local function changeImage()
-    if images[currentImageIndex] then
-        BackgroundImage.Image = images[currentImageIndex]
-        BackgroundImage.ImageTransparency = 0
-    else
-        warn("Invalid image ID at index " .. currentImageIndex)
-    end
-end
-
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ResetOnSpawn = false
-ScreenGui.IgnoreGuiInset = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = ScreenGui
-MainFrame.Active = true
-MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-MainFrame.BackgroundTransparency = 0.250
-MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-MainFrame.BorderSizePixel = 0
-MainFrame.ClipsDescendants = true
-MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-MainFrame.Size = UDim2.fromScale(0, 0)
-
-BackgroundImage.Parent = MainFrame
-BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-BackgroundImage.BackgroundTransparency = 1
-BackgroundImage.Size = UDim2.new(1, 0, 1, 1)
-BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-BackgroundImage.ScaleType = Enum.ScaleType.Stretch
-
--- 设置自动切换图片的时间间隔（例如，每3秒切换一次）
-local interval = 3
-local timeSinceLastChange = 0
-
--- 使用RunService.Heartbeat来周期性地调用changeImage函数
-game:GetService("RunService").Heartbeat:Connect(function()
-    timeSinceLastChange = timeSinceLastChange + 1
-    if timeSinceLastChange >= interval * 10 then
-        changeImage()
-        timeSinceLastChange = 0
-        currentImageIndex = currentImageIndex + 1
-        if currentImageIndex > #images then
-            currentImageIndex = 1
-        end
-    end
-end)
-	
---	local ScreenGui = Instance.new("ScreenGui")
---	local MainFrame = Instance.new("Frame")
-	local BackgroundImage = Instance.new("ImageLabel")
+    local ScreenGui = Instance.new("ScreenGui")
+    local MainFrame = Instance.new("Frame")
+    local BackgroundImage = Instance.new("ImageLabel")
+    local BackgroundImage = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
---[[	
 
-	ScreenGui.Parent = Library.CoreGui
-	ScreenGui.ResetOnSpawn = false
-	ScreenGui.IgnoreGuiInset = false
-	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-	Library.ProtectGui(ScreenGui);
-	
-	MainFrame.Name = "MainFrame"
-	MainFrame.Parent = ScreenGui
-	MainFrame.Active = true
+    local images = {
+        "rbxassetid://86451637909512", -- 图片1
+        "rbxassetid://120611289434746", -- 图片2
+        "rbxassetid://128885038925647", -- 图片3
+        "rbxassetid://96996396016819", -- 图片4
+    }
+    local currentImageIndex = 1
+
+    local function changeImage()
+        if images[currentImageIndex] then
+            BackgroundImage.Image = images[currentImageIndex]
+            BackgroundImage.ImageTransparency = 0
+        else
+            warn("\73\110\118\97\108\105\100\32\105\109\97\103\101\32\73\68\32\97\116\32\105\110\100\101\120\32" .. currentImageIndex)
+        end
+    end
+
+    ScreenGui.Parent = game.CoreGui
+    ScreenGui.ResetOnSpawn = false
+    ScreenGui.IgnoreGuiInset = false
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
+
+    MainFrame.Name = "MainFrame"
+    MainFrame.Parent = ScreenGui
+    MainFrame.Active = true
     MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-	MainFrame.BackgroundColor3 = Library.Colors.Default
-	MainFrame.BackgroundTransparency = 0.250
-	MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	MainFrame.BorderSizePixel = 0
-	MainFrame.ClipsDescendants = true
-	MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-	MainFrame.Size = UDim2.fromScale(0,0);
-	
-	BackgroundImage.Parent = MainFrame
+    MainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    MainFrame.BackgroundTransparency = 0.250
+    MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    MainFrame.BorderSizePixel = 0
+    MainFrame.ClipsDescendants = true
+    MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    MainFrame.Size = UDim2.fromScale(0, 0)
+
+    BackgroundImage.Parent = MainFrame
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.BackgroundTransparency = 1
-    BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-    BackgroundImage.Image = "rbxassetid://86451637909512" --7733920644
+    BackgroundImage.Size = UDim2.new(1, 0, 1, 1)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
-    BackgroundImage.ScaleType = Enum.ScaleType.Stretch ]]
+    BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
-	spawn(function()
-		while MainFrame do task.wait(1)
-			pcall(function()
-				local userSettings = UserSettings():GetService("UserGameSettings")
-				local qualityLevel = userSettings.SavedQualityLevel.Value
+    local interval = 3
+    local timeSinceLastChange = 0
 
-				if qualityLevel < 8 then
-					Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect , {
-						BackgroundTransparency = 0.075
-					})
-				else
-					Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect , {
-						BackgroundTransparency = 0.15
-					})
-
-				end;
-			end);
-		end;
-	end)
+    game:GetService("RunService").Heartbeat:Connect(function()
+        timeSinceLastChange = timeSinceLastChange + 1
+        if timeSinceLastChange >= interval * 10 then
+            changeImage()
+            timeSinceLastChange = 0
+            currentImageIndex = currentImageIndex + 1
+            if currentImageIndex > #images then
+                currentImageIndex = 1
+            end
+        end
+    end)
 
 	local BlurEle = Library.UIBlur.new(MainFrame,true);
 
@@ -2748,14 +2695,14 @@ end)
 		
         CloseButton.Name = "CloseButton"
         CloseButton.Parent = AuthFunction
-        CloseButton.BackgroundColor3 = Color3.new(0, 0, 0) -- 透明背景
-        CloseButton.BackgroundTransparency = 1 -- 完全透明
-        CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0) -- 按钮大小
-        CloseButton.Position = UDim2.new(0.9, 0, 0, 0) -- 右上角位置
-        CloseButton.Font = Enum.Font.GothamSemibold -- 字体
-        CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255) -- 白色文字
-        CloseButton.Text = "X" -- 按钮上的文字
-        CloseButton.TextSize = 14 -- 文字大小
+        CloseButton.BackgroundColor3 = Color3.new(0, 0, 0) 
+        CloseButton.BackgroundTransparency = 1 
+        CloseButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+        CloseButton.Position = UDim2.new(0.9, 0, 0, 0)
+        CloseButton.Font = Enum.Font.GothamSemibold
+        CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        CloseButton.Text = "X"
+        CloseButton.TextSize = 14
         CloseButton.MouseButton1Click:Connect(function()
             Library:Tween(MainFrame, Library.TweenLibrary.Normal, {Size = UDim2.fromScale(0,0)})
             task.wait(0.5)
@@ -2771,11 +2718,11 @@ end)
 		LButton.MouseButton1Click:Connect(function()
 		    if setup.KeySystemInfo.AntiSpam then return end;
 		    setup.KeySystemInfo.AntiSpam = true;
-		    -- 检查玩家是否输入了卡密
+		    
 		    if TextBox.Text == "" then
 		        TextBox.PlaceholderText = "你没有填入卡密"
-		        task.wait(1.5) -- 等待2.5秒
-		        TextBox.PlaceholderText = "请输入卡密" -- 更改提示信息
+		        task.wait(1.5)
+		        TextBox.PlaceholderText = "请输入卡密"
 		    else
 		        local verify = setup.KeySystemInfo.OnLogin(TextBox.Text);
 		        if verify then
@@ -2784,12 +2731,11 @@ end)
 		            CloseButton.Visible = false;
 		            return TextBox.Text;
 		        else
-		            -- 玩家输入错误时的处理
-		            task.wait(0.1) -- 等待0.1秒
-		            TextBox.Text = "" -- 清除玩家输入
-		            TextBox.PlaceholderText = "你输入的卡密错误" -- 显示错误信息
-		            task.wait(1.5) -- 清除错误信息
-		            TextBox.PlaceholderText = "请重新输入卡密" -- 更改提示信息
+		            task.wait(0.1)
+		            TextBox.Text = ""
+		            TextBox.PlaceholderText = "你输入的卡密错误"
+		            task.wait(1.5)
+		            TextBox.PlaceholderText = "请重新输入卡密"
 		        end;
 		    end;
 		    setup.KeySystemInfo.AntiSpam = false;
@@ -4419,22 +4365,22 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
-                ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                ButtonBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock() -- 初始调用以设置正确的大小
+            UpdateBlock()
     
             local RootSkid = {};
     
@@ -4471,8 +4417,7 @@ return ColorPickerSettings
 			setup.Content = setup.Content or "";
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
-
-			-- 创建UI元素
+			
 		    local ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
 		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
@@ -4904,17 +4849,17 @@ return ColorPickerSettings
 			setup.Default = setup.Default or false;
 			setup.Callback = setup.Callback or function() end;
 
-		    local A2ToggleBlock = Instance.new("Frame") -- 切换按钮的外框
-		    local DropShadow = Instance.new("ImageLabel") -- 用于创建阴影效果的图像标签
-		    local UIStroke = Instance.new("UIStroke") -- UI边框
-		    local TextLabel = Instance.new("TextLabel") -- 文本标签
+		    local A2ToggleBlock = Instance.new("Frame")
+		    local DropShadow = Instance.new("ImageLabel") 
+		    local UIStroke = Instance.new("UIStroke") 
+		    local TextLabel = Instance.new("TextLabel") 
 		    local Content = Instance.new("TextLabel")
-		    local Block = Instance.new("Frame") -- 滑块的背景框
-		    local UIStroke_2 = Instance.new("UIStroke") -- 滑块背景框的边框
-		    local UICorner = Instance.new("UICorner") -- 用于创建圆角效果
-		    local ValueBlock = Instance.new("Frame") -- 滑块的值框
-		    local UICorner_2 = Instance.new("UICorner") -- 滑块值框的圆角效果
-		    local Button = Instance.new("TextButton") -- 按钮
+		    local Block = Instance.new("Frame")
+		    local UIStroke_2 = Instance.new("UIStroke")
+		    local UICorner = Instance.new("UICorner")
+		    local ValueBlock = Instance.new("Frame")
+		    local UICorner_2 = Instance.new("UICorner")
+		    local Button = Instance.new("TextButton")
 		    local StateImage = Instance.new("ImageLabel")
 		    
 			A2ToggleBlock.Name = "A2ToggleBlock"
@@ -5005,20 +4950,18 @@ return ColorPickerSettings
 			UICorner.CornerRadius = UDim.new(5, 100)
 			UICorner.Parent = Block
 			
-           -- 设置ValueBlock的属性
             ValueBlock.Name = "ValueBlock"
             ValueBlock.Parent = Block
             ValueBlock.AnchorPoint = Vector2.new(0.5, 0.5)
             ValueBlock.BackgroundColor3 = Library.Colors.Hightlight
-            ValueBlock.BackgroundTransparency = 1.000 -- 使背景透明
+            ValueBlock.BackgroundTransparency = 1.000 
             ValueBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
             ValueBlock.BorderSizePixel = 0
             ValueBlock.Position = UDim2.new(0.75, 0, 0.5, 0)
             ValueBlock.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
             ValueBlock.SizeConstraint = Enum.SizeConstraint.RelativeYY
             ValueBlock.ZIndex = 15
-
-            -- 添加ImageLabel用于显示开关状态的图片
+            
             StateImage.Name = "StateImage"
             StateImage.Parent = ValueBlock
             StateImage.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -5052,19 +4995,16 @@ return ColorPickerSettings
 				WindowLibrary:AddToolTip(A2ToggleBlock , tostring(setup.Tip));
 			end;
 			
-            -- 定义UILib函数，用于更新滑块的状态
             local UILib = function(value)
                 if value then
                     Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
                         Position = UDim2.new(0.75, 0, 0.5, 0),
                     })
-                    -- 更新图片为开启状态的图片
                     StateImage.Image = "rbxassetid://88666635012556"
                 else
                     Library:Tween(ValueBlock,Library.TweenLibrary.SmallEffect,{
                         Position = UDim2.new(0.25, 0, 0.5, 0),
                     })
-                    -- 更新图片为关闭状态的图片
                     StateImage.Image = "rbxassetid://123698784885744"
                 end;
                 ValueBlock.BackgroundColor3 = value and Library.Colors.Hightlight or Library.Colors.Disable
@@ -5085,17 +5025,17 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10 
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14)
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0)
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
                 A2ToggleBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
@@ -5302,22 +5242,22 @@ return ColorPickerSettings
                 local MainSize = Library:GetTextSize(setup.Title, TitleSize, TextLabel.Font)
                 local ContentSize = setup.Content:len() > 0 and Library:GetTextSize(setup.Content, Content.TextSize, Content.Font) or Vector2.new(0, 0)
         
-                local TotalHeight = MainSize.Y + 10 -- 标题高度加上一些间距
+                local TotalHeight = MainSize.Y + 10 
                 if setup.Content:len() > 0 then
                     Content.Visible = true
-                    TotalHeight = TotalHeight + ContentSize.Y + 5 -- 如果有描述，则增加描述的高度和一些间距
-                    TextLabel.Position = UDim2.new(0, 5, 0, 12) -- 默认位置
-                    TextLabel.Size = UDim2.new(1, 0, 0, 14) -- 默认大小
+                    TotalHeight = TotalHeight + ContentSize.Y + 5 
+                    TextLabel.Position = UDim2.new(0, 5, 0, 12)
+                    TextLabel.Size = UDim2.new(1, 0, 0, 14) 
                 else
                     Content.Visible = false
-                    TotalHeight = TotalHeight + 15.20000000000001 -- 如果没有描述，增加额外的高度
-                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) -- 调整位置
-                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0) -- 调整大小
+                    TotalHeight = TotalHeight + 15.20000000000001 
+                    TextLabel.Position = UDim2.new(0.0199999996, 0, 0.5, 0) 
+                    TextLabel.Size = UDim2.new(1, 0, 0.400000006, 0)
                 end
 
-                TextBoxBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight) -- 更新按钮框架的高度
+                TextBoxBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock() -- 初始调用以设置正确的大小
+            UpdateBlock()
 
 			local RootSkid = {};
 			
@@ -5366,11 +5306,11 @@ return ColorPickerSettings
 			local Block = Instance.new("Frame")
 			local UIStroke_2 = Instance.new("UIStroke")
 			local UICorner = Instance.new("UICorner")
-			local Move = Instance.new("ImageLabel") -- 将Frame改为ImageLabel
+			local Move = Instance.new("ImageLabel")
 			local UICorner_2 = Instance.new("UICorner")
 			local UIStroke_3 = Instance.new("UIStroke")
 			local ValueText = Instance.new("TextLabel")
-			local InputBox = Instance.new("TextBox") -- 添加输入框
+			local InputBox = Instance.new("TextBox")
 
 			SliderBlock.Name = "SliderBlock"
 			SliderBlock.Parent = ScrollingFrame
@@ -5464,8 +5404,8 @@ return ColorPickerSettings
 			Move.Parent = Block
 			Move.AnchorPoint = Vector2.new(0.5, 0.5)
 
-			Move.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- 将背景颜色设置为白色
-			Move.BackgroundTransparency = 1 -- 设置背景透明度为1，即完全透明
+			Move.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Move.BackgroundTransparency = 1 
 			Move.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Move.BorderSizePixel = 0
 			Move.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -5473,11 +5413,11 @@ return ColorPickerSettings
 			Move.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Move.ZIndex = 15
 			Move.Image = "rbxassetid://96996396016819"
-			Move.ImageColor3 = Color3.fromRGB(255, 255, 255) -- 颜色
-			Move.ImageTransparency = 0 -- 设置不透明
+			Move.ImageColor3 = Color3.fromRGB(255, 255, 255)
+			Move.ImageTransparency = 0 
 			Move.ScaleType = Enum.ScaleType.Slice
-			Move.SliceCenter = Rect.new(50, 50, 50, 50) -- 根据图片调整切片中心
-			Move.SliceScale = 1.0 -- 设置切片缩放
+			Move.SliceCenter = Rect.new(50, 50, 50, 50)
+			Move.SliceScale = 1.0 
 
 			UICorner_2.CornerRadius = UDim.new(1, 0)
 			UICorner_2.Parent = Move
@@ -5512,7 +5452,7 @@ return ColorPickerSettings
     	    InputBox.BackgroundTransparency = 1.000
     	    InputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
     	    InputBox.BorderSizePixel = 0
-    	    InputBox.Position = UDim2.new(0.25, 0, 0.4, 0) -- 输入框放置在滑块左侧
+    	    InputBox.Position = UDim2.new(0.25, 0, 0.4, 0)
     	    InputBox.Size = UDim2.new(0.180000007, 0, 0.400000006, 0)
     	    InputBox.ZIndex = 11
     	    InputBox.Font = Enum.Font.Gotham
@@ -5523,7 +5463,7 @@ return ColorPickerSettings
     	    InputBox.TextStrokeTransparency = 0.950
     	    InputBox.TextWrapped = true
     	    InputBox.TextXAlignment = Enum.TextXAlignment.Right
-    	    InputBox.Text = tostring(setup.Default) -- 设置初始值
+    	    InputBox.Text = tostring(setup.Default)
 
 			local IsHold = false
 			local RoundNum = setup.Round;
@@ -5566,9 +5506,9 @@ return ColorPickerSettings
 			    });
 
 			    ValueText.Text = tostring(Value)
-			    InputBox.Text = tostring(Value) -- 更新输入框的值
+			    InputBox.Text = tostring(Value)
 
-			    currentSliderValue = Value -- 更新当前滑块的值
+			    currentSliderValue = Value 
 			    setup.Callback(Value)
 			end;
 
