@@ -2413,8 +2413,8 @@ BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 local interval = 3
 local timeSinceLastChange = 0
 
--- 使用RunService.RenderStepped来周期性地调用changeImage函数
-game:GetService("RunService").RenderStepped:Connect(function()
+-- 使用RunService.Heartbeat来周期性地调用changeImage函数
+game:GetService("RunService").Heartbeat:Connect(function()
     timeSinceLastChange = timeSinceLastChange + 1
     if timeSinceLastChange >= interval then
         changeImage()
