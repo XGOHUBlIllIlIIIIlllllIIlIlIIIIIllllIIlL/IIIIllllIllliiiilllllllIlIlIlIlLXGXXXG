@@ -7233,10 +7233,12 @@ return ColorPickerSettings
 		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
 			if dragToggle then
 				updateInput(input);
-			end;
-		end;
-	end)
-    
+    			end;
+    		end;
+    	end)
+    	return WindowLibrary;
+    end;
+return Library;
     local function removeExistingGui()
         local existingGui = game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("xgo Hub Status")
         if existingGui then
@@ -7398,15 +7400,12 @@ return ColorPickerSettings
             animate()
             end
             animate()
-        end
-    	return WindowLibrary;
-    end;
-        local function initGui()
-            removeExistingGui()
-            local a, b = createGui()
-            updateFpsLabel(b)
-            updateTimeLabel(b)
-            rainbowEffect(b)
-        end
-    return Library;
+        end    	
+    local function initGui()
+        removeExistingGui()
+        local a, b = createGui()
+        updateFpsLabel(b)
+        updateTimeLabel(b)
+        rainbowEffect(b)
+    end
 initGui()
