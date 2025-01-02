@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.120
+-- 边框v1.1211111
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2760,7 +2760,8 @@ function Library:Windowxgo(setup)
 	Headers.BackgroundTransparency = 1.000
 	Headers.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Headers.BorderSizePixel = 0
-	Headers.Size = UDim2.new(1, 0, 0, 19)
+--	Headers.Size = UDim2.new(1, 0, 0, 19)
+	Headers.Size = UDim2.new(1, 0, 0, 30)  -- 增加标题栏的高度
 	Headers.ZIndex = 4
 
 	Title.Name = "Title"
@@ -2800,8 +2801,7 @@ function Library:Windowxgo(setup)
 	WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	WindowControl.BorderSizePixel = 0
 	WindowControl.Position = UDim2.new(0.99000001, 0, 0.5, 0)
---	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
-	WindowControl.Size = UDim2.new(0.99000001, 0, 0.5, 0)
+	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
 
 	UIListLayout.Parent = WindowControl
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
