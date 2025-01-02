@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.122184884
+-- 边框v1.122
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -3544,8 +3544,8 @@ function Library:Windowxgo(setup)
 		Title.TextStrokeTransparency = 0.950
 		Title.TextWrapped = true
 		Title.TextXAlignment = Enum.TextXAlignment.Left
-		Title.RichText = true;
-				
+		Title.RichText = true;	
+								
 		Description.Name = "Description"
         Description.Parent = TFrame
         Description.AnchorPoint = Vector2.new(0, 0.5)
@@ -3553,14 +3553,14 @@ function Library:Windowxgo(setup)
         Description.BackgroundTransparency = 1.000
 		Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		Description.BorderSizePixel = 0
-		Description.Position = UDim2.new(0.52, 0, 0.5, 0)
+		Description.Position = UDim2.new(0.42, 0, 0.5, 0)
 		Description.Size = UDim2.new(0.25, 0, 1, 0)
-		Description.ZIndex = 6
-		Description.Font = Enum.Font.GothamBold
+		Description.Font = Enum.Font.Fondamento
 		Description.Text = TabSetup.Description
 		Description.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Description.TextScaled = true
 		Description.TextSize = 14.000
+		Description.TextTransparency = 0.500
 		Description.TextWrapped = true
 		Description.TextXAlignment = Enum.TextXAlignment.Left
 
