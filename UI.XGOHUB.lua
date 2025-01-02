@@ -2366,7 +2366,7 @@ function Library:Windowxgo(setup)
     local ScreenGui = Instance.new("ScreenGui")
     local MainFrame = Instance.new("Frame")
     local BackgroundImage = Instance.new("ImageLabel")
-    local BackgroundImage = Instance.new("ImageLabel")
+    local BackgroundImage2 = Instance.new("ImageLabel")
 	local DropShadow = Instance.new("ImageLabel")
 	local Ico = Instance.new("ImageLabel")
 
@@ -2385,11 +2385,15 @@ function Library:Windowxgo(setup)
         "rbxassetid://127763739579508",
     }
     local currentImageIndex = 1
+local nextImageIndex = 2
+local transitioning = false
 
     local function changeImage()
-        if images[currentImageIndex] then
-            BackgroundImage.Image = images[currentImageIndex]
-            BackgroundImage.ImageTransparency = 0
+    if images[currentImageIndex] then
+        BackgroundImage2.Image = images[nextImageIndex]
+        BackgroundImage2.ImageTransparency = 0
+        transitioning = true
+        
         else
             warn("\73\110\118\97\108\105\100\32\105\109\97\103\101\32\73\68\32\97\116\32\105\110\100\101\120\32" .. currentImageIndex)
         end
@@ -2418,21 +2422,40 @@ function Library:Windowxgo(setup)
     BackgroundImage.Size = UDim2.new(1, 0, 1, 1)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
+    
+    BackgroundImage2.Parent = MainFrame
+BackgroundImage2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BackgroundImage2.BackgroundTransparency = 1
+BackgroundImage2.Size = UDim2.new(1, 0, 1, 1)
+BackgroundImage2.ImageColor3 = Color3.fromRGB(255, 255, 255)
+BackgroundImage2.ScaleType = Enum.ScaleType.Stretch
+BackgroundImage2.ImageTransparency = 1 -- 初始时完全透明
 
     local interval = 0.2
     local timeSinceLastChange = 0
 
     game:GetService("RunService").Heartbeat:Connect(function()
-        timeSinceLastChange = timeSinceLastChange + 1
-        if timeSinceLastChange >= interval * 60 then
+    timeSinceLastChange = timeSinceLastChange + 1
+    if timeSinceLastChange >= interval * 60 then -- 将时间转换为心跳次数
+        if not transitioning then
             changeImage()
             timeSinceLastChange = 0
-            currentImageIndex = currentImageIndex + 1
-            if currentImageIndex > #images then
-                currentImageIndex = 1
-            end
+            currentImageIndex = nextImageIndex
+            nextImageIndex = (nextImageIndex % #images) + 1
         end
-    end)
+    end
+
+    -- 处理图片透明度过渡
+    if transitioning then
+        BackgroundImage1.ImageTransparency = BackgroundImage1.ImageTransparency - 0.05
+        BackgroundImage2.ImageTransparency = BackgroundImage2.ImageTransparency + 0.05
+        if BackgroundImage1.ImageTransparency <= 0 then
+            BackgroundImage1.ImageTransparency = 0
+            BackgroundImage2.ImageTransparency = 1
+            transitioning = false
+        end
+    end
+end)
 
 	local BlurEle = Library.UIBlur.new(MainFrame,true);
 
