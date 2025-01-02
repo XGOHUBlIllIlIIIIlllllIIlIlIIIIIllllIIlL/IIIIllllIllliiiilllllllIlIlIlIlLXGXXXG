@@ -3534,12 +3534,14 @@ function Library:Windowxgo(setup)
 		TabSetup = TabSetup or {};
 		TabSetup.Title = TabSetup.Title or "菜单";
 		TabSetup.Icon = TabSetup.Icon or 'XGO1';
+		TabSetup.Description = TabSetup.Description or "";
 
 		local TFrame = Instance.new("Frame")
 		local DropShadow = Instance.new("ImageLabel")
 		local UIStroke = Instance.new("UIStroke")
 		local Icon = Instance.new("ImageLabel")
 		local Title = Instance.new("TextLabel")
+		local Description = Instance.new("TextLabel")
 		local Arrow = Instance.new("ImageLabel")
 		local Button = Instance.new("TextButton")
         
@@ -3605,6 +3607,24 @@ function Library:Windowxgo(setup)
 		Title.TextWrapped = true
 		Title.TextXAlignment = Enum.TextXAlignment.Left
 		Title.RichText = true;
+		
+		Description.Name = "Description"
+		Description.Parent = TFrame
+		Description.AnchorPoint = Vector2.new(0, 0.5)
+		Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Description.BackgroundTransparency = 1.000
+		Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		Description.BorderSizePixel = 0
+		Description.Position = UDim2.new(0.200000003, 0, 0.699999988, 0)
+		Description.Size = UDim2.new(1, 0, 0.300000012, 0)
+		Description.Font = Enum.Font.GothamBold
+		Description.Text = TabSetup.Description
+		Description.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Description.TextScaled = true
+		Description.TextSize = 14.000
+		Description.TextTransparency = 1
+		Description.TextWrapped = true
+		Description.TextXAlignment = Enum.TextXAlignment.Left
 
 		Arrow.Name = "Arrow"
 		Arrow.Parent = TFrame
