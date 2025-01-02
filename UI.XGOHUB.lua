@@ -2,7 +2,7 @@
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
 -- 边框v1.122
-
+--yy
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
