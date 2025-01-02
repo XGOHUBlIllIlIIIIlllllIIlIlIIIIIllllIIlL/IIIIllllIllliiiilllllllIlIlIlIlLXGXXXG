@@ -3467,7 +3467,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 	end;
-	
+--[[
 	function WindowLibrary:XG(TabSetup)
 		TabSetup = TabSetup or {};
 		TabSetup.Title = TabSetup.Title or "菜单";
@@ -3597,6 +3597,243 @@ function Library:Windowxgo(setup)
 		local UIListLayout = Instance.new("UIListLayout")
 
 		TabCenterFrame.Name = "TabCenterFrame"
+		TabCenterFrame.Parent = TabFrames
+		TabCenterFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+		TabCenterFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TabCenterFrame.BackgroundTransparency = 1.000
+		TabCenterFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		TabCenterFrame.BorderSizePixel = 0
+		TabCenterFrame.Position = UDim2.new(0.5, 0, 0.9, 0)
+		TabCenterFrame.Size = UDim2.new(0.99000001, 0, 0.99000001, 0)
+		TabCenterFrame.ZIndex = 6
+
+		ScrollingFrame.Parent = TabCenterFrame
+		ScrollingFrame.Active = true
+		ScrollingFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+		ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ScrollingFrame.BackgroundTransparency = 1.000
+		ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+		ScrollingFrame.BorderSizePixel = 0
+		ScrollingFrame.ClipsDescendants = false
+		ScrollingFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+		ScrollingFrame.Size = UDim2.new(0.999000013, 0, 0.99000001, 0)
+		ScrollingFrame.ZIndex = 10
+		ScrollingFrame.ScrollBarThickness = 0
+
+		UIListLayout.Parent = ScrollingFrame
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.Padding = UDim.new(0, 1000)
+
+		Library:Tween(UIListLayout , TweenInfo.new(1.5,Enum.EasingStyle.Quint),{
+			Padding = UDim.new(0, 7)
+		})
+
+		UIListLayout:GetPropertyChangedSignal('AbsoluteContentSize'):Connect(function()
+			if WindowLibrary.Toggle then
+				ScrollingFrame.CanvasSize = UDim2.fromOffset(0,UIListLayout.AbsoluteContentSize.Y);
+			end;
+		end);
+
+		Library:MakeDrop(TFrame , UIStroke , Library.Colors.Hightlight)
+
+		local TabToggle = function(Value)
+			if Value then
+				TabCenterFrame.Visible = true;
+				Library:Tween(Arrow , Library.TweenLibrary.SmallEffect,{
+					ImageTransparency = 0.150,
+					Position = UDim2.new(0.980000019, 0, 0.5, 0)
+				})
+
+				Library:Tween(TabCenterFrame,Library.TweenLibrary.SmallEffect,{
+					Position = UDim2.new(0.5, 0, 0.500999987, 0),
+				})
+			else
+				TabCenterFrame.Visible = false;
+				Library:Tween(Arrow , Library.TweenLibrary.SmallEffect,{
+					ImageTransparency = 1,
+					Position = UDim2.new(1, 0, 0.5, 0)
+				})
+
+				Library:Tween(TabCenterFrame,Library.TweenLibrary.SmallEffect,{
+					Position = UDim2.new(0.5, 0, 0.5500999987, 0),
+				})
+			end;
+		end;
+
+		TabToggle(not WindowLibrary.SectionTab[1])
+
+		table.insert(WindowLibrary.SectionTab,{Id = TFrame , TabToggle = TabToggle});
+
+		TFrame:GetPropertyChangedSignal('AbsoluteSize'):Connect(function()
+			if not WindowLibrary.Toggle then
+				return;
+			end
+
+			Title.Position = UDim2.new((30 / TFrame.AbsoluteSize.X), 0, 0.5, 0)
+		end)
+
+		Button.MouseButton1Click:Connect(function()
+			for i,v in ipairs(WindowLibrary.SectionTab) do
+				if v.Id == TFrame then
+					v.TabToggle(true);
+				else
+					v.TabToggle(false);
+				end;
+			end;
+		end)
+		]]
+		
+function WindowLibrary:XG(TabSetup)
+    TabSetup = TabSetup or {};
+    TabSetup.Title = TabSetup.Title or "菜单";
+    TabSetup.Icon = TabSetup.Icon or 'XGO1';
+    TabSetup.Description = TabSetup.Description or "";
+
+    local TFrame = Instance.new("Frame")
+    local DropShadow = Instance.new("ImageLabel")
+    local UIStroke = Instance.new("UIStroke")
+    local Icon = Instance.new("ImageLabel")
+    local Title = Instance.new("TextLabel")
+    local Description = Instance.new("TextLabel")
+    local Arrow = Instance.new("ImageLabel")
+    local Button = Instance.new("TextButton")
+    local Separator = Instance.new("TextLabel") -- 分隔符TextLabel
+
+    TFrame.Name = "TFrame"
+    TFrame.Parent = DataScrollingFrame
+    TFrame.BackgroundColor3 = Library.Colors.Default
+    TFrame.BackgroundTransparency = 0.250
+    TFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TFrame.BorderSizePixel = 0
+    TFrame.Size = UDim2.new(0.99, 0, 0, Library.TabButtonHeight)
+    TFrame.ZIndex = 5
+
+    DropShadow.Name = "DropShadow"
+    DropShadow.Parent = TFrame
+    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DropShadow.BackgroundTransparency = 1.000
+    DropShadow.BorderColor3 = Color3.fromRGB(27, 42, 53)
+    DropShadow.Position = UDim2.new(0, -5, 0, -5)
+    DropShadow.Size = UDim2.new(1, 10, 1, 10)
+    DropShadow.ZIndex = 4
+    DropShadow.Image = "rbxassetid://297694300"
+    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    DropShadow.ImageTransparency = 0.500
+    DropShadow.ScaleType = Enum.ScaleType.Slice
+    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
+    DropShadow.SliceScale = 0.050
+
+    UIStroke.Transparency = 1
+    UIStroke.Color = Color3.fromRGB(156, 156, 156)
+    UIStroke.Parent = TFrame
+
+    Icon.Name = "Icon"
+    Icon.Parent = TFrame
+    Icon.AnchorPoint = Vector2.new(0, 0.5)
+    Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Icon.BackgroundTransparency = 1.000
+    Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Icon.BorderSizePixel = 0
+    Icon.Position = UDim2.new(0, 5, 0.5, 0)
+    Icon.Size = UDim2.new(0.649999976, 0, 0.649999976, 0)
+    Icon.SizeConstraint = Enum.SizeConstraint.RelativeYY
+    Icon.ZIndex = 5
+    Icon.Image = Library.Icons[TabSetup.Icon] or Library.Icons2["lucide-"..TabSetup.Icon] or TabSetup.Icon;
+    Icon.ImageTransparency = 0.150
+
+    Title.Name = "Title"
+    Title.Parent = TFrame
+    Title.AnchorPoint = Vector2.new(0, 0.5)
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Position = UDim2.new(0.665000021, 0, 0.5, 0)
+    Title.Size = UDim2.new(0.899999976, 0, 0.400000006, 0)
+    Title.ZIndex = 6
+    Title.Font = Enum.Font.Gotham
+    Title.Text = TabSetup.Title
+    Title.TextColor3 = Library.Colors.TextColor
+    Title.TextScaled = true
+    Title.TextSize = 14.000
+    Title.TextStrokeColor3 = Library.Colors.TextColor
+    Title.TextStrokeTransparency = 0.950
+    Title.TextWrapped = true
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+    Title.RichText = true;
+
+    Separator.Name = "Separator"
+    Separator.Parent = TFrame
+    Separator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Separator.BackgroundTransparency = 1.000
+    Separator.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Separator.BorderSizePixel = 0
+    Separator.Position = UDim2.new(0.7200000286, 0, 0.5, 0) -- 紧挨着Title的右侧
+    Separator.Size = UDim2.new(0.0500000007, 0, 0.400000006, 0)
+    Separator.ZIndex = 6
+    Separator.Font = Enum.Font.Gotham
+    Separator.Text = "-"
+    Separator.TextColor3 = Library.Colors.TextColor
+    Separator.TextScaled = true
+    Separator.TextSize = 14.000
+    Separator.TextStrokeColor3 = Library.Colors.TextColor
+    Separator.TextStrokeTransparency = 0.950
+    Separator.TextWrapped = true
+    Separator.TextXAlignment = Enum.TextXAlignment.Left
+    Separator.RichText = true;
+
+    Description.Name = "Description"
+    Description.Parent = TFrame
+    Description.AnchorPoint = Vector2.new(0, 0.5)
+    Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Description.BackgroundTransparency = 1.000
+    Description.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Description.BorderSizePixel = 0
+    Description.Position = UDim2.new(0.7750000358, 0, 0.699999988, 0) -- 将Description的位置调整到分隔符的右侧，并保持一定的距离
+    Description.Size = UDim2.new(1, 0, 0.300000012, 0)
+    Description.Font = Enum.Font.GothamBold
+    Description.Text = TabSetup.Description
+    Description.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Description.TextScaled = true
+    Description.TextSize = 14.000
+    Description.TextTransparency = 0.500
+    Description.TextWrapped = true
+    Description.TextXAlignment = Enum.TextXAlignment.Left
+
+    Arrow.Name = "Arrow"
+    Arrow.Parent = TFrame
+    Arrow.AnchorPoint = Vector2.new(1, 0.5)
+    Arrow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Arrow.BackgroundTransparency = 1.000
+    Arrow.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Arrow.BorderSizePixel = 0
+    Arrow.Position = UDim2.new(0.980000019, 0, 0.5, 0)
+    Arrow.Size = UDim2.new(0.400000006, 0, 0.400000006, 0)
+    Arrow.SizeConstraint = Enum.SizeConstraint.RelativeYY
+    Arrow.ZIndex = 5
+    Arrow.Image = "rbxassetid://10709791437" -->图
+    Arrow.ImageTransparency = 1
+
+    Button.Name = "Button"
+    Button.Parent = TFrame
+    Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Button.BackgroundTransparency = 1.000
+    Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Button.BorderSizePixel = 0
+    Button.Size = UDim2.new(1, 0, 1, 0)
+    Button.ZIndex = 15
+    Button.Font = Enum.Font.SourceSans
+    Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+    Button.TextSize = 14.000
+    Button.TextTransparency = 1.000
+
+    local Root = {};
+    local TabCenterFrame = Instance.new("Frame")
+    local ScrollingFrame = Instance.new("ScrollingFrame")
+    local UIListLayout = Instance.new("UIListLayout")
+
+        TabCenterFrame.Name = "TabCenterFrame"
 		TabCenterFrame.Parent = TabFrames
 		TabCenterFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 		TabCenterFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
