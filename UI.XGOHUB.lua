@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.12
+-- 边框v1.120
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2370,18 +2370,15 @@ function Library:Windowxgo(setup)
 	local Ico = Instance.new("ImageLabel")
 
     local images = {
-        "rbxassetid://138176959623047",
-        "rbxassetid://126804742023730",
-        "rbxassetid://111914832620822",
-        "rbxassetid://71184125392997",
-        "rbxassetid://112171686304733",
-        "rbxassetid://76535540991679",
-        "rbxassetid://85341060649489",
-        "rbxassetid://117762047457786",
-        "rbxassetid://104433985053226",
-        "rbxassetid://122520864766723",
-        "rbxassetid://105546466007165",
-        "rbxassetid://127763739579508",
+        "rbxassetid://123698784885744",
+        "rbxassetid://88666635012556",
+	    "rbxassetid://102797584513959",
+	    "rbxassetid://96996396016819",
+        "rbxassetid://128885038925647",
+	    "rbxassetid://120611289434746",
+	    "rbxassetid://86451637909512",
+        "rbxassetid://109948306798374",
+        "rbxassetid://92630758837243",
     }
     local currentImageIndex = 1
 
@@ -2418,9 +2415,9 @@ function Library:Windowxgo(setup)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
-    local interval = 3
+    local interval = 2
     local timeSinceLastChange = 0
---[[
+--  时间自己设置，自己乘以自己设置的时间就行了
     game:GetService("RunService").Heartbeat:Connect(function()
         timeSinceLastChange = timeSinceLastChange + 1
         if timeSinceLastChange >= interval * 10 then
@@ -2432,19 +2429,7 @@ function Library:Windowxgo(setup)
             end
         end
     end)
---]]
-    game:GetService("RunService").Heartbeat:Connect(function()
-        timeSinceLastChange = timeSinceLastChange + 0.1
-        if timeSinceLastChange >= interval then
-            changeImage()
-            timeSinceLastChange = 0
-            currentImageIndex = currentImageIndex + 1
-            if currentImageIndex > #images then
-                currentImageIndex = 1
-            end
-        end
-    end)
-    
+   
 	local BlurEle = Library.UIBlur.new(MainFrame,true);
 
 	DropShadow.Name = "DropShadow"
