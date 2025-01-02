@@ -2,7 +2,6 @@
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
 -- 边框v1.120
--- 检查是否已经存在名为"xgo Hub Status"的GUI，并删除
 local function removeExistingGui()
     local existingGui = game.Players.LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("xgo Hub Status")
     if existingGui then
