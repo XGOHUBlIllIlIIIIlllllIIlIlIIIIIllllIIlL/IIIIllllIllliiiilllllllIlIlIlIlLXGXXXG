@@ -2,7 +2,7 @@
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
 -- 边框v1.122
---yy
+
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
 	Loaded = true,
@@ -3559,8 +3559,7 @@ function Library:Windowxgo(setup)
 		Description.Text = TabSetup.Description
 		Description.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Description.TextScaled = true
-		Description.TextSize = 14.000
-		Description.TextTransparency = 0.500
+		Description.TextSize = 8.000
 		Description.TextWrapped = true
 		Description.TextXAlignment = Enum.TextXAlignment.Left
 
