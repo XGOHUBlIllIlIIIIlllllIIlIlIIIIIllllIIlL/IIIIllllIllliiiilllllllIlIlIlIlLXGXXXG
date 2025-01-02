@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.121
+-- 边框v1.120
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -2280,69 +2280,6 @@ end;
         wait(2.5)
         blurEffect:Destroy()
     end))
-    --[[旋转动态彩虹效果
-local function rainbowEffect(border)
-    local ts = game:GetService("TweenService")
-    local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-    local gradient = Instance.new("ColorSequence")
-    local list = {}
-    local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
-    local counter = 0
-    local status = "down"
-
-    local function rainbowColors()
-        local sat, val = 1, 1
-        for i = 1, 10 do
-            local hue = i / 10
-            table.insert(list, Color3.fromHSV(hue, sat, val))
-        end
-    end
-    rainbowColors()
-    gradient.Color = s({kpt(0, list[1]), kpt(1, list[#list])})
-
-    local function animate()
-        if ((counter == (#list - 1)) and (status == "down")) then
-            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
-            counter = 1
-            status = "up"
-        elseif ((counter == #list) and (status == "down")) then
-            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[1]), kpt(1, list[2])})
-            counter = 2
-            status = "up"
-        elseif ((counter <= (#list - 2)) and (status == "down")) then
-            gradient.Color = s({
-                kpt(0, list[counter + 1]),
-                kpt(0.5, list[counter + 2]),
-                kpt(1, list[counter + 3])
-            })
-            counter = counter + 1
-            status = "up"
-        end
-        if ((counter == (#list - 1)) and (status == "up")) then
-            gradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, list[1])})
-            counter = 1
-            status = "down"
-        elseif ((counter == #list) and (status == "up")) then
-            gradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, list[2])})
-            counter = 2
-            status = "down"
-        elseif ((counter <= (#list - 2)) and (status == "up")) then
-            gradient.Color = s({
-                kpt(0, list[counter + 2]),
-                kpt(0.5, list[counter + 1]),
-                kpt(1, list[counter + 2])
-            })
-            counter = counter + 1
-            status = "down"
-        end
-        border.ImageColor3 = gradient.Color
-        ts:Create(border, ti, {ImageColor3 = gradient.Color}):Play()
-        animate = task.delay(0.1, animate)
-    end
-    animate()
-end
-rainbowEffect(DropShadow)
-]]
 ------------------------------//    UI.标题设置    //-------------------------------------------------------------------------------------
 function Library:Windowxgo(setup)
 	setup = setup or {};
@@ -4447,11 +4384,11 @@ return ColorPickerSettings
 		    local UIStroke = Instance.new("UIStroke") -- UI边框
 		    local TextLabel = Instance.new("TextLabel") -- 文本标签
 		    local Content = Instance.new("TextLabel")
-		    local Block = Instance.new("Frame") -- 滑块的背景框
-		    local UIStroke_2 = Instance.new("UIStroke") -- 滑块背景框的边框
+		    local Block = Instance.new("Frame") -- 背景框
+		    local UIStroke_2 = Instance.new("UIStroke") -- 背景框的边框
 		    local UICorner = Instance.new("UICorner") -- 用于创建圆角效果
-		    local ValueBlock = Instance.new("Frame") -- 滑块的值框
-		    local UICorner_2 = Instance.new("UICorner") -- 滑块值框的圆角效果
+		    local ValueBlock = Instance.new("Frame") -- 值框
+		    local UICorner_2 = Instance.new("UICorner") -- 值框的圆角效果
 		    local Button = Instance.new("TextButton") -- 按钮
 		    
 			ToggleBlock.Name = "ToggleBlock"
@@ -5311,7 +5248,7 @@ return ColorPickerSettings
 
 			return RootSkid;
 		end;
------- // 滑块   ----------------------------------------------------------------------------------------
+------ // 滑块组件   ----------------------------------------------------------------------------------------
         function Root:Slider(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or '滑块';
@@ -6122,7 +6059,7 @@ return ColorPickerSettings
 			return RootSkid;
 		end;
 ------ // 图像组件   ----------------------------------------------------------------------------------------
-		function Root:Image(setup)
+--[[	function Root:Image(setup)
 			setup = setup or {};
 			setup.Title = setup.Title or "Image";
 			setup.Asset = setup.Asset or "rbxassetid://123698784885744";
@@ -6234,7 +6171,118 @@ return ColorPickerSettings
 
 		return Root;
 	end;
+]]
+function Root:Image(setup)
+    setup = setup or {};
+    setup.Title = setup.Title or "Image";
+    setup.Assets = setup.Assets or {"rbxassetid://123698784885744"}; -- 假设Assets是一个包含多个图像ID的表
+    setup.Height = setup.Height or 120;
 
+    local ImageBlock = Instance.new("Frame")
+    local DropShadow = Instance.new("ImageLabel")
+    local UIStroke = Instance.new("UIStroke")
+    local Title = Instance.new("TextLabel")
+    local ImageList = Instance.new("ImageList") -- 使用ImageList来显示多个图像
+
+    ImageBlock.Name = "ImageBlock"
+    ImageBlock.Parent = ScrollingFrame
+    ImageBlock.BackgroundColor3 = Library.Colors.Default
+    ImageBlock.BackgroundTransparency = 0.250
+    ImageBlock.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ImageBlock.BorderSizePixel = 0
+    ImageBlock.Size = UDim2.new(0.99000001, 0, 0, 150)
+    ImageBlock.ZIndex = 10
+
+    DropShadow.Name = "DropShadow"
+    DropShadow.Parent = ImageBlock
+    DropShadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    DropShadow.BackgroundTransparency = 1.000
+    DropShadow.Position = UDim2.new(0, -5, 0, -5)
+    DropShadow.Size = UDim2.new(1, 10, 1, 10)
+    DropShadow.ZIndex = 9
+    DropShadow.Image = "rbxassetid://297694300"
+    DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+    DropShadow.ImageTransparency = 0.500
+    DropShadow.ScaleType = Enum.ScaleType.Slice
+    DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
+    DropShadow.SliceScale = 0.050
+
+    UIStroke.Transparency = 0.850
+    UIStroke.Color = Color3.fromRGB(156, 156, 156)
+    UIStroke.Parent = ImageBlock
+
+    Title.Name = "Title"
+    Title.Parent = ImageBlock
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Title.BorderSizePixel = 0
+    Title.Position = UDim2.new(0, 5, 0, 5)
+    Title.Size = UDim2.new(1, 0, 0, 14)
+    Title.ZIndex = 11
+    Title.Font = Enum.Font.Gotham
+    Title.Text = setup.Title
+    Title.TextColor3 = Library.Colors.TextColor
+    Title.TextScaled = true
+    Title.TextSize = 14.000
+    Title.TextStrokeColor3 = Color3.fromRGB(191, 193, 195)
+    Title.TextStrokeTransparency = 0.950
+    Title.TextColor3 = Library.Colors.TextColor;
+    Title.TextWrapped = true
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+
+    ImageList.Parent = ImageBlock
+    ImageList.AnchorPoint = Vector2.new(0.5, 0)
+    ImageList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    ImageList.BackgroundTransparency = 1.000
+    ImageList.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ImageList.BorderSizePixel = 0
+    ImageList.Position = UDim2.new(0.5, 0, 0, 23)
+    ImageList.Size = UDim2.new(0.980000019, 0, 0, setup.Height)
+    ImageList.ZIndex = 11
+    ImageList.Image = setup.Assets -- 设置多个图像
+    ImageList.ScaleType = Enum.ScaleType.Fit
+
+    if setup.Tip then
+        WindowLibrary:AddToolTip(ImageBlock , tostring(setup.Tip));
+    end;
+
+    local update = function()
+        if not WindowLibrary.Toggle then
+            return;
+        end
+
+        Library:Tween(ImageBlock,Library.TweenLibrary.SmallEffect,{
+            Size = UDim2.new(0.99000001, 0, 0, Title.AbsoluteSize.Y + 17 + ImageList.AbsoluteSize.Y)
+        })
+    end;
+
+    update()
+
+    MainFrame:GetPropertyChangedSignal('AbsoluteSize'):Connect(update)
+
+    local RootSkid = {};
+
+    function RootSkid:GetValue()
+        return ImageList.Image;
+    end;
+
+    function RootSkid:Value(Setup,height)
+        height = height or setup.Height;
+        ImageList.Image = Setup
+        ImageList.Size = UDim2.new(0.980000019, 0, 0, height)
+
+        update()
+    end;
+
+    function RootSkid:Visible(value)
+        ImageBlock.Visible = value;
+    end;
+
+    return RootSkid;
+end;
+
+return Root;
 	do
 		local Black = Instance.new("Frame")
 
