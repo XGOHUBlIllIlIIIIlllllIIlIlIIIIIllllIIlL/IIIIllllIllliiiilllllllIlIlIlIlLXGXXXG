@@ -6005,14 +6005,6 @@ return ColorPickerSettings
 
 				WindowLibrary:OpenDropdown(Block);
 			end)
-
-            function RootSkid:Refresh(values, forceUpdate)
-                setup.Values = values
-                if forceUpdate or #values ~= #self.Values then
-                    self.Values = values
-                    WindowLibrary:SetDropdownValues(1, values, setup.Default, function(a) OnCallback(a) end)
-                end
-            end
 			
 			local UpdateBlock = function()
                 local TitleSize = TextLabel.TextSize
@@ -6034,7 +6026,7 @@ return ColorPickerSettings
 
                 DropdownBlock.Size = UDim2.new(0.99000001, 0, 0, TotalHeight)
             end
-            UpdateBlock()
+            UpdateBlock() -- 初始调用以设置正确的大小
 
 			local RootSkid = {};
 
@@ -6063,7 +6055,7 @@ return ColorPickerSettings
 			function RootSkid:Visible(value)
 				DropdownBlock.Visible = value;
 			end;
-			
+
 			return RootSkid;
 		end;
 ------ // 图像组件   ----------------------------------------------------------------------------------------
