@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.120
+-- 边框v1.122184884
 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -3757,14 +3757,14 @@ Title.Font = Enum.Font.Gotham
 Title.Text = TabSetup.Title
 Title.TextColor3 = Library.Colors.TextColor
 Title.TextScaled = true
-Title.TextSize = 14.000
+Title.TextSize = 14.000 -- 保持原来的字体大小
 Title.TextStrokeColor3 = Library.Colors.TextColor
 Title.TextStrokeTransparency = 0.950
 Title.TextWrapped = true
 Title.TextXAlignment = Enum.TextXAlignment.Left
 Title.RichText = true;
 
--- Separator的设置（初始时不可见）
+-- Separator的设置
 Separator.Name = "Separator"
 Separator.Parent = TFrame
 Separator.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -3778,13 +3778,13 @@ Separator.Font = Enum.Font.Gotham
 Separator.Text = "-" -- 短横线
 Separator.TextColor3 = Color3.fromRGB(255, 192, 203) -- 设置字体颜色为白色
 Separator.TextScaled = true
-Separator.TextSize = 14.000
+Separator.TextSize = 14.000 -- 保持原来的字体大小
 Separator.TextStrokeColor3 = Color3.fromRGB(255, 255, 255) -- 设置描边颜色为白色
-Separator.TextStrokeTransparency = 1.000 -- 初始时完全透明
+Separator.TextTransparency = 1.000 -- 默认不显示Separator
 Separator.TextWrapped = true
 Separator.TextXAlignment = Enum.TextXAlignment.Center
 
--- Description的设置（初始时不可见）
+-- Description的设置
 Description.Name = "Description"
 Description.Parent = TFrame
 Description.AnchorPoint = Vector2.new(0, 0.5)
@@ -3799,20 +3799,25 @@ Description.Font = Enum.Font.GothamBold
 Description.Text = TabSetup.Description
 Description.TextColor3 = Color3.fromRGB(255, 255, 255) -- 设置字体颜色为白色
 Description.TextScaled = true
-Description.TextSize = 14.000
-Description.TextTransparency = 1.000 -- 初始时完全透明
+Description.TextSize = 14.000 -- 保持原来的字体大小
 Description.TextWrapped = true
 Description.TextXAlignment = Enum.TextXAlignment.Left
+
+-- 检查Description是否有文本，并相应显示Separator
+if TabSetup.Description ~= "" then
+    Separator.TextTransparency = 0.000 -- 显示Separator
+    Description.TextTransparency = 0.000 -- 显示Description
+end
 
 -- 鼠标悬停事件
 Title.MouseEnter:Connect(function()
     Description.TextTransparency = 0.000 -- 显示Description
-    Separator.TextStrokeTransparency = 0.000 -- 显示Separator
+    Separator.TextTransparency = 0.000 -- 显示Separator
 end)
 
 Title.MouseLeave:Connect(function()
     Description.TextTransparency = 1.000 -- 隐藏Description
-    Separator.TextStrokeTransparency = 1.000 -- 隐藏Separator
+    Separator.TextTransparency = 1.000 -- 隐藏Separator
 end)
 
     Arrow.Name = "Arrow"
