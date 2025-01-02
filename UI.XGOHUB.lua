@@ -3622,7 +3622,7 @@ function Library:Windowxgo(setup)
 		Description.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Description.TextScaled = true
 		Description.TextSize = 14.000
-		Description.TextTransparency = 1
+		Description.TextTransparency = 0.500
 		Description.TextWrapped = true
 		Description.TextXAlignment = Enum.TextXAlignment.Left
 
