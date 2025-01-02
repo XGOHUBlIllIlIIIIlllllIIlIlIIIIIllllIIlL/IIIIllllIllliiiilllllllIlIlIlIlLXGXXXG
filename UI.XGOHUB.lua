@@ -2312,7 +2312,6 @@ function Library:Windowxgo(setup)
 	    "rbxassetid://102797584513959",
 	    "rbxassetid://96996396016819",
         "rbxassetid://128885038925647",
-	    "rbxassetid://120611289434746",
 	    "rbxassetid://86451637909512",
         "rbxassetid://109948306798374",
         "rbxassetid://92630758837243",
@@ -2352,7 +2351,7 @@ function Library:Windowxgo(setup)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 
-    local interval = 5.5
+    local interval = 10
     local timeSinceLastChange = 0
 --  时间自己设置，自己乘以自己设置的时间就行了 [ 3/10 = 2倍速  2/10 = 1倍速 <5正常率10中等倍率15超快倍率等..> ]
     game:GetService("RunService").Heartbeat:Connect(function()
@@ -2760,7 +2759,7 @@ function Library:Windowxgo(setup)
 	Headers.BackgroundTransparency = 1.000
 	Headers.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Headers.BorderSizePixel = 0
-	Headers.Size = UDim2.new(1, 0, 0, 25)
+	Headers.Size = UDim2.new(1, 0, 0, 25.8000000051)
 	Headers.ZIndex = 4
 
 	Title.Name = "Title"
