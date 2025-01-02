@@ -3721,7 +3721,7 @@ function Library:Windowxgo(setup)
 			end;
 		end)
 ------ // 分隔符  ----------------------------------------------------------------------------------------
-        function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect,  rotatingColorEffect)
+--[[    function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect,  rotatingColorEffect)
             local params = {
                 Setup = "分隔符",
                 positionUDim = 0.02,
@@ -3866,7 +3866,130 @@ function Library:Windowxgo(setup)
                     end
 
             return RootSkid;
-        end;
+        end;]]
+function Root:Block(Setup, positionUDim, sizeUDim, fontType, textColor, colorEffect, rotatingColorEffect)
+    local params = {
+        Setup = "分隔符",
+        positionUDim = 0.02,
+        sizeUDim = 0.99000001,
+        fontType = Enum.Font.Gotham,
+        textColor = Library.Colors.TextColor,
+        colorEffect = false,
+        rotatingColorEffect = false
+    };
+    if Setup ~= nil then params.Setup = Setup end
+    if positionUDim ~= nil then params.positionUDim = positionUDim end
+    if sizeUDim ~= nil then params.sizeUDim = sizeUDim end
+    if fontType ~= nil then params.fontType = fontType end
+    if textColor ~= nil then params.textColor = textColor end
+    if colorEffect ~= nil then params.colorEffect = colorEffect end
+    if rotatingColorEffect ~= nil then params.rotatingColorEffect = rotatingColorEffect end
+
+    local BlockLabel = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
+
+    BlockLabel.Name = "BlockLabel"
+    BlockLabel.Parent = ScrollingFrame
+    BlockLabel.BackgroundColor3 = Library.Colors.Default
+    BlockLabel.BackgroundTransparency = 1.000
+    BlockLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BlockLabel.BorderSizePixel = 0
+    BlockLabel.Size = UDim2.new(params.sizeUDim, 0, 0, 25)
+    BlockLabel.ZIndex = 10
+
+    TextLabel.Parent = BlockLabel
+    TextLabel.AnchorPoint = Vector2.new(0, 0.5)
+    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.BackgroundTransparency = 1.000
+    TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TextLabel.BorderSizePixel = 0
+    TextLabel.Position = UDim2.new(params.positionUDim, 0, 0.5, 0)
+    TextLabel.Size = UDim2.new(1, 0, 0.649999976, 0)
+    TextLabel.ZIndex = 11
+    TextLabel.Font = params.fontType
+    TextLabel.Text = params.Setup
+    TextLabel.TextColor3 = params.textColor
+    TextLabel.TextScaled = true
+    TextLabel.TextSize = 14.000
+    TextLabel.TextStrokeColor3 = params.textColor
+    TextLabel.TextStrokeTransparency = 0.950
+    TextLabel.TextWrapped = true
+    TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TextLabel.RichText = true
+
+    local RootSkid = {}
+
+    function RootSkid:Set(XG0HubText)
+        TextLabel.Text = XG0HubText;
+    end;
+
+    function RootSkid:SetVisible(value)
+        BlockLabel.Visible = value;
+    end;
+
+    function RootSkid:SetTextColor(newTextColor)
+        TextLabel.TextColor3 = newTextColor;
+        TextLabel.TextStrokeColor3 = newTextColor;
+    end;
+
+    if colorEffect then
+        local function zigzag(X)
+            return math.acos(math.cos(X * math.pi)) / math.pi
+        end
+
+        local function colorChange(textLabel)
+            local counter = 0
+            spawn(function()
+                while true do
+                    wait(0.03)
+                    textLabel.TextColor3 = Color3.fromHSV(zigzag(counter), 1, 1)
+                    counter = counter + 0.01
+                end
+            end)
+        end
+
+        colorChange(TextLabel)
+    end
+
+    if params.rotatingColorEffect then
+        local function rainbowColors()
+            local sat, val = 1, 1
+            local colors = {}
+            for i = 0, 1, 0.1 do
+                table.insert(colors, Color3.fromHSV(i, sat, val))
+            end
+            return colors
+        end
+
+        local colors = rainbowColors()
+        local gradient = Instance.new("ColorSequence")
+        gradient.Color = ColorSequence.new({ColorSequenceKeypoint.new(0, colors[1]), ColorSequenceKeypoint.new(1, colors[#colors])})
+
+        local function animate()
+            local ts = game:GetService("TweenService")
+            local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local counter = 1
+
+            spawn(function()
+                while true do
+                    wait()
+                    gradient.Color = ColorSequence.new({
+                        ColorSequenceKeypoint.new(0, colors[counter]),
+                        ColorSequenceKeypoint.new(1, colors[counter + 1])
+                    })
+                    counter = (counter % #colors) + 1
+                end
+            end)
+
+            TextLabel.TextColor3 = gradient:Evaluate(0)
+            ts:Create(TextLabel, ti, {TextColor3 = gradient:Evaluate(0)}):Play()
+        end
+
+        animate()
+    end
+
+    return RootSkid;
+end;
 ------ // 信息标签   ----------------------------------------------------------------------------------------
      	function Root:Paragraph(Setup)
 			Setup = Setup or {};
