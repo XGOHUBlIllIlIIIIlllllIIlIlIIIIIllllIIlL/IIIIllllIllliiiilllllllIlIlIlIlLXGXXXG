@@ -649,7 +649,7 @@ MinButton.Position = UDim2.new(0, 0, 0.43, 0)
 MinButton.Size = UDim2.new(0, 30, 0, 30)
 MinButton.AutoButtonColor = false
 MinButton.Font = Enum.Font.SourceSansBold
-MinButton.Text = "<"
+MinButton.Text = ">"
 MinButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 MinButton.TextSize = 30
 MinButton.BackgroundTransparency = 1
@@ -663,36 +663,36 @@ Clock.Text = os.date("%H:%M")
 Clock.TextColor3 = Color3.fromRGB(200, 200, 200)
 Clock.Font = Enum.Font.SourceSansBold
 Clock.TextSize = 20
- 
-MinButton:TweenPosition(UDim2.new(0.05, 0, 0.43, 0),"InOut","Sine",1)
-CoreSystemFrameBackground:TweenPosition(UDim2.new(0.03, 0, 0.45, 0),"InOut","Sine",1)
- 
+
+CoreSystemFrameBackground.Position = UDim2.new(-0.03, 0, 0.45, 0)
+MinButton.Position = UDim2.new(0, 0, 0.43, 0)
+
 MinButton.MouseButton1Click:Connect(function()
-UIClick:Play()
-Blur.Size = 0
-SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
-EditorBackground:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
-BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
-GameFrameBackground:TweenPosition(UDim2.new(0.25, 0, -1, 0),"InOut","Sine",0.1)
-MainFrame:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
-game.Workspace.CurrentCamera.FieldOfView  = 70
-HomeButton.Image = "rbxassetid://15997029966"
-SearcherOpenUIButton.Image = "rbxassetid://15996914627"
-MusicButton.Image = "rbxassetid://15996975276"
-ConsoleButton.Image = "rbxassetid://16006754625"
-EditorButton.Image = "rbxassetid://16006689419"
-if MinButton.Text == "<" then
-MinButton.Text = ">"
-CoreSystemFrameBackground:TweenPosition(UDim2.new(-0.03, 0, 0.45, 0),"InOut","Sine",0.15)
-MinButton:TweenPosition(UDim2.new(0, 0, 0.43, 0),"InOut","Sine",0.15)
-else
-if MinButton.Text == ">" then
-MinButton.Text = "<"
-MinButton:TweenPosition(UDim2.new(0.05, 0, 0.43, 0),"InOut","Sine",0.15)
-CoreSystemFrameBackground.Visible = false
-CoreSystemFrameBackground:TweenPosition(UDim2.new(0.03, 0, 0.45, 0),"InOut","Sine",0.15)
-end
-end
+    UIClick:Play()
+    Blur.Size = 0
+    SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
+    EditorBackground:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
+    BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
+    GameFrameBackground:TweenPosition(UDim2.new(0.25, 0, -1, 0),"InOut","Sine",0.1)
+    MainFrame:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
+    game.Workspace.CurrentCamera.FieldOfView  = 70
+    HomeButton.Image = "rbxassetid://15997029966"
+    SearcherOpenUIButton.Image = "rbxassetid://15996914627"
+    MusicButton.Image = "rbxassetid://15996975276"
+    ConsoleButton.Image = "rbxassetid://16006754625"
+    EditorButton.Image = "rbxassetid://16006689419"
+
+    if MinButton.Text == ">" then
+        MinButton.Text = "<"
+        CoreSystemFrameBackground:TweenPosition(UDim2.new(0.03, 0, 0.45, 0),"InOut","Sine",0.15)
+        MinButton:TweenPosition(UDim2.new(0.05, 0, 0.43, 0),"InOut","Sine",0.15)
+    else
+        if MinButton.Text == "<" then
+            MinButton.Text = ">"
+            CoreSystemFrameBackground:TweenPosition(UDim2.new(-0.03, 0, 0.45, 0),"InOut","Sine",0.15)
+            MinButton:TweenPosition(UDim2.new(0, 0, 0.43, 0),"InOut","Sine",0.15)
+        end
+    end
 end)
 ----------------------------------------------------------------------------------------------------------------
 PlayerIcon.Name = "PlayerIcon"
