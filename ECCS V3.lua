@@ -429,8 +429,7 @@ CoreSystemFrameBackground.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
 CoreSystemFrameBackground.Position = UDim2.new(-0.03, 0, 0.45, 0)
 CoreSystemFrameBackground.Size = UDim2.new(0, 53.7, 0, 223)
 CoreSystemFrameBackground.ZIndex = 2
-CoreSystemFrameBackground.BackgroundColor3 = Color3.new(0, 0, 0)
-CoreSystemFrameBackground.Transparency = 1
+CoreSystemFrameBackground.SurfaceTransparency = 1 
 
 CoreSystemFrameBackgroundUICorner.CornerRadius = UDim.new(0, 12)
 CoreSystemFrameBackgroundUICorner.Parent = CoreSystemFrameBackground
