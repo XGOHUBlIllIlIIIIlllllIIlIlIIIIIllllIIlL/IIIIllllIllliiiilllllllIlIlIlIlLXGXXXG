@@ -4,7 +4,7 @@
 -- 边框v1.122
 
 -- 此源码永不加密 | 也尽量保持更新 |
--- 这里边有的是简单的加米，因为跟其他没有效果，所以你可以删，而且加密也改不了
+-- 
 -- 
 local Library = {
 	Version = '\88\71\79\72\85\66\32\45\32\98\121\46\120\103\111',
@@ -21,436 +21,253 @@ local Library = {
 };
 
 if game:GetService("CoreGui"):FindFirstChild("UIGui") then
-    game:GetService("CoreGui"):FindFirstChild("UIGui"):Destroy()
-    game.Workspace.CurrentCamera.FieldOfView = 70  -- 设置当前相机的视野角度为70度
+game:GetService("CoreGui"):FindFirstChild("UIGui"):Destroy()
+game.Workspace.CurrentCamera.FieldOfView  = 70
 end
-
--- 创建屏幕GUI
 UIGui = Instance.new("ScreenGui")
-
--- 创建核心系统框架及其子元素
-CoreSystemFrame = Instance.new("Frame") -- 核心系统框架
-CoreSystemFrameBackground = Instance.new("Frame") -- 核心系统框架的背景
-CoreSystemFrameUICorner = Instance.new("UICorner") -- 核心系统框架的UI角
-CoreSystemFrameBackgroundUICorner = Instance.new("UICorner") -- 核心系统框架背景的UI角
-
--- 创建最小化按钮和相关音效
-MinButton = Instance.new("TextButton") -- 最小化按钮
-UIClick = Instance.new("Sound") -- 点击音效
-
--- 创建消息框及其子元素
-MessageFrame = Instance.new("TextButton") -- 消息框
-MessageFrameUICorner = Instance.new("UICorner") -- 消息框的UI角
-Clock = Instance.new("TextLabel") -- 时钟标签
-StartUpSound = Instance.new("Sound") -- 启动音效
-OpenButtonUI = Instance.new("Sound") -- 打开按钮的音效
-MessageBackgroundFrame = Instance.new("Frame") -- 消息背景框架
-TextLabel1 = Instance.new("TextLabel") -- 文本标签1
-MessageBackgroundFrameUICorner = Instance.new("UICorner") -- 消息背景框架的UI角
-MessageImage = Instance.new("ImageLabel") -- 消息图像
-CloseNotif = Instance.new("Sound") -- 关闭通知的音效
-
--- 创建打开UI按钮的音效
+CoreSystemFrame = Instance.new("Frame")
+CoreSystemFrameBackground = Instance.new("Frame")
+CoreSystemFrameUICorner = Instance.new("UICorner")
+CoreSystemFrameBackgroundUICorner = Instance.new("UICorner")
+MinButton = Instance.new("TextButton")
+UIClick = Instance.new("Sound")
+MessageFrame = Instance.new("TextButton")
+MessageFrameUICorner = Instance.new("UICorner")
+Clock = Instance.new("TextLabel")
+StartUpSound = Instance.new("Sound")
+OpenButtonUI = Instance.new("Sound")
+MessageBackgroundFrame = Instance.new("Frame")
+TextLabel1 = Instance.new("TextLabel")
+MessageBackgroundFrameUICorner = Instance.new("UICorner")
+MessageImage = Instance.new("ImageLabel")
+CloseNotif = Instance.new("Sound")
+MessageImageUICorner = Instance.new("UICorner")
 OpenUIButtons = Instance.new("Sound")
-
--- 创建首页按钮及其UI角
-HomeButton = Instance.new("ImageButton") -- 首页按钮
-HomeButtonUICorner = Instance.new("UICorner") -- 首页按钮的UI角
-CloseUISound = Instance.new("Sound") -- 关闭UI的音效
-
--- 创建模糊效果
-Blur = Instance.new("BlurEffect")
-
--- 获取Tween服务，用于创建动画效果
+HomeButton = Instance.new("ImageButton")
+HomeButtonUICorner = Instance.new("UICorner")
+CloseUISound = Instance.new("Sound")
+--Blur = Instance.new("BlurEffect")
 TweenService = game:GetService("TweenService")
-
--- 创建搜索器打开UI按钮及其UI角
-SearcherOpenUIButton = Instance.new("ImageButton") -- 搜索器打开UI按钮
-SearcherOpenUIButtonUICorner = Instance.new("UICorner") -- 搜索器打开UI按钮的UI角
-
--- 创建控制台按钮
+SearcherOpenUIButton = Instance.new("ImageButton")
+SearcherOpenUIButtonUICorner = Instance.new("UICorner")
 ConsoleButton = Instance.new("ImageButton")
-
--- 创建悬停按钮的音效
 HoverButtons = Instance.new("Sound")
-
--- 创建编辑器按钮
 EditorButton = Instance.new("ImageButton")
-
--- 创建音乐按钮
 MusicButton = Instance.new("ImageButton")
-
--- 创建欢迎标签
 WelcomeLabel = Instance.new("TextLabel")
-
--- 创建玩家图标及其UI角和背景
-PlayerIcon = Instance.new("ImageLabel") -- 玩家图标
-PlayerIconUI = Instance.new("UICorner") -- 玩家图标的UI角
-PlayerIconBackground = Instance.new("Frame") -- 玩家图标的背景
-PlayerIconBackgroundUI = Instance.new("UICorner") -- 玩家图标背景的UI角
-
--- 创建游戏框架背景及其UI角
-GameFrameBackground = Instance.new("Frame") -- 游戏框架背景
-GameFrameBackgroundUICorner = Instance.new("UICorner") -- 游戏框架背景的UI角
-
--- 创建游戏框架及其UI角
-GameFrame = Instance.new("ImageLabel") -- 游戏框架
-GameFrameUICorner = Instance.new("UICorner") -- 游戏框架的UI角
-
--- 创建FPS标签及其UI角
-FPSLabel = Instance.new("TextLabel") -- FPS标签
-FPSLabelUICorner = Instance.new("UICorner") -- FPS标签的UI角
-
--- 获取运行服务和渲染步骤
+PlayerIcon = Instance.new("ImageLabel")
+PlayerIconUI = Instance.new("UICorner")
+PlayerIconBackground = Instance.new("Frame")
+PlayerIconBackgroundUI = Instance.new("UICorner")
+GameFrameBackground = Instance.new("Frame")
+GameFrameBackgroundUICorner = Instance.new("UICorner")
+GameFrame = Instance.new("ImageLabel")
+GameFrameUICorner = Instance.new("UICorner")
+FPSLabel = Instance.new("TextLabel")
+FPSLabelUICorner = Instance.new("UICorner")
 RunService = game:GetService("RunService")
 RenderStepped = RunService.RenderStepped
-
--- 初始化秒数变量和FPS表
 sec = nil
 FPS = {}
-
--- 创建Ping标签及其UI角
-PingLabel = Instance.new("TextLabel") -- Ping标签
-PingLabelUICorner = Instance.new("UICorner") -- Ping标签的UI角
-
--- 创建CPU标签及其UI角
-CPULabel = Instance.new("TextLabel") -- CPU标签
-CPUUICorner = Instance.new("UICorner") -- CPU标签的UI角
-
--- 创建GPU标签及其UI角
-GPULabel = Instance.new("TextLabel") -- GPU标签
-GPUUICorner = Instance.new("UICorner") -- GPU标签的UI角
-
--- 创建服务器内玩家数量标签及其UI角
-PlayersInServer = Instance.new("TextLabel") -- 服务器内玩家数量标签
-PlayersInServerUICorner = Instance.new("UICorner") -- 服务器内玩家数量标签的UI角
-
--- 创建服务器大小标签及其UI角
-ServerSize = Instance.new("TextLabel") -- 服务器大小标签
-ServerSizeUICorner = Instance.new("UICorner") -- 服务器大小标签的UI角
-
--- 创建服务器在线时间标签及其UI角
-ServerLive = Instance.new("TextLabel") -- 服务器在线时间标签
-ServerLiveUICorner = Instance.new("UICorner") -- 服务器在线时间标签的UI角
-
--- 创建执行器标签及其UI角
-Executor = Instance.new("TextLabel") -- 执行器标签
-ExecutorUICorner = Instance.new("UICorner") -- 执行器标签的UI角
-
--- 创建主框架
+PingLabel = Instance.new("TextLabel")
+PingLabelUICorner = Instance.new("UICorner")
+CPULabel = Instance.new("TextLabel")
+CPUUICorner = Instance.new("UICorner")
+GPULabel = Instance.new("TextLabel")
+GPUUICorner = Instance.new("UICorner")
+PlayersInServer = Instance.new("TextLabel")
+PlayersInServerUICorner = Instance.new("UICorner")
+ServerSize = Instance.new("TextLabel")
+ServerSizeUICorner = Instance.new("UICorner")
+ServerLive = Instance.new("TextLabel")
+ServerLiveUICorner = Instance.new("UICorner")
+Executor = Instance.new("TextLabel")
+ExecutorUICorner = Instance.new("UICorner")
 MainFrame = Instance.new("Frame")
-
--- 创建搜索框及其UI角
-SearchBox = Instance.new("TextBox") -- 搜索框
-UICorner_3 = Instance.new("UICorner") -- 搜索框的UI角
-
--- 创建脚本作者标签
+SearchBox = Instance.new("TextBox")
+UICorner_3 = Instance.new("UICorner")
 ScriptAuthor = Instance.new("TextLabel")
-
--- 创建脚本列表框架及其子元素
-ScriptListFrame = Instance.new("ScrollingFrame") -- 脚本列表框架
-UIPadding = Instance.new("UIPadding") -- 脚本列表框架的内边距
-Scripts = Instance.new("Folder") -- 脚本文件夹
-UIGridLayout = Instance.new("UIGridLayout") -- 脚本列表框架的网格布局
-
--- 创建脚本框架及其子元素
-ScriptFrame = Instance.new("ImageLabel") -- 脚本框架
-UICorner_6 = Instance.new("UICorner") -- 脚本框架的UI角
-ScriptTitle = Instance.new("TextLabel") -- 脚本标题
-ExecuteButton = Instance.new("TextButton") -- 执行按钮
-UICorner_7 = Instance.new("UICorner") -- 执行按钮的UI角
-InfoButton = Instance.new("TextButton") -- 信息按钮
-UICorner_8 = Instance.new("UICorner") -- 信息按钮的UI角
-ScriptGame = Instance.new("TextLabel") -- 脚本游戏标签
-
--- 创建已验证脚本框架及其子元素
-VerifiedScriptFrame = Instance.new("ImageLabel") -- 已验证脚本框架
-UICorner_9 = Instance.new("UICorner") -- 已验证脚本框架的UI角
-ScriptTitle_2 = Instance.new("TextLabel") -- 已验证脚本标题
-VerifiedIcon = Instance.new("ImageLabel") -- 已验证图标
-ExecuteButton_2 = Instance.new("TextButton") -- 已验证脚本的执行按钮
-UICorner_10 = Instance.new("UICorner") -- 已验证脚本执行按钮的UI角
-UICorner_11 = Instance.new("UICorner") -- 已验证脚本框架的UI角
-ScriptAuthor_2 = Instance.new("TextLabel") -- 已验证脚本作者标签
-ScriptGame_2 = Instance.new("TextLabel") -- 已验证脚本游戏标签
-
--- 创建执行按钮背景及其UI角
-ExecuteButtonBackground = Instance.new("Frame") -- 执行按钮背景
-ExecuteButtonBackgroundUICorner = Instance.new("UICorner") -- 执行按钮背景的UI角
-
--- 创建复制链接按钮及其UI角
-CopyLinkButton = Instance.new("TextButton") -- 复制链接按钮
-CopyLinkButtonUICorner = Instance.new("UICorner") -- 复制链接按钮的UI角
-
--- 创建复制脚本按钮及其UI角
-CopyScriptButton = Instance.new("TextButton") -- 复制脚本按钮
-CopyScriptButtonUICorner = Instance.new("UICorner") -- 复制脚本按钮的UI角
-
--- 创建打开描述按钮及其UI角
-OpenDescriptionButton = Instance.new("TextButton") -- 打开描述按钮
-OpenDescriptionButtonUICorner = Instance.new("UICorner") -- 打开描述按钮的UI角
-
--- 创建复制链接和打开描述按钮的第二个实例，可能是用于不同的状态或样式
-CopyLinkButton_2 = Instance.new("TextButton") -- 复制链接按钮2
-CopyLinkButtonUICorner_2 = Instance.new("UICorner") -- 复制链接按钮2的UI角
-CopyScriptButton_2 = Instance.new("TextButton") -- 复制脚本按钮2
-CopyScriptButtonUICorner_2 = Instance.new("UICorner") -- 复制脚本按钮2的UI角
-OpenDescriptionButton_2 = Instance.new("TextButton") -- 打开描述按钮2
-OpenDescriptionButtonUICorner_2 = Instance.new("UICorner") -- 打开描述按钮2的UI角
-
--- 创建复制链接按钮背景及其UI角
-CopyLinkButtonBackground = Instance.new("Frame") -- 复制链接按钮背景
-CopyLinkButtonBackgroundUICorner = Instance.new("UICorner") -- 复制链接按钮背景的UI角
-
--- 创建复制脚本按钮背景及其UI角
-CopyScriptBackground = Instance.new("Frame") -- 复制脚本按钮背景
-CopyScriptBackgroundUICorner = Instance.new("UICorner") -- 复制脚本按钮背景的UI角
-
--- 创建打开描述按钮背景及其UI角
-OpenDescriptionBackground = Instance.new("Frame") -- 打开描述按钮背景
-OpenDescriptionBackgroundUICorner = Instance.new("UICorner") -- 打开描述按钮背景的UI角
-
--- 创建执行按钮背景及其UI角的第二个实例
-ExecuteButtonBackground_2 = Instance.new("Frame") -- 执行按钮背景2
-ExecuteButtonBackgroundUICorner_2 = Instance.new("UICorner") -- 执行按钮背景2的UI角
-
--- 创建复制链接按钮背景及其UI角的第二个实例
-CopyLinkButtonBackground_2 = Instance.new("Frame") -- 复制链接按钮背景2
-CopyLinkButtonBackgroundUICorner_2 = Instance.new("UICorner") -- 复制链接按钮背景2的UI角
-
--- 创建复制脚本按钮背景及其UI角的第二个实例
-CopyScriptBackground_2 = Instance.new("Frame") -- 复制脚本按钮背景2
-CopyScriptBackgroundUICorner_2 = Instance.new("UICorner") -- 复制脚本按钮背景2的UI角
-
--- 创建打开描述按钮背景及其UI角的第二个实例
-OpenDescriptionBackground_2 = Instance.new("Frame") -- 打开描述按钮背景2
-OpenDescriptionBackgroundUICorner_2 = Instance.new("UICorner") -- 打开描述按钮背景2的UI角
-
--- 创建描述脚本按钮及其UI角
-DescriptionScript = Instance.new("TextButton") -- 描述脚本按钮
-DescriptionScriptUICorner = Instance.new("UICorner") -- 描述脚本按钮的UI角
-
--- 创建背景图像
-BackgroundImage = Instance.new("ImageLabel") -- 背景图像
-
--- 创建控制台输出标签及其UI角
-ConsoleOutput = Instance.new("TextLabel") -- 控制台输出标签
-BackgroundImageUICorner = Instance.new("UICorner") -- 背景图像的UI角
-ConsoleOutputUICorner = Instance.new("UICorner") -- 控制台输出标签的UI角
-
--- 创建背景控制台的UI角
-BackgroundConsoleUICorner = Instance.new("UICorner") -- 背景控制台的UI角
-BackgroundConsole = Instance.new("Frame") -- 背景控制台
-
--- 创建日志表，用于存储控制台日志
+ScriptListFrame = Instance.new("ScrollingFrame")
+UIPadding = Instance.new("UIPadding")
+Scripts = Instance.new("Folder")
+UIGridLayout = Instance.new("UIGridLayout")
+ScriptFrame = Instance.new("ImageLabel")
+UICorner_6 = Instance.new("UICorner")
+ScriptTitle = Instance.new("TextLabel")
+ExecuteButton = Instance.new("TextButton")
+UICorner_7 = Instance.new("UICorner")
+InfoButton = Instance.new("TextButton")
+UICorner_8 = Instance.new("UICorner")
+ScriptGame = Instance.new("TextLabel")
+VerifiedScriptFrame = Instance.new("ImageLabel")
+UICorner_9 = Instance.new("UICorner")
+ScriptTitle_2 = Instance.new("TextLabel")
+VerifiedIcon = Instance.new("ImageLabel")
+ExecuteButton_2 = Instance.new("TextButton")
+UICorner_10 = Instance.new("UICorner")
+UICorner_11 = Instance.new("UICorner")
+ScriptAuthor_2 = Instance.new("TextLabel")
+ScriptGame_2 = Instance.new("TextLabel")
+ExecuteButtonBackground = Instance.new("Frame")
+ExecuteButtonBackgroundUICorner = Instance.new("UICorner")
+CopyLinkButton = Instance.new("TextButton")
+CopyLinkButtonUICorner = Instance.new("UICorner")
+CopyLinkButton_2 = Instance.new("TextButton")
+CopyLinkButtonUICorner_2 = Instance.new("UICorner")
+CopyScriptButton = Instance.new("TextButton")
+CopyScriptButtonUICorner = Instance.new("UICorner")
+CopyScriptButton_2 = Instance.new("TextButton")
+CopyScriptButtonUICorner_2 = Instance.new("UICorner")
+OpenDescriptionButton = Instance.new("TextButton")
+OpenDescriptionButtonUICorner = Instance.new("UICorner")
+OpenDescriptionButton_2 = Instance.new("TextButton")
+OpenDescriptionButtonUICorner_2 = Instance.new("UICorner")
+CopyLinkButtonBackground = Instance.new("Frame")
+CopyLinkButtonBackgroundUICorner = Instance.new("UICorner")
+CopyScriptBackground = Instance.new("Frame")
+CopyScriptBackgroundUICorner = Instance.new("UICorner")
+OpenDescriptionBackground = Instance.new("Frame")
+OpenDescriptionBackgroundUICorner = Instance.new("UICorner")
+ExecuteButtonBackground_2 = Instance.new("Frame")
+ExecuteButtonBackgroundUICorner_2 = Instance.new("UICorner")
+CopyLinkButtonBackground_2 = Instance.new("Frame")
+CopyLinkButtonBackgroundUICorner_2 = Instance.new("UICorner")
+CopyScriptBackground_2 = Instance.new("Frame")
+CopyScriptBackgroundUICorner_2 = Instance.new("UICorner")
+OpenDescriptionBackground_2 = Instance.new("Frame")
+OpenDescriptionBackgroundUICorner_2 = Instance.new("UICorner")
+DescriptionScript = Instance.new("TextButton")
+DescriptionScriptUICorner = Instance.new("UICorner")
+BackgroundImage = Instance.new("ImageLabel")
+ConsoleOutput = Instance.new("TextLabel")
+BackgroundImageUICorner = Instance.new("UICorner")
+ConsoleOutputUICorner = Instance.new("UICorner")
+BackgroundConsoleUICorner = Instance.new("UICorner")
+BackgroundConsole = Instance.new("Frame")
 logTable = {}
-
--- 创建关闭描述的声音
-CloseDescriptionSound = Instance.new("Sound") -- 关闭描述的声音
-
--- 创建编辑器背景及其UI角
-EditorBackground = Instance.new("Frame") -- 编辑器背景
-EditorMainFrame = Instance.new("ImageLabel") -- 编辑器主框架
-EditorTextBox = Instance.new("TextBox") -- 编辑器文本框
-
--- 创建执行按钮背景及其UI角的第三个实例，可能是用于编辑器中的执行按钮
-ExecuteButtonBackground_3 = Instance.new("Frame") -- 执行按钮背景3
-ExecuteButton_3 = Instance.new("TextButton") -- 执行按钮3
-EditorBackgroundUICorner = Instance.new("UICorner") -- 编辑器背景的UI角
-EditorMainFrameUICorner = Instance.new("UICorner") -- 编辑器主框架的UI角
-ExecuteButtonBackgroundUICorner_3 = Instance.new("UICorner") -- 执行按钮背景3的UI角
-ExecuteButtonUICorner_3 = Instance.new("UICorner") -- 执行按钮3的UI角
-
--- 创建保存按钮背景及其UI角
-SaveButtonBackground = Instance.new("Frame") -- 保存按钮背景
-SaveButtonBackgroundUICorner = Instance.new("UICorner") -- 保存按钮背景的UI角
-SaveButton = Instance.new("TextButton") -- 保存按钮
-SaveButtonUICorner = Instance.new("UICorner") -- 保存按钮的UI角
-
--- 创建清除按钮背景及其UI角
-ClearButtonBackground = Instance.new("Frame") -- 清除按钮背景
-ClearButtonBackgroundUICorner = Instance.new("UICorner") -- 清除按钮背景的UI角
-ClearButton = Instance.new("TextButton") -- 清除按钮
-ClearButtonUICorner = Instance.new("UICorner") -- 清除按钮的UI角
-
--- 创建编辑器文本框的UI角和背景UI角
-EditorTextBoxUICorner = Instance.new("UICorner") -- 编辑器文本框的UI角
-EditorTextBoxBackgroundUICorner = Instance.new("UICorner") -- 编辑器文本框背景的UI角
-
--- 创建复制按钮背景及其UI角
-CopyButtonBackground = Instance.new("Frame") -- 复制按钮背景
-CopyButtonBackgroundUICorner = Instance.new("UICorner") -- 复制按钮背景的UI角
-CopyButton = Instance.new("TextButton") -- 复制按钮
-CopyButtonUICorner = Instance.new("UICorner") -- 复制按钮的UI角
-
--- 创建声音框架背景及其UI角
-SondFrameBackground = Instance.new("Frame") -- 声音框架背景
-SondFrame = Instance.new("ImageLabel") -- 声音框架
-MainSondFrame = Instance.new("Frame") -- 主声音框架
-
--- 创建声音框架背景、声音框架和主声音框架的UI角
-SondFrameBackgroundUICorner = Instance.new("UICorner") -- 声音框架背景的UI角
-SondFrameUICorner = Instance.new("UICorner") -- 声音框架的UI角
-MainSondFrameUICorner = Instance.new("UICorner") -- 主声音框架的UI角
-
--- 创建声音文本框及其UI角
-SoundTextBox = Instance.new("TextBox") -- 声音文本框
-SoundTextBoxUICorner = Instance.new("UICorner") -- 声音文本框的UI角
-
--- 创建核心声音
-CoreSound = Instance.new("Sound") -- 核心声音
-
--- 创建停止/播放按钮及其背景和UI角
-Stop_PlayButton = Instance.new("ImageButton") -- 停止/播放按钮
-AudioName = Instance.new("TextLabel") -- 音频名称标签
-Stop_PlayButtonBackground = Instance.new("Frame") -- 停止/播放按钮背景
-Stop_PlayButtonBackgroundUICorner = Instance.new("UICorner") -- 停止/播放按钮背景的UI角
-Stop_PlayButtonBackground_2 = Instance.new("Frame") -- 停止/播放按钮背景2
-Stop_PlayButtonBackgroundUICorner_2 = Instance.new("UICorner") -- 停止/播放按钮背景2的UI角
-
--- 创建音量变量
+CloseDescriptionSound = Instance.new("Sound")
+EditorBackground = Instance.new("Frame")
+EditorMainFrame = Instance.new("ImageLabel")
+EditorTextBox = Instance.new("TextBox")
+ExecuteButtonBackground_3 = Instance.new("Frame")
+ExecuteButton_3 = Instance.new("TextButton")
+EditorBackgroundUICorner = Instance.new("UICorner")
+EditorMainFrameUICorner = Instance.new("UICorner")
+ExecuteButtonBackgroundUICorner_3 = Instance.new("UICorner")
+ExecuteButtonUICorner_3 = Instance.new("UICorner")
+SaveButtonBackground = Instance.new("Frame")
+SaveButtonBackgroundUICorner = Instance.new("UICorner")
+SaveButton = Instance.new("TextButton")
+SaveButtonUICorner = Instance.new("UICorner")
+ClearButtonBackground = Instance.new("Frame")
+ClearButtonBackgroundUICorner = Instance.new("UICorner")
+ClearButton = Instance.new("TextButton")
+ClearButtonUICorner = Instance.new("UICorner")
+EditorTextBoxUICorner = Instance.new("UICorner")
+EditorTextBoxBackgroundUICorner = Instance.new("UICorner")
+CopyButtonBackground = Instance.new("Frame")
+CopyButtonBackgroundUICorner = Instance.new("UICorner")
+CopyButton = Instance.new("TextButton")
+CopyButtonUICorner = Instance.new("UICorner")
+SondFrameBackground = Instance.new("Frame")
+SondFrame = Instance.new("ImageLabel")
+MainSondFrame = Instance.new("Frame")
+SoundTextBox = Instance.new("TextBox")
+SondFrameBackgroundUICorner = Instance.new("UICorner")
+SondFrameUICorner = Instance.new("UICorner")
+MainSondFrameUICorner = Instance.new("UICorner")
+SoundTextBoxUICorner = Instance.new("UICorner")
+CoreSound = Instance.new("Sound")
+Stop_PlayButton = Instance.new("ImageButton")
+AudioName = Instance.new("TextLabel")
+Stop_PlayButtonBackground = Instance.new("Frame")
+Stop_PlayButtonBackgroundUICorner = Instance.new("UICorner")
+Stop_PlayButtonBackground_2 = Instance.new("Frame")
+Stop_PlayButtonBackgroundUICorner_2 = Instance.new("UICorner")
 Volume = 1
-
--- 创建保存按钮背景及其UI角的第二个实例
-SaveButtonBackground_2 = Instance.new("Frame") -- 保存按钮背景2
-SaveButtonBackgroundUICorner_2 = Instance.new("UICorner") -- 保存按钮背景2的UI角
-SaveButton_2 = Instance.new("ImageButton") -- 保存按钮2
-SaveButtonUICorner_2 = Instance.new("UICorner") -- 保存按钮2的UI角
-
--- 创建播放列表按钮背景及其UI角
-PlaylistButtonBackground = Instance.new("Frame") -- 播放列表按钮背景
-PlaylistButtonBackgroundUICorner = Instance.new("UICorner") -- 播放列表按钮背景的UI角
-PlaylistButtonBackground_2 = Instance.new("Frame") -- 播放列表按钮背景2
-PlaylistButtonBackgroundUICorner_2 = Instance.new("UICorner") -- 播放列表按钮背景2的UI角
-PlaylistButton = Instance.new("ImageButton") -- 播放列表按钮
-
--- 创建音量框架及其UI角
-VolumeFrame = Instance.new("Frame") -- 音量框架
-VolumeFrameUICorner = Instance.new("UICorner") -- 音量框架的UI角
-
--- 创建音量上升按钮背景及其UI角
-VolumeUpButtonBackground = Instance.new("Frame") -- 音量上升按钮背景
-VolumeUpButtonBackgroundUICorner = Instance.new("UICorner") -- 音量上升按钮背景的UI角
-
--- 创建音量上升按钮及其UI角
-VolumeUpButton = Instance.new("ImageButton") -- 音量上升按钮
-VolumeUpButtonUICorner = Instance.new("UICorner") -- 音量上升按钮的UI角
-
--- 创建音量下降按钮背景及其UI角
-VolumeDownButtonBackground = Instance.new("Frame") -- 音量下降按钮背景
-VolumeDownButtonBackgroundUICorner = Instance.new("UICorner") -- 音量下降按钮背景的UI角
-
--- 创建音量下降按钮及其UI角
-VolumeDownButton = Instance.new("ImageButton") -- 音量下降按钮
-VolumeDownButtonUICorner = Instance.new("UICorner") -- 音量下降按钮的UI角
-
--- 创建音量上升按钮的第二个实例及其UI角
-VolumeUpButton_2 = Instance.new("ImageButton") -- 音量上升按钮2
-VolumeUpButtonUICorner_2 = Instance.new("UICorner") -- 音量上升按钮2的UI角
-
--- 创建音量下降按钮的第二个实例及其UI角
-VolumeDownButton_2 = Instance.new("ImageButton") -- 音量下降按钮2
-VolumeDownButtonUICorner_2 = Instance.new("UICorner") -- 音量下降按钮2的UI角
-
--- 创建重新加载背景按钮及其UI角
-ReloadBackgroundButton = Instance.new("Frame") -- 重新加载背景按钮
-ReloadBackgroundButtonUICorner = Instance.new("UICorner") -- 重新加载背景按钮的UI角
-
--- 创建重新加载按钮及其UI角
-ReloadButton = Instance.new("ImageButton") -- 重新加载按钮
-ReloadButtonUICorner = Instance.new("UICorner") -- 重新加载按钮的UI角
-
--- 创建历史背景按钮及其UI角
-HistoryBackgroundButton = Instance.new("Frame") -- 历史背景按钮
-HistoryBackgroundButtonUICorner = Instance.new("UICorner") -- 历史背景按钮的UI角
-
--- 创建历史按钮及其UI角
-HistoryButton = Instance.new("ImageButton") -- 历史按钮
-HistoryButtonUICorner = Instance.new("UICorner") -- 历史按钮的UI角
-
--- 创建清除和搜索背景及其UI角
-ClearAndSearchBackground = Instance.new("Frame") -- 清除和搜索背景
-ClearAndSearchBackgroundUICorner = Instance.new("UICorner") -- 清除和搜索背景的UI角
-
--- 创建清除和搜索按钮及其UI角
-ClearAndSearch = Instance.new("ImageButton") -- 清除和搜索按钮
-ClearAndSearchUICorner = Instance.new("UICorner") -- 清除和搜索按钮的UI角
-
--- 创建清除按钮2背景及其UI角
-ClearButton_2Background = Instance.new("Frame") -- 清除按钮2背景
-ClearButton_2BackgroundUICorner = Instance.new("UICorner") -- 清除按钮2背景的UI角
-
--- 创建清除按钮2及其UI角
-ClearButton_2 = Instance.new("ImageButton") -- 清除按钮2
-ClearButton_2UICorner = Instance.new("UICorner") -- 清除按钮2的UI角
-
--- 创建自动执行背景及其UI角
-AutoExecuteBackground = Instance.new("Frame") -- 自动执行背景
-AutoExecuteBackgroundUICorner = Instance.new("UICorner") -- 自动执行背景的UI角
-
--- 创建自动执行按钮及其UI角
-AutoExecute = Instance.new("TextButton") -- 自动执行按钮
-AutoExecuteUICorner = Instance.new("UICorner") -- 自动执行按钮的UI角
-
--- 创建自动执行背景及其UI角的第二个实例
-AutoExecuteBackground_2 = Instance.new("Frame") -- 自动执行背景2
-AutoExecuteBackgroundUICorner_2 = Instance.new("UICorner") -- 自动执行背景2的UI角
-
--- 创建自动执行按钮的第二个实例及其UI角
-AutoExecute_2 = Instance.new("TextButton") -- 自动执行按钮2
-AutoExecuteUICorner_2 = Instance.new("UICorner") -- 自动执行按钮2的UI角
-
--- 创建评论背景及其UI角
-CommentsBackground = Instance.new("Frame") -- 评论背景
-CommentsBackgroundUICorner = Instance.new("UICorner") -- 评论背景的UI角
-
--- 创建评论按钮及其UI角
-CommentsButton = Instance.new("ImageButton") -- 评论按钮
-CommentsButtonUICorner = Instance.new("UICorner") -- 评论按钮的UI角
-
--- 创建评论背景及其UI角的第二个实例
-CommentsBackground_2 = Instance.new("Frame") -- 评论背景2
-CommentsBackgroundUICorner_2 = Instance.new("UICorner") -- 评论背景2的UI角
-
--- 创建评论按钮的第二个实例及其UI角
-CommentsButton_2 = Instance.new("ImageButton") -- 评论按钮2
-CommentsButtonUICorner_2 = Instance.new("UICorner") -- 评论按钮2的UI角
-
--- 创建信息框及其UI角
-InfoBox = Instance.new("Frame") -- 信息框
-InfoBoxUICorner = Instance.new("UICorner") -- 信息框的UI角
-
--- 创建信息框内的信息和作者部分
-Info = Instance.new("Frame") -- 信息部分
-Author = Instance.new("Frame") -- 作者部分
-InfoBoxAuthor = Instance.new("TextLabel") -- 信息框作者标签
-ProfilePicture = Instance.new("ImageLabel") -- 头像图片
-
--- 创建评论部分
-Comments = Instance.new("Frame") -- 评论部分
-Inner = Instance.new("Frame") -- 内部框架
-UICorner_21 = Instance.new("UICorner") -- 内部框架的UI角
-Line = Instance.new("Frame") -- 分隔线
-CommentsText = Instance.new("TextLabel") -- 评论文本
-Comments_2 = Instance.new("ScrollingFrame") -- 滚动评论框架
-Comment = Instance.new("Frame") -- 单条评论
-Content = Instance.new("TextLabel") -- 评论内容
-Author_2 = Instance.new("TextLabel") -- 评论作者
-ProfilePicture_2 = Instance.new("ImageLabel") -- 评论作者头像
-UICorner_22 = Instance.new("UICorner") -- 单条评论的UI角
-UIListLayout_3 = Instance.new("UIListLayout") -- 评论列表布局
-NoComments = Instance.new("TextLabel") -- 无评论提示
-CommentsWhiteLine = Instance.new("Frame") -- 评论白线
-CloseCommentsButtonBackground = Instance.new("Frame") -- 关闭评论按钮背景
-CloseCommentsButtonBackgroundUICorner = Instance.new("UICorner") -- 关闭评论按钮背景的UI角
-CloseCommentsButton = Instance.new("ImageButton") -- 关闭评论按钮
-CloseCommentsButtonUICorner = Instance.new("UICorner") -- 关闭评论按钮的UI角
-
--- 创建点赞和点踩图标及其数量标签
-LikeImg = Instance.new("ImageLabel") -- 点赞图标
-DisLikeImg = Instance.new("ImageLabel") -- 点踩图标
-LikeCount = Instance.new("TextLabel") -- 点赞数量
-DislikeCount = Instance.new("TextLabel") -- 点踩数量
+SaveButtonBackground_2 = Instance.new("Frame")
+SaveButtonBackgroundUICorner_2 = Instance.new("UICorner")
+SaveButton_2 = Instance.new("ImageButton")
+SaveButtonUICorner_2 = Instance.new("UICorner")
+PlaylistButtonBackground = Instance.new("Frame")
+PlaylistButtonBackgroundUICorner = Instance.new("UICorner")
+PlaylistButtonBackground_2 = Instance.new("Frame")
+PlaylistButtonBackgroundUICorner_2 = Instance.new("UICorner")
+PlaylistButton = Instance.new("ImageButton")
+VolumeFrame = Instance.new("Frame")
+VolumeFrameUICorner = Instance.new("UICorner")
+VolumeUpButtonBackground = Instance.new("Frame")
+VolumeUpButtonBackgroundUICorner = Instance.new("UICorner")
+VolumeUpButton = Instance.new("ImageButton")
+VolumeUpButtonUICorner = Instance.new("UICorner")
+VolumeDownButtonBackground = Instance.new("Frame")
+VolumeDownButtonBackgroundUICorner = Instance.new("UICorner")
+VolumeDownButton = Instance.new("ImageButton")
+VolumeDownButtonUICorner = Instance.new("UICorner")
+VolumeUpButton_2 = Instance.new("ImageButton")
+VolumeUpButtonUICorner_2 = Instance.new("UICorner")
+VolumeDownButton_2 = Instance.new("ImageButton")
+VolumeDownButtonUICorner_2 = Instance.new("UICorner")
+ReloadBackgroundButton = Instance.new("Frame")
+ReloadBackgroundButtonUICorner = Instance.new("UICorner")
+ReloadButton = Instance.new("ImageButton")
+ReloadButtonUICorner = Instance.new("UICorner")
+HistoryBackgroundButton = Instance.new("Frame")
+HistoryBackgroundButtonUICorner = Instance.new("UICorner")
+HistoryButton = Instance.new("ImageButton")
+HistoryButtonUICorner = Instance.new("UICorner")
+ClearAndSearchBackground = Instance.new("Frame")
+ClearAndSearchBackgroundUICorner = Instance.new("UICorner")
+ClearAndSearch = Instance.new("ImageButton")
+ClearAndSearchUICorner = Instance.new("UICorner")
+ClearButton_2Background = Instance.new("Frame")
+ClearButton_2BackgroundUICorner = Instance.new("UICorner")
+ClearButton_2 = Instance.new("ImageButton")
+ClearButton_2UICorner = Instance.new("UICorner")
+AutoExecuteBackground = Instance.new("Frame")
+AutoExecuteBackgroundUICorner = Instance.new("UICorner")
+AutoExecute = Instance.new("TextButton")
+AutoExecuteUICorner = Instance.new("UICorner")
+AutoExecuteBackground_2 = Instance.new("Frame")
+AutoExecuteBackgroundUICorner_2 = Instance.new("UICorner")
+AutoExecute_2 = Instance.new("TextButton")
+AutoExecuteUICorner_2 = Instance.new("UICorner")
+CommentsBackground = Instance.new("Frame")
+CommentsBackgroundUICorner = Instance.new("UICorner")
+CommentsButton = Instance.new("ImageButton")
+CommentsButtonUICorner = Instance.new("UICorner")
+CommentsBackground_2 = Instance.new("Frame")
+CommentsBackgroundUICorner_2 = Instance.new("UICorner")
+CommentsButton_2 = Instance.new("ImageButton")
+CommentsButtonUICorner_2 = Instance.new("UICorner")
+InfoBox = Instance.new("Frame")
+InfoBoxUICorner = Instance.new("UICorner")
+Info = Instance.new("Frame")
+Author = Instance.new("Frame")
+InfoBoxAuthor = Instance.new("TextLabel")
+ProfilePicture = Instance.new("ImageLabel")
+Comments = Instance.new("Frame")
+Inner = Instance.new("Frame")
+UICorner_21 = Instance.new("UICorner")
+Line = Instance.new("Frame")
+CommentsText = Instance.new("TextLabel")
+Comments_2 = Instance.new("ScrollingFrame")
+Comment = Instance.new("Frame")
+Content = Instance.new("TextLabel")
+Author_2 = Instance.new("TextLabel")
+ProfilePicture_2 = Instance.new("ImageLabel")
+UICorner_22 = Instance.new("UICorner")
+UIListLayout_3 = Instance.new("UIListLayout")
+NoComments = Instance.new("TextLabel")
+CommentsWhiteLine = Instance.new("Frame")
+CloseCommentsButtonBackground = Instance.new("Frame")
+CloseCommentsButtonBackgroundUICorner = Instance.new("UICorner")
+CloseCommentsButton = Instance.new("ImageButton")
+CloseCommentsButtonUICorner = Instance.new("UICorner")
+LikeImg = Instance.new("ImageLabel")
+DisLikeImg = Instance.new("ImageLabel")
+LikeCount = Instance.new("TextLabel")
+DislikeCount = Instance.new("TextLabel")
 
 local function format(Int)
 return string.format("%02i", Int)
@@ -469,8 +286,8 @@ UIGui.Parent = game.CoreGui
 UIGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 game.CoreGui.UIGui.Enabled = true
  
-Blur.Size = 0
-Blur.Parent = workspace.CurrentCamera
+--Blur.Size = 0
+--Blur.Parent = workspace.CurrentCamera
  
 UIClick.Parent = game:GetService("SoundService")
 UIClick.SoundId = "rbxassetid://626181985"
@@ -671,7 +488,7 @@ MusicButton.Image = "rbxassetid://15996975276"
 ConsoleButton.Image = "rbxassetid://16006754625"
 EditorButton.Image = "rbxassetid://16006689419"
 if HomeButton.Image == "rbxassetid://15997029966" then
-Blur.Size = 100
+--Blur.Size = 100
 HomeButton.Image = "rbxassetid://15997127208"
 OpenButtonUI:Play()
 GameFrameBackground:TweenPosition(UDim2.new(0.25, 0, 0.3, 0),"InOut","Sine",0.1)
@@ -681,7 +498,7 @@ if HomeButton.Image == "rbxassetid://15997127208" then
 HomeButton.Image = "rbxassetid://15997029966"
 CloseUISound:Play()
 GameFrameBackground:TweenPosition(UDim2.new(0.25, 0, -1, 0),"InOut","Sine",0.1)
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -720,14 +537,14 @@ EditorButton.Image = "rbxassetid://16006689419"
 if SearcherOpenUIButton.Image == "rbxassetid://15996914627" then
 SearcherOpenUIButton.Image = "rbxassetid://15997131910"
 OpenButtonUI:Play()
-Blur.Size = 100
+--Blur.Size = 100
 MainFrame:TweenPosition(UDim2.new(0.5, 0, 0.5, 0),"InOut","Sine",0.1)
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if SearcherOpenUIButton.Image == "rbxassetid://15997131910" then
 SearcherOpenUIButton.Image = "rbxassetid://15996914627"
 CloseUISound:Play()
-Blur.Size = 0
+--Blur.Size = 0
 MainFrame:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
@@ -758,14 +575,14 @@ if EditorButton.Image == "rbxassetid://16006689419" then
 EditorButton.Image = "rbxassetid://16006691599"
 OpenButtonUI:Play()
 EditorBackground:TweenPosition(UDim2.new(0.525, 0, 0.5, 0),"InOut","Sine",0.1)
-Blur.Size = 100
+--Blur.Size = 100
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if EditorButton.Image == "rbxassetid://16006691599" then
 EditorButton.Image = "rbxassetid://16006689419"
 CloseUISound:Play()
 EditorBackground:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -795,14 +612,14 @@ if ConsoleButton.Image == "rbxassetid://16006754625" then
 ConsoleButton.Image = "rbxassetid://16006757026"
 OpenButtonUI:Play()
 BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, 0.5, 0),"InOut","Sine",0.1)
-Blur.Size = 100
+--Blur.Size = 100
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if ConsoleButton.Image == "rbxassetid://16006757026" then
 ConsoleButton.Image = "rbxassetid://16006754625"
 CloseUISound:Play()
 BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -832,14 +649,14 @@ if MusicButton.Image == "rbxassetid://15996975276" then
 MusicButton.Image = "rbxassetid://15997129790"
 SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, 0.5, 0),"InOut","Sine",0.1)
 OpenButtonUI:Play()
-Blur.Size = 100
+--Blur.Size = 100
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if MusicButton.Image == "rbxassetid://15997129790" then
 MusicButton.Image = "rbxassetid://15996975276"
 SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
 CloseUISound:Play()
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -872,7 +689,7 @@ CoreSystemFrameBackground:TweenPosition(UDim2.new(0.03, 0, 0.45, 0),"InOut","Sin
  
 MinButton.MouseButton1Click:Connect(function()
 UIClick:Play()
-Blur.Size = 0
+--Blur.Size = 0
 SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
 EditorBackground:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
 BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
