@@ -689,7 +689,7 @@ else
 if MinButton.Text == ">" then
 MinButton.Text = "<"
 MinButton:TweenPosition(UDim2.new(0.05, 0, 0.43, 0),"InOut","Sine",0.15)
-CoreSystemFrameBackground.Visible = true
+CoreSystemFrameBackground.Visible = false
 CoreSystemFrameBackground:TweenPosition(UDim2.new(0.03, 0, 0.45, 0),"InOut","Sine",0.15)
 end
 end
