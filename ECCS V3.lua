@@ -24,7 +24,7 @@ OpenUIButtons = Instance.new("Sound")
 HomeButton = Instance.new("ImageButton")
 HomeButtonUICorner = Instance.new("UICorner")
 CloseUISound = Instance.new("Sound")
-Blur = Instance.new("BlurEffect")
+----Blur = Instance.new("BlurEffect")
 TweenService = game:GetService("TweenService")
 SearcherOpenUIButton = Instance.new("ImageButton")
 SearcherOpenUIButtonUICorner = Instance.new("UICorner")
@@ -264,8 +264,8 @@ UIGui.Parent = game.CoreGui
 UIGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 game.CoreGui.UIGui.Enabled = true
  
-Blur.Size = 0
-Blur.Parent = workspace.CurrentCamera
+--Blur.Size = 0
+--Blur.Parent = workspace.CurrentCamera
  
 UIClick.Parent = game:GetService("SoundService")
 UIClick.SoundId = "rbxassetid://626181985" --点击声音
@@ -468,7 +468,7 @@ MusicButton.Image = "rbxassetid://15996975276"
 ConsoleButton.Image = "rbxassetid://16006754625"
 EditorButton.Image = "rbxassetid://16006689419"
 if HomeButton.Image == "rbxassetid://15997029966" then
-Blur.Size = 100
+--Blur.Size = 100
 HomeButton.Image = "rbxassetid://15997127208"
 OpenButtonUI:Play()
 GameFrameBackground:TweenPosition(UDim2.new(0.25, 0, 0.3, 0),"InOut","Sine",0.1)
@@ -478,7 +478,7 @@ if HomeButton.Image == "rbxassetid://15997127208" then
 HomeButton.Image = "rbxassetid://15997029966"
 CloseUISound:Play()
 GameFrameBackground:TweenPosition(UDim2.new(0.25, 0, -1, 0),"InOut","Sine",0.1)
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -517,14 +517,14 @@ EditorButton.Image = "rbxassetid://16006689419"
 if SearcherOpenUIButton.Image == "rbxassetid://15996914627" then
 SearcherOpenUIButton.Image = "rbxassetid://15997131910"
 OpenButtonUI:Play()
-Blur.Size = 100
+--Blur.Size = 100
 MainFrame:TweenPosition(UDim2.new(0.5, 0, 0.5, 0),"InOut","Sine",0.1)
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if SearcherOpenUIButton.Image == "rbxassetid://15997131910" then
 SearcherOpenUIButton.Image = "rbxassetid://15996914627"
 CloseUISound:Play()
-Blur.Size = 0
+--Blur.Size = 0
 MainFrame:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
@@ -555,14 +555,14 @@ if EditorButton.Image == "rbxassetid://16006689419" then
 EditorButton.Image = "rbxassetid://16006691599"
 OpenButtonUI:Play()
 EditorBackground:TweenPosition(UDim2.new(0.525, 0, 0.5, 0),"InOut","Sine",0.1)
-Blur.Size = 100
+--Blur.Size = 100
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if EditorButton.Image == "rbxassetid://16006691599" then
 EditorButton.Image = "rbxassetid://16006689419"
 CloseUISound:Play()
 EditorBackground:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -592,14 +592,14 @@ if ConsoleButton.Image == "rbxassetid://16006754625" then
 ConsoleButton.Image = "rbxassetid://16006757026"
 OpenButtonUI:Play()
 BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, 0.5, 0),"InOut","Sine",0.1)
-Blur.Size = 100
+--Blur.Size = 100
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if ConsoleButton.Image == "rbxassetid://16006757026" then
 ConsoleButton.Image = "rbxassetid://16006754625"
 CloseUISound:Play()
 BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -629,14 +629,14 @@ if MusicButton.Image == "rbxassetid://15996975276" then
 MusicButton.Image = "rbxassetid://15997129790"
 SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, 0.5, 0),"InOut","Sine",0.1)
 OpenButtonUI:Play()
-Blur.Size = 100
+--Blur.Size = 100
 game.Workspace.CurrentCamera.FieldOfView  = 30
 else
 if MusicButton.Image == "rbxassetid://15997129790" then
 MusicButton.Image = "rbxassetid://15996975276"
 SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
 CloseUISound:Play()
-Blur.Size = 0
+--Blur.Size = 0
 game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
@@ -669,7 +669,7 @@ CoreSystemFrameBackground:TweenPosition(UDim2.new(0.03, 0, 0.45, 0),"InOut","Sin
  
 MinButton.MouseButton1Click:Connect(function()
 UIClick:Play()
-Blur.Size = 0
+--Blur.Size = 0
 SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
 EditorBackground:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
 BackgroundConsole:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
