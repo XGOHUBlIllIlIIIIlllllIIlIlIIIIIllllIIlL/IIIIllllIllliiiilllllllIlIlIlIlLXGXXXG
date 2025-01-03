@@ -422,7 +422,6 @@ until
 MessageBackgroundFrame == nil
 end)
 ----------------------------按钮设置---------------------------------------------------------------
---[[
 CoreSystemFrameBackground.Name = "CoreSystemFrameBackground"
 CoreSystemFrameBackground.Parent = UIGui
 CoreSystemFrameBackground.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -430,18 +429,12 @@ CoreSystemFrameBackground.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
 CoreSystemFrameBackground.Position = UDim2.new(-0.03, 0, 0.45, 0)
 CoreSystemFrameBackground.Size = UDim2.new(0, 53.7, 0, 223)
 CoreSystemFrameBackground.ZIndex = 2
---]]
-CoreSystemFrameBackground.Name = "CoreSystemFrameBackground"
-CoreSystemFrameBackground.Parent = UIGui
-CoreSystemFrameBackground.AnchorPoint = Vector2.new(0.5, 0)
-CoreSystemFrameBackground.BackgroundColor3 = Color3.fromRGB(55, 55, 55)
-CoreSystemFrameBackground.Position = UDim2.new(0.5, 0, 0, 100) -- 100像素距离顶部
-CoreSystemFrameBackground.Size = UDim2.new(0, 537, 0, 223)
-CoreSystemFrameBackground.ZIndex = 2
- 
+CoreSystemFrameBackground.BackgroundColor3 = Color3.new(0, 0, 0)
+CoreSystemFrameBackground.Transparency = 1
+
 CoreSystemFrameBackgroundUICorner.CornerRadius = UDim.new(0, 12)
 CoreSystemFrameBackgroundUICorner.Parent = CoreSystemFrameBackground
---[[
+
 CoreSystemFrame.Name = "CoreSystemFrame"
 CoreSystemFrame.Parent = CoreSystemFrameBackground
 CoreSystemFrame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -449,18 +442,10 @@ CoreSystemFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 CoreSystemFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 CoreSystemFrame.Size = UDim2.new(0, 50, 0, 220)
 CoreSystemFrame.ZIndex = 2
---]]
-CoreSystemFrame.Name = "CoreSystemFrame"
-CoreSystemFrame.Parent = CoreSystemFrameBackground
-CoreSystemFrame.AnchorPoint = Vector2.new(0.5, 0)
-CoreSystemFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-CoreSystemFrame.Position = UDim2.new(0.5, 0, 0, 105) -- 稍微向下调整以适应背景
-CoreSystemFrame.Size = UDim2.new(0, 50, 0, 220)
-CoreSystemFrame.ZIndex = 2
- 
+
 CoreSystemFrameUICorner.CornerRadius = UDim.new(0, 12)
 CoreSystemFrameUICorner.Parent = CoreSystemFrame
- --[[
+
 HomeButton.Parent = CoreSystemFrame
 HomeButton.Size = UDim2.new(0, 33, 0, 33)
 HomeButton.Position = UDim2.new(0.5, 0, 0.1, 0)
@@ -469,15 +454,7 @@ HomeButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 HomeButton.ZIndex = 2
 HomeButton.Image = "rbxassetid://15997029966" --房屋
 HomeButton.AutoButtonColor = false
---]]
-HomeButton.Parent = CoreSystemFrame
-HomeButton.Size = UDim2.new(0, 33, 0, 33)
-HomeButton.Position = UDim2.new(0.5, 0, 0, 25) -- 25像素距离顶部
-HomeButton.AnchorPoint = Vector2.new(0.5, 0)
-HomeButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-HomeButton.ZIndex = 2
-HomeButton.Image = "rbxassetid://15997029966" -- 房屋
-HomeButton.AutoButtonColor = false
+
 
 HomeButtonUICorner.CornerRadius = UDim.new(0, 12)
 HomeButtonUICorner.Parent = HomeButton
@@ -515,7 +492,7 @@ MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MainFrame.BackgroundTransparency = 1
 MainFrame.Position = UDim2.new(0.5, 0, -1, 0)
 MainFrame.Size = UDim2.new(0, 100, 0, 100)
---[[
+
 SearcherOpenUIButton.Parent = CoreSystemFrame
 SearcherOpenUIButton.Size = UDim2.new(0, 33, 0, 33)
 SearcherOpenUIButton.Position = UDim2.new(0.5, 0, 0.28, 0)
@@ -525,18 +502,6 @@ SearcherOpenUIButton.ZIndex = 2
 SearcherOpenUIButton.Image = "rbxassetid://15996914627" --放大镜搜索
 SearcherOpenUIButton.AutoButtonColor = false
  
-SearcherOpenUIButtonUICorner.CornerRadius = UDim.new(0, 12)
-SearcherOpenUIButtonUICorner.Parent = SearcherOpenUIButton
---]]
-SearcherOpenUIButton.Parent = CoreSystemFrame
-SearcherOpenUIButton.Size = UDim2.new(0, 33, 0, 33)
-SearcherOpenUIButton.Position = UDim2.new(0.5, 0, 0, 60) -- 60像素距离顶部
-SearcherOpenUIButton.AnchorPoint = Vector2.new(0.5, 0)
-SearcherOpenUIButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-SearcherOpenUIButton.ZIndex = 2
-SearcherOpenUIButton.Image = "rbxassetid://15996914627" -- 放大镜搜索
-SearcherOpenUIButton.AutoButtonColor = false
-
 SearcherOpenUIButtonUICorner.CornerRadius = UDim.new(0, 12)
 SearcherOpenUIButtonUICorner.Parent = SearcherOpenUIButton
  
@@ -566,7 +531,7 @@ game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
 end)
---[[
+
 EditorButton.Parent = CoreSystemFrame
 EditorButton.Size = UDim2.new(0, 33, 0, 33)
 EditorButton.Position = UDim2.new(0.5, 0, 0.64, 0)
@@ -574,16 +539,6 @@ EditorButton.AnchorPoint = Vector2.new(0.5, 0.5)
 EditorButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 EditorButton.ZIndex = 2
 EditorButton.Image = "rbxassetid://16006689419" --注入器
-EditorButton.AutoButtonColor = false
-EditorButton.BorderSizePixel = 0
---]]
-EditorButton.Parent = CoreSystemFrame
-EditorButton.Size = UDim2.new(0, 33, 0, 33)
-EditorButton.Position = UDim2.new(0.5, 0, 0, 95) -- 95像素距离顶部
-EditorButton.AnchorPoint = Vector2.new(0.5, 0)
-EditorButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-EditorButton.ZIndex = 2
-EditorButton.Image = "rbxassetid://16006689419" -- 注入器
 EditorButton.AutoButtonColor = false
 EditorButton.BorderSizePixel = 0
  
@@ -613,7 +568,7 @@ game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
 end)
---[[
+
 ConsoleButton.Parent = CoreSystemFrame
 ConsoleButton.Size = UDim2.new(0, 33, 0, 33)
 ConsoleButton.Position = UDim2.new(0.5, 0, 0.46, 0)
@@ -623,17 +578,7 @@ ConsoleButton.ZIndex = 2
 ConsoleButton.Image = "rbxassetid://16006754625" --信息记录。危险
 ConsoleButton.AutoButtonColor = false
 ConsoleButton.BorderSizePixel = 0
---]]
-ConsoleButton.Parent = CoreSystemFrame
-ConsoleButton.Size = UDim2.new(0, 33, 0, 33)
-ConsoleButton.Position = UDim2.new(0.5, 0, 0, 130) -- 130像素距离顶部
-ConsoleButton.AnchorPoint = Vector2.new(0.5, 0)
-ConsoleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ConsoleButton.ZIndex = 2
-ConsoleButton.Image = "rbxassetid://16006754625" -- 信息记录。危险
-ConsoleButton.AutoButtonColor = false
-ConsoleButton.BorderSizePixel = 0
- 
+
 ConsoleButton.MouseButton1Click:Connect(function()
 SondFrameBackground:TweenPosition(UDim2.new(0.5, 0, -1, 0),"InOut","Sine",0.1)
 EditorBackground:TweenPosition(UDim2.new(0.525, 0, -1, 0),"InOut","Sine",0.1)
@@ -660,7 +605,7 @@ game.Workspace.CurrentCamera.FieldOfView  = 70
 end
 end
 end)
---[[
+
 MusicButton.Parent = CoreSystemFrame
 MusicButton.Size = UDim2.new(0, 30, 0, 30)
 MusicButton.Position = UDim2.new(0.5, 0, 0.82, 0)
@@ -668,16 +613,6 @@ MusicButton.AnchorPoint = Vector2.new(0.5, 0.5)
 MusicButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 MusicButton.ZIndex = 2
 MusicButton.Image = "rbxassetid://15996975276" --音乐
-MusicButton.AutoButtonColor = false
-MusicButton.BorderSizePixel = 0
---]]
-MusicButton.Parent = CoreSystemFrame
-MusicButton.Size = UDim2.new(0, 30, 0, 30)
-MusicButton.Position = UDim2.new(0.5, 0, 0, 165) -- 165像素距离顶部
-MusicButton.AnchorPoint = Vector2.new(0.5, 0)
-MusicButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-MusicButton.ZIndex = 2
-MusicButton.Image = "rbxassetid://15996975276" -- 音乐
 MusicButton.AutoButtonColor = false
 MusicButton.BorderSizePixel = 0
  
@@ -719,20 +654,10 @@ MinButton.Text = "<"
 MinButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 MinButton.TextSize = 30
 MinButton.BackgroundTransparency = 1
---[[
+
 Clock.Parent = CoreSystemFrame
 Clock.Size = UDim2.new(0, 55, 0, 32)
 Clock.Position = UDim2.new(0, -2.5, 0, 195)
-Clock.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Clock.BackgroundTransparency = 1
-Clock.Text = os.date("%H:%M")
-Clock.TextColor3 = Color3.fromRGB(200, 200, 200)
-Clock.Font = Enum.Font.SourceSansBold
-Clock.TextSize = 20
---]]
-Clock.Parent = CoreSystemFrame
-Clock.Size = UDim2.new(0, 55, 0, 32)
-Clock.Position = UDim2.new(0.5, 0, 0, 5) -- 5像素距离顶部
 Clock.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Clock.BackgroundTransparency = 1
 Clock.Text = os.date("%H:%M")
