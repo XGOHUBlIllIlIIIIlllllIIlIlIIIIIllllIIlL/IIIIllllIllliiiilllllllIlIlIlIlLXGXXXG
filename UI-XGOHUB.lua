@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.122
+-- 边框v1.128888
 
 -- 此源码永不加密 | 也尽量保持更新 |
 -- 
@@ -2774,29 +2774,7 @@ function Library:Windowxgo(setup)
 	Headers.BorderSizePixel = 0
 	Headers.Size = UDim2.new(1, 0, 0, 25.8000000051)
 	Headers.ZIndex = 4
---[[
-	Title.Name = "Title"
-	Title.Parent = Headers
-	Title.AnchorPoint = Vector2.new(0.5, 0.5)
-	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Title.BackgroundTransparency = 1.000
-	Title.BorderColor3 = Color3.fromRGB(27, 42, 53)
-	Title.BorderSizePixel = 0
-	Title.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Title.Size = UDim2.new(0.980000019, 0, 0.600000024, 0)
-	Title.ZIndex = 3
-	Title.Font = Enum.Font.Gotham
-	Title.Text = setup.Title
-	Title.TextColor3 = Library.Colors.TextColor
-	Title.TextScaled = true
-	Title.TextSize = 14.000
-	Title.TextStrokeColor3 = Library.Colors.TextColor
-	Title.TextStrokeTransparency = 0.950
-	Title.TextWrapped = true
-	Title.TextXAlignment = Enum.TextXAlignment.Left
-	Title.TextTransparency = 1
-	Title.RichText = true
---]]
+	
 Title.Name = "Title"
 Title.Parent = Headers
 Title.AnchorPoint = Vector2.new(1, 0.5)
@@ -2804,7 +2782,7 @@ Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1.000
 Title.BorderColor3 = Color3.fromRGB(27, 42, 53)
 Title.BorderSizePixel = 0
-Title.Position = UDim2.new(0.99000001, 0, 0.5, 0)
+Title.Position = UDim2.new(0.15, 0, 0.5, 0)
 Title.Size = UDim2.new(0.125, 0, 0.550000012, 0)
 Title.ZIndex = 3
 Title.Font = Enum.Font.Gotham
@@ -2825,17 +2803,7 @@ Title.RichText = true
 			TextTransparency = 0,
 		})
 	end)
---[[
-	WindowControl.Name = "WindowControl"
-	WindowControl.Parent = Headers
-	WindowControl.AnchorPoint = Vector2.new(1, 0.5)
-	WindowControl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	WindowControl.BackgroundTransparency = 1.000
-	WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	WindowControl.BorderSizePixel = 0
-	WindowControl.Position = UDim2.new(0.95, 0, 0.5, 0)
-	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
---]]
+	
 WindowControl.Name = "WindowControl"
 WindowControl.Parent = Headers
 WindowControl.AnchorPoint = Vector2.new(0, 0.5)
@@ -2843,7 +2811,7 @@ WindowControl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 WindowControl.BackgroundTransparency = 1.000
 WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
 WindowControl.BorderSizePixel = 0
-WindowControl.Position = UDim2.new(0.01, 0, 0.5, 0)  -- 将控制按钮移到左侧
+WindowControl.Position = UDim2.new(0.01, 0, 0.5, 0)
 WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
 
 	UIListLayout.Parent = WindowControl
