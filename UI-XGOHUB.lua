@@ -2397,11 +2397,24 @@ function Library:Windowxgo(setup)
 	DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 	DropShadow.SliceScale = 0.050
 	
-	-- 设置UIGradient
-UIGradient.Parent = DropShadow
-UIGradient.Rotation = 90 -- 根据需要调整旋转角度
-
--- 定义颜色序列
+   UIGradient.Parent = DropShadow
+   UIGradient.Rotation = 90 
+	
+	Ico.Name = "Ico"
+	Ico.Parent = MainFrame
+	Ico.AnchorPoint = Vector2.new(0.5, 0.5)
+	Ico.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Ico.BackgroundTransparency = 1.000
+	Ico.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Ico.BorderSizePixel = 0
+	Ico.Position = UDim2.new(0.5, 0, 0.5, 0)
+--	Ico.Size = UDim2.new(0.600000024, 0, 0.600000024, 0)
+	Ico.Size = UDim2.new(0.5, 0, 0.5, 0)  -- 调整大小以适应框架
+	Ico.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	Ico.Image = setup.Logo
+	Ico.ImageTransparency = 1.000
+	
+	-- 定义颜色序列
 local ts = game:GetService("TweenService")
 local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
 local offset = {Offset = Vector2.new(1, 0)}
@@ -2464,20 +2477,7 @@ local function animate()
     end
     animate()
 end
-	
-	Ico.Name = "Ico"
-	Ico.Parent = MainFrame
-	Ico.AnchorPoint = Vector2.new(0.5, 0.5)
-	Ico.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Ico.BackgroundTransparency = 1.000
-	Ico.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Ico.BorderSizePixel = 0
-	Ico.Position = UDim2.new(0.5, 0, 0.5, 0)
---	Ico.Size = UDim2.new(0.600000024, 0, 0.600000024, 0)
-	Ico.Size = UDim2.new(0.5, 0, 0.5, 0)  -- 调整大小以适应框架
-	Ico.SizeConstraint = Enum.SizeConstraint.RelativeYY
-	Ico.Image = setup.Logo
-	Ico.ImageTransparency = 1.000
+animate()
 
 	Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{Size = Library.SizeLibrary.Loading})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 0.25})
