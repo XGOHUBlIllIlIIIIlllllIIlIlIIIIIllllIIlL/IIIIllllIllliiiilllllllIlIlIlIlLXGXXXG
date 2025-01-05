@@ -2806,18 +2806,17 @@ function Library:Windowxgo(setup)
 
 	WindowControl.Name = "WindowControl"
 	WindowControl.Parent = Headers
-	WindowControl.AnchorPoint = Vector2.new(0, 0.5)
+	WindowControl.AnchorPoint = Vector2.new(1, 0.5)
 	WindowControl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	WindowControl.BackgroundTransparency = 1.000
 	WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	WindowControl.BorderSizePixel = 0
-	WindowControl.Position = UDim2.new(0.25, 0, 0.5, 0)
+	WindowControl.Position = UDim2.new(0.95, 0, 0.5, 0)
 	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
 
 	UIListLayout.Parent = WindowControl
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
---	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
-	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left  -- 修改为左对齐
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.Padding = UDim.new(0, 10)
