@@ -2774,7 +2774,7 @@ function Library:Windowxgo(setup)
 	Headers.BorderSizePixel = 0
 	Headers.Size = UDim2.new(1, 0, 0, 25.8000000051)
 	Headers.ZIndex = 4
-
+--[[
 	Title.Name = "Title"
 	Title.Parent = Headers
 	Title.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2796,6 +2796,28 @@ function Library:Windowxgo(setup)
 	Title.TextXAlignment = Enum.TextXAlignment.Left
 	Title.TextTransparency = 1
 	Title.RichText = true
+--]]
+Title.Name = "Title"
+Title.Parent = Headers
+Title.AnchorPoint = Vector2.new(1, 0.5)
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.99000001, 0, 0.5, 0)
+Title.Size = UDim2.new(0.125, 0, 0.550000012, 0)
+Title.ZIndex = 3
+Title.Font = Enum.Font.Gotham
+Title.Text = setup.Title
+Title.TextColor3 = Library.Colors.TextColor
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextStrokeColor3 = Library.Colors.TextColor
+Title.TextStrokeTransparency = 0.950
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+Title.TextTransparency = 1
+Title.RichText = true
 
 	task.delay(1,function()
 		Library:Tween(Title , TweenInfo.new(1,Enum.EasingStyle.Quint),{
@@ -2803,7 +2825,7 @@ function Library:Windowxgo(setup)
 			TextTransparency = 0,
 		})
 	end)
-
+--[[
 	WindowControl.Name = "WindowControl"
 	WindowControl.Parent = Headers
 	WindowControl.AnchorPoint = Vector2.new(1, 0.5)
@@ -2813,10 +2835,20 @@ function Library:Windowxgo(setup)
 	WindowControl.BorderSizePixel = 0
 	WindowControl.Position = UDim2.new(0.95, 0, 0.5, 0)
 	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
+--]]
+WindowControl.Name = "WindowControl"
+WindowControl.Parent = Headers
+WindowControl.AnchorPoint = Vector2.new(0.5, 0.5)
+WindowControl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+WindowControl.BackgroundTransparency = 1.000
+WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
+WindowControl.BorderSizePixel = 0
+WindowControl.Position = UDim2.new(0.5, 0, 0.5, 0)
+WindowControl.Size = UDim2.new(0.980000019, 0, 0.600000024, 0)
 
 	UIListLayout.Parent = WindowControl
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.Padding = UDim.new(0, 10)
