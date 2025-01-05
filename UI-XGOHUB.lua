@@ -2397,9 +2397,6 @@ function Library:Windowxgo(setup)
 	DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 	DropShadow.SliceScale = 0.050
 	
-   UIGradient.Parent = DropShadow
-   UIGradient.Rotation = 90 
-	
 	Ico.Name = "Ico"
 	Ico.Parent = MainFrame
 	Ico.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2408,77 +2405,10 @@ function Library:Windowxgo(setup)
 	Ico.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Ico.BorderSizePixel = 0
 	Ico.Position = UDim2.new(0.5, 0, 0.5, 0)
---	Ico.Size = UDim2.new(0.600000024, 0, 0.600000024, 0)
 	Ico.Size = UDim2.new(0.5, 0, 0.5, 0)  -- 调整大小以适应框架
 	Ico.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Ico.Image = setup.Logo
 	Ico.ImageTransparency = 1.000
-	
-	-- 定义颜色序列
-local ts = game:GetService("TweenService")
-local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-local offset = {Offset = Vector2.new(1, 0)}
-local create = ts:Create(UIGradient, ti, offset)
-local startingPos = Vector2.new(-1, 0)
-local list = {}
-local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
-local counter = 0
-local status = "down"
-
--- 生成彩虹颜色
-local function rainbowColors()
-    local sat, val = 255, 255
-    for i = 1, 10 do
-        local hue = i * 17
-        table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255))
-    end
-end
-rainbowColors()
-
--- 设置初始颜色序列
-UIGradient.Color = s({kpt(0, list[#list]), kpt(0.5, list[#list - 1]), kpt(1, list[#list - 2])})
-counter = #list
-
--- 动画函数
-local function animate()
-    create:Play()
-    create.Completed:Wait()
-    UIGradient.Offset = startingPos
-    UIGradient.Rotation = 180
-    if ((counter == (#list - 1)) and (status == "down")) then
-        UIGradient.Color = s({kpt(0, UIGradient.Color.Keypoints[1].Value), kpt(0.5, list[#list]), kpt(1, list[1])})
-        counter = 1
-        status = "up"
-    elseif ((counter == #list) and (status == "down")) then
-        UIGradient.Color = s({kpt(0, UIGradient.Color.Keypoints[1].Value), kpt(0.5, list[1]), kpt(1, list[2])})
-        counter = 2
-        status = "up"
-    elseif ((counter <= (#list - 2)) and (status == "down")) then
-        UIGradient.Color = s({kpt(0, UIGradient.Color.Keypoints[1].Value), kpt(0.5, list[counter + 1]), kpt(1, list[counter + 2])})
-        counter = counter + 2
-        status = "up"
-    end
-    create:Play()
-    create.Completed:Wait()
-    UIGradient.Offset = startingPos
-    UIGradient.Rotation = 0
-    if ((counter == (#list - 1)) and (status == "up")) then
-        UIGradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, UIGradient.Color.Keypoints[3].Value)})
-        counter = 1
-        status = "down"
-    elseif ((counter == #list) and (status == "up")) then
-        UIGradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, UIGradient.Color.Keypoints[3].Value)})
-        counter = 2
-        status = "down"
-    elseif ((counter <= (#list - 2)) and (status == "up")) then
-        UIGradient.Color = s({kpt(0, list[counter + 2]), kpt(0.5, list[counter + 1]), kpt(1, UIGradient.Color.Keypoints[3].Value)})
-        counter = counter + 2
-        status = "down"
-    end
-    animate()
-end
-animate()
-        end
 
 	Library:Tween(MainFrame , Library.TweenLibrary.SmallEffect,{Size = Library.SizeLibrary.Loading})
 	Library:Tween(Ico , Library.TweenLibrary.SmallEffect,{ImageTransparency = 0.25})
@@ -2881,12 +2811,14 @@ animate()
 	WindowControl.BackgroundTransparency = 1.000
 	WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	WindowControl.BorderSizePixel = 0
-	WindowControl.Position = UDim2.new(0.99000001, 0, 0.5, 0)
+--	WindowControl.Position = UDim2.new(0.99000001, 0, 0.5, 0)
+	WindowControl.Position = UDim2.new(0, 0, 0.5, 0)  -- 修改位置为最左边
 	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
 
 	UIListLayout.Parent = WindowControl
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+--	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left  -- 修改为左对齐
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.Padding = UDim.new(0, 10)
