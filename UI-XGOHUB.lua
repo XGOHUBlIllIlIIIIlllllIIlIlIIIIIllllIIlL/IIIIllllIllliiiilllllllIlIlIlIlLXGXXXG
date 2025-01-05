@@ -2350,7 +2350,7 @@ function Library:Windowxgo(setup)
     
     local UICorner = Instance.new("UICorner")
     UICorner.Parent = MainFrame
-    UICorner.CornerRadius = UDim.new(0, 45)  -- 设置圆角的大小为10像素
+    UICorner.CornerRadius = UDim.new(0, 15)
 
     BackgroundImage.Parent = MainFrame
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2361,7 +2361,7 @@ function Library:Windowxgo(setup)
     
     local UICorner = Instance.new("UICorner")
     UICorner.Parent = BackgroundImage
-    UICorner.CornerRadius = UDim.new(0, 45)  -- 设置圆角的大小为10像素
+    UICorner.CornerRadius = UDim.new(0, 15)  -- 设置圆角的大小为10像素
 
     local interval = 10
     local timeSinceLastChange = 0
@@ -2398,7 +2398,7 @@ function Library:Windowxgo(setup)
 	
 	local UICorner = Instance.new("UICorner")
     UICorner.Parent = DropShadow
-    UICorner.CornerRadius = UDim.new(0, 45)  -- 设置圆角的大小为10像素
+    UICorner.CornerRadius = UDim.new(0, 15)  -- 设置圆角的大小为10像素
 
 	Ico.Name = "Ico"
 	Ico.Parent = MainFrame
