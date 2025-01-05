@@ -2306,8 +2306,11 @@ function Library:Windowxgo(setup)
 	
     local ScreenGui = Instance.new("ScreenGui")
     local MainFrame = Instance.new("Frame")
+    local UICorner_MainFrame = Instance.new("UICorner")
     local BackgroundImage = Instance.new("ImageLabel")
+    local UICorner_BackgroundImage = Instance.new("UICorner")
 	local DropShadow = Instance.new("ImageLabel")
+	local UIGradient = Instance.new("UIGradient")
 	local Ico = Instance.new("ImageLabel")
 
     local images = {
@@ -2347,10 +2350,9 @@ function Library:Windowxgo(setup)
     MainFrame.ClipsDescendants = true
     MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
     MainFrame.Size = UDim2.fromScale(0, 0)
-    
-    local UICorner = Instance.new("UICorner")
-    UICorner.Parent = MainFrame
-    UICorner.CornerRadius = UDim.new(0, 15)
+
+    UICorner_MainFrame.Parent = MainFrame
+    UICorner_MainFrame.CornerRadius = UDim.new(0, 15)
 
     BackgroundImage.Parent = MainFrame
     BackgroundImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2358,10 +2360,9 @@ function Library:Windowxgo(setup)
     BackgroundImage.Size = UDim2.new(1, 0, 1, 1)
     BackgroundImage.ImageColor3 = Color3.fromRGB(255, 255, 255)
     BackgroundImage.ScaleType = Enum.ScaleType.Stretch
-    
-    local UICorner = Instance.new("UICorner")
-    UICorner.Parent = BackgroundImage
-    UICorner.CornerRadius = UDim.new(0, 15)  -- 设置圆角的大小为10像素
+
+    UICorner_BackgroundImage.Parent = BackgroundImage
+    UICorner_BackgroundImage.CornerRadius = UDim.new(0, 15)
 
     local interval = 10
     local timeSinceLastChange = 0
@@ -2396,10 +2397,74 @@ function Library:Windowxgo(setup)
 	DropShadow.SliceCenter = Rect.new(95, 103, 894, 902)
 	DropShadow.SliceScale = 0.050
 	
-	local UICorner = Instance.new("UICorner")
-    UICorner.Parent = DropShadow
-    UICorner.CornerRadius = UDim.new(0, 15)  -- 设置圆角的大小为10像素
+	-- 设置UIGradient
+UIGradient.Parent = DropShadow
+UIGradient.Rotation = 90 -- 根据需要调整旋转角度
 
+-- 定义颜色序列
+local ts = game:GetService("TweenService")
+local ti = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+local offset = {Offset = Vector2.new(1, 0)}
+local create = ts:Create(UIGradient, ti, offset)
+local startingPos = Vector2.new(-1, 0)
+local list = {}
+local s, kpt = ColorSequence.new, ColorSequenceKeypoint.new
+local counter = 0
+local status = "down"
+
+-- 生成彩虹颜色
+local function rainbowColors()
+    local sat, val = 255, 255
+    for i = 1, 10 do
+        local hue = i * 17
+        table.insert(list, Color3.fromHSV(hue / 255, sat / 255, val / 255))
+    end
+end
+rainbowColors()
+
+-- 设置初始颜色序列
+UIGradient.Color = s({kpt(0, list[#list]), kpt(0.5, list[#list - 1]), kpt(1, list[#list - 2])})
+counter = #list
+
+-- 动画函数
+local function animate()
+    create:Play()
+    create.Completed:Wait()
+    UIGradient.Offset = startingPos
+    UIGradient.Rotation = 180
+    if ((counter == (#list - 1)) and (status == "down")) then
+        UIGradient.Color = s({kpt(0, UIGradient.Color.Keypoints[1].Value), kpt(0.5, list[#list]), kpt(1, list[1])})
+        counter = 1
+        status = "up"
+    elseif ((counter == #list) and (status == "down")) then
+        UIGradient.Color = s({kpt(0, UIGradient.Color.Keypoints[1].Value), kpt(0.5, list[1]), kpt(1, list[2])})
+        counter = 2
+        status = "up"
+    elseif ((counter <= (#list - 2)) and (status == "down")) then
+        UIGradient.Color = s({kpt(0, UIGradient.Color.Keypoints[1].Value), kpt(0.5, list[counter + 1]), kpt(1, list[counter + 2])})
+        counter = counter + 2
+        status = "up"
+    end
+    create:Play()
+    create.Completed:Wait()
+    UIGradient.Offset = startingPos
+    UIGradient.Rotation = 0
+    if ((counter == (#list - 1)) and (status == "up")) then
+        UIGradient.Color = s({kpt(0, list[1]), kpt(0.5, list[#list]), kpt(1, UIGradient.Color.Keypoints[3].Value)})
+        counter = 1
+        status = "down"
+    elseif ((counter == #list) and (status == "up")) then
+        UIGradient.Color = s({kpt(0, list[2]), kpt(0.5, list[1]), kpt(1, UIGradient.Color.Keypoints[3].Value)})
+        counter = 2
+        status = "down"
+    elseif ((counter <= (#list - 2)) and (status == "up")) then
+        UIGradient.Color = s({kpt(0, list[counter + 2]), kpt(0.5, list[counter + 1]), kpt(1, UIGradient.Color.Keypoints[3].Value)})
+        counter = counter + 2
+        status = "down"
+    end
+    animate()
+end
+	
 	Ico.Name = "Ico"
 	Ico.Parent = MainFrame
 	Ico.AnchorPoint = Vector2.new(0.5, 0.5)
