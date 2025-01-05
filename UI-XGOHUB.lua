@@ -2777,7 +2777,7 @@ function Library:Windowxgo(setup)
 
 	Title.Name = "Title"
 	Title.Parent = Headers
-	Title.AnchorPoint = Vector2.new(1, 0.5)
+	Title.AnchorPoint = Vector2.new(0.5, 0.5)
 	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Title.BackgroundTransparency = 1.000
 	Title.BorderColor3 = Color3.fromRGB(27, 42, 53)
@@ -2806,17 +2806,18 @@ function Library:Windowxgo(setup)
 
 	WindowControl.Name = "WindowControl"
 	WindowControl.Parent = Headers
-	WindowControl.AnchorPoint = Vector2.new(0.5, 0.5)
+	WindowControl.AnchorPoint = Vector2.new(0, 0.5)
 	WindowControl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	WindowControl.BackgroundTransparency = 1.000
 	WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	WindowControl.BorderSizePixel = 0
-	WindowControl.Position = UDim2.new(0.99000001, 0, 0.5, 0)
+	WindowControl.Position = UDim2.new(0.25, 0, 0.5, 0)
 	WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
 
 	UIListLayout.Parent = WindowControl
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+--	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left  -- 修改为左对齐
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 	UIListLayout.Padding = UDim.new(0, 10)
