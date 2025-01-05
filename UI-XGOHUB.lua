@@ -2783,8 +2783,7 @@ function Library:Windowxgo(setup)
     Title.BorderColor3 = Color3.fromRGB(27, 42, 53)
     Title.BorderSizePixel = 0
     Title.Position = UDim2.new(0.4988150001, 0, 0.5, 0)
-    Title.Size = UDim2.new(0.980000019, 0, 0.600000024, 0)
---    Title.Size = UDim2.new(0.125, 0, 0.550000012, 0)
+    Title.Size = UDim2.new(0.8, 0, 0.600000024, 0)
     Title.ZIndex = 3
     Title.Font = Enum.Font.Gotham
     Title.Text = setup.Title
