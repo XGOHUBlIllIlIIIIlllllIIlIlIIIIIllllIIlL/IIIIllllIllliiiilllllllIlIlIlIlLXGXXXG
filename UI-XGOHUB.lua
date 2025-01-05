@@ -2838,13 +2838,13 @@ Title.RichText = true
 --]]
 WindowControl.Name = "WindowControl"
 WindowControl.Parent = Headers
-WindowControl.AnchorPoint = Vector2.new(0.5, 0.5)
+WindowControl.AnchorPoint = Vector2.new(0, 0.5)
 WindowControl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 WindowControl.BackgroundTransparency = 1.000
 WindowControl.BorderColor3 = Color3.fromRGB(0, 0, 0)
 WindowControl.BorderSizePixel = 0
-WindowControl.Position = UDim2.new(0.5, 0, 0.5, 0)
-WindowControl.Size = UDim2.new(0.980000019, 0, 0.600000024, 0)
+WindowControl.Position = UDim2.new(0.01, 0, 0.5, 0)  -- 将控制按钮移到左侧
+WindowControl.Size = UDim2.new(0.125, 0, 0.550000012, 0)
 
 	UIListLayout.Parent = WindowControl
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
