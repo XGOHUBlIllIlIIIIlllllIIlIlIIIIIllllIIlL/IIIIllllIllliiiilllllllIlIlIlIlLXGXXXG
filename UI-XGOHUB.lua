@@ -7012,7 +7012,7 @@ return ColorPickerSettings
 				TextTransparency = 1,
 			})
 		end;
-
+--[[
 		Notification.Name = "Notification"
 		Notification.Parent = NotificationBar
 		Notification.BackgroundColor3 = Library.Colors.Default
@@ -7021,6 +7021,17 @@ return ColorPickerSettings
 		Notification.BorderSizePixel = 0
 		Notification.Size = UDim2.new(0, 400, 0, 250) -- 调整窗口的初始大小
 		Notification.ZIndex = 0
+--]]
+Notification.Name = "Notification"
+Notification.Parent = NotificationBar
+Notification.BackgroundColor3 = Library.Colors.Default
+Notification.BackgroundTransparency = 1
+Notification.BorderColor3 = Color3.fromRGB(27, 42, 53)
+Notification.BorderSizePixel = 0
+Notification.Size = UDim2.new(0, 400, 0, 250) -- 调整窗口的初始大小
+Notification.ZIndex = 0
+Notification.AnchorPoint = Vector2.new(0, 1) -- 将参考点设置为左下角
+Notification.Position = UDim2.new(0, 0, 1, -Notification.Size.Y.Offset) -- 位置设置为屏幕左下角
 
 		DropShadow.Name = "DropShadow"
 		DropShadow.Parent = Notification
