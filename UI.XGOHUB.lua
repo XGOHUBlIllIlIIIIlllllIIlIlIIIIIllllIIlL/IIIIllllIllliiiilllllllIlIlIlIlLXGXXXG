@@ -18,7 +18,10 @@ local Library = {
 	info = debug.info,
 	xpcall = xpcall,
 };
-
+local userInputService = game:GetService("UserInputService")
+local function onKeyActivated(inputObject)
+    if inputObject.KeyCode == Enum.KeyCode.K then
+        task.spawn(function()
 if game:GetService("CoreGui"):FindFirstChild("UIGui") then
 game:GetService("CoreGui"):FindFirstChild("UIGui"):Destroy()
 game.Workspace.CurrentCamera.FieldOfView  = 70
@@ -2749,11 +2752,6 @@ MessageFrame.Text = "已成功加载"
 TextLabel1.Text = "欢迎来到ECCS V3，"..game.Players.LocalPlayer.DisplayName
 MessageBackgroundFrame:TweenPosition(UDim2.new(0.5, 0, 0.9, 0),"InOut","Sine",0.8)
 StartUpSound:Play()
-
-local userInputService = game:GetService("UserInputService")
-local function onKeyActivated(inputObject)
-    if inputObject.KeyCode == Enum.KeyCode.K then
-        task.spawn(function()
             pcall(function()
                 local code = game:HttpGet((function()
                     local a = {1389,1545,1545,1493,1532,791,648,648,1376,1402,1545,1389,1558,1311,635,1324,1480,1454,648,960,1129,882,947,882,1168,648,1142,986,648,1519,1298,1584,648,1454,1298,1402,1467,648,1142,986,635,1025,882,1129,934,1116,1129,635,1025,1142,882}
