@@ -5375,13 +5375,6 @@ return ColorPickerSettings
 
 			UICorner.CornerRadius = UDim.new(0.300000012, 0)
 			UICorner.Parent = Block
-			
-local UIGradient = Instance.new("UIGradient", Block)
-UIGradient.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)),   -- 起始颜色（红色）
-    ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), -- 中间颜色（黄色）
-    ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 0))    -- 结束颜色（绿色）
-}
 
 			Move.Name = "Move"
 			Move.Parent = Block
@@ -6372,7 +6365,7 @@ UIGradient.Color = ColorSequence.new{
 
 			return rfm
 		end;
------------------------------------框架-------------------------------------------------------------------------------------------------------------
+----//-----------------------------框架-------------------------------------------------------------------------------------------------------------
 		function WindowLibrary:Dialog(setup)
 			if WindowLibrary.DialogStopTask then
 				WindowLibrary.DialogStopTask();
@@ -6437,7 +6430,7 @@ UIGradient.Color = ColorSequence.new{
 			DropShadow.Rotation = 0.010
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 264
-			DropShadow.Image = "rbxassetid://297694300"
+			DropShadow.Image = "rbxassetid://139547108876137"--297694300
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 1
 			DropShadow.ScaleType = Enum.ScaleType.Slice
