@@ -5373,6 +5373,16 @@ return ColorPickerSettings
 
 			UICorner.CornerRadius = UDim.new(0.300000012, 0)
 			UICorner.Parent = Block
+			
+-- 在Block创建后，添加UIGradient
+local UIGradient = Instance.new("UIGradient")
+UIGradient.Parent = Block
+UIGradient.Rotation = 0 -- 设置渐变的方向，0表示从左到右
+UIGradient.Color = ColorSequence.new{ -- 定义渐变的颜色序列
+    ColorSequenceKeypoint.new(0.0, Color3.fromRGB(255, 0, 0)), -- 开始颜色为红色
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 0)), -- 中间颜色为黄色
+    ColorSequenceKeypoint.new(1.0, Color3.fromRGB(0, 255, 0)) -- 结束颜色为绿色
+}
 
 			Move.Name = "Move"
 			Move.Parent = Block
