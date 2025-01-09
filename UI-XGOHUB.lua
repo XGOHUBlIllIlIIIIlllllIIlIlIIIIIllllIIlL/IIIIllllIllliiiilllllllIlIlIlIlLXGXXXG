@@ -1,7 +1,7 @@
 -- 更新：延迟修复与主题更新 | 主要添加次副标 --
 -- 这不是 hyprland --
 -- UI.XGO修改更新 --
--- 边框v1.20
+-- 边框v1.50
 
 -- 此源码永不加密 | 也尽量保持更新 |
 -- 
@@ -6404,6 +6404,22 @@ return ColorPickerSettings
 			local Buttons = Instance.new("Frame")
 			local UIListLayout = Instance.new("UIListLayout")
 
+Dialog.Name = "Dialog"
+Dialog.Parent = Black
+Dialog.AnchorPoint = Vector2.new(0.5, 0.5)
+Dialog.BackgroundColor3 = Color3.new(1, 1, 1)
+Dialog.BackgroundTransparency = 1
+Dialog.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Dialog.BorderSizePixel = 0
+Dialog.Position = UDim2.new(0.5, 0, 0.5, 0)
+Dialog.Size = UDim2.new(0.1, 250, 0.1, 100)
+Dialog.ZIndex = 265
+Dialog.Active = true
+
+Dialog.Image = "rbxassetid://139547108876137"
+Dialog.ImageTransparency = 0
+
+--[[
 			Dialog.Name = "Dialog"
 			Dialog.Parent = Black
 			Dialog.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -6415,7 +6431,7 @@ return ColorPickerSettings
 			Dialog.Size = UDim2.new(0.1, 250, 0.1, 100)
 			Dialog.ZIndex = 265
 			Dialog.Active = true
-
+--]]
 			Library:Tween(Dialog,Library.TweenLibrary.SmallEffect,{
 				BackgroundTransparency = 0.250,
 				Size = UDim2.new(0, 250, 0, 100)
@@ -6430,7 +6446,7 @@ return ColorPickerSettings
 			DropShadow.Rotation = 0.010
 			DropShadow.Size = UDim2.new(1, 10, 1, 10)
 			DropShadow.ZIndex = 264
-			DropShadow.Image = "rbxassetid://139547108876137"--297694300
+			DropShadow.Image = "rbxassetid://297694300"
 			DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 			DropShadow.ImageTransparency = 1
 			DropShadow.ScaleType = Enum.ScaleType.Slice
