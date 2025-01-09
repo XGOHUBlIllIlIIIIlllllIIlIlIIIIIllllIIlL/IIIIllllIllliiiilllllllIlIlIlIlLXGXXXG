@@ -422,6 +422,7 @@ Library.Icons = { -- 图片/常用图片
 	["XGO7"]= "rbxassetid://86451637909512",
 	["XGO8"]= "rbxassetid://109948306798374",
 	["XGO9"]= "rbxassetid://92630758837243",
+	["背景1"] = "rbxassetid://139547108876137",
 	["向下箭头-圆形"] = "rbxassetid://7733671763",
 	["收音机-接收器"] = "rbxassetid://7734045155",
 	["垂直结束对齐"] = "rbxassetid://8997380907",
@@ -2322,6 +2323,7 @@ function Library:Windowxgo(setup)
 	    "rbxassetid://86451637909512",
         "rbxassetid://109948306798374",
         "rbxassetid://92630758837243",
+        "rbxassetid://139547108876137"
     }
     local currentImageIndex = 1
 
@@ -5374,14 +5376,11 @@ return ColorPickerSettings
 			UICorner.CornerRadius = UDim.new(0.300000012, 0)
 			UICorner.Parent = Block
 			
--- 在Block创建后，添加UIGradient
-local UIGradient = Instance.new("UIGradient")
-UIGradient.Parent = Block
-UIGradient.Rotation = 0 -- 设置渐变的方向，0表示从左到右
-UIGradient.Color = ColorSequence.new{ -- 定义渐变的颜色序列
-    ColorSequenceKeypoint.new(0.0, Color3.fromRGB(255, 0, 0)), -- 开始颜色为红色
-    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 0)), -- 中间颜色为黄色
-    ColorSequenceKeypoint.new(1.0, Color3.fromRGB(0, 255, 0)) -- 结束颜色为绿色
+local UIGradient = Instance.new("UIGradient", Block)
+UIGradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 0, 0)),   -- 起始颜色（红色）
+    ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 255, 0)), -- 中间颜色（黄色）
+    ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 0))    -- 结束颜色（绿色）
 }
 
 			Move.Name = "Move"
