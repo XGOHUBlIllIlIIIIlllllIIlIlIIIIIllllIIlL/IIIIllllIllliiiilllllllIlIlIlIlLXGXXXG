@@ -1820,7 +1820,7 @@ local function Hide(Window, bind, notif)
 	bind = string.split(tostring(bind), "Enum.KeyCode.")
 	bind = bind[2]
 	if notif then
-		Luna:Notification({Title = "Interface Hidden", Content = "The interface has been hidden, you may reopen the interface by Pressing the UI Bind In Settings ("..tostring(bind)..")", Icon = "visibility_off"})
+		Luna:Notification({Title = "界面已隐藏", Content = "界面已被隐藏，你可以通过按下设置中的 UI 绑定键（"..tostring(bind).."）来重新打开界面", Icon = "visibility_off"})
 	end
 	tween(Window, {BackgroundTransparency = 1})
 	tween(Window.Elements, {BackgroundTransparency = 1})
@@ -2471,13 +2471,12 @@ function Luna:Window(WindowSettings)
 
 	local FirstTab = true
 
-	function Window:HomeTab(HomeTabSettings)
-
+	function Window:HomeTab(HomeTabSettings)		
 		HomeTabSettings = Kwargify({
-			Icon = 1,
-			SupportedExecutors = {"Vega X", "Delta", "Nihon", "Xeno"}, -- THESE DEFAULTS ARE PLACEHOLDERS!! I DO NOT ADVERTISE THESE, THEY ARE JUS THE FIRST THAT CAME TO MIND. I HAVE NO IDEA WHETHER THEYA RE RATS (they prob are) AND IM NOT RESPONSIBLE IF U GET VIRUSES FROM INSTALLING AFTER SEEING THIS LIST
-			DiscordInvite = "noinvitelink" -- The disvord invite link. Do not include the link so for example if my invite was discord.gg/nebula I would put nebula
-		}, HomeTabSettings or {})
+            Icon = 1,
+            SupportedExecutors = {"Vega X", "Delta", "Nihon", "Xeno"}, -- 这些默认值只是占位符！！我并不推荐这些，它们只是我最先想到的。我不知道它们是否是恶意软件（它们可能都是），如果你在看到这个列表后安装它们而感染了病毒，我不负责任
+            DiscordInvite = "noinvitelink" -- Discord邀请链接。不要包含链接，例如如果我的邀请链接是discord.gg/nebula，我就只填写nebula
+        }, HomeTabSettings or {})
 
 		local HomeTab = {}
 
@@ -2519,23 +2518,20 @@ function Luna:Window(WindowSettings)
 
 
 		HomeTabPage.icon.ImageLabel.Image = Players:GetUserThumbnailAsync(Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
-		HomeTabPage.player.Text.Text = "Hello, " .. Players.LocalPlayer.DisplayName
+		HomeTabPage.player.Text.Text = "你好, " .. Players.LocalPlayer.DisplayName
 		HomeTabPage.player.user.Text = Players.LocalPlayer.Name .. " - ".. WindowSettings.Name
-
-		HomeTabPage.detailsholder.dashboard.Client.Title.Text = (isStudio and "Debugging (Studio)" or identifyexecutor()) or "Your Executor Does Not Support identifyexecutor."
-		for i,v in pairs(HomeTabSettings.SupportedExecutors) do
-			if isStudio then HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Luna Interface Suite - Debugging Mode" break end
-			if v == identifyexecutor() then
-				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Supports This Script."
-			else
-				HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Your Executor Isn't Officialy Supported By This Script."
-			end
-		end
-
-		-- Stolen From Sirius Stuff Begins Here
-
+        HomeTabPage.detailsholder.dashboard.Client.Title.Text = (isStudio and "调试模式（工作室）" or identifyexecutor()) or "你的执行器不支持 identifyexecutor."
+        for i,v in pairs(HomeTabSettings.SupportedExecutors) do
+            if isStudio then HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "Luna 接口套件 - 调试模式" break end
+            if v == identifyexecutor() then
+                HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "你的执行器支持这个脚本."
+            else
+                HomeTabPage.detailsholder.dashboard.Client.Subtitle.Text = "你的执行器不被这个脚本官方支持."
+            end
+        end
+       -- 以下是从 Sirius 套件中借鉴的部分
 		HomeTabPage.detailsholder.dashboard.Discord.Interact.MouseButton1Click:Connect(function()
-			setclipboard(tostring("https://discord.gg/"..HomeTabSettings.DiscordInvite)) -- Hunter if you see this I added copy also was too lazy to send u msg
+			setclipboard(tostring("https://discord.gg/"..HomeTabSettings.DiscordInvite)) -- Hunter 如果你看到这个，我还增加了复制功能，而且我太懒了，没给你发消息
 			if request then
 				request({
 					Url = 'http://127.0.0.1:6463/rpc?v=1',
@@ -2595,16 +2591,13 @@ function Luna:Window(WindowSettings)
 				HomeTabPage.detailsholder.dashboard.Friends.Offline.Value.Text = tostring(friendsInTotal - onlineFriends).." friends"
 				HomeTabPage.detailsholder.dashboard.Friends.Online.Value.Text = tostring(onlineFriends).." friends"
 				HomeTabPage.detailsholder.dashboard.Friends.InGame.Value.Text = tostring(friendsInGame).." friends"
-
 			else
 				friendsCooldown -= 1
 			end
 		end
-
 		local function format(Int)
 			return string.format("%02i", Int)
 		end
-
 		local function convertToHMS(Seconds)
 			local Minutes = (Seconds - Seconds%60)/60
 			Seconds = Seconds - Minutes*60
@@ -2612,30 +2605,21 @@ function Luna:Window(WindowSettings)
 			Minutes = Minutes - Hours*60
 			return format(Hours)..":"..format(Minutes)..":"..format(Seconds)
 		end
-
 		coroutine.wrap(function()
 			while task.wait() do
-
-
-				-- Players
-				HomeTabPage.detailsholder.dashboard.Server.Players.Value.Text = #Players:GetPlayers().." playing"
-				HomeTabPage.detailsholder.dashboard.Server.MaxPlayers.Value.Text = Players.MaxPlayers.." players can join this server"
-
-				-- Ping
-				HomeTabPage.detailsholder.dashboard.Server.Latency.Value.Text = isStudio and tostring(math.round((Players.LocalPlayer:GetNetworkPing() * 2 ) / 0.01)) .."ms" or tostring(math.floor(getPing()) .."ms")
-
-				-- Time
-				HomeTabPage.detailsholder.dashboard.Server.Time.Value.Text = convertToHMS(time())
-
-				-- Region
-				HomeTabPage.detailsholder.dashboard.Server.Region.Value.Text = Localization:GetCountryRegionForPlayerAsync(Players.LocalPlayer)
-
+     			-- 玩家
+                HomeTabPage.detailsholder.dashboard.Server.Players.Value.Text = #Players:GetPlayers().." 正在游玩"
+                HomeTabPage.detailsholder.dashboard.Server.MaxPlayers.Value.Text = Players.MaxPlayers.." 位玩家可以加入此服务器"
+                -- 延迟
+                HomeTabPage.detailsholder.dashboard.Server.Latency.Value.Text = isStudio and tostring(math.round((Players.LocalPlayer:GetNetworkPing() * 2 ) / 0.01)) .."ms" or tostring(math.floor(getPing()) .."ms")
+                -- 时间
+                HomeTabPage.detailsholder.dashboard.Server.Time.Value.Text = convertToHMS(time())
+                -- 地区
+                HomeTabPage.detailsholder.dashboard.Server.Region.Value.Text = Localization:GetCountryRegionForPlayerAsync(Players.LocalPlayer)
 				checkFriends()
 			end
 		end)()
-
-		-- Stolen From Sirius Stuff ends here
-
+		-- 从 Sirius 套件中借鉴的部分结束
 	end
 
 	function Window:Tab(TabSettings)
@@ -6177,8 +6161,7 @@ function Luna:Window(WindowSettings)
 			})
 
 			Tab:Section("Config Load/Settings")
-
-
+			
 			configSelection = Tab:Dropdown({
 				Name = "Select Config",
 				Description = "Select a config to load your settings on.",
@@ -6214,7 +6197,6 @@ function Luna:Window(WindowSettings)
 					})
 				end
 			})
-
 			Tab:Button({
 				Name = "Overwrite Config",
 				Description = "Overwrite your current config settings.",
@@ -6229,7 +6211,6 @@ function Luna:Window(WindowSettings)
 						})
 						return
 					end
-
 					Luna:Notification({
 						Title = "Interface",
 						Icon = "info",
@@ -6238,7 +6219,6 @@ function Luna:Window(WindowSettings)
 					})
 				end
 			})
-
 			Tab:Button({
 				Name = "Refresh Config List",
 				Description = "Refresh the current config list.",
@@ -6264,12 +6244,10 @@ function Luna:Window(WindowSettings)
 					})
 				end,
 			})
-
 			loadlabel = Tab:Paragraph({
 				Title = "Current Auto Load",
 				Text = "None"
 			})
-
 			Tab:Button({
 				Name = "Delete Autoload",
 				Description = "Delete The Autoload File",
@@ -6286,13 +6264,11 @@ function Luna:Window(WindowSettings)
 					})
 				end,
 			})
-
 			if isfile(Luna.Folder .. "/settings/autoload.txt") then
 				local name = readfile(Luna.Folder .. "/settings/autoload.txt")
 				loadlabel:Set( { Text = "Current autoload config: " .. name })
 			end     
 		end
-
 		local ClassParser = {
 			["Toggle"] = {
 				Save = function(Flag, data)
@@ -6378,10 +6354,7 @@ function Luna:Window(WindowSettings)
 				end
 			}
 		}
-
-
 		function Tab:BuildThemeSection()
-
 			local Title = Elements.Template.Title:Clone()
 			Title.Text = "Theming"
 			Title.Visible = true
